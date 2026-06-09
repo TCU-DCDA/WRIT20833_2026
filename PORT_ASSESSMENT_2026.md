@@ -1,34 +1,45 @@
 # WRIT 20833 — 2026 Readiness & Port Assessment
 
-**Course:** WRIT 20833, "Intro to Coding in the Humanities" (a.k.a. "When Coding Meets Culture")
+**Course:** WRIT 20833, "Intro to Coding in the Humanities" / "When Coding Meets Culture"
 **2026 offering:** 4 weeks, async, **start date 2026-07-06**
 **Assessment date:** 2026-06-09 (27 days to start)
 **Repo assessed:** `TCU-DCDA/WRIT20833_2026` (this repo)
-**Reference offering:** Fall 2025, semester-length (~15 weeks), spread across sibling repos
+**Reference offering:** Fall 2025 (`TCU-DCDA/WRIT20833_2025`), **16-week** semester
+
+> **Sourcing note:** This revision incorporates the authoritative `WRIT20833_2025`
+> repository README (fetched via raw.githubusercontent.com on 2026-06-09), which
+> corrects several facts from the first draft (course is **16 weeks**, full asset
+> inventory, and resolution of the HW2 / data-scraper gaps).
 
 ---
 
 ## TL;DR
 
-The 2026 repo looks nearly empty (one notebook), but **the course is not being built from scratch.** A mature, classroom-tested Fall 2025 offering already exists across sibling repos. The 2026 work is a **port + compression**, not content creation.
+The 2026 repo looks nearly empty (one notebook), but the course is **not** being built
+from scratch. A mature, classroom-tested **16-week** Fall 2025 offering exists in
+sibling repos. The 2026 work is therefore **scope-selection + port**, not content
+creation.
 
-- **Content creation:** essentially done. High quality, scaffolded, classroom-tested.
-- **Real remaining work:** (1) a mechanical port into this repo, and (2) a *pedagogical decision* about how to compress ~15 weeks of material into 4.
-- **Achievable for 2026-07-06** if the port starts soon. The binding constraint is the compression decision, not missing assets.
+- **Content creation:** essentially done, and far more extensive than first thought.
+- **The binding constraint is curricular, not technical:** fitting a 16-week course
+  into 4 weeks is a **4:1 compression** — roughly one of the four semester phases fits,
+  or a heavily-thinned through-line. This is an instructor design decision and remains open.
+- **Mechanical port is easy and quick.** Achievable for 2026-07-06 — *once the scope is chosen.*
 
-> ⚠️ This report is an assessment only. No porting, content changes, or scheduling decisions have been made. Compression of the semester into 4 weeks is an instructor decision that remains open.
+> ⚠️ Assessment only. No porting, content changes, or scheduling decisions have been made.
 
 ---
 
 ## What exists today
 
 ### This repo (`WRIT20833_2026`)
-- `notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb` — the only ported unit so far. Polished, executable. Maps to the F25 "Variables & Data Types" worksheet.
+- `notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb` — the only ported unit
+  so far (the F25 "Variables & Data Types" worksheet). Polished, executable.
 
-### Sibling repos in the `TCU-DCDA` org (prior/supporting material)
+### Sibling repos in `TCU-DCDA`
 | Repo | Purpose | State |
 |---|---|---|
-| `WRIT20833_2025` | The Fall 2025 offering (direct predecessor) | Archived, public |
+| `WRIT20833_2025` | Fall 2025 offering (full 16-week course) | Archived, public |
 | `WRIT20833` | Course-page website (`gh-pages`) | Active, public |
 | `writ20833-textbook` | Course textbook | Active, private |
 | `WRIT20833-portfolio-template` | Student portfolio starter | Active, public |
@@ -36,95 +47,127 @@ The 2026 repo looks nearly empty (one notebook), but **the course is not being b
 | `WRIT20833_alt` | "alt 20833 syllabus" | Archived |
 | `writ20833_f25-intro-to-github-...` | GitHub Classroom starter | Archived |
 
-> Note: `WRIT20833_2025` could not be read directly from this session (out of scope; archived so not in code search). The analysis below is based on 11 F25 notebooks provided manually.
+---
+
+## F25 course (full 16-week structure, per repo README)
+
+- **Weeks 1–4 — Python Foundations:** variables, data types, string methods, conditionals,
+  loops, dictionaries, functions
+- **Weeks 5–8 — Text Analysis & Cultural Data:** pandas, ethical data collection,
+  sentiment analysis (VADER), topic modeling (Gensim LDA)
+- **Weeks 9–12 — Web Development & Portfolio:** HTML/CSS workshop, HW6–8, GitHub Pages
+- **Weeks 13–16 — Final Projects & Public Presentation**
+
+**Pedagogy:** four-strand design — (1) Melanie Walsh's *Intro to Cultural Analytics*
+(external OER, Python backbone); (2) a 13-part mini-lecture series (critical theory);
+(3) tutorials bridging concept↔theme; (4) homework applying skills to student-chosen
+cultural datasets. Analytical arc: predictions → computational analysis → data-driven
+insight → public portfolio. Ungrading philosophy ("earned insight over clean code").
+
+### Full asset inventory
+
+**Code-alongs (9, `notebooks/codeAlongs/`):**
+1. Variables & Data Types — *ported to 2026*
+2. String Methods / Conditionals / Loops
+3. Lists & Loops (Complete)
+4. Dictionaries & Functions
+5. Pandas 01 — Found Data Fundamentals
+6. Pandas 02 — Data Cleaning & Analysis
+7. Instant Data Scraper & Ethics
+8. VADER Sentiment Analysis
+9. Topic Modeling (Gensim) — *the combined version is the F25-canonical one*
+
+**Exercises (1):** Conditionals (9-5-25)
+
+**Tutorials (4, paired to mini-lectures 1–4):** Digital Boundaries · Classification Logic ·
+AI Agency · Collective Memory
+
+**Homework:** HW1 (term frequency) · HW4-1 (term freq + sentiment) ·
+HW4-2 (topic modeling + integration) · HW5 (final project proposal) ·
+HW6 (HTML portfolio structure) · HW7 (CSS portfolio styling) · HW8 (portfolio deployment)
+— *Note: there is **no HW2 or HW3**; numbering jumps 1 → 4. The "HW3-1/3-2 Pandas"
+files are code-along practice notebooks, not graded homework.*
+
+**Mini-lectures (13, numbered 0–12):**
+0 Humanities & Coding · 1 Connotations & Code · 2 Boundaries · 3 Classification Logic ·
+4 AI Agency · 5 Collective Memory · 6 Data Archaeology · 7 NLP & Topic Modeling ·
+8 Code as Rhetoric · 9 Public Arguments · 10 GitHub Infrastructure · 11 HTML as Structure ·
+12 CSS as Rhetoric
+
+**Final project:** 3 deliverables — research essay + Python notebooks + web portfolio
+(HTML/CSS). Proposal (HW5) → Requirements doc → portfolio (HW6–8).
+
+**Also present:** `datasets/`, HTML/CSS workshop (`docs/html_training/`),
+"Editing Digital Essay" guide, 100+ lecture images, `_development/` materials.
 
 ---
 
-## F25 course architecture (four intertwined strands)
+## The central decision: 16 weeks → 4 weeks (4:1)
 
-1. **Melanie Walsh, *Intro to Cultural Analytics*** — external OER textbook providing the Python backbone (Ch 4–10: variables → data types → strings → conditionals → lists & loops). Not ours to maintain.
-2. **Mini-lecture video series** — the humanities/critical-theory spine: Sacred Boundaries → Classification → Agentic Coding → Collective Memory.
-3. **Tutorials** — bridge concept to theme; explicitly week-labeled and tracking Walsh chapters.
-4. **Homework** — applies skills to student-chosen cultural datasets.
+This is the crux and it is **not** a porting problem — it's curriculum design. Options
+the instructor will need to choose among (illustrative, not prescriptive):
 
-### Notebooks reviewed (11)
+- **Foundations-only:** deliver Weeks 1–4 (Python basics) as the whole 4-week course.
+  Cleanest fit; drops the text-analysis, web-dev, and portfolio halves.
+- **Text-analysis track:** assume minimal Python and run the cultural-analytics arc
+  (term frequency → sentiment → topic modeling, HW1/HW4-1/HW4-2). Matches the 2026
+  Variables notebook's "When Coding Meets Culture" framing.
+- **Thinned through-line:** one compressed week per semester-phase; very aggressive cuts,
+  highest workload risk for no-prior-experience grad students in summer.
 
-**Code-alongs (`notebooks/codeAlongs/`):**
-- Variables & Data Types (worksheet) — *ported to 2026*
-- VADER Sentiment Analysis
-- Topic Modeling Part 1: Introduction
-- Topic Modeling Part 2: Research Application
-- Topic Modeling Gensim (older **combined** version — predecessor to the Part 1/Part 2 split; likely redundant)
-
-**Homework (`notebooks/homework/`):**
-- HW1 — Term Frequency / "Meaningful Words" (uses provided F22 text files)
-- HW3-1 — Pandas: Found Data + collection ethics (robots.txt, AI-era)
-- HW3-2 — Pandas: Data Cleaning (continues HW3-1 dataset)
-- HW4-1 — Term Frequency + Sentiment ("Midterm Part 1")
-- HW4-2 — Topic Modeling + Integration ("Midterm Part 2")
-
-**Tutorials (paired with mini-lectures):**
-- Tutorial 1: Digital Boundaries (strings, conditionals)
-- Tutorial 2: Classification Logic (booleans + Bellevue Almshouse dataset)
-- Tutorial 3: AI Agency — **Week 3** (reading/improving AI-generated code)
-- Tutorial 4: Collective Memory — **Week 4** (lists & loops)
-
-**Analytical arc:** term frequency → sentiment (VADER) → topic modeling (Gensim LDA), with critical-theory integration (Shrout's Bellevue Almshouse, Noble, O'Neil) and explicit AI-literacy content.
+Whatever the choice, note the **summer async + no-coding-experience** audience makes
+workload the dominant risk. The F25 homework load alone (HW1–HW8) cannot fit in 4 weeks.
 
 ---
 
-## Port status
+## Port status (once scope is chosen)
 
-**✅ Carry-over-ready (high quality, minimal change):**
-- Variables & Data Types (done)
-- VADER code-along
-- Topic Modeling Part 1 & Part 2
-- HW1, HW3-1, HW3-2, HW4-1, HW4-2
-- Tutorials 1–4
+**✅ Carry-over-ready (high quality, minimal change):** all 9 code-alongs, 4 tutorials,
+HW1/HW4-1/HW4-2, and (if web-dev is in scope) HW5–8 + HTML/CSS workshop.
 
-**⚠️ Decisions needed before porting:**
-- **Duplicate topic-modeling notebooks** — choose canonical: standalone "Gensim" vs. the Part 1/Part 2 split. Don't port both.
-- **Hard-coded F25 dates** — HW4-1 "due Oct 5", HW4-2 "Oct 17" vs "Oct 13" (internally inconsistent). All need 2026 dates.
-- **F25/-2025 Colab badge links** — every notebook's "Open in Colab" badge points at `WRIT20833`/`WRIT20833-2025` paths; must be repointed to `WRIT20833_2026`.
-- **HW4-2 dependency-pinning cell** — pins `numpy==1.26.4`, `pandas==2.2.2`, `scipy==1.13.1`, `gensim==4.3.3` and requires a mandatory Colab runtime restart. Verify against Colab's 2026 default image before students hit it.
-
----
-
-## The central open question: semester → 4 weeks
-
-F25 was ~15 weeks; 2026 is 4. The conceptual spine compresses cleanly (Tutorials/Mini-Lectures 1–4 are already a 4-unit, week-labeled sequence). **The risk is workload, not missing content:** 5 homeworks + 4 code-alongs + 4 tutorials + 4 mini-lectures in 4 async weeks — for grad students with *no prior coding experience*, over summer — is heavy. Compression will require dropping, merging, or making-optional some components.
-
-This is a pedagogical decision and has been left open intentionally.
+**⚠️ Mechanical fixes needed before porting:**
+- **De-duplicate topic modeling** — F25 canonical is the combined "Gensim" notebook;
+  the Part 1 / Part 2 split (provided separately) is a reorganization. Pick one.
+- **Hard-coded F25 dates** — e.g., HW4-1 "due Oct 5", HW4-2 "Oct 17" vs "Oct 13"
+  (internally inconsistent). All need 2026 dates.
+- **Colab badge links** — every notebook points at `WRIT20833`/`WRIT20833-2025`/
+  `WRIT20833_2025` paths; repoint to `WRIT20833_2026`. (Note F25 itself mixes hyphen
+  and underscore repo names — standardize during port.)
+- **HW4-2 dependency-pinning cell** — pins numpy/pandas/scipy/gensim and forces a Colab
+  runtime restart; verify against Colab's 2026 default image.
 
 ---
 
-## Known gaps in this assessment
+## Gaps now CLOSED (vs. first draft)
+- ✅ Total unit count: **16 weeks**, 4 phases (was unknown).
+- ✅ "HW2 / HW3" mystery: no such graded homework; numbering jumps 1 → 4.
+- ✅ Instant Data Scraper lesson: exists (`..._Instant_Data_Scraper_Ethics_F25.ipynb`).
+- ✅ Final project / post-HW4 content: HW5 proposal + HW6–8 portfolio + requirements doc.
 
-- **No syllabus/schedule reviewed** — total unit count and official sequencing unconfirmed.
-- **HW2 not located** — there is a numbering gap between HW1 and HW3-1.
-- **"Instant Data Scraper" lesson not located** — referenced as the data-collection step feeding HW3/HW4.
-- **`WRIT20833_2025` not directly accessible** from this session (would confirm the above).
+## Gaps still open
+- Official **2026 4-week syllabus/schedule** — does not yet exist; depends on the scope decision above.
+- Direct read access to `WRIT20833_2025` from this session (worked around via raw GitHub).
 
 ---
 
 ## Comparison context: WRIT 20833 vs. MALA 60970
 
-Both are 4-week summer 2026 courses with strong, near-complete source material; the difference is *where* the 2026 work currently lives.
-
 | | MALA 60970 (Web Authoring) | WRIT 20833 (Coding in Humanities) |
 |---|---|---|
-| Underlying course | Mature planning repo (~85% ready) | Mature, fully built & taught (F25) |
+| Underlying course | Mature planning repo (~85% ready) | Mature, fully built & taught (16-wk F25) |
 | 2026 repo state | 2026 content authored in-repo | Nearly empty — port not started |
-| Real remaining work | Polish + D2L build (IT-blocked) | Port + compress semester → 4 weeks |
-| Risk profile | Low (execution only) | Medium (port scope + compression) |
+| Real remaining work | Polish + D2L build (IT-blocked) | **Choose 4-week scope** + port |
+| Risk profile | Low (execution only) | Medium–High (4:1 compression decision) |
 
-Neither course needs content *invented*. MALA's 2026 deliverable is more assembled in-repo; WRIT's underlying course is more battle-tested (actually delivered).
+Neither needs content *invented*. MALA's 2026 deliverable is more assembled in-repo and
+already scoped to 4 weeks; WRIT has vastly more battle-tested material but a much larger
+compression decision still to make. **Thematic overlap:** WRIT Weeks 9–16 (HTML/CSS
+portfolios) parallel MALA's "Web Authoring" subject matter.
 
 ---
 
 ## Suggested next steps (when ready)
-
-1. Decide the 4-week compression (week-by-week mapping; what to cut/merge/make optional).
-2. Mechanical port of carry-over-ready notebooks into this repo.
-3. Global fixes: dates, Colab links, dedup topic-modeling, dependency-cell verification.
-4. Confirm/locate HW2, the data-scraper lesson, and the syllabus.
+1. **Decide the 4-week scope** (which phase[s], which assignments, what to cut). This unblocks everything else.
+2. Mechanical port of the chosen carry-over-ready notebooks into this repo.
+3. Global fixes: dates, Colab links, dedup topic modeling, dependency-cell verification.
+4. Author a 2026 4-week syllabus/schedule to match the chosen scope.
