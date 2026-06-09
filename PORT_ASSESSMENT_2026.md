@@ -7,9 +7,10 @@
 **Reference offering:** Fall 2025 (`TCU-DCDA/WRIT20833_2025`), **16-week** semester
 
 > **Sourcing note:** This revision incorporates the authoritative `WRIT20833_2025`
-> repository README (fetched via raw.githubusercontent.com on 2026-06-09), which
-> corrects several facts from the first draft (course is **16 weeks**, full asset
-> inventory, and resolution of the HW2 / data-scraper gaps).
+> repository — first its README, then a **full clone** (284 files) inspected on
+> 2026-06-09 via the allowlisted `github.com`. Corrects several facts from the first
+> draft (course is **16 weeks**, full asset inventory, resolution of the HW2 /
+> data-scraper gaps) and adds the findings in "Direct repo inspection" below.
 
 ---
 
@@ -145,8 +146,24 @@ HW1/HW4-1/HW4-2, and (if web-dev is in scope) HW5–8 + HTML/CSS workshop.
 - ✅ Final project / post-HW4 content: HW5 proposal + HW6–8 portfolio + requirements doc.
 
 ## Gaps still open
-- Official **2026 4-week syllabus/schedule** — does not yet exist; depends on the scope decision above.
-- Direct read access to `WRIT20833_2025` from this session (worked around via raw GitHub).
+- Official **2026 4-week syllabus/schedule** — must be authored from scratch (see below: even
+  F25 never had a written syllabus), and depends on the scope decision above.
+
+## Direct repo inspection (full clone, 2026-06-09)
+Additional facts confirmed by cloning `WRIT20833_2025`:
+- **No syllabus exists, even for F25.** `docs/syllabus/index.md` is empty. A 2026 syllabus
+  will be authored from scratch regardless of scope chosen.
+- **Datasets are in-repo and reusable:** `datasets/TenCommandmentsTX/` holds real F25 YouTube
+  comment CSVs (CBS1, CBS2, CNN, Talarico) — the cultural data behind the 2026 Variables
+  notebook's "Ten Commandments" example. Portable as-is.
+- **Dual-purpose repo:** F25 doubles as the source for a *"When Coding Meets Culture"* textbook
+  (Jupyter Book, **publication target Aug 2026**); `_development/textbook/provisionalTOC.md`
+  holds an 18-chapter structure. Explains the heavy `_development/` scaffolding.
+- **Schedule cadence:** the weekly outline assumes 3-hour in-person sessions — another reason
+  the 4-week *async* summer format needs deliberate redesign, not just date edits.
+- **Internal week-numbering drift:** README phases (1–4/5–8/9–12/13–16) and the dev outline
+  (which references a 16-week plan aligned to the ~18–19-ch TOC) differ slightly; treat the
+  README phase grouping as the working map.
 
 ---
 
