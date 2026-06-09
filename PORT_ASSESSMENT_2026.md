@@ -18,14 +18,17 @@
 
 The 2026 repo looks nearly empty (one notebook), but the course is **not** being built
 from scratch. A mature, classroom-tested **16-week** Fall 2025 offering exists in
-sibling repos. The 2026 work is therefore **scope-selection + port**, not content
-creation.
+sibling repos. The 2026 work is therefore **format redesign + port**, not content creation.
 
 - **Content creation:** essentially done, and far more extensive than first thought.
-- **The binding constraint is curricular, not technical:** fitting a 16-week course
-  into 4 weeks is a **4:1 compression** — roughly one of the four semester phases fits,
-  or a heavily-thinned through-line. This is an instructor design decision and remains open.
-- **Mechanical port is easy and quick.** Achievable for 2026-07-06 — *once the scope is chosen.*
+- **The hour budget is comparable, not a cliff.** 2026 = 4 wks × 5 days × 2 hrs ≈ **40
+  instructional hours** vs. F25's ~48 (16 wks × ~3 hrs). So ~83% of F25's teaching time —
+  the challenge is **intensity + async conversion**, not a 4:1 content cut.
+- **The real lifts are pedagogical:** (1) converting instructor-supported in-person sessions
+  to async; (2) pacing a daily, month-long intensive for *no-prior-experience* grad students;
+  (3) a modest scope trim (likely lightening/cutting the web-dev + portfolio back half, which
+  also overlaps MALA 60970). Plus a from-scratch syllabus.
+- **Mechanical port is easy and quick.** Achievable for 2026-07-06 — *once scope + async format are chosen.*
 
 > ⚠️ Assessment only. No porting, content changes, or scheduling decisions have been made.
 
@@ -103,21 +106,27 @@ files are code-along practice notebooks, not graded homework.*
 
 ---
 
-## The central decision: 16 weeks → 4 weeks (4:1)
+## The central decision: format redesign within a comparable hour budget
 
-This is the crux and it is **not** a porting problem — it's curriculum design. Options
-the instructor will need to choose among (illustrative, not prescriptive):
+**2026 format:** 4 weeks × 5 days × 2 hrs/day ≈ **40 instructional hours**, asynchronous.
+**F25:** 16 weeks × ~3 hrs/week in-person ≈ **48 hours**, synchronous.
 
-- **Foundations-only:** deliver Weeks 1–4 (Python basics) as the whole 4-week course.
-  Cleanest fit; drops the text-analysis, web-dev, and portfolio halves.
-- **Text-analysis track:** assume minimal Python and run the cultural-analytics arc
-  (term frequency → sentiment → topic modeling, HW1/HW4-1/HW4-2). Matches the 2026
-  Variables notebook's "When Coding Meets Culture" framing.
-- **Thinned through-line:** one compressed week per semester-phase; very aggressive cuts,
-  highest workload risk for no-prior-experience grad students in summer.
+The budgets are close (~83%), so this is **not** a drastic content cut — it's a *redesign*.
+The crux is fitting the arc into a daily month-long intensive and converting
+instructor-supported sessions to async self-paced work. Scope options (illustrative):
 
-Whatever the choice, note the **summer async + no-coding-experience** audience makes
-workload the dominant risk. The F25 homework load alone (HW1–HW8) cannot fit in 4 weeks.
+- **Full arc, tightened (recommended to evaluate first):** keep Python → text-analysis →
+  portfolio → project, trimming depth. ~40 hrs is plausibly enough; risk is pace for beginners.
+- **Drop the web-dev/portfolio back half:** run Python foundations + the cultural-analytics
+  arc (HW1/HW4-1/HW4-2) as the spine, ending in a notebook-based project instead of an
+  HTML/CSS portfolio. Frees the most time; note the dropped half overlaps **MALA 60970
+  "Web Authoring"** anyway.
+- **Foundations-only:** Weeks 1–4 Python basics as the whole course. Safest for true
+  beginners; omits the cultural-analytics payoff that defines the course's identity.
+
+**Dominant risk is pacing, not hours.** A daily 2-hr async intensive for no-prior-experience
+grad students leaves little recovery time when someone falls behind; the F25 HW1–HW8 load
+must be thinned and re-sequenced to a 20-session rhythm regardless of scope.
 
 ---
 
@@ -173,8 +182,9 @@ Additional facts confirmed by cloning `WRIT20833_2025`:
 |---|---|---|
 | Underlying course | Mature planning repo (~85% ready) | Mature, fully built & taught (16-wk F25) |
 | 2026 repo state | 2026 content authored in-repo | Nearly empty — port not started |
-| Real remaining work | Polish + D2L build (IT-blocked) | **Choose 4-week scope** + port |
-| Risk profile | Low (execution only) | Medium–High (4:1 compression decision) |
+| Real remaining work | Polish + D2L build (IT-blocked) | **Async redesign + scope trim** + port |
+| Teaching-hour budget | 4-wk summer | ~40 hrs (vs F25 ~48) — comparable |
+| Risk profile | Low (execution only) | Medium (pacing/async redesign, not content cut) |
 
 Neither needs content *invented*. MALA's 2026 deliverable is more assembled in-repo and
 already scoped to 4 weeks; WRIT has vastly more battle-tested material but a much larger
