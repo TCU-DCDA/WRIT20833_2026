@@ -255,6 +255,16 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
    consequence-free) into Day 8; or (b) **repurpose** the slot — "the sacred meets the computational,"
    pointing at the actual corpus, as a vivid case of the noumena limit (religious conviction = an
    interiority distant reading can't reach). **Undecided — instructor's call.**
+10. **TCU Core Curriculum — CSV vetting (context + a task).** The course **carries Citizenship & Social
+    Values (CSV)** credit. Vetting docs are in the repo root: `TCU-Core-Curriculum-outcomes-1.pdf`
+    (current outcomes matrix) + `Citizenship-and-Social-Values-5-5-10.doc` (older HMVV form). Current CSV
+    outcome: *"examine the knowledge, skills, values, or motivation needed to participate or lead within
+    diverse communities."* The course meets it directly (a contested public-policy debate = a diverse
+    community in disagreement; the data-driven-opinion capstone + discussions + reflections are the
+    evidence). Full mapping + the course's adjacent resonance (Humanities, Written Comm 2, Cultural
+    Awareness) in `CONCEPTUAL_FRAMEWORK_2026.md` §7; syllabus now names the CSV designation. **Task when
+    wanted:** draft the **2–3 concrete student-work examples** the CSV submission form requires (from the
+    capstone + discussions), once the instructor confirms the exact outcome to claim.
 
 ## Useful facts for a fresh session
 - The F25 source repo is **public**; if it's out of session scope, you can still read files via

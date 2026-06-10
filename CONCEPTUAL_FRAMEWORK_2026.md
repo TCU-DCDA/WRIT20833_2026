@@ -230,8 +230,54 @@ None of this is yet woven into student-facing materials; each is a small, option
 
 ---
 
+## 7. Civic stakes — TCU Core Curriculum (CSV vetting)
+
+WRIT 20833 carries TCU's **Citizenship & Social Values (CSV)** designation in the **TCU Core Curriculum**,
+under the **Responsible Citizenship** competency ("describe concepts or theories of social responsibility
+in diverse or global communities"). *(Sources: `TCU-Core-Curriculum-outcomes-1.pdf` — current outcomes
+matrix; `Citizenship-and-Social-Values-5-5-10.doc` — the earlier HMVV-era CSV submission form.)* This is
+not incidental — the conceptual through-line above *is* the mechanism by which the course delivers its
+civic outcome.
+
+**The CSV Student Learning Outcome (current):** *"Examine the knowledge, skills, values, or motivation
+needed to participate or lead within diverse communities."*
+
+The course meets it directly. Its running case — a contested **public-policy choice** (the 2025 TX law
+placing the Ten Commandments in classrooms) — is exactly a **diverse community in disagreement about its
+values.** Students examine:
+- the **values** in tension (religious expression vs. church-state separation), heard through the
+  community's own words;
+- the **skills** needed to participate — the computational literacy to weigh evidence at scale *and* the
+  rhetorical skill to argue responsibly (the data-driven-opinion capstone);
+- the **knowledge / motivation** for responsible participation — including the ethic of *hearing* the
+  other side rather than flattening it (the moral floor §4; the quarrel §2). "Hear the human at scale"
+  is, at bottom, civic-participation pedagogy.
+
+The earlier HMVV form elaborates the same competency into outcomes the course also hits — *informed
+participation in civic discourse and decision-making; examine civic issues as public policy choices;
+articulate the rights and responsibilities of individuals and groups* — useful language for the vetting
+narrative.
+
+**Adjacent core resonance (context, not claimed designations).** The course also strongly embodies three
+other Core outcomes — worth knowing if it's ever submitted for additional credit or to show its breadth:
+**Humanities** ("use humanistic modes of inquiry to analyze human experiences and expressions across space
+and time" — the course's literal premise), **Written Communication 2** ("analyze and compose
+evidence-based arguments in various forms" — the capstone essay), and **Cultural Awareness** ("explore
+culture and cultural phenomena as sites of identity, difference, understanding, or collaboration" —
+cultural analytics of a site of difference).
+
+**Produced work that would be evaluated** (CSV evidence): the **capstone data-driven-opinion essay**
+(central artifact), the **four threaded discussions**, the **three reflections**, and the **HW analyses**
+of the civic corpus.
+
+**Action items (re-vetting):** Core syllabi should *reflect* the CSV outcome; the submission form wants
+**2–3 concrete examples** of student work achieving it. `SYLLABUS_2026.md` now names the CSV designation;
+the 2–3 examples can be drafted from the capstone + discussions on request.
+
 ## Related documents
 - `SYLLABUS_2026.md` · `COURSE_SCHEDULE_2026.md` — the course as students meet it.
+- `TCU-Core-Curriculum-outcomes-1.pdf` — the current TCU Core Curriculum outcomes matrix (see §7).
+- `Citizenship-and-Social-Values-5-5-10.doc` — the earlier HMVV-era CSV vetting form (see §7).
 - `materials/images/README.md` — the noumena→wisdom graphic and its per-arrow bias map.
 - `materials/Day1_Framing_Noumena_to_Wisdom.md` — the drafted Day-1 teaching passage.
 - `PORT_ASSESSMENT_2026.md` · `PROPOSED_4WEEK_SCHEDULE.md` — the port rationale and design.
