@@ -266,6 +266,25 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
     wanted:** draft the **2–3 concrete student-work examples** the CSV submission form requires (from the
     capstone + discussions), once the instructor confirms the exact outcome to claim.
 
+11. **Bring `SYLLABUS_2026.md` into TCU Syllabus-Checklist (rev. 9/2024) compliance.** Template +
+    checklist now in repo root (`2024-25-Syllabus-Template-Final-9-2024-1.docx`,
+    `TCU-Syllabus-Template-checklist-FINAL-9-2024.pdf`). **Already present:** course title, term, meeting
+    days/time + online-synchronous, instructor/office-hours/email placeholders, Zoom placeholder, course
+    description, prerequisites (none), course learning outcomes, **CSV core outcome** (just added),
+    technology/AI policy, course description; the **course schedule** matches the template grid
+    (Date·Topic·Assigned·Due ≈ our Date·Lecture·Coding·Due). **Still required / missing:** course
+    component type; **number of credits** (the actual number); **response time**; office location (or
+    "N/A — online"); **Final Evaluative Exercise** named (the capstone presentations, Fri 7/31, with
+    details); **Student Resources & Policy Information** (TCU standard link + QR); **Required Materials**
+    as its own section (Colab/D2L/Google account; note any cost); **Grading scale + a Final-Grade table**
+    and **how ungrading maps to TCU's required letter grade** (the one real decision — see below);
+    explicit **Late Work** policy (+ link Student Absences); **Participation/Engagement/Attendance** tied
+    to the grade; **the medical-documentation compliance statement** (faculty will NOT seek medical
+    docs; direct students to the Dean of Students Office). **Decision needed:** ungrading still must
+    yield a TCU letter grade — settle the mapping (labor/completion contract vs. final self-evaluation
+    proposes the grade vs. minimum-thresholds), then the grading section + grad grade scale can be
+    written. Most items are mechanical/placeholder; the grading reconciliation is the instructor's call.
+
 ## Useful facts for a fresh session
 - The F25 source repo is **public**; if it's out of session scope, you can still read files via
   `raw.githubusercontent.com/TCU-DCDA/WRIT20833_2025/main/<path>` or `git clone` it (github.com is
