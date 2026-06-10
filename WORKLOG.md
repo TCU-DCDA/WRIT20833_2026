@@ -99,7 +99,26 @@ Decisions made with instructor this session:
   `["commandments"]`=25 · B3 set-difference distinctive words · B4 interpretation write-up ·
   C1 custom stopwords · C2 bring-your-own-text · experiments + submit checklist.
 
-## HW3 (frequency + sentiment) — NOT STARTED (port inventory verified against F25 source)
+## HW3 (sentiment analysis) — ✅ DONE (built from the port inventory below)
+- **Authored** `WRIT20833_HW3_2026.ipynb` + `_ANSWER_KEY.ipynb` via `_build_hw3.py`, 2026 house style,
+  **pandas-native**. Title: "Sentiment Analysis: Support, Opposition, and What Counting Missed."
+  Flow: A1 explore DataFrame · A2 clean-but-keep-punctuation (vs HW2) · A3 score one comment (VADER
+  dict/compound) · A4 predict-then-run **sarcasm edge** ("Oh great…" → +0.625, misses sarcasm) ·
+  A5 `.apply()` over the column (mean 0.082 = split crowd); **VADER borrowed-code note** · B1 label
+  by ±0.05 cutoff (51 pos/38 neu/34 neg) · B2 one-line `df.plot(kind="bar")` viz · B3 read extremes +
+  **human-vs-VADER** check (idxmax/idxmin, deterministic) · B4 interpretation write-up · C1 **freq
+  inside pos vs neg camps** — `commandments`/`god` top BOTH (the HW2→HW3 payoff) · C2 BYO/"constitution"
+  cut. Ungrading framing throughout; **BYO-primary** (setup defaults to the course corpus as runnable
+  fallback + key reference, with a commented `pd.read_csv` for own data). VADER available locally →
+  **answer key validated: all 11 code cells run top-to-bottom; inline expected values match.**
+- **Data fix:** corrected `notebooks/data/README.md` — the corpus is **123 lines, not "93"** (0 dups;
+  a few short CSV→txt wrap-fragments like "Of Texas"/"The"). Didn't affect HW2 (word-blob); does affect
+  HW3 (row-per-comment). Left the data as-is (messy real data suits the Week-2 cleaning theme); re-clean
+  later only if desired.
+- **Open decisions resolved at build:** #1 pandas ✅, #3 viz ✅ (light `df.plot`), #2 BYO-primary 🔶
+  (implemented as default-fallback-corpus; not hard-locked).
+
+### HW3 port inventory (verified against F25 source — kept for reference)
 Maps to **F25 HW4-1** (worklog renumbering). Lands **Day 13**, Week 3 — *after* pandas (Days 8–9),
 so HW3 is **pandas-native** (unlike HW2's deliberately pre-pandas plain-Python). Inventory below was
 checked directly against the live `WRIT20833_2025` files (2026-06-10), not just the renumber map.
