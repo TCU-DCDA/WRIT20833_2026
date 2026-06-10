@@ -6,10 +6,12 @@ can be loaded with `open()` (no pandas required) in the pre-pandas weeks.
 ## Files
 
 ### `tc_youtube_comments.txt` — the public's voice
-93 unique YouTube comments (one per line) reacting to the 2025 **Texas Ten
+**123 lines, one comment per line** (~2,300 words), reacting to the 2025 **Texas Ten
 Commandments-in-schools** law. Cleaned from the Fall-2025 `TenCommandmentsTX/20833_CBS1_youtube_F25.csv`
 (Instant Data Scraper export): the comment-text column only, de-duplicated, blanks removed.
-~2,300 words. Vernacular, contemporary, real social media.
+Vernacular, contemporary, real social media. *(A handful of lines are short CSV→txt wrap-fragments,
+e.g. "Of Texas", "The" — a realistic data-quality wart that surfaces when HW3 loads one comment per
+row. Harmless for HW2's whole-file word count; left as-is unless re-cleaned.)*
 
 ### `us_constitution.txt` — the document the public invokes
 The full U.S. Constitution (Preamble through the amendments), ~4,550 words. Public domain,
