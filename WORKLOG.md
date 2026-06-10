@@ -111,6 +111,33 @@ computation *empowers* them): the flattening is the **price of the scale, and th
   the other reveals → the real argument for **close→distant→close**. *(Caveat keeping the edge: even
   the dinner seat isn't the noumenon — the guest sees the bicker, not its whole meaning; close reading
   is higher resolution, not truth. The analogy shakes hands with the noumena spine.)*
+- **The moral floor — "for every individual tragedy, there are billions who don't know to care."** The
+  gravest form of the stadium analogy: at the scale of humanity, almost every individual tragedy is
+  occluded from almost everyone — not callousness but **"don't know to care"** (an *epistemic* failure
+  with *moral* consequence; caring requires knowing, and scale withholds the knowing). The hopeful seam:
+  if the failure is *not knowing*, making the occluded individual visible can convert "don't know" into
+  "now you know to care" — the tools as **instruments of moral attention.** **Double-edged**, though:
+  aggregation also *anesthetizes* — the apocryphal "*one death is a tragedy; a million is a statistic.*"
+  The same averaging that makes scale legible can flatten a tragedy into a number no one feels. **The
+  moral close→distant→close:** *distant* to **comprehend** the scale (you can't act on what you can't
+  measure) + *close* to **preserve** the moral charge (you won't act on what you can't feel) — the
+  oscillation is an *ethical* skill, not just analytical. Closes the loop to **voice/writing:** the
+  aggregate *informs*, the single voice *moves* — a data-driven opinion that only aggregates makes a
+  reader *understand*; the return to an individual voice is how writing makes a stranger *care* (the
+  statistic is the stadium; the voice walks the reader down to the table). *(Edge: tools can also
+  manufacture false care / commodify suffering — the ethic is make-visible **truthfully**, flattening
+  the person into neither a statistic nor a prop.)*
+- **Literary anchor — Auden, "Musée des Beaux Arts" (1938).** The canonical statement of the moral
+  floor: suffering takes place "while someone else is eating or opening a window or just walking dully
+  along." Auden reads Brueghel's *Landscape with the Fall of Icarus*, where the tragedy (Icarus
+  drowning) is tiny in the corner while the plowman plows and "the expensive delicate ship … sailed
+  calmly on." **Brueghel's composition *is* the stadium / occlusion** — the tragedy flattened to the
+  margin by a busy foreground; **Auden's poem is the close reading** that walks us to the corner to see
+  the white legs vanishing into the green water and makes us *know to care.* Grounds the whole
+  computational enterprise in the oldest humanistic question — how do we attend to suffering that isn't
+  ours? — and is itself an *image-about-seeing* that pairs with the noumena graphic. Fits a **writing**
+  course (a poem doing exactly the work the course asks students to do). Candidate anchor for **Day 1**
+  (or the **Day 12** close-vs-distant hinge / capstone framing).
 - **Two referents of "voice":** the people *in* the data (protect from flattening/misrepresentation,
   empower by making audible at scale — the home for orphaned **ML9 "Going Public"**) **and** the
   student's *own* voice (ungrading + `#comments` + reflections keep the learner a person-on-the-record,
