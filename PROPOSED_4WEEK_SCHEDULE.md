@@ -20,6 +20,18 @@ a 4:1 cut or an async rebuild.
 **Daily session shape (2 hrs):** ~25 min concept/mini-lecture → ~70 min live code-along →
 ~25 min application + share. Homework stays light (students are in class daily).
 
+## Reading spine — building toward Walsh independence
+This course is moving to be **self-contained**: the required readings/refreshers are the
+course's **own** tutorials, mini-lectures, and code-alongs — *not* assigned chapters from an
+outside textbook. Melanie Walsh's *Introduction to Cultural Analytics* is credited as
+**inspiration and model** (see `ACKNOWLEDGMENTS.md`), and may be offered as **optional
+further reading**, but no graded work should require it.
+
+**Port implication:** several F25 code-alongs and tutorials still open with an
+"assumes you've completed Walsh Chapters 4–8" prerequisite block. As each is ported into this
+repo, that dependency should be **stripped or replaced** with a pointer to our own prior
+session — the same Walsh-independence treatment already applied to HW2.
+
 ---
 
 ## The 20 sessions
