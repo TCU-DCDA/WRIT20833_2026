@@ -9,6 +9,11 @@
 **Meetings:** **Monday–Friday, 2 hours/day** (20 live sessions), **online synchronous** via `[Zoom/Webex link]`
 **Modality:** Live online (this is the *synchronous* section; the MALA 60970 web-authoring course is async)
 **Credit:** Graduate · **Prerequisites:** none — **no prior coding experience assumed**
+**TCU Core Curriculum:** carries **Citizenship & Social Values (CSV)** credit. This course meets the CSV
+outcome — *"examine the knowledge, skills, values, or motivation needed to participate or lead within
+diverse communities"* — by having you form, argue, and reflect on **evidence-based opinions about a real
+public-policy debate**, weighing the values and rights of the individuals and groups whose voices you
+analyze. `[Confirm the exact outcome wording against the current CSV vetting on file.]`
 
 **Instructor:** `[Name]` · **Email:** `[email]` · **Office hours:** `[days/times + link]`
 **Course site / submissions:** TCU **D2L** (`[course link]`) · **Code runs in:** Google Colab (free; needs a Google account)
