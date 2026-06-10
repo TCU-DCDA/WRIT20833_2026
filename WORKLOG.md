@@ -65,9 +65,12 @@ half = ungrading's "earned insight."
   raw→structured→HW2 stopwords + HW3 "keep punctuation"; structured→analyzed→VADER 0.05 cutoff +
   HW4 `num_topics`; analyzed→insight→HW4 "human names the topics"; etc.). **Full per-arrow table +
   teaching use live in `materials/images/README.md`** (kept there so it's discoverable, not re-orphaned).
-- **Status / next:** graphic ported + documented. **Not yet wired into a lecture or the syllabus.**
+- **Status / next:** graphic ported + documented; **Day-1 framing passage drafted**
+  (`materials/Day1_Framing_Noumena_to_Wisdom.md` — student-facing script + per-unit callback notes;
+  ~600 words, "the score is never the meaning"). **Still not wired into an actual lecture/the syllabus.**
   Candidate homes: **ML0 / Day 1** (founding "what can computation know?") with a callback at each
-  unit, and/or the **Day 7** close-vs-distant hinge. Pairs with the orphaned **ML9 "Going Public"**
+  unit, and/or the **Day 7** close-vs-distant hinge. Open dial: keep the explicit "noumena/phenomena"
+  vocabulary or swap to "the thing itself / as it appears" (diagram + argument survive either way). Pairs with the orphaned **ML9 "Going Public"**
   (re-home at Day 17) — together they'd give the capstone its missing epistemology. Decision for the
   instructor: introduce the Kantian vocabulary explicitly, or keep it as the instructor's framing only.
 
@@ -235,6 +238,18 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
    gensim vaderSentiment` (no nltk, no pinned deps, no kernel restart — simpler than F25's cell);
    still verify it resolves cleanly on Colab's 2026 default image before Day 14.
 8. **A4 / HW1 note:** A4 intentionally demonstrates a TypeError via try/except — by design.
+9. **Lecture audit — ML8/ML9 (orphaned) and ML2 "Sacred Boundaries" (overreach?).** ML0–7 map cleanly
+   to 2026; ML10–12 (GitHub/HTML/CSS) cut. Still to decide: **re-home ML9 "Going Public"** at Day 17
+   (its analysis→public-argument spine fits the capstone; only the web-portfolio delivery is cut), and
+   **harvest ML8 "Code as Rhetoric"**'s thesis into the code-is-not-neutral thread (its HTML/CSS examples
+   belong to the cut half). **ML2 "Sacred Boundaries" (Day 2)** = a taboo→privacy analogy (Polynesian
+   *tapu* → biometric/data autonomy). Instructor leans *overreach*; my read agrees for this scope: its
+   privacy/ethics core is better + more concretely served by **ML6 Data Archaeology (Day 8)**, and the
+   "sacred" metaphor risks colliding with the **literal** sacred content of the corpus (Ten Commandments).
+   Options on the table: (a) cut ML2, fold its one durable point (analyzing public speech isn't
+   consequence-free) into Day 8; or (b) **repurpose** the slot — "the sacred meets the computational,"
+   pointing at the actual corpus, as a vivid case of the noumena limit (religious conviction = an
+   interiority distant reading can't reach). **Undecided — instructor's call.**
 
 ## Useful facts for a fresh session
 - The F25 source repo is **public**; if it's out of session scope, you can still read files via
