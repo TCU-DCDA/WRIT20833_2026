@@ -1,34 +1,65 @@
 # WRIT 20833 — Intro to Coding in the Humanities
-## "When Coding Meets Culture" — Summer 2026 Syllabus
+## "When Coding Meets Culture: Developing Data-Driven Opinions" — Summer 2026
 
-> **DRAFT for instructor review.** Bracketed `[...]` fields are placeholders to fill in
-> (instructor name, contact, office hours, TCU policy boilerplate, D2L links). Schedule and
-> assignment placements follow the repo's `PROPOSED_4WEEK_SCHEDULE.md`; due dates are proposals.
-
-**Term:** Summer 2026 · **Dates:** Monday **July 6 – Friday July 31, 2026** (4 weeks)
-**Meetings:** **Monday–Friday, 2 hours/day** (20 live sessions), **online synchronous** via `[Zoom/Webex link]`
-**Modality:** Live online (this is the *synchronous* section; the MALA 60970 web-authoring course is async)
-**Credit:** Undergraduate (lower-division) · **Credit hours:** `[3 — confirm]` · **Prerequisites:** none — **no prior coding experience assumed**
-**TCU Core Curriculum:** carries **Citizenship & Social Values (CSV)** credit. This course meets the CSV
-outcome — *"examine the knowledge, skills, values, or motivation needed to participate or lead within
-diverse communities"* — by having you form, argue, and reflect on **evidence-based opinions about a real
-public-policy debate**, weighing the values and rights of the individuals and groups whose voices you
-analyze. `[Confirm the exact outcome wording against the current CSV vetting on file.]`
-
-**Instructor:** `[Name]` · **Email:** `[email]` · **Office hours:** `[days/times + link]`
-**Course site / submissions:** TCU **D2L** (`[course link]`) · **Code runs in:** Google Colab (free; needs a Google account)
+> **DRAFT for instructor review — structured to the TCU Online Syllabus Template (rev. 9/2024).**
+> Two kinds of placeholder remain: `[...]` = instructor/registrar specifics (name, contact, links,
+> credit hours), and **`[paste TCU standard text …]`** = official University policy boilerplate that
+> must be copied verbatim from `Syllabus-Template-Online.docx` (do **not** paraphrase official policy).
+> Course-specific content is complete. Any tables/images added must meet TCU accessibility guidelines
+> (https://cte.tcu.edu/resources/accessibility/).
 
 ---
 
-## Course description
-This course is an invitation to *think with code* about culture. Over four intensive weeks you'll
-learn enough Python to ask real humanistic questions of real text — social-media comments, public
-documents, your own chosen corpus — and to argue from what you find. We move from **predictions** to
-**computational analysis** to **data-driven insight**, always asking not just *what the code does* but
-*what it assumes, what it reveals, and what it flattens.* No prior coding experience is needed; bring
-curiosity and a willingness to be wrong out loud.
+## Course Information
+| | |
+|---|---|
+| **Course Title** | Intro to Coding in the Humanities — "When Coding Meets Culture" |
+| **Prefix · Number · Section** | WRIT · 20833 · `[section]` |
+| **Semester & Year** | Summer 2026 |
+| **Course Component Type** | `[e.g., Lecture — confirm with registrar]` |
+| **Credit Hours** | `[3 — confirm]` (lower-division undergraduate) |
+| **Class Meeting Days & Times** | **Monday–Friday, `[time]`–`[time]`, July 6–31, 2026** — **online synchronous** (20 live sessions; attendance at the live sessions is expected) |
+| **Class Location** | Online (synchronous via Zoom) |
+| **Zoom Access** | `[Zoom link + meeting ID/passcode]` |
+| **Prerequisites** | None — **no prior coding experience assumed** |
+| **Final Evaluative Exercise** | The **capstone** (data-driven-opinion notebook + short essay), presented and due on the final day, **Fri July 31**. There is no separate final exam. |
+| **Other Important Dates** | All activity occurs within the listed daily sessions; any deviations announced on TCU Online. |
 
-## What you'll be able to do (learning outcomes)
+**Instructor:** `[Name]` · **Office Location:** `[N/A — online / office]` · **Office Hours:** `[days/times; virtual — access instructions]`
+**Telephone:** `[number]` · **Email:** `[email]` · **Preferred Contact:** `[email via TCU Online / TCU email]`
+**Response Time:** `[e.g., within 24 hours on weekdays; longer on weekends/holidays]`
+**Course site & submissions:** **TCU Online** (D2L) — `[course link]`. **Code runs in:** Google Colab (free; needs a Google account).
+
+**Student Resources & Policy Information:** `[paste TCU standard Student Resources & Policy Information block — link + QR code — from Syllabus-Template-Online.docx]`
+
+---
+
+## Course Description
+This course is an invitation to *think with code* about culture. Over four intensive weeks you'll learn
+enough Python to ask real humanistic questions of real text — social-media comments, public documents,
+your own chosen corpus — and to argue from what you find. We move from **predictions** to
+**computational analysis** to **data-driven insight**, always asking not just *what the code does* but
+*what it assumes, what it reveals, and what it flattens.* The deeper aim: to **hear the human at scale**
+— to listen to more voices than close reading alone could reach, while staying honest about what
+computation flattens from view. No prior coding experience is needed; bring curiosity and a willingness
+to be wrong out loud.
+
+`[Confirm against official course-catalog description.]`
+
+**Program & Major Connections.** Introduces computational-text-analysis and data-literacy skills that
+support further work in writing, the digital humanities, and any field that reads culture from data.
+
+### TCU Core Curriculum — Citizenship & Social Values (CSV)
+This course carries **CSV** core credit. It meets the CSV student learning outcome —
+**"examine the knowledge, skills, values, or motivation needed to participate or lead within diverse
+communities"** — by having you form, argue, and reflect on **evidence-based opinions about a real
+public-policy debate**, weighing the values and rights of the individuals and groups whose voices you
+analyze. *(Evidence: the capstone essay, the four threaded discussions, and the three reflections.)*
+`[Confirm the exact outcome wording against the current CSV vetting on file.]`
+
+---
+
+## Learning Outcomes
 By the end of the course you will be able to:
 1. **Read and write basic Python** — variables, conditionals, loops, functions, and lists/dictionaries.
 2. **Work with real data** in pandas — load, clean, and explore a text dataset you collected.
@@ -36,172 +67,256 @@ By the end of the course you will be able to:
    and topic modeling (LDA) — and **integrate** them into a single interpretation.
 4. **Borrow and judge tools critically** — use libraries and AI-written code you didn't build, and
    evaluate whether to trust their output.
-5. **Make a data-driven argument** about a cultural text and **name the limits** of your own methods.
-6. **Reflect on your learning** — assess your own growth honestly (see *Ungrading*, below).
+5. **Make a data-driven argument** about a cultural text, **represent the voices in your data
+   responsibly** (including their disagreements), and **name the limits** of your own methods.
+6. **Reflect on your learning** — assess your own growth honestly (see *Grading*).
 
-## A self-contained course (no textbook to buy)
-Everything you need is **in this course**: our own code-along notebooks, short tutorials, and
-homework. Melanie Walsh's open *Introduction to Cultural Analytics* is a wonderful model and is
-offered as **optional** further reading, but **nothing you're graded on requires an outside book.**
-
-## Technology
-- **Google Colab** (free) — runs all notebooks in your browser; no installation. Bring a Google account.
-- **TCU D2L** — readings, the four threaded discussions, and all submissions (Dropbox).
-- A laptop with a reliable connection for the live sessions. `[TCU loaner info if applicable.]`
+**TCU Core (CSV) outcome:** *Examine the knowledge, skills, values, or motivation needed to participate
+or lead within diverse communities.* (Met via outcomes 5–6 and the capstone/discussions/reflections.)
 
 ---
 
-## How a day works
-Each 2-hour session follows the same rhythm:
+## Course Materials
+**Required (no textbook to buy):**
+- **Google Colab** (free) — runs every notebook in your browser; no installation. Needs a Google account.
+- **TCU Online (D2L)** — readings, the four threaded discussions, and all submissions.
+- A laptop with a reliable internet connection for the live sessions. `[TCU loaner-laptop info if applicable.]`
+- **No additional costs.** All course materials (notebooks, tutorials, data) are provided in the course.
+
+**A self-contained course.** Everything you need is *in this course* — our own code-along notebooks,
+short tutorials, and homework. Melanie Walsh's open *Introduction to Cultural Analytics* is a wonderful
+model and is offered as **optional** further reading, but nothing you're evaluated on requires an
+outside book.
+
+**Supplementary resources.** `[Optional: departmental tutoring, the Koehler Center, campus support, or
+extension resources for students who want to go further.]`
+
+---
+
+## Teaching Philosophy & Methodology
+Each 2-hour live session follows the same rhythm:
 - **~25 min — concept / mini-lecture:** the idea and the culture question behind it.
 - **~70 min — live code-along:** we build it together; you type as we go.
 - **~25 min — application + share:** you apply it to real text and we compare notes.
 
-Four threads run through the course: (1) our notebooks as the "textbook"; (2) a critical frame each
-day (code is not neutral; classification logic; AI agency; collective memory; what counting hides);
-(3) tutorials bridging concept and culture; (4) homework applying skills to a cultural dataset —
-ideally **one you choose** and carry across the whole term.
+Four threads run through the course: (1) our notebooks serve as the "textbook"; (2) a critical frame
+each day (code is not neutral; classification logic; AI agency; collective memory; what counting hides);
+(3) tutorials bridging concept and culture; (4) homework applying the skills to a cultural dataset —
+ideally **one you choose** and carry across the whole term. The course is built around an honest
+question rather than a tidy answer: every computation we run, we immediately ask *what did this flatten,
+who chose this, can we trust it?* — which is why it's evaluated by **ungrading** (below).
 
 ---
 
-## How you'll be evaluated — *ungrading*
-This course uses **ungrading**: the goal is **earned insight, not clean code**. You are evaluated on
-**engagement, reflection, and labor** — the thinking you show — not on getting every number "right."
-Concretely:
+## Course Policies and Requirements
 
-- **Every code cell carries `#comments`** explaining what you tried and what you learned (or what
-  confused you). *Documenting a failure and what it taught you is worth as much as working code.*
-- **There are no points or letter grades on individual assignments.** Instead, you keep a steady
-  record of doing the work — homeworks, weekly experiments, discussions, and three reflections.
-- **You assess your own learning.** Three **self-reflections** (below) build toward a **final
-  self-evaluation** in which you make the case, with evidence from your own work, for what you
-  learned and the course grade you've earned. `[Instructor sets the final grade per TCU requirements,
-  in dialogue with your self-evaluation.]`
-- **"Complete" means honest effort + reflection**, not perfection. Something that doesn't run, paired
-  with a clear account of what you tried, still counts as engaged work.
+### Assignments
+Each assignment is described below and connects to the learning outcomes; you submit and view feedback
+through **TCU Online**. `[Note the specific TCU Online module/tool for submissions and where grades and
+feedback appear.]`
 
-### What you'll produce
-| Work | How many | What it is |
-|---|---|---|
-| **Homework notebooks (HW1–HW4)** | 4 | Hands-on skill practice, each with a short reflective write-up. |
-| **Weekly Experiments** | in each HW | 2–3 small original explorations of your own — *the heart of the ungrading*. |
-| **Self-reflections** | 3 | Where you're starting · the halfway check · the final self-evaluation. |
-| **Threaded discussions (D2L)** | 4 | One per week, on the week's culture question — a post + replies to peers. |
-| **Capstone** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay. Replaces a final exam. |
-
-### AI / LLM use policy
-You **may** use AI tools (ChatGPT, Claude, Copilot, etc.) — this course literally teaches you to
-read and improve AI-written code. The rule is **understanding, not avoidance**: you must be able to
-**explain any code you submit**, and you should **note in your `#comments` where you used AI** and what
-you changed. Borrowing code — from a library, Stack Overflow, or an AI — is normal professional
-practice; passing off code you can't explain is not. When in doubt, ask.
-
----
-
-## Python skills map — what's taught when
-Each skill is **introduced in a live code-along**, then **practiced in the linked homework**. The
-first five rows are the Python foundations (Week 1); the rest build the analysis toolkit on top.
-
-| Skill | First taught | Practiced in |
-|---|---|---|
-| Variables & data types (text, numbers, `True`/`False`) | **Day 1** (Mon 7/6) | HW1 · everything after |
-| Strings & string methods (`.lower()`, `.split()`, `in`) | **Day 2** (Tue 7/7) | HW1, HW2 |
-| Comparisons & conditionals (`if`/`elif`/`else`, `and`/`or`/`not`) | **Day 3** (Wed 7/8) | HW1 |
-| Lists & loops (`for`, indexing, `.append()`) | **Day 4** (Thu 7/9) | HW1, HW2 |
-| Functions & dictionaries | **Day 5** (Fri 7/10) | HW1 · reused in every HW |
-| Counting & term frequency (`Counter`, stopwords) | **Day 6** (Mon 7/13) | HW2 |
-| pandas DataFrames (load, columns, `.head()`) | **Day 8** (Wed 7/15) | HW3, HW4, capstone |
-| Cleaning & `.apply()` over a column | **Day 9** (Thu 7/16) | HW3, HW4 |
-| Sentiment with VADER *(a borrowed tool)* | **Day 11** (Mon 7/20) | HW3 |
-| Grouping & charts (`groupby`, `df.plot`) | **Days 9–13** | HW3, HW4 |
-| Topic modeling with Gensim LDA *(a borrowed tool)* | **Day 14** (Thu 7/23) | HW4, capstone |
-
-*Nothing is assessed before it's taught: each homework is assigned only after its skills appear in
-class (e.g. HW1 goes out Day 5, once all five foundations are covered).*
-
-## Schedule (20 sessions)
-*Times are class days; "Due" items are due by the start of class that day unless noted. D2L discussion
-posts open Monday of their week.*
-
-### Week 1 (Jul 6–10) — Python foundations: "code is not neutral"
-| Date | Day | In class | Due / assigned |
+| Work | How many | What it is | Outcomes |
 |---|---|---|---|
-| **Mon 7/6** | 1 | Setup + Variables & Data Types · *Humanities & Coding; Connotations & Code* | **Discussion 1 opens** |
-| **Tue 7/7** | 2 | Strings & string methods · *Digital Boundaries* | |
-| **Wed 7/8** | 3 | Comparisons, conditionals & booleans · *Classification Logic* | **Reflection 1 due** · **D1 post due** |
-| **Thu 7/9** | 4 | Lists & loops · *Collective Memory* | |
-| **Fri 7/10** | 5 | Functions & dictionaries + recap | **D1 replies due** · **HW1 assigned** |
+| **Homework notebooks (HW1–HW4)** | 4 | Hands-on skill practice, each with a short reflective write-up. | 1–4 |
+| **Weekly Experiments** | within each HW | 2–3 small original explorations of your own — *the heart of the ungrading*. | 1–5 |
+| **Self-reflections** | 3 | Where you're starting · the halfway check · the final self-evaluation. | 6 |
+| **Threaded discussions (TCU Online)** | 4 | One per week, on the week's culture question — a post + replies to peers. | 4–5 |
+| **Capstone (final evaluative exercise)** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay, presented on the last day. Replaces a final exam. | 2–6 |
 
-### Week 2 (Jul 13–17) — From text to data: ethics, pandas, AI
-| Date | Day | In class | Due / assigned |
-|---|---|---|---|
-| **Mon 7/13** | 6 | HW1 debrief + "Meaningful Words": term frequency | **HW1 due** · **HW2 assigned** · **Discussion 2 opens** |
-| **Tue 7/14** | 7 | Reading & improving AI code + stylometry seed (close reading) · *AI Agency* | |
-| **Wed 7/15** | 8 | Found data + collection ethics (pandas 01 + scraping) · *Data Archaeology* | **D2 post due** |
-| **Thu 7/16** | 9 | Data cleaning (pandas 02) | |
-| **Fri 7/17** | 10 | **Workshop:** collect & clean *your* cultural dataset | **HW2 due** · **D2 replies due** |
-
-### Week 3 (Jul 20–24) — Computational text analysis
-| Date | Day | In class | Due / assigned |
-|---|---|---|---|
-| **Mon 7/20** | 11 | Sentiment with VADER · *quantifying connotation* | **Reflection 2 due (midterm)** · **Discussion 3 opens** |
-| **Tue 7/21** | 12 | VADER deep · close vs. distant reading | **HW3 assigned** |
-| **Wed 7/22** | 13 | HW3 work session (frequency + sentiment on your data) | **D3 post due** |
-| **Thu 7/23** | 14 | Topic modeling intro (Gensim LDA) · *NLP & Topic Modeling* | |
-| **Fri 7/24** | 15 | Topic modeling deep · choosing `num_topics` · limits | **HW3 due** · **HW4 assigned** · **D3 replies due** |
-
-### Week 4 (Jul 27–31) — Integration & data-driven opinions (capstone)
-| Date | Day | In class | Due / assigned |
-|---|---|---|---|
-| **Mon 7/27** | 16 | Integration: frequency + sentiment + topics + short stylometry demo | **Capstone proposal due** · **Discussion 4 opens** |
-| **Tue 7/28** | 17 | "Being wrong as learning" · validation · capstone framing | **HW4 due** · **D4 post due** |
-| **Wed 7/29** | 18 | Capstone work session 1 (cultural dataset **or** stylometry track) | |
-| **Thu 7/30** | 19 | Capstone work session 2 + peer review | **D4 replies due** |
-| **Fri 7/31** | 20 | Capstone presentations + wrap | **Capstone due** · **Reflection 3 (final self-evaluation) due** |
-
----
-
-## The three self-reflections
-Short (≈300–500 words each), submitted to D2L. These are central to ungrading — write honestly.
-1. **Reflection 1 — "Where I'm starting" (due Wed 7/8).** Your prior experience (likely
-   none — that's fine), what excites or worries you, and a prediction: what do you expect computers
-   can and can't tell us about culture?
+**The three self-reflections** (≈300–500 words each, submitted to TCU Online — central to ungrading):
+1. **Reflection 1 — "Where I'm starting" (due Wed 7/8).** Prior experience (likely none — fine), what
+   excites or worries you, and a prediction: what can and can't computers tell us about culture?
 2. **Reflection 2 — "Halfway" (due Mon 7/20).** What's clicking and what's hard? Revisit your Week-1
    prediction. What will you do differently in the second half?
-3. **Reflection 3 — "Final self-evaluation" (due Fri 7/31).** Make the case, with specific evidence
-   from your notebooks, experiments, and capstone, for what you learned and the grade you've earned.
+3. **Reflection 3 — "Final self-evaluation" (due Fri 7/31).** Review your own body of work and make an
+   evidence-based case for the final grade you've earned (see *Grading*).
 
-## The four threaded discussions (D2L)
-Each opens Monday of its week; **initial post by Wednesday, two substantive replies by Friday.**
-1. **D1 (Wk 1) — Is code neutral?** After Classification Logic: when a program sorts people or words
-   into categories, whose judgment is built in?
-2. **D2 (Wk 2) — Whose data?** Ethics of collecting public text, and what it means to read (and fix)
+**The four threaded discussions** (open Monday of their week; **initial post by Wednesday, two
+substantive replies by Friday**):
+1. **D1 (Wk 1) — Is code neutral?** When a program sorts people or words into categories, whose judgment
+   is built in?
+2. **D2 (Wk 2) — Whose data?** The ethics of collecting public text, and what it means to read (and fix)
    code an AI wrote for you.
 3. **D3 (Wk 3) — Close vs. distant reading.** What does counting/sentiment let you see that reading by
    hand can't — and what does it flatten?
 4. **D4 (Wk 4) — What computation reveals and hides.** Share your capstone finding and one thing your
-   methods get wrong.
+   methods get wrong. *(The course is designed for 4 discussions; D4 may be dropped to a 3-discussion
+   minimum if Week-4 capstone load is heavy.)*
 
-*(Scope note: the course is designed for **4** discussions, one per week; drop D4 to land on the
-3-discussion minimum if Week 4's capstone load is too heavy.)*
+### Grading
+This course uses **ungrading**. Through the term your work is **not** scored with points; each piece is
+marked on a simple **3-point scale**, and my feedback focuses on your engagement, reflection, and growth
+— not on whether your code or analysis was "right." *(Documenting a failure and what you learned counts
+as meeting expectations.)* The goal is **earned insight over clean code.**
+
+**Per-piece marks:**
+- **3 — Exceeds expectations:** goes beyond the ask — depth, insight, intellectual risk-taking.
+- **2 — Meets expectations:** does the work with genuine, honest engagement. *This is success and the
+  expected standard.*
+- **1 — Does not yet meet:** missing, incomplete, or minimal. The "not yet" is an invitation to revise
+  where time allows.
+
+TCU requires a final letter grade. Here is exactly how it is set — no mystery:
+
+**1. Your pattern of marks sets a whole-letter floor.** The "body of work" = the four homeworks (with
+Weekly Experiments), the three reflections, the four discussions, and the capstone.
+
+| Marks across the body of work | Grade floor |
+|---|---|
+| All **2s and 3s** (everything meets; several exceed) | **A** band |
+| Mostly **2s**, a few **1s** | **B** band |
+| Several **1s** (multiple pieces not yet meeting) | **C** band |
+| Many **1s** / large portions missing | **D / F** range |
+
+"Engaged" means real effort and honest documentation of your process — *not* polish. Something that
+doesn't fully work, paired with a clear account of what you tried and learned, **meets expectations.**
+
+**2. Your final self-evaluation (Reflection 3) sets the plus/minus.** You make an evidence-based case for
+the precise grade you've earned: consistent **3s** argue toward the top of your band (A, B+, C+);
+**mostly 2s** sit at the mid-to-minus (A‑, B/B‑, C/C‑). The floor is a guarantee you can count on; the
+self-evaluation is where you make your case for more. I confirm or adjust.
+
+**Grading Scale (TCU undergraduate, plus/minus):** A 94–100 · A‑ 90–93.99 · B+ 87–89.99 · B 84–86.99 ·
+B‑ 80–83.99 · C+ 77–79.99 · C 74–76.99 · C‑ 70–73.99 · D+ 67–69.99 · D 64–66.99 · D‑ 60–63.99 · F below 60.
+*(No individual piece carries points; these percentages describe only the final letter, set as above.)*
+
+**Grading Concerns.** `[State how/where students raise questions about a grade or mark, and your process
+for discussing it.]`
+
+### Late Work
+Because the term is short and sessions build on each other, keep up — but ungrading is about the whole
+arc, not single due dates. If life happens, **talk to me**; honest communication beats a missed
+deadline. **Official University Absences** will be accommodated and work missed for them may be made up,
+per TCU policy. `[Paste/confirm TCU language on Official University Absences and make-up work; see Student
+Absences.]` **I will not ask for or accept medical documentation** — see *University Policies* below.
+
+### Participation, Engagement & Attendance
+This is a live, fast-moving daily course; attendance and active engagement at the synchronous sessions
+are expected, and your engagement is reflected throughout your marks (there is no separate points-based
+participation grade). In this online course, "engaged" means showing up to the live sessions, coding
+along, posting and replying in discussions on time, and documenting your thinking in your `#comments`
+and reflections. If you must miss a session, let me know in advance and we'll arrange a catch-up. A
+pattern of absence that endangers your standing will be reported to the Dean of Students, per TCU policy.
+`[Confirm against the TCU University Attendance Policy and Official Absence Policy.]`
+
+### Class Norms & Netiquette
+`[Paste TCU standard Class Norms & Netiquette statement from Syllabus-Template-Online.docx.]`
+
+**Course-specific note (important).** Our running dataset is real public comments about a 2025 law
+placing the Ten Commandments in Texas classrooms — a genuinely contested topic touching religion and the
+state. We analyze this language as **data about a public debate**, and a goal of the course is to *hear*
+the people in the data — including those we disagree with — rather than flatten them. Treat classmates'
+views, and the views in the data, with respect; advance disagreements with evidence and care. You're
+welcome to choose a different cultural dataset for your own work. In our online spaces, respect
+confidentiality and the ownership of others' words (no screenshots or re-sharing of classmates'
+posts outside the course).
+
+### Artificial Intelligence (AI / LLM) Use Policy
+You **may** use AI tools (ChatGPT, Claude, Copilot, etc.) — this course literally teaches you to read and
+improve AI-written code. The rule is **understanding, not avoidance**, and it differs by *what* you're
+borrowing:
+- **Code — borrowing is expected.** Using a library, Stack Overflow, or an AI to help write code is
+  normal practice. You must be able to **explain any code you submit**, and you should **note in your
+  `#comments` where you used AI** and what you changed. Passing off code you can't explain is not allowed.
+- **Writing — develop your own voice.** Your reflections, discussion posts, `#comments`, and the capstone
+  essay are where you *become a writer.* A unique voice is forged through the difficulty of finding your
+  own words; letting AI generate your writing forfeits that. **Use AI for feedback if you like, but the
+  writing itself must be yours.** When in doubt, ask.
+
+### Technology Policies, Email & Recording
+- **Technology.** `[State expectations for hardware/connection, and what to do if tech fails during a
+  live session.]`
+- **Email.** `[Paste TCU standard Email policy; state your preferred channel and response time.]`
+- **Recording of Class Sessions.** `[Paste TCU standard Recording-of-Class-Sessions statement.]`
+
+### Academic Misconduct
+`[Paste TCU standard Academic Misconduct statement from Syllabus-Template-Online.docx.]` In this course:
+**borrowing code is expected; submitting work (code or writing) you cannot explain or that isn't yours is
+not.** Cite your sources, including AI.
 
 ---
 
-## Course policies
-- **Attendance & participation.** This is a live, fast-moving daily course; sessions build on each
-  other, so attendance matters. Let me know in advance if you must miss a session and we'll arrange a
-  catch-up. `[TCU attendance policy boilerplate.]`
-- **Late / missing work.** Because the term is short, keep up — but ungrading is about the whole arc,
-  not single due dates. If life happens, **talk to me**; honest communication beats a missed deadline.
-- **A note on our main dataset.** Our running example is real public comments about a 2025 law placing
-  the Ten Commandments in Texas classrooms — a genuinely contested topic touching religion and the
-  state. We analyze this language as *data about a public debate*; treat classmates' views with respect.
-  You're welcome to choose a different cultural dataset for your own work.
-- **Accessibility.** TCU is committed to access. If you need accommodations, contact `[Student Access
-  & Accommodation / instructor]` early and we'll make it work.
-- **Academic integrity.** `[TCU academic-conduct boilerplate.]` In this course: borrowing code is
-  expected; **submitting code you cannot explain is not.** Cite your sources, including AI.
-- **Communication.** `[Email response window, preferred channel, etc.]`
+## Course Schedule (20 sessions)
+*Each row is one live class day. "Due" items are due by the start of class that day unless noted;
+discussion threads open Monday of their week. The schedule may be adjusted to the class's pace; changes
+are announced on TCU Online. A standalone version is in `COURSE_SCHEDULE_2026.md`.*
 
-> *This syllabus is a working plan and may be adjusted to fit the class's pace; changes will be
-> announced in class and on D2L.*
+### Python skills map — what's taught when
+*Each skill is introduced in a live code-along, then practiced in the linked homework. Nothing is
+assessed before it's taught.*
+
+| Skill | First taught | Practiced in |
+|---|---|---|
+| Variables & data types | Day 1 (Mon 7/6) | HW1 · all later work |
+| Strings & string methods | Day 2 (Tue 7/7) | HW1, HW2 |
+| Comparisons & conditionals | Day 3 (Wed 7/8) | HW1 |
+| Lists & loops | Day 4 (Thu 7/9) | HW1, HW2 |
+| Functions & dictionaries | Day 5 (Fri 7/10) | HW1 · every HW |
+| Counting & term frequency | Day 6 (Mon 7/13) | HW2 |
+| pandas DataFrames | Day 8 (Wed 7/15) | HW3, HW4, capstone |
+| Cleaning & `.apply()` | Day 9 (Thu 7/16) | HW3, HW4 |
+| Sentiment (VADER) | Day 11 (Mon 7/20) | HW3 |
+| Grouping & charts | Days 9–13 | HW3, HW4 |
+| Topic modeling (Gensim LDA) | Day 14 (Thu 7/23) | HW4, capstone |
+
+### Week 1 (Jul 6–10) — Python foundations: "code is not neutral"
+| Date | Lecture | Coding | Due |
+|---|---|---|---|
+| **Mon 7/6** (1) | Humanities & Coding · Connotations & Code | Setup + Variables & data types | D1 opens |
+| **Tue 7/7** (2) | Sacred Boundaries / digital privacy | Strings & string methods | — |
+| **Wed 7/8** (3) | Classification Logic | Comparisons, conditionals & booleans | **R1 due** · D1 post |
+| **Thu 7/9** (4) | Collective Memory | Lists & loops | — |
+| **Fri 7/10** (5) | — (recap) | Functions & dictionaries + recap | **HW1 assigned** · D1 replies |
+
+### Week 2 (Jul 13–17) — From text to data: ethics, pandas, AI
+| Date | Lecture | Coding | Due |
+|---|---|---|---|
+| **Mon 7/13** (6) | Data as evidence | Term frequency + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
+| **Tue 7/14** (7) | AI Agency | Reading & improving AI code + stylometry seed | — |
+| **Wed 7/15** (8) | Data Archaeology | Found data + collection ethics (pandas 01 + scraping) | D2 post |
+| **Thu 7/16** (9) | — | Data cleaning (pandas 02) | — |
+| **Fri 7/17** (10) | — (workshop) | Workshop: collect & clean **your** dataset | **HW2 due** · D2 replies |
+
+### Week 3 (Jul 20–24) — Computational text analysis
+| Date | Lecture | Coding | Due |
+|---|---|---|---|
+| **Mon 7/20** (11) | Quantifying connotation | Sentiment with VADER | **R2 due (midterm)** · D3 opens |
+| **Tue 7/21** (12) | Close vs. distant reading | VADER deep dive | **HW3 assigned** |
+| **Wed 7/22** (13) | Predictions on the record | HW3 work session (freq + sentiment on your data) | D3 post |
+| **Thu 7/23** (14) | NLP & Topic Modeling | Topic modeling intro (Gensim LDA) | — |
+| **Fri 7/24** (15) | — | Topic modeling deep · `num_topics` · limits | **HW3 due** · **HW4 assigned** · D3 replies |
+
+### Week 4 (Jul 27–31) — Integration & data-driven opinions (capstone)
+| Date | Lecture | Coding | Due |
+|---|---|---|---|
+| **Mon 7/27** (16) | Integration (close → distant → close) | Freq + sentiment + topics + stylometry demo | **Capstone proposal due** · D4 opens |
+| **Tue 7/28** (17) | "Being wrong as learning" · capstone framing | Validation + capstone framing | **HW4 due** · D4 post |
+| **Wed 7/29** (18) | — | Capstone work session 1 | — |
+| **Thu 7/30** (19) | — | Capstone work session 2 + peer review | D4 replies |
+| **Fri 7/31** (20) | — (wrap) | **Capstone presentations + wrap** | **Capstone due** · **R3 (final self-evaluation) due** |
+
+*Lecture "—" = recap / workshop / work-session days. Three lecture slots are under review (ML2 "Sacred
+Boundaries," a possible ML9 "Going Public" at Day 17, and a noumena framing at Day 1); see
+`CONCEPTUAL_FRAMEWORK_2026.md`.*
+
+---
+
+## TCU Online: Our Learning Management System
+`[Paste the TCU Online section from Syllabus-Template-Online.docx — Getting Started, Getting Help,
+Personal Settings & Notifications, and Student Success Tools.]`
+
+## University Policies & Student Resources
+*Official University policy statements — paste the current text from `Syllabus-Template-Online.docx`; do
+not paraphrase.*
+- **Anti-Discrimination & Title IX Information** — `[paste TCU standard statement]`
+- **TCU Policy for Religious Observations & Holidays** — `[paste TCU standard statement]`
+- **Disability / Access (Student Access & Accommodation)** — `[paste TCU standard statement]`
+- **Medical Documentation** — Faculty will **not** seek or accept medical documentation; students upload
+  any documentation to verify absences via the **Dean of Students Office** website. `[paste TCU standard
+  statement]`
+- **Audio Recording Notification** — `[paste TCU standard statement]`
+- **Emergency Response Information** — `[paste TCU standard statement]`
+- **Student Resources & Policy Information** — link + QR `[paste TCU standard block]`
+
+> *This syllabus is a working plan and may be adjusted to fit the class's pace; changes will be announced
+> in class and on TCU Online.*
