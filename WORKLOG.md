@@ -200,7 +200,13 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
 4. **Port the carry-over-ready code-alongs** into this repo per the schedule (Variables already here;
    StrMethods/Conditionals/Loops, Lists/Loops, Dictionaries/Functions, Pandas 01/02, Instant Data
    Scraper, VADER, Topic Modeling). Dedup the topic-modeling notebooks (F25-canonical = combined Gensim).
-5. **Author a 2026 syllabus** — none exists even in F25 (`WRIT20833_2025/docs/syllabus/index.md` is empty).
+5. ✅ **2026 syllabus authored** — `SYLLABUS_2026.md` (DRAFT for instructor review). Term Mon 7/6–Fri
+   7/31, M–F 2 hrs/day = 20 sessions (calendar verified; no weekday holidays). Maps the
+   `PROPOSED_4WEEK_SCHEDULE` onto real dates with due dates for HW1–4 + capstone, **3 self-reflections**
+   (R1 due Wed 7/8 · R2 midterm due Mon 7/20 · R3 final self-eval due Fri 7/31), and **4 weekly D2L
+   threaded discussions** (post Wed / replies Fri; note says drop D4 to hit the 3-discussion minimum).
+   Ungrading evaluation section, AI-use policy (explain-don't-avoid), Walsh-independence, sensitive-topic
+   note. Placeholders in `[...]` for instructor name/contact/office hours + TCU policy boilerplate.
 6. **Stylometry decisions** — fixed sample corpus vs. student-generated; essay weight; ethics emphasis.
 7. **Test the topic-modeling install cell on Colab's 2026 image.** HW4 uses a lean `!pip install -q
    gensim vaderSentiment` (no nltk, no pinned deps, no kernel restart — simpler than F25's cell);
