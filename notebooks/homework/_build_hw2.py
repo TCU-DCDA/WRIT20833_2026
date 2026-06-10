@@ -436,8 +436,8 @@ print(top_meaningful_words(my_text, 5))
 # e.g. [('keep', 1), ('church', 1), ('state', 1), ('separate', 1), ('kids', 1)]'''),
     md('''> **Teaching note:** Goal: prove the A5 function generalizes to *any* text students supply —
 > the bridge to "bring your own cultural dataset" in the Week-2 workshop and the capstone. Remind
-> students that real collection (scraping) is taught Day 8; hand-paste is fine now. Grade on a working
-> call + a reflection, not on the corpus chosen.'''),
+> students that real collection (scraping) is taught Day 8; hand-paste is fine now. Evaluate on a working
+> call + a reflection, not on the corpus chosen (ungrading — engagement over correctness).'''),
 ]
 
 
