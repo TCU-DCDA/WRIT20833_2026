@@ -284,6 +284,14 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
     yield a TCU letter grade — settle the mapping (labor/completion contract vs. final self-evaluation
     proposes the grade vs. minimum-thresholds), then the grading section + grad grade scale can be
     written. Most items are mechanical/placeholder; the grading reconciliation is the instructor's call.
+   **Use the ONLINE template** (`Syllabus-Template-Online.docx`) — it's the operative one. Beyond the
+   checklist it mandates standard TCU **boilerplate sections**: Class Norms & Netiquette · Technology
+   Policies · Email · Recording of Class Sessions · Academic Misconduct · TCU Online (LMS) getting-
+   started/help/notifications/success-tools · Anti-Discrimination & Title IX · Religious Observations &
+   Holidays · Audio Recording Notification · Emergency Response · Grading Concerns. **Do NOT fabricate
+   this official policy text** — structure the sections and insert `[paste TCU standard text from
+   Syllabus-Template-Online.docx]` placeholders; write only the *course-specific* content. Online
+   template also requires that any tables/images be **accessible**.
 
 ## Useful facts for a fresh session
 - The F25 source repo is **public**; if it's out of session scope, you can still read files via
