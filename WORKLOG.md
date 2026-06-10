@@ -74,6 +74,46 @@ half = ungrading's "earned insight."
   (re-home at Day 17) — together they'd give the capstone its missing epistemology. Decision for the
   instructor: introduce the Kantian vocabulary explicitly, or keep it as the instructor's framing only.
 
+## Through-line — "hear the human at scale" (course motto + ethics)
+The unifying *why* behind the existing subtitle "Developing Data-Driven Opinions." We collect textual
+data, in part, **to hear the human at scale** — to listen to more people than close reading ever could.
+This reconciles the apparent contradiction the course keeps staging (computation *flattens* voices vs.
+computation *empowers* them): the flattening is the **price of the scale, and the scale is the point**
+— distant reading isn't *not* reading humans, it's hearing humans you'd otherwise never hear.
+- **Listen vs. extract (governing metaphor + teachable enemy).** "Hear/listen" stands against the
+  extractive verbs of data culture — *mine, scrape, harvest, crawl.* Those treat people as ore; "hear"
+  presumes someone with something to say and a duty to receive it. Reframes Day-8 collection ethics from
+  "is this allowed?" to **"am I listening or extracting?"**
+- **Hearing the human means hearing the MESS (ties to ML0 "studying the mess of the human condition").**
+  The humanities don't tidy up contradiction/ambiguity/subjectivity — they explore it. But every scale
+  tool *wants* a tidy answer: a single mean sentiment, one "winning" word, a dominant topic. So the real
+  danger isn't only going deaf to the individual — it's **manufacturing a false consensus that silences
+  the quarrel.** To hear the human is to hear the **inevitable quarrels**; the disagreement is not noise
+  to average away, it *is* the signal. The corpus is literally a quarrel (the TX Ten Commandments law).
+- **The course already enacts "preserve the quarrel":** HW3's near-zero **mean sentiment (0.082)** is a
+  *split* crowd, not neutrality (the average almost erased the fight); HW2→HW3's **`commandments` in both
+  camps** is a quarrel hiding inside a frequency "winner"; HW4's **sentiment-by-topic** exposes
+  sub-quarrels; **reading the extremes** + the **human-vs-VADER check** + **"the human names the topics"**
+  are all *returning to the individual to confirm you can still hear a person, and still hear the
+  disagreement.* The **close→distant→close** arc = hear one deeply → hear the many → go back to one to
+  make sure the many are still people in conflict, not a manufactured consensus.
+- **Two referents of "voice":** the people *in* the data (protect from flattening/misrepresentation,
+  empower by making audible at scale — the home for orphaned **ML9 "Going Public"**) **and** the
+  student's *own* voice (ungrading + `#comments` + reflections keep the learner a person-on-the-record,
+  not a number — the course empowers voice by example).
+- **Secures both halves:** ties the **ethics** (voice) to the **epistemics** (evidence) — a data-driven
+  opinion earns the right to drive only when the data has been *heard*, not merely processed; and lands
+  on the **noumena spine** (the descent is justified by the aim of hearing the aggregate; the right
+  column is the climb back to hearing the chorus *as humans, still quarreling*).
+- **Caution (keep the edge):** pair "empower" with discipline — the failure mode is "let the data speak
+  for itself" (it never speaks; *you* speak, having chosen). Hearing at scale is using a megaphone that
+  distorts: amplify the signal, own the distortion, and don't resolve a quarrel the data didn't resolve.
+- **Status / candidate fold-ins (instructor's call):** through-line captured; not yet woven in. Options —
+  gloss the subtitle ("…Developing Data-Driven Opinions **to hear the human at scale**"); a learning
+  outcome on *representing others' voices responsibly*; the **Day-1** noumena passage's ethical turn; the
+  **Day-12** close-vs-distant thesis sentence; the **capstone standard** ("give voice to the people in
+  your data — including their disagreements — and show where your tools risked flattening them").
+
 ## Done this session (all committed + pushed)
 - `PORT_ASSESSMENT_2026.md` — readiness/port analysis (kept in F25 numbering; documents history).
 - `PROPOSED_4WEEK_SCHEDULE.md` — 20-session draft (drop-portfolio scope, 2026 numbering).
