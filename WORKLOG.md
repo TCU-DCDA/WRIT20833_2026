@@ -117,8 +117,10 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
      reuse HW2's plain-Python setup cell. **(Settled — keep pandas; see decision #1 below.)**
   2. Built around a student's own scraped CSV (`Replace 'your_filename.csv'`); `notebooks/data/README.md`
      says the YouTube-comments corpus is **reused for HW3** → open decision below (#2).
-  3. matplotlib bar charts (cells 18, 27, 33) — not clearly taught by Week 3; add a viz mini-lesson or
-     simplify to printed tables.
+  3. matplotlib bar charts (cells 18, 27, 33) — **viz IS taught before HW3** (verified 2026-06-10):
+     `df.plot()`/matplotlib appear in CA Pandas 01 (Day 8), Pandas 02 (Day 9), and the VADER
+     code-along (Days 11–12) — the last is HW3's direct model. So keep viz, light/scaffolded; see
+     decision #3. (Corrects an earlier note that said viz wasn't taught by Week 3.)
   4. `!pip install vaderSentiment` — needs the same Colab-2026-image check flagged for topic modeling (#7).
   5. Strip F25 framing: cell 1 = "Midterm Assignment Part 1 — Due October 5th"; drop the date + the
      midterm-part structure (2026 = plain HW3). Strip any Walsh prereq per course-wide convention.
@@ -134,8 +136,20 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
      (Day 16), and the capstone. Without it here, pandas only ever appears in instructor-led
      code-alongs + one workshop until the capstone. Bonus arc: **HW2 plain-Python (count by hand)
      → HW3 pandas (same logic at dataset scale)** mirrors the course's close→distant reading move.
-  2. ⬜ Default to the provided YouTube-comments corpus vs. "bring your own from the Week-2 workshop."
-  3. ⬜ Visualizations (matplotlib) in or out for Week 3.
+  2. 🔶 **LEANING (not fully settled) — BYO-primary + provided fallback.** Bring-your-own data (from
+     the Day 10 "collect & clean your cultural dataset" workshop) is the expected path: matches F25
+     HW4-1 ("a dataset of your choosing"), the course's student-chosen-data identity, and maximizes
+     the ownership ungrading rewards. The provided **YouTube-comments corpus is the documented
+     fallback** (for students whose workshop data isn't clean by Day 13) **and what the answer key is
+     authored on** — you can't key arbitrary student data, so the key is a *worked example* on a
+     reference corpus (exactly what an ungrading key should be). Note this **inverts HW2's emphasis**
+     (HW2 = provided-primary + optional BYO via C2; HW3 = BYO-primary + provided-fallback). Build can
+     start under this leaning without fully locking it.
+  3. ✅ **SETTLED — viz in, light/scaffolded.** Keep a chart, but students *reproduce* the pattern they
+     just saw in the VADER code-along (Days 11–12), not invent one. Use pandas' built-in
+     `df.plot(kind='bar')` (introduced Day 8 in Pandas 01) — one line, simpler than raw matplotlib;
+     viz here is reinforcement, not new material. Ungrading-appropriate prompt: "make a chart and say
+     what it shows" (engagement over correctness).
 
 ## Other open threads / next steps
 1. **Confirm scope** — drop-portfolio (current) vs. full-arc-tightened vs. foundations-only.
