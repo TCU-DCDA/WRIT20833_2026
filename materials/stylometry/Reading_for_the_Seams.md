@@ -45,7 +45,7 @@ practical heuristic. This produces a **prediction**: *which parts are AI, and wh
 ### Part A + C — Distant reading + synthesis (Week 4 capstone). The notebook.
 See `WRIT20833_Stylometry_Reading_Seams_2026.ipynb`. Using the term-frequency tools students
 already know, they **measure** style signatures across human / AI / hybrid texts:
-- **Function-word share** — the elegant inversion of HW1: there, stopwords were *noise to
+- **Function-word share** — the elegant inversion of the term-frequency unit: there, stopwords were *noise to
   remove*; here, function words are the *signal*.
 - **Type–token ratio** (lexical diversity)
 - **Average sentence length** (and how varied it is)
