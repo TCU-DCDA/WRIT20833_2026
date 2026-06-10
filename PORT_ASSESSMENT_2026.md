@@ -30,7 +30,7 @@ sibling repos. The 2026 work is therefore **format redesign + port**, not conten
   application — transfers almost directly to live online sessions. This removes the largest
   risk a self-paced format would have carried.
 - **The real lifts are:** (1) pacing the arc into ~20 daily 2-hr live sessions for
-  *no-prior-experience* grad students; (2) a modest scope trim (likely lightening/cutting the
+  *no-prior-experience* lower-division undergraduates; (2) a modest scope trim (likely lightening/cutting the
   web-dev + portfolio back half, which also overlaps MALA 60970); (3) a from-scratch syllabus.
 - **Mechanical port is easy and quick.** Achievable for 2026-07-06 — *once scope is chosen.*
 

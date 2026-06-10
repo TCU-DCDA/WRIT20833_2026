@@ -1,7 +1,7 @@
 # WRIT 20833 — Intro to Coding in the Humanities (2026)
 ### "When Coding Meets Culture: Developing Data-Driven Opinions"
 
-A **graduate, 4-week, online-synchronous** offering of WRIT 20833 at TCU — **Mon Jul 6 – Fri Jul 31,
+A **lower-division undergraduate, 4-week, online-synchronous** offering of WRIT 20833 at TCU — **Mon Jul 6 – Fri Jul 31,
 2026**, Monday–Friday, 2 hrs/day (20 sessions). Students with **no prior coding experience** learn just
 enough Python to ask humanistic questions of real text (term frequency → sentiment → topic modeling),
 and to argue from what they find — while staying honest about what computation reveals and flattens.

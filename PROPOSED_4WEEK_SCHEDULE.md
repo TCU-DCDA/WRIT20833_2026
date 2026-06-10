@@ -6,7 +6,7 @@
 > in the repo.
 
 **Format:** online **synchronous** · 2 hrs/day × 5 days × 4 weeks ≈ **40 contact hours**
-**Start:** 2026-07-06 · **Audience:** graduate students, no prior coding experience
+**Start:** 2026-07-06 · **Audience:** undergraduate students (lower-division), no prior coding experience
 **Scope chosen:** *Drop the web-dev/portfolio half* — Python foundations + the
 cultural-analytics arc (term frequency → sentiment → topic modeling), ending in a
 **notebook + short essay capstone**. (The dropped HTML/CSS portfolio half overlaps
