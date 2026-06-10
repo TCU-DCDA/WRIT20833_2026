@@ -170,6 +170,29 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
      viz here is reinforcement, not new material. Ungrading-appropriate prompt: "make a chart and say
      what it shows" (engagement over correctness).
 
+## HW4 (topic modeling + integration) — ✅ DONE (ports F25 HW4-2; the capstone bridge)
+- **Authored** `WRIT20833_HW4_2026.ipynb` + `_ANSWER_KEY.ipynb` via `_build_hw4.py`, 2026 house style,
+  pandas-native. Title: "Topic Modeling & Integration: What Is the Conversation Actually About?"
+  Flow: A1 tokens-per-doc · A2 gensim dictionary+corpus (bag-of-words; vocab ~648) · A3 predict-then-run
+  **empty-bag edge** (`doc2bow` of fragment "The" → `[]`, ties to the wrap-fragment data issue) ·
+  A4 train `LdaModel` (num_topics=4, random_state=42, passes=10) · A5 **human names the topics**;
+  **LDA borrowed+stochastic note** · B1 dominant topic per doc (`-1` guard for empty) · B2 docs/topic
+  + bar chart · B3 **the integration** `groupby("topic")["sentiment"].mean()` (HW2 freq + HW3 sentiment
+  + HW4 topics in one line) · B4 three-lens interpretation · C1 num_topics 2-vs-6 (authored knob) ·
+  C2 capstone plan.
+- **Simplified F25:** dropped nltk/WordNet lemmatization and pyLDAvis (fragile); reuses our
+  `split_into_words` + `stopwords`. Only new dependency is **gensim** (installed locally as 4.4.0 for
+  validation). VADER sentiment carried over in setup. BYO-primary, ungrading throughout.
+- **Validation is weaker than HW1–3 by nature — flagged in the key header.** LDA is **stochastic +
+  version-sensitive**, so topic words / per-topic counts / per-topic sentiment are NOT reproducible
+  across machines/versions even with `random_state=42`. The key states exact values only for the
+  **deterministic** steps (vocab size, the `[]` edge) and describes LDA output **qualitatively**
+  (relative warmer/cooler, not absolute signs). **Confirmed: the full 9-cell pipeline runs
+  top-to-bottom locally** (gensim 4.4.0); that's the guarantee, not exact-output matching.
+- **Caveat for the instructor:** topic modeling on the 123-comment fallback corpus gives overlapping,
+  weak topics (single-issue corpus) — fine as a *worked example*, but HW4 genuinely wants a richer BYO
+  dataset. This is the same point as open thread #7 (still: test the install on Colab's 2026 image).
+
 ## Other open threads / next steps
 1. **Confirm scope** — drop-portfolio (current) vs. full-arc-tightened vs. foundations-only.
 3. **Walsh-prereq strip on ported notebooks** — Tutorials 1–4 and the code-alongs open with an
@@ -179,7 +202,9 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
    Scraper, VADER, Topic Modeling). Dedup the topic-modeling notebooks (F25-canonical = combined Gensim).
 5. **Author a 2026 syllabus** — none exists even in F25 (`WRIT20833_2025/docs/syllabus/index.md` is empty).
 6. **Stylometry decisions** — fixed sample corpus vs. student-generated; essay weight; ethics emphasis.
-7. **Test the topic-modeling install cell** (F25 HW4-2 pinned deps + runtime restart) on Colab's 2026 image.
+7. **Test the topic-modeling install cell on Colab's 2026 image.** HW4 uses a lean `!pip install -q
+   gensim vaderSentiment` (no nltk, no pinned deps, no kernel restart — simpler than F25's cell);
+   still verify it resolves cleanly on Colab's 2026 default image before Day 14.
 8. **A4 / HW1 note:** A4 intentionally demonstrates a TypeError via try/except — by design.
 
 ## Useful facts for a fresh session
