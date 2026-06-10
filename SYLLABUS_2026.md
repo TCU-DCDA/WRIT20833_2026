@@ -8,7 +8,7 @@
 **Term:** Summer 2026 · **Dates:** Monday **July 6 – Friday July 31, 2026** (4 weeks)
 **Meetings:** **Monday–Friday, 2 hours/day** (20 live sessions), **online synchronous** via `[Zoom/Webex link]`
 **Modality:** Live online (this is the *synchronous* section; the MALA 60970 web-authoring course is async)
-**Credit:** Graduate · **Prerequisites:** none — **no prior coding experience assumed**
+**Credit:** Undergraduate (lower-division) · **Credit hours:** `[3 — confirm]` · **Prerequisites:** none — **no prior coding experience assumed**
 **TCU Core Curriculum:** carries **Citizenship & Social Values (CSV)** credit. This course meets the CSV
 outcome — *"examine the knowledge, skills, values, or motivation needed to participate or lead within
 diverse communities"* — by having you form, argue, and reflect on **evidence-based opinions about a real
