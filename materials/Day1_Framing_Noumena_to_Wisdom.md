@@ -5,6 +5,10 @@
 `images/noumena_to_wisdom_pipeline.png` as the course's through-line. Revisit one arrow per unit.
 Plain language; no prior philosophy assumed. ~600 words.*
 
+> Part of the course's intellectual architecture — full treatment in
+> [`../CONCEPTUAL_FRAMEWORK_2026.md`](../CONCEPTUAL_FRAMEWORK_2026.md) (§1 the spine, §3 scale/vantage,
+> §4 the moral floor + Auden). This passage is one drafted *student-facing* realization of §1.
+
 ---
 
 **Before we write a single line of code, look at this diagram.**

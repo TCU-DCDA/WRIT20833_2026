@@ -43,4 +43,6 @@ back at each unit** — "we're at the raw→structured arrow now; watch where th
 seven separate "code is not neutral" reminders into one sustained walk down a single diagram. The
 **close-vs-distant-reading hinge (Day 7)** is the other natural anchor.
 
-*Status: graphic ported (2026-06); framing text + lecture wiring still to be authored. See WORKLOG.*
+*Status: graphic ported (2026-06); Day-1 framing passage drafted (`../Day1_Framing_Noumena_to_Wisdom.md`);
+lecture/syllabus wiring still to be authored. The full conceptual treatment — this graphic in the context
+of the whole course through-line — lives in **`../../CONCEPTUAL_FRAMEWORK_2026.md`** (see §1).*

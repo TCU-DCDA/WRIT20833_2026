@@ -48,135 +48,22 @@ not a content cliff.
      expected, not cheating**; we build it once so you can *read and judge* a borrowed/AI
      version. Threads into **Day 7** (reading/improving AI code, ML4 AI Agency).
 
-## Epistemological spine — the noumena→wisdom keystone (course-wide frame)
-The unifying frame the course implies everywhere but never states. An F25 graphic
-(`materials/images/noumena_to_wisdom_pipeline.png`, **ported 2026-06** from F25's orphaned
-`_development/textbook/images/20833_noumena_wisdom_F25.png` — built, never wired into any
-lecture/notebook) lays out an 8-stage pipeline: **NOUMENA → PHENOMENA → RAW DATA → STRUCTURED DATA
-→ ANALYZED DATA → INSIGHT → KNOWLEDGE → WISDOM** (the DIKW pyramid extended *backward* into Kantian
-epistemology). Left half = "the score is not the sentiment / a topic is proposed not found"; right
-half = ungrading's "earned insight."
-- **The instructor's argument:** every arrow is an occasion for human bias — and bias is
-  **constitutive and cumulative, not "contaminating"** (the scare quotes matter: there's no clean
-  origin to pollute; the phenomenon is already an interpretation, each step compounds the prior). You
-  can't fix a result back to truth, only make the choices visible/accountable — which is what the
-  `#comments` rule and the 3 reflections train.
-- **Every arrow already maps to a built artifact** (collection→Day 8 scraping/wrap-fragments;
-  raw→structured→HW2 stopwords + HW3 "keep punctuation"; structured→analyzed→VADER 0.05 cutoff +
-  HW4 `num_topics`; analyzed→insight→HW4 "human names the topics"; etc.). **Full per-arrow table +
-  teaching use live in `materials/images/README.md`** (kept there so it's discoverable, not re-orphaned).
-- **Status / next:** graphic ported + documented; **Day-1 framing passage drafted**
-  (`materials/Day1_Framing_Noumena_to_Wisdom.md` — student-facing script + per-unit callback notes;
-  ~600 words, "the score is never the meaning"). **Still not wired into an actual lecture/the syllabus.**
-  Candidate homes: **ML0 / Day 1** (founding "what can computation know?") with a callback at each
-  unit, and/or the **Day 7** close-vs-distant hinge. Open dial: keep the explicit "noumena/phenomena"
-  vocabulary or swap to "the thing itself / as it appears" (diagram + argument survive either way). Pairs with the orphaned **ML9 "Going Public"**
-  (re-home at Day 17) — together they'd give the capstone its missing epistemology. Decision for the
-  instructor: introduce the Kantian vocabulary explicitly, or keep it as the instructor's framing only.
+## Conceptual framework — see `CONCEPTUAL_FRAMEWORK_2026.md`
+The course's full intellectual through-line now lives in its own canonical doc:
+**`CONCEPTUAL_FRAMEWORK_2026.md`** — epistemological spine (noumena→wisdom), "hear the human at scale,"
+the quarrel / ML0 "the mess," voice-through-difficulty (writing in the age of AI), the dinner-party /
+stadium illustration, the moral floor ("billions who don't know to care"), the Auden / Brueghel anchor,
+the theme→artifact map, and candidate fold-ins. **Edit that doc, not this section, to avoid drift.**
 
-## Through-line — "hear the human at scale" (course motto + ethics)
-The unifying *why* behind the existing subtitle "Developing Data-Driven Opinions." We collect textual
-data, in part, **to hear the human at scale** — to listen to more people than close reading ever could.
-This reconciles the apparent contradiction the course keeps staging (computation *flattens* voices vs.
-computation *empowers* them): the flattening is the **price of the scale, and the scale is the point**
-— distant reading isn't *not* reading humans, it's hearing humans you'd otherwise never hear.
-- **Listen vs. extract (governing metaphor + teachable enemy).** "Hear/listen" stands against the
-  extractive verbs of data culture — *mine, scrape, harvest, crawl.* Those treat people as ore; "hear"
-  presumes someone with something to say and a duty to receive it. Reframes Day-8 collection ethics from
-  "is this allowed?" to **"am I listening or extracting?"**
-- **Hearing the human means hearing the MESS (ties to ML0 "studying the mess of the human condition").**
-  The humanities don't tidy up contradiction/ambiguity/subjectivity — they explore it. But every scale
-  tool *wants* a tidy answer: a single mean sentiment, one "winning" word, a dominant topic. So the real
-  danger isn't only going deaf to the individual — it's **manufacturing a false consensus that silences
-  the quarrel.** To hear the human is to hear the **inevitable quarrels**; the disagreement is not noise
-  to average away, it *is* the signal. The corpus is literally a quarrel (the TX Ten Commandments law).
-- **The course already enacts "preserve the quarrel":** HW3's near-zero **mean sentiment (0.082)** is a
-  *split* crowd, not neutrality (the average almost erased the fight); HW2→HW3's **`commandments` in both
-  camps** is a quarrel hiding inside a frequency "winner"; HW4's **sentiment-by-topic** exposes
-  sub-quarrels; **reading the extremes** + the **human-vs-VADER check** + **"the human names the topics"**
-  are all *returning to the individual to confirm you can still hear a person, and still hear the
-  disagreement.* The **close→distant→close** arc = hear one deeply → hear the many → go back to one to
-  make sure the many are still people in conflict, not a manufactured consensus.
-- **The dinner-party / stadium illustration (canonical for Day 12 close-vs-distant).** A guest at a
-  12-person dinner notices a couple he just met bickering at the end of the table — a particular nuance
-  he can observe. The *same* guest watching the *same* couple from across AT&T Stadium at a Cowboys
-  game cannot. **The nuance still exists; it's only flattened from *view*.** The key refinement to the
-  whole through-line: scale **occludes** the particular (epistemic — a matter of vantage / resolution);
-  it does **not destroy** it (ontological) — the couple is still bickering, still *in* the data. So
-  "flattened from view ≠ erased from existence," which is why the quarrel is **recoverable**: change
-  vantage (close reading / reading the extremes / the human-vs-VADER check = walking down to that
-  section of the stands). And the trade runs **both ways** — from the stadium you can see the **wave**,
-  a coordinated macro-pattern of 90,000 people that *no one* at dinner-party scale could perceive (term
-  frequency + topic modeling = seeing the wave). Neither vantage is "the truth"; each is blind to what
-  the other reveals → the real argument for **close→distant→close**. *(Caveat keeping the edge: even
-  the dinner seat isn't the noumenon — the guest sees the bicker, not its whole meaning; close reading
-  is higher resolution, not truth. The analogy shakes hands with the noumena spine.)*
-- **The moral floor — "for every individual tragedy, there are billions who don't know to care."** The
-  gravest form of the stadium analogy: at the scale of humanity, almost every individual tragedy is
-  occluded from almost everyone — not callousness but **"don't know to care"** (an *epistemic* failure
-  with *moral* consequence; caring requires knowing, and scale withholds the knowing). The hopeful seam:
-  if the failure is *not knowing*, making the occluded individual visible can convert "don't know" into
-  "now you know to care" — the tools as **instruments of moral attention.** **Double-edged**, though:
-  aggregation also *anesthetizes* — the apocryphal "*one death is a tragedy; a million is a statistic.*"
-  The same averaging that makes scale legible can flatten a tragedy into a number no one feels. **The
-  moral close→distant→close:** *distant* to **comprehend** the scale (you can't act on what you can't
-  measure) + *close* to **preserve** the moral charge (you won't act on what you can't feel) — the
-  oscillation is an *ethical* skill, not just analytical. Closes the loop to **voice/writing:** the
-  aggregate *informs*, the single voice *moves* — a data-driven opinion that only aggregates makes a
-  reader *understand*; the return to an individual voice is how writing makes a stranger *care* (the
-  statistic is the stadium; the voice walks the reader down to the table). *(Edge: tools can also
-  manufacture false care / commodify suffering — the ethic is make-visible **truthfully**, flattening
-  the person into neither a statistic nor a prop.)*
-- **Literary anchor — Auden, "Musée des Beaux Arts" (1938).** The canonical statement of the moral
-  floor: suffering takes place "while someone else is eating or opening a window or just walking dully
-  along." Auden reads Brueghel's *Landscape with the Fall of Icarus*, where the tragedy (Icarus
-  drowning) is tiny in the corner while the plowman plows and "the expensive delicate ship … sailed
-  calmly on." **Brueghel's composition *is* the stadium / occlusion** — the tragedy flattened to the
-  margin by a busy foreground; **Auden's poem is the close reading** that walks us to the corner to see
-  the white legs vanishing into the green water and makes us *know to care.* Grounds the whole
-  computational enterprise in the oldest humanistic question — how do we attend to suffering that isn't
-  ours? — and is itself an *image-about-seeing* that pairs with the noumena graphic. Fits a **writing**
-  course (a poem doing exactly the work the course asks students to do). Candidate anchor for **Day 1**
-  (or the **Day 12** close-vs-distant hinge / capstone framing).
-- **Two referents of "voice":** the people *in* the data (protect from flattening/misrepresentation,
-  empower by making audible at scale — the home for orphaned **ML9 "Going Public"**) **and** the
-  student's *own* voice (ungrading + `#comments` + reflections keep the learner a person-on-the-record,
-  not a number — the course empowers voice by example).
-- **Writing in the age of AI — developing your own voice through the difficulty (WRIT course!).** The
-  third movement, and the one that makes this a *writing* course: you must *remain* a human voice to do
-  justice to the human voices you hear. **Letting AI write for us forfeits the opportunity — available
-  only through the difficulty — of developing a unique voice.** Voice is forged in the friction of
-  finding words; remove the friction and you remove the forging.
-  - **The asymmetry of borrowing (core literacy):** borrowing the *tool* (code) is expected and fine —
-    nobody's voice lives in a stopword list; borrow the utility, *understand + judge* it (the
-    borrowed-code convention). Borrowing the *voice* (writing) is self-erasure — the difficulty IS the
-    point. The course teaches both coding-with-AI and writing, so it's built to teach the discernment:
-    **borrow the tool, never outsource the voice — and know which is which.**
-  - **The eerie parallel (same lesson, turned on the self):** AI-generated prose : your voice ::
-    **mean sentiment : the crowd's quarrel** — a flattening of the particular into a statistical
-    average, a *false consensus* that silences what's specific. The model writes the mean of all
-    writing; a unique voice is its opposite. The whole apparatus the course builds against false
-    consensus *in the data* applies unchanged to your own *writing*: resist the flattening — of others,
-    **and of yourself.**
-  - **Aligns with what's built:** ungrading already credits *struggle/labor/reflection over polish* —
-    it values the difficulty as the point; AI-polished prose that skips the struggle is the opposite of
-    what it rewards. Refines the syllabus **AI-use policy** (currently written mostly for code) with the
-    missing distinction: AI is fine for code-you-understand and for *feedback*, but **generating the
-    writing itself forfeits the voice the course exists to develop** (reflections, `#comments`, the
-    capstone essay are where you become a writer). Natural home: **Day 7 / ML4 AI Agency** (extend from
-    "reading AI's code" to "not ceding your voice to AI") + the **capstone essay standard**.
-- **Secures both halves:** ties the **ethics** (voice) to the **epistemics** (evidence) — a data-driven
-  opinion earns the right to drive only when the data has been *heard*, not merely processed; and lands
-  on the **noumena spine** (the descent is justified by the aim of hearing the aggregate; the right
-  column is the climb back to hearing the chorus *as humans, still quarreling*).
-- **Caution (keep the edge):** pair "empower" with discipline — the failure mode is "let the data speak
-  for itself" (it never speaks; *you* speak, having chosen). Hearing at scale is using a megaphone that
-  distorts: amplify the signal, own the distortion, and don't resolve a quarrel the data didn't resolve.
-- **Status / candidate fold-ins (instructor's call):** through-line captured; not yet woven in. Options —
-  gloss the subtitle ("…Developing Data-Driven Opinions **to hear the human at scale**"); a learning
-  outcome on *representing others' voices responsibly*; the **Day-1** noumena passage's ethical turn; the
-  **Day-12** close-vs-distant thesis sentence; the **capstone standard** ("give voice to the people in
-  your data — including their disagreements — and show where your tools risked flattening them").
+**Status of the conceptual work (handoff flags):**
+- **Noumena→wisdom graphic** ported (`materials/images/noumena_to_wisdom_pipeline.png` + its README) and
+  a **Day-1 framing passage drafted** (`materials/Day1_Framing_Noumena_to_Wisdom.md`). Not yet wired into
+  an actual lecture or the syllabus.
+- **Through-line + moral floor + Auden** captured in the framework doc. **Not yet woven into student-facing
+  materials** — all fold-ins (subtitle gloss, a learning outcome, Day-1/Day-7/Day-12 sentences, the
+  capstone standard, the AI-use-policy refinement) remain the instructor's call (framework doc §6).
+- **Open dials:** keep the Kantian vocabulary explicit or swap to plain language; lecture homing
+  (re-home ML9 → Day 17, harvest ML8, decide ML2 "Sacred Boundaries" cut-vs-repurpose) — see open thread #9.
 
 ## Done this session (all committed + pushed)
 - `PORT_ASSESSMENT_2026.md` — readiness/port analysis (kept in F25 numbering; documents history).
