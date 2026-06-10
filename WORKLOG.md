@@ -91,7 +91,8 @@ Decisions made with instructor this session:
   a clean-running ANSWER KEY). Pre-pandas (assigned Day 6) → **plain Python only, no pandas**.
   Builds directly on **HW1 C2** ("many comments → one word list").
 - **Paired corpus (both committed to `notebooks/data/`, validated):**
-  - `tc_youtube_comments.txt` — 93 real 2025 YouTube comments on the TX Ten Commandments law
+  - `tc_youtube_comments.txt` — 123 lines of real 2025 YouTube comments on the TX Ten Commandments law
+    (corrected from an earlier "93"; see `notebooks/data/README.md`)
     (cleaned from F25 `TenCommandmentsTX/20833_CBS1_youtube_F25.csv`). The public's voice.
   - `us_constitution.txt` — full Constitution from Gutenberg #5, boilerplate stripped. The text
     the commenters keep invoking (top comment = "put the constitution in classrooms?").
