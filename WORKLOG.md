@@ -106,7 +106,7 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
   the **"Human vs. automated sentiment check"** (cells 28–29) is a strong critical-thinking exercise.
 - **Adapt before porting (each grounded in an actual F25 cell):**
   1. Pandas-native (`import pandas as pd`, `pd.read_csv`, DataFrame ops) — correct for Day 13; do NOT
-     reuse HW2's plain-Python setup cell.
+     reuse HW2's plain-Python setup cell. **(Settled — keep pandas; see decision #1 below.)**
   2. Built around a student's own scraped CSV (`Replace 'your_filename.csv'`); `notebooks/data/README.md`
      says the YouTube-comments corpus is **reused for HW3** → open decision below (#2).
   3. matplotlib bar charts (cells 18, 27, 33) — not clearly taught by Week 3; add a viz mini-lesson or
@@ -119,8 +119,15 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
   7. **No F25 answer key exists** (homework dir has student notebooks only) → author HW3 key fresh.
 - **Fits the conventions:** VADER is the textbook case of the "honest about borrowed code" convention
   (a pip-installed sentiment model nobody writes from scratch). Corpus reuse keeps HW2→HW3 continuity.
-- **Open decisions before building:** (1) keep pandas (recommended — matches schedule); (2) default to
-  the provided YouTube-comments corpus vs. "bring your own from the Week-2 workshop"; (3) viz in or out.
+- **Decisions:**
+  1. ✅ **SETTLED — keep pandas.** HW3 is the first *graded, independent* pandas application: pandas
+     is taught Days 8–9 (CA Pandas 01/02) and practiced in the Day 10 workshop (whose schedule row
+     literally reads "→ sets up HW3"), then reused for topic modeling (Days 14–15), integration
+     (Day 16), and the capstone. Without it here, pandas only ever appears in instructor-led
+     code-alongs + one workshop until the capstone. Bonus arc: **HW2 plain-Python (count by hand)
+     → HW3 pandas (same logic at dataset scale)** mirrors the course's close→distant reading move.
+  2. ⬜ Default to the provided YouTube-comments corpus vs. "bring your own from the Week-2 workshop."
+  3. ⬜ Visualizations (matplotlib) in or out for Week 3.
 
 ## Other open threads / next steps
 1. **Confirm scope** — drop-portfolio (current) vs. full-arc-tightened vs. foundations-only.
