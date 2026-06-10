@@ -223,9 +223,23 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
 1. **Confirm scope** — drop-portfolio (current) vs. full-arc-tightened vs. foundations-only.
 3. **Walsh-prereq strip on ported notebooks** — Tutorials 1–4 and the code-alongs open with an
    "assumes Walsh Ch 4–8" block; remove/replace as each is ported (HW1 already done).
-4. **Port the carry-over-ready code-alongs** into this repo per the schedule (Variables already here;
-   StrMethods/Conditionals/Loops, Lists/Loops, Dictionaries/Functions, Pandas 01/02, Instant Data
-   Scraper, VADER, Topic Modeling). Dedup the topic-modeling notebooks (F25-canonical = combined Gensim).
+4. **Port the carry-over-ready code-alongs — IN PROGRESS (foundations-first pilot).** Goal: every
+   *coding* session in `COURSE_SCHEDULE_2026.md` names a real notebook (kill the conceptual bleed).
+   - **Already in 2026:** Variables/DataTypes, Lists/Loops/Conditionals (combined; covers Days 3–4).
+   - ✅ **Pilot done:** `notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb` (Day 5) —
+     ported from F25 (52 cells → focused 35) into the **2026 code-along style** (warm cultural
+     examples; concept→code→"your turn"; Putting-It-Together / Sneak Preview / Playground; `colab`
+     metadata matched). Walsh-independent; builds a `count_words` dict → `Counter` to **seed Week-2
+     term frequency**. Built by `_build_dictfunc.py`; **all 17 code cells validated top-to-bottom.**
+   - **Decision (pilot fidelity):** match-2026-style (not faithful F25 copy) — confirmed.
+   - **Remaining ports (batch after pilot review):** Strings & string methods (Day 2; partial today
+     lives in the Variables nb), Pandas 01 + Instant Data Scraper (Day 8), Pandas 02 (Day 9), VADER
+     (Days 11–12), Topic Modeling Gensim (Days 14–15; dedup → combined Gensim). Open: **term frequency
+     (Day 6)** has no F25 standalone code-along — build a short one or teach via HW2.
+   - **Also relabel genuinely non-coding days** in the schedule (7, 10, 13, 16, 17–20) as
+     *Workshop / Work session / Lab* so their content reads as intentional, not vague code-along.
+   - **Schedule rewrite (name every notebook + relabel) deferred until the batch lands**, so the grid
+     updates in one consistent pass.
 5. ✅ **2026 syllabus authored** — `SYLLABUS_2026.md` (DRAFT for instructor review). Term Mon 7/6–Fri
    7/31, M–F 2 hrs/day = 20 sessions (calendar verified; no weekday holidays). Maps the
    `PROPOSED_4WEEK_SCHEDULE` onto real dates with due dates for HW1–4 + capstone, **3 self-reflections**
