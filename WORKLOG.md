@@ -101,6 +101,29 @@ computation *empowers* them): the flattening is the **price of the scale, and th
   empower by making audible at scale — the home for orphaned **ML9 "Going Public"**) **and** the
   student's *own* voice (ungrading + `#comments` + reflections keep the learner a person-on-the-record,
   not a number — the course empowers voice by example).
+- **Writing in the age of AI — developing your own voice through the difficulty (WRIT course!).** The
+  third movement, and the one that makes this a *writing* course: you must *remain* a human voice to do
+  justice to the human voices you hear. **Letting AI write for us forfeits the opportunity — available
+  only through the difficulty — of developing a unique voice.** Voice is forged in the friction of
+  finding words; remove the friction and you remove the forging.
+  - **The asymmetry of borrowing (core literacy):** borrowing the *tool* (code) is expected and fine —
+    nobody's voice lives in a stopword list; borrow the utility, *understand + judge* it (the
+    borrowed-code convention). Borrowing the *voice* (writing) is self-erasure — the difficulty IS the
+    point. The course teaches both coding-with-AI and writing, so it's built to teach the discernment:
+    **borrow the tool, never outsource the voice — and know which is which.**
+  - **The eerie parallel (same lesson, turned on the self):** AI-generated prose : your voice ::
+    **mean sentiment : the crowd's quarrel** — a flattening of the particular into a statistical
+    average, a *false consensus* that silences what's specific. The model writes the mean of all
+    writing; a unique voice is its opposite. The whole apparatus the course builds against false
+    consensus *in the data* applies unchanged to your own *writing*: resist the flattening — of others,
+    **and of yourself.**
+  - **Aligns with what's built:** ungrading already credits *struggle/labor/reflection over polish* —
+    it values the difficulty as the point; AI-polished prose that skips the struggle is the opposite of
+    what it rewards. Refines the syllabus **AI-use policy** (currently written mostly for code) with the
+    missing distinction: AI is fine for code-you-understand and for *feedback*, but **generating the
+    writing itself forfeits the voice the course exists to develop** (reflections, `#comments`, the
+    capstone essay are where you become a writer). Natural home: **Day 7 / ML4 AI Agency** (extend from
+    "reading AI's code" to "not ceding your voice to AI") + the **capstone essay standard**.
 - **Secures both halves:** ties the **ethics** (voice) to the **epistemics** (evidence) — a data-driven
   opinion earns the right to drive only when the data has been *heard*, not merely processed; and lands
   on the **noumena spine** (the descent is justified by the aim of hearing the aggregate; the right
