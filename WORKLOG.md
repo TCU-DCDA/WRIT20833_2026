@@ -97,6 +97,20 @@ computation *empowers* them): the flattening is the **price of the scale, and th
   are all *returning to the individual to confirm you can still hear a person, and still hear the
   disagreement.* The **close→distant→close** arc = hear one deeply → hear the many → go back to one to
   make sure the many are still people in conflict, not a manufactured consensus.
+- **The dinner-party / stadium illustration (canonical for Day 12 close-vs-distant).** A guest at a
+  12-person dinner notices a couple he just met bickering at the end of the table — a particular nuance
+  he can observe. The *same* guest watching the *same* couple from across AT&T Stadium at a Cowboys
+  game cannot. **The nuance still exists; it's only flattened from *view*.** The key refinement to the
+  whole through-line: scale **occludes** the particular (epistemic — a matter of vantage / resolution);
+  it does **not destroy** it (ontological) — the couple is still bickering, still *in* the data. So
+  "flattened from view ≠ erased from existence," which is why the quarrel is **recoverable**: change
+  vantage (close reading / reading the extremes / the human-vs-VADER check = walking down to that
+  section of the stands). And the trade runs **both ways** — from the stadium you can see the **wave**,
+  a coordinated macro-pattern of 90,000 people that *no one* at dinner-party scale could perceive (term
+  frequency + topic modeling = seeing the wave). Neither vantage is "the truth"; each is blind to what
+  the other reveals → the real argument for **close→distant→close**. *(Caveat keeping the edge: even
+  the dinner seat isn't the noumenon — the guest sees the bicker, not its whole meaning; close reading
+  is higher resolution, not truth. The analogy shakes hands with the noumena spine.)*
 - **Two referents of "voice":** the people *in* the data (protect from flattening/misrepresentation,
   empower by making audible at scale — the home for orphaned **ML9 "Going Public"**) **and** the
   student's *own* voice (ungrading + `#comments` + reflections keep the learner a person-on-the-record,
