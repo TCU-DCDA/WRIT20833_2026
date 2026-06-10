@@ -48,6 +48,29 @@ not a content cliff.
      expected, not cheating**; we build it once so you can *read and judge* a borrowed/AI
      version. Threads into **Day 7** (reading/improving AI code, ML4 AI Agency).
 
+## Epistemological spine — the noumena→wisdom keystone (course-wide frame)
+The unifying frame the course implies everywhere but never states. An F25 graphic
+(`materials/images/noumena_to_wisdom_pipeline.png`, **ported 2026-06** from F25's orphaned
+`_development/textbook/images/20833_noumena_wisdom_F25.png` — built, never wired into any
+lecture/notebook) lays out an 8-stage pipeline: **NOUMENA → PHENOMENA → RAW DATA → STRUCTURED DATA
+→ ANALYZED DATA → INSIGHT → KNOWLEDGE → WISDOM** (the DIKW pyramid extended *backward* into Kantian
+epistemology). Left half = "the score is not the sentiment / a topic is proposed not found"; right
+half = ungrading's "earned insight."
+- **The instructor's argument:** every arrow is an occasion for human bias — and bias is
+  **constitutive and cumulative, not "contaminating"** (the scare quotes matter: there's no clean
+  origin to pollute; the phenomenon is already an interpretation, each step compounds the prior). You
+  can't fix a result back to truth, only make the choices visible/accountable — which is what the
+  `#comments` rule and the 3 reflections train.
+- **Every arrow already maps to a built artifact** (collection→Day 8 scraping/wrap-fragments;
+  raw→structured→HW2 stopwords + HW3 "keep punctuation"; structured→analyzed→VADER 0.05 cutoff +
+  HW4 `num_topics`; analyzed→insight→HW4 "human names the topics"; etc.). **Full per-arrow table +
+  teaching use live in `materials/images/README.md`** (kept there so it's discoverable, not re-orphaned).
+- **Status / next:** graphic ported + documented. **Not yet wired into a lecture or the syllabus.**
+  Candidate homes: **ML0 / Day 1** (founding "what can computation know?") with a callback at each
+  unit, and/or the **Day 7** close-vs-distant hinge. Pairs with the orphaned **ML9 "Going Public"**
+  (re-home at Day 17) — together they'd give the capstone its missing epistemology. Decision for the
+  instructor: introduce the Kantian vocabulary explicitly, or keep it as the instructor's framing only.
+
 ## Done this session (all committed + pushed)
 - `PORT_ASSESSMENT_2026.md` — readiness/port analysis (kept in F25 numbering; documents history).
 - `PROPOSED_4WEEK_SCHEDULE.md` — 20-session draft (drop-portfolio scope, 2026 numbering).
