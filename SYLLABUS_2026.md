@@ -93,6 +93,27 @@ practice; passing off code you can't explain is not. When in doubt, ask.
 
 ---
 
+## Python skills map — what's taught when
+Each skill is **introduced in a live code-along**, then **practiced in the linked homework**. The
+first five rows are the Python foundations (Week 1); the rest build the analysis toolkit on top.
+
+| Skill | First taught | Practiced in |
+|---|---|---|
+| Variables & data types (text, numbers, `True`/`False`) | **Day 1** (Mon 7/6) | HW1 · everything after |
+| Strings & string methods (`.lower()`, `.split()`, `in`) | **Day 2** (Tue 7/7) | HW1, HW2 |
+| Comparisons & conditionals (`if`/`elif`/`else`, `and`/`or`/`not`) | **Day 3** (Wed 7/8) | HW1 |
+| Lists & loops (`for`, indexing, `.append()`) | **Day 4** (Thu 7/9) | HW1, HW2 |
+| Functions & dictionaries | **Day 5** (Fri 7/10) | HW1 · reused in every HW |
+| Counting & term frequency (`Counter`, stopwords) | **Day 6** (Mon 7/13) | HW2 |
+| pandas DataFrames (load, columns, `.head()`) | **Day 8** (Wed 7/15) | HW3, HW4, capstone |
+| Cleaning & `.apply()` over a column | **Day 9** (Thu 7/16) | HW3, HW4 |
+| Sentiment with VADER *(a borrowed tool)* | **Day 11** (Mon 7/20) | HW3 |
+| Grouping & charts (`groupby`, `df.plot`) | **Days 9–13** | HW3, HW4 |
+| Topic modeling with Gensim LDA *(a borrowed tool)* | **Day 14** (Thu 7/23) | HW4, capstone |
+
+*Nothing is assessed before it's taught: each homework is assigned only after its skills appear in
+class (e.g. HW1 goes out Day 5, once all five foundations are covered).*
+
 ## Schedule (20 sessions)
 *Times are class days; "Due" items are due by the start of class that day unless noted. D2L discussion
 posts open Monday of their week.*
