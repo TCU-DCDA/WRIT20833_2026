@@ -22,6 +22,14 @@ not a content cliff.
 - **VADER stays**; topic modeling is **Gensim** (F25 replaced MALLET with Gensim).
 - **Walsh independence is course-wide** — Walsh is optional reading only, credited as
   inspiration/model in `ACKNOWLEDGMENTS.md`.
+- **Ungrading evaluation (course-wide)** — carries F25's philosophy ("earned insight over
+  clean code", see `PORT_ASSESSMENT_2026.md`). Work is evaluated on engagement, reflection,
+  and labor — the required `#comments`, predict-then-run guesses, Weekly Experiments, and
+  reflective write-ups — **not** on correctness scores. Implications for authoring: avoid
+  "grade/points/score" framing (say "evaluated/expected/complete"); answer keys are
+  **instructor references + discussion fodder, not rubrics**; Submit checklists emphasize
+  completion + reflection over right answers. The capstone "essay weight" open decision means
+  *emphasis/expectation*, not a points scheme.
 - **Assignment renumbering (2026):** HW1 = foundations · HW2 = term freq · HW3 = freq+sentiment
   · HW4 = topic modeling+integration · Capstone. (F25 map: HW1=F25 HW2, HW2=F25 HW1,
   HW3=F25 HW4-1, HW4=F25 HW4-2.)
@@ -120,7 +128,7 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
 - **Fits the conventions:** VADER is the textbook case of the "honest about borrowed code" convention
   (a pip-installed sentiment model nobody writes from scratch). Corpus reuse keeps HW2→HW3 continuity.
 - **Decisions:**
-  1. ✅ **SETTLED — keep pandas.** HW3 is the first *graded, independent* pandas application: pandas
+  1. ✅ **SETTLED — keep pandas.** HW3 is the first *independent (solo)* pandas application: pandas
      is taught Days 8–9 (CA Pandas 01/02) and practiced in the Day 10 workshop (whose schedule row
      literally reads "→ sets up HW3"), then reused for topic modeling (Days 14–15), integration
      (Day 16), and the capstone. Without it here, pandas only ever appears in instructor-led
