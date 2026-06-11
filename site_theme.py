@@ -96,6 +96,43 @@ footer{font:11.5px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-
 
 @media (max-width:720px){.c-lec,.c-due{width:auto;} body{font-size:15px;}}
 @media print{body{background:#fff;border-top-color:#000;} .week{break-inside:avoid;}}
+
+/* ---- site components (landing dashboard) ---- */
+/* top nav — an anchor launchpad */
+.topnav{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;
+  background:var(--paper);border-bottom:1px solid var(--rule);padding:11px 0;margin-bottom:6px;
+  font:600 12.5px/1 var(--sans);}
+.topnav a{color:var(--green);border:none;}
+.topnav a:hover{color:var(--clay);}
+.topnav .spacer{flex:1;}
+.topnav .ext{font:600 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+/* sections */
+.sec{margin:38px 0 0;}
+.sec>h2{display:flex;align-items:baseline;gap:10px;font-size:21px;margin:0;
+  padding-bottom:8px;border-bottom:2px solid var(--green);}
+.sec>h2 .n{font:600 12px/1 var(--mono);color:var(--clay);letter-spacing:.1em;}
+.sec>.lede{margin:12px 0 16px;color:var(--muted);font-size:14px;max-width:76ch;}
+
+/* card grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:14px;margin-top:16px;}
+.card{display:block;border:1px solid var(--rule);border-left:3px solid var(--green-mid);
+  border-radius:3px;background:var(--surface);padding:14px 16px;color:inherit;}
+a.card{text-decoration:none;border-bottom:none;}
+a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--green) 3%,var(--surface));}
+.card .lbl{font:600 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.card h3{margin:6px 0 5px;font-size:16px;line-height:1.22;}
+.card p{margin:0;font-size:13px;color:var(--muted);line-height:1.5;}
+.card .when{display:inline-block;font:600 10.5px/1 var(--mono);color:var(--clay);margin-top:9px;letter-spacing:.03em;}
+.card.soon{opacity:.62;} .card.soon:hover{border-left-color:var(--green-mid);background:var(--surface);}
+
+/* resource list */
+.reslist{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px 26px;
+  list-style:none;padding:0;margin:16px 0 0;}
+.reslist li{font-size:14px;border-bottom:1px solid var(--rule);padding:8px 0;}
+.reslist li .k{display:block;font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:3px;}
+.muted{color:var(--muted);}
 """
 
 
