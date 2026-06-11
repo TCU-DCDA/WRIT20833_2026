@@ -1,10 +1,13 @@
 # WORKLOG — WRIT 20833 2026 port (session handoff)
 
-**Branch:** `claude/port-strings-codealong` (prior work merged to `main` via PR #1) · **Last updated:** 2026-06-11
+**Branch:** `claude/port-strings-codealong` (open PR #2 to `main`) · **Last updated:** 2026-06-11
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
-Read this first, then `PORT_ASSESSMENT_2026.md` (context) and `PROPOSED_4WEEK_SCHEDULE.md`
-(the plan + open decisions).
+Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and
+`planning/PROPOSED_4WEEK_SCHEDULE.md` (the plan + open decisions).
+**Note the 2026-06 reorg:** the published course site is in `docs/`; instructor process docs (incl. this
+file) moved to `planning/`; TCU/AddRan source docs are in `reference/`; answer keys + HW builders live in
+the private `TCU-DCDA/WRIT20833_2026_keys`.
 
 ---
 
