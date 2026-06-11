@@ -387,6 +387,22 @@ this repo's git history** (BFG, 2026-06-11) and `main` + the PR branch were forc
 **To edit a key:** do it in the keys repo, regenerate, and copy the regenerated *student* notebook back
 here. (Residual: the old commit SHAs may stay cached server-side on a private repo until GitHub GC.)
 
+## Working across two machines (solo dev)
+Sole maintainer, two machines. Normally just `git pull` / `git push` as usual — BUT after a **history
+rewrite** (like the BFG key scrub above), the other machine's clone has diverged from the rewritten
+remote, so a plain `pull` would try to merge the old history back (and could reintroduce scrubbed files).
+After any force-push, re-sync the **other** machine with a hard reset instead of a pull:
+```
+git fetch origin --prune
+git checkout main && git reset --hard origin/main
+git checkout <feature-branch> && git reset --hard origin/<feature-branch>   # if present locally
+git reflog expire --expire=now --all && git gc --prune=now --aggressive      # drop old objects
+git log --all --oneline -- '*_ANSWER_KEY.ipynb' 'notebooks/homework/_build_hw*.py'   # expect empty
+```
+Stash/commit any uncommitted work first (`reset --hard` discards it). **Do not push from the stale
+machine before resetting** — it would force the old history (and the keys) back onto the remote. The
+private keys repo (`WRIT20833_2026_keys`) can be cloned on both machines independently.
+
 ## Useful facts for a fresh session
 - The F25 source repo is **public**; if it's out of session scope, you can still read files via
   `raw.githubusercontent.com/TCU-DCDA/WRIT20833_2025/main/<path>` or `git clone` it (github.com is
