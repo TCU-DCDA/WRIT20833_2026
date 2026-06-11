@@ -265,9 +265,25 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
      convention (VADER = pip-installed model we run to *judge*). Dropped F25's TextBlob detour +
      multi-panel viz; kept one light bar (mean tone by stance) + a where-VADER-breaks sarcasm set.
      VADER is deterministic but no scores hardcoded in prose (all printed) → no drift.
-   - **Remaining ports (batch after pilot review):** Topic Modeling Gensim (Days 14–15; dedup →
-     combined Gensim). Open: **term frequency (Day 6)** has no F25 standalone code-along — build a
-     short one or teach via HW2.
+   - ✅ **Topic Modeling with Gensim (Days 14–15) DONE** — `notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb`
+     (built by `_build_topicmodeling.py`; all 13 code cells validated with gensim 4.3.0 via
+     `/opt/anaconda3/bin/python` — `!pip` skipped). **Dedups F25's THREE overlapping topic-modeling
+     notebooks** (Gensim 41c + Part1 29c + Part2 24c) into one combined code-along spanning both
+     sessions. **Aligns with HW4's simplified stack:** gensim only (NO nltk/WordNet, NO pyLDAvis) and
+     reuses HW4's EXACT `split_into_words` + `stopwords` (copied verbatim into the builder) so
+     code-along preprocessing == homework preprocessing. **Teaches on a clear 3-theme toy corpus**
+     (sports/music/food, 15 short docs → LDA separates into nameable topics: food/music/sports), **then
+     applies to the real single-issue Ten Commandments comments to show the limit** (one debate = no
+     distinct subjects to find; Day-15 "limits" lesson + matches the HW4 single-issue caveat). Part 2 =
+     the `num_topics` knob (2 vs 4) as an authored choice. Dominant-topic-per-doc framed honestly as a
+     *mixture* (short docs → fuzzy assignment). **No topic words hardcoded in prose** (LDA stochastic/
+     version-sensitive) — all printed, described qualitatively, like HW4's key.
+   - ✅ **CODE-ALONG BATCH COMPLETE** (Strings, Pandas 01, Pandas 02, VADER, Topic Modeling). The three
+     analytics notebooks share ONE corpus arc: Day 8 builds the comments table → Day 9 cleans it →
+     Days 11–12 score sentiment → Days 14–15 (limits) — the same corpus HW3/HW4 use.
+   - **Still open: Day-6 term frequency** has no F25 standalone code-along — build a short one or teach
+     via HW2. **And the schedule rewrite** (name every notebook + relabel non-coding days) — now
+     unblocked since the batch has landed.
    - **Also relabel genuinely non-coding days** in the schedule (7, 10, 13, 16, 17–20) as
      *Workshop / Work session / Lab* so their content reads as intentional, not vague code-along.
    - **Schedule rewrite (name every notebook + relabel) deferred until the batch lands**, so the grid
