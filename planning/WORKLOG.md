@@ -35,6 +35,12 @@ not a content cliff.
     that contradicts ungrading + "errors are learning" (and HW1's own A4/experiments). House wording:
     *"I ran every cell. Where something still breaks, I left a `#comment` about what I tried and what I
     learned — errors are part of the work here, not something to hide or delete."* Applied to HW1–4.
+  - **`#comments` requirement wording (same date/scope):** not "Required: `#comments` in **every** code
+    block" / "Every code cell has `#comments`" (reads as a per-line mandate). House wording keeps the
+    expectation but drops the rigidity — heading *"Expected: frequent, meaningful `#comments`"* (comment
+    often and wherever a choice/question comes up, not every line; **frequent, relevant comments are
+    expected** — they're where thinking shows); submit *"I used `#comments` frequently and meaningfully…
+    (not every line, but throughout)."*
 - **Assignment renumbering (2026):** HW1 = foundations · HW2 = term freq · HW3 = freq+sentiment
   · HW4 = topic modeling+integration · Capstone. (F25 map: HW1=F25 HW2, HW2=F25 HW1,
   HW3=F25 HW4-1, HW4=F25 HW4-2.)
