@@ -133,14 +133,84 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .reslist li .k{display:block;font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
   color:var(--faint);margin-bottom:3px;}
 .muted{color:var(--muted);}
+
+/* ---- two-column app layout (left sidebar) ---- */
+.app{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh;}
+.sidebar{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;
+  background:color-mix(in srgb,var(--green) 5%,var(--paper));border-right:1px solid var(--rule);
+  padding:26px 20px;}
+.sidebar .brand{font:600 10.5px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--clay);margin-bottom:6px;}
+.sidebar .brandname{display:block;font-family:var(--serif);font-size:18px;line-height:1.18;
+  color:var(--green);margin-bottom:24px;}
+.sidenav{display:flex;flex-direction:column;gap:2px;}
+.sidenav a{display:flex;align-items:baseline;gap:9px;padding:8px 11px;border-radius:6px;border:none;
+  color:var(--ink);font:600 13.5px/1.2 var(--sans);}
+.sidenav a .n{font:600 10px/1 var(--mono);color:var(--faint);min-width:16px;}
+.sidenav a:hover{background:color-mix(in srgb,var(--green) 9%,transparent);color:var(--green);}
+.sidenav a.active{background:var(--green);color:var(--paper);}
+.sidenav a.active .n{color:color-mix(in srgb,var(--paper) 65%,transparent);}
+.side-ext{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:9px;}
+.side-ext a{border:none;font:600 11px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);}
+.side-ext a:hover{color:var(--clay);}
+.main{min-width:0;padding:34px 34px 64px;}
+.main>*{max-width:960px;}
+
+/* week sub-groups (e.g. code-alongs split by week) */
+.wkgroup{margin-top:20px;}
+.wkgroup>h3{display:flex;align-items:baseline;gap:9px;margin:0 0 2px;font-family:var(--sans);
+  font-size:14px;color:var(--green);}
+.wkgroup>h3 .wkn{font:600 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--clay);}
+
+@media (max-width:860px){
+  .app{grid-template-columns:1fr;}
+  .sidebar{position:static;height:auto;overflow:visible;border-right:none;
+    border-bottom:1px solid var(--rule);padding:14px 18px;}
+  .sidebar .brandname{display:none;} .sidebar .brand{margin-bottom:10px;}
+  .sidenav{flex-direction:row;flex-wrap:wrap;gap:4px 6px;}
+  .sidenav a{padding:5px 9px;font-size:12.5px;}
+  .sidenav a .n{display:none;}
+  .side-ext{flex-direction:row;gap:14px;margin-top:12px;padding-top:12px;}
+  .main{padding:22px 18px 48px;}
+}
 """
 
 
-def PAGE(title, body, extra_css=""):
-    """Wrap an HTML body fragment in a full self-contained document with the course theme."""
+def PAGE(title, body, extra_css="", wrap=True):
+    """Wrap an HTML body fragment in a full self-contained document with the course theme.
+
+    wrap=True  -> body is centered in a max-width column (.wrap) — single-column pages.
+    wrap=False -> body is emitted as-is — for full-bleed layouts like the sidebar shell (.app).
+    """
+    inner = f'<div class="wrap">{body}</div>' if wrap else body
     return (
         '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         f"<title>{title}</title>\n<style>{THEME_CSS}{extra_css}</style></head>\n"
-        f'<body><div class="wrap">{body}</div></body></html>\n'
+        f"<body>{inner}</body></html>\n"
     )
+
+
+def sidebar(brand_kicker, brand_name, nav_items, externals):
+    """Build the left sidebar. nav_items: [(href, label, num_or_None)]; externals: [(href, label)]."""
+    links = "".join(
+        f'<a href="{href}">' + (f'<span class="n">{n}</span>' if n else "") + f"{label}</a>"
+        for (href, label, n) in nav_items
+    )
+    ext = "".join(f'<a href="{href}">{label}</a>' for (href, label) in externals)
+    return (
+        '<aside class="sidebar">'
+        f'<div class="brand">{brand_kicker}</div>'
+        f'<span class="brandname">{brand_name}</span>'
+        f'<nav class="sidenav">{links}</nav>'
+        f'<div class="side-ext">{ext}</div>'
+        "</aside>"
+    )
+
+
+def shell(side, main):
+    """Two-column app layout: sticky left sidebar + main content."""
+    return f'<div class="app">{side}<main class="main">{main}</main></div>'
