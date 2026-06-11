@@ -1,6 +1,6 @@
 # WORKLOG — WRIT 20833 2026 port (session handoff)
 
-**Branch:** `claude/tender-thompson-13o19u` · **Last updated:** 2026-06-10
+**Branch:** `claude/port-strings-codealong` (prior work merged to `main` via PR #1) · **Last updated:** 2026-06-11
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
 Read this first, then `PORT_ASSESSMENT_2026.md` (context) and `PROPOSED_4WEEK_SCHEDULE.md`
@@ -224,10 +224,38 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
      metadata matched). Walsh-independent; builds a `count_words` dict → `Counter` to **seed Week-2
      term frequency**. Built by `_build_dictfunc.py`; **all 17 code cells validated top-to-bottom.**
    - **Decision (pilot fidelity):** match-2026-style (not faithful F25 copy) — confirmed.
-   - **Remaining ports (batch after pilot review):** Strings & string methods (Day 2; partial today
-     lives in the Variables nb), Pandas 01 + Instant Data Scraper (Day 8), Pandas 02 (Day 9), VADER
-     (Days 11–12), Topic Modeling Gensim (Days 14–15; dedup → combined Gensim). Open: **term frequency
-     (Day 6)** has no F25 standalone code-along — build a short one or teach via HW2.
+   - ✅ **Strings & string methods (Day 2) DONE** — `notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb`
+     (built by `_build_strings.py`; all 21 demo code cells validated top-to-bottom). Ports the **string
+     half** of F25's `StrMethods_Conditionals_Loops` (the comparisons/conditionals/lists/loops half already
+     lives in `Lists_Loops_Conditionals_2026`, Days 3–4, so this is strings-ONLY). Goes deeper than the
+     Day-1 Variables string section by adding replace, strip, membership (`in`), join, startswith/endswith,
+     and a chained "clean a real comment → split → count" routine that seeds Week-2 term frequency.
+     Walsh- and Drive-mount-independent (F25 read Kafka off Google Drive; here the text is inline).
+   - ✅ **Found Data & Pandas Fundamentals (Day 8) DONE** — `notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb`
+     (built by `_build_pandas01.py`; all 19 code cells validated top-to-bottom with pandas 2.1.4 +
+     matplotlib via `/opt/anaconda3/bin/python`). **Merges the two F25 Day-8 notebooks** (Pandas 01
+     Found Data, 54 cells + Instant Data Scraper Ethics, 31 cells) into one 2-hr arc: **collection
+     ethics first** (3 pillars: robots.txt / fair-use+scale / attribution; Instant Data Scraper as the
+     no-code tool; robots.txt status-code helper that runs **offline** — live `requests` shown
+     commented), **then pandas fundamentals** (read DataFrame · head/shape/info · select cols Series-vs-
+     DataFrame · boolean filter · value_counts · stats · one light `df.plot` bar) on an **inline sample
+     of real-shaped TX-Ten-Commandments YouTube comments** (cols: comment/stance/likes/replies) — the
+     course's actual corpus theme, the same table HW3/HW4 run on. **Cleaning deferred to Pandas 02.**
+     No output values hardcoded in markdown (all computed), so nothing drifts. (Aside: the most-liked
+     opposing comment computes to "Put the Constitution in classrooms…", echoing the real corpus.)
+   - ✅ **Data Cleaning with Pandas (Day 9) DONE** — `notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb`
+     (built by `_build_pandas02.py`; all 16 code cells validated with pandas via `/opt/anaconda3/bin/python`).
+     Ports F25's Pandas 02 (57 cells, literary dataset) trimmed to the **cleaning core**: diagnose
+     (isnull/unique/duplicated) → clean text (`.str.strip/.replace`) → standardize categories
+     (`.str.lower` + `.replace` synonym map) → handle missing (`fillna(median)` + ethics-of-filling) →
+     `drop_duplicates`. **Continuity move:** cleans a *messy version of Day-8's same YouTube-comments
+     table* (8 stance spellings, whitespace/newlines, 1 missing likes, 1 exact dup) back into the tidy
+     table — 12→11 rows; stance collapses to oppose 5 / support 4 / neutral 2. Dropped F25's heavy
+     multi-agg groupby, bubble charts, regex author-origin guessing. Sneak Preview → Day-10 "clean YOUR
+     data" workshop + Week-3 VADER. All values computed (none asserted in prose).
+   - **Remaining ports (batch after pilot review):** VADER (Days 11–12), Topic Modeling Gensim
+     (Days 14–15; dedup → combined Gensim). Open: **term frequency (Day 6)** has no F25 standalone
+     code-along — build a short one or teach via HW2.
    - **Also relabel genuinely non-coding days** in the schedule (7, 10, 13, 16, 17–20) as
      *Workshop / Work session / Lab* so their content reads as intentional, not vague code-along.
    - **Schedule rewrite (name every notebook + relabel) deferred until the batch lands**, so the grid
