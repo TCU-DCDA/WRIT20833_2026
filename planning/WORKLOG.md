@@ -30,6 +30,11 @@ not a content cliff.
   **instructor references + discussion fodder, not rubrics**; Submit checklists emphasize
   completion + reflection over right answers. The capstone "essay weight" open decision means
   *emphasis/expectation*, not a points scheme.
+  - **Submit-checklist wording (fixed 2026-06-11, applies to all HW + future assignments):** do **not**
+    ask that the notebook "runs top to bottom without errors" — that's a clean-code/correctness demand
+    that contradicts ungrading + "errors are learning" (and HW1's own A4/experiments). House wording:
+    *"I ran every cell. Where something still breaks, I left a `#comment` about what I tried and what I
+    learned — errors are part of the work here, not something to hide or delete."* Applied to HW1–4.
 - **Assignment renumbering (2026):** HW1 = foundations · HW2 = term freq · HW3 = freq+sentiment
   · HW4 = topic modeling+integration · Capstone. (F25 map: HW1=F25 HW2, HW2=F25 HW1,
   HW3=F25 HW4-1, HW4=F25 HW4-2.)
