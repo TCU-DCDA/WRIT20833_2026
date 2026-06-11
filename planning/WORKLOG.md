@@ -336,7 +336,7 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
 11. **TCU syllabus compliance — ✅ VERIFIED COMPLETE for course-specific content (2026-06-11).** Did a
     full item-by-item gap-check of `SYLLABUS_2026.md` against the **actual** TCU checklist PDF
     (`reference/TCU-Syllabus-Template-checklist-FINAL-9-2024.pdf`): every required section is present and
-    correctly scaffolded. Crosswalk captured in **`docs/SYLLABUS_COMPLIANCE.md`** (each checklist item →
+    correctly scaffolded. Crosswalk captured in **`planning/SYLLABUS_COMPLIANCE.md`** (each checklist item →
     where met → ✅ done / 🟦 instructor field / 📋 paste official text). Closed the one authorable gap by
     adding a **"Course Assignments & Final Grade" table** (checklist wants an assignments/points table;
     ours maps components to the ungrading 3-point scale + role, no points). Fixed moved template-path refs
@@ -421,8 +421,23 @@ D2L / email). Direction: *coding meets culture* → an editorial "reading room":
 deep muted **greens** (week tints deepen `#3a6b54`→`#1e3b2f` across the term), **serif** headings +
 **monospace** data accents + sans body, **green** links (not default blue), one **clay** warm accent,
 hairline rules instead of drop-shadow cards, and a restrained earthy mode-pill palette (no rainbow).
-First applied to `COURSE_SCHEDULE_2026.html` (via `build_schedule_html.py`). **Still a draft for
-instructor taste** — palette/type are tokens, easy to retune; not yet applied to other pages.
+**Still a draft for instructor taste** — palette/type are tokens, easy to retune.
+
+**Site layout (Pages-friendly, F25 parity) — 2026-06-11.** The published site lives in **`docs/`** (so it
+can be served by GitHub Pages → *Deploy from branch* → `main` /`docs`). The old instructor process-docs
+were moved out of `docs/` to **`planning/`** (WORKLOG, PORT_ASSESSMENT, PROPOSED_4WEEK_SCHEDULE,
+CONCEPTUAL_FRAMEWORK, ACKNOWLEDGMENTS, SYLLABUS_COMPLIANCE). Site pages:
+- `docs/index.html` — landing **dashboard** (built by `build_index.py`), modeled on last year's site IA
+  (nav + sectioned card grids): Start here · Code-alongs · Homework · Capstone & stylometry · Lectures
+  (placeholders) · Resources.
+- `docs/schedule.html` — the schedule (built by `build_schedule_html.py`).
+Because Pages serves only `/docs`, links to things **outside** docs/ are absolute: notebooks → **Colab**
+(`colab.research.google.com/github/.../blob/main/...`), repo files (syllabus, stylometry handout) →
+**GitHub blob**. Intra-site links (index→schedule) stay relative. CSS is still **inlined** per page
+(self-contained), not a shared stylesheet. Generators (`site_theme.py`, `build_index.py`,
+`build_schedule_html.py`) sit at repo root and write into `docs/`.
+**To publish:** make the repo public, then *Settings → Pages → Deploy from branch → `main` / `docs`*.
+Colab/badge links resolve only once public.
 
 ## Useful facts for a fresh session
 - The F25 source repo is **public**; if it's out of session scope, you can still read files via
