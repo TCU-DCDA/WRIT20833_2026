@@ -375,9 +375,21 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
    Syllabus-Template-Online.docx]` placeholders; write only the *course-specific* content. Online
    template also requires that any tables/images be **accessible**.
 
+## Answer keys live in a PRIVATE companion repo (2026-06-11)
+This course repo is **student-facing** (Colab badges + the HW data-loader resolve against
+`raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/...`), so answer keys must **never** be committed
+here. They — plus the **solution-bearing** homework builders (`_build_hw2/3/4.py`, which generate both the
+student notebook and the key) — now live in the private repo **`TCU-DCDA/WRIT20833_2026_keys`** (HW1's key
+is hand-authored, no builder). This repo `.gitignore`s `*_ANSWER_KEY.ipynb` and
+`notebooks/homework/_build_hw*.py` so they can't return by accident. The keys were also **scrubbed from
+this repo's git history** (BFG, 2026-06-11) and `main` + the PR branch were force-pushed (old tip
+`2424d13` → `bb6b2fb`); local clones must re-sync (`git fetch && git reset --hard origin/<branch>`).
+**To edit a key:** do it in the keys repo, regenerate, and copy the regenerated *student* notebook back
+here. (Residual: the old commit SHAs may stay cached server-side on a private repo until GitHub GC.)
+
 ## Useful facts for a fresh session
 - The F25 source repo is **public**; if it's out of session scope, you can still read files via
   `raw.githubusercontent.com/TCU-DCDA/WRIT20833_2025/main/<path>` or `git clone` it (github.com is
   reachable). The Pages site `tcu-dcda.github.io` is NOT reachable from the sandbox allowlist.
 - F25 full asset inventory is in that repo's `README.md`.
-- No PR has been opened for this branch (per instructions — only on request).
+- Code-along batch + Day-6 term frequency shipped on PR #2 (`claude/port-strings-codealong`).
