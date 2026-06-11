@@ -253,9 +253,21 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
      table — 12→11 rows; stance collapses to oppose 5 / support 4 / neutral 2. Dropped F25's heavy
      multi-agg groupby, bubble charts, regex author-origin guessing. Sneak Preview → Day-10 "clean YOUR
      data" workshop + Week-3 VADER. All values computed (none asserted in prose).
-   - **Remaining ports (batch after pilot review):** VADER (Days 11–12), Topic Modeling Gensim
-     (Days 14–15; dedup → combined Gensim). Open: **term frequency (Day 6)** has no F25 standalone
-     code-along — build a short one or teach via HW2.
+   - ✅ **Sentiment Analysis with VADER (Days 11–12) DONE** — `notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb`
+     (built by `_build_vader.py`; all 16 code cells validated with vaderSentiment + pandas via
+     `/opt/anaconda3/bin/python` — `!pip` magic skipped in validation). Ports F25's VADER notebook
+     (32 cells) as one basics→deep-dive arc spanning both sessions. **Continuity:** scores the SAME
+     cleaned comments table from Days 8–9 (comment + hand `stance`). **Payoff exercise** compares
+     VADER's *tone* to the human *stance* and shows they're different axes — the lone computed mismatch
+     is "Freedom of religion means freedom from it too" (stance=oppose, VADER=positive, because
+     "freedom" scores positive regardless of side) = the Day-12 close-vs-distant-reading lecture made
+     concrete + the WORKLOG-flagged human-vs-automated check. Keeps the "honest about borrowed code"
+     convention (VADER = pip-installed model we run to *judge*). Dropped F25's TextBlob detour +
+     multi-panel viz; kept one light bar (mean tone by stance) + a where-VADER-breaks sarcasm set.
+     VADER is deterministic but no scores hardcoded in prose (all printed) → no drift.
+   - **Remaining ports (batch after pilot review):** Topic Modeling Gensim (Days 14–15; dedup →
+     combined Gensim). Open: **term frequency (Day 6)** has no F25 standalone code-along — build a
+     short one or teach via HW2.
    - **Also relabel genuinely non-coding days** in the schedule (7, 10, 13, 16, 17–20) as
      *Workshop / Work session / Lab* so their content reads as intentional, not vague code-along.
    - **Schedule rewrite (name every notebook + relabel) deferred until the batch lands**, so the grid

@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3)"
+      "Bash(python3)",
+      "Bash(python3 notebooks/codeAlongs/_build_vader.py)",
+      "Bash(MPLBACKEND=Agg /opt/anaconda3/bin/python -)"
     ]
   }
 }
