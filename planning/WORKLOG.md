@@ -434,6 +434,16 @@ CONCEPTUAL_FRAMEWORK, ACKNOWLEDGMENTS, SYLLABUS_COMPLIANCE). Site pages:
   anchors + a Dashboard back-link.
 Sidebar/shell are shared helpers in `site_theme.py` (`sidebar()`, `shell()`, `PAGE(..., wrap=False)`);
 collapses to a top bar under 860px.
+
+**Open design questions (revisit later):**
+- **Sidebar icons** — F25 used lucide icons next to each nav item; ours is text-only. Add inline-SVG
+  icons (keep self-contained — no external icon CDN) or leave text-only?
+- **Nav behavior** — ours is plain anchor scroll-to-section; F25 used JS to *filter* the dashboard to
+  one category at a time. Keep scroll, or add the filter?
+- **Themed `docs/syllabus.html`** — dashboard currently links the syllabus as raw markdown on GitHub;
+  build a themed HTML syllabus page (a `build_syllabus.py` from `SYLLABUS_2026.md`).
+- **Tidy root** — optionally move `site_theme.py` + `build_*.py` into a `tools/` folder.
+- **Theme retune** — palette/type are tokens; revisit greens/serif once lived-with.
 Because Pages serves only `/docs`, links to things **outside** docs/ are absolute: notebooks → **Colab**
 (`colab.research.google.com/github/.../blob/main/...`), repo files (syllabus, stylometry handout) →
 **GitHub blob**. Intra-site links (index→schedule) stay relative. CSS is still **inlined** per page
