@@ -323,8 +323,8 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
    pointing at the actual corpus, as a vivid case of the noumena limit (religious conviction = an
    interiority distant reading can't reach). **Undecided — instructor's call.**
 10. **TCU Core Curriculum — CSV vetting (context + a task).** The course **carries Citizenship & Social
-    Values (CSV)** credit. Vetting docs are in the repo root: `TCU-Core-Curriculum-outcomes-1.pdf`
-    (current outcomes matrix) + `Citizenship-and-Social-Values-5-5-10.doc` (older HMVV form). Current CSV
+    Values (CSV)** credit. Vetting docs are in `reference/`: `reference/TCU-Core-Curriculum-outcomes-1.pdf`
+    (current outcomes matrix) + `reference/Citizenship-and-Social-Values-5-5-10.doc` (older HMVV form). Current CSV
     outcome: *"examine the knowledge, skills, values, or motivation needed to participate or lead within
     diverse communities."* The course meets it directly (a contested public-policy debate = a diverse
     community in disagreement; the data-driven-opinion capstone + discussions + reflections are the
@@ -333,8 +333,18 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
     wanted:** draft the **2–3 concrete student-work examples** the CSV submission form requires (from the
     capstone + discussions), once the instructor confirms the exact outcome to claim.
 
-11. **TCU syllabus compliance — ✅ REBUILT (course-specific content done; boilerplate placeholders +
-    2 registrar fields remain).** `SYLLABUS_2026.md` restructured to the **TCU Online Syllabus
+11. **TCU syllabus compliance — ✅ VERIFIED COMPLETE for course-specific content (2026-06-11).** Did a
+    full item-by-item gap-check of `SYLLABUS_2026.md` against the **actual** TCU checklist PDF
+    (`reference/TCU-Syllabus-Template-checklist-FINAL-9-2024.pdf`): every required section is present and
+    correctly scaffolded. Crosswalk captured in **`docs/SYLLABUS_COMPLIANCE.md`** (each checklist item →
+    where met → ✅ done / 🟦 instructor field / 📋 paste official text). Closed the one authorable gap by
+    adding a **"Course Assignments & Final Grade" table** (checklist wants an assignments/points table;
+    ours maps components to the ungrading 3-point scale + role, no points). Fixed moved template-path refs
+    (`Syllabus-Template-Online.docx` → `reference/…`). **Remaining is instructor/registrar-only:** the
+    `[...]` fields (name, contact, section, credit hours, component type, Zoom, response time, office
+    hours) + 📋 official boilerplate pasted verbatim. The detailed gap notes below are **superseded by the
+    crosswalk doc** (kept for history).
+    `SYLLABUS_2026.md` was restructured to the **TCU Online Syllabus
     Template**: full Course Information block, Course Description + CSV core, Learning Outcomes (+ CSV),
     Course Materials, Teaching Philosophy, Course Policies & Requirements (Assignments, the 3 reflections
     + 4 discussions, **Grading**, Grading Concerns, Late Work, Participation/Attendance, Class Norms &
@@ -348,9 +358,9 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
     Recording, Emergency Response, TCU Online section, Student Resources link+QR, Netiquette, Email,
     Recording) from `Syllabus-Template-Online.docx` — *not fabricated*, marked `[paste …]`; fill
     instructor `[...]` fields; confirm catalog description + exact CSV outcome wording.
-    Earlier gap-analysis context (now resolved): template + checklist in repo root
-    (`2024-25-Syllabus-Template-Final-9-2024-1.docx`, `TCU-Syllabus-Template-checklist-FINAL-9-2024.pdf`,
-    `Syllabus-Template-Online.docx`). **Already present:** course title, term, meeting
+    Earlier gap-analysis context (now resolved): template + checklist in `reference/`
+    (`reference/2024-25-Syllabus-Template-Final-9-2024-1.docx`, `reference/TCU-Syllabus-Template-checklist-FINAL-9-2024.pdf`,
+    `reference/Syllabus-Template-Online.docx`). **Already present:** course title, term, meeting
     days/time + online-synchronous, instructor/office-hours/email placeholders, Zoom placeholder, course
     description, prerequisites (none), course learning outcomes, **CSV core outcome** (just added),
     technology/AI policy, course description; the **course schedule** matches the template grid
