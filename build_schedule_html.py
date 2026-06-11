@@ -66,9 +66,10 @@ def render_day(cell):
     parts = label.split(" ", 1)
     wd = parts[0]
     dt = parts[1] if len(parts) > 1 else ""
-    return (f'<div class="day"><span class="num">{num}</span>'
+    return (f'<div class="day">'
             f'<span class="wd">{html.escape(wd)}</span>'
-            f'<span class="dt">{html.escape(dt)}</span></div>')
+            f'<span class="dt">{html.escape(dt)}</span>'
+            f'<span class="num">day {num}</span></div>')
 
 
 def render_coding(cell):
@@ -156,13 +157,10 @@ th, td {{ text-align:left; padding:11px 14px; vertical-align:top; border-top:1px
 thead th {{ border-top:none; font-size:12px; text-transform:uppercase; letter-spacing:.04em;
   color:var(--muted); font-weight:700; }}
 tbody tr:nth-child(even) {{ background:#fafbfc; }}
-.c-day {{ width:74px; }} .c-lec {{ width:26%; }} .c-due {{ width:24%; }}
-.day {{ position:relative; padding-left:30px; min-height:34px; }}
-.day .num {{ position:absolute; left:0; top:1px; width:22px; height:22px; border-radius:50%;
-  background:var(--ink); color:#fff; font-size:12px; font-weight:700;
-  display:flex; align-items:center; justify-content:center; }}
-.day .wd {{ display:block; font-weight:700; font-size:13px; }}
-.day .dt {{ display:block; color:var(--muted); font-size:13px; }}
+.c-day {{ width:72px; }} .c-lec {{ width:26%; }} .c-due {{ width:24%; }}
+.day .wd {{ display:block; font-weight:700; font-size:13.5px; }}
+.day .dt {{ display:block; color:#4b5563; font-size:13px; }}
+.day .num {{ display:block; color:#aab0bb; font-size:11px; margin-top:3px; letter-spacing:.02em; }}
 .c-lec {{ color:#374151; font-size:14.5px; }}
 .c-code {{ font-size:14.5px; }}
 .c-code .mode {{ margin-right:4px; vertical-align:baseline; }}
