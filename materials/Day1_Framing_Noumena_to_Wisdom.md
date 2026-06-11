@@ -6,7 +6,7 @@
 Plain language; no prior philosophy assumed. ~600 words.*
 
 > Part of the course's intellectual architecture — full treatment in
-> [`../CONCEPTUAL_FRAMEWORK_2026.md`](../CONCEPTUAL_FRAMEWORK_2026.md) (§1 the spine, §3 scale/vantage,
+> [`../planning/CONCEPTUAL_FRAMEWORK_2026.md`](../planning/CONCEPTUAL_FRAMEWORK_2026.md) (§1 the spine, §3 scale/vantage,
 > §4 the moral floor + Auden). This passage is one drafted *student-facing* realization of §1.
 
 ---

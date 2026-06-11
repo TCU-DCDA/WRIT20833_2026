@@ -4,7 +4,7 @@
 > **DRAFT for instructor review — structured to the TCU Online Syllabus Template (rev. 9/2024).**
 > Two kinds of placeholder remain: `[...]` = instructor/registrar specifics (name, contact, links,
 > credit hours), and **`[paste TCU standard text …]`** = official University policy boilerplate that
-> must be copied verbatim from `Syllabus-Template-Online.docx` (do **not** paraphrase official policy).
+> must be copied verbatim from `reference/Syllabus-Template-Online.docx` (do **not** paraphrase official policy).
 > Course-specific content is complete. Any tables/images added must meet TCU accessibility guidelines
 > (https://cte.tcu.edu/resources/accessibility/).
 
@@ -30,7 +30,7 @@
 **Response Time:** `[e.g., within 24 hours on weekdays; longer on weekends/holidays]`
 **Course site & submissions:** **TCU Online** (D2L) — `[course link]`. **Code runs in:** Google Colab (free; needs a Google account).
 
-**Student Resources & Policy Information:** `[paste TCU standard Student Resources & Policy Information block — link + QR code — from Syllabus-Template-Online.docx]`
+**Student Resources & Policy Information:** `[paste TCU standard Student Resources & Policy Information block — link + QR code — from reference/Syllabus-Template-Online.docx]`
 
 ---
 
@@ -156,6 +156,21 @@ as meeting expectations.)* The goal is **earned insight over clean code.**
 - **1 — Does not yet meet:** missing, incomplete, or minimal. The "not yet" is an invitation to revise
   where time allows.
 
+**Course assignments & final grade (at a glance).** Because this course uses **ungrading**, individual
+assignments carry **no point values** — the column a conventional syllabus fills with points is replaced
+here by the 3-point engagement scale, and the final letter is set from the *pattern* of those marks
+(below), not from a points total.
+
+| Component | How many | How it's evaluated | Role in the final grade |
+|---|---|---|---|
+| **Homework notebooks (HW1–HW4)** | 4 | 3-point scale — engagement + reflection | Core of the body-of-work floor |
+| **Weekly Experiments** (within each HW) | 2–3 per HW | 3-point, as part of each homework | The heart of the ungrading |
+| **Threaded discussions (D1–D4)** | 4 | 3-point — initial post + two replies | Part of the floor |
+| **Self-reflections (R1–R3)** | 3 | 3-point; **R3** is the final self-evaluation | R3 sets the plus/minus |
+| **Capstone** (final evaluative exercise) | 1 | 3-point; presented Fri 7/31 | Weighted most heavily in the holistic judgment |
+
+*(The capstone is the course's Final Evaluative Exercise — there is no separate final exam.)*
+
 TCU requires a final letter grade. Here is exactly how it is set — no mystery:
 
 **1. Your pattern of marks sets a whole-letter floor.** The "body of work" = the four homeworks (with
@@ -200,7 +215,7 @@ pattern of absence that endangers your standing will be reported to the Dean of 
 `[Confirm against the TCU University Attendance Policy and Official Absence Policy.]`
 
 ### Class Norms & Netiquette
-`[Paste TCU standard Class Norms & Netiquette statement from Syllabus-Template-Online.docx.]`
+`[Paste TCU standard Class Norms & Netiquette statement from reference/Syllabus-Template-Online.docx.]`
 
 **Course-specific note (important).** Our running dataset is real public comments about a 2025 law
 placing the Ten Commandments in Texas classrooms — a genuinely contested topic touching religion and the
@@ -230,7 +245,7 @@ borrowing:
 - **Recording of Class Sessions.** `[Paste TCU standard Recording-of-Class-Sessions statement.]`
 
 ### Academic Misconduct
-`[Paste TCU standard Academic Misconduct statement from Syllabus-Template-Online.docx.]` In this course:
+`[Paste TCU standard Academic Misconduct statement from reference/Syllabus-Template-Online.docx.]` In this course:
 **borrowing code is expected; submitting work (code or writing) you cannot explain or that isn't yours is
 not.** Cite your sources, including AI.
 
@@ -302,11 +317,11 @@ Boundaries," a possible ML9 "Going Public" at Day 17, and a noumena framing at D
 ---
 
 ## TCU Online: Our Learning Management System
-`[Paste the TCU Online section from Syllabus-Template-Online.docx — Getting Started, Getting Help,
+`[Paste the TCU Online section from reference/Syllabus-Template-Online.docx — Getting Started, Getting Help,
 Personal Settings & Notifications, and Student Success Tools.]`
 
 ## University Policies & Student Resources
-*Official University policy statements — paste the current text from `Syllabus-Template-Online.docx`; do
+*Official University policy statements — paste the current text from `reference/Syllabus-Template-Online.docx`; do
 not paraphrase.*
 - **Anti-Discrimination & Title IX Information** — `[paste TCU standard statement]`
 - **TCU Policy for Religious Observations & Holidays** — `[paste TCU standard statement]`

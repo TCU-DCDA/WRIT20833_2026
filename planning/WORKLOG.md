@@ -1,6 +1,6 @@
 # WORKLOG — WRIT 20833 2026 port (session handoff)
 
-**Branch:** `claude/tender-thompson-13o19u` · **Last updated:** 2026-06-10
+**Branch:** `claude/port-strings-codealong` (prior work merged to `main` via PR #1) · **Last updated:** 2026-06-11
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
 Read this first, then `PORT_ASSESSMENT_2026.md` (context) and `PROPOSED_4WEEK_SCHEDULE.md`
@@ -224,14 +224,80 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
      metadata matched). Walsh-independent; builds a `count_words` dict → `Counter` to **seed Week-2
      term frequency**. Built by `_build_dictfunc.py`; **all 17 code cells validated top-to-bottom.**
    - **Decision (pilot fidelity):** match-2026-style (not faithful F25 copy) — confirmed.
-   - **Remaining ports (batch after pilot review):** Strings & string methods (Day 2; partial today
-     lives in the Variables nb), Pandas 01 + Instant Data Scraper (Day 8), Pandas 02 (Day 9), VADER
-     (Days 11–12), Topic Modeling Gensim (Days 14–15; dedup → combined Gensim). Open: **term frequency
-     (Day 6)** has no F25 standalone code-along — build a short one or teach via HW2.
-   - **Also relabel genuinely non-coding days** in the schedule (7, 10, 13, 16, 17–20) as
-     *Workshop / Work session / Lab* so their content reads as intentional, not vague code-along.
-   - **Schedule rewrite (name every notebook + relabel) deferred until the batch lands**, so the grid
-     updates in one consistent pass.
+   - ✅ **Strings & string methods (Day 2) DONE** — `notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb`
+     (built by `_build_strings.py`; all 21 demo code cells validated top-to-bottom). Ports the **string
+     half** of F25's `StrMethods_Conditionals_Loops` (the comparisons/conditionals/lists/loops half already
+     lives in `Lists_Loops_Conditionals_2026`, Days 3–4, so this is strings-ONLY). Goes deeper than the
+     Day-1 Variables string section by adding replace, strip, membership (`in`), join, startswith/endswith,
+     and a chained "clean a real comment → split → count" routine that seeds Week-2 term frequency.
+     Walsh- and Drive-mount-independent (F25 read Kafka off Google Drive; here the text is inline).
+   - ✅ **Found Data & Pandas Fundamentals (Day 8) DONE** — `notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb`
+     (built by `_build_pandas01.py`; all 19 code cells validated top-to-bottom with pandas 2.1.4 +
+     matplotlib via `/opt/anaconda3/bin/python`). **Merges the two F25 Day-8 notebooks** (Pandas 01
+     Found Data, 54 cells + Instant Data Scraper Ethics, 31 cells) into one 2-hr arc: **collection
+     ethics first** (3 pillars: robots.txt / fair-use+scale / attribution; Instant Data Scraper as the
+     no-code tool; robots.txt status-code helper that runs **offline** — live `requests` shown
+     commented), **then pandas fundamentals** (read DataFrame · head/shape/info · select cols Series-vs-
+     DataFrame · boolean filter · value_counts · stats · one light `df.plot` bar) on an **inline sample
+     of real-shaped TX-Ten-Commandments YouTube comments** (cols: comment/stance/likes/replies) — the
+     course's actual corpus theme, the same table HW3/HW4 run on. **Cleaning deferred to Pandas 02.**
+     No output values hardcoded in markdown (all computed), so nothing drifts. (Aside: the most-liked
+     opposing comment computes to "Put the Constitution in classrooms…", echoing the real corpus.)
+   - ✅ **Data Cleaning with Pandas (Day 9) DONE** — `notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb`
+     (built by `_build_pandas02.py`; all 16 code cells validated with pandas via `/opt/anaconda3/bin/python`).
+     Ports F25's Pandas 02 (57 cells, literary dataset) trimmed to the **cleaning core**: diagnose
+     (isnull/unique/duplicated) → clean text (`.str.strip/.replace`) → standardize categories
+     (`.str.lower` + `.replace` synonym map) → handle missing (`fillna(median)` + ethics-of-filling) →
+     `drop_duplicates`. **Continuity move:** cleans a *messy version of Day-8's same YouTube-comments
+     table* (8 stance spellings, whitespace/newlines, 1 missing likes, 1 exact dup) back into the tidy
+     table — 12→11 rows; stance collapses to oppose 5 / support 4 / neutral 2. Dropped F25's heavy
+     multi-agg groupby, bubble charts, regex author-origin guessing. Sneak Preview → Day-10 "clean YOUR
+     data" workshop + Week-3 VADER. All values computed (none asserted in prose).
+   - ✅ **Sentiment Analysis with VADER (Days 11–12) DONE** — `notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb`
+     (built by `_build_vader.py`; all 16 code cells validated with vaderSentiment + pandas via
+     `/opt/anaconda3/bin/python` — `!pip` magic skipped in validation). Ports F25's VADER notebook
+     (32 cells) as one basics→deep-dive arc spanning both sessions. **Continuity:** scores the SAME
+     cleaned comments table from Days 8–9 (comment + hand `stance`). **Payoff exercise** compares
+     VADER's *tone* to the human *stance* and shows they're different axes — the lone computed mismatch
+     is "Freedom of religion means freedom from it too" (stance=oppose, VADER=positive, because
+     "freedom" scores positive regardless of side) = the Day-12 close-vs-distant-reading lecture made
+     concrete + the WORKLOG-flagged human-vs-automated check. Keeps the "honest about borrowed code"
+     convention (VADER = pip-installed model we run to *judge*). Dropped F25's TextBlob detour +
+     multi-panel viz; kept one light bar (mean tone by stance) + a where-VADER-breaks sarcasm set.
+     VADER is deterministic but no scores hardcoded in prose (all printed) → no drift.
+   - ✅ **Topic Modeling with Gensim (Days 14–15) DONE** — `notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb`
+     (built by `_build_topicmodeling.py`; all 13 code cells validated with gensim 4.3.0 via
+     `/opt/anaconda3/bin/python` — `!pip` skipped). **Dedups F25's THREE overlapping topic-modeling
+     notebooks** (Gensim 41c + Part1 29c + Part2 24c) into one combined code-along spanning both
+     sessions. **Aligns with HW4's simplified stack:** gensim only (NO nltk/WordNet, NO pyLDAvis) and
+     reuses HW4's EXACT `split_into_words` + `stopwords` (copied verbatim into the builder) so
+     code-along preprocessing == homework preprocessing. **Teaches on a clear 3-theme toy corpus**
+     (sports/music/food, 15 short docs → LDA separates into nameable topics: food/music/sports), **then
+     applies to the real single-issue Ten Commandments comments to show the limit** (one debate = no
+     distinct subjects to find; Day-15 "limits" lesson + matches the HW4 single-issue caveat). Part 2 =
+     the `num_topics` knob (2 vs 4) as an authored choice. Dominant-topic-per-doc framed honestly as a
+     *mixture* (short docs → fuzzy assignment). **No topic words hardcoded in prose** (LDA stochastic/
+     version-sensitive) — all printed, described qualitatively, like HW4's key.
+   - ✅ **CODE-ALONG BATCH COMPLETE** (Strings, Pandas 01, Pandas 02, VADER, Topic Modeling). The three
+     analytics notebooks share ONE corpus arc: Day 8 builds the comments table → Day 9 cleans it →
+     Days 11–12 score sentiment → Days 14–15 (limits) — the same corpus HW3/HW4 use.
+   - ✅ **Day-6 term-frequency code-along DONE** — `notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb`
+     (built by `_build_termfreq.py`; 11/11 cells validated; all prose word-claims verified against output).
+     **Authored fresh** (no F25 standalone existed). Plain Python / pre-pandas to match HW2; reuses HW2's
+     exact `split_into_words` + `stopwords` + `Counter` + `top_meaningful_words` idiom verbatim. Picks up
+     Day 5's `count_words`/Counter thread; arc = raw counts (noise: `the`/`and` lead) → stopword filter
+     (content surfaces: schools/religion/country/god/kids) → reusable function → **two-corpus contrast**
+     (comments vs a Constitution-style passage: shall/congress/states/law) = a mini preview of HW2's
+     "Whose Words Win?". Keeps the critical frame (counting is already interpretation) + borrowed-code
+     note (Counter does what Day-5 `count_words` did by hand). Schedule Day-6 cell now links it.
+   - ✅ **Schedule rewrite done** (see above). **Code-along coverage now complete** — every coding day in
+     `COURSE_SCHEDULE_2026.md` links a real notebook.
+   - ✅ **Schedule rewrite DONE** — `COURSE_SCHEDULE_2026.md` rebuilt in one pass: every coding cell now
+     carries an explicit **mode** (Code-along / Lab / Workshop / Work session / Presentations) and links
+     its real notebook (all 12 links verified to resolve). Non-coding days (7 Lab, 10 Workshop, 13/17–19
+     Work session, 20 Presentations) read as intentional. Notes flag the three two-session notebooks
+     (Days 3–4, 11–12, 14–15 each share one) and the one gap (Day 6 term frequency = no standalone
+     code-along yet; taught via the HW2 notebook). Added a "Coding modes" legend.
 5. ✅ **2026 syllabus authored** — `SYLLABUS_2026.md` (DRAFT for instructor review). Term Mon 7/6–Fri
    7/31, M–F 2 hrs/day = 20 sessions (calendar verified; no weekday holidays). Maps the
    `PROPOSED_4WEEK_SCHEDULE` onto real dates with due dates for HW1–4 + capstone, **3 self-reflections**
@@ -257,8 +323,8 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
    pointing at the actual corpus, as a vivid case of the noumena limit (religious conviction = an
    interiority distant reading can't reach). **Undecided — instructor's call.**
 10. **TCU Core Curriculum — CSV vetting (context + a task).** The course **carries Citizenship & Social
-    Values (CSV)** credit. Vetting docs are in the repo root: `TCU-Core-Curriculum-outcomes-1.pdf`
-    (current outcomes matrix) + `Citizenship-and-Social-Values-5-5-10.doc` (older HMVV form). Current CSV
+    Values (CSV)** credit. Vetting docs are in `reference/`: `reference/TCU-Core-Curriculum-outcomes-1.pdf`
+    (current outcomes matrix) + `reference/Citizenship-and-Social-Values-5-5-10.doc` (older HMVV form). Current CSV
     outcome: *"examine the knowledge, skills, values, or motivation needed to participate or lead within
     diverse communities."* The course meets it directly (a contested public-policy debate = a diverse
     community in disagreement; the data-driven-opinion capstone + discussions + reflections are the
@@ -267,8 +333,18 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
     wanted:** draft the **2–3 concrete student-work examples** the CSV submission form requires (from the
     capstone + discussions), once the instructor confirms the exact outcome to claim.
 
-11. **TCU syllabus compliance — ✅ REBUILT (course-specific content done; boilerplate placeholders +
-    2 registrar fields remain).** `SYLLABUS_2026.md` restructured to the **TCU Online Syllabus
+11. **TCU syllabus compliance — ✅ VERIFIED COMPLETE for course-specific content (2026-06-11).** Did a
+    full item-by-item gap-check of `SYLLABUS_2026.md` against the **actual** TCU checklist PDF
+    (`reference/TCU-Syllabus-Template-checklist-FINAL-9-2024.pdf`): every required section is present and
+    correctly scaffolded. Crosswalk captured in **`planning/SYLLABUS_COMPLIANCE.md`** (each checklist item →
+    where met → ✅ done / 🟦 instructor field / 📋 paste official text). Closed the one authorable gap by
+    adding a **"Course Assignments & Final Grade" table** (checklist wants an assignments/points table;
+    ours maps components to the ungrading 3-point scale + role, no points). Fixed moved template-path refs
+    (`Syllabus-Template-Online.docx` → `reference/…`). **Remaining is instructor/registrar-only:** the
+    `[...]` fields (name, contact, section, credit hours, component type, Zoom, response time, office
+    hours) + 📋 official boilerplate pasted verbatim. The detailed gap notes below are **superseded by the
+    crosswalk doc** (kept for history).
+    `SYLLABUS_2026.md` was restructured to the **TCU Online Syllabus
     Template**: full Course Information block, Course Description + CSV core, Learning Outcomes (+ CSV),
     Course Materials, Teaching Philosophy, Course Policies & Requirements (Assignments, the 3 reflections
     + 4 discussions, **Grading**, Grading Concerns, Late Work, Participation/Attendance, Class Norms &
@@ -282,9 +358,9 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
     Recording, Emergency Response, TCU Online section, Student Resources link+QR, Netiquette, Email,
     Recording) from `Syllabus-Template-Online.docx` — *not fabricated*, marked `[paste …]`; fill
     instructor `[...]` fields; confirm catalog description + exact CSV outcome wording.
-    Earlier gap-analysis context (now resolved): template + checklist in repo root
-    (`2024-25-Syllabus-Template-Final-9-2024-1.docx`, `TCU-Syllabus-Template-checklist-FINAL-9-2024.pdf`,
-    `Syllabus-Template-Online.docx`). **Already present:** course title, term, meeting
+    Earlier gap-analysis context (now resolved): template + checklist in `reference/`
+    (`reference/2024-25-Syllabus-Template-Final-9-2024-1.docx`, `reference/TCU-Syllabus-Template-checklist-FINAL-9-2024.pdf`,
+    `reference/Syllabus-Template-Online.docx`). **Already present:** course title, term, meeting
     days/time + online-synchronous, instructor/office-hours/email placeholders, Zoom placeholder, course
     description, prerequisites (none), course learning outcomes, **CSV core outcome** (just added),
     technology/AI policy, course description; the **course schedule** matches the template grid
@@ -309,9 +385,63 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
    Syllabus-Template-Online.docx]` placeholders; write only the *course-specific* content. Online
    template also requires that any tables/images be **accessible**.
 
+## Answer keys live in a PRIVATE companion repo (2026-06-11)
+This course repo is **student-facing** (Colab badges + the HW data-loader resolve against
+`raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/...`), so answer keys must **never** be committed
+here. They — plus the **solution-bearing** homework builders (`_build_hw2/3/4.py`, which generate both the
+student notebook and the key) — now live in the private repo **`TCU-DCDA/WRIT20833_2026_keys`** (HW1's key
+is hand-authored, no builder). This repo `.gitignore`s `*_ANSWER_KEY.ipynb` and
+`notebooks/homework/_build_hw*.py` so they can't return by accident. The keys were also **scrubbed from
+this repo's git history** (BFG, 2026-06-11) and `main` + the PR branch were force-pushed (old tip
+`2424d13` → `bb6b2fb`); local clones must re-sync (`git fetch && git reset --hard origin/<branch>`).
+**To edit a key:** do it in the keys repo, regenerate, and copy the regenerated *student* notebook back
+here. (Residual: the old commit SHAs may stay cached server-side on a private repo until GitHub GC.)
+
+## Working across two machines (solo dev)
+Sole maintainer, two machines. Normally just `git pull` / `git push` as usual — BUT after a **history
+rewrite** (like the BFG key scrub above), the other machine's clone has diverged from the rewritten
+remote, so a plain `pull` would try to merge the old history back (and could reintroduce scrubbed files).
+After any force-push, re-sync the **other** machine with a hard reset instead of a pull:
+```
+git fetch origin --prune
+git checkout main && git reset --hard origin/main
+git checkout <feature-branch> && git reset --hard origin/<feature-branch>   # if present locally
+git reflog expire --expire=now --all && git gc --prune=now --aggressive      # drop old objects
+git log --all --oneline -- '*_ANSWER_KEY.ipynb' 'notebooks/homework/_build_hw*.py'   # expect empty
+```
+Stash/commit any uncommitted work first (`reset --hard` discards it). **Do not push from the stale
+machine before resetting** — it would force the old history (and the keys) back onto the remote. The
+private keys repo (`WRIT20833_2026_keys`) can be cloned on both machines independently.
+
+## Course site design system — "Reading Room" (2026-06-11, in progress)
+First pass at a **unique visual identity** for the course's HTML (moving off the generic default look).
+Lives in **`site_theme.py`** (`THEME_CSS` design tokens + a `PAGE()` wrapper) — a shared, reusable theme
+that generated pages **inline** (kept self-contained so pages survive being opened from disk / Colab /
+D2L / email). Direction: *coding meets culture* → an editorial "reading room": warm **parchment** paper,
+deep muted **greens** (week tints deepen `#3a6b54`→`#1e3b2f` across the term), **serif** headings +
+**monospace** data accents + sans body, **green** links (not default blue), one **clay** warm accent,
+hairline rules instead of drop-shadow cards, and a restrained earthy mode-pill palette (no rainbow).
+**Still a draft for instructor taste** — palette/type are tokens, easy to retune.
+
+**Site layout (Pages-friendly, F25 parity) — 2026-06-11.** The published site lives in **`docs/`** (so it
+can be served by GitHub Pages → *Deploy from branch* → `main` /`docs`). The old instructor process-docs
+were moved out of `docs/` to **`planning/`** (WORKLOG, PORT_ASSESSMENT, PROPOSED_4WEEK_SCHEDULE,
+CONCEPTUAL_FRAMEWORK, ACKNOWLEDGMENTS, SYLLABUS_COMPLIANCE). Site pages:
+- `docs/index.html` — landing **dashboard** (built by `build_index.py`), modeled on last year's site IA
+  (nav + sectioned card grids): Start here · Code-alongs · Homework · Capstone & stylometry · Lectures
+  (placeholders) · Resources.
+- `docs/schedule.html` — the schedule (built by `build_schedule_html.py`).
+Because Pages serves only `/docs`, links to things **outside** docs/ are absolute: notebooks → **Colab**
+(`colab.research.google.com/github/.../blob/main/...`), repo files (syllabus, stylometry handout) →
+**GitHub blob**. Intra-site links (index→schedule) stay relative. CSS is still **inlined** per page
+(self-contained), not a shared stylesheet. Generators (`site_theme.py`, `build_index.py`,
+`build_schedule_html.py`) sit at repo root and write into `docs/`.
+**To publish:** make the repo public, then *Settings → Pages → Deploy from branch → `main` / `docs`*.
+Colab/badge links resolve only once public.
+
 ## Useful facts for a fresh session
 - The F25 source repo is **public**; if it's out of session scope, you can still read files via
   `raw.githubusercontent.com/TCU-DCDA/WRIT20833_2025/main/<path>` or `git clone` it (github.com is
   reachable). The Pages site `tcu-dcda.github.io` is NOT reachable from the sandbox allowlist.
 - F25 full asset inventory is in that repo's `README.md`.
-- No PR has been opened for this branch (per instructions — only on request).
+- Code-along batch + Day-6 term frequency shipped on PR #2 (`claude/port-strings-codealong`).

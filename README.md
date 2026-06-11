@@ -8,15 +8,15 @@ and to argue from what they find — while staying honest about what computation
 
 This repo is a **port** of the mature 16-week Fall 2025 course (`TCU-DCDA/WRIT20833_2025`), re-paced and
 trimmed to a 4-week cultural-analytics arc (the web-dev/portfolio half is dropped — it overlaps MALA
-60970). See `PORT_ASSESSMENT_2026.md` for the rationale.
+60970). See `planning/PORT_ASSESSMENT_2026.md` for the rationale.
 
 The course carries TCU **Citizenship & Social Values (CSV)** core-curriculum credit — it trains
-evidence-based civic participation around a real public-policy debate. (Vetting: `TCU-Core-Curriculum-outcomes-1.pdf`
-+ `Citizenship-and-Social-Values-5-5-10.doc`; how the course delivers it: `CONCEPTUAL_FRAMEWORK_2026.md` §7.)
+evidence-based civic participation around a real public-policy debate. (Vetting: `reference/TCU-Core-Curriculum-outcomes-1.pdf`
++ `reference/Citizenship-and-Social-Values-5-5-10.doc`; how the course delivers it: `planning/CONCEPTUAL_FRAMEWORK_2026.md` §7.)
 
 > **Status: in active development (draft).** The homework spine (HW1–HW4) is complete and validated; the
 > syllabus, schedule, and conceptual framework are drafted. Code-along porting, the capstone sheet, and
-> the student-facing fold-ins of the conceptual framework are in progress. See `WORKLOG.md`.
+> the student-facing fold-ins of the conceptual framework are in progress. See `planning/WORKLOG.md`.
 
 ---
 
@@ -25,18 +25,20 @@ evidence-based civic participation around a real public-policy debate. (Vetting:
 |---|---|
 | **`SYLLABUS_2026.md`** | The course as students meet it — outcomes, ungrading policy, schedule, AI-use policy, the 3 reflections + 4 discussions. *(DRAFT; has `[...]` instructor placeholders.)* |
 | **`COURSE_SCHEDULE_2026.md`** | Day-at-a-glance grid: **Date · Lecture · Coding · Due** across the 20 sessions. |
-| **`CONCEPTUAL_FRAMEWORK_2026.md`** | The course's intellectual through-line — *why* beneath the code. Read this to understand what the course is *about*. |
-| **`WORKLOG.md`** | Running session handoff + decision log. Read first to resume work with zero ramp-up. |
-| **`PORT_ASSESSMENT_2026.md`** | The 2026 readiness/port analysis vs. the F25 source. |
-| **`PROPOSED_4WEEK_SCHEDULE.md`** | The design draft behind the schedule (F25-asset mappings, scope rationale). |
-| **`ACKNOWLEDGMENTS.md`** | Credits Melanie Walsh's *Intro to Cultural Analytics* as inspiration/model (the course is otherwise self-contained — "Walsh-independent"). |
+| **`planning/CONCEPTUAL_FRAMEWORK_2026.md`** | The course's intellectual through-line — *why* beneath the code. Read this to understand what the course is *about*. |
+| **`planning/WORKLOG.md`** | Running session handoff + decision log. Read first to resume work with zero ramp-up. |
+| **`planning/PORT_ASSESSMENT_2026.md`** | The 2026 readiness/port analysis vs. the F25 source. |
+| **`planning/PROPOSED_4WEEK_SCHEDULE.md`** | The design draft behind the schedule (F25-asset mappings, scope rationale). |
+| **`planning/ACKNOWLEDGMENTS.md`** | Credits Melanie Walsh's *Intro to Cultural Analytics* as inspiration/model (the course is otherwise self-contained — "Walsh-independent"). |
 
 ## Course materials
 - **`notebooks/homework/`** — **HW1** (foundations) · **HW2** (term frequency) · **HW3** (sentiment) ·
-  **HW4** (topic modeling + integration), each with an `_ANSWER_KEY` and a `_build_*.py` generator.
-  *All answer keys validated to run top-to-bottom.*
-- **`notebooks/codeAlongs/`** — Variables/Data Types · Lists/Loops/Conditionals · Dictionaries/Functions
-  *(more being ported from F25 — see WORKLOG thread #4).*
+  **HW4** (topic modeling + integration), as student notebooks. *Answer keys and the solution-bearing
+  `_build_hw*.py` generators live in the **private** instructor repo `TCU-DCDA/WRIT20833_2026_keys`, not
+  in this student-facing repo.*
+- **`notebooks/codeAlongs/`** — one notebook per coding day: Variables/Data Types · Strings · Lists/Loops/
+  Conditionals · Dictionaries/Functions · Term Frequency · Found Data & Pandas · Data Cleaning · VADER
+  Sentiment · Topic Modeling (see `COURSE_SCHEDULE_2026.md` for the day-by-day mapping).
 - **`notebooks/data/`** — the corpora (123 real YouTube comments on the TX Ten Commandments law; the U.S.
   Constitution) + a `README.md`. Reused across HW2–HW4 and the capstone.
 - **`materials/stylometry/`** — "Reading for the Seams" close-reading exercise + notebook + exemplar.
@@ -49,7 +51,7 @@ we hear human voices at a scale no person could read by hand, without flattening
 view?** Every homework stages the same move — run a computation, then ask *what did this flatten, who
 chose this, can you trust it?* The full architecture (the noumena→wisdom spine; "hear the human at
 scale"; the quarrel; voice-through-difficulty in the age of AI; the moral stakes) is in
-`CONCEPTUAL_FRAMEWORK_2026.md`. Assessment is **ungrading**: earned insight over clean code.
+`planning/CONCEPTUAL_FRAMEWORK_2026.md`. Assessment is **ungrading**: earned insight over clean code.
 
 ## Conventions (for anyone authoring materials)
 - **Walsh-independent** — required work never depends on an outside textbook.
@@ -60,4 +62,4 @@ scale"; the quarrel; voice-through-difficulty in the age of AI; the moral stakes
 - **House style** — homeworks share a Part A/B/C + Weekly Experiments + Submit structure; code-alongs use
   warm cultural examples + concept→code→"your turn" + Playground.
 
-*Full detail and rationale: `CONCEPTUAL_FRAMEWORK_2026.md` and `WORKLOG.md`.*
+*Full detail and rationale: `planning/CONCEPTUAL_FRAMEWORK_2026.md` and `planning/WORKLOG.md`.*
