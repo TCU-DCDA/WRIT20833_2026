@@ -8,7 +8,7 @@ github/blob URLs the in-notebook badges use); those resolve once the repo is pub
 Run from repo root:  python3 build_index.py
 """
 import html
-from site_theme import PAGE
+from site_theme import PAGE, sidebar, shell
 
 OUT = "docs/index.html"
 REPO = "TCU-DCDA/WRIT20833_2026"
@@ -16,17 +16,23 @@ COLAB = f"https://colab.research.google.com/github/{REPO}/blob/main/"
 GH = f"https://github.com/{REPO}"
 GH_BLOB = f"{GH}/blob/main/"  # renders a repo file (e.g. the syllabus .md) on github.com
 
-# --- code-alongs (one per coding day) ---
-CODEALONGS = [
-    ("Variables & Data Types", "How Python stores text and numbers.", "Day 1", "notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb"),
-    ("Strings & String Methods", "Slicing, cleaning, and splitting text.", "Day 2", "notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb"),
-    ("Lists, Loops & Conditionals", "Collections, iteration, and decisions.", "Days 3–4", "notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb"),
-    ("Dictionaries & Functions", "Key–value data and reusable tools.", "Day 5", "notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb"),
-    ("Term Frequency", "Counting words to hear what a text is about.", "Day 6", "notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb"),
-    ("Found Data & Pandas", "Collection ethics, then DataFrames.", "Day 8", "notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb"),
-    ("Data Cleaning", "Turning messy scraped data tidy.", "Day 9", "notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb"),
-    ("Sentiment with VADER", "Scoring emotional tone — and judging it.", "Days 11–12", "notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb"),
-    ("Topic Modeling (Gensim)", "Discovering themes across a corpus.", "Days 14–15", "notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb"),
+# --- code-alongs, grouped by week ---
+CODEALONGS_BY_WEEK = [
+    ("Week 1", "Python foundations", [
+        ("Variables & Data Types", "How Python stores text and numbers.", "Day 1", "notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb"),
+        ("Strings & String Methods", "Slicing, cleaning, and splitting text.", "Day 2", "notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb"),
+        ("Lists, Loops & Conditionals", "Collections, iteration, and decisions.", "Days 3–4", "notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb"),
+        ("Dictionaries & Functions", "Key–value data and reusable tools.", "Day 5", "notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb"),
+    ]),
+    ("Week 2", "From text to data", [
+        ("Term Frequency", "Counting words to hear what a text is about.", "Day 6", "notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb"),
+        ("Found Data & Pandas", "Collection ethics, then DataFrames.", "Day 8", "notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb"),
+        ("Data Cleaning", "Turning messy scraped data tidy.", "Day 9", "notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb"),
+    ]),
+    ("Week 3", "Computational text analysis", [
+        ("Sentiment with VADER", "Scoring emotional tone — and judging it.", "Days 11–12", "notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb"),
+        ("Topic Modeling (Gensim)", "Discovering themes across a corpus.", "Days 14–15", "notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb"),
+    ]),
 ]
 
 # --- homework ---
@@ -84,18 +90,16 @@ def section(anchor, n, title, lede, body):
 
 
 def render():
-    nav = (
-        '<nav class="topnav">'
-        '<a href="#start">Start here</a>'
-        '<a href="#codealongs">Code-alongs</a>'
-        '<a href="#homework">Homework</a>'
-        '<a href="#capstone">Capstone</a>'
-        '<a href="#lectures">Lectures</a>'
-        '<a href="#resources">Resources</a>'
-        '<span class="spacer"></span>'
-        f'<a class="ext" href="{GH}">GitHub ↗</a>'
-        '<a class="ext" href="https://colab.research.google.com/">Colab ↗</a>'
-        '</nav>'
+    side = sidebar(
+        "WRIT 20833 · Summer 2026",
+        "When Coding Meets Culture",
+        [("#start", "Start here", "00"),
+         ("#codealongs", "Code-alongs", "01"),
+         ("#homework", "Homework", "02"),
+         ("#capstone", "Capstone", "03"),
+         ("#lectures", "Lectures", "04"),
+         ("#resources", "Resources", "05")],
+        [(GH, "GitHub ↗"), ("https://colab.research.google.com/", "Colab ↗")],
     )
 
     masthead = (
@@ -121,10 +125,17 @@ def render():
                  "draft", GH_BLOB + "SYLLABUS_2026.md"),
         ]))
 
+    ca_body = "".join(
+        '<div class="wkgroup"><h3><span class="wkn">' + html.escape(wk) + '</span>'
+        + html.escape(theme) + '</h3>'
+        + grid([card("Code-along", t, d, w, COLAB + p) for (t, d, w, p) in items])
+        + '</div>'
+        for (wk, theme, items) in CODEALONGS_BY_WEEK)
     codealongs = section(
         "codealongs", "01", "Code-alongs",
-        "Instructor-led notebooks we build together in class — one per coding day. Each opens in Colab.",
-        grid([card("Code-along", t, d, w, COLAB + p) for (t, d, w, p) in CODEALONGS]))
+        "Instructor-led notebooks we build together in class — one per coding day, grouped by week. "
+        "Each opens in Colab.",
+        ca_body)
 
     homework = section(
         "homework", "02", "Homework",
@@ -159,10 +170,10 @@ def render():
                  f'<p class="lede">Tools, the course data, and references for going further.</p>'
                  f'<ul class="reslist">{res_items}</ul></section>')
 
-    body = (nav + masthead + start + codealongs + homework + capstone + lectures + resources +
+    main = (masthead + start + codealongs + homework + capstone + lectures + resources +
             '<footer>WRIT 20833 · Summer 2026 · “hear the human at scale” · '
             'a working draft, adjusted to the class’s pace</footer>')
-    return PAGE("WRIT 20833 — When Coding Meets Culture", body)
+    return PAGE("WRIT 20833 — When Coding Meets Culture", shell(side, main), wrap=False)
 
 
 if __name__ == "__main__":

@@ -428,9 +428,12 @@ can be served by GitHub Pages → *Deploy from branch* → `main` /`docs`). The 
 were moved out of `docs/` to **`planning/`** (WORKLOG, PORT_ASSESSMENT, PROPOSED_4WEEK_SCHEDULE,
 CONCEPTUAL_FRAMEWORK, ACKNOWLEDGMENTS, SYLLABUS_COMPLIANCE). Site pages:
 - `docs/index.html` — landing **dashboard** (built by `build_index.py`), modeled on last year's site IA
-  (nav + sectioned card grids): Start here · Code-alongs · Homework · Capstone & stylometry · Lectures
-  (placeholders) · Resources.
-- `docs/schedule.html` — the schedule (built by `build_schedule_html.py`).
+  with a **left sidebar nav** (F25 parity) + sectioned card grids: Start here · Code-alongs (**split by
+  week**) · Homework · Capstone & stylometry · Lectures (placeholders) · Resources.
+- `docs/schedule.html` — the schedule (built by `build_schedule_html.py`); same left sidebar with week
+  anchors + a Dashboard back-link.
+Sidebar/shell are shared helpers in `site_theme.py` (`sidebar()`, `shell()`, `PAGE(..., wrap=False)`);
+collapses to a top bar under 860px.
 Because Pages serves only `/docs`, links to things **outside** docs/ are absolute: notebooks → **Colab**
 (`colab.research.google.com/github/.../blob/main/...`), repo files (syllabus, stylometry handout) →
 **GitHub blob**. Intra-site links (index→schedule) stay relative. CSS is still **inlined** per page
