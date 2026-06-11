@@ -33,10 +33,12 @@ evidence-based civic participation around a real public-policy debate. (Vetting:
 
 ## Course materials
 - **`notebooks/homework/`** — **HW1** (foundations) · **HW2** (term frequency) · **HW3** (sentiment) ·
-  **HW4** (topic modeling + integration), each with an `_ANSWER_KEY` and a `_build_*.py` generator.
-  *All answer keys validated to run top-to-bottom.*
-- **`notebooks/codeAlongs/`** — Variables/Data Types · Lists/Loops/Conditionals · Dictionaries/Functions
-  *(more being ported from F25 — see WORKLOG thread #4).*
+  **HW4** (topic modeling + integration), as student notebooks. *Answer keys and the solution-bearing
+  `_build_hw*.py` generators live in the **private** instructor repo `TCU-DCDA/WRIT20833_2026_keys`, not
+  in this student-facing repo.*
+- **`notebooks/codeAlongs/`** — one notebook per coding day: Variables/Data Types · Strings · Lists/Loops/
+  Conditionals · Dictionaries/Functions · Term Frequency · Found Data & Pandas · Data Cleaning · VADER
+  Sentiment · Topic Modeling (see `COURSE_SCHEDULE_2026.md` for the day-by-day mapping).
 - **`notebooks/data/`** — the corpora (123 real YouTube comments on the TX Ten Commandments law; the U.S.
   Constitution) + a `README.md`. Reused across HW2–HW4 and the capstone.
 - **`materials/stylometry/`** — "Reading for the Seams" close-reading exercise + notebook + exemplar.

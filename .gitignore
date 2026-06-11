@@ -27,3 +27,8 @@ env/
 # Misc
 *.log
 .cache/
+
+# Instructor-only — answer keys + the solution-bearing homework builders live in the
+# PRIVATE companion repo TCU-DCDA/WRIT20833_2026_keys, never in this student-facing repo.
+*_ANSWER_KEY.ipynb
+notebooks/homework/_build_hw*.py
