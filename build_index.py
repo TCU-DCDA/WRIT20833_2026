@@ -36,6 +36,20 @@ HOMEWORK = [
     ("HW4 · Topic Modeling + Integration", "Themes, then all three lenses together.", "due Day 17", "notebooks/homework/WRIT20833_HW4_2026.ipynb"),
 ]
 
+# --- mini-lectures (the ~25-min conceptual frames) — not yet built as pages ---
+# ML0-7 map cleanly to 2026; ML2 and ML9 are under review (WORKLOG thread #9); ML10-12 (web) cut.
+LECTURES = [
+    ("ML0 · Humanities & Coding", "Why a humanist learns to code.", "Day 1"),
+    ("ML1 · Connotations & Code", "Code is not neutral.", "Day 1"),
+    ("ML2 · Sacred Boundaries", "Privacy & the limits of analysis. (under review)", "Day 2"),
+    ("ML3 · Classification Logic", "Whose categories? Sorting as judgment.", "Day 3"),
+    ("ML5 · Collective Memory", "What a culture keeps and forgets.", "Day 4"),
+    ("ML4 · AI Agency", "Reading & judging machine-written code.", "Day 7"),
+    ("ML6 · Data Archaeology", "Where found data comes from.", "Day 8"),
+    ("ML7 · NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14"),
+    ("ML9 · Going Public", "Analysis → public argument. (under review)", "Day 17"),
+]
+
 RESOURCES = [
     ("Tools", "Google Colab", "https://colab.research.google.com/", "runs every notebook — no install"),
     ("Tools", "Course GitHub repo", GH, "all notebooks, data, and docs"),
@@ -75,6 +89,7 @@ def render():
         '<a href="#codealongs">Code-alongs</a>'
         '<a href="#homework">Homework</a>'
         '<a href="#capstone">Capstone</a>'
+        '<a href="#lectures">Lectures</a>'
         '<a href="#resources">Resources</a>'
         '<span class="spacer"></span>'
         f'<a class="ext" href="{GH}">GitHub ↗</a>'
@@ -129,15 +144,21 @@ def render():
                  "Week 4", COLAB + "materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb"),
         ]))
 
+    lectures = section(
+        "lectures", "04", "Lectures",
+        "The short conceptual frames that open each day — the “code is not neutral” throughline. "
+        "Pages are in development; ML2 and ML9 are under review.",
+        grid([card("Mini-lecture", t, d, w, None, soon=True) for (t, d, w) in LECTURES]))
+
     res_items = "".join(
         f'<li><span class="k">{html.escape(k)}</span>'
         f'<a href="{href}">{html.escape(name)}</a> — <span class="muted">{html.escape(note)}</span></li>'
         for (k, name, href, note) in RESOURCES)
-    resources = (f'<section class="sec" id="resources"><h2><span class="n">04</span>Resources</h2>'
+    resources = (f'<section class="sec" id="resources"><h2><span class="n">05</span>Resources</h2>'
                  f'<p class="lede">Tools, the course data, and references for going further.</p>'
                  f'<ul class="reslist">{res_items}</ul></section>')
 
-    body = (nav + masthead + start + codealongs + homework + capstone + resources +
+    body = (nav + masthead + start + codealongs + homework + capstone + lectures + resources +
             '<footer>WRIT 20833 · Summer 2026 · “hear the human at scale” · '
             'a working draft, adjusted to the class’s pace</footer>')
     return PAGE("WRIT 20833 — When Coding Meets Culture", body)
