@@ -29,7 +29,7 @@ Notebook links are relative paths into this repo (`notebooks/codeAlongs/`, `note
 ### Week 2 (Jul 13–17) — From text to data: ethics, pandas, AI
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 7/13** (6) | Data as evidence | **Code-along** → Term frequency ("Meaningful Words") + HW1 debrief *(taught through the [HW2 notebook](notebooks/homework/WRIT20833_HW2_2026.ipynb); standalone code-along TBD)* | **HW1 due** · **HW2 assigned** · D2 opens |
+| **Mon 7/13** (6) | Data as evidence | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
 | **Tue 7/14** (7) | AI Agency (ML4) | **Lab** → Reading & improving AI code + stylometry seed: [Reading for the Seams](materials/stylometry/Reading_for_the_Seams.md) (close reading) | — |
 | **Wed 7/15** (8) | Data Archaeology (ML6) | **Code-along** → [Found data + collection ethics (pandas 01 + scraping)](notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb) | D2 post |
 | **Thu 7/16** (9) | — | **Code-along** → [Data cleaning (pandas 02)](notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb) | — |
@@ -59,8 +59,8 @@ Notebook links are relative paths into this repo (`notebooks/codeAlongs/`, `note
 [Lists, Loops & Conditionals](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) notebook,
 **Days 11–12** the [VADER](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) notebook, and
 **Days 14–15** the [Topic Modeling](notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb)
-notebook. **Day 6 (term frequency)** has no standalone code-along yet — it's currently taught through the
-HW2 notebook (see `WORKLOG.md` thread #4).
+notebook. Every coding day now links a real notebook — the term-frequency code-along (Day 6) was
+authored fresh (no F25 source existed) and leads directly into HW2.
 
 *Notes on lectures:* "—" in **Lecture** marks recap / workshop / work-session days with no formal
 mini-lecture. Three lecture slots are still under review (see `WORKLOG.md` open thread #9): **ML2 "Sacred
