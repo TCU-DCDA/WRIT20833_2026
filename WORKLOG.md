@@ -282,12 +282,13 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
      analytics notebooks share ONE corpus arc: Day 8 builds the comments table → Day 9 cleans it →
      Days 11–12 score sentiment → Days 14–15 (limits) — the same corpus HW3/HW4 use.
    - **Still open: Day-6 term frequency** has no F25 standalone code-along — build a short one or teach
-     via HW2. **And the schedule rewrite** (name every notebook + relabel non-coding days) — now
-     unblocked since the batch has landed.
-   - **Also relabel genuinely non-coding days** in the schedule (7, 10, 13, 16, 17–20) as
-     *Workshop / Work session / Lab* so their content reads as intentional, not vague code-along.
-   - **Schedule rewrite (name every notebook + relabel) deferred until the batch lands**, so the grid
-     updates in one consistent pass.
+     via HW2 (the schedule now names this gap explicitly). **Schedule rewrite ✅ done** (see above).
+   - ✅ **Schedule rewrite DONE** — `COURSE_SCHEDULE_2026.md` rebuilt in one pass: every coding cell now
+     carries an explicit **mode** (Code-along / Lab / Workshop / Work session / Presentations) and links
+     its real notebook (all 12 links verified to resolve). Non-coding days (7 Lab, 10 Workshop, 13/17–19
+     Work session, 20 Presentations) read as intentional. Notes flag the three two-session notebooks
+     (Days 3–4, 11–12, 14–15 each share one) and the one gap (Day 6 term frequency = no standalone
+     code-along yet; taught via the HW2 notebook). Added a "Coding modes" legend.
 5. ✅ **2026 syllabus authored** — `SYLLABUS_2026.md` (DRAFT for instructor review). Term Mon 7/6–Fri
    7/31, M–F 2 hrs/day = 20 sessions (calendar verified; no weekday holidays). Maps the
    `PROPOSED_4WEEK_SCHEDULE` onto real dates with due dates for HW1–4 + capstone, **3 self-reflections**
