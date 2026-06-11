@@ -106,7 +106,7 @@ print("Stance labels as found:")
 print(messy_df["stance"].unique())'''),
     code('''# what's duplicated? (a whole row repeated)
 print("Duplicate rows:", messy_df.duplicated().sum())'''),
-    md('''So: one missing `likes` value, a `stance` column that means three things but is spelled eight
+    md('''So: one missing `likes` value, a `stance` column that means three things but is spelled ten
 ways, and one repeated comment. Let's fix them one at a time on a **copy** (never destroy your raw
 data — you may need to go back).'''),
     code('''clean_df = messy_df.copy()'''),
@@ -171,7 +171,7 @@ print(clean_df["stance"].value_counts())
 
 print("\\nAverage likes by stance:")
 print(clean_df.groupby("stance")["likes"].mean().round(1))'''),
-    md('''Before cleaning, `.value_counts()` on `stance` would have shown *eight* fake categories and a
+    md('''Before cleaning, `.value_counts()` on `stance` would have shown *ten* fake categories and a
 double-counted comment — a garbage picture. Same data, cleaned, and the crowd's split comes through.
 You can also now reliably search the text — the `.str` accessor again, this time to *filter*:'''),
     code('''# which comments invoke "religion" directly?

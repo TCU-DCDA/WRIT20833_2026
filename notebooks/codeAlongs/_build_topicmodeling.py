@@ -177,7 +177,7 @@ about to see between this tidy example and real data.'''),
 
 There is **no correct number of topics**. `num_topics` is a dial *you* set, and it changes what the
 model finds. Too few and unrelated themes get mashed together; too many and one real theme splinters.
-Watch what happens when we ask the same nine comments for 2 topics, then 4.'''),
+Watch what happens when we ask the same fifteen comments for 2 topics, then 4.'''),
     code('''for k in (2, 4):
     print(f"\\n=== {k} topics ===")
     model = LdaModel(corpus=corpus, id2word=dictionary, num_topics=k, random_state=42, passes=10)
