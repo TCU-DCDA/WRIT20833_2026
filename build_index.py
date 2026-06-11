@@ -10,10 +10,11 @@ Run from repo root:  python3 build_index.py
 import html
 from site_theme import PAGE
 
-OUT = "index.html"
+OUT = "docs/index.html"
 REPO = "TCU-DCDA/WRIT20833_2026"
 COLAB = f"https://colab.research.google.com/github/{REPO}/blob/main/"
 GH = f"https://github.com/{REPO}"
+GH_BLOB = f"{GH}/blob/main/"  # renders a repo file (e.g. the syllabus .md) on github.com
 
 # --- code-alongs (one per coding day) ---
 CODEALONGS = [
@@ -115,9 +116,9 @@ def render():
         "The two documents that frame the course.",
         grid([
             card("Schedule", "Course Schedule", "Day-by-day: lecture, coding, and what's due.",
-                 "20 sessions", "COURSE_SCHEDULE_2026.html"),
+                 "20 sessions", "schedule.html"),
             card("Syllabus", "Syllabus", "Outcomes, the ungrading policy, AI-use policy, and dates.",
-                 "draft", "SYLLABUS_2026.md"),
+                 "draft", GH_BLOB + "SYLLABUS_2026.md"),
         ]))
 
     codealongs = section(
@@ -139,7 +140,7 @@ def render():
             card("Capstone", "Data-Driven Opinion", "Notebook analysis + short essay, presented Fri 7/31.",
                  "Week 4", None, soon=True),
             card("Exercise", "Reading for the Seams", "Stylometry close-reading: hearing a human (or AI) voice.",
-                 "Day 7 · Week 4", "materials/stylometry/Reading_for_the_Seams.md"),
+                 "Day 7 · Week 4", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
             card("Notebook", "Stylometry (computational)", "The computational half of the stylometry exercise.",
                  "Week 4", COLAB + "materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb"),
         ]))

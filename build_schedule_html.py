@@ -11,7 +11,23 @@ import re, html, os
 from site_theme import PAGE
 
 SRC = "COURSE_SCHEDULE_2026.md"
-OUT = "COURSE_SCHEDULE_2026.html"
+OUT = "docs/schedule.html"
+
+# the published site lives in docs/, so repo-relative links must go absolute
+REPO = "TCU-DCDA/WRIT20833_2026"
+COLAB = f"https://colab.research.google.com/github/{REPO}/blob/main/"
+GH_BLOB = f"https://github.com/{REPO}/blob/main/"
+
+
+def _abs(href):
+    """Rewrite a repo-relative link to an absolute one the published /docs site can reach."""
+    if href.startswith(("http", "#", "schedule.html", "index.html")):
+        return href
+    if href.endswith(".ipynb"):
+        return COLAB + href
+    if href.startswith(("notebooks/", "materials/", "planning/", "reference/", "docs/")):
+        return GH_BLOB + href
+    return href
 
 # greens deepening across the term (match --wk1..4 in site_theme.py)
 WEEK_COLORS = ["#3a6b54", "#2f5d49", "#26513e", "#1e3b2f"]
@@ -24,7 +40,8 @@ MODE_CLASS = {
 def md_inline(t):
     """Minimal markdown inline -> HTML (escape, then links/bold/italic/code)."""
     t = html.escape(t, quote=False)
-    t = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', t)
+    t = re.sub(r'\[([^\]]+)\]\(([^)]+)\)',
+               lambda m: f'<a href="{_abs(m.group(2))}">{m.group(1)}</a>', t)
     t = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', t)
     t = re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)', r'<em>\1</em>', t)
     t = re.sub(r'`([^`]+)`', r'<code>\1</code>', t)
