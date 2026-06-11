@@ -413,6 +413,17 @@ Stash/commit any uncommitted work first (`reset --hard` discards it). **Do not p
 machine before resetting** — it would force the old history (and the keys) back onto the remote. The
 private keys repo (`WRIT20833_2026_keys`) can be cloned on both machines independently.
 
+## Course site design system — "Reading Room" (2026-06-11, in progress)
+First pass at a **unique visual identity** for the course's HTML (moving off the generic default look).
+Lives in **`site_theme.py`** (`THEME_CSS` design tokens + a `PAGE()` wrapper) — a shared, reusable theme
+that generated pages **inline** (kept self-contained so pages survive being opened from disk / Colab /
+D2L / email). Direction: *coding meets culture* → an editorial "reading room": warm **parchment** paper,
+deep muted **greens** (week tints deepen `#3a6b54`→`#1e3b2f` across the term), **serif** headings +
+**monospace** data accents + sans body, **green** links (not default blue), one **clay** warm accent,
+hairline rules instead of drop-shadow cards, and a restrained earthy mode-pill palette (no rainbow).
+First applied to `COURSE_SCHEDULE_2026.html` (via `build_schedule_html.py`). **Still a draft for
+instructor taste** — palette/type are tokens, easy to retune; not yet applied to other pages.
+
 ## Useful facts for a fresh session
 - The F25 source repo is **public**; if it's out of session scope, you can still read files via
   `raw.githubusercontent.com/TCU-DCDA/WRIT20833_2025/main/<path>` or `git clone` it (github.com is
