@@ -49,6 +49,8 @@ def notebook(cells):
 
 
 cells = [
+    md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>'),
+
     md('''# WRIT 20833 — Found Data & Pandas Fundamentals
 
 **When Coding Meets Culture: Developing Data-Driven Opinions**
@@ -137,12 +139,11 @@ comments on the Texas Ten Commandments law, the conversation this course keeps r
         "Finally some common sense values in our schools.",
         "Freedom of religion means freedom from it too.",
         "My kids should learn this at home, not at school.",
-        "Texas is leading the way here, good for them.",
     ],
     "stance": ["support", "oppose", "support", "oppose", "neutral", "support",
-               "oppose", "oppose", "support", "oppose", "neutral", "support"],
-    "likes": [240, 312, 88, 150, 12, 205, 176, 410, 64, 198, 33, 121],
-    "replies": [15, 42, 6, 22, 1, 18, 19, 51, 4, 27, 2, 9],
+               "oppose", "oppose", "support", "oppose", "neutral"],
+    "likes": [240, 312, 88, 150, 12, 205, 176, 410, 64, 198, 33],
+    "replies": [15, 42, 6, 22, 1, 18, 19, 51, 4, 27, 2],
 }
 
 comments_df = pd.DataFrame(data)
