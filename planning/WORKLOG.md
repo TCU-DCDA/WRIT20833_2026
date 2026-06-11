@@ -344,7 +344,21 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
     wanted:** draft the **2–3 concrete student-work examples** the CSV submission form requires (from the
     capstone + discussions), once the instructor confirms the exact outcome to claim.
 
-11. **TCU syllabus compliance — ✅ VERIFIED COMPLETE for course-specific content (2026-06-11).** Did a
+11. **TCU syllabus — ✅ ALIGNED TO AddRan + F25 (2026-06-11, second pass).** Reviewed the AddRan syllabus
+    docs in `/Users/curtrode/Code/AddRan/syllabus-checker/source_files` (AddRan Simplified Template,
+    Fall-2026 review instructions, **the F25 WRIT 20833 syllabus co-authored with Lucas**). Big unblock:
+    AddRan handles University-policy boilerplate via the **Student Resources & Policy Information QR/link**,
+    not pasting — so the old `[paste …]` placeholders are **gone**. Revised `SYLLABUS_2026.md`: added the
+    QR block (cte.tcu.edu image) + a Note-for-students; a **Land Acknowledgment**; the **University-Absence**
+    + **Medical-Privacy** statements (AddRan text) under *Attendance & Engagement*; course **Recording** +
+    **Academic Conduct** statements; **CSV outcome-mapping** in the assignments table; dropped the TCU-Online
+    getting-started + the long University-Policies paste list. **Only residual:** `[...]` instructor/registrar
+    fields + **export to Word** (`WRIT20833-[section]_Summer2026_Rode`) for AddRan submission (Word, in
+    template order; see the review instructions). Crosswalk `planning/SYLLABUS_COMPLIANCE.md` updated.
+    F25 syllabus also confirms this course already ran **ungrading** + no-attendance-deduction.
+    *(Earlier first-pass verification against the standard TCU checklist remains below for history.)*
+
+    **TCU syllabus compliance — ✅ VERIFIED COMPLETE for course-specific content (2026-06-11).** Did a
     full item-by-item gap-check of `SYLLABUS_2026.md` against the **actual** TCU checklist PDF
     (`reference/TCU-Syllabus-Template-checklist-FINAL-9-2024.pdf`): every required section is present and
     correctly scaffolded. Crosswalk captured in **`planning/SYLLABUS_COMPLIANCE.md`** (each checklist item →

@@ -1,11 +1,13 @@
 # WRIT 20833 — Intro to Coding in the Humanities
 ## "When Coding Meets Culture: Developing Data-Driven Opinions" — Summer 2026
 
-> **DRAFT for instructor review — structured to the TCU Online Syllabus Template (rev. 9/2024).**
-> Two kinds of placeholder remain: `[...]` = instructor/registrar specifics (name, contact, links,
-> credit hours), and **`[paste TCU standard text …]`** = official University policy boilerplate that
-> must be copied verbatim from `reference/Syllabus-Template-Online.docx` (do **not** paraphrase official policy).
-> Course-specific content is complete. Any tables/images added must meet TCU accessibility guidelines
+> **DRAFT for instructor review — aligned to the AddRan Simplified Syllabus Template and the F25
+> WRIT 20833 syllabus.** Official University-policy text (Title IX, Disability/Access, Religious
+> Observations, Academic Conduct, Emergency Response, Recording) is **not pasted** — per AddRan, it
+> lives behind the **Student Resources & Policy Information** QR/link below; the syllabus carries only
+> course-specific policies. Remaining `[...]` placeholders are instructor/registrar specifics (name,
+> contact, section, credit hours, links). **For AddRan submission:** export to **Word**, filename
+> `WRIT20833-[section]_Summer2026_Rode`. Tables/images must meet TCU accessibility guidelines
 > (https://cte.tcu.edu/resources/accessibility/).
 
 ---
@@ -30,7 +32,17 @@
 **Response Time:** `[e.g., within 24 hours on weekdays; longer on weekends/holidays]`
 **Course site & submissions:** **TCU Online** (D2L) — `[course link]`. **Code runs in:** Google Colab (free; needs a Google account).
 
-**Student Resources & Policy Information:** `[paste TCU standard Student Resources & Policy Information block — link + QR code — from reference/Syllabus-Template-Online.docx]`
+*Note for students:* The syllabus is your first course reading — it orients you to the flow and
+expectations of the course. Turn to it for details on assignments and policies.
+
+### Student Resources & Policy Information
+[![Student Resources & Policy Information — scan for TCU student resources and university policies](https://cte.tcu.edu/wp-content/uploads/TCU-Syllabus-Policies-Resources.png)](https://cte.tcu.edu/wp-content/uploads/TCU-Syllabus-Policies-Resources.png)
+
+**Click or scan the QR code** for resources to support you as a TCU student. Please note especially the
+sections on **Student Access and Accommodation**, **Academic Conduct & Course Materials Policies**, and
+**Emergency Response & TCU Alert**. The University's official policies — including **Anti-Discrimination
+& Title IX**, **Religious Observations & Holidays**, **Disability/Access**, and **Recording of Class
+Sessions** — are provided there and apply to this course.
 
 ---
 
@@ -115,13 +127,16 @@ Each assignment is described below and connects to the learning outcomes; you su
 through **TCU Online**. `[Note the specific TCU Online module/tool for submissions and where grades and
 feedback appear.]`
 
-| Work | How many | What it is | Outcomes |
-|---|---|---|---|
-| **Homework notebooks (HW1–HW4)** | 4 | Hands-on skill practice, each with a short reflective write-up. | 1–4 |
-| **Weekly Experiments** | within each HW | 2–3 small original explorations of your own — *the heart of the ungrading*. | 1–5 |
-| **Self-reflections** | 3 | Where you're starting · the halfway check · the final self-evaluation. | 6 |
-| **Threaded discussions (TCU Online)** | 4 | One per week, on the week's culture question — a post + replies to peers. | 4–5 |
-| **Capstone (final evaluative exercise)** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay, presented on the last day. Replaces a final exam. | 2–6 |
+| Work | How many | What it is | Course outcomes | Core (CSV) |
+|---|---|---|---|---|
+| **Homework notebooks (HW1–HW4)** | 4 | Hands-on skill practice, each with a short reflective write-up. | 1–4 | — |
+| **Weekly Experiments** | within each HW | 2–3 small original explorations of your own — *the heart of the ungrading*. | 1–5 | — |
+| **Self-reflections** | 3 | Where you're starting · the halfway check · the final self-evaluation. | 6 | ✓ |
+| **Threaded discussions (TCU Online)** | 4 | One per week, on the week's culture question — a post + replies to peers. | 4–5 | ✓ |
+| **Capstone (final evaluative exercise)** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay, presented on the last day. Replaces a final exam. | 2–6 | ✓ |
+
+*(Outcome mapping per AddRan: every learning outcome is exercised by an assignment above; the **CSV** core
+outcome is met by the discussions, reflections, and capstone — the forms of evidence the CSV submission cites.)*
 
 **The three self-reflections** (≈300–500 words each, submitted to TCU Online — central to ungrading):
 1. **Reflection 1 — "Where I'm starting" (due Wed 7/8).** Prior experience (likely none — fine), what
@@ -201,22 +216,27 @@ for discussing it.]`
 ### Late Work
 Because the term is short and sessions build on each other, keep up — but ungrading is about the whole
 arc, not single due dates. If life happens, **talk to me**; honest communication beats a missed
-deadline. **Official University Absences** will be accommodated and work missed for them may be made up,
-per TCU policy. `[Paste/confirm TCU language on Official University Absences and make-up work; see Student
-Absences.]` **I will not ask for or accept medical documentation** — see *University Policies* below.
+deadline, and we'll find a reasonable way for you to complete the work. **Official University Absences**
+are always accommodated (see *Attendance & Engagement*, next).
 
-### Participation, Engagement & Attendance
+### Attendance & Engagement
 This is a live, fast-moving daily course; attendance and active engagement at the synchronous sessions
 are expected, and your engagement is reflected throughout your marks (there is no separate points-based
 participation grade). In this online course, "engaged" means showing up to the live sessions, coding
 along, posting and replying in discussions on time, and documenting your thinking in your `#comments`
-and reflections. If you must miss a session, let me know in advance and we'll arrange a catch-up. A
-pattern of absence that endangers your standing will be reported to the Dean of Students, per TCU policy.
-`[Confirm against the TCU University Attendance Policy and Official Absence Policy.]`
+and reflections. If you must miss a session, let me know in advance and we'll arrange a catch-up.
 
-### Class Norms & Netiquette
-`[Paste TCU standard Class Norms & Netiquette statement from reference/Syllabus-Template-Online.docx.]`
+**Official University Absences** are those described in the Official University Absence Policy and
+include Title IX–related issues, military leave, holy days, and university-related absences. Students
+entitled to such absences may work with me to complete missed work within a reasonable time after the
+absence.
 
+**Medical privacy.** Because it is considered an infringement on student privacy for me to have access
+to student medical records, I cannot accept medical documentation to justify absences. If you have a
+legitimate reason for an absence and want to provide verification, please use the **Absence
+Documentation Form** through the **Dean of Students Office**.
+
+### Class Norms
 **Course-specific note (important).** Our running dataset is real public comments about a 2025 law
 placing the Ten Commandments in Texas classrooms — a genuinely contested topic touching religion and the
 state. We analyze this language as **data about a public debate**, and a goal of the course is to *hear*
@@ -238,16 +258,21 @@ borrowing:
   own words; letting AI generate your writing forfeits that. **Use AI for feedback if you like, but the
   writing itself must be yours.** When in doubt, ask.
 
-### Technology Policies, Email & Recording
-- **Technology.** `[State expectations for hardware/connection, and what to do if tech fails during a
-  live session.]`
-- **Email.** `[Paste TCU standard Email policy; state your preferred channel and response time.]`
-- **Recording of Class Sessions.** `[Paste TCU standard Recording-of-Class-Sessions statement.]`
+### Technology & Recording
+- **Technology.** You'll need a reliable internet connection and a laptop that can run a web browser —
+  all code runs in **Google Colab**, so there's nothing to install. If your tech fails mid-session,
+  message me on TCU Online and review the session recording to catch up.
+- **Recording of class sessions.** I may record our live sessions so students who miss a class, or who
+  want to review, can catch up. Recordings are for this class only — please don't circulate them. The
+  University's official **Recording of Class Sessions** policy is in *Student Resources & Policy
+  Information* above; if you have an accommodation to make your own recordings, see *Student Access and
+  Accommodation* there.
 
-### Academic Misconduct
-`[Paste TCU standard Academic Misconduct statement from reference/Syllabus-Template-Online.docx.]` In this course:
-**borrowing code is expected; submitting work (code or writing) you cannot explain or that isn't yours is
-not.** Cite your sources, including AI.
+### Academic Conduct
+The University's academic-conduct policy is in *Student Resources & Policy Information* above (under
+**Academic Conduct & Course Materials Policies**). In this course specifically: **borrowing code is
+expected; submitting work (code or writing) you cannot explain, or that isn't yours, is not.** Cite your
+sources, including AI.
 
 ---
 
@@ -316,22 +341,19 @@ Boundaries," a possible ML9 "Going Public" at Day 17, and a noumena framing at D
 
 ---
 
-## TCU Online: Our Learning Management System
-`[Paste the TCU Online section from reference/Syllabus-Template-Online.docx — Getting Started, Getting Help,
-Personal Settings & Notifications, and Student Success Tools.]`
+## University Policies
+All official University policy statements — **Anti-Discrimination & Title IX**, **Religious Observations
+& Holidays**, **Student Access & Accommodation (Disability/Access)**, **Academic Conduct & Course
+Materials**, **Recording of Class Sessions**, **Emergency Response & TCU Alert**, and the full TCU
+**Student Resources** directory — are provided through the **Student Resources & Policy Information**
+QR/link in *Course Information* above, and apply to this course. (The medical-privacy and
+University-Absence statements are under *Attendance & Engagement*.)
 
-## University Policies & Student Resources
-*Official University policy statements — paste the current text from `reference/Syllabus-Template-Online.docx`; do
-not paraphrase.*
-- **Anti-Discrimination & Title IX Information** — `[paste TCU standard statement]`
-- **TCU Policy for Religious Observations & Holidays** — `[paste TCU standard statement]`
-- **Disability / Access (Student Access & Accommodation)** — `[paste TCU standard statement]`
-- **Medical Documentation** — Faculty will **not** seek or accept medical documentation; students upload
-  any documentation to verify absences via the **Dean of Students Office** website. `[paste TCU standard
-  statement]`
-- **Audio Recording Notification** — `[paste TCU standard statement]`
-- **Emergency Response Information** — `[paste TCU standard statement]`
-- **Student Resources & Policy Information** — link + QR `[paste TCU standard block]`
+## Land Acknowledgment
+TCU acknowledges the many benefits, responsibilities, and relationships of being in this place, which we
+share with all living beings. We respectfully acknowledge all Native American peoples who have lived on
+this land since time immemorial. TCU especially acknowledges and pays respect to the Wichita and
+Affiliated Tribes, upon whose historical homeland our university is located.
 
 > *This syllabus is a working plan and may be adjusted to fit the class's pace; changes will be announced
 > in class and on TCU Online.*
