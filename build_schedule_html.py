@@ -1,17 +1,20 @@
 """Render COURSE_SCHEDULE_2026.md into a polished, self-contained HTML view.
 
-Single source of truth stays the markdown; this just produces a more readable
-COURSE_SCHEDULE_2026.html (inline CSS, no external assets, opens in any browser).
-Relative notebook links are preserved, so they resolve when the HTML sits at repo root.
+Uses the shared course design system in `site_theme.py` (the "Reading Room" theme) so the schedule
+matches the rest of the course site. The markdown stays the single source of truth; this only
+produces a more readable COURSE_SCHEDULE_2026.html. Relative notebook links are preserved, so they
+resolve when the HTML sits at repo root.
 
 Run from repo root:  python3 build_schedule_html.py
 """
 import re, html, os
+from site_theme import PAGE
 
 SRC = "COURSE_SCHEDULE_2026.md"
 OUT = "COURSE_SCHEDULE_2026.html"
 
-WEEK_COLORS = ["#2563eb", "#0d9488", "#7c3aed", "#db2777"]  # blue, teal, violet, pink
+# greens deepening across the term (match --wk1..4 in site_theme.py)
+WEEK_COLORS = ["#3a6b54", "#2f5d49", "#26513e", "#1e3b2f"]
 MODE_CLASS = {
     "Code-along": "m-codealong", "Lab": "m-lab", "Workshop": "m-workshop",
     "Work session": "m-worksession", "Presentations": "m-present",
@@ -45,7 +48,6 @@ def parse():
             continue
         if l.startswith("*Notes") and notes_start is None:
             notes_start = idx
-    # notes = trailing italic paragraphs
     notes = []
     if notes_start is not None:
         para = []
@@ -83,15 +85,14 @@ def render_coding(cell):
 
 def render_due(cell):
     cell = cell.strip()
-    if cell == "—" or cell == "":
+    if cell in ("—", ""):
         return '<span class="due-none">—</span>'
     chips = []
     for part in re.split(r'\s*·\s*', cell):
         part = part.strip()
         if not part:
             continue
-        important = "**" in part
-        cls = "chip chip-key" if important else "chip"
+        cls = "chip chip-key" if "**" in part else "chip"
         chips.append(f'<span class="{cls}">{md_inline(part)}</span>')
     return " ".join(chips)
 
@@ -99,8 +100,7 @@ def render_due(cell):
 def render():
     title, subtitle, weeks, notes = parse()
     legend = "".join(
-        f'<span class="mode {cls}">{name}</span>'
-        for name, cls in MODE_CLASS.items()
+        f'<span class="mode {cls}">{name}</span>' for name, cls in MODE_CLASS.items()
     )
     week_html = []
     for i, w in enumerate(weeks):
@@ -126,75 +126,25 @@ def render():
         )
     notes_html = "".join(f"<p>{md_inline(n)}</p>" for n in notes)
 
-    return f"""<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{html.escape(title)}</title>
-<style>
-:root {{ --ink:#1f2330; --muted:#6b7280; --line:#e6e8ee; --bg:#f4f5f8; }}
-* {{ box-sizing:border-box; }}
-body {{ margin:0; background:var(--bg); color:var(--ink);
-  font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }}
-.wrap {{ max-width:1080px; margin:32px auto; padding:0 18px; }}
-header.top {{ background:#fff; border:1px solid var(--line); border-radius:14px;
-  padding:24px 26px; box-shadow:0 1px 3px rgba(20,20,40,.05); }}
-header.top h1 {{ margin:0 0 6px; font-size:26px; letter-spacing:-.01em; }}
-.sub {{ font-weight:600; color:#374151; margin:0 0 14px; }}
-.meta {{ color:var(--muted); font-size:14px; margin:0; }}
-.legend {{ display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 2px; }}
-.legend .lbl {{ color:var(--muted); font-size:13px; align-self:center; margin-right:4px; }}
-.mode {{ display:inline-block; font-size:12px; font-weight:700; line-height:1;
-  padding:5px 9px; border-radius:999px; color:#fff; white-space:nowrap; }}
-.m-codealong {{ background:#2563eb; }} .m-lab {{ background:#7c3aed; }}
-.m-workshop {{ background:#0d9488; }} .m-worksession {{ background:#d97706; }}
-.m-present {{ background:#db2777; }} .m-other {{ background:#6b7280; }}
-.week {{ background:#fff; border:1px solid var(--line); border-left:5px solid var(--wk);
-  border-radius:14px; margin:20px 0; overflow:hidden; box-shadow:0 1px 3px rgba(20,20,40,.05); }}
-.week h2 {{ margin:0; padding:14px 20px; font-size:17px; color:var(--wk);
-  border-bottom:1px solid var(--line); background:color-mix(in srgb, var(--wk) 7%, #fff); }}
-table {{ width:100%; border-collapse:collapse; }}
-th, td {{ text-align:left; padding:11px 14px; vertical-align:top; border-top:1px solid var(--line); }}
-thead th {{ border-top:none; font-size:12px; text-transform:uppercase; letter-spacing:.04em;
-  color:var(--muted); font-weight:700; }}
-tbody tr:nth-child(even) {{ background:#fafbfc; }}
-.c-day {{ width:72px; }} .c-lec {{ width:26%; }} .c-due {{ width:24%; }}
-.day .wd {{ display:block; font-weight:700; font-size:13.5px; }}
-.day .dt {{ display:block; color:#4b5563; font-size:13px; }}
-.day .num {{ display:block; color:#aab0bb; font-size:11px; margin-top:3px; letter-spacing:.02em; }}
-.c-lec {{ color:#374151; font-size:14.5px; }}
-.c-code {{ font-size:14.5px; }}
-.c-code .mode {{ margin-right:4px; vertical-align:baseline; }}
-a {{ color:#1d4ed8; text-decoration:none; }} a:hover {{ text-decoration:underline; }}
-code {{ background:#eef0f4; padding:1px 5px; border-radius:5px; font-size:.9em; }}
-.chip {{ display:inline-block; font-size:12px; padding:3px 8px; border-radius:7px;
-  background:#eef1f6; color:#475569; margin:1px 0; }}
-.chip-key {{ background:#fef3c7; color:#92400e; font-weight:600; }}
-.chip-key strong {{ font-weight:700; }}
-.due-none {{ color:#c2c7d0; }}
-.notes {{ background:#fff; border:1px solid var(--line); border-radius:14px;
-  padding:14px 22px; margin:22px 0; color:#4b5563; font-size:13.5px; }}
-.notes p {{ margin:9px 0; }}
-footer {{ color:var(--muted); font-size:12px; text-align:center; margin:24px 0 8px; }}
-@media (max-width:720px) {{ .c-lec,.c-due {{ width:auto; }} body {{ font-size:15px; }} }}
-@media print {{ body {{ background:#fff; }} .week,.notes,header.top {{ box-shadow:none; }} }}
-</style></head>
-<body><div class="wrap">
-<header class="top">
-<h1>{md_inline(title)}</h1>
-<p class="sub">{md_inline(subtitle)}</p>
-<p class="meta">Generated from <code>COURSE_SCHEDULE_2026.md</code> — see the syllabus for full
-assignment descriptions, the ungrading policy, and the reflection / discussion prompts.</p>
-<div class="legend"><span class="lbl">Coding modes:</span>{legend}</div>
-</header>
-{''.join(week_html)}
-<div class="notes">{notes_html}</div>
-<footer>WRIT 20833 · Summer 2026 · this is a working plan and may shift to the class's pace.</footer>
-</div></body></html>
-"""
+    body = (
+        '<header class="masthead">'
+        '<div class="kicker">WRIT 20833 · When Coding Meets Culture</div>'
+        '<h1>Course Schedule</h1>'
+        f'<p class="sub">{md_inline(subtitle)}</p>'
+        '<p class="meta">Summer 2026 · a day-at-a-glance companion to the syllabus '
+        '(full assignment descriptions, the ungrading policy, and the reflection / discussion prompts '
+        'live there). Generated from <code>COURSE_SCHEDULE_2026.md</code>.</p>'
+        f'<div class="legend"><span class="lbl">Coding modes</span>{legend}</div>'
+        '</header>'
+        + "".join(week_html)
+        + f'<div class="notes">{notes_html}</div>'
+        + '<footer>WRIT 20833 · Summer 2026 · a working plan, adjusted to the class’s pace</footer>'
+    )
+    return PAGE(html.escape(title), body)
 
 
 if __name__ == "__main__":
     out = render()
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(out)
-    print(f"wrote {OUT} ({len(out)} bytes, {os.path.getsize(OUT)} on disk)")
+    print(f"wrote {OUT} ({os.path.getsize(OUT)} bytes)")
