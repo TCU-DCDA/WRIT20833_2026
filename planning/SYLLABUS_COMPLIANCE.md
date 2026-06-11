@@ -5,11 +5,18 @@ Maps every item on the **TCU Syllabus Checklist (rev. 9/2024)**
 `SYLLABUS_2026.md`. Use this to fill out the committee checklist and to see, at a glance, what only the
 **instructor/registrar** can finish.
 
-**Bottom line:** all *course-specific* content is written. What remains is (A) registrar/instructor
-specifics (`[...]`) and (B) official University policy text that must be **pasted verbatim** from
-`reference/Syllabus-Template-Online.docx` (never paraphrased). Nothing substantive is missing.
+**Updated 2026-06-11 — now aligned to the AddRan Simplified Template + the F25 WRIT 20833 syllabus.**
+The big change: per AddRan, official University-policy text is **not pasted** — it's carried by the
+**Student Resources & Policy Information** QR/link (Title IX, Disability/Access, Religious Observations,
+Academic Conduct, Emergency Response, Recording). That resolved the old 📋 boilerplate placeholders.
+Added: a **Land Acknowledgment**, the **University-Absence** + **Medical-Privacy** statements (from the
+AddRan template), a **Note for students**, and **CSV outcome-mapping** in the assignments table.
 
-Legend: ✅ done · 🟦 instructor/registrar field (`[...]`) · 📋 paste official boilerplate
+**Bottom line:** all *course-specific* content is written and the policy boilerplate is handled via the
+QR. What remains is only (A) instructor/registrar `[...]` fields, and (B) **export to Word** named
+`WRIT20833-[section]_Summer2026_Rode` for AddRan submission.
+
+Legend: ✅ done · 🟦 instructor/registrar field (`[...]`) · 🔗 via Student-Resources QR (not pasted)
 
 ## Course Information
 | Checklist item | Status | Note |
@@ -29,7 +36,7 @@ Legend: ✅ done · 🟦 instructor/registrar field (`[...]`) · 📋 paste offi
 | Response Time | 🟦 | |
 | Final Evaluative Exercise — *date + details* | ✅ | Capstone, presented Fri 7/31; no separate final exam |
 | Other Important Dates | ✅ | |
-| Student Resources & Policy Information — *link + QR* | 📋 | paste block |
+| Student Resources & Policy Information — *link + QR* | ✅ | QR image + link in Course Information (cte.tcu.edu block) |
 
 ## Course Description
 | Checklist item | Status | Note |
@@ -75,12 +82,16 @@ Legend: ✅ done · 🟦 instructor/registrar field (`[...]`) · 📋 paste offi
 | Technology Policies | 🟦 | hardware/connection expectations + tech-failure plan |
 | Course Schedule — *topics + due dates across the term* | ✅ | full 20-session grid (Date·Lecture·Coding·Due) + Python skills map |
 
-## University Policies & Student Resources — *paste official text, do not paraphrase*
-All present as 📋 placeholders in `SYLLABUS_2026.md`:
-Anti-Discrimination & Title IX · Religious Observations & Holidays · Disability/Access ·
-Medical Documentation · Audio Recording Notification · Emergency Response · Student Resources & Policy
-Information (link + QR) · TCU Online (Getting Started / Help / Notifications / Success Tools) ·
-Class Norms & Netiquette · Email · Recording of Class Sessions · Academic Misconduct.
+## University Policies & Student Resources — 🔗 via the QR (AddRan approach)
+**Resolved.** Per the AddRan Simplified Template, these official policies are **not pasted** — they're
+carried by the **Student Resources & Policy Information** QR/link in *Course Information*, and the
+syllabus says so explicitly: Anti-Discrimination & Title IX · Religious Observations & Holidays ·
+Disability/Access (Student Access & Accommodation) · Academic Conduct & Course Materials · Recording of
+Class Sessions · Emergency Response & TCU Alert · the full Student Resources directory. **Written into
+the syllabus directly** (course-specific, AddRan-provided): **University Absences** + **Medical Privacy**
+(under *Attendance & Engagement*), **Land Acknowledgment**, a course **Recording** statement, and a
+course **Academic Conduct** note. The TCU-Online "getting started" block is dropped (not required by the
+AddRan template; D2L access is noted in *Course Materials*).
 
 ## The one design note for the committee
 This course is graded by **ungrading** (no per-assignment points). The checklist's points/percentage
