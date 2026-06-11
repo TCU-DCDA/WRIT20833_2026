@@ -281,8 +281,17 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
    - ✅ **CODE-ALONG BATCH COMPLETE** (Strings, Pandas 01, Pandas 02, VADER, Topic Modeling). The three
      analytics notebooks share ONE corpus arc: Day 8 builds the comments table → Day 9 cleans it →
      Days 11–12 score sentiment → Days 14–15 (limits) — the same corpus HW3/HW4 use.
-   - **Still open: Day-6 term frequency** has no F25 standalone code-along — build a short one or teach
-     via HW2 (the schedule now names this gap explicitly). **Schedule rewrite ✅ done** (see above).
+   - ✅ **Day-6 term-frequency code-along DONE** — `notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb`
+     (built by `_build_termfreq.py`; 11/11 cells validated; all prose word-claims verified against output).
+     **Authored fresh** (no F25 standalone existed). Plain Python / pre-pandas to match HW2; reuses HW2's
+     exact `split_into_words` + `stopwords` + `Counter` + `top_meaningful_words` idiom verbatim. Picks up
+     Day 5's `count_words`/Counter thread; arc = raw counts (noise: `the`/`and` lead) → stopword filter
+     (content surfaces: schools/religion/country/god/kids) → reusable function → **two-corpus contrast**
+     (comments vs a Constitution-style passage: shall/congress/states/law) = a mini preview of HW2's
+     "Whose Words Win?". Keeps the critical frame (counting is already interpretation) + borrowed-code
+     note (Counter does what Day-5 `count_words` did by hand). Schedule Day-6 cell now links it.
+   - ✅ **Schedule rewrite done** (see above). **Code-along coverage now complete** — every coding day in
+     `COURSE_SCHEDULE_2026.md` links a real notebook.
    - ✅ **Schedule rewrite DONE** — `COURSE_SCHEDULE_2026.md` rebuilt in one pass: every coding cell now
      carries an explicit **mode** (Code-along / Lab / Workshop / Work session / Presentations) and links
      its real notebook (all 12 links verified to resolve). Non-coding days (7 Lab, 10 Workshop, 13/17–19
