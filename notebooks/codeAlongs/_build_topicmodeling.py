@@ -52,6 +52,8 @@ def notebook(cells):
 STOPWORDS_SRC = "stopwords = " + json.dumps(STOPWORDS)
 
 cells = [
+    md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>'),
+
     md('''# WRIT 20833 — Topic Modeling with Gensim
 
 **When Coding Meets Culture: Developing Data-Driven Opinions**
@@ -198,6 +200,7 @@ in overlapping vocabulary. Watch the topics get muddy.'''),
     "This is a clear violation of church and state. Keep it out.",
     "Morals matter and kids today need them more than ever.",
     "Whose religion gets to decide? Not the government's job.",
+    "Honestly I have no strong opinion either way.",
     "God and country, that's what built this nation.",
     "Public schools serve everyone, not just one faith.",
     "Put the Constitution in classrooms, not commandments.",

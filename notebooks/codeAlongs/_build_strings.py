@@ -44,6 +44,8 @@ def notebook(cells):
 
 
 cells = [
+    md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>'),
+
     md('''# WRIT 20833 — Strings & String Methods
 
 **When Coding Meets Culture: Developing Data-Driven Opinions**
@@ -141,11 +143,13 @@ Two quick ways to interrogate a string. `.count()` tells you **how many times** 
 the `in` keyword answers **yes or no** — is this substring present?'''),
     code('''text = comment.lower()                 # lowercase first, so case can't fool us
 print(text.count("o"))                 # how many letter o's
-print(text.count("god"))               # how many times "god" appears
+print(text.count("god"))               # how many times the letters "god" appear
 print("commandments" in text)          # is it mentioned at all? -> True / False
 print("freedom" in text)'''),
-    md('''Notice we lowercased **once** at the top and reused it. That's a habit worth keeping: clean
-the text, then ask your questions of the clean version.'''),
+    md('''Heads up: `.count()` matches **characters**, not whole words — `count("god")` would also catch
+the "god" hidden inside *"goddess"* or *"godless."* (Counting real **words** needs `.split()`, coming up
+next.) And notice we lowercased **once** at the top and reused it — a habit worth keeping: clean the
+text, then ask your questions of the clean version.'''),
 
     # ---- Split (the bridge) ----
     md('''# Split: From One String to a List of Words
