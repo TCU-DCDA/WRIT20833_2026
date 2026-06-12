@@ -40,9 +40,12 @@ Conventions to honor (see WORKLOG "Locked decisions"):
 - Validate notebooks with /opt/anaconda3/bin/python (has pandas/vaderSentiment/gensim).
 
 Open items (pick one, or tell me which):
-- Lecture pages: ML0 pilot DONE (build_lectures.py + materials/lectures/ml0.md →
-  docs/lectures/ml0.html). Scale out the rest — ML1, ML3, ML5, ML4, ML6, ML7
-  (each = one materials/lectures/ml*.md + a LECTURES line + rerun the generators).
+- Lecture pages: ML0 DONE — build_lectures.py renders each materials/lectures/ml*.md
+  into BOTH a reading page (docs/lectures/ml0.html) and a self-contained slide deck
+  (ml0.deck.html); supports a 2-column `<!-- layout: split -->` directive + per-slide
+  imagery (materials/lectures/images/, JPEG-downsized, warm palette). Scale out the
+  rest — ML1, ML3, ML5, ML4, ML6, ML7 (each = one ml*.md + a LECTURES line + rerun
+  the generators; ML3 → reuse F25 data_as_categorization/tippingScales images).
 - CSV/HUM core work-examples (#10); lecture audit ML2/8/9 (#9); the parked
   site-design questions (sidebar icons, nav filter) recorded in the WORKLOG.
   (Capstone sheet — DONE: CAPSTONE_2026.md. Syllabus HUM core — DONE.)
