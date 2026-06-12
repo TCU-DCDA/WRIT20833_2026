@@ -390,9 +390,19 @@ presentations + due Fri 7/31). **Residual `[...]`:** upload location + exact pre
     **Still instructor-only** (left as `[...]` in both md + docx): section number (also the filename),
     meeting time, TCU email, phone, office hours, Zoom, TCU-Online course link; plus the soft fields kept
     as placeholders by choice (Grading Concerns, submissions-module note, loaner-laptop, supplementary
-    resources). **Two to verify, not fabricate:** the catalog description (line 67) + exact CSV outcome
-    wording (line 80). In Word: rename `[section]` → real section, run the accessibility checker
-    (table headers + image alt text).
+    resources). **Two to verify, not fabricate:** the catalog description (line 67) + exact CSV/HUM
+    outcome wording (line 90). In Word: rename `[section]` → real section, run the accessibility checker
+    (table headers + image alt text). *(The renamed export is `WRIT20833-020_...` — section 020.)*
+
+    **HUM core added (2026-06-12).** The course now carries **two** Core designations — CSV **and
+    Humanities (HUM)**. Verified the official HUM outcome against `reference/TCU-Core-Curriculum-outcomes-1.pdf`:
+    *"Use humanistic modes of inquiry to analyze human experiences and expressions across space and time."*
+    Wove HUM in beside CSV in `SYLLABUS_2026.md` (Course-Description core subsection → now "CSV and HUM"
+    with a paragraph each; Learning-Outcomes core block → two bullets; assignments table → column is now
+    "Core (CSV · HUM)" with per-row codes + updated mapping note). Updated `CONCEPTUAL_FRAMEWORK_2026.md`
+    §7 (HUM moved from "adjacent resonance" to a **claimed** designation) and the README core-credit line.
+    **HUM evidence claimed:** the HW analyses + capstone; CSV evidence stays discussions + reflections +
+    capstone. The Word docx (020) is the instructor's — paste the HUM blocks in by hand (md ≠ docx now).
 
     **TCU syllabus compliance — ✅ VERIFIED COMPLETE for course-specific content (2026-06-11).** Did a
     full item-by-item gap-check of `SYLLABUS_2026.md` against the **actual** TCU checklist PDF
