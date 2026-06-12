@@ -40,3 +40,6 @@ notebooks/homework/_build_hw*.py
 # (pandoc'd from SYLLABUS_2026.md, which stays the source of truth). The glob matches
 # both the [section] placeholder name and the renamed WRIT20833-<section>_… version.
 WRIT20833-*_Summer2026_Rode.docx
+
+# Throwaway local site previews (image paths rewritten to local files)
+*.preview.html

@@ -46,16 +46,18 @@ HOMEWORK = [
 
 # --- mini-lectures (the ~25-min conceptual frames) — not yet built as pages ---
 # ML0-7 map cleanly to 2026; ML2 and ML9 are under review (WORKLOG thread #9); ML10-12 (web) cut.
+# (title, desc, when, page) — page is a docs-relative URL when the lecture has an authored
+# reading page (built by build_lectures.py); None keeps it a "soon" placeholder card.
 LECTURES = [
-    ("ML0 · Humanities & Coding", "Why a humanist learns to code.", "Day 1"),
-    ("ML1 · Connotations & Code", "Code is not neutral.", "Day 1"),
-    ("ML2 · Sacred Boundaries", "Privacy & the limits of analysis. (under review)", "Day 2"),
-    ("ML3 · Classification Logic", "Whose categories? Sorting as judgment.", "Day 3"),
-    ("ML5 · Collective Memory", "What a culture keeps and forgets.", "Day 4"),
-    ("ML4 · AI Agency", "Reading & judging machine-written code.", "Day 7"),
-    ("ML6 · Data Archaeology", "Where found data comes from.", "Day 8"),
-    ("ML7 · NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14"),
-    ("ML9 · Going Public", "Analysis → public argument. (under review)", "Day 17"),
+    ("ML0 · Humanities & Coding", "Why a humanist learns to code.", "Day 1", "lectures/ml0.html"),
+    ("ML1 · Connotations & Code", "Code is not neutral.", "Day 1", None),
+    ("ML2 · Sacred Boundaries", "Privacy & the limits of analysis. (under review)", "Day 2", None),
+    ("ML3 · Classification Logic", "Whose categories? Sorting as judgment.", "Day 3", None),
+    ("ML5 · Collective Memory", "What a culture keeps and forgets.", "Day 4", None),
+    ("ML4 · AI Agency", "Reading & judging machine-written code.", "Day 7", None),
+    ("ML6 · Data Archaeology", "Where found data comes from.", "Day 8", None),
+    ("ML7 · NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14", None),
+    ("ML9 · Going Public", "Analysis → public argument. (under review)", "Day 17", None),
 ]
 
 RESOURCES = [
@@ -160,8 +162,8 @@ def render():
     lectures = section(
         "lectures", "04", "Lectures",
         "The short conceptual frames that open each day — the “code is not neutral” throughline. "
-        "Pages are in development; ML2 and ML9 are under review.",
-        grid([card("Mini-lecture", t, d, w, None, soon=True) for (t, d, w) in LECTURES]))
+        "ML0 is live as a reading page; the rest are in development. ML2 and ML9 are under review.",
+        grid([card("Mini-lecture", t, d, w, p, soon=(p is None)) for (t, d, w, p) in LECTURES]))
 
     res_items = "".join(
         f'<li><span class="k">{html.escape(k)}</span>'

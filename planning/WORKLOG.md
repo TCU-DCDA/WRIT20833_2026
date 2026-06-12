@@ -247,6 +247,35 @@ presentations + due Fri 7/31). **Residual `[...]`:** upload location + exact pre
   Track A vs. B, fixed-vs-student-generated stylometry corpus, and how heavily to foreground
   AI-detection-bias ethics. The sheet states a single shared length (~800–1,200 words) for now.
 
+## Lecture pages — ✅ PILOT DONE (2026-06-12); scale-out is the next step
+Built the **lecture-page system** + authored **ML0** as the template. The dashboard's Lectures section
+is no longer all placeholders — ML0 is a live reading page; the other 8 cards stay "soon."
+- **`build_lectures.py`** (new, root) — renders `materials/lectures/*.md` → `docs/lectures/<slug>.html` in
+  the shared "Reading Room" theme. Hand-rolled markdown subset (headings, paragraphs, lists, blockquotes,
+  images, rules) to match the zero-dependency house style of `build_index.py`/`build_schedule_html.py`.
+  Pages live one level under `docs/`, so they link **`../styles.css`** (via `PAGE(css_href=...)`) and
+  rewrite repo-relative image paths (`materials/…`) → absolute **raw.githubusercontent** URLs (the same
+  "outside /docs → absolute" rule the rest of the site follows; resolves once the repo is public).
+- **Lecture format** = a student-facing **reading page** (centered ~50rem measure, serif lead, themed
+  blockquote/figure) — reinforces the "reading room" identity, not F25's full-screen slide decks.
+- **Theme:** added a `/* lecture / reading pages */` block to `site_theme.THEME_CSS` (so `styles.css`
+  carries it for all lecture pages).
+- **ML0 content** (`materials/lectures/ml0.md`) — authored as the **"mix"** the instructor chose: F25's
+  ML0 "Studying the Mess of the Human Condition" (the human mess: contradiction/ambiguity/subjectivity;
+  "where others see noise, we see signal"; Keats's *negative capability*; the code-vs-culture "productive
+  tension") **woven with** the 2026 noumena→wisdom framing (the score is never the meaning; bias is
+  constitutive; make your choices visible). ~750 words; validated (HTML parses, no markdown leak, figure
+  resolves).
+- **Dashboard wiring:** `build_index.py` `LECTURES` tuples gained a 4th field (page URL or `None`); the
+  card grid links authored pages and keeps the rest `soon=True`. ML0 card now → `lectures/ml0.html`.
+
+**Next (scale-out, when wanted):** author the remaining settled lectures as `materials/lectures/ml*.md`
++ a registry line each — **ML1** Connotations & Code, **ML3** Classification Logic, **ML5** Collective
+Memory, **ML4** AI Agency, **ML6** Data Archaeology, **ML7** NLP & Topic Modeling (all "Mix" from the F25
+decks in `WRIT20833_2025/docs/lectures/mini-lectures/lecture-*` + the framework). **ML2/ML9 stay parked**
+pending the open thread #9 audit (cut/repurpose ML2; re-home ML9 → Day 17). Pattern is set; each new
+lecture is one md file + one `LECTURES` line + rerun both generators.
+
 ## Other open threads / next steps
 1. **Confirm scope** — drop-portfolio (current) vs. full-arc-tightened vs. foundations-only.
 3. **Walsh-prereq strip on ported notebooks** — Tutorials 1–4 and the code-alongs open with an
