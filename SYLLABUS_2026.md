@@ -18,8 +18,8 @@
 | **Course Title** | Intro to Coding in the Humanities — "When Coding Meets Culture" |
 | **Prefix · Number · Section** | WRIT · 20833 · `[section]` |
 | **Semester & Year** | Summer 2026 |
-| **Course Component Type** | `[e.g., Lecture — confirm with registrar]` |
-| **Credit Hours** | `[3 — confirm]` (lower-division undergraduate) |
+| **Course Component Type** | Lecture |
+| **Credit Hours** | 3 (lower-division undergraduate) |
 | **Class Meeting Days & Times** | **Monday–Friday, `[time]`–`[time]`, July 6–31, 2026** — **online synchronous** (20 live sessions; attendance at the live sessions is expected) |
 | **Class Location** | Online (synchronous via Zoom) |
 | **Zoom Access** | `[Zoom link + meeting ID/passcode]` |
@@ -27,9 +27,9 @@
 | **Final Evaluative Exercise** | The **capstone** (data-driven-opinion notebook + short essay), presented and due on the final day, **Fri July 31**. There is no separate final exam. |
 | **Other Important Dates** | All activity occurs within the listed daily sessions; any deviations announced on TCU Online. |
 
-**Instructor:** `[Name]` · **Office Location:** `[N/A — online / office]` · **Office Hours:** `[days/times; virtual — access instructions]`
-**Telephone:** `[number]` · **Email:** `[email]` · **Preferred Contact:** `[email via TCU Online / TCU email]`
-**Response Time:** `[e.g., within 24 hours on weekdays; longer on weekends/holidays]`
+**Instructor:** Curt Rode · **Office Location:** N/A — online · **Office Hours:** `[days/times; virtual — access instructions]`
+**Telephone:** `[number or N/A]` · **Email:** `[TCU email]` · **Preferred Contact:** email via TCU Online
+**Response Time:** within 24 hours on weekdays (longer on weekends and holidays)
 **Course site & submissions:** **TCU Online** (D2L) — `[course link]`. **Code runs in:** Google Colab (free; needs a Google account).
 
 *Note for students:* The syllabus is your first course reading — it orients you to the flow and

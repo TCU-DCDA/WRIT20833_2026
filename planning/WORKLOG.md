@@ -377,11 +377,22 @@ presentations + due Fri 7/31). **Residual `[...]`:** upload location + exact pre
     QR block (cte.tcu.edu image) + a Note-for-students; a **Land Acknowledgment**; the **University-Absence**
     + **Medical-Privacy** statements (AddRan text) under *Attendance & Engagement*; course **Recording** +
     **Academic Conduct** statements; **CSV outcome-mapping** in the assignments table; dropped the TCU-Online
-    getting-started + the long University-Policies paste list. **Only residual:** `[...]` instructor/registrar
-    fields + **export to Word** (`WRIT20833-[section]_Summer2026_Rode`) for AddRan submission (Word, in
-    template order; see the review instructions). Crosswalk `planning/SYLLABUS_COMPLIANCE.md` updated.
-    F25 syllabus also confirms this course already ran **ungrading** + no-attendance-deduction.
+    getting-started + the long University-Policies paste list. Crosswalk `planning/SYLLABUS_COMPLIANCE.md`
+    updated. F25 syllabus also confirms this course already ran **ungrading** + no-attendance-deduction.
     *(Earlier first-pass verification against the standard TCU checklist remains below for history.)*
+
+    **Syllabus fill + Word export — partial, 2026-06-12.** Filled the confirmable instructor/registrar
+    fields into `SYLLABUS_2026.md`: **Curt Rode · 3 credits · Lecture · Office N/A—online · Response time
+    (24 hrs weekdays) · Preferred contact (email via TCU Online)**. **Generated the AddRan Word export**
+    via `pandoc … -f gfm` → `WRIT20833-[section]_Summer2026_Rode.docx` (38.6 KB; 9 tables, QR image
+    embedded, AddRan section order preserved). The .docx is a **working draft edited in Word** and is
+    **`.gitignore`d** (`WRIT20833-*_Summer2026_Rode.docx`) — `SYLLABUS_2026.md` stays the source of truth.
+    **Still instructor-only** (left as `[...]` in both md + docx): section number (also the filename),
+    meeting time, TCU email, phone, office hours, Zoom, TCU-Online course link; plus the soft fields kept
+    as placeholders by choice (Grading Concerns, submissions-module note, loaner-laptop, supplementary
+    resources). **Two to verify, not fabricate:** the catalog description (line 67) + exact CSV outcome
+    wording (line 80). In Word: rename `[section]` → real section, run the accessibility checker
+    (table headers + image alt text).
 
     **TCU syllabus compliance — ✅ VERIFIED COMPLETE for course-specific content (2026-06-11).** Did a
     full item-by-item gap-check of `SYLLABUS_2026.md` against the **actual** TCU checklist PDF
