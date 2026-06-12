@@ -24,6 +24,9 @@ env/
 .idea/
 *.swp
 
+# Microsoft Word lock/owner files (created while a .docx is open)
+~$*
+
 # Misc
 *.log
 .cache/

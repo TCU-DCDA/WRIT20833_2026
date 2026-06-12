@@ -71,13 +71,23 @@ to be wrong out loud.
 **Program & Major Connections.** Introduces computational-text-analysis and data-literacy skills that
 support further work in writing, the digital humanities, and any field that reads culture from data.
 
-### TCU Core Curriculum — Citizenship & Social Values (CSV)
-This course carries **CSV** core credit. It meets the CSV student learning outcome —
+### TCU Core Curriculum — Citizenship & Social Values (CSV) and Humanities (HUM)
+This course carries **two** TCU Core Curriculum designations.
+
+**Citizenship & Social Values (CSV).** It meets the CSV student learning outcome —
 **"examine the knowledge, skills, values, or motivation needed to participate or lead within diverse
 communities"** — by having you form, argue, and reflect on **evidence-based opinions about a real
 public-policy debate**, weighing the values and rights of the individuals and groups whose voices you
 analyze. *(Evidence: the capstone essay, the four threaded discussions, and the three reflections.)*
-`[Confirm the exact outcome wording against the current CSV vetting on file.]`
+
+**Humanities (HUM).** It meets the Humanities student learning outcome — **"use humanistic modes of
+inquiry to analyze human experiences and expressions across space and time"** — by teaching you to read
+real human expression both closely and at scale: you interpret cultural texts (public comments, a
+founding document, a corpus you choose), move between contemporary voices and historical ones, and ask at
+every step what computation reveals and what it flattens. *(Evidence: the homework analyses, the capstone
+notebook + essay, and the close- vs. distant-reading work.)*
+
+`[Confirm the exact CSV and HUM outcome wording against the current core vetting on file.]`
 
 ---
 
@@ -125,8 +135,11 @@ By the end of the course you will be able to:
    responsibly** (including their disagreements), and **name the limits** of your own methods.
 6. **Reflect on your learning** — assess your own growth honestly (see *Grading*).
 
-**TCU Core (CSV) outcome:** *Examine the knowledge, skills, values, or motivation needed to participate
-or lead within diverse communities.* (Met via outcomes 5–6 and the capstone/discussions/reflections.)
+**TCU Core outcomes.** This course carries two Core designations:
+- **CSV** — *Examine the knowledge, skills, values, or motivation needed to participate or lead within
+  diverse communities.* (Met via outcomes 5–6 and the capstone/discussions/reflections.)
+- **HUM** — *Use humanistic modes of inquiry to analyze human experiences and expressions across space
+  and time.* (Met via outcomes 2–3 and 5 and the homework analyses + capstone.)
 
 ---
 
@@ -137,16 +150,17 @@ Each assignment is described below and connects to the learning outcomes; you su
 through **TCU Online**. `[Note the specific TCU Online module/tool for submissions and where grades and
 feedback appear.]`
 
-| Work | How many | What it is | Course outcomes | Core (CSV) |
+| Work | How many | What it is | Course outcomes | Core (CSV · HUM) |
 |---|---|---|---|---|
-| **Homework notebooks (HW1–HW4)** | 4 | Hands-on skill practice, each with a short reflective write-up. | 1–4 | — |
-| **Weekly Experiments** | within each HW | 2–3 small original explorations of your own — *the heart of the ungrading*. | 1–5 | — |
-| **Self-reflections** | 3 | Where you're starting · the halfway check · the final self-evaluation. | 6 | ✓ |
-| **Threaded discussions (TCU Online)** | 4 | One per week, on the week's culture question — a post + replies to peers. | 4–5 | ✓ |
-| **Capstone (final evaluative exercise)** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay, presented on the last day (full sheet: `CAPSTONE_2026.md`). Replaces a final exam. | 2–6 | ✓ |
+| **Homework notebooks (HW1–HW4)** | 4 | Hands-on skill practice, each with a short reflective write-up. | 1–4 | HUM |
+| **Weekly Experiments** | within each HW | 2–3 small original explorations of your own — *the heart of the ungrading*. | 1–5 | HUM |
+| **Self-reflections** | 3 | Where you're starting · the halfway check · the final self-evaluation. | 6 | CSV |
+| **Threaded discussions (TCU Online)** | 4 | One per week, on the week's culture question — a post + replies to peers. | 4–5 | CSV |
+| **Capstone (final evaluative exercise)** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay, presented on the last day (full sheet: `CAPSTONE_2026.md`). Replaces a final exam. | 2–6 | CSV · HUM |
 
-*(Outcome mapping per AddRan: every learning outcome is exercised by an assignment above; the **CSV** core
-outcome is met by the discussions, reflections, and capstone — the forms of evidence the CSV submission cites.)*
+*(Outcome mapping per AddRan: every learning outcome is exercised by an assignment above. The **CSV** core
+outcome is met by the discussions, reflections, and capstone; the **HUM** core outcome by the homework
+analyses and the capstone — the forms of evidence each core submission cites.)*
 
 **The three self-reflections** (≈300–500 words each, submitted to TCU Online — central to ungrading):
 1. **Reflection 1 — "Where I'm starting" (due Wed 7/8).** Prior experience (likely none — fine), what

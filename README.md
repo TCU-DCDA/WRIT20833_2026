@@ -10,9 +10,10 @@ This repo is a **port** of the mature 16-week Fall 2025 course (`TCU-DCDA/WRIT20
 trimmed to a 4-week cultural-analytics arc (the web-dev/portfolio half is dropped — it overlaps MALA
 60970). See `planning/PORT_ASSESSMENT_2026.md` for the rationale.
 
-The course carries TCU **Citizenship & Social Values (CSV)** core-curriculum credit — it trains
-evidence-based civic participation around a real public-policy debate. (Vetting: `reference/TCU-Core-Curriculum-outcomes-1.pdf`
-+ `reference/Citizenship-and-Social-Values-5-5-10.doc`; how the course delivers it: `planning/CONCEPTUAL_FRAMEWORK_2026.md` §7.)
+The course carries two TCU core-curriculum designations — **Citizenship & Social Values (CSV)** (trains
+evidence-based civic participation around a real public-policy debate) and **Humanities (HUM)** (humanistic
+inquiry into human expression, close and distant, across space and time). (Vetting: `reference/TCU-Core-Curriculum-outcomes-1.pdf`
++ `reference/Citizenship-and-Social-Values-5-5-10.doc`; how the course delivers them: `planning/CONCEPTUAL_FRAMEWORK_2026.md` §7.)
 
 > **Status: in active development (draft).** The homework spine (HW1–HW4) and **all code-along notebooks**
 > (one per coding day) are complete and validated; the **syllabus** is drafted and aligned to the AddRan
