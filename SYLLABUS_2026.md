@@ -143,7 +143,7 @@ feedback appear.]`
 | **Weekly Experiments** | within each HW | 2–3 small original explorations of your own — *the heart of the ungrading*. | 1–5 | — |
 | **Self-reflections** | 3 | Where you're starting · the halfway check · the final self-evaluation. | 6 | ✓ |
 | **Threaded discussions (TCU Online)** | 4 | One per week, on the week's culture question — a post + replies to peers. | 4–5 | ✓ |
-| **Capstone (final evaluative exercise)** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay, presented on the last day. Replaces a final exam. | 2–6 | ✓ |
+| **Capstone (final evaluative exercise)** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay, presented on the last day (full sheet: `CAPSTONE_2026.md`). Replaces a final exam. | 2–6 | ✓ |
 
 *(Outcome mapping per AddRan: every learning outcome is exercised by an assignment above; the **CSV** core
 outcome is met by the discussions, reflections, and capstone — the forms of evidence the CSV submission cites.)*

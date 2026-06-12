@@ -225,6 +225,28 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
   weak topics (single-issue corpus) — fine as a *worked example*, but HW4 genuinely wants a richer BYO
   dataset. This is the same point as open thread #7 (still: test the install on Colab's 2026 image).
 
+## Capstone assignment sheet — ✅ DONE (2026-06-12)
+Authored **`CAPSTONE_2026.md`** (root, parallel to `SYLLABUS_2026.md`/`COURSE_SCHEDULE_2026.md`) — the
+Final Evaluative Exercise, in 2026 house style + ungrading voice. Three deliverables (notebook + ~800–1,200-word
+data-driven-opinion essay + ~3–5-min presentation) on one dataset; **two tracks** — Track A cultural
+dataset (primary; own data, provided TX Ten Commandments corpus as fallback) and Track B stylometry
+(alternate, links the `materials/stylometry/` handout + notebook). Built directly on **HW4 B4/C2** ("your
+capstone in miniature"). Honors every locked convention: integrate ≥2 of the 3 lenses (all three is the
+fullest, via HW4's `groupby("topic")["sentiment"].mean()`); **close → distant → close**; the framework
+§6 capstone standard verbatim ("give voice… did your analysis sail calmly on, or make someone look?");
+**preserve the quarrel**; borrowed-code honesty + AI policy split (borrow code/cite AI, voice your own
+writing); 3-point ungrading rubric; CSV core tie. Submit checklist uses the **fixed house wording**
+(`#comments` frequent & meaningful, not per-line; "ran every cell… errors are part of the work, not
+something to hide"). Timeline matches the schedule (proposal Mon 7/27 → work sessions → peer review →
+presentations + due Fri 7/31). **Residual `[...]`:** upload location + exact presentation length
+(instructor specifics).
+- **Wired in (no orphan):** `build_index.py` capstone card now links the sheet (was a `soon=True`
+  placeholder) → **regenerated `docs/index.html`**; schedule Days 16 & 20 link it; README status line +
+  Start-here table updated; syllabus capstone row points to it.
+- **Open dials left for the instructor** (from the stylometry handout): essay weight/length *relative to*
+  Track A vs. B, fixed-vs-student-generated stylometry corpus, and how heavily to foreground
+  AI-detection-bias ethics. The sheet states a single shared length (~800–1,200 words) for now.
+
 ## Other open threads / next steps
 1. **Confirm scope** — drop-portfolio (current) vs. full-arc-tightened vs. foundations-only.
 3. **Walsh-prereq strip on ported notebooks** — Tutorials 1–4 and the code-alongs open with an
@@ -474,9 +496,16 @@ collapses to a top bar under 860px.
 - **Theme retune** — palette/type are tokens; revisit greens/serif once lived-with.
 Because Pages serves only `/docs`, links to things **outside** docs/ are absolute: notebooks → **Colab**
 (`colab.research.google.com/github/.../blob/main/...`), repo files (syllabus, stylometry handout) →
-**GitHub blob**. Intra-site links (index→schedule) stay relative. CSS is still **inlined** per page
-(self-contained), not a shared stylesheet. Generators (`site_theme.py`, `build_index.py`,
-`build_schedule_html.py`) sit at repo root and write into `docs/`.
+**GitHub blob**. Intra-site links (index→schedule) stay relative. Generators (`site_theme.py`,
+`build_index.py`, `build_schedule_html.py`) sit at repo root and write into `docs/`.
+
+**CSS — now an external shared stylesheet (changed 2026-06-12).** Was inlined per page; the two site
+pages always travel together in `/docs`, so the theme moved to a single **`docs/styles.css`** (written by
+`site_theme.write_stylesheet`, linked via a relative `<link>`). `THEME_CSS` in `site_theme.py` stays the
+one source of truth; both generators emit `styles.css` on every build. Pages dropped ~9KB each
+(`index.html` 20.6KB→11.5KB). Escape hatch kept for single-file portability: `PAGE(..., css_href=None)`
+inlines `THEME_CSS` for a fully self-contained page (to email / drop in D2L / open from disk detached).
+Per-week tints are unaffected — they're inline `style="--wk:…"` on each `.week` (body content, not theme).
 **To publish:** make the repo public, then *Settings → Pages → Deploy from branch → `main` / `docs`*.
 Colab/badge links resolve only once public.
 
