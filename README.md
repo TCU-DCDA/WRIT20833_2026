@@ -16,9 +16,9 @@ evidence-based civic participation around a real public-policy debate. (Vetting:
 
 > **Status: in active development (draft).** The homework spine (HW1–HW4) and **all code-along notebooks**
 > (one per coding day) are complete and validated; the **syllabus** is drafted and aligned to the AddRan
-> template; and a **course website** (`docs/`) is up. Remaining: instructor/registrar `[...]` fields, the
-> capstone sheet, lecture pages, and the student-facing fold-ins of the conceptual framework. See
-> `planning/WORKLOG.md`.
+> template; a **course website** (`docs/`) is up; and the **capstone sheet** (`CAPSTONE_2026.md`) is
+> drafted. Remaining: instructor/registrar `[...]` fields, lecture pages, and the student-facing fold-ins
+> of the conceptual framework. See `planning/WORKLOG.md`.
 
 ---
 
@@ -28,6 +28,7 @@ evidence-based civic participation around a real public-policy debate. (Vetting:
 | **`docs/index.html`** | The **course website** — a left-nav dashboard that launches the schedule, code-alongs (→ Colab), homework, capstone, lectures, and resources. Built by `build_index.py` + `site_theme.py`; publishes via GitHub Pages (`main` / `docs`). |
 | **`SYLLABUS_2026.md`** | The course as students meet it — outcomes, ungrading policy, schedule, AI-use policy, the 3 reflections + 4 discussions. *(DRAFT, aligned to the AddRan template; has `[...]` instructor placeholders + a final Word export.)* |
 | **`COURSE_SCHEDULE_2026.md`** | Day-at-a-glance grid: **Date · Lecture · Coding · Due** across the 20 sessions (rendered as `docs/schedule.html`). |
+| **`CAPSTONE_2026.md`** | The **capstone assignment sheet** — the Final Evaluative Exercise (notebook + data-driven-opinion essay + presentation), with both tracks (cultural dataset · stylometry), the timeline, and the ungrading rubric. *(DRAFT.)* |
 | **`planning/CONCEPTUAL_FRAMEWORK_2026.md`** | The course's intellectual through-line — *why* beneath the code. Read this to understand what the course is *about*. |
 | **`planning/WORKLOG.md`** | Running session handoff + decision log. Read first to resume work with zero ramp-up. |
 | **`planning/PORT_ASSESSMENT_2026.md`** | The 2026 readiness/port analysis vs. the F25 source. |

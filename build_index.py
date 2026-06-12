@@ -8,7 +8,8 @@ github/blob URLs the in-notebook badges use); those resolve once the repo is pub
 Run from repo root:  python3 build_index.py
 """
 import html
-from site_theme import PAGE, sidebar, shell
+import os
+from site_theme import PAGE, sidebar, shell, write_stylesheet
 
 OUT = "docs/index.html"
 REPO = "TCU-DCDA/WRIT20833_2026"
@@ -149,7 +150,7 @@ def render():
         "track is an alternative path.",
         grid([
             card("Capstone", "Data-Driven Opinion", "Notebook analysis + short essay, presented Fri 7/31.",
-                 "Week 4", None, soon=True),
+                 "Week 4", GH_BLOB + "CAPSTONE_2026.md"),
             card("Exercise", "Reading for the Seams", "Stylometry close-reading: hearing a human (or AI) voice.",
                  "Day 7 · Week 4", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
             card("Notebook", "Stylometry (computational)", "The computational half of the stylometry exercise.",
@@ -177,8 +178,8 @@ def render():
 
 
 if __name__ == "__main__":
-    import os
+    css = write_stylesheet(os.path.dirname(OUT) or ".")
     out = render()
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(out)
-    print(f"wrote {OUT} ({os.path.getsize(OUT)} bytes)")
+    print(f"wrote {OUT} ({os.path.getsize(OUT)} bytes) + {css} ({os.path.getsize(css)} bytes)")

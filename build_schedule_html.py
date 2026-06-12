@@ -8,7 +8,7 @@ resolve when the HTML sits at repo root.
 Run from repo root:  python3 build_schedule_html.py
 """
 import re, html, os
-from site_theme import PAGE, sidebar, shell
+from site_theme import PAGE, sidebar, shell, write_stylesheet
 
 SRC = "COURSE_SCHEDULE_2026.md"
 OUT = "docs/schedule.html"
@@ -170,7 +170,8 @@ def render():
 
 
 if __name__ == "__main__":
+    css = write_stylesheet(os.path.dirname(OUT) or ".")
     out = render()
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(out)
-    print(f"wrote {OUT} ({os.path.getsize(OUT)} bytes)")
+    print(f"wrote {OUT} ({os.path.getsize(OUT)} bytes) + {css} ({os.path.getsize(css)} bytes)")

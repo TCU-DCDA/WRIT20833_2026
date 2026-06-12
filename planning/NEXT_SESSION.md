@@ -40,9 +40,9 @@ Conventions to honor (see WORKLOG "Locked decisions"):
 - Validate notebooks with /opt/anaconda3/bin/python (has pandas/vaderSentiment/gensim).
 
 Open items (pick one, or tell me which):
-- Capstone assignment sheet; lecture pages for the site; CSV core work-examples (#10);
-  lecture audit ML2/8/9 (#9); the parked site-design questions (sidebar icons, nav
-  filter) recorded in the WORKLOG.
+- Lecture pages for the site; CSV core work-examples (#10); lecture audit ML2/8/9 (#9);
+  the parked site-design questions (sidebar icons, nav filter) recorded in the WORKLOG.
+  (Capstone assignment sheet — DONE 2026-06-12: CAPSTONE_2026.md.)
 - Instructor-only (NOT for the agent): merge PR #2; fill syllabus [...] fields +
   export to Word (WRIT20833-[section]_Summer2026_Rode); enable Pages + make repo public.
 
