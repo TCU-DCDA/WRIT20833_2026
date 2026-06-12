@@ -268,6 +268,19 @@ is no longer all placeholders — ML0 is a live reading page; the other 8 cards 
   resolves).
 - **Dashboard wiring:** `build_index.py` `LECTURES` tuples gained a 4th field (page URL or `None`); the
   card grid links authored pages and keeps the rest `soon=True`. ML0 card now → `lectures/ml0.html`.
+- **Slide deck (added same day):** `build_lectures.py` now emits a **second view** per lecture —
+  `docs/lectures/<slug>.deck.html` — a **fully self-contained** slide deck (theme inlined via
+  `PAGE(css_href=None)`; arrow-key/click nav; `print` → PDF). Same markdown source → reading page + deck,
+  no drift. The reading-page masthead links the deck ("Slides ▸").
+- **2-column split layout:** a per-slide `<!-- layout: split -->` directive renders text | image two
+  columns on the deck (reading page ignores it / stacks). Title slide supports split too.
+- **ML0 imagery (warm "Reading Room" palette, self-hosted in `materials/lectures/images/`, JPEG-downsized):**
+  4 of 6 slides illustrated — **title** (quill-script → ordered characters), **the human mess**
+  (`messy_humanities`, the one on-brand keeper from F25's ML0), **the score is never the meaning** (the
+  noumena pipeline), **every arrow is a choice** (brass-valves painting = "every arrow is a human
+  decision"). Slide 4's dense section was **split into two slides** ("The score…" + "Every arrow is a
+  choice"). Other F25 ML0 images were off-palette; `data_as_categorization` + `tippingScales` earmarked
+  for **ML3**. Instructor generated the title/valves images (ChatGPT) to match `messy_humanities`'s style.
 
 **Next (scale-out, when wanted):** author the remaining settled lectures as `materials/lectures/ml*.md`
 + a registry line each — **ML1** Connotations & Code, **ML3** Classification Logic, **ML5** Collective

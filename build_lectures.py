@@ -239,14 +239,29 @@ def _content_slide(head, lines):
 def build_deck(slug, title, subtitle, kicker, body):
     segs = split_slides(body)
     lead_lines = segs[0][1]
-    title_slide = (
-        '<section class="slide title">'
+    lead_split = any("<!-- layout: split -->" in ln for ln in lead_lines)
+    lead_blocks = render_blocks(lead_lines, lead=True)
+    lead_figs = [h for k, h in lead_blocks if k == "figure"]
+    title_head = (
         f'<div class="kicker">{html.escape(kicker)}</div>'
         f"<h1>{md_inline(title)}</h1>"
         + (f'<p class="sub">{md_inline(subtitle)}</p>' if subtitle else "")
-        + render_body(lead_lines, lead=True)
-        + "</section>"
     )
+    if lead_split and lead_figs:
+        lead_text = "\n".join(h for k, h in lead_blocks if k != "figure")
+        title_slide = (
+            '<section class="slide title split">'
+            f'<div class="split-grid"><div class="col-text">{title_head}{lead_text}</div>'
+            f'<div class="col-img">{"".join(lead_figs)}</div></div>'
+            "</section>"
+        )
+    else:
+        title_slide = (
+            '<section class="slide title">'
+            + title_head
+            + "\n".join(h for _, h in lead_blocks)
+            + "</section>"
+        )
     content = "".join(_content_slide(head, lines) for head, lines in segs[1:] if head)
     nav = ('<div class="deck-progress"></div><div class="deck-count"></div>'
            '<div class="deck-hint">← → navigate · click to advance</div>')

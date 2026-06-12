@@ -3,6 +3,10 @@
 
 <!-- meta: ML0 · Day 1 · the through-line -->
 
+<!-- layout: split -->
+
+![A warm oil painting of a hand with a quill turning cursive manuscript lines into ordered rows of abstract printed characters](materials/lectures/images/humanities_coding_script_to_structure.jpg)
+
 Before we write a single line of code, a question: **what do you do with knowledge that can't be
 measured?**
 
@@ -62,6 +66,10 @@ public projection of an inner state. Then we **scrape** it (and some comments ar
 we reach for **insight, knowledge,** and — maybe, by the end — **wisdom.**
 
 ## Every arrow is a choice
+
+<!-- layout: split -->
+
+![A warm oil painting of a hand reaching to turn one of several brass valves along a pipe carrying flowing golden light](materials/lectures/images/every_arrow_valves.jpg)
 
 **Every arrow on that diagram is a human decision** — not a neutral pipe, but a choice, with a person and
 a value behind it. It's tempting to call each step *contamination*, as if a clean signal up top got
