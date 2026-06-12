@@ -158,3 +158,23 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
   .side-ext{flex-direction:row;gap:14px;margin-top:12px;padding-top:12px;}
   .main{padding:22px 18px 48px;}
 }
+
+/* ---- lecture / reading pages ---- */
+.reading{max-width:50rem;margin:0 auto;}
+.reading .backlink{display:flex;gap:13px;align-items:baseline;font:600 12.5px/1 var(--sans);margin-bottom:14px;}
+.reading .backlink a{color:var(--green);border:none;} .reading .backlink a:hover{color:var(--clay);}
+.reading .backlink .sep{color:var(--faint);}
+.reading p{margin:0 0 17px;font-size:16.5px;}
+.reading p.lead{font-family:var(--serif);font-size:19px;line-height:1.5;color:#3c4133;margin-bottom:22px;}
+.reading h2{font-size:22px;margin:34px 0 10px;}
+.reading h3{font-size:16.5px;margin:24px 0 7px;color:var(--green-mid);}
+.reading ul{margin:0 0 17px;padding-left:22px;} .reading li{margin:6px 0;}
+.reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
+  font-family:var(--serif);font-style:italic;color:#474c3d;}
+.reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+.reading figure{margin:24px 0;}
+.reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
+  border-radius:3px;background:var(--surface);padding:6px;}
+.reading figcaption{margin-top:8px;font:11.5px/1.5 var(--mono);letter-spacing:.02em;color:var(--muted);}
+.reading hr{border:none;border-top:1px solid var(--rule);margin:30px 0;}
+.reading footer{text-align:left;border-top:1px solid var(--rule);padding-top:14px;margin-top:34px;}

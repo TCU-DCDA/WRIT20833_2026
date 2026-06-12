@@ -18,8 +18,9 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 > **Status: in active development (draft).** The homework spine (HW1–HW4) and **all code-along notebooks**
 > (one per coding day) are complete and validated; the **syllabus** is drafted and aligned to the AddRan
 > template; a **course website** (`docs/`) is up; and the **capstone sheet** (`CAPSTONE_2026.md`) is
-> drafted. Remaining: instructor/registrar `[...]` fields, lecture pages, and the student-facing fold-ins
-> of the conceptual framework. See `planning/WORKLOG.md`.
+> drafted. **Lecture pages** are piloted — ML0 is live as a themed reading page (`build_lectures.py`), with
+> ML1–ML9 to follow. Remaining: instructor/registrar `[...]` fields, the rest of the lecture pages, and
+> the student-facing fold-ins of the conceptual framework. See `planning/WORKLOG.md`.
 
 ---
 
@@ -48,15 +49,16 @@ inquiry into human expression, close and distant, across space and time). (Vetti
   Constitution) + a `README.md`. Reused across HW2–HW4 and the capstone.
 - **`materials/stylometry/`** — "Reading for the Seams" close-reading exercise + notebook + exemplar.
 - **`materials/images/`** — the **noumena → wisdom** epistemological-spine graphic + its teaching notes.
-- **`materials/Day1_Framing_Noumena_to_Wisdom.md`** — a drafted Day-1 framing passage.
+- **`materials/lectures/`** — mini-lecture **reading pages** (markdown source; `ml0.md` authored, ML1–9 to come); rendered to `docs/lectures/` by `build_lectures.py`.
+- **`materials/Day1_Framing_Noumena_to_Wisdom.md`** — the Day-1 framing passage (now published as the ML0 reading page).
 
 ## Repository layout
-- **`docs/`** — the published **course site** (GitHub Pages from `/docs`): `index.html` dashboard + `schedule.html`.
+- **`docs/`** — the published **course site** (GitHub Pages from `/docs`): `index.html` dashboard + `schedule.html` + `lectures/`.
 - **`notebooks/`** — `codeAlongs/` (one per coding day), `homework/` (HW1–4 student notebooks), `data/` (corpora).
-- **`materials/`** — the stylometry exercise, images, and the Day-1 framing passage.
+- **`materials/`** — the stylometry exercise, images, the lecture reading pages, and the Day-1 framing passage.
 - **`reference/`** — TCU/AddRan syllabus templates + core-curriculum vetting (source documents, not course content).
 - **`planning/`** — instructor process docs (WORKLOG, conceptual framework, port assessment, syllabus crosswalk…).
-- **Root** — this README, `SYLLABUS_2026.md`, `COURSE_SCHEDULE_2026.md`, and the site generators (`site_theme.py`, `build_index.py`, `build_schedule_html.py`).
+- **Root** — this README, `SYLLABUS_2026.md`, `COURSE_SCHEDULE_2026.md`, `CAPSTONE_2026.md`, and the site generators (`site_theme.py`, `build_index.py`, `build_schedule_html.py`, `build_lectures.py`).
 - *Answer keys + the solution-bearing `_build_hw*.py` generators live in the **private** `TCU-DCDA/WRIT20833_2026_keys`.*
 
 ## The idea in one paragraph
