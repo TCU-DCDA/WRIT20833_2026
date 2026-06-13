@@ -174,6 +174,15 @@ DECK_CSS = r"""
 .slide.split .col-img figure{margin:0;}
 .slide.split .col-img figure img{max-height:72vh;}
 @media (max-width:760px){.slide.split>.split-grid{grid-template-columns:1fr;gap:20px;}}
+/* gallery slide — text on top, figures in a row underneath */
+.slide.gallery .fig-row{display:grid;gap:4%;align-items:start;max-width:74rem;width:100%;margin-top:6px;}
+.slide.gallery .fig-row.cols-2{grid-template-columns:1fr 1fr;}
+.slide.gallery .fig-row.cols-3{grid-template-columns:repeat(3,1fr);}
+.slide.gallery .fig-row.cols-4{grid-template-columns:repeat(2,1fr);}
+.slide.gallery .fig-row figure{margin:0;}
+.slide.gallery .fig-row figure img{max-height:42vh;width:100%;object-fit:contain;background:#fbfaf6;}
+.slide.gallery .fig-row figcaption{font-size:11px;}
+@media (max-width:760px){.slide.gallery .fig-row{grid-template-columns:1fr !important;gap:16px;}}
 .deck-progress{position:fixed;left:0;bottom:0;height:4px;background:var(--green);width:0;
   transition:width .2s;z-index:10;}
 .deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
@@ -222,10 +231,20 @@ def split_slides(body_lines):
 
 
 def _content_slide(head, lines):
-    """One deck content slide. '<!-- layout: split -->' renders text | image two columns."""
+    """One deck content slide.
+
+    Layout directives (HTML comments anywhere in the segment):
+      * '<!-- layout: split -->'   -> text | image, two columns
+      * '<!-- layout: gallery -->' -> text on top, the figures in a row of equal columns underneath
+    """
     split = any("<!-- layout: split -->" in ln for ln in lines)
+    gallery = any("<!-- layout: gallery -->" in ln for ln in lines)
     blocks = render_blocks(lines)
     figs = [h for k, h in blocks if k == "figure"]
+    if gallery and figs:
+        text = "\n".join(h for k, h in blocks if k != "figure")
+        figrow = f'<div class="fig-row cols-{min(len(figs), 4)}">' + "".join(figs) + "</div>"
+        return f'<section class="slide gallery"><h2>{md_inline(head)}</h2>{text}{figrow}</section>'
     if split and figs:
         text = "\n".join(h for k, h in blocks if k != "figure")
         inner = (f"<h2>{md_inline(head)}</h2>"
