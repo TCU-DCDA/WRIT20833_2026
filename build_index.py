@@ -8,7 +8,8 @@ github/blob URLs the in-notebook badges use); those resolve once the repo is pub
 Run from repo root:  python3 build_index.py
 """
 import html
-from site_theme import PAGE
+import os
+from site_theme import PAGE, sidebar, shell, write_stylesheet
 
 OUT = "docs/index.html"
 REPO = "TCU-DCDA/WRIT20833_2026"
@@ -16,17 +17,23 @@ COLAB = f"https://colab.research.google.com/github/{REPO}/blob/main/"
 GH = f"https://github.com/{REPO}"
 GH_BLOB = f"{GH}/blob/main/"  # renders a repo file (e.g. the syllabus .md) on github.com
 
-# --- code-alongs (one per coding day) ---
-CODEALONGS = [
-    ("Variables & Data Types", "How Python stores text and numbers.", "Day 1", "notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb"),
-    ("Strings & String Methods", "Slicing, cleaning, and splitting text.", "Day 2", "notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb"),
-    ("Lists, Loops & Conditionals", "Collections, iteration, and decisions.", "Days 3–4", "notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb"),
-    ("Dictionaries & Functions", "Key–value data and reusable tools.", "Day 5", "notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb"),
-    ("Term Frequency", "Counting words to hear what a text is about.", "Day 6", "notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb"),
-    ("Found Data & Pandas", "Collection ethics, then DataFrames.", "Day 8", "notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb"),
-    ("Data Cleaning", "Turning messy scraped data tidy.", "Day 9", "notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb"),
-    ("Sentiment with VADER", "Scoring emotional tone — and judging it.", "Days 11–12", "notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb"),
-    ("Topic Modeling (Gensim)", "Discovering themes across a corpus.", "Days 14–15", "notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb"),
+# --- code-alongs, grouped by week ---
+CODEALONGS_BY_WEEK = [
+    ("Week 1", "Python foundations", [
+        ("Variables & Data Types", "How Python stores text and numbers.", "Day 1", "notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb"),
+        ("Strings & String Methods", "Slicing, cleaning, and splitting text.", "Day 2", "notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb"),
+        ("Lists, Loops & Conditionals", "Collections, iteration, and decisions.", "Days 3–4", "notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb"),
+        ("Dictionaries & Functions", "Key–value data and reusable tools.", "Day 5", "notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb"),
+    ]),
+    ("Week 2", "From text to data", [
+        ("Term Frequency", "Counting words to hear what a text is about.", "Day 6", "notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb"),
+        ("Found Data & Pandas", "Collection ethics, then DataFrames.", "Day 8", "notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb"),
+        ("Data Cleaning", "Turning messy scraped data tidy.", "Day 9", "notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb"),
+    ]),
+    ("Week 3", "Computational text analysis", [
+        ("Sentiment with VADER", "Scoring emotional tone — and judging it.", "Days 11–12", "notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb"),
+        ("Topic Modeling (Gensim)", "Discovering themes across a corpus.", "Days 14–15", "notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb"),
+    ]),
 ]
 
 # --- homework ---
@@ -39,16 +46,18 @@ HOMEWORK = [
 
 # --- mini-lectures (the ~25-min conceptual frames) — not yet built as pages ---
 # ML0-7 map cleanly to 2026; ML2 and ML9 are under review (WORKLOG thread #9); ML10-12 (web) cut.
+# (title, desc, when, page) — page is a docs-relative URL when the lecture has an authored
+# reading page (built by build_lectures.py); None keeps it a "soon" placeholder card.
 LECTURES = [
-    ("ML0 · Humanities & Coding", "Why a humanist learns to code.", "Day 1"),
-    ("ML1 · Connotations & Code", "Code is not neutral.", "Day 1"),
-    ("ML2 · Sacred Boundaries", "Privacy & the limits of analysis. (under review)", "Day 2"),
-    ("ML3 · Classification Logic", "Whose categories? Sorting as judgment.", "Day 3"),
-    ("ML5 · Collective Memory", "What a culture keeps and forgets.", "Day 4"),
-    ("ML4 · AI Agency", "Reading & judging machine-written code.", "Day 7"),
-    ("ML6 · Data Archaeology", "Where found data comes from.", "Day 8"),
-    ("ML7 · NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14"),
-    ("ML9 · Going Public", "Analysis → public argument. (under review)", "Day 17"),
+    ("ML0 · Humanities & Coding", "Why a humanist learns to code.", "Day 1", "lectures/ml0.html"),
+    ("ML1 · Connotations & Code", "Code is not neutral.", "Day 1", None),
+    ("ML2 · Sacred Boundaries", "Privacy & the limits of analysis. (under review)", "Day 2", None),
+    ("ML3 · Classification Logic", "Whose categories? Sorting as judgment.", "Day 3", None),
+    ("ML5 · Collective Memory", "What a culture keeps and forgets.", "Day 4", None),
+    ("ML4 · AI Agency", "Reading & judging machine-written code.", "Day 7", None),
+    ("ML6 · Data Archaeology", "Where found data comes from.", "Day 8", None),
+    ("ML7 · NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14", None),
+    ("ML9 · Going Public", "Analysis → public argument. (under review)", "Day 17", None),
 ]
 
 RESOURCES = [
@@ -84,18 +93,16 @@ def section(anchor, n, title, lede, body):
 
 
 def render():
-    nav = (
-        '<nav class="topnav">'
-        '<a href="#start">Start here</a>'
-        '<a href="#codealongs">Code-alongs</a>'
-        '<a href="#homework">Homework</a>'
-        '<a href="#capstone">Capstone</a>'
-        '<a href="#lectures">Lectures</a>'
-        '<a href="#resources">Resources</a>'
-        '<span class="spacer"></span>'
-        f'<a class="ext" href="{GH}">GitHub ↗</a>'
-        '<a class="ext" href="https://colab.research.google.com/">Colab ↗</a>'
-        '</nav>'
+    side = sidebar(
+        "WRIT 20833 · Summer 2026",
+        "When Coding Meets Culture",
+        [("#start", "Start here", "00"),
+         ("#codealongs", "Code-alongs", "01"),
+         ("#homework", "Homework", "02"),
+         ("#capstone", "Capstone", "03"),
+         ("#lectures", "Lectures", "04"),
+         ("#resources", "Resources", "05")],
+        [(GH, "GitHub ↗"), ("https://colab.research.google.com/", "Colab ↗")],
     )
 
     masthead = (
@@ -121,10 +128,17 @@ def render():
                  "draft", GH_BLOB + "SYLLABUS_2026.md"),
         ]))
 
+    ca_body = "".join(
+        '<div class="wkgroup"><h3><span class="wkn">' + html.escape(wk) + '</span>'
+        + html.escape(theme) + '</h3>'
+        + grid([card("Code-along", t, d, w, COLAB + p) for (t, d, w, p) in items])
+        + '</div>'
+        for (wk, theme, items) in CODEALONGS_BY_WEEK)
     codealongs = section(
         "codealongs", "01", "Code-alongs",
-        "Instructor-led notebooks we build together in class — one per coding day. Each opens in Colab.",
-        grid([card("Code-along", t, d, w, COLAB + p) for (t, d, w, p) in CODEALONGS]))
+        "Instructor-led notebooks we build together in class — one per coding day, grouped by week. "
+        "Each opens in Colab.",
+        ca_body)
 
     homework = section(
         "homework", "02", "Homework",
@@ -138,7 +152,7 @@ def render():
         "track is an alternative path.",
         grid([
             card("Capstone", "Data-Driven Opinion", "Notebook analysis + short essay, presented Fri 7/31.",
-                 "Week 4", None, soon=True),
+                 "Week 4", GH_BLOB + "CAPSTONE_2026.md"),
             card("Exercise", "Reading for the Seams", "Stylometry close-reading: hearing a human (or AI) voice.",
                  "Day 7 · Week 4", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
             card("Notebook", "Stylometry (computational)", "The computational half of the stylometry exercise.",
@@ -148,8 +162,8 @@ def render():
     lectures = section(
         "lectures", "04", "Lectures",
         "The short conceptual frames that open each day — the “code is not neutral” throughline. "
-        "Pages are in development; ML2 and ML9 are under review.",
-        grid([card("Mini-lecture", t, d, w, None, soon=True) for (t, d, w) in LECTURES]))
+        "ML0 is live as a reading page; the rest are in development. ML2 and ML9 are under review.",
+        grid([card("Mini-lecture", t, d, w, p, soon=(p is None)) for (t, d, w, p) in LECTURES]))
 
     res_items = "".join(
         f'<li><span class="k">{html.escape(k)}</span>'
@@ -159,15 +173,15 @@ def render():
                  f'<p class="lede">Tools, the course data, and references for going further.</p>'
                  f'<ul class="reslist">{res_items}</ul></section>')
 
-    body = (nav + masthead + start + codealongs + homework + capstone + lectures + resources +
+    main = (masthead + start + codealongs + homework + capstone + lectures + resources +
             '<footer>WRIT 20833 · Summer 2026 · “hear the human at scale” · '
             'a working draft, adjusted to the class’s pace</footer>')
-    return PAGE("WRIT 20833 — When Coding Meets Culture", body)
+    return PAGE("WRIT 20833 — When Coding Meets Culture", shell(side, main), wrap=False)
 
 
 if __name__ == "__main__":
-    import os
+    css = write_stylesheet(os.path.dirname(OUT) or ".")
     out = render()
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(out)
-    print(f"wrote {OUT} ({os.path.getsize(OUT)} bytes)")
+    print(f"wrote {OUT} ({os.path.getsize(OUT)} bytes) + {css} ({os.path.getsize(css)} bytes)")

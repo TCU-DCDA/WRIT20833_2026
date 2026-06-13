@@ -47,11 +47,11 @@ Notebook links are relative paths into this repo (`notebooks/codeAlongs/`, `note
 ### Week 4 (Jul 27–31) — Integration & data-driven opinions (capstone)
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 7/27** (16) | Integration (close → distant → close) | **Lab** → Integration demo (frequency + sentiment + topics) via the [HW4 notebook](notebooks/homework/WRIT20833_HW4_2026.ipynb) + short [stylometry demo](materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb) | **Capstone proposal due** · D4 opens |
+| **Mon 7/27** (16) | Integration (close → distant → close) | **Lab** → Integration demo (frequency + sentiment + topics) via the [HW4 notebook](notebooks/homework/WRIT20833_HW4_2026.ipynb) + short [stylometry demo](materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb) | **[Capstone](CAPSTONE_2026.md) proposal due** · D4 opens |
 | **Tue 7/28** (17) | "Being wrong as learning" · capstone framing | **Work session** → Validation + capstone framing | **HW4 due** · D4 post |
 | **Wed 7/29** (18) | — | **Work session** → Capstone work session 1 (cultural dataset **or** stylometry) | — |
 | **Thu 7/30** (19) | — | **Work session** → Capstone work session 2 + peer review | D4 replies |
-| **Fri 7/31** (20) | — (wrap) | **Presentations** → Capstone presentations + wrap | **Capstone due** · **R3 due (final self-evaluation)** |
+| **Fri 7/31** (20) | — (wrap) | **Presentations** → Capstone presentations + wrap | **[Capstone](CAPSTONE_2026.md) due** · **R3 due (final self-evaluation)** |
 
 ---
 

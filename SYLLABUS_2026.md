@@ -1,11 +1,13 @@
 # WRIT 20833 — Intro to Coding in the Humanities
 ## "When Coding Meets Culture: Developing Data-Driven Opinions" — Summer 2026
 
-> **DRAFT for instructor review — structured to the TCU Online Syllabus Template (rev. 9/2024).**
-> Two kinds of placeholder remain: `[...]` = instructor/registrar specifics (name, contact, links,
-> credit hours), and **`[paste TCU standard text …]`** = official University policy boilerplate that
-> must be copied verbatim from `reference/Syllabus-Template-Online.docx` (do **not** paraphrase official policy).
-> Course-specific content is complete. Any tables/images added must meet TCU accessibility guidelines
+> **DRAFT for instructor review — aligned to the AddRan Simplified Syllabus Template (section order and
+> all) and the F25 WRIT 20833 syllabus.** Official University-policy text (Title IX, Disability/Access,
+> Religious Observations, Academic Conduct, Emergency Response, Recording) is **not pasted** — per
+> AddRan, it lives behind the **Student Resources & Policy Information** QR/link below; the syllabus
+> carries only course-specific policies. Remaining `[...]` placeholders are instructor/registrar
+> specifics (name, contact, section, credit hours, links). **For AddRan submission:** export to **Word**,
+> filename `WRIT20833-[section]_Summer2026_Rode`. Tables/images must meet TCU accessibility guidelines
 > (https://cte.tcu.edu/resources/accessibility/).
 
 ---
@@ -16,8 +18,8 @@
 | **Course Title** | Intro to Coding in the Humanities — "When Coding Meets Culture" |
 | **Prefix · Number · Section** | WRIT · 20833 · `[section]` |
 | **Semester & Year** | Summer 2026 |
-| **Course Component Type** | `[e.g., Lecture — confirm with registrar]` |
-| **Credit Hours** | `[3 — confirm]` (lower-division undergraduate) |
+| **Course Component Type** | Lecture |
+| **Credit Hours** | 3 (lower-division undergraduate) |
 | **Class Meeting Days & Times** | **Monday–Friday, `[time]`–`[time]`, July 6–31, 2026** — **online synchronous** (20 live sessions; attendance at the live sessions is expected) |
 | **Class Location** | Online (synchronous via Zoom) |
 | **Zoom Access** | `[Zoom link + meeting ID/passcode]` |
@@ -25,12 +27,30 @@
 | **Final Evaluative Exercise** | The **capstone** (data-driven-opinion notebook + short essay), presented and due on the final day, **Fri July 31**. There is no separate final exam. |
 | **Other Important Dates** | All activity occurs within the listed daily sessions; any deviations announced on TCU Online. |
 
-**Instructor:** `[Name]` · **Office Location:** `[N/A — online / office]` · **Office Hours:** `[days/times; virtual — access instructions]`
-**Telephone:** `[number]` · **Email:** `[email]` · **Preferred Contact:** `[email via TCU Online / TCU email]`
-**Response Time:** `[e.g., within 24 hours on weekdays; longer on weekends/holidays]`
+**Instructor:** Curt Rode · **Office Location:** N/A — online · **Office Hours:** `[days/times; virtual — access instructions]`
+**Telephone:** `[number or N/A]` · **Email:** `[TCU email]` · **Preferred Contact:** email via TCU Online
+**Response Time:** within 24 hours on weekdays (longer on weekends and holidays)
 **Course site & submissions:** **TCU Online** (D2L) — `[course link]`. **Code runs in:** Google Colab (free; needs a Google account).
 
-**Student Resources & Policy Information:** `[paste TCU standard Student Resources & Policy Information block — link + QR code — from reference/Syllabus-Template-Online.docx]`
+*Note for students:* The syllabus is your first course reading — it orients you to the flow and
+expectations of the course. Turn to it for details on assignments and policies.
+
+### Student Resources & Policy Information
+[![Student Resources & Policy Information — scan for TCU student resources and university policies](https://cte.tcu.edu/wp-content/uploads/TCU-Syllabus-Policies-Resources.png)](https://cte.tcu.edu/wp-content/uploads/TCU-Syllabus-Policies-Resources.png)
+
+**Click or scan the QR code** for resources to support you as a TCU student. Please note especially the
+sections on **Student Access and Accommodation**, **Academic Conduct & Course Materials Policies**, and
+**Emergency Response & TCU Alert**. The University's official policies — including **Anti-Discrimination
+& Title IX**, **Religious Observations & Holidays**, **Disability/Access**, and **Recording of Class
+Sessions** — are provided there and apply to this course.
+
+---
+
+## Land Acknowledgment
+TCU acknowledges the many benefits, responsibilities, and relationships of being in this place, which we
+share with all living beings. We respectfully acknowledge all Native American peoples who have lived on
+this land since time immemorial. TCU especially acknowledges and pays respect to the Wichita and
+Affiliated Tribes, upon whose historical homeland our university is located.
 
 ---
 
@@ -46,33 +66,28 @@ to be wrong out loud.
 
 `[Confirm against official course-catalog description.]`
 
+**Prerequisites & Concurrent Enrollment.** None — no prior coding experience assumed.
+
 **Program & Major Connections.** Introduces computational-text-analysis and data-literacy skills that
 support further work in writing, the digital humanities, and any field that reads culture from data.
 
-### TCU Core Curriculum — Citizenship & Social Values (CSV)
-This course carries **CSV** core credit. It meets the CSV student learning outcome —
+### TCU Core Curriculum — Citizenship & Social Values (CSV) and Humanities (HUM)
+This course carries **two** TCU Core Curriculum designations.
+
+**Citizenship & Social Values (CSV).** It meets the CSV student learning outcome —
 **"examine the knowledge, skills, values, or motivation needed to participate or lead within diverse
 communities"** — by having you form, argue, and reflect on **evidence-based opinions about a real
 public-policy debate**, weighing the values and rights of the individuals and groups whose voices you
 analyze. *(Evidence: the capstone essay, the four threaded discussions, and the three reflections.)*
-`[Confirm the exact outcome wording against the current CSV vetting on file.]`
 
----
+**Humanities (HUM).** It meets the Humanities student learning outcome — **"use humanistic modes of
+inquiry to analyze human experiences and expressions across space and time"** — by teaching you to read
+real human expression both closely and at scale: you interpret cultural texts (public comments, a
+founding document, a corpus you choose), move between contemporary voices and historical ones, and ask at
+every step what computation reveals and what it flattens. *(Evidence: the homework analyses, the capstone
+notebook + essay, and the close- vs. distant-reading work.)*
 
-## Learning Outcomes
-By the end of the course you will be able to:
-1. **Read and write basic Python** — variables, conditionals, loops, functions, and lists/dictionaries.
-2. **Work with real data** in pandas — load, clean, and explore a text dataset you collected.
-3. **Run three methods of computational text analysis** — term frequency, sentiment analysis (VADER),
-   and topic modeling (LDA) — and **integrate** them into a single interpretation.
-4. **Borrow and judge tools critically** — use libraries and AI-written code you didn't build, and
-   evaluate whether to trust their output.
-5. **Make a data-driven argument** about a cultural text, **represent the voices in your data
-   responsibly** (including their disagreements), and **name the limits** of your own methods.
-6. **Reflect on your learning** — assess your own growth honestly (see *Grading*).
-
-**TCU Core (CSV) outcome:** *Examine the knowledge, skills, values, or motivation needed to participate
-or lead within diverse communities.* (Met via outcomes 5–6 and the capstone/discussions/reflections.)
+`[Confirm the exact CSV and HUM outcome wording against the current core vetting on file.]`
 
 ---
 
@@ -108,20 +123,44 @@ who chose this, can we trust it?* — which is why it's evaluated by **ungrading
 
 ---
 
-## Course Policies and Requirements
+## Learning Outcomes
+By the end of the course you will be able to:
+1. **Read and write basic Python** — variables, conditionals, loops, functions, and lists/dictionaries.
+2. **Work with real data** in pandas — load, clean, and explore a text dataset you collected.
+3. **Run three methods of computational text analysis** — term frequency, sentiment analysis (VADER),
+   and topic modeling (LDA) — and **integrate** them into a single interpretation.
+4. **Borrow and judge tools critically** — use libraries and AI-written code you didn't build, and
+   evaluate whether to trust their output.
+5. **Make a data-driven argument** about a cultural text, **represent the voices in your data
+   responsibly** (including their disagreements), and **name the limits** of your own methods.
+6. **Reflect on your learning** — assess your own growth honestly (see *Grading*).
+
+**TCU Core outcomes.** This course carries two Core designations:
+- **CSV** — *Examine the knowledge, skills, values, or motivation needed to participate or lead within
+  diverse communities.* (Met via outcomes 5–6 and the capstone/discussions/reflections.)
+- **HUM** — *Use humanistic modes of inquiry to analyze human experiences and expressions across space
+  and time.* (Met via outcomes 2–3 and 5 and the homework analyses + capstone.)
+
+---
+
+## Course Requirements
 
 ### Assignments
 Each assignment is described below and connects to the learning outcomes; you submit and view feedback
 through **TCU Online**. `[Note the specific TCU Online module/tool for submissions and where grades and
 feedback appear.]`
 
-| Work | How many | What it is | Outcomes |
-|---|---|---|---|
-| **Homework notebooks (HW1–HW4)** | 4 | Hands-on skill practice, each with a short reflective write-up. | 1–4 |
-| **Weekly Experiments** | within each HW | 2–3 small original explorations of your own — *the heart of the ungrading*. | 1–5 |
-| **Self-reflections** | 3 | Where you're starting · the halfway check · the final self-evaluation. | 6 |
-| **Threaded discussions (TCU Online)** | 4 | One per week, on the week's culture question — a post + replies to peers. | 4–5 |
-| **Capstone (final evaluative exercise)** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay, presented on the last day. Replaces a final exam. | 2–6 |
+| Work | How many | What it is | Course outcomes | Core (CSV · HUM) |
+|---|---|---|---|---|
+| **Homework notebooks (HW1–HW4)** | 4 | Hands-on skill practice, each with a short reflective write-up. | 1–4 | HUM |
+| **Weekly Experiments** | within each HW | 2–3 small original explorations of your own — *the heart of the ungrading*. | 1–5 | HUM |
+| **Self-reflections** | 3 | Where you're starting · the halfway check · the final self-evaluation. | 6 | CSV |
+| **Threaded discussions (TCU Online)** | 4 | One per week, on the week's culture question — a post + replies to peers. | 4–5 | CSV |
+| **Capstone (final evaluative exercise)** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay, presented on the last day (full sheet: `CAPSTONE_2026.md`). Replaces a final exam. | 2–6 | CSV · HUM |
+
+*(Outcome mapping per AddRan: every learning outcome is exercised by an assignment above. The **CSV** core
+outcome is met by the discussions, reflections, and capstone; the **HUM** core outcome by the homework
+analyses and the capstone — the forms of evidence each core submission cites.)*
 
 **The three self-reflections** (≈300–500 words each, submitted to TCU Online — central to ungrading):
 1. **Reflection 1 — "Where I'm starting" (due Wed 7/8).** Prior experience (likely none — fine), what
@@ -129,7 +168,7 @@ feedback appear.]`
 2. **Reflection 2 — "Halfway" (due Mon 7/20).** What's clicking and what's hard? Revisit your Week-1
    prediction. What will you do differently in the second half?
 3. **Reflection 3 — "Final self-evaluation" (due Fri 7/31).** Review your own body of work and make an
-   evidence-based case for the final grade you've earned (see *Grading*).
+   evidence-based case for the final grade you've earned (see *Grading Scale*).
 
 **The four threaded discussions** (open Monday of their week; **initial post by Wednesday, two
 substantive replies by Friday**):
@@ -143,7 +182,7 @@ substantive replies by Friday**):
    methods get wrong. *(The course is designed for 4 discussions; D4 may be dropped to a 3-discussion
    minimum if Week-4 capstone load is heavy.)*
 
-### Grading
+### Grading Philosophy (ungrading)
 This course uses **ungrading**. Through the term your work is **not** scored with points; each piece is
 marked on a simple **3-point scale**, and my feedback focuses on your engagement, reflection, and growth
 — not on whether your code or analysis was "right." *(Documenting a failure and what you learned counts
@@ -156,10 +195,33 @@ as meeting expectations.)* The goal is **earned insight over clean code.**
 - **1 — Does not yet meet:** missing, incomplete, or minimal. The "not yet" is an invitation to revise
   where time allows.
 
-**Course assignments & final grade (at a glance).** Because this course uses **ungrading**, individual
-assignments carry **no point values** — the column a conventional syllabus fills with points is replaced
-here by the 3-point engagement scale, and the final letter is set from the *pattern* of those marks
-(below), not from a points total.
+### Late Work
+Because the term is short and sessions build on each other, keep up — but ungrading is about the whole
+arc, not single due dates. If life happens, **talk to me**; honest communication beats a missed
+deadline, and we'll find a reasonable way for you to complete the work. **Official University Absences**
+are always accommodated (see *Attendance & Engagement*, next).
+
+### Attendance & Engagement
+This is a live, fast-moving daily course; attendance and active engagement at the synchronous sessions
+are expected, and your engagement is reflected throughout your marks (there is no separate points-based
+participation grade). In this online course, "engaged" means showing up to the live sessions, coding
+along, posting and replying in discussions on time, and documenting your thinking in your `#comments`
+and reflections. If you must miss a session, let me know in advance and we'll arrange a catch-up.
+
+**Official University Absences** are those described in the Official University Absence Policy and
+include Title IX–related issues, military leave, holy days, and university-related absences. Students
+entitled to such absences may work with me to complete missed work within a reasonable time after the
+absence.
+
+**Medical privacy.** Because it is considered an infringement on student privacy for me to have access
+to student medical records, I cannot accept medical documentation to justify absences. If you have a
+legitimate reason for an absence and want to provide verification, please use the **Absence
+Documentation Form** through the **Dean of Students Office**.
+
+### Course Assignments & Final Grade
+Because this course uses **ungrading**, individual assignments carry **no point values** — the column a
+conventional syllabus fills with points is replaced here by the 3-point engagement scale, and the final
+letter is set from the *pattern* of those marks (below), not from a points total.
 
 | Component | How many | How it's evaluated | Role in the final grade |
 |---|---|---|---|
@@ -191,6 +253,7 @@ the precise grade you've earned: consistent **3s** argue toward the top of your 
 **mostly 2s** sit at the mid-to-minus (A‑, B/B‑, C/C‑). The floor is a guarantee you can count on; the
 self-evaluation is where you make your case for more. I confirm or adjust.
 
+### Grading Scale
 **Grading Scale (TCU undergraduate, plus/minus):** A 94–100 · A‑ 90–93.99 · B+ 87–89.99 · B 84–86.99 ·
 B‑ 80–83.99 · C+ 77–79.99 · C 74–76.99 · C‑ 70–73.99 · D+ 67–69.99 · D 64–66.99 · D‑ 60–63.99 · F below 60.
 *(No individual piece carries points; these percentages describe only the final letter, set as above.)*
@@ -198,25 +261,16 @@ B‑ 80–83.99 · C+ 77–79.99 · C 74–76.99 · C‑ 70–73.99 · D+ 67–6
 **Grading Concerns.** `[State how/where students raise questions about a grade or mark, and your process
 for discussing it.]`
 
-### Late Work
-Because the term is short and sessions build on each other, keep up — but ungrading is about the whole
-arc, not single due dates. If life happens, **talk to me**; honest communication beats a missed
-deadline. **Official University Absences** will be accommodated and work missed for them may be made up,
-per TCU policy. `[Paste/confirm TCU language on Official University Absences and make-up work; see Student
-Absences.]` **I will not ask for or accept medical documentation** — see *University Policies* below.
+---
 
-### Participation, Engagement & Attendance
-This is a live, fast-moving daily course; attendance and active engagement at the synchronous sessions
-are expected, and your engagement is reflected throughout your marks (there is no separate points-based
-participation grade). In this online course, "engaged" means showing up to the live sessions, coding
-along, posting and replying in discussions on time, and documenting your thinking in your `#comments`
-and reflections. If you must miss a session, let me know in advance and we'll arrange a catch-up. A
-pattern of absence that endangers your standing will be reported to the Dean of Students, per TCU policy.
-`[Confirm against the TCU University Attendance Policy and Official Absence Policy.]`
+## Course Policies
+*University policies — **Anti-Discrimination & Title IX**, **Disability/Access**, **Religious
+Observations**, **Academic Conduct**, **Recording of Class Sessions**, and **Emergency Response & TCU
+Alert** — are provided through the **Student Resources & Policy Information** QR/link in *Course
+Information* above, and apply to this course. (The University-Absence and Medical-Privacy statements are
+under *Attendance & Engagement*.) Below are the course-specific policies.*
 
-### Class Norms & Netiquette
-`[Paste TCU standard Class Norms & Netiquette statement from reference/Syllabus-Template-Online.docx.]`
-
+### Class Norms
 **Course-specific note (important).** Our running dataset is real public comments about a 2025 law
 placing the Ten Commandments in Texas classrooms — a genuinely contested topic touching religion and the
 state. We analyze this language as **data about a public debate**, and a goal of the course is to *hear*
@@ -238,16 +292,21 @@ borrowing:
   own words; letting AI generate your writing forfeits that. **Use AI for feedback if you like, but the
   writing itself must be yours.** When in doubt, ask.
 
-### Technology Policies, Email & Recording
-- **Technology.** `[State expectations for hardware/connection, and what to do if tech fails during a
-  live session.]`
-- **Email.** `[Paste TCU standard Email policy; state your preferred channel and response time.]`
-- **Recording of Class Sessions.** `[Paste TCU standard Recording-of-Class-Sessions statement.]`
+### Technology & Recording
+- **Technology.** You'll need a reliable internet connection and a laptop that can run a web browser —
+  all code runs in **Google Colab**, so there's nothing to install. If your tech fails mid-session,
+  message me on TCU Online and review the session recording to catch up.
+- **Recording of class sessions.** I may record our live sessions so students who miss a class, or who
+  want to review, can catch up. Recordings are for this class only — please don't circulate them. The
+  University's official **Recording of Class Sessions** policy is in *Student Resources & Policy
+  Information* above; if you have an accommodation to make your own recordings, see *Student Access and
+  Accommodation* there.
 
-### Academic Misconduct
-`[Paste TCU standard Academic Misconduct statement from reference/Syllabus-Template-Online.docx.]` In this course:
-**borrowing code is expected; submitting work (code or writing) you cannot explain or that isn't yours is
-not.** Cite your sources, including AI.
+### Academic Conduct
+The University's academic-conduct policy is in *Student Resources & Policy Information* above (under
+**Academic Conduct & Course Materials Policies**). In this course specifically: **borrowing code is
+expected; submitting work (code or writing) you cannot explain, or that isn't yours, is not.** Cite your
+sources, including AI.
 
 ---
 
@@ -312,26 +371,9 @@ assessed before it's taught.*
 
 *Lecture "—" = recap / workshop / work-session days. Three lecture slots are under review (ML2 "Sacred
 Boundaries," a possible ML9 "Going Public" at Day 17, and a noumena framing at Day 1); see
-`CONCEPTUAL_FRAMEWORK_2026.md`.*
+`planning/CONCEPTUAL_FRAMEWORK_2026.md`.*
 
 ---
-
-## TCU Online: Our Learning Management System
-`[Paste the TCU Online section from reference/Syllabus-Template-Online.docx — Getting Started, Getting Help,
-Personal Settings & Notifications, and Student Success Tools.]`
-
-## University Policies & Student Resources
-*Official University policy statements — paste the current text from `reference/Syllabus-Template-Online.docx`; do
-not paraphrase.*
-- **Anti-Discrimination & Title IX Information** — `[paste TCU standard statement]`
-- **TCU Policy for Religious Observations & Holidays** — `[paste TCU standard statement]`
-- **Disability / Access (Student Access & Accommodation)** — `[paste TCU standard statement]`
-- **Medical Documentation** — Faculty will **not** seek or accept medical documentation; students upload
-  any documentation to verify absences via the **Dean of Students Office** website. `[paste TCU standard
-  statement]`
-- **Audio Recording Notification** — `[paste TCU standard statement]`
-- **Emergency Response Information** — `[paste TCU standard statement]`
-- **Student Resources & Policy Information** — link + QR `[paste TCU standard block]`
 
 > *This syllabus is a working plan and may be adjusted to fit the class's pace; changes will be announced
 > in class and on TCU Online.*

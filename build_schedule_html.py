@@ -8,7 +8,7 @@ resolve when the HTML sits at repo root.
 Run from repo root:  python3 build_schedule_html.py
 """
 import re, html, os
-from site_theme import PAGE
+from site_theme import PAGE, sidebar, shell, write_stylesheet
 
 SRC = "COURSE_SCHEDULE_2026.md"
 OUT = "docs/schedule.html"
@@ -134,7 +134,7 @@ def render():
                 "</tr>"
             )
         week_html.append(
-            f'<section class="week" style="--wk:{color}">'
+            f'<section class="week" id="week-{i+1}" style="--wk:{color}">'
             f'<h2>{md_inline(w["head"])}</h2>'
             '<table><thead><tr>'
             '<th class="c-day">Day</th><th class="c-lec">Lecture</th>'
@@ -143,7 +143,16 @@ def render():
         )
     notes_html = "".join(f"<p>{md_inline(n)}</p>" for n in notes)
 
-    body = (
+    nav_items = ([("index.html", "← Dashboard", None)]
+                 + [(f"#week-{i+1}", f"Week {i+1}", f"0{i+1}") for i in range(len(weeks))]
+                 + [(GH_BLOB + "SYLLABUS_2026.md", "Syllabus", None)])
+    side = sidebar(
+        "WRIT 20833 · Summer 2026", "Course Schedule",
+        nav_items,
+        [(f"https://github.com/{REPO}", "GitHub ↗"), ("https://colab.research.google.com/", "Colab ↗")],
+    )
+
+    main = (
         '<header class="masthead">'
         '<div class="kicker">WRIT 20833 · When Coding Meets Culture</div>'
         '<h1>Course Schedule</h1>'
@@ -157,11 +166,12 @@ def render():
         + f'<div class="notes">{notes_html}</div>'
         + '<footer>WRIT 20833 · Summer 2026 · a working plan, adjusted to the class’s pace</footer>'
     )
-    return PAGE(html.escape(title), body)
+    return PAGE(html.escape(title), shell(side, main), wrap=False)
 
 
 if __name__ == "__main__":
+    css = write_stylesheet(os.path.dirname(OUT) or ".")
     out = render()
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(out)
-    print(f"wrote {OUT} ({os.path.getsize(OUT)} bytes)")
+    print(f"wrote {OUT} ({os.path.getsize(OUT)} bytes) + {css} ({os.path.getsize(css)} bytes)")

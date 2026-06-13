@@ -1,10 +1,13 @@
 # WORKLOG — WRIT 20833 2026 port (session handoff)
 
-**Branch:** `claude/port-strings-codealong` (prior work merged to `main` via PR #1) · **Last updated:** 2026-06-11
+**Branch:** `claude/port-strings-codealong` (open PR #2 to `main`) · **Last updated:** 2026-06-11
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
-Read this first, then `PORT_ASSESSMENT_2026.md` (context) and `PROPOSED_4WEEK_SCHEDULE.md`
-(the plan + open decisions).
+Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and
+`planning/PROPOSED_4WEEK_SCHEDULE.md` (the plan + open decisions).
+**Note the 2026-06 reorg:** the published course site is in `docs/`; instructor process docs (incl. this
+file) moved to `planning/`; TCU/AddRan source docs are in `reference/`; answer keys + HW builders live in
+the private `TCU-DCDA/WRIT20833_2026_keys`.
 
 ---
 
@@ -30,6 +33,17 @@ not a content cliff.
   **instructor references + discussion fodder, not rubrics**; Submit checklists emphasize
   completion + reflection over right answers. The capstone "essay weight" open decision means
   *emphasis/expectation*, not a points scheme.
+  - **Submit-checklist wording (fixed 2026-06-11, applies to all HW + future assignments):** do **not**
+    ask that the notebook "runs top to bottom without errors" — that's a clean-code/correctness demand
+    that contradicts ungrading + "errors are learning" (and HW1's own A4/experiments). House wording:
+    *"I ran every cell. Where something still breaks, I left a `#comment` about what I tried and what I
+    learned — errors are part of the work here, not something to hide or delete."* Applied to HW1–4.
+  - **`#comments` requirement wording (same date/scope):** not "Required: `#comments` in **every** code
+    block" / "Every code cell has `#comments`" (reads as a per-line mandate). House wording keeps the
+    expectation but drops the rigidity — heading *"Expected: frequent, meaningful `#comments`"* (comment
+    often and wherever a choice/question comes up, not every line; **frequent, relevant comments are
+    expected** — they're where thinking shows); submit *"I used `#comments` frequently and meaningfully…
+    (not every line, but throughout)."*
 - **Assignment renumbering (2026):** HW1 = foundations · HW2 = term freq · HW3 = freq+sentiment
   · HW4 = topic modeling+integration · Capstone. (F25 map: HW1=F25 HW2, HW2=F25 HW1,
   HW3=F25 HW4-1, HW4=F25 HW4-2.)
@@ -211,6 +225,70 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
   weak topics (single-issue corpus) — fine as a *worked example*, but HW4 genuinely wants a richer BYO
   dataset. This is the same point as open thread #7 (still: test the install on Colab's 2026 image).
 
+## Capstone assignment sheet — ✅ DONE (2026-06-12)
+Authored **`CAPSTONE_2026.md`** (root, parallel to `SYLLABUS_2026.md`/`COURSE_SCHEDULE_2026.md`) — the
+Final Evaluative Exercise, in 2026 house style + ungrading voice. Three deliverables (notebook + ~800–1,200-word
+data-driven-opinion essay + ~3–5-min presentation) on one dataset; **two tracks** — Track A cultural
+dataset (primary; own data, provided TX Ten Commandments corpus as fallback) and Track B stylometry
+(alternate, links the `materials/stylometry/` handout + notebook). Built directly on **HW4 B4/C2** ("your
+capstone in miniature"). Honors every locked convention: integrate ≥2 of the 3 lenses (all three is the
+fullest, via HW4's `groupby("topic")["sentiment"].mean()`); **close → distant → close**; the framework
+§6 capstone standard verbatim ("give voice… did your analysis sail calmly on, or make someone look?");
+**preserve the quarrel**; borrowed-code honesty + AI policy split (borrow code/cite AI, voice your own
+writing); 3-point ungrading rubric; CSV core tie. Submit checklist uses the **fixed house wording**
+(`#comments` frequent & meaningful, not per-line; "ran every cell… errors are part of the work, not
+something to hide"). Timeline matches the schedule (proposal Mon 7/27 → work sessions → peer review →
+presentations + due Fri 7/31). **Residual `[...]`:** upload location + exact presentation length
+(instructor specifics).
+- **Wired in (no orphan):** `build_index.py` capstone card now links the sheet (was a `soon=True`
+  placeholder) → **regenerated `docs/index.html`**; schedule Days 16 & 20 link it; README status line +
+  Start-here table updated; syllabus capstone row points to it.
+- **Open dials left for the instructor** (from the stylometry handout): essay weight/length *relative to*
+  Track A vs. B, fixed-vs-student-generated stylometry corpus, and how heavily to foreground
+  AI-detection-bias ethics. The sheet states a single shared length (~800–1,200 words) for now.
+
+## Lecture pages — ✅ PILOT DONE (2026-06-12); scale-out is the next step
+Built the **lecture-page system** + authored **ML0** as the template. The dashboard's Lectures section
+is no longer all placeholders — ML0 is a live reading page; the other 8 cards stay "soon."
+- **`build_lectures.py`** (new, root) — renders `materials/lectures/*.md` → `docs/lectures/<slug>.html` in
+  the shared "Reading Room" theme. Hand-rolled markdown subset (headings, paragraphs, lists, blockquotes,
+  images, rules) to match the zero-dependency house style of `build_index.py`/`build_schedule_html.py`.
+  Pages live one level under `docs/`, so they link **`../styles.css`** (via `PAGE(css_href=...)`) and
+  rewrite repo-relative image paths (`materials/…`) → absolute **raw.githubusercontent** URLs (the same
+  "outside /docs → absolute" rule the rest of the site follows; resolves once the repo is public).
+- **Lecture format** = a student-facing **reading page** (centered ~50rem measure, serif lead, themed
+  blockquote/figure) — reinforces the "reading room" identity, not F25's full-screen slide decks.
+- **Theme:** added a `/* lecture / reading pages */` block to `site_theme.THEME_CSS` (so `styles.css`
+  carries it for all lecture pages).
+- **ML0 content** (`materials/lectures/ml0.md`) — authored as the **"mix"** the instructor chose: F25's
+  ML0 "Studying the Mess of the Human Condition" (the human mess: contradiction/ambiguity/subjectivity;
+  "where others see noise, we see signal"; Keats's *negative capability*; the code-vs-culture "productive
+  tension") **woven with** the 2026 noumena→wisdom framing (the score is never the meaning; bias is
+  constitutive; make your choices visible). ~750 words; validated (HTML parses, no markdown leak, figure
+  resolves).
+- **Dashboard wiring:** `build_index.py` `LECTURES` tuples gained a 4th field (page URL or `None`); the
+  card grid links authored pages and keeps the rest `soon=True`. ML0 card now → `lectures/ml0.html`.
+- **Slide deck (added same day):** `build_lectures.py` now emits a **second view** per lecture —
+  `docs/lectures/<slug>.deck.html` — a **fully self-contained** slide deck (theme inlined via
+  `PAGE(css_href=None)`; arrow-key/click nav; `print` → PDF). Same markdown source → reading page + deck,
+  no drift. The reading-page masthead links the deck ("Slides ▸").
+- **2-column split layout:** a per-slide `<!-- layout: split -->` directive renders text | image two
+  columns on the deck (reading page ignores it / stacks). Title slide supports split too.
+- **ML0 imagery (warm "Reading Room" palette, self-hosted in `materials/lectures/images/`, JPEG-downsized):**
+  4 of 6 slides illustrated — **title** (quill-script → ordered characters), **the human mess**
+  (`messy_humanities`, the one on-brand keeper from F25's ML0), **the score is never the meaning** (the
+  noumena pipeline), **every arrow is a choice** (brass-valves painting = "every arrow is a human
+  decision"). Slide 4's dense section was **split into two slides** ("The score…" + "Every arrow is a
+  choice"). Other F25 ML0 images were off-palette; `data_as_categorization` + `tippingScales` earmarked
+  for **ML3**. Instructor generated the title/valves images (ChatGPT) to match `messy_humanities`'s style.
+
+**Next (scale-out, when wanted):** author the remaining settled lectures as `materials/lectures/ml*.md`
++ a registry line each — **ML1** Connotations & Code, **ML3** Classification Logic, **ML5** Collective
+Memory, **ML4** AI Agency, **ML6** Data Archaeology, **ML7** NLP & Topic Modeling (all "Mix" from the F25
+decks in `WRIT20833_2025/docs/lectures/mini-lectures/lecture-*` + the framework). **ML2/ML9 stay parked**
+pending the open thread #9 audit (cut/repurpose ML2; re-home ML9 → Day 17). Pattern is set; each new
+lecture is one md file + one `LECTURES` line + rerun both generators.
+
 ## Other open threads / next steps
 1. **Confirm scope** — drop-portfolio (current) vs. full-arc-tightened vs. foundations-only.
 3. **Walsh-prereq strip on ported notebooks** — Tutorials 1–4 and the code-alongs open with an
@@ -333,7 +411,42 @@ checked directly against the live `WRIT20833_2025` files (2026-06-10), not just 
     wanted:** draft the **2–3 concrete student-work examples** the CSV submission form requires (from the
     capstone + discussions), once the instructor confirms the exact outcome to claim.
 
-11. **TCU syllabus compliance — ✅ VERIFIED COMPLETE for course-specific content (2026-06-11).** Did a
+11. **TCU syllabus — ✅ ALIGNED TO AddRan + F25 (2026-06-11, second pass).** Reviewed the AddRan syllabus
+    docs in `/Users/curtrode/Code/AddRan/syllabus-checker/source_files` (AddRan Simplified Template,
+    Fall-2026 review instructions, **the F25 WRIT 20833 syllabus co-authored with Lucas**). Big unblock:
+    AddRan handles University-policy boilerplate via the **Student Resources & Policy Information QR/link**,
+    not pasting — so the old `[paste …]` placeholders are **gone**. Revised `SYLLABUS_2026.md`: added the
+    QR block (cte.tcu.edu image) + a Note-for-students; a **Land Acknowledgment**; the **University-Absence**
+    + **Medical-Privacy** statements (AddRan text) under *Attendance & Engagement*; course **Recording** +
+    **Academic Conduct** statements; **CSV outcome-mapping** in the assignments table; dropped the TCU-Online
+    getting-started + the long University-Policies paste list. Crosswalk `planning/SYLLABUS_COMPLIANCE.md`
+    updated. F25 syllabus also confirms this course already ran **ungrading** + no-attendance-deduction.
+    *(Earlier first-pass verification against the standard TCU checklist remains below for history.)*
+
+    **Syllabus fill + Word export — partial, 2026-06-12.** Filled the confirmable instructor/registrar
+    fields into `SYLLABUS_2026.md`: **Curt Rode · 3 credits · Lecture · Office N/A—online · Response time
+    (24 hrs weekdays) · Preferred contact (email via TCU Online)**. **Generated the AddRan Word export**
+    via `pandoc … -f gfm` → `WRIT20833-[section]_Summer2026_Rode.docx` (38.6 KB; 9 tables, QR image
+    embedded, AddRan section order preserved). The .docx is a **working draft edited in Word** and is
+    **`.gitignore`d** (`WRIT20833-*_Summer2026_Rode.docx`) — `SYLLABUS_2026.md` stays the source of truth.
+    **Still instructor-only** (left as `[...]` in both md + docx): section number (also the filename),
+    meeting time, TCU email, phone, office hours, Zoom, TCU-Online course link; plus the soft fields kept
+    as placeholders by choice (Grading Concerns, submissions-module note, loaner-laptop, supplementary
+    resources). **Two to verify, not fabricate:** the catalog description (line 67) + exact CSV/HUM
+    outcome wording (line 90). In Word: rename `[section]` → real section, run the accessibility checker
+    (table headers + image alt text). *(The renamed export is `WRIT20833-020_...` — section 020.)*
+
+    **HUM core added (2026-06-12).** The course now carries **two** Core designations — CSV **and
+    Humanities (HUM)**. Verified the official HUM outcome against `reference/TCU-Core-Curriculum-outcomes-1.pdf`:
+    *"Use humanistic modes of inquiry to analyze human experiences and expressions across space and time."*
+    Wove HUM in beside CSV in `SYLLABUS_2026.md` (Course-Description core subsection → now "CSV and HUM"
+    with a paragraph each; Learning-Outcomes core block → two bullets; assignments table → column is now
+    "Core (CSV · HUM)" with per-row codes + updated mapping note). Updated `CONCEPTUAL_FRAMEWORK_2026.md`
+    §7 (HUM moved from "adjacent resonance" to a **claimed** designation) and the README core-credit line.
+    **HUM evidence claimed:** the HW analyses + capstone; CSV evidence stays discussions + reflections +
+    capstone. The Word docx (020) is the instructor's — paste the HUM blocks in by hand (md ≠ docx now).
+
+    **TCU syllabus compliance — ✅ VERIFIED COMPLETE for course-specific content (2026-06-11).** Did a
     full item-by-item gap-check of `SYLLABUS_2026.md` against the **actual** TCU checklist PDF
     (`reference/TCU-Syllabus-Template-checklist-FINAL-9-2024.pdf`): every required section is present and
     correctly scaffolded. Crosswalk captured in **`planning/SYLLABUS_COMPLIANCE.md`** (each checklist item →
@@ -428,14 +541,34 @@ can be served by GitHub Pages → *Deploy from branch* → `main` /`docs`). The 
 were moved out of `docs/` to **`planning/`** (WORKLOG, PORT_ASSESSMENT, PROPOSED_4WEEK_SCHEDULE,
 CONCEPTUAL_FRAMEWORK, ACKNOWLEDGMENTS, SYLLABUS_COMPLIANCE). Site pages:
 - `docs/index.html` — landing **dashboard** (built by `build_index.py`), modeled on last year's site IA
-  (nav + sectioned card grids): Start here · Code-alongs · Homework · Capstone & stylometry · Lectures
-  (placeholders) · Resources.
-- `docs/schedule.html` — the schedule (built by `build_schedule_html.py`).
+  with a **left sidebar nav** (F25 parity) + sectioned card grids: Start here · Code-alongs (**split by
+  week**) · Homework · Capstone & stylometry · Lectures (placeholders) · Resources.
+- `docs/schedule.html` — the schedule (built by `build_schedule_html.py`); same left sidebar with week
+  anchors + a Dashboard back-link.
+Sidebar/shell are shared helpers in `site_theme.py` (`sidebar()`, `shell()`, `PAGE(..., wrap=False)`);
+collapses to a top bar under 860px.
+
+**Open design questions (revisit later):**
+- **Sidebar icons** — F25 used lucide icons next to each nav item; ours is text-only. Add inline-SVG
+  icons (keep self-contained — no external icon CDN) or leave text-only?
+- **Nav behavior** — ours is plain anchor scroll-to-section; F25 used JS to *filter* the dashboard to
+  one category at a time. Keep scroll, or add the filter?
+- **Themed `docs/syllabus.html`** — dashboard currently links the syllabus as raw markdown on GitHub;
+  build a themed HTML syllabus page (a `build_syllabus.py` from `SYLLABUS_2026.md`).
+- **Tidy root** — optionally move `site_theme.py` + `build_*.py` into a `tools/` folder.
+- **Theme retune** — palette/type are tokens; revisit greens/serif once lived-with.
 Because Pages serves only `/docs`, links to things **outside** docs/ are absolute: notebooks → **Colab**
 (`colab.research.google.com/github/.../blob/main/...`), repo files (syllabus, stylometry handout) →
-**GitHub blob**. Intra-site links (index→schedule) stay relative. CSS is still **inlined** per page
-(self-contained), not a shared stylesheet. Generators (`site_theme.py`, `build_index.py`,
-`build_schedule_html.py`) sit at repo root and write into `docs/`.
+**GitHub blob**. Intra-site links (index→schedule) stay relative. Generators (`site_theme.py`,
+`build_index.py`, `build_schedule_html.py`) sit at repo root and write into `docs/`.
+
+**CSS — now an external shared stylesheet (changed 2026-06-12).** Was inlined per page; the two site
+pages always travel together in `/docs`, so the theme moved to a single **`docs/styles.css`** (written by
+`site_theme.write_stylesheet`, linked via a relative `<link>`). `THEME_CSS` in `site_theme.py` stays the
+one source of truth; both generators emit `styles.css` on every build. Pages dropped ~9KB each
+(`index.html` 20.6KB→11.5KB). Escape hatch kept for single-file portability: `PAGE(..., css_href=None)`
+inlines `THEME_CSS` for a fully self-contained page (to email / drop in D2L / open from disk detached).
+Per-week tints are unaffected — they're inline `style="--wk:…"` on each `.week` (body content, not theme).
 **To publish:** make the repo public, then *Settings → Pages → Deploy from branch → `main` / `docs`*.
 Colab/badge links resolve only once public.
 
