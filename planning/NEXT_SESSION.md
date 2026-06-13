@@ -49,8 +49,12 @@ Open items (pick one, or tell me which):
 - CSV/HUM core work-examples (#10); lecture audit ML2/8/9 (#9); the parked
   site-design questions (sidebar icons, nav filter) recorded in the WORKLOG.
   (Capstone sheet — DONE: CAPSTONE_2026.md. Syllabus HUM core — DONE.)
-- Instructor-only (NOT for the agent): merge PR #2; fill syllabus [...] fields +
-  export to Word (WRIT20833-[section]_Summer2026_Rode); enable Pages + make repo public.
+- SITE IS LIVE (2026-06-13): branch merged to main via PR #3; repo is PUBLIC;
+  GitHub Pages serving from main/docs at https://tcu-dcda.github.io/WRIT20833_2026/
+  (raw images + Colab badges + blob links all resolve now). Regenerate docs/ after
+  edits (build_index.py / build_schedule_html.py / build_lectures.py) and push to main.
+- Instructor-only still pending: fill syllabus [...] fields + paste the 3 HUM blocks
+  into the WRIT20833-020 Word export; verify catalog + CSV/HUM outcome wording.
 
 Ask before large multi-file refactors or anything outward-facing.
 ```
