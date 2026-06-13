@@ -1,6 +1,6 @@
 # Next-session handoff prompt
 
-Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-12.)
+Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-13.)
 
 ---
 
@@ -9,7 +9,10 @@ WRIT 20833 (2026) course port — resuming work.
 
 Repo: /Users/curtrode/Code/Teaching/WRIT/WRIT20833/WRIT20833_2026
 Private keys repo (sibling): /Users/curtrode/Code/Teaching/WRIT/WRIT20833/WRIT20833_2026_keys
-Branch: claude/port-strings-codealong (open PR #2 → main). Both repos clean and pushed.
+Status: ALL work is merged to `main`; repo is PUBLIC; the course site is LIVE via GitHub
+Pages (main/docs → https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch —
+the old claude/port-strings-codealong was merged (PRs #2 + #3) and deleted. Start a FRESH
+branch per task off main: `git checkout -b claude/<task>`. Private keys repo (sibling) is separate.
 
 START BY READING planning/WORKLOG.md — the full session handoff + decision log.
 Then skim README.md (repo layout); read SYLLABUS_2026.md if syllabus work is next.
