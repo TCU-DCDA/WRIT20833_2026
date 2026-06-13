@@ -49,6 +49,44 @@ questions to computational methods** — to hear more voices than close reading 
 while staying honest about what the counting flattens. That double move — listen at scale, *and* refuse
 the false tidy answer — is the whole course.
 
+## What it looks like in the wild
+
+Before the cautions, the payoff — real projects that turn a pile of culture into a pattern you can
+suddenly *see*. Start with two that count words much the way you soon will:
+
+<!-- layout: gallery -->
+
+- ["Trucks and Beer"](https://www.johnwmillr.com/trucks-and-beer/) — counts what country songs *actually* sing about (turns out, not just trucks and beer).
+- [Gendered Language in Teacher Reviews](https://benschmidt.org/profGender/) — the same words land very differently depending on the professor's gender.
+
+![Scatter plot — mentions of "girl" vs. "love" across popular country songs, colored by artist gender (the "Trucks and Beer" analysis)](materials/lectures/images/proj_country_love.png)
+
+![Dot plot — words from 14 million RateMyProfessor reviews split by professor gender (Ben Schmidt, "Gendered Language in Teacher Reviews")](materials/lectures/images/proj_teacher_reviews.png)
+
+## A few more worth a look
+
+No screenshots — these are worth visiting live:
+
+- [Every Noise at Once](https://everynoise.com/) — a navigable map of 6,000+ music genres, drawn from audio analysis.
+- [The Pudding, "The Largest Vocabulary in Hip-Hop"](https://pudding.cool/2017/02/vocabulary/) — ranks rappers by how many unique words they use.
+- [Open Syllabus](https://opensyllabus.org/) — maps millions of college syllabi; Plato is assigned more than any other author on earth.
+
+Notice the move every one of them makes: a question about *people* comes first, then the counting. The
+tool serves the question — never the other way around.
+
+## Use the programs, or shape them
+
+Two writers worth hearing on *why* a humanist bothers with this at all.
+
+> The underlying capability of the computer era is actually programming — which almost none of us know how to do. We simply use the programs that have been made for us, and enter our text in the appropriate box on the screen… This means [we] have access to the capabilities given to [us] by others, but not the power to determine the value-creating capabilities of these technologies for [ourselves].
+
+— Douglas Rushkoff, *Program or Be Programmed* (qtd. in Nick Montfort, *Exploratory Programming for the Arts and Humanities*, 327–28)
+
+Nick Montfort names the upside just as plainly: learning to code in the humanities lets us **think in new
+ways**, **understand culture and media systems** more deeply, and maybe even **help improve society.** You
+don't have to leave here a programmer. But knowing what's inside the box — even a little — is the
+difference between *using* the tools that sort our culture and being able to *question* them.
+
 ## The score is never the meaning
 
 <!-- layout: split -->
