@@ -97,8 +97,8 @@ Look at this diagram. We'll come back to it every week.
 
 It begins much further from "the truth" than you'd guess. At the top sits the *noumenon* — the
 philosopher Immanuel Kant's word for a thing **as it actually is**, the whole lived human fact. A woman
-in Texas reads that her child's classroom will display the Ten Commandments and feels something whole and
-hers. We will never have that feeling. What we *can* have is what she typed — a comment, already a lossy,
+in Texas reads that her child's classroom will display the Ten Commandments and feels something complete
+and entirely her own. We will never have that feeling. What we *can* have is what she typed — a comment, already a lossy,
 public projection of an inner state. Then we **scrape** it (and some comments are missed), **clean** it
 (we choose what counts as a "word"), **model** it (a tool decides what "great" means), and only *then* do
 we reach for **insight, knowledge,** and — maybe, by the end — **wisdom.**

@@ -43,12 +43,19 @@ Conventions to honor (see WORKLOG "Locked decisions"):
 - Validate notebooks with /opt/anaconda3/bin/python (has pandas/vaderSentiment/gensim).
 
 Open items (pick one, or tell me which):
-- Lecture pages: ML0 DONE — build_lectures.py renders each materials/lectures/ml*.md
-  into BOTH a reading page (docs/lectures/ml0.html) and a self-contained slide deck
-  (ml0.deck.html); supports a 2-column `<!-- layout: split -->` directive + per-slide
-  imagery (materials/lectures/images/, JPEG-downsized, warm palette). Scale out the
-  rest — ML1, ML3, ML5, ML4, ML6, ML7 (each = one ml*.md + a LECTURES line + rerun
-  the generators; ML3 → reuse F25 data_as_categorization/tippingScales images).
+- Lecture pages: ML0 DONE (+ enriched 2026-06-13, PR #4) — build_lectures.py renders each
+  materials/lectures/ml*.md into BOTH a reading page (docs/lectures/ml0.html) and a
+  self-contained slide deck (ml0.deck.html). Layout directives: `<!-- layout: split -->`
+  (text|image 2-col) and `<!-- layout: gallery -->` (text on top, figures in a cols-2/3/4
+  row underneath — added for ML0's DH-projects gallery). Per-slide imagery lives in
+  materials/lectures/images/ (warm palette). ML0 now also carries the F25 lecture1 harvest:
+  a Rushkoff/Montfort "why a humanist codes" slide + a two-slide projects gallery (image
+  projects first, link-only second). NEW doc planning/LECTURE_SOURCE_NOTES.md = the ledger
+  of what to mine from each F25 deck (what went into ML0; data-feminism binaries earmarked
+  for ML1/ML3; "program or be programmed" reuse for ML4; what was skipped) — READ IT before
+  the scale-out. Scale out the rest — ML1, ML3, ML5, ML4, ML6, ML7 (each = one ml*.md + a
+  LECTURES line + rerun the generators; ML3 → reuse F25 data_as_categorization/tippingScales
+  images).
 - CSV/HUM core work-examples (#10); lecture audit ML2/8/9 (#9); the parked
   site-design questions (sidebar icons, nav filter) recorded in the WORKLOG.
   (Capstone sheet — DONE: CAPSTONE_2026.md. Syllabus HUM core — DONE.)
