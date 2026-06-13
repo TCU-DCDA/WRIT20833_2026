@@ -86,6 +86,13 @@ F25's 8-slide deck. Title page links live (`build_lectures.py` registry + `build
   F25 images were rejected. **ML1 ships text-forward.** If imagery is wanted later, generate warm-palette
   images (as the instructor did for ML0) and drop them in via the `split`/`gallery` layouts; F25's
   `IMAGE_PROMPTS.md` / `image-generation-prompts.md` in that deck folder are usable prompt starting points.
+- **Image slots prepped (2026-06-13):** 4 slides are marked `<!-- layout: split -->` with a ready-to-use
+  warm-palette **image prompt + target filename + a commented `![]()` line** embedded right in
+  `ml1.md` — title (`ml1_title.jpg`), Denotation (`ml1_denotation.jpg`), Missing/uncounted
+  (`ml1_missing.jpg`), Code-is-not-neutral (`ml1_code.jpg`). The prompts are HTML comments (inert — the
+  slides render clean full-width until art exists). **To add an image:** generate it, save to
+  `materials/lectures/images/<name>.jpg`, uncomment the `![]()` line, rerun the generators — the 2-column
+  split activates automatically. Same pattern is the template for future lectures' image slots.
 
 ### Division of labor with ML3 (decided 2026-06-13)
 - ML1 owns **connotation / the myth of neutral data**. The **data-feminism binaries + Facebook

@@ -3,6 +3,11 @@
 
 <!-- meta: ML1 · Day 1 · the through-line -->
 
+<!-- layout: split -->
+<!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a single large printed numeral resting on parchment, casting a long shadow that resolves into a knot of small human figures arguing and gesturing — the bare number carries a story behind it. -->
+<!-- TODO: generate -> materials/lectures/images/ml1_title.jpg, then uncomment the next line (it activates the 2-column layout): -->
+<!-- ![A printed numeral on parchment casting a shadow shaped like a crowd of arguing figures](materials/lectures/images/ml1_title.jpg) -->
+
 ML0 left us with a claim: every arrow in the pipeline from a lived human fact to an "insight" is a human
 choice. This lecture turns that claim on the very first thing you'll touch — a plain number — and shows
 that even *it* arrives already leaning.
@@ -17,6 +22,11 @@ ground the argument is being fought on. Before we run a single line of code, ask
 what is that number already saying, and who decided what got counted?
 
 ## Denotation and connotation
+
+<!-- layout: split -->
+<!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent): the same modest house painted three times on one canvas — a glowing lamplit cottage (home/belonging), a cold stamped notarial document reading "RESIDENCE," and a flat real-estate listing card — one denotation, three connotations. -->
+<!-- TODO: generate -> materials/lectures/images/ml1_denotation.jpg, then uncomment the next line: -->
+<!-- ![The same house painted three ways — warm cottage, notarized "residence," listing card — one denotation, three connotations](materials/lectures/images/ml1_denotation.jpg) -->
 
 You already own the tool this lecture needs — you've used it on words your whole life.
 
@@ -74,6 +84,11 @@ this, why, and what story do they need it to tell?**
 
 ## The missing and the uncounted
 
+<!-- layout: split -->
+<!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent): a hall of seated figures rendered in muted green; several chairs sit empty and a few silhouettes are faint and only half-painted — the uncounted. A handful of speech-bubbles rise from the solid figures while the faded ones stay silent. -->
+<!-- TODO: generate -> materials/lectures/images/ml1_missing.jpg, then uncomment the next line: -->
+<!-- ![A hall of seated figures where several chairs are empty and some silhouettes are faint and half-painted — the uncounted](materials/lectures/images/ml1_missing.jpg) -->
+
 The loudest thing about a dataset is often what isn't in it.
 
 Our 123 comments are not "the public." They're the slice of the public that *posted* — people online,
@@ -86,6 +101,11 @@ question are exactly the ones the counting never reaches. A good distant reading
 silence at its edges.
 
 ## So: code is not neutral
+
+<!-- layout: split -->
+<!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent; echoes ml0's brass-valves "every arrow is a choice"): a hand over a keyboard whose keys are tiny brass levers and valves; each keypress releases a thread of golden light down a branching track — code as a chain of human choices behind a neutral-looking surface. -->
+<!-- TODO: generate -> materials/lectures/images/ml1_code.jpg, then uncomment the next line: -->
+<!-- ![A hand at a keyboard whose keys are tiny brass levers, each keypress sending golden light down a branching track](materials/lectures/images/ml1_code.jpg) -->
 
 Code inherits every connotation above — and then adds its own, because code runs on definitions, and a
 definition is a decision.
