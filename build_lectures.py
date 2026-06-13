@@ -25,6 +25,7 @@ OUT_DIR = "docs/lectures"
 # The dashboard (build_index.py) links these; lectures without an entry stay "soon" placeholders.
 LECTURES = [
     ("ml0", "materials/lectures/ml0.md", "ML0", "Day 1"),
+    ("ml1", "materials/lectures/ml1.md", "ML1", "Day 1"),
 ]
 
 
