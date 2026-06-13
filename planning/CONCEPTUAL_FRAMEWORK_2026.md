@@ -230,7 +230,16 @@ None of this is yet woven into student-facing materials; each is a small, option
 
 ---
 
-## 7. Civic stakes — TCU Core Curriculum (CSV vetting)
+## 7. Civic stakes — TCU Core Curriculum (CSV + HUM vetting)
+
+> **Update (2026-06-12):** the course carries **two** Core designations — **CSV** *and* **Humanities
+> (HUM)**. HUM (below, formerly listed under "adjacent resonance") is now a **claimed** designation; the
+> syllabus names both. Official HUM outcome (verified against `TCU-Core-Curriculum-outcomes-1.pdf`):
+> *"Use humanistic modes of inquiry to analyze human experiences and expressions across space and time."*
+> The course meets it by reading real human expression both **closely and at scale** — interpreting
+> cultural texts (public comments, the Constitution, a chosen corpus), across contemporary and historical
+> voices, always asking what computation reveals and flattens. Evidence: the HW analyses, the capstone
+> notebook + essay, and the close-vs-distant-reading work.
 
 WRIT 20833 carries TCU's **Citizenship & Social Values (CSV)** designation in the **TCU Core Curriculum**,
 under the **Responsible Citizenship** competency ("describe concepts or theories of social responsibility
@@ -258,13 +267,12 @@ participation in civic discourse and decision-making; examine civic issues as pu
 articulate the rights and responsibilities of individuals and groups* — useful language for the vetting
 narrative.
 
-**Adjacent core resonance (context, not claimed designations).** The course also strongly embodies three
-other Core outcomes — worth knowing if it's ever submitted for additional credit or to show its breadth:
-**Humanities** ("use humanistic modes of inquiry to analyze human experiences and expressions across space
-and time" — the course's literal premise), **Written Communication 2** ("analyze and compose
-evidence-based arguments in various forms" — the capstone essay), and **Cultural Awareness** ("explore
-culture and cultural phenomena as sites of identity, difference, understanding, or collaboration" —
-cultural analytics of a site of difference).
+**Adjacent core resonance (context, not claimed designations).** Beyond the two designations it now
+carries (CSV + HUM, above), the course also strongly embodies two further Core outcomes — worth knowing
+if it's ever submitted for additional credit or to show its breadth: **Written Communication 2**
+("analyze and compose evidence-based arguments in various forms" — the capstone essay), and **Cultural
+Awareness** ("explore culture and cultural phenomena as sites of identity, difference, understanding, or
+collaboration" — cultural analytics of a site of difference).
 
 **Produced work that would be evaluated** (CSV evidence): the **capstone data-driven-opinion essay**
 (central artifact), the **four threaded discussions**, the **three reflections**, and the **HW analyses**
