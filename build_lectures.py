@@ -26,6 +26,7 @@ OUT_DIR = "docs/lectures"
 LECTURES = [
     ("ml0", "materials/lectures/ml0.md", "ML0", "Day 1"),
     ("ml1", "materials/lectures/ml1.md", "ML1", "Day 1"),
+    ("ml3", "materials/lectures/ml3.md", "ML3", "Day 3"),
 ]
 
 
