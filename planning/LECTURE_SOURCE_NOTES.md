@@ -99,6 +99,43 @@ F25's 8-slide deck. Title page links live (`build_lectures.py` registry + `build
   gender-binary** example (from `lecture1.html`, earmarked above) stays with **ML3 "Classification Logic"**
   (forced categories / sorting-as-judgment) to avoid duplication.
 
+## F25 `mini-lectures/lecture-3-classification/` ("Coding Taboo Logic") — harvested 2026-06-14 → ML3
+
+Authored **ML3 "Classification Logic"** (`materials/lectures/ml3.md`, 7 slides). Pairs with the **Day-3
+(Wed 7/8) conditionals/booleans code-along** (schedule-confirmed) — it's the humanities frame for the
+`if/else` students learn that day. Registered in both build scripts; dashboard card links it.
+
+### ✅ Folded into ML3
+- **Code decides / classification encodes values** (F25 slides 2, 6) — reframed as "to classify is to
+  judge; there is no neutral box."
+- **Status as data** (F25 slide 3) — kept as "status has always gated access," boolean variables
+  (`credit_score`, `criminal_background`, …) as the automated gate.
+- **The threshold** (F25's `if credit_score > 650` example) — built into its own slide and **threaded to
+  HW3's `compound > 0.05` cutoff** (framework's "classification is authored" row).
+- **Classified BY vs. building the sort** (F25 slide 6/8) — kept nearly whole; the power point.
+- **Readings** (Noble *Algorithms of Oppression*, Benjamin *Race After Technology*, O'Neil *Weapons of
+  Math Destruction*) — kept as an optional "going deeper" line on the last slide.
+- **The binaries / Facebook gender-binary example** (earmarked from `lecture1.html`) **landed here**, on
+  "The tyranny of the tidy box," with the Data Feminism gloss — as decided in the ML1 entry.
+
+### Deliberately changed / dropped
+- **De-emphasized the "sacred / taboo" framing** that titles the F25 deck ("Coding Taboo Logic," ritual
+  purity, sacred/profane). That's **parked-ML2 territory** (open thread #9), and leaning on "sacred
+  categories" sits badly next to a *literally sacred* corpus (the Ten Commandments). ML3 keeps the durable
+  core — sorting as judgment — and only gestures at the historical "status gated access" point.
+- Dropped F25's `1847`-data Colab tutorial link (F25-specific) and the emoji/checkpoint chrome.
+
+### Image audit (2026-06-14): earmark superseded — used as composition comps, not dropped in raw
+- The two earmarked images **exist but are off-palette**: `images/JPEG/data_as_categorization.jpg` is
+  black/cyan **cyberpunk** (people routed into category-circles); `images/JPEG/tippingScales.png` is a
+  **blue cartoon** (people-vs-institutions balance). Neither matches the warm oil-painting "Reading Room"
+  look (same call as ML0/ML1's F25 art).
+- **Resolution:** ML3 ships text-forward with **3 split-ready slides + embedded warm-palette prompts**
+  (title `ml3_title.jpg`, threshold `ml3_threshold.jpg`, tidy-box `ml3_schema.jpg`). The prompts **reuse
+  the *concepts*** of the two F25 images recomposed in warm paint (the schema prompt explicitly recomposes
+  `data_as_categorization`'s people-into-boxes idea; the threshold prompt echoes ml0's brass-valves). Same
+  inert-comment pattern as ML1 — generate → save → uncomment → rebuild activates the 2-column split.
+
 ## Other F25 decks (not yet mined)
 The per-lecture decks for ML1–ML9 live in `WRIT20833_2025/docs/lectures/mini-lectures/lecture-*` (e.g.
 `lecture-1-connotations`, `lecture-3-classification`, `lecture-4-agency`, `lecture-5-memory`,
