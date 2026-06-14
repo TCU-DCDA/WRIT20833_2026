@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connotations &amp; Code (slides) — WRIT 20833</title>
+<style>
+:root{
+  /* surfaces & ink */
+  --paper:#f1eee4; --surface:#fbfaf3; --ink:#262a20; --muted:#6f7463; --faint:#a6aa99;
+  --rule:#dcd8c9;
+  /* greens — deepen across the term (week tints) + the primary */
+  --wk1:#3a6b54; --wk2:#2f5d49; --wk3:#26513e; --wk4:#1e3b2f;
+  --green:#1e3b2f; --green-mid:#2f5d49; --green-link:#2f6a4e;
+  /* the one warm accent */
+  --clay:#9c6f3f; --clay-bg:#ebdfc7; --clay-ink:#6a4922;
+  /* type */
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);
+  border-top:5px solid var(--green);-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1060px;margin:0 auto;padding:36px 20px 64px;}
+a{color:var(--green-link);text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb,var(--green-link) 26%,transparent);}
+a:hover{border-bottom-color:var(--green-link);}
+code{font:.88em var(--mono);background:color-mix(in srgb,var(--green) 8%,var(--surface));
+  padding:1px 5px;border-radius:4px;color:var(--green-mid);}
+h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--green);letter-spacing:-.01em;}
+
+/* masthead */
+.masthead{padding:2px 0 20px;border-bottom:2.5px solid var(--green);margin-bottom:28px;}
+.kicker{font:600 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--clay);margin-bottom:16px;}
+.masthead h1{margin:0 0 10px;font-size:31px;line-height:1.1;}
+.masthead .sub{margin:0 0 16px;font-family:var(--serif);font-style:italic;font-size:17.5px;color:#464b3d;}
+.masthead .meta{margin:0;font-size:13.5px;color:var(--muted);max-width:74ch;}
+
+/* legend + mode pills (restrained, earthy — not a rainbow) */
+.legend{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:20px;}
+.legend .lbl{font:600 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-right:4px;}
+.mode{display:inline-block;font:600 11.5px/1 var(--sans);letter-spacing:.02em;
+  padding:5px 9px;border-radius:4px;color:#f3f0e6;white-space:nowrap;}
+.m-codealong{background:#2f5d49;} .m-lab{background:#4a6b67;} .m-workshop{background:#6d7a42;}
+.m-worksession{background:#9c6f3f;} .m-present{background:#825764;} .m-other{background:#6f7463;}
+
+/* week sections */
+.week{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--wk);
+  border-radius:3px;margin:22px 0;overflow:hidden;}
+.week h2{margin:0;padding:13px 20px;font-size:17px;color:var(--wk);
+  background:color-mix(in srgb,var(--wk) 7%,var(--surface));border-bottom:1px solid var(--rule);}
+
+/* tables */
+table{width:100%;border-collapse:collapse;}
+th,td{text-align:left;padding:12px 16px;vertical-align:top;border-top:1px solid var(--rule);}
+thead th{border-top:none;font:600 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);padding-top:13px;padding-bottom:11px;}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--green) 3%,var(--surface));}
+.c-day{width:72px;} .c-lec{width:25%;} .c-due{width:23%;}
+
+/* day cell — date leads, session number is a quiet mono tag */
+.day .wd{display:block;font-weight:700;font-size:14px;color:var(--ink);}
+.day .dt{display:block;font-size:13px;color:var(--muted);}
+.day .num{display:block;font:11px/1 var(--mono);color:var(--faint);margin-top:4px;letter-spacing:.02em;}
+.c-lec{font-size:14.5px;color:#3c4133;}
+.c-code{font-size:14.5px;}
+.c-code .mode{margin-right:5px;}
+
+/* due chips */
+.chip{display:inline-block;font-size:12px;padding:3px 8px;border-radius:4px;
+  background:color-mix(in srgb,var(--green) 6%,var(--surface));border:1px solid var(--rule);
+  color:var(--muted);margin:1px 0;}
+.chip-key{background:var(--clay-bg);border-color:color-mix(in srgb,var(--clay) 35%,transparent);
+  color:var(--clay-ink);font-weight:600;}
+.due-none{color:var(--faint);}
+
+/* notes + footer */
+.notes{border:1px solid var(--rule);border-radius:3px;background:var(--surface);
+  padding:16px 24px;margin:26px 0 0;color:#54594a;font-size:13.5px;line-height:1.65;}
+.notes p{margin:10px 0;} .notes strong{color:var(--green);}
+footer{font:11.5px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-align:center;margin-top:30px;}
+
+@media (max-width:720px){.c-lec,.c-due{width:auto;} body{font-size:15px;}}
+@media print{body{background:#fff;border-top-color:#000;} .week{break-inside:avoid;}}
+
+/* ---- site components (landing dashboard) ---- */
+/* top nav — an anchor launchpad */
+.topnav{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;
+  background:var(--paper);border-bottom:1px solid var(--rule);padding:11px 0;margin-bottom:6px;
+  font:600 12.5px/1 var(--sans);}
+.topnav a{color:var(--green);border:none;}
+.topnav a:hover{color:var(--clay);}
+.topnav .spacer{flex:1;}
+.topnav .ext{font:600 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+/* sections */
+.sec{margin:38px 0 0;}
+.sec>h2{display:flex;align-items:baseline;gap:10px;font-size:21px;margin:0;
+  padding-bottom:8px;border-bottom:2px solid var(--green);}
+.sec>h2 .n{font:600 12px/1 var(--mono);color:var(--clay);letter-spacing:.1em;}
+.sec>.lede{margin:12px 0 16px;color:var(--muted);font-size:14px;max-width:76ch;}
+
+/* card grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:14px;margin-top:16px;}
+.card{display:block;border:1px solid var(--rule);border-left:3px solid var(--green-mid);
+  border-radius:3px;background:var(--surface);padding:14px 16px;color:inherit;}
+a.card{text-decoration:none;border-bottom:none;}
+a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--green) 3%,var(--surface));}
+.card .lbl{font:600 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.card h3{margin:6px 0 5px;font-size:16px;line-height:1.22;}
+.card p{margin:0;font-size:13px;color:var(--muted);line-height:1.5;}
+.card .when{display:inline-block;font:600 10.5px/1 var(--mono);color:var(--clay);margin-top:9px;letter-spacing:.03em;}
+.card.soon{opacity:.62;} .card.soon:hover{border-left-color:var(--green-mid);background:var(--surface);}
+
+/* resource list */
+.reslist{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px 26px;
+  list-style:none;padding:0;margin:16px 0 0;}
+.reslist li{font-size:14px;border-bottom:1px solid var(--rule);padding:8px 0;}
+.reslist li .k{display:block;font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:3px;}
+.muted{color:var(--muted);}
+
+/* ---- two-column app layout (left sidebar) ---- */
+.app{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh;}
+.sidebar{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;
+  background:color-mix(in srgb,var(--green) 5%,var(--paper));border-right:1px solid var(--rule);
+  padding:26px 20px;}
+.sidebar .brand{font:600 10.5px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--clay);margin-bottom:6px;}
+.sidebar .brandname{display:block;font-family:var(--serif);font-size:18px;line-height:1.18;
+  color:var(--green);margin-bottom:24px;}
+.sidenav{display:flex;flex-direction:column;gap:2px;}
+.sidenav a{display:flex;align-items:baseline;gap:9px;padding:8px 11px;border-radius:6px;border:none;
+  color:var(--ink);font:600 13.5px/1.2 var(--sans);}
+.sidenav a .n{font:600 10px/1 var(--mono);color:var(--faint);min-width:16px;}
+.sidenav a:hover{background:color-mix(in srgb,var(--green) 9%,transparent);color:var(--green);}
+.sidenav a.active{background:var(--green);color:var(--paper);}
+.sidenav a.active .n{color:color-mix(in srgb,var(--paper) 65%,transparent);}
+.side-ext{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:9px;}
+.side-ext a{border:none;font:600 11px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);}
+.side-ext a:hover{color:var(--clay);}
+.main{min-width:0;padding:34px 34px 64px;}
+.main>*{max-width:960px;}
+
+/* week sub-groups (e.g. code-alongs split by week) */
+.wkgroup{margin-top:20px;}
+.wkgroup>h3{display:flex;align-items:baseline;gap:9px;margin:0 0 2px;font-family:var(--sans);
+  font-size:14px;color:var(--green);}
+.wkgroup>h3 .wkn{font:600 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--clay);}
+
+@media (max-width:860px){
+  .app{grid-template-columns:1fr;}
+  .sidebar{position:static;height:auto;overflow:visible;border-right:none;
+    border-bottom:1px solid var(--rule);padding:14px 18px;}
+  .sidebar .brandname{display:none;} .sidebar .brand{margin-bottom:10px;}
+  .sidenav{flex-direction:row;flex-wrap:wrap;gap:4px 6px;}
+  .sidenav a{padding:5px 9px;font-size:12.5px;}
+  .sidenav a .n{display:none;}
+  .side-ext{flex-direction:row;gap:14px;margin-top:12px;padding-top:12px;}
+  .main{padding:22px 18px 48px;}
+}
+
+/* ---- lecture / reading pages ---- */
+.reading{max-width:50rem;margin:0 auto;}
+.reading .backlink{display:flex;gap:13px;align-items:baseline;font:600 12.5px/1 var(--sans);margin-bottom:14px;}
+.reading .backlink a{color:var(--green);border:none;} .reading .backlink a:hover{color:var(--clay);}
+.reading .backlink .sep{color:var(--faint);}
+.reading p{margin:0 0 17px;font-size:16.5px;}
+.reading p.lead{font-family:var(--serif);font-size:19px;line-height:1.5;color:#3c4133;margin-bottom:22px;}
+.reading h2{font-size:22px;margin:34px 0 10px;}
+.reading h3{font-size:16.5px;margin:24px 0 7px;color:var(--green-mid);}
+.reading ul{margin:0 0 17px;padding-left:22px;} .reading li{margin:6px 0;}
+.reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
+  font-family:var(--serif);font-style:italic;color:#474c3d;}
+.reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+.reading figure{margin:24px 0;}
+.reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
+  border-radius:3px;background:var(--surface);padding:6px;}
+.reading figcaption{margin-top:8px;font:11.5px/1.5 var(--mono);letter-spacing:.02em;color:var(--muted);}
+.reading hr{border:none;border-top:1px solid var(--rule);margin:30px 0;}
+.reading footer{text-align:left;border-top:1px solid var(--rule);padding-top:14px;margin-top:34px;}
+
+.deck{position:fixed;inset:0;background:var(--paper);overflow:hidden;}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:flex-start;
+  padding:7vh 8vw 9vh;overflow:auto;}
+.slide.active{display:flex;} .slide.title{justify-content:center;}
+.slide>*{max-width:62rem;width:100%;}
+.slide .kicker{font:600 13px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--clay);margin-bottom:18px;}
+.slide.title h1{font-family:var(--serif);color:var(--green);font-size:clamp(30px,5.4vw,56px);
+  line-height:1.08;margin:0 0 16px;}
+.slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
+  color:#464b3d;margin:0 0 20px;}
+.slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
+  margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
+.slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
+.slide p.lead{font-family:var(--serif);color:#3c4133;}
+.slide ul{font-size:clamp(16px,2vw,23px);line-height:1.45;margin:0 0 16px;padding-left:1.1em;}
+.slide li{margin:10px 0;}
+.slide blockquote{margin:10px 0 18px;padding:6px 0 6px 22px;border-left:4px solid var(--clay);
+  font-family:var(--serif);font-style:italic;color:#474c3d;}
+.slide blockquote p{font-size:clamp(19px,2.9vw,31px);line-height:1.38;margin:0;}
+.slide figure{margin:6px 0;text-align:center;}
+.slide figure img{max-height:62vh;width:auto;max-width:100%;border:1px solid var(--rule);
+  border-radius:3px;background:var(--surface);padding:6px;}
+.slide figcaption{font:11.5px/1.5 var(--mono);color:var(--muted);margin-top:8px;}
+/* two-column split slide (text | image) */
+.slide.split>.split-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:5%;align-items:center;
+  max-width:76rem;width:100%;}
+.slide.split .col-text>*:first-child{margin-top:0;}
+.slide.split .col-img figure{margin:0;}
+.slide.split .col-img figure img{max-height:72vh;}
+@media (max-width:760px){.slide.split>.split-grid{grid-template-columns:1fr;gap:20px;}}
+/* gallery slide — text on top, figures in a row underneath */
+.slide.gallery .fig-row{display:grid;gap:4%;align-items:start;max-width:74rem;width:100%;margin-top:6px;}
+.slide.gallery .fig-row.cols-2{grid-template-columns:1fr 1fr;}
+.slide.gallery .fig-row.cols-3{grid-template-columns:repeat(3,1fr);}
+.slide.gallery .fig-row.cols-4{grid-template-columns:repeat(2,1fr);}
+.slide.gallery .fig-row figure{margin:0;}
+.slide.gallery .fig-row figure img{max-height:42vh;width:100%;object-fit:contain;background:#fbfaf6;}
+.slide.gallery .fig-row figcaption{font-size:11px;}
+@media (max-width:760px){.slide.gallery .fig-row{grid-template-columns:1fr !important;gap:16px;}}
+.deck-progress{position:fixed;left:0;bottom:0;height:4px;background:var(--green);width:0;
+  transition:width .2s;z-index:10;}
+.deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
+.deck-hint{position:fixed;left:16px;bottom:11px;font:600 10.5px/1 var(--mono);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint);z-index:10;}
+@media print{.deck{position:static;overflow:visible;}
+  .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
+    border-bottom:1px solid var(--rule);}
+  .deck-progress,.deck-count,.deck-hint{display:none;}}
+</style></head>
+<body><div class="deck"><section class="slide title"><div class="kicker">ML1 · Day 1 · the through-line</div><h1>Connotations &amp; Code</h1><p class="sub">Why no number is ever neutral</p><p class="lead">ML0 left us with a claim: every arrow in the pipeline from a lived human fact to an "insight" is a human choice. This lecture turns that claim on the very first thing you'll touch — a plain number — and shows that even <em>it</em> arrives already leaning.</p>
+<p>Here is a fact about the corpus we'll work with all term: 123 YouTube comments on a Texas law that puts the Ten Commandments in public-school classrooms.</p>
+<blockquote><p>In those 123 comments, the word <strong>"commandments"</strong> appears 25 times. <strong>"Constitution"</strong> appears 8.</p></blockquote>
+<p>A flat, true, countable fact. And already it leans — already it's <em>telling</em> you something about whose ground the argument is being fought on. Before we run a single line of code, ask the humanist's question: what is that number already saying, and who decided what got counted?</p></section><section class="slide"><h2>Denotation and connotation</h2><p>You already own the tool this lecture needs — you've used it on words your whole life.</p>
+<ul><li>A word's <strong>denotation</strong> is what it literally points to. <em>House</em>, <em>home</em>, and <em>residence</em> denote the same thing: a building people live in.</li><li>Its <strong>connotation</strong> is everything it carries on top of that — warmth, money, bureaucracy, belonging. <em>Home</em> and <em>residence</em> denote alike and connote worlds apart.</li></ul>
+<p>Now the move that makes you a data humanist: <strong>numbers have connotation too.</strong> "Single-mother household" denotes a category on a form; it <em>connotes</em> a whole contested story about blame and worth, and which story you hear depends on who's speaking. The denotation is the surface. The connotation is where the culture lives — and where the argument is.</p></section><section class="slide"><h2>The myth of neutral data</h2><p>Three comforting things people say about data. Each one is false.</p>
+<ul><li><em>"Data doesn't lie."</em> — It doesn't have to lie to mislead. It can simply leave things out.</li><li><em>"The numbers speak for themselves."</em> — Numbers never speak for themselves. Someone always speaks for them, by choosing the frame.</li><li><em>"It's just objective analysis."</em> — Every dataset is a record of somebody's choices about what was worth counting, and what wasn't.</li></ul>
+<p>Data carries the <strong>values, assumptions, and blind spots</strong> of whoever collected, sorted, and counted it. That isn't a flaw to scrub out — it's ML0's point again, one layer down: bias isn't contamination that sneaks <em>into</em> the data, it's the material the data is made <em>of</em>.</p></section><section class="slide"><h2>Same numbers, three stories</h2><p>Two real numbers:</p>
+<blockquote><p>School A — average SAT <strong>1240</strong>. School B — average SAT <strong>980</strong>.</p></blockquote>
+<p>Watch the <em>same denotation</em> spin into three different connotations, each one quietly handing the blame to someone else:</p>
+<ul><li><strong>Deficit story</strong> — School B's students are underperforming. <em>(It's the kids.)</em></li><li><strong>Systemic story</strong> — School B is under-resourced and underfunded. <em>(It's the system.)</em></li><li><strong>Cultural story</strong> — the SAT measures one particular kind of knowledge. <em>(It's the test.)</em></li></ul>
+<p>Nothing <em>in</em> the numbers tells you which story is true. The numbers are the easy part. Choosing the story is the human part — and it is already an argument about fairness, wearing the costume of arithmetic.</p></section><section class="slide"><h2>Who's doing the telling?</h2><p>If numbers don't tell their own story, someone does — usually someone with power over the frame.</p>
+<ul><li><strong>Institutions</strong> define the categories: a government writes the census boxes, a university decides what "success" counts as, a platform decides what "engagement" means.</li><li><strong>Media</strong> sets the frame: the headline, the axis a chart starts at, the context that gets cut for space.</li><li><strong>Researchers</strong> choose the question: what gets studied, who gets sampled, and who paid for the asking.</li></ul>
+<p>So the reflex this course wants to build: every time a number lands in front of you, ask <strong>who collected this, why, and what story do they need it to tell?</strong></p></section><section class="slide"><h2>The missing and the uncounted</h2><p>The loudest thing about a dataset is often what isn't in it.</p>
+<p>Our 123 comments are not "the public." They're the slice of the public that <em>posted</em> — people online, fired up enough to type, willing to be seen arguing. The woman from ML0 — who felt something complete and entirely her own and then said nothing — is not in the file at all. Neither is anyone without the wifi, the time, or the nerve.</p>
+<p><strong>Absence from the data is not absence from reality.</strong> Some of the most important voices in any cultural question are exactly the ones the counting never reaches. A good distant reading stays honest about the silence at its edges.</p></section><section class="slide"><h2>So: code is not neutral</h2><p>Code inherits every connotation above — and then adds its own, because code runs on definitions, and a definition is a decision.</p>
+<p>Over the next four weeks <em>you</em> will be the one deciding. What counts as a "word" when you split a comment? Which words are "stopwords" worth deleting? What score makes a comment "positive"? Where do you cut one topic from the next? Each is a small act of interpretation wearing the costume of a neutral function.</p>
+<p>That's the trap and the responsibility at once: a machine looks objective <em>precisely because</em> it hides the choices inside it. Your job as a humanist who codes is the double move from ML0 — <strong>read data like a text, and write code that shows its seams.</strong> Leave the <code>#comment</code> that says what you chose, and why. That comment is not housekeeping. It's the honesty.</p></section></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<script>
+(function(){
+  var s=[].slice.call(document.querySelectorAll('.slide'));
+  var prog=document.querySelector('.deck-progress'), cnt=document.querySelector('.deck-count'), i=0;
+  function show(n){i=Math.max(0,Math.min(s.length-1,n));
+    s.forEach(function(el,k){el.classList.toggle('active',k===i);el.scrollTop=0;});
+    if(prog)prog.style.width=((i+1)/s.length*100)+'%';
+    if(cnt)cnt.textContent=(i+1)+' / '+s.length;
+    if(history.replaceState)history.replaceState(null,'','#'+(i+1));}
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1);}
+    else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(i-1);}
+    else if(e.key==='Home'){show(0);} else if(e.key==='End'){show(s.length-1);}});
+  document.addEventListener('click',function(e){if(!e.target.closest('a'))show(i+1);});
+  var h=parseInt((location.hash||'').slice(1),10); show(h?h-1:0);
+})();
+</script>
+</body></html>

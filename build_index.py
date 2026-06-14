@@ -50,7 +50,7 @@ HOMEWORK = [
 # reading page (built by build_lectures.py); None keeps it a "soon" placeholder card.
 LECTURES = [
     ("ML0 · Humanities & Coding", "Why a humanist learns to code.", "Day 1", "lectures/ml0.html"),
-    ("ML1 · Connotations & Code", "Code is not neutral.", "Day 1", None),
+    ("ML1 · Connotations & Code", "Code is not neutral.", "Day 1", "lectures/ml1.html"),
     ("ML2 · Sacred Boundaries", "Privacy & the limits of analysis. (under review)", "Day 2", None),
     ("ML3 · Classification Logic", "Whose categories? Sorting as judgment.", "Day 3", None),
     ("ML5 · Collective Memory", "What a culture keeps and forgets.", "Day 4", None),

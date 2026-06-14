@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connotations &amp; Code — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><div class="backlink"><a href="../index.html">← Dashboard</a><span class="sep">·</span><a href="../index.html#lectures">Lectures</a><span class="sep">·</span><a href="ml1.deck.html">Slides ▸</a></div><header class="masthead"><div class="kicker">ML1 · Day 1 · the through-line</div><h1>Connotations &amp; Code</h1><p class="sub">Why no number is ever neutral</p></header><p class="lead">ML0 left us with a claim: every arrow in the pipeline from a lived human fact to an "insight" is a human choice. This lecture turns that claim on the very first thing you'll touch — a plain number — and shows that even <em>it</em> arrives already leaning.</p>
+<p>Here is a fact about the corpus we'll work with all term: 123 YouTube comments on a Texas law that puts the Ten Commandments in public-school classrooms.</p>
+<blockquote><p>In those 123 comments, the word <strong>"commandments"</strong> appears 25 times. <strong>"Constitution"</strong> appears 8.</p></blockquote>
+<p>A flat, true, countable fact. And already it leans — already it's <em>telling</em> you something about whose ground the argument is being fought on. Before we run a single line of code, ask the humanist's question: what is that number already saying, and who decided what got counted?</p>
+<h2>Denotation and connotation</h2>
+<p>You already own the tool this lecture needs — you've used it on words your whole life.</p>
+<ul><li>A word's <strong>denotation</strong> is what it literally points to. <em>House</em>, <em>home</em>, and <em>residence</em> denote the same thing: a building people live in.</li><li>Its <strong>connotation</strong> is everything it carries on top of that — warmth, money, bureaucracy, belonging. <em>Home</em> and <em>residence</em> denote alike and connote worlds apart.</li></ul>
+<p>Now the move that makes you a data humanist: <strong>numbers have connotation too.</strong> "Single-mother household" denotes a category on a form; it <em>connotes</em> a whole contested story about blame and worth, and which story you hear depends on who's speaking. The denotation is the surface. The connotation is where the culture lives — and where the argument is.</p>
+<h2>The myth of neutral data</h2>
+<p>Three comforting things people say about data. Each one is false.</p>
+<ul><li><em>"Data doesn't lie."</em> — It doesn't have to lie to mislead. It can simply leave things out.</li><li><em>"The numbers speak for themselves."</em> — Numbers never speak for themselves. Someone always speaks for them, by choosing the frame.</li><li><em>"It's just objective analysis."</em> — Every dataset is a record of somebody's choices about what was worth counting, and what wasn't.</li></ul>
+<p>Data carries the <strong>values, assumptions, and blind spots</strong> of whoever collected, sorted, and counted it. That isn't a flaw to scrub out — it's ML0's point again, one layer down: bias isn't contamination that sneaks <em>into</em> the data, it's the material the data is made <em>of</em>.</p>
+<h2>Same numbers, three stories</h2>
+<p>Two real numbers:</p>
+<blockquote><p>School A — average SAT <strong>1240</strong>. School B — average SAT <strong>980</strong>.</p></blockquote>
+<p>Watch the <em>same denotation</em> spin into three different connotations, each one quietly handing the blame to someone else:</p>
+<ul><li><strong>Deficit story</strong> — School B's students are underperforming. <em>(It's the kids.)</em></li><li><strong>Systemic story</strong> — School B is under-resourced and underfunded. <em>(It's the system.)</em></li><li><strong>Cultural story</strong> — the SAT measures one particular kind of knowledge. <em>(It's the test.)</em></li></ul>
+<p>Nothing <em>in</em> the numbers tells you which story is true. The numbers are the easy part. Choosing the story is the human part — and it is already an argument about fairness, wearing the costume of arithmetic.</p>
+<h2>Who's doing the telling?</h2>
+<p>If numbers don't tell their own story, someone does — usually someone with power over the frame.</p>
+<ul><li><strong>Institutions</strong> define the categories: a government writes the census boxes, a university decides what "success" counts as, a platform decides what "engagement" means.</li><li><strong>Media</strong> sets the frame: the headline, the axis a chart starts at, the context that gets cut for space.</li><li><strong>Researchers</strong> choose the question: what gets studied, who gets sampled, and who paid for the asking.</li></ul>
+<p>So the reflex this course wants to build: every time a number lands in front of you, ask <strong>who collected this, why, and what story do they need it to tell?</strong></p>
+<h2>The missing and the uncounted</h2>
+<p>The loudest thing about a dataset is often what isn't in it.</p>
+<p>Our 123 comments are not "the public." They're the slice of the public that <em>posted</em> — people online, fired up enough to type, willing to be seen arguing. The woman from ML0 — who felt something complete and entirely her own and then said nothing — is not in the file at all. Neither is anyone without the wifi, the time, or the nerve.</p>
+<p><strong>Absence from the data is not absence from reality.</strong> Some of the most important voices in any cultural question are exactly the ones the counting never reaches. A good distant reading stays honest about the silence at its edges.</p>
+<h2>So: code is not neutral</h2>
+<p>Code inherits every connotation above — and then adds its own, because code runs on definitions, and a definition is a decision.</p>
+<p>Over the next four weeks <em>you</em> will be the one deciding. What counts as a "word" when you split a comment? Which words are "stopwords" worth deleting? What score makes a comment "positive"? Where do you cut one topic from the next? Each is a small act of interpretation wearing the costume of a neutral function.</p>
+<p>That's the trap and the responsibility at once: a machine looks objective <em>precisely because</em> it hides the choices inside it. Your job as a humanist who codes is the double move from ML0 — <strong>read data like a text, and write code that shows its seams.</strong> Leave the <code>#comment</code> that says what you chose, and why. That comment is not housekeeping. It's the honesty.</p><footer>WRIT 20833 · When Coding Meets Culture · mini-lecture</footer></div></div></body></html>
