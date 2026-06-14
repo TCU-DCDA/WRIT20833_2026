@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Classification Logic — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><div class="backlink"><a href="../index.html">← Dashboard</a><span class="sep">·</span><a href="../index.html#lectures">Lectures</a><span class="sep">·</span><a href="ml3.deck.html">Slides ▸</a></div><header class="masthead"><div class="kicker">ML3 · Day 3 · the through-line</div><h1>Classification Logic</h1><p class="sub">Whose categories? Sorting as judgment</p></header><p class="lead">Today you learn <code>if</code>, <code>else</code>, and the booleans that drive them — <code>True</code> and <code>False</code>, greater-than and equals. It is the most innocent-looking tool in all of programming. It is also the exact machinery by which software decides who gets the loan, the match, the apartment, the interview, the flag.</p>
+<p>This lecture is the humanities frame for the syntax you're about to practice. Because the moment your code says <code>if ... :</code>, it has begun <strong>sorting people</strong> — and sorting is never neutral. Someone drew the line.</p>
+<h2>To classify is to judge</h2>
+<p>A category is a decision: <strong>this counts as the same; that counts as different.</strong> Drawing the box is an act of judgment before it is ever an act of code.</p>
+<ul><li>Put "single mother," "widow," and "divorced dad" in one bin labeled <em>non-traditional household</em> and you've made an argument about what <em>traditional</em> is supposed to mean.</li><li>Mark a comment "positive" or "negative" and you've flattened a person's mixed, sarcastic, grieving, joking sentence into one of two boxes.</li></ul>
+<p>There is no neutral box. Every classification system encodes <strong>values</strong> — about what matters, what counts, and who belongs where. ML1 said code is not neutral; classification is the sharpest place you will feel it.</p>
+<h2>Status has always gated access</h2>
+<p>Long before computers, a single status decided which doors opened: <em>noble</em> or <em>commoner</em>, <em>citizen</em> or <em>foreigner</em>, <em>insider</em> or <em>outsider</em>. The variable was social, but it worked exactly like a boolean — one bit, and the gate swung open or stayed shut.</p>
+<p>The software era didn't invent the gate. It <strong>automated</strong> it, and renamed the variables:</p>
+<blockquote><p><code>credit_score</code> · <code>criminal_background</code> · <code>relationship_status</code> · <code>employment_status</code> · <code>immigration_status</code></p></blockquote>
+<p>Same logic, new costume: a value about a person, checked at a threshold, deciding what they get to reach. What changed is scale and speed — and that the judgment now hides inside a function that looks like math.</p>
+<h2>The threshold problem</h2>
+<p>Here is a real loan rule, in the syntax you'll write this week:</p>
+<blockquote><p><code>if credit_score &gt; 650 and income &gt; 50000: approve()</code></p></blockquote>
+<p>Now ask the humanist's questions. <strong>Who chose 650?</strong> Is the person at 649 truly different from the person at 651, or did a round number just decide their year? Why income <em>and</em> credit, and not rent history, or the reason the score dipped in the first place?</p>
+<p>A threshold is the most ordinary line in programming and one of the most consequential. It is an act of power wearing the costume of arithmetic. You'll meet your own threshold soon: in HW3, a single cutoff (<code>compound &gt; 0.05</code>) will sort every comment into positive, negative, or neutral. The number will feel objective. It won't be. It will be yours.</p>
+<h2>The tyranny of the tidy box</h2>
+<p>Code needs clean categories, and people don't come clean. So the system forces the fit — and whatever won't fit the schema simply disappears.</p>
+<p>For years a certain social platform stored <strong>gender as a single bit</strong>: male or female, <code>0</code> or <code>1</code>. Not because its engineers believed that was the whole truth of human gender, but because one bit is cheap to store, easy to sort, and convenient for advertisers. The schema, not reality, decided who was legible. <em>(That's the Data Feminism point: a "default" binary, chosen for computational convenience, quietly encodes a whole worldview — and erases everyone who doesn't fit it.)</em></p>
+<p>Remember ML1's missing voices: <strong>absence from the data isn't absence from reality.</strong> Here is one of the mechanisms. People go missing not only because they never posted, but because the categories had no drawer for them.</p>
+<h2>Classified by, or building the sort</h2>
+<p>So there are two ways to stand in relation to all this machinery.</p>
+<ul><li><strong>Without coding literacy, you are classified BY systems</strong> you can't see: algorithms sort you, other people define the categories, and you never get a vote in the logic that decides your loan, your feed, your risk score.</li><li><strong>With it, you can read the sort</strong> — question a category, expose a buried threshold, redraw a box to fit the people it forgot. You don't have to become an engineer. You only have to become unwilling to be sorted silently.</li></ul>
+<p>That isn't every line of code — most of it really is plumbing. But the <strong>key choices about people</strong> — the variables, the categories, the cutoffs — encode values and land on real lives.</p>
+<h2>Your turn at the line</h2>
+<p>In four weeks <em>you</em> will be the one drawing lines: which words are "stopwords" worth deleting, which comment is "positive," where one "topic" ends and the next begins. Each is a classification, and each is a judgment you are making <em>for</em> someone else.</p>
+<p>The course's one demand holds here exactly as in ML0: <strong>make the cut visible.</strong> Leave the <code>#comment</code> that says where you drew the line, and why. The honest classifier isn't the one who found the true categories — there are none. It's the one who shows you where they stood when they drew the box.</p>
+<p>Going deeper (optional): Safiya Noble, <em>Algorithms of Oppression</em>; Ruha Benjamin, <em>Race After Technology</em>; Cathy O'Neil, <em>Weapons of Math Destruction</em>.</p><footer>WRIT 20833 · When Coding Meets Culture · mini-lecture</footer></div></div></body></html>
