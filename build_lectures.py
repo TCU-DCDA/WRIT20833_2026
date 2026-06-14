@@ -25,6 +25,7 @@ OUT_DIR = "docs/lectures"
 # The dashboard (build_index.py) links these; lectures without an entry stay "soon" placeholders.
 LECTURES = [
     ("ml0", "materials/lectures/ml0.md", "ML0", "Day 1"),
+    ("ml1", "materials/lectures/ml1.md", "ML1", "Day 1"),
 ]
 
 
@@ -98,10 +99,16 @@ def render_blocks(lines, lead=False):
                 block.append(lines[i].strip().lstrip(">").strip()); i += 1
             out.append(("text", "<blockquote>" + "".join(f"<p>{md_inline(b)}</p>" for b in block if b) + "</blockquote>"))
             continue
-        if s.startswith("- "):                                 # unordered list
+        if s.startswith("- "):                                 # unordered list (items may wrap)
             items = []
-            while i < n and lines[i].strip().startswith("- "):
-                items.append(lines[i].strip()[2:]); i += 1
+            while i < n:
+                st = lines[i].strip()
+                if st.startswith("- "):                         # new item
+                    items.append(st[2:]); i += 1
+                elif items and st and not st.startswith("<!--") and not _BLOCK_START.match(st):
+                    items[-1] += " " + st; i += 1               # wrapped continuation of current item
+                else:
+                    break                                       # blank / comment / next block ends the list
             out.append(("text", "<ul>" + "".join(f"<li>{md_inline(it)}</li>" for it in items) + "</ul>"))
             continue
         para = [s]; i += 1                                      # paragraph (until blank/comment/next block)
