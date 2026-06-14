@@ -53,7 +53,7 @@ LECTURES = [
     ("ML1 · Connotations & Code", "Code is not neutral.", "Day 1", "lectures/ml1.html"),
     ("ML2 · Sacred Boundaries", "Privacy & the limits of analysis. (under review)", "Day 2", None),
     ("ML3 · Classification Logic", "Whose categories? Sorting as judgment.", "Day 3", "lectures/ml3.html"),
-    ("ML5 · Collective Memory", "What a culture keeps and forgets.", "Day 4", None),
+    ("ML5 · Collective Memory", "What a culture keeps and forgets.", "Day 4", "lectures/ml5.html"),
     ("ML4 · AI Agency", "Reading & judging machine-written code.", "Day 7", None),
     ("ML6 · Data Archaeology", "Where found data comes from.", "Day 8", None),
     ("ML7 · NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14", None),
