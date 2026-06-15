@@ -77,7 +77,7 @@ the theme→artifact map, and candidate fold-ins. **Edit that doc, not this sect
   materials** — all fold-ins (subtitle gloss, a learning outcome, Day-1/Day-7/Day-12 sentences, the
   capstone standard, the AI-use-policy refinement) remain the instructor's call (framework doc §6).
 - **Open dials:** keep the Kantian vocabulary explicit or swap to plain language; lecture homing
-  (re-home ML9 → Day 17, harvest ML8, decide ML2 "Sacred Boundaries" cut-vs-repurpose) — see open thread #9.
+  (re-home ML9 → Day 17, harvest ML8) — see open thread #9. (ML2 "Sacred Boundaries" settled → **cut**.)
 
 ## Done this session (all committed + pushed)
 - `PORT_ASSESSMENT_2026.md` — readiness/port analysis (kept in F25 numbering; documents history).
@@ -388,18 +388,21 @@ lecture is one md file + one `LECTURES` line + rerun both generators.
    gensim vaderSentiment` (no nltk, no pinned deps, no kernel restart — simpler than F25's cell);
    still verify it resolves cleanly on Colab's 2026 default image before Day 14.
 8. **A4 / HW1 note:** A4 intentionally demonstrates a TypeError via try/except — by design.
-9. **Lecture audit — ML8/ML9 (orphaned) and ML2 "Sacred Boundaries" (overreach?).** ML0–7 map cleanly
-   to 2026; ML10–12 (GitHub/HTML/CSS) cut. Still to decide: **re-home ML9 "Going Public"** at Day 17
-   (its analysis→public-argument spine fits the capstone; only the web-portfolio delivery is cut), and
-   **harvest ML8 "Code as Rhetoric"**'s thesis into the code-is-not-neutral thread (its HTML/CSS examples
-   belong to the cut half). **ML2 "Sacred Boundaries" (Day 2)** = a taboo→privacy analogy (Polynesian
-   *tapu* → biometric/data autonomy). Instructor leans *overreach*; my read agrees for this scope: its
-   privacy/ethics core is better + more concretely served by **ML6 Data Archaeology (Day 8)**, and the
-   "sacred" metaphor risks colliding with the **literal** sacred content of the corpus (Ten Commandments).
-   Options on the table: (a) cut ML2, fold its one durable point (analyzing public speech isn't
-   consequence-free) into Day 8; or (b) **repurpose** the slot — "the sacred meets the computational,"
-   pointing at the actual corpus, as a vivid case of the noumena limit (religious conviction = an
-   interiority distant reading can't reach). **Undecided — instructor's call.**
+9. **Lecture audit — ML8/ML9 (orphaned); ML2 "Sacred Boundaries" ✅ SETTLED → CUT (2026-06-15).** ML0–7
+   map cleanly to 2026; ML10–12 (GitHub/HTML/CSS) cut. Still to decide: **re-home ML9 "Going Public"** at
+   Day 17 (its analysis→public-argument spine fits the capstone; only the web-portfolio delivery is cut),
+   and **harvest ML8 "Code as Rhetoric"**'s thesis into the code-is-not-neutral thread (its HTML/CSS
+   examples belong to the cut half).
+   - **ML2 decision (instructor, 2026-06-15): CUT.** Rationale that tipped it: now that **ML6 Data
+     Archaeology (Day 8)** is built, it fully carries ML2's privacy/collection-ethics core
+     (hear-don't-extract, robots.txt, attribution) — ML2 became redundant. Its one other durable idea
+     (the noumena limit on religious conviction as an interiority distant reading can't reach) is already
+     in **ML0**. Plus the "sacred/taboo" metaphor collided with the *literally* sacred corpus, and Day 1
+     already front-loads ML0+ML1. **Day 2 is now a no-mini-lecture day** (dive into Strings).
+   - **Propagated:** removed the ML2 dashboard card (`build_index.py`) + regenerated `docs/index.html`;
+     Day-2 lecture cell → "—" in `COURSE_SCHEDULE_2026.md` + `SYLLABUS_2026.md` (+ both lecture-notes
+     updated); `CONCEPTUAL_FRAMEWORK_2026.md` §6 dial marked decided; `LECTURE_SOURCE_NOTES.md` updated.
+     **Not authored** (no ml2.md) — the cut means zero build. `lecture-2-boundaries` stays unmined in F25.
 10. **TCU Core Curriculum — CSV vetting (context + a task).** The course **carries Citizenship & Social
     Values (CSV)** credit. Vetting docs are in `reference/`: `reference/TCU-Core-Curriculum-outcomes-1.pdf`
     (current outcomes matrix) + `reference/Citizenship-and-Social-Values-5-5-10.doc` (older HMVV form). Current CSV
