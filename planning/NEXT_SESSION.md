@@ -1,6 +1,6 @@
 # Next-session handoff prompt
 
-Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-15.)
+Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-15, PR #16.)
 
 ---
 
@@ -65,6 +65,10 @@ Open items (pick one, or tell me which):
   03 Homework · 04 Capstone · 05 Resources; masthead hero banner; deck home-nav; external links
   open in a new tab (auto via site_theme.PAGE); lecture-card thumbnails + placeholders. Always
   regenerate docs/ after edits (build_index / build_schedule_html / build_lectures) → push to main.
+- ACCESSIBILITY (WAVE-clean, merged 2026-06-15): muted theme tokens darkened to WCAG AA 4.5:1 +
+  all UI text ≥ 12px. `site_theme.assert_accessible()` GUARDS this at build time — the generators
+  FAIL LOUDLY if a `font`/`font-size` < 12px or `--muted/--faint/--clay` drops below AA. So when
+  retuning the THEME_CSS palette/type, stay within those limits or the build breaks (by design).
 - Instructor-only still pending: fill syllabus [...] fields + paste the 3 HUM blocks
   into the WRIT20833-020 Word export; verify catalog + CSV/HUM outcome wording.
 

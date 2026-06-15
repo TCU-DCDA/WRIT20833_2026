@@ -33,6 +33,15 @@ the private `TCU-DCDA/WRIT20833_2026_keys`.
   `.md` to activate its split slide, and (b) add the path to that lecture's `LECTURES` tuple in
   `build_index.py` to turn the dashboard placeholder into a thumbnail → rerun the generators. The 4 missing
   title images = AI Agency, Data Archaeology, Topic Modeling, Going Public.
+- **Accessibility — WAVE-clean (PRs #15, #16).** WAVE flagged low-contrast + very-small-text. Fixed in the
+  shared theme (cascades to dashboard/schedule/reading pages/decks): darkened three muted tokens to clear
+  **WCAG AA 4.5:1** (`--muted` #6f7463→#696e5e, `--faint` #a6aa99→#6a6c61, `--clay` #9c6f3f→#8c6338) + the
+  `.m-worksession` pill (#9c6f3f→#8d6539); raised every UI font under **12px** to a 12px floor (the 10–11.5px
+  mono micro-labels). Structure (alt/lang/titles/headings/links) was already clean. **Baked into the build
+  (#16):** `site_theme.assert_accessible(extra_css="")` fails the build if any `font:`/`font-size:` < 12px or
+  if `--muted/--faint/--clay` drop below AA on paper/surface — called via `write_stylesheet()` (all
+  generators) + `build_lectures` passes its `DECK_CSS`. So the WAVE fixes can't silently regress.
+- **Session shipped PRs #7–#16, all merged + live.** Site at https://tcu-dcda.github.io/WRIT20833_2026/.
 
 ---
 
@@ -565,6 +574,10 @@ deep muted **greens** (week tints deepen `#3a6b54`→`#1e3b2f` across the term),
 **monospace** data accents + sans body, **green** links (not default blue), one **clay** warm accent,
 hairline rules instead of drop-shadow cards, and a restrained earthy mode-pill palette (no rainbow).
 **Still a draft for instructor taste** — palette/type are tokens, easy to retune.
+**Accessibility note (2026-06-15):** the muted tokens were darkened to clear WCAG AA and all UI text has a
+12px floor (see the "Latest session" summary up top); `site_theme.assert_accessible()` now guards both at
+build time, so if you retune the palette/type, keep `--muted/--faint/--clay` ≥ 4.5:1 on paper/surface and
+fonts ≥ 12px or the build will fail.
 
 **Site layout (Pages-friendly, F25 parity) — 2026-06-11.** The published site lives in **`docs/`** (so it
 can be served by GitHub Pages → *Deploy from branch* → `main` /`docs`). The old instructor process-docs
