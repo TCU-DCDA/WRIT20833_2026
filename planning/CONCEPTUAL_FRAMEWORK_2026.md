@@ -224,9 +224,11 @@ None of this is yet woven into student-facing materials; each is a small, option
   thing itself / as it appears"). The diagram and argument survive either way.
 - **Lecture homing:** re-home **ML9 "Going Public"** at Day 17 (its analysis→public-argument spine fits
   the capstone); harvest **ML8 "Code as Rhetoric"**'s thesis into the code-is-not-neutral thread.
-- **ML2 "Sacred Boundaries"** (Day 2): cut/fold into Day 8, or repurpose as "the sacred meets the
-  computational" — a vivid case of the noumena limit (religious conviction as an interiority distant
-  reading can't reach). *Undecided.*
+- **ML2 "Sacred Boundaries"** (Day 2): **CUT (2026-06-15).** Its privacy/collection-ethics core is served
+  by **ML6 Data Archaeology** (Day 8), and its one durable idea — the noumena limit on religious
+  conviction as an interiority distant reading can't reach — is already in **ML0** (the woman who "feels
+  something whole and hers"). The "sacred/taboo" metaphor also collided with the *literally* sacred corpus.
+  Day 2 is now a no-mini-lecture day (dive into Strings).
 
 ---
 

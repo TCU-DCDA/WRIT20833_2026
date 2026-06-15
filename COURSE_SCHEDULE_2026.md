@@ -21,7 +21,7 @@ Notebook links are relative paths into this repo (`notebooks/codeAlongs/`, `note
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
 | **Mon 7/6** (1) | Humanities & Coding · Connotations & Code (ML0–1) | **Code-along** → [Setup + Variables & data types](notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb) | D1 opens |
-| **Tue 7/7** (2) | Sacred Boundaries / digital privacy (ML2) | **Code-along** → [Strings & string methods](notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb) | — |
+| **Tue 7/7** (2) | — | **Code-along** → [Strings & string methods](notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb) | — |
 | **Wed 7/8** (3) | Classification Logic (ML3) | **Code-along** → [Comparisons, conditionals & booleans](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) | **R1 due** · D1 post |
 | **Thu 7/9** (4) | Collective Memory (ML5) | **Code-along** → [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) | — |
 | **Fri 7/10** (5) | — (recap) | **Code-along** → [Functions & dictionaries](notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb) + recap | **HW1 assigned** · D1 replies |
@@ -63,8 +63,8 @@ notebook. Every coding day now links a real notebook — the term-frequency code
 authored fresh (no F25 source existed) and leads directly into HW2.
 
 *Notes on lectures:* "—" in **Lecture** marks recap / workshop / work-session days with no formal
-mini-lecture. Three lecture slots are still under review (see `WORKLOG.md` open thread #9): **ML2 "Sacred
-Boundaries"** (Day 2 — possibly cut/folded into Day 8 or repurposed), **ML9 "Going Public"** (a
-candidate for Day 17 to anchor the capstone), and the **noumena → wisdom framing** (a candidate Day-1
-opener; draft in `materials/Day1_Framing_Noumena_to_Wisdom.md`). The schedule will be adjusted to the
-class's pace; changes announced in class and on D2L.
+mini-lecture (Day 2 included — **ML2 "Sacred Boundaries" was cut**: its privacy/collection-ethics core
+lives in ML6 Day 8, and its noumena-limit point in ML0). The **noumena → wisdom framing** landed in ML0.
+Still under review (see `WORKLOG.md` open thread #9): **ML9 "Going Public"** (a candidate for Day 17 to
+anchor the capstone) and **ML8 "Code as Rhetoric"** (harvest into the code-is-not-neutral thread). The
+schedule will be adjusted to the class's pace; changes announced in class and on D2L.

@@ -56,7 +56,7 @@ Open items (pick one, or tell me which):
   the scale-out. Scale out the rest — ML1, ML3, ML5, ML4, ML6, ML7 (each = one ml*.md + a
   LECTURES line + rerun the generators; ML3 → reuse F25 data_as_categorization/tippingScales
   images).
-- CSV/HUM core work-examples (#10); lecture audit ML2/8/9 (#9); the parked
+- CSV/HUM core work-examples (#10); lecture audit ML8/9 (#9, ML2 settled→cut); the parked
   site-design questions (sidebar icons, nav filter) recorded in the WORKLOG.
   (Capstone sheet — DONE: CAPSTONE_2026.md. Syllabus HUM core — DONE.)
 - SITE IS LIVE (2026-06-13): branch merged to main via PR #3; repo is PUBLIC;
