@@ -136,6 +136,36 @@ Authored **ML3 "Classification Logic"** (`materials/lectures/ml3.md`, 7 slides).
   `data_as_categorization`'s people-into-boxes idea; the threshold prompt echoes ml0's brass-valves). Same
   inert-comment pattern as ML1 — generate → save → uncomment → rebuild activates the 2-column split.
 
+## F25 `mini-lectures/lecture-5-memory/` ("Collective Digital Memory") — harvested 2026-06-14 → ML5
+
+Authored **ML5 "Collective Memory"** (`materials/lectures/ml5.md`, 7 slides). Pairs with the **Day-4 (Thu
+7/9) lists & loops code-along** — the humanities frame for lists/loops, exactly as ML3 framed `if/else`.
+Registered in both build scripts; dashboard card links it.
+
+### ✅ Folded into ML5
+- **Two kinds of memory** (F25 slide 2) — selective/forgiving human memory vs. total/unforgiving digital
+  memory; reframed around "forgetting was also grace."
+- **Lists = populations** (slide 3) and **loops = systematic processing** (slide 4) — kept as the two core
+  slides ("a list is a population," "a loop is a verdict, repeated"); the loop slide threads back to ML3's
+  threshold ("the loop is how that one cutoff hits a million people").
+- **Counting = surveillance** (slide 5) — "the power to count is the power to decide what matters" + the
+  who-counts/who-sees/what-about-the-uncounted questions (ties ML1 missing voices).
+- **Historical echoes** (slide 6) — kept the **Bellevue Almshouse + Anelise Shrout quote** verbatim (the
+  moral heart) and the "list of dicts = the same reduction" parallel.
+- **Readings** (Connerton *How Societies Remember*, Mayer-Schönberger *Delete*, van Dijck *Mediated
+  Memories*) — kept as the optional "going deeper" line; the forgetting-as-virtue angle is distinctive.
+- Dropped F25's Colab tutorial link + the "tools for social justice" agency slide's lighter bullets
+  (folded the agency point into the synthesis "What we choose to keep").
+
+### Image audit (2026-06-14): `newImages/` higher-craft but still off-palette
+- ML5 has its own `newImages/` (9 imgs) — better than the older decks but still **neon cyberpunk**
+  (slide01 purple→green filing cabinets/servers); slide06 is **half warm-sepia / half cold-blue**. Not
+  consistently warm Reading Room.
+- **Resolution (same pattern):** text-forward + **3 split-ready slides with warm-palette prompts** (title
+  `ml5_title.jpg` = warm card-catalog-of-memory, recomposing slide01; population `ml5_population.jpg`;
+  echoes `ml5_echoes.jpg` = recompose slide06's then/now records office kept warm/sepia). Inert comments;
+  generate → uncomment → rebuild activates the split.
+
 ## Other F25 decks (not yet mined)
 The per-lecture decks for ML1–ML9 live in `WRIT20833_2025/docs/lectures/mini-lectures/lecture-*` (e.g.
 `lecture-1-connotations`, `lecture-3-classification`, `lecture-4-agency`, `lecture-5-memory`,
