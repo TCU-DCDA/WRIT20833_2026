@@ -266,6 +266,7 @@ def write_stylesheet(out_dir, name=STYLESHEET_NAME):
     Call this from each site generator so the published ``/docs`` folder always ships a
     current ``styles.css`` beside its HTML pages. Returns the path written.
     """
+    assert_accessible()  # guard: fail the build if a font/contrast regression crept in
     path = os.path.join(out_dir, name)
     with open(path, "w", encoding="utf-8") as f:
         f.write(THEME_CSS.strip() + "\n")
@@ -292,3 +293,41 @@ def sidebar(brand_kicker, brand_name, nav_items, externals):
 def shell(side, main):
     """Two-column app layout: sticky left sidebar + main content."""
     return f'<div class="app">{side}<main class="main">{main}</main></div>'
+
+
+# ---- accessibility guardrails (keep the site WAVE-clean across rebuilds) ----
+MIN_FONT_PX = 12.0   # no UI text smaller than this (WAVE "very small text")
+MIN_CONTRAST = 4.5   # WCAG AA for normal-size text
+
+
+def _luminance(hexc):
+    hexc = hexc.lstrip("#")
+    chans = [int(hexc[i:i + 2], 16) / 255 for i in (0, 2, 4)]
+    lin = [(c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4) for c in chans]
+    return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2]
+
+
+def _contrast(a, b):
+    la, lb = sorted((_luminance(a), _luminance(b)))
+    return (lb + 0.05) / (la + 0.05)
+
+
+def assert_accessible(extra_css=""):
+    """Build-time guard so a future edit can't silently reintroduce the WAVE issues
+    we fixed. Every ``font:``/``font-size:`` px value (in THEME_CSS + any extra_css a
+    page inlines, e.g. the deck CSS) must be >= MIN_FONT_PX, and the muted text tokens
+    (--muted/--faint/--clay) must clear WCAG AA on the paper/surface backgrounds.
+    Raises AssertionError — failing the build — on regression. Generators call this
+    via write_stylesheet(); build_lectures also passes its DECK_CSS.
+    """
+    css = THEME_CSS + extra_css
+    small = sorted({float(sz)
+                    for sz in re.findall(r'font(?:-size)?:[^;{]*?(\d+(?:\.\d+)?)px', css)
+                    if float(sz) < MIN_FONT_PX})
+    assert not small, f"accessibility: UI font(s) below {MIN_FONT_PX}px — {small}"
+    tokens = dict(re.findall(r'--([\w-]+):\s*(#[0-9a-fA-F]{6})', THEME_CSS))
+    for fg in ("muted", "faint", "clay"):
+        for bg in ("paper", "surface"):
+            r = _contrast(tokens[fg], tokens[bg])
+            assert r >= MIN_CONTRAST, \
+                f"accessibility: --{fg} on --{bg} is {r:.2f}:1 (< {MIN_CONTRAST} WCAG AA)"
