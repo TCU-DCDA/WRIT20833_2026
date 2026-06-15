@@ -48,17 +48,18 @@ HOMEWORK = [
 
 # --- mini-lectures (the ~25-min conceptual frames) — not yet built as pages ---
 # ML0-7 map cleanly to 2026; ML2 cut (folded into ML6 + ML0); ML9 under review (WORKLOG #9); ML10-12 (web) cut.
-# (title, desc, when, page) — page is a docs-relative URL when the lecture has an authored
-# reading page (built by build_lectures.py); None keeps it a "soon" placeholder card.
+# (title, desc, when, page, thumb) — page is a docs-relative URL when the lecture has an authored
+# reading page (None keeps it a "soon" placeholder card); thumb is the title-image path under the repo
+# (None → a proportion-matched placeholder box, to be filled when that lecture's art is generated).
 LECTURES = [
-    ("Humanities & Coding", "Why a humanist learns to code.", "Day 1", "lectures/ml0.html"),
-    ("Connotations & Code", "Code is not neutral.", "Day 1", "lectures/ml1.html"),
-    ("Classification Logic", "Whose categories? Sorting as judgment.", "Day 3", "lectures/ml3.html"),
-    ("Collective Memory", "What a culture keeps and forgets.", "Day 4", "lectures/ml5.html"),
-    ("AI Agency", "Reading & judging machine-written code.", "Day 7", "lectures/ml4.html"),
-    ("Data Archaeology", "Where found data comes from.", "Day 8", "lectures/ml6.html"),
-    ("NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14", None),
-    ("Going Public", "Analysis → public argument. (under review)", "Day 17", None),
+    ("Humanities & Coding", "Why a humanist learns to code.", "Day 1", "lectures/ml0.html", "materials/lectures/images/humanities_coding_script_to_structure.jpg"),
+    ("Connotations & Code", "Code is not neutral.", "Day 1", "lectures/ml1.html", "materials/lectures/images/ml1_title.jpg"),
+    ("Classification Logic", "Whose categories? Sorting as judgment.", "Day 3", "lectures/ml3.html", "materials/lectures/images/ml3_title.jpg"),
+    ("Collective Memory", "What a culture keeps and forgets.", "Day 4", "lectures/ml5.html", "materials/lectures/images/ml5_title.jpg"),
+    ("AI Agency", "Reading & judging machine-written code.", "Day 7", "lectures/ml4.html", None),
+    ("Data Archaeology", "Where found data comes from.", "Day 8", "lectures/ml6.html", None),
+    ("NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14", None, None),
+    ("Going Public", "Analysis → public argument. (under review)", "Day 17", None, None),
 ]
 
 RESOURCES = [
@@ -73,11 +74,19 @@ RESOURCES = [
 ]
 
 
-def card(label, title, desc, when, href, soon=False):
+def card(label, title, desc, when, href, soon=False, img=None, thumb=False):
     cls = "card soon" if soon else "card"
     when_html = f'<span class="when">{html.escape(when)}</span>' if when else ""
-    inner = (f'<span class="lbl">{html.escape(label)}</span>'
-             f'<h3>{title}</h3><p>{html.escape(desc)}</p>{when_html}')
+    body = (f'<span class="lbl">{html.escape(label)}</span>'
+            f'<h3>{title}</h3><p>{html.escape(desc)}</p>{when_html}')
+    if thumb:
+        # thumbnail card: real image if we have one, else a proportion-matched placeholder box
+        cls += " has-thumb"
+        thumb_html = (f'<span class="thumb"><img src="{img}" alt=""></span>' if img
+                      else '<span class="thumb ph" aria-hidden="true"></span>')
+        inner = f'{thumb_html}<span class="card-body">{body}</span>'
+    else:
+        inner = body
     if href:
         return f'<a class="{cls}" href="{href}">{inner}</a>'
     return f'<div class="{cls}">{inner}</div>'
@@ -167,7 +176,9 @@ def render():
         "lectures", "04", "Lectures",
         "The short conceptual frames that open each day — the “code is not neutral” throughline. "
         "Most are live as reading pages; Topic Modeling (Day 14) is still in development and one more is under review.",
-        grid([card("Mini-lecture", t, d, w, p, soon=(p is None)) for (t, d, w, p) in LECTURES]))
+        grid([card("Mini-lecture", t, d, w, p, soon=(p is None),
+                   img=(RAW + im if im else None), thumb=True)
+              for (t, d, w, p, im) in LECTURES]))
 
     res_items = "".join(
         f'<li><span class="k">{html.escape(k)}</span>'
