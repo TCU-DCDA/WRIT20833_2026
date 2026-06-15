@@ -1,13 +1,13 @@
 # Connotations & Code
 ## Why no number is ever neutral
 
-<!-- meta: ML1 · Day 1 · the through-line -->
+<!-- meta: Day 1 · the through-line -->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a single large printed numeral resting on parchment, casting a long shadow that resolves into a knot of small human figures arguing and gesturing — the bare number carries a story behind it. -->
 ![A printed numeral on parchment casting a shadow shaped like a crowd of arguing figures](materials/lectures/images/ml1_title.jpg)
 
-ML0 left us with a claim: every arrow in the pipeline from a lived human fact to an "insight" is a human
+The opening lecture left us with a claim: every arrow in the pipeline from a lived human fact to an "insight" is a human
 choice. This lecture turns that claim on the very first thing you'll touch — a plain number — and shows
 that even *it* arrives already leaning.
 
@@ -49,7 +49,7 @@ Three comforting things people say about data. Each one is false.
   counting, and what wasn't.
 
 Data carries the **values, assumptions, and blind spots** of whoever collected, sorted, and counted it.
-That isn't a flaw to scrub out — it's ML0's point again, one layer down: bias isn't contamination that
+That isn't a flaw to scrub out — it's the noumena pipeline's point again, one layer down: bias isn't contamination that
 sneaks *into* the data, it's the material the data is made *of*.
 
 ## Same numbers, three stories
@@ -89,7 +89,7 @@ this, why, and what story do they need it to tell?**
 The loudest thing about a dataset is often what isn't in it.
 
 Our 123 comments are not "the public." They're the slice of the public that *posted* — people online,
-fired up enough to type, willing to be seen arguing. The woman from ML0 — who felt something complete and
+fired up enough to type, willing to be seen arguing. The woman from the opening lecture — who felt something complete and
 entirely her own and then said nothing — is not in the file at all. Neither is anyone without the wifi,
 the time, or the nerve.
 
@@ -111,6 +111,6 @@ Which words are "stopwords" worth deleting? What score makes a comment "positive
 topic from the next? Each is a small act of interpretation wearing the costume of a neutral function.
 
 That's the trap and the responsibility at once: a machine looks objective *precisely because* it hides the
-choices inside it. Your job as a humanist who codes is the double move from ML0 — **read data like a text,
+choices inside it. Your job as a humanist who codes is the double move from the opening lecture — **read data like a text,
 and write code that shows its seams.** Leave the `#comment` that says what you chose, and why. That comment
 is not housekeeping. It's the honesty.

@@ -1,7 +1,7 @@
 # AI Agency
 ## Borrow the tool — don't outsource the thinking
 
-<!-- meta: ML4 · Day 7 · the through-line -->
+<!-- meta: Day 7 · the through-line -->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a person at a lamplit desk working the strings of a small wooden marionette that is typing at a tiny keyboard — the angle leaves it ambiguous who is moving whom; scattered manuscripts. -->

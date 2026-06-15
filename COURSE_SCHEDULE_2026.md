@@ -20,28 +20,28 @@ Notebook links are relative paths into this repo (`notebooks/codeAlongs/`, `note
 ### Week 1 (Jul 6–10) — Python foundations: "code is not neutral"
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 7/6** (1) | Humanities & Coding · Connotations & Code (ML0–1) | **Code-along** → [Setup + Variables & data types](notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb) | D1 opens |
+| **Mon 7/6** (1) | Humanities & Coding · Connotations & Code | **Code-along** → [Setup + Variables & data types](notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb) | D1 opens |
 | **Tue 7/7** (2) | — | **Code-along** → [Strings & string methods](notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb) | — |
-| **Wed 7/8** (3) | Classification Logic (ML3) | **Code-along** → [Comparisons, conditionals & booleans](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) | **R1 due** · D1 post |
-| **Thu 7/9** (4) | Collective Memory (ML5) | **Code-along** → [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) | — |
+| **Wed 7/8** (3) | Classification Logic | **Code-along** → [Comparisons, conditionals & booleans](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) | **R1 due** · D1 post |
+| **Thu 7/9** (4) | Collective Memory | **Code-along** → [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) | — |
 | **Fri 7/10** (5) | — (recap) | **Code-along** → [Functions & dictionaries](notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb) + recap | **HW1 assigned** · D1 replies |
 
 ### Week 2 (Jul 13–17) — From text to data: ethics, pandas, AI
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
 | **Mon 7/13** (6) | Data as evidence | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
-| **Tue 7/14** (7) | AI Agency (ML4) | **Lab** → Reading & improving AI code + stylometry seed: [Reading for the Seams](materials/stylometry/Reading_for_the_Seams.md) (close reading) | — |
-| **Wed 7/15** (8) | Data Archaeology (ML6) | **Code-along** → [Found data + collection ethics (pandas 01 + scraping)](notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb) | D2 post |
+| **Tue 7/14** (7) | AI Agency | **Lab** → Reading & improving AI code + stylometry seed: [Reading for the Seams](materials/stylometry/Reading_for_the_Seams.md) (close reading) | — |
+| **Wed 7/15** (8) | Data Archaeology | **Code-along** → [Found data + collection ethics (pandas 01 + scraping)](notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb) | D2 post |
 | **Thu 7/16** (9) | — | **Code-along** → [Data cleaning (pandas 02)](notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb) | — |
 | **Fri 7/17** (10) | — | **Workshop** → collect & clean **your** cultural dataset (apply Pandas 01–02) | **HW2 due** · D2 replies |
 
 ### Week 3 (Jul 20–24) — Computational text analysis
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 7/20** (11) | Quantifying connotation (callback to ML1) | **Code-along** → [Sentiment with VADER](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) | **R2 due (midterm)** · D3 opens |
+| **Mon 7/20** (11) | Quantifying connotation (callback to Connotations & Code) | **Code-along** → [Sentiment with VADER](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) | **R2 due (midterm)** · D3 opens |
 | **Tue 7/21** (12) | Close vs. distant reading | **Code-along** → [VADER deep dive](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) (same notebook, Part 4–5) | **HW3 assigned** |
 | **Wed 7/22** (13) | Predictions on the record | **Work session** → HW3 (frequency + sentiment on your data) | D3 post |
-| **Thu 7/23** (14) | NLP & Topic Modeling (ML7) | **Code-along** → [Topic modeling intro (Gensim LDA)](notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb) | — |
+| **Thu 7/23** (14) | NLP & Topic Modeling | **Code-along** → [Topic modeling intro (Gensim LDA)](notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb) | — |
 | **Fri 7/24** (15) | — | **Code-along** → [Topic modeling deep · `num_topics` · limits](notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb) (same notebook, Part 2–3) | **HW3 due** · **HW4 assigned** · D3 replies |
 
 ### Week 4 (Jul 27–31) — Integration & data-driven opinions (capstone)
@@ -63,8 +63,8 @@ notebook. Every coding day now links a real notebook — the term-frequency code
 authored fresh (no F25 source existed) and leads directly into HW2.
 
 *Notes on lectures:* "—" in **Lecture** marks recap / workshop / work-session days with no formal
-mini-lecture (Day 2 included — **ML2 "Sacred Boundaries" was cut**: its privacy/collection-ethics core
-lives in ML6 Day 8, and its noumena-limit point in ML0). The **noumena → wisdom framing** landed in ML0.
-Still under review (see `WORKLOG.md` open thread #9): **ML9 "Going Public"** (a candidate for Day 17 to
-anchor the capstone) and **ML8 "Code as Rhetoric"** (harvest into the code-is-not-neutral thread). The
+mini-lecture (Day 2 included — **"Sacred Boundaries" was cut**: its privacy/collection-ethics core
+lives in the Day-8 Data Archaeology lecture, and its noumena-limit point in the Day-1 opener.
+Still under review (see `WORKLOG.md` open thread #9): the **"Going Public"** frame (a candidate for Day 17 to
+anchor the capstone) and **"Code as Rhetoric"** (harvest into the code-is-not-neutral thread). The
 schedule will be adjusted to the class's pace; changes announced in class and on D2L.
