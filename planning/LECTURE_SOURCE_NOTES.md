@@ -233,8 +233,8 @@ both build scripts; dashboard card links it.
   Generate → uncomment → rebuild.
 
 ## Other F25 decks (not yet mined)
-Remaining: **ML7** `lecture-7-nlp-topic-modeling` (Day 14), plus the **parked** `lecture-2-boundaries`
-(ML2), `lecture-8-code-rhetoric` (ML8), `lecture-9-public-arguments` (ML9) — all three pending the open
-thread #9 audit. **Mined so far:** ML0 (`lecture1.html` + connotations), ML1, ML3, ML4, ML5, ML6. Mine each
-remaining deck into its `materials/lectures/ml*.md` when authored, and record the triage here. ML10–12
-(GitHub/HTML/CSS) are cut.
+Remaining: **ML7** `lecture-7-nlp-topic-modeling` (Day 14), plus the **parked** `lecture-8-code-rhetoric`
+(ML8) and `lecture-9-public-arguments` (ML9) — pending the open thread #9 audit. **ML2** `lecture-2-boundaries`
+is **CUT** (2026-06-15, open thread #9) — *not* to be mined; its core folded into ML6 + ML0. **Mined so
+far:** ML0 (`lecture1.html` + connotations), ML1, ML3, ML4, ML5, ML6. Mine each remaining deck into its
+`materials/lectures/ml*.md` when authored, and record the triage here. ML10–12 (GitHub/HTML/CSS) are cut.
