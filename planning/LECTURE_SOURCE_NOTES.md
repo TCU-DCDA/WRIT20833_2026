@@ -166,9 +166,75 @@ Registered in both build scripts; dashboard card links it.
   echoes `ml5_echoes.jpg` = recompose slide06's then/now records office kept warm/sepia). Inert comments;
   generate → uncomment → rebuild activates the split.
 
+## F25 `mini-lectures/lecture-4-agency/` ("Agentic Coding — Power or Pseudo-Agency?") — harvested 2026-06-15 → ML4
+
+Authored **ML4 "AI Agency"** (`materials/lectures/ml4.md`, 6 slides). Pairs with the **Day-7 (Tue 7/14)
+Lab** "Reading & improving AI code + stylometry seed" — the frame for that lab, not a code-along.
+Registered in both build scripts; dashboard card links it.
+
+### ✅ Folded into ML4
+- **The demo hook** (F25 slide 1: "write me 10 lines… *do you understand each line?*") — opens the lecture.
+- **The Promise** (lower barriers / act without mastering syntax / focus on the question) — kept, tied to
+  the **borrowed-code convention**: borrowing the tool is normal practice, expected all term.
+- **The Risks** (black box / dependency / pseudo-agency / hidden biases) — kept, condensed to one slide.
+- **Scaffold vs. replacement** + **Tier-1 (adapt/debug/critique) vs Tier-2 (copy-paste)** literacy — the
+  central distinction; threaded to the **syllabus AI policy** ("explain any code you submit; note where AI
+  helped").
+- **"Learning a language vs. ventriloquism"** (F25's strongest slide) — the spine slide, fused with the
+  framework's **§2c "borrow the tool, never outsource the voice"**: code is borrowable, *writing* is not.
+  Added **Ted Chiang's "blurry JPEG of the web"** (AI as a lossy average → be the opposite of an average) —
+  the framework's "AI prose : your voice :: mean sentiment : the crowd's quarrel" point, made citable.
+- **The central question** ("learning to think computationally, or outsourcing it?") — the closer.
+- Earmark from `lecture1.html` consumed: Rushkoff "use the programs made for us → now the programs write
+  themselves, can you still judge them?" is the implicit setup; Rushkoff cited in "going deeper."
+
+### ❌ Skipped / changed
+- F25's techno-optimist "democratize creation" framing trimmed to one honest sentence (the deck over-sells
+  it across 3 slides); the "global annotation workforces / scraped creative content" critique is gestured
+  at via "biases baked into the tool" rather than its own slide (belongs more to ML6/Day-8 ethics).
+
+### Image audit (2026-06-15): text-forward, 2 split slots prepped
+- No usable F25 art (agency images are the dark/stock-tech `JPEG/agentic_*`/`AI-Box_*` set — off the warm
+  palette, same call as ML0/ML1/ML3/ML5). **ML4 ships text-forward.** Slots prepped (inert
+  `<!-- IMG PROMPT … -->` + commented `![]()`): title (`ml4_title.jpg`, ambiguous marionette) +
+  ventriloquism (`ml4_ventriloquism.jpg`). Generate → save → uncomment → rebuild activates the split.
+
+## F25 `mini-lectures/lecture-6-archaeology/` ("Digital Archaeology — Finding Stories in Found Data") — harvested 2026-06-15 → ML6
+
+Authored **ML6 "Data Archaeology"** (`materials/lectures/ml6.md`, 6 slides). Pairs with the **Day-8 (Wed
+7/15) code-along** (Pandas 01 Found Data + collection ethics) — the humanities frame for it. Registered in
+both build scripts; dashboard card links it.
+
+### ✅ Folded into ML6
+- **The archaeology analogy** (pottery shards → dining habits; dataset rows → cultural patterns) — kept as
+  "reading traces of a life"; our 123 comments = a dig site; **"shards, not the meal"** ties to ML0's
+  pipeline (data is downstream of the lived thing).
+- **Created vs. found data** (you didn't design a survey; culture left the clues) — kept; "found never
+  means neutral."
+- **The data biography / provenance** (Origin · Journey · Transformations · Limitations) — kept nearly
+  whole as the actionable slide; "transparency = credibility"; the **one-row-three-layers**
+  (surface/cultural/societal) folded in; ties to **make-your-choices-visible**.
+- **Ethics** (robots.txt / credit sources / "these represent real people") — reframed by the framework's
+  **§2 "hear, don't extract"** metaphor (mine/scrape/harvest/crawl treat people as ore; *hear* assumes a
+  someone): the legal "am I allowed?" vs the humanist "am I listening or extracting?". ML6's moral heart,
+  and the **phenomena→raw arrow** of the noumena pipeline.
+- New synthesis slide **"'Raw data' is an oxymoron"** — wrap-fragments as capture artifacts; the uncounted
+  ("empty seats aren't in the file") ties **ML1's missing voices**.
+
+### ❌ Skipped / changed
+- F25's **data-source directory** (Kaggle/IMDb/Spotify/government lists) dropped — it's a how-to for the
+  Day-10 "collect your own data" workshop, not a conceptual frame; the workshop/Pandas-01 own that.
+- Replaced the techno-neutral "every dataset is a digital diary" tone with the hear-vs-extract edge.
+
+### Image audit (2026-06-15): text-forward, 3 split slots prepped
+- F25 archaeology images (`image1–15.png`, `slide1–9.jpg`) are off the warm palette. **ML6 ships
+  text-forward.** Slots prepped: title (`ml6_title.jpg`, brush on a spreadsheet-tablet), "raw data"
+  (`ml6_raw.jpg`, river→sieve→cards), hear-don't-extract (`ml6_hear.jpg`, cupped ear vs mining rigs).
+  Generate → uncomment → rebuild.
+
 ## Other F25 decks (not yet mined)
-The per-lecture decks for ML1–ML9 live in `WRIT20833_2025/docs/lectures/mini-lectures/lecture-*` (e.g.
-`lecture-1-connotations`, `lecture-3-classification`, `lecture-4-agency`, `lecture-5-memory`,
-`lecture-6-archaeology`, `lecture-7-nlp-topic-modeling`, plus parked `lecture-2-boundaries`,
-`lecture-8-code-rhetoric`, `lecture-9-public-arguments`). Mine each into its `materials/lectures/ml*.md`
-when authored, and record the triage here. ML10–12 (GitHub/HTML/CSS) are cut.
+Remaining: **ML7** `lecture-7-nlp-topic-modeling` (Day 14), plus the **parked** `lecture-2-boundaries`
+(ML2), `lecture-8-code-rhetoric` (ML8), `lecture-9-public-arguments` (ML9) — all three pending the open
+thread #9 audit. **Mined so far:** ML0 (`lecture1.html` + connotations), ML1, ML3, ML4, ML5, ML6. Mine each
+remaining deck into its `materials/lectures/ml*.md` when authored, and record the triage here. ML10–12
+(GitHub/HTML/CSS) are cut.
