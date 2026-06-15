@@ -77,5 +77,8 @@ scale"; the quarrel; voice-through-difficulty in the age of AI; the moral stakes
   routines are prefab you'd normally borrow (build once to *read and judge* a borrowed/AI version).
 - **House style** — homeworks share a Part A/B/C + Weekly Experiments + Submit structure; code-alongs use
   warm cultural examples + concept→code→"your turn" + Playground.
+- **Accessibility (site)** — the generated site is kept WAVE-clean: all UI text ≥ 12px and the muted theme
+  tokens clear WCAG AA 4.5:1. `site_theme.assert_accessible()` enforces this **at build time** (the
+  generators fail loudly on a regression), so retune the `THEME_CSS` palette/type within those limits.
 
 *Full detail and rationale: `planning/CONCEPTUAL_FRAMEWORK_2026.md` and `planning/WORKLOG.md`.*
