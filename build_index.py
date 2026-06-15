@@ -107,10 +107,10 @@ def render():
         "WRIT 20833 · Summer 2026",
         "When Coding Meets Culture",
         [("#start", "Start here", "00"),
-         ("#codealongs", "Code-alongs", "01"),
-         ("#homework", "Homework", "02"),
-         ("#capstone", "Capstone", "03"),
-         ("#lectures", "Lectures", "04"),
+         ("#lectures", "Lectures", "01"),
+         ("#codealongs", "Code-alongs", "02"),
+         ("#homework", "Homework", "03"),
+         ("#capstone", "Capstone", "04"),
          ("#resources", "Resources", "05")],
         [(GH, "GitHub ↗"), ("https://colab.research.google.com/", "Colab ↗")],
     )
@@ -148,19 +148,19 @@ def render():
         + '</div>'
         for (wk, theme, items) in CODEALONGS_BY_WEEK)
     codealongs = section(
-        "codealongs", "01", "Code-alongs",
+        "codealongs", "02", "Code-alongs",
         "Instructor-led notebooks we build together in class — one per coding day, grouped by week. "
         "Each opens in Colab.",
         ca_body)
 
     homework = section(
-        "homework", "02", "Homework",
+        "homework", "03", "Homework",
         "Four notebooks where you apply the skills to a cultural dataset — ideally one you choose. "
         "(Due dates are confirmed in the syllabus.)",
         grid([card("Homework", t, d, w, COLAB + p) for (t, d, w, p) in HOMEWORK]))
 
     capstone = section(
-        "capstone", "03", "Capstone & stylometry",
+        "capstone", "04", "Capstone & stylometry",
         "The final evaluative exercise integrates all three methods on data you choose; the stylometry "
         "track is an alternative path.",
         grid([
@@ -173,7 +173,7 @@ def render():
         ]))
 
     lectures = section(
-        "lectures", "04", "Lectures",
+        "lectures", "01", "Lectures",
         "The short conceptual frames that open each day — the “code is not neutral” throughline. "
         "Most are live as reading pages; Topic Modeling (Day 14) is still in development and one more is under review.",
         grid([card("Mini-lecture", t, d, w, p, soon=(p is None),
@@ -188,7 +188,7 @@ def render():
                  f'<p class="lede">Tools, the course data, and references for going further.</p>'
                  f'<ul class="reslist">{res_items}</ul></section>')
 
-    main = (masthead + start + codealongs + homework + capstone + lectures + resources +
+    main = (masthead + start + lectures + codealongs + homework + capstone + resources +
             '<footer>WRIT 20833 · Summer 2026 · “hear the human at scale” · '
             'a working draft, adjusted to the class’s pace</footer>')
     return PAGE("WRIT 20833 — When Coding Meets Culture", shell(side, main), wrap=False)
