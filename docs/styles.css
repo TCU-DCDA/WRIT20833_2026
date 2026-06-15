@@ -30,6 +30,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--green);letter-spac
 .masthead h1{margin:0 0 10px;font-size:31px;line-height:1.1;}
 .masthead .sub{margin:0 0 16px;font-family:var(--serif);font-style:italic;font-size:17.5px;color:#464b3d;}
 .masthead .meta{margin:0;font-size:13.5px;color:var(--muted);max-width:74ch;}
+/* masthead hero — a full-width landscape banner above the title */
+.mast-banner{margin:0 0 22px;}
+.mast-banner img{display:block;width:100%;height:clamp(150px,26vw,280px);object-fit:cover;
+  object-position:center top;border:1px solid var(--rule);border-radius:4px;}
 
 /* legend + mode pills (restrained, earthy — not a rainbow) */
 .legend{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:20px;}

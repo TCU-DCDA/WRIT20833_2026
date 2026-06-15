@@ -16,6 +16,8 @@ REPO = "TCU-DCDA/WRIT20833_2026"
 COLAB = f"https://colab.research.google.com/github/{REPO}/blob/main/"
 GH = f"https://github.com/{REPO}"
 GH_BLOB = f"{GH}/blob/main/"  # renders a repo file (e.g. the syllabus .md) on github.com
+RAW = f"https://raw.githubusercontent.com/{REPO}/main/"  # direct asset URLs (images) — resolves once public
+HERO = RAW + "materials/lectures/images/messy_humanities.jpg"
 
 # --- code-alongs, grouped by week ---
 CODEALONGS_BY_WEEK = [
@@ -106,6 +108,9 @@ def render():
 
     masthead = (
         '<header class="masthead">'
+        f'<figure class="mast-banner"><img src="{HERO}" alt="A warm painting of the humanities — a bust, '
+        'a seated thinker, a portrait on an easel, a guitar, a theatre mask, and scattered manuscripts">'
+        '</figure>'
         '<div class="kicker">WRIT 20833 · Summer 2026 · TCU</div>'
         '<h1>When Coding Meets Culture</h1>'
         '<p class="sub">Developing data-driven opinions — a four-week introduction to coding in the '
