@@ -337,7 +337,7 @@ assessed before it's taught.*
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
 | **Mon 7/6** (1) | Humanities & Coding · Connotations & Code | Setup + Variables & data types | D1 opens |
-| **Tue 7/7** (2) | Sacred Boundaries / digital privacy | Strings & string methods | — |
+| **Tue 7/7** (2) | — | Strings & string methods | — |
 | **Wed 7/8** (3) | Classification Logic | Comparisons, conditionals & booleans | **R1 due** · D1 post |
 | **Thu 7/9** (4) | Collective Memory | Lists & loops | — |
 | **Fri 7/10** (5) | — (recap) | Functions & dictionaries + recap | **HW1 assigned** · D1 replies |
@@ -369,9 +369,9 @@ assessed before it's taught.*
 | **Thu 7/30** (19) | — | Capstone work session 2 + peer review | D4 replies |
 | **Fri 7/31** (20) | — (wrap) | **Capstone presentations + wrap** | **Capstone due** · **R3 (final self-evaluation) due** |
 
-*Lecture "—" = recap / workshop / work-session days. Three lecture slots are under review (ML2 "Sacred
-Boundaries," a possible ML9 "Going Public" at Day 17, and a noumena framing at Day 1); see
-`planning/CONCEPTUAL_FRAMEWORK_2026.md`.*
+*Lecture "—" = recap / workshop / work-session days (Day 2 included — ML2 "Sacred Boundaries" was cut, its
+material folded into ML6 and ML0). The noumena framing landed in ML0; ML9 "Going Public" (Day 17) and ML8
+"Code as Rhetoric" remain under review; see `planning/CONCEPTUAL_FRAMEWORK_2026.md`.*
 
 ---
 
