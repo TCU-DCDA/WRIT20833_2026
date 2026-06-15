@@ -199,10 +199,16 @@ DECK_CSS = r"""
 .deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
 .deck-hint{position:fixed;left:16px;bottom:11px;font:600 10.5px/1 var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint);z-index:10;}
+.deck-home{position:fixed;left:16px;top:13px;z-index:10;display:flex;gap:11px;align-items:baseline;
+  font:600 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
+.deck-home:hover{opacity:1;}
+.deck-home a{color:var(--green-mid);border:none;text-decoration:none;}
+.deck-home a:hover{color:var(--clay);}
+.deck-home .sep{color:var(--faint);}
 @media print{.deck{position:static;overflow:visible;}
   .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
     border-bottom:1px solid var(--rule);}
-  .deck-progress,.deck-count,.deck-hint{display:none;}}
+  .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
 """
 
 DECK_SCRIPT = """
@@ -293,7 +299,9 @@ def build_deck(slug, title, subtitle, kicker, body):
             + "</section>"
         )
     content = "".join(_content_slide(head, lines) for head, lines in segs[1:] if head)
-    nav = ('<div class="deck-progress"></div><div class="deck-count"></div>'
+    nav = (f'<div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a>'
+           f'<span class="sep">·</span><a href="{slug}.html">Reading</a></div>'
+           '<div class="deck-progress"></div><div class="deck-count"></div>'
            '<div class="deck-hint">← → navigate · click to advance</div>')
     body_html = f'<div class="deck">{title_slide}{content}</div>{nav}{DECK_SCRIPT}'
     page = PAGE(html.escape(f"{title} (slides) — WRIT 20833"), body_html,

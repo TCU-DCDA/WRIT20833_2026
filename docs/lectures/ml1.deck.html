@@ -35,6 +35,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--green);letter-spac
 .masthead h1{margin:0 0 10px;font-size:31px;line-height:1.1;}
 .masthead .sub{margin:0 0 16px;font-family:var(--serif);font-style:italic;font-size:17.5px;color:#464b3d;}
 .masthead .meta{margin:0;font-size:13.5px;color:var(--muted);max-width:74ch;}
+/* masthead hero — a full-width landscape banner above the title */
+.mast-banner{margin:0 0 22px;}
+.mast-banner img{display:block;width:100%;height:clamp(150px,26vw,280px);object-fit:cover;
+  object-position:center top;border:1px solid var(--rule);border-radius:4px;}
 
 /* legend + mode pills (restrained, earthy — not a rainbow) */
 .legend{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:20px;}
@@ -229,10 +233,16 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
 .deck-hint{position:fixed;left:16px;bottom:11px;font:600 10.5px/1 var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint);z-index:10;}
+.deck-home{position:fixed;left:16px;top:13px;z-index:10;display:flex;gap:11px;align-items:baseline;
+  font:600 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
+.deck-home:hover{opacity:1;}
+.deck-home a{color:var(--green-mid);border:none;text-decoration:none;}
+.deck-home a:hover{color:var(--clay);}
+.deck-home .sep{color:var(--faint);}
 @media print{.deck{position:static;overflow:visible;}
   .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
     border-bottom:1px solid var(--rule);}
-  .deck-progress,.deck-count,.deck-hint{display:none;}}
+  .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
 </style></head>
 <body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 1 · the through-line</div><h1>Connotations &amp; Code</h1><p class="sub">Why no number is ever neutral</p><p class="lead">The opening lecture left us with a claim: every arrow in the pipeline from a lived human fact to an "insight" is a human choice. This lecture turns that claim on the very first thing you'll touch — a plain number — and shows that even <em>it</em> arrives already leaning.</p>
 <p>Here is a fact about the corpus we'll work with all term: 123 YouTube comments on a Texas law that puts the Ten Commandments in public-school classrooms.</p>
@@ -251,7 +261,7 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 <p>Our 123 comments are not "the public." They're the slice of the public that <em>posted</em> — people online, fired up enough to type, willing to be seen arguing. The woman from the opening lecture — who felt something complete and entirely her own and then said nothing — is not in the file at all. Neither is anyone without the wifi, the time, or the nerve.</p>
 <p><strong>Absence from the data is not absence from reality.</strong> Some of the most important voices in any cultural question are exactly the ones the counting never reaches. A good distant reading stays honest about the silence at its edges.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml1_missing.jpg" alt="A hall of seated figures where several chairs are empty and some silhouettes are faint and half-painted — the uncounted"><figcaption>A hall of seated figures where several chairs are empty and some silhouettes are faint and half-painted — the uncounted</figcaption></figure></div></div></section><section class="slide split"><h2>So: code is not neutral</h2><div class="split-grid"><div class="col-text"><p>Code inherits every connotation above — and then adds its own, because code runs on definitions, and a definition is a decision.</p>
 <p>Over the next four weeks <em>you</em> will be the one deciding. What counts as a "word" when you split a comment? Which words are "stopwords" worth deleting? What score makes a comment "positive"? Where do you cut one topic from the next? Each is a small act of interpretation wearing the costume of a neutral function.</p>
-<p>That's the trap and the responsibility at once: a machine looks objective <em>precisely because</em> it hides the choices inside it. Your job as a humanist who codes is the double move from the opening lecture — <strong>read data like a text, and write code that shows its seams.</strong> Leave the <code>#comment</code> that says what you chose, and why. That comment is not housekeeping. It's the honesty.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml1_code.jpg" alt="A hand at a keyboard whose keys are tiny brass levers, each keypress sending golden light down a branching track"><figcaption>A hand at a keyboard whose keys are tiny brass levers, each keypress sending golden light down a branching track</figcaption></figure></div></div></section></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<p>That's the trap and the responsibility at once: a machine looks objective <em>precisely because</em> it hides the choices inside it. Your job as a humanist who codes is the double move from the opening lecture — <strong>read data like a text, and write code that shows its seams.</strong> Leave the <code>#comment</code> that says what you chose, and why. That comment is not housekeeping. It's the honesty.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml1_code.jpg" alt="A hand at a keyboard whose keys are tiny brass levers, each keypress sending golden light down a branching track"><figcaption>A hand at a keyboard whose keys are tiny brass levers, each keypress sending golden light down a branching track</figcaption></figure></div></div></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml1.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
 <script>
 (function(){
   var s=[].slice.call(document.querySelectorAll('.slide'));
