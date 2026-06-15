@@ -1,7 +1,7 @@
 # Collective Memory
 ## What a culture keeps, and what it lets go
 
-<!-- meta: ML5 · Day 4 · the through-line -->
+<!-- meta: Day 4 · the through-line -->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a tall wall of wooden card-catalog drawers; a few drawers hang open, spilling warm handwritten letters and old photographs into the light, while most stay sealed shut — memory as a thing that keeps some of us and loses the rest. -->
@@ -56,7 +56,7 @@ the exception, the mercy, the second look. A loop doesn't.
 A `for` loop takes one rule and presses it onto every single person — no context, no exceptions, thousands
 in a blink. "The same rule for everyone" *sounds* like the definition of fairness. It is also the end of
 mercy: the loop cannot see the one case that deserved an exception, because seeing exceptions is exactly
-what it was built to stop doing. Remember ML3's threshold? The loop is how that one cutoff gets applied to
+what it was built to stop doing. Remember the threshold from the Classification lecture? The loop is how that one cutoff gets applied to
 a million people before lunch.
 
 ## The power to count
@@ -69,7 +69,7 @@ choosing what's worth seeing.
 
 One line, and a messy human record becomes a ranked list of "what's wrong here." So ask: who decided what
 counted as a violation? Who gets to see the tally? How does a count become a *justification* — for a
-policy, a denial, a crackdown? And the question from ML1 that never goes away: what happened to the people
+policy, a denial, a crackdown? And the question from the Connotations lecture that never goes away: what happened to the people
 who didn't fit any category, and so were never counted at all?
 
 ## Historical echoes

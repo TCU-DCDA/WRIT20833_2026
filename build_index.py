@@ -49,14 +49,14 @@ HOMEWORK = [
 # (title, desc, when, page) — page is a docs-relative URL when the lecture has an authored
 # reading page (built by build_lectures.py); None keeps it a "soon" placeholder card.
 LECTURES = [
-    ("ML0 · Humanities & Coding", "Why a humanist learns to code.", "Day 1", "lectures/ml0.html"),
-    ("ML1 · Connotations & Code", "Code is not neutral.", "Day 1", "lectures/ml1.html"),
-    ("ML3 · Classification Logic", "Whose categories? Sorting as judgment.", "Day 3", "lectures/ml3.html"),
-    ("ML5 · Collective Memory", "What a culture keeps and forgets.", "Day 4", "lectures/ml5.html"),
-    ("ML4 · AI Agency", "Reading & judging machine-written code.", "Day 7", "lectures/ml4.html"),
-    ("ML6 · Data Archaeology", "Where found data comes from.", "Day 8", "lectures/ml6.html"),
-    ("ML7 · NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14", None),
-    ("ML9 · Going Public", "Analysis → public argument. (under review)", "Day 17", None),
+    ("Humanities & Coding", "Why a humanist learns to code.", "Day 1", "lectures/ml0.html"),
+    ("Connotations & Code", "Code is not neutral.", "Day 1", "lectures/ml1.html"),
+    ("Classification Logic", "Whose categories? Sorting as judgment.", "Day 3", "lectures/ml3.html"),
+    ("Collective Memory", "What a culture keeps and forgets.", "Day 4", "lectures/ml5.html"),
+    ("AI Agency", "Reading & judging machine-written code.", "Day 7", "lectures/ml4.html"),
+    ("Data Archaeology", "Where found data comes from.", "Day 8", "lectures/ml6.html"),
+    ("NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14", None),
+    ("Going Public", "Analysis → public argument. (under review)", "Day 17", None),
 ]
 
 RESOURCES = [
@@ -161,7 +161,7 @@ def render():
     lectures = section(
         "lectures", "04", "Lectures",
         "The short conceptual frames that open each day — the “code is not neutral” throughline. "
-        "Most are live as reading pages; ML7 is still in development and ML9 is under review.",
+        "Most are live as reading pages; Topic Modeling (Day 14) is still in development and one more is under review.",
         grid([card("Mini-lecture", t, d, w, p, soon=(p is None)) for (t, d, w, p) in LECTURES]))
 
     res_items = "".join(
