@@ -5,8 +5,7 @@
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a tall wall of wooden card-catalog drawers; a few drawers hang open, spilling warm handwritten letters and old photographs into the light, while most stay sealed shut — memory as a thing that keeps some of us and loses the rest. -->
-<!-- TODO: generate -> materials/lectures/images/ml5_title.jpg, then uncomment the next line (it turns on the 2-column layout): -->
-<!-- ![A wall of wooden card-catalog drawers, a few open and spilling letters and photographs into the light](materials/lectures/images/ml5_title.jpg) -->
+![A wall of wooden card-catalog drawers, a few open and spilling letters and photographs into the light](materials/lectures/images/ml5_title.jpg)
 
 Today you learn **lists** and **loops** — how to hold many things at once, and how to do the same thing to
 every one of them. That's the technical skill. The human story underneath it is **memory**: who gets
@@ -36,8 +35,7 @@ Forgetting, it turns out, was never just failure. It was also grace.
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, clay accent): a crowd of distinct individuals, each one being threaded onto a single long ledger-line like beads on a string — separate faces becoming uniform rows in a register. -->
-<!-- TODO: generate -> materials/lectures/images/ml5_population.jpg, then uncomment the next line: -->
-<!-- ![Distinct individuals being threaded onto one long ledger-line like beads, separate faces becoming rows in a register](materials/lectures/images/ml5_population.jpg) -->
+![Distinct individuals being threaded onto one long ledger-line like beads, separate faces becoming rows in a register](materials/lectures/images/ml5_population.jpg)
 
 A list looks like the most harmless thing in Python:
 
@@ -78,8 +76,7 @@ who didn't fit any category, and so were never counted at all?
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm sepia oil painting — aged parchment tones, muted greens, clay accent; recompose F25's then/now idea but keep it warm, not blue/neon): a 19th-century almshouse records office, clerks at wooden desks reducing a line of waiting people to entries in heavy ledgers; the ledger rows trail off to the right and dissolve into an endless stream of identical modern data-rows. -->
-<!-- TODO: generate -> materials/lectures/images/ml5_echoes.jpg, then uncomment the next line: -->
-<!-- ![A 19th-century almshouse records office, clerks reducing waiting people to ledger entries that dissolve into modern data-rows](materials/lectures/images/ml5_echoes.jpg) -->
+![A 19th-century almshouse records office, clerks reducing waiting people to ledger entries that dissolve into modern data-rows](materials/lectures/images/ml5_echoes.jpg)
 
 None of this is new. Only the machinery is.
 
