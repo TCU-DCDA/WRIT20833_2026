@@ -1,6 +1,8 @@
 # WORKLOG — WRIT 20833 2026 port (session handoff)
 
-**Branch:** `claude/port-strings-codealong` (open PR #2 to `main`) · **Last updated:** 2026-06-11
+**Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
+https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
+`main`. · **Last updated:** 2026-06-15
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
 Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and
@@ -8,6 +10,29 @@ Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and
 **Note the 2026-06 reorg:** the published course site is in `docs/`; instructor process docs (incl. this
 file) moved to `planning/`; TCU/AddRan source docs are in `reference/`; answer keys + HW builders live in
 the private `TCU-DCDA/WRIT20833_2026_keys`.
+
+---
+
+## Latest session — 2026-06-15 (lectures complete + site polish)
+- **Lectures ML4 (AI Agency) + ML6 (Data Archaeology) authored** (PR #8) → **first-half lectures complete**
+  (ML0/1/3/4/5/6; reading page + self-contained deck each). ML5 + ML1/3/5 imagery merged first (PR #7).
+- **ML2 "Sacred Boundaries" SETTLED → CUT** (PR #9, open thread #9): redundant now that ML6 carries the
+  privacy/collection-ethics core + ML0 carries the noumena-limit point; Day 2 is a no-mini-lecture day.
+- **ML numbers dropped from all student-facing surfaces** (PR #10): lectures shown by **title + day**;
+  in-lecture cross-refs reworded to concepts/titles. ML-numbers kept ONLY as internal slugs (`ml*.md`/
+  `.html`) + planning-doc labels. Live URLs unchanged.
+- **Site UX polish:** deck **home-nav** (↤ Lectures · Reading, PR #11), masthead **hero banner**
+  (messy_humanities, top-anchored crop, PR #11), **external links open in new tab** (auto via
+  `site_theme.PAGE`, PR #11), **lecture-card thumbnails + proportioned placeholders** (PR #12), and
+  **dashboard reorder** → 00 Start · **01 Lectures** · 02 Code-alongs · 03 Homework · 04 Capstone ·
+  05 Resources (PR #13).
+- **Lecture imagery state:** ML0/1/3/5 have warm-palette title art (real dashboard thumbnails); **ML4 +
+  ML6 ship text-forward** with prepped inert image slots in their `.md` (`<!-- IMG PROMPT … -->` +
+  commented `![]()`), and their dashboard cards show **placeholder boxes**. **To fill:** generate the
+  warm-palette image → save to `materials/lectures/images/` → (a) uncomment the `![]()` in the lecture
+  `.md` to activate its split slide, and (b) add the path to that lecture's `LECTURES` tuple in
+  `build_index.py` to turn the dashboard placeholder into a thumbnail → rerun the generators. The 4 missing
+  title images = AI Agency, Data Archaeology, Topic Modeling, Going Public.
 
 ---
 
@@ -247,7 +272,9 @@ presentations + due Fri 7/31). **Residual `[...]`:** upload location + exact pre
   Track A vs. B, fixed-vs-student-generated stylometry corpus, and how heavily to foreground
   AI-detection-bias ethics. The sheet states a single shared length (~800–1,200 words) for now.
 
-## Lecture pages — ✅ PILOT DONE (2026-06-12); scale-out is the next step
+## Lecture pages — system + ML0 pilot (2026-06-12); ML1/3/4/5/6 since (see 2026-06-15 summary up top)
+*(This section documents the original pilot + system design. Current state — ML0/1/3/4/5/6 done, ML2 cut,
+de-numbered, thumbnailed — is in the "Latest session" summary at the top and `LECTURE_SOURCE_NOTES.md`.)*
 Built the **lecture-page system** + authored **ML0** as the template. The dashboard's Lectures section
 is no longer all placeholders — ML0 is a live reading page; the other 8 cards stay "soon."
 - **`build_lectures.py`** (new, root) — renders `materials/lectures/*.md` → `docs/lectures/<slug>.html` in

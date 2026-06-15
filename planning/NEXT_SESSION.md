@@ -1,6 +1,6 @@
 # Next-session handoff prompt
 
-Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-13.)
+Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-15.)
 
 ---
 
@@ -43,26 +43,28 @@ Conventions to honor (see WORKLOG "Locked decisions"):
 - Validate notebooks with /opt/anaconda3/bin/python (has pandas/vaderSentiment/gensim).
 
 Open items (pick one, or tell me which):
-- Lecture pages: ML0 DONE (+ enriched 2026-06-13, PR #4) — build_lectures.py renders each
-  materials/lectures/ml*.md into BOTH a reading page (docs/lectures/ml0.html) and a
-  self-contained slide deck (ml0.deck.html). Layout directives: `<!-- layout: split -->`
-  (text|image 2-col) and `<!-- layout: gallery -->` (text on top, figures in a cols-2/3/4
-  row underneath — added for ML0's DH-projects gallery). Per-slide imagery lives in
-  materials/lectures/images/ (warm palette). ML0 now also carries the F25 lecture1 harvest:
-  a Rushkoff/Montfort "why a humanist codes" slide + a two-slide projects gallery (image
-  projects first, link-only second). NEW doc planning/LECTURE_SOURCE_NOTES.md = the ledger
-  of what to mine from each F25 deck (what went into ML0; data-feminism binaries earmarked
-  for ML1/ML3; "program or be programmed" reuse for ML4; what was skipped) — READ IT before
-  the scale-out. Scale out the rest — ML1, ML3, ML5, ML4, ML6, ML7 (each = one ml*.md + a
-  LECTURES line + rerun the generators; ML3 → reuse F25 data_as_categorization/tippingScales
-  images).
-- CSV/HUM core work-examples (#10); lecture audit ML8/9 (#9, ML2 settled→cut); the parked
-  site-design questions (sidebar icons, nav filter) recorded in the WORKLOG.
-  (Capstone sheet — DONE: CAPSTONE_2026.md. Syllabus HUM core — DONE.)
-- SITE IS LIVE (2026-06-13): branch merged to main via PR #3; repo is PUBLIC;
-  GitHub Pages serving from main/docs at https://tcu-dcda.github.io/WRIT20833_2026/
-  (raw images + Colab badges + blob links all resolve now). Regenerate docs/ after
-  edits (build_index.py / build_schedule_html.py / build_lectures.py) and push to main.
+- FIRST-HALF LECTURES COMPLETE: ML0/1/3/4/5/6 done (reading page + self-contained deck each,
+  via build_lectures.py from materials/lectures/ml*.md). ML2 CUT (#9). Student-facing surfaces
+  show lectures by TITLE + DAY (ML numbers dropped; kept only as internal ml*.html slugs +
+  planning-doc labels). Layout directives in the md: `<!-- layout: split -->` (text|image 2-col)
+  and `<!-- layout: gallery -->`. planning/LECTURE_SOURCE_NOTES.md = the F25-mining ledger
+  (what's harvested per lecture) — READ before authoring more. Remaining lectures: ML7 (Topic
+  Modeling, Day 14); ML8/ML9 audit (#9).
+- LECTURE IMAGERY (the clearest next task): ML0/1/3/5 have warm-palette title art (real dashboard
+  thumbnails). ML4 + ML6 ship text-forward with PREPPED inert image slots in their md
+  (`<!-- IMG PROMPT … -->` + a commented `![]()`); the dashboard Lectures section shows 4 real
+  thumbnails + 4 PLACEHOLDER boxes (AI Agency, Data Archaeology, Topic Modeling, Going Public).
+  To fill one: generate the warm "Reading Room"-palette image → save to materials/lectures/images/
+  → (a) uncomment the `![]()` in the lecture md (activates its split slide) and (b) add the path
+  to that lecture's LECTURES tuple in build_index.py (turns the dashboard placeholder into a
+  thumbnail) → rerun the generators. Prompts can be drafted per lecture.
+- CSV/HUM core work-examples (#10); ML8/ML9 lecture audit (#9, ML2 settled→cut); parked
+  site-design questions (sidebar icons, nav filter) in the WORKLOG.
+  (DONE: Capstone sheet; Syllabus HUM core; site live + public.)
+- SITE UX (all merged 2026-06-15): dashboard order 00 Start · 01 Lectures · 02 Code-alongs ·
+  03 Homework · 04 Capstone · 05 Resources; masthead hero banner; deck home-nav; external links
+  open in a new tab (auto via site_theme.PAGE); lecture-card thumbnails + placeholders. Always
+  regenerate docs/ after edits (build_index / build_schedule_html / build_lectures) → push to main.
 - Instructor-only still pending: fill syllabus [...] fields + paste the 3 HUM blocks
   into the WRIT20833-020 Word export; verify catalog + CSV/HUM outcome wording.
 
