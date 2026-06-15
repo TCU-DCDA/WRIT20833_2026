@@ -5,8 +5,7 @@
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a road forking like an if/else branch, with a gate at the split; an unseen hand waves a line of varied human figures left or right — sorting people into two paths. -->
-<!-- TODO: generate -> materials/lectures/images/ml3_title.jpg, then uncomment the next line (it turns on the 2-column layout): -->
-<!-- ![A road forking like an if/else branch, a gate at the split sorting a line of people left or right](materials/lectures/images/ml3_title.jpg) -->
+![A road forking like an if/else branch, a gate at the split sorting a line of people left or right](materials/lectures/images/ml3_title.jpg)
 
 Today you learn `if`, `else`, and the booleans that drive them — `True` and `False`, greater-than and
 equals. It is the most innocent-looking tool in all of programming. It is also the exact machinery by which
@@ -45,8 +44,7 @@ What changed is scale and speed — and that the judgment now hides inside a fun
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, clay accent; cousin to ml0's brass-valves image): a hand turning a single brass dial set into a gate; the people just above the dial's mark pass through into warm light, the people just below are turned back into shadow — one arbitrary line. -->
-<!-- TODO: generate -> materials/lectures/images/ml3_threshold.jpg, then uncomment the next line: -->
-<!-- ![A hand turning a brass dial on a gate; people just above the mark pass into light, those just below are turned away](materials/lectures/images/ml3_threshold.jpg) -->
+![A hand turning a brass dial on a gate; people just above the mark pass into light, those just below are turned away](materials/lectures/images/ml3_threshold.jpg)
 
 Here is a real loan rule, in the syntax you'll write this week:
 
@@ -65,8 +63,7 @@ objective. It won't be. It will be yours.
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, clay accent; recompose F25's "people sorted into category-circles" idea in warm paint, not cyberpunk): a crowd of richly varied human figures being pressed into a wall of identical rigid pigeonhole drawers; the parts of each person that don't fit the drawer spill over the edges and fade to nothing. -->
-<!-- TODO: generate -> materials/lectures/images/ml3_schema.jpg, then uncomment the next line: -->
-<!-- ![Varied human figures pressed into identical pigeonhole drawers, the parts that don't fit spilling over and fading](materials/lectures/images/ml3_schema.jpg) -->
+![Varied human figures pressed into identical pigeonhole drawers, the parts that don't fit spilling over and fading](materials/lectures/images/ml3_schema.jpg)
 
 Code needs clean categories, and people don't come clean. So the system forces the fit — and whatever
 won't fit the schema simply disappears.
