@@ -15,7 +15,7 @@ raw.githubusercontent URLs the published site can reach (resolves once the repo 
 Run from repo root:  python3 build_lectures.py
 """
 import re, html, os
-from site_theme import PAGE, write_stylesheet
+from site_theme import PAGE, write_stylesheet, assert_accessible
 
 REPO = "TCU-DCDA/WRIT20833_2026"
 RAW = f"https://raw.githubusercontent.com/{REPO}/main/"
@@ -313,6 +313,7 @@ def build_deck(slug, title, subtitle, kicker, body):
 
 if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
+    assert_accessible(DECK_CSS)  # guard the deck's inlined CSS too (font floor + contrast)
     write_stylesheet("docs")  # ensure the shared stylesheet exists for standalone runs
     for slug, src, ml, day in LECTURES:
         title, subtitle, meta, body = parse_head(open(src, encoding="utf-8").read().splitlines())
