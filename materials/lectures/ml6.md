@@ -1,7 +1,7 @@
 # Data Archaeology
 ## Where found data comes from
 
-<!-- meta: ML6 · Day 8 · the through-line -->
+<!-- meta: Day 8 · the through-line -->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): an archaeologist's hand with a soft brush sweeping dust off a half-buried clay tablet whose surface is inscribed not with cuneiform but with faint rows of a spreadsheet — excavating data like an artifact. -->
@@ -22,7 +22,7 @@ a pottery shard, a posthole, a midden of bones. From those *traces* they reconst
 You're making the same move. Our 123 comments are a dig site — traces a community left while arguing about
 a law one summer. You'll excavate patterns from them, but like any archaeologist you have to remember
 you're holding **shards, not the meal**: a partial record of something larger you'll never fully recover.
-(That's ML0's pipeline again — what reaches you is already several steps downstream of the lived thing.)
+(That's the noumena pipeline again — what reaches you is already several steps downstream of the lived thing.)
 
 ## You found it; you didn't make it
 

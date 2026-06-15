@@ -1,7 +1,7 @@
 # Classification Logic
 ## Whose categories? Sorting as judgment
 
-<!-- meta: ML3 · Day 3 · the through-line -->
+<!-- meta: Day 3 · the through-line -->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a road forking like an if/else branch, with a gate at the split; an unseen hand waves a line of varied human figures left or right — sorting people into two paths. -->
@@ -25,7 +25,7 @@ of judgment before it is ever an act of code.
   joking sentence into one of two boxes.
 
 There is no neutral box. Every classification system encodes **values** — about what matters, what counts,
-and who belongs where. ML1 said code is not neutral; classification is the sharpest place you will feel it.
+and who belongs where. The Connotations lecture said code is not neutral; classification is the sharpest place you will feel it.
 
 ## Status has always gated access
 
@@ -74,7 +74,7 @@ store, easy to sort, and convenient for advertisers. The schema, not reality, de
 *(That's the Data Feminism point: a "default" binary, chosen for computational convenience, quietly encodes
 a whole worldview — and erases everyone who doesn't fit it.)*
 
-Remember ML1's missing voices: **absence from the data isn't absence from reality.** Here is one of the
+Remember the missing voices from the Connotations lecture: **absence from the data isn't absence from reality.** Here is one of the
 mechanisms. People go missing not only because they never posted, but because the categories had no drawer
 for them.
 
@@ -98,7 +98,7 @@ In four weeks *you* will be the one drawing lines: which words are "stopwords" w
 is "positive," where one "topic" ends and the next begins. Each is a classification, and each is a judgment
 you are making *for* someone else.
 
-The course's one demand holds here exactly as in ML0: **make the cut visible.** Leave the `#comment` that
+The course's one demand holds here exactly as in the opening lecture: **make the cut visible.** Leave the `#comment` that
 says where you drew the line, and why. The honest classifier isn't the one who found the true categories —
 there are none. It's the one who shows you where they stood when they drew the box.
 
