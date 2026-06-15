@@ -35,6 +35,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--green);letter-spac
 .masthead h1{margin:0 0 10px;font-size:31px;line-height:1.1;}
 .masthead .sub{margin:0 0 16px;font-family:var(--serif);font-style:italic;font-size:17.5px;color:#464b3d;}
 .masthead .meta{margin:0;font-size:13.5px;color:var(--muted);max-width:74ch;}
+/* masthead hero — a full-width landscape banner above the title */
+.mast-banner{margin:0 0 22px;}
+.mast-banner img{display:block;width:100%;height:clamp(150px,26vw,280px);object-fit:cover;
+  object-position:center top;border:1px solid var(--rule);border-radius:4px;}
 
 /* legend + mode pills (restrained, earthy — not a rainbow) */
 .legend{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:20px;}
@@ -229,10 +233,16 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
 .deck-hint{position:fixed;left:16px;bottom:11px;font:600 10.5px/1 var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint);z-index:10;}
+.deck-home{position:fixed;left:16px;top:13px;z-index:10;display:flex;gap:11px;align-items:baseline;
+  font:600 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
+.deck-home:hover{opacity:1;}
+.deck-home a{color:var(--green-mid);border:none;text-decoration:none;}
+.deck-home a:hover{color:var(--clay);}
+.deck-home .sep{color:var(--faint);}
 @media print{.deck{position:static;overflow:visible;}
   .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
     border-bottom:1px solid var(--rule);}
-  .deck-progress,.deck-count,.deck-hint{display:none;}}
+  .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
 </style></head>
 <body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 4 · the through-line</div><h1>Collective Memory</h1><p class="sub">What a culture keeps, and what it lets go</p><p class="lead">Today you learn <strong>lists</strong> and <strong>loops</strong> — how to hold many things at once, and how to do the same thing to every one of them. That's the technical skill. The human story underneath it is <strong>memory</strong>: who gets remembered, who gets to be forgotten, and what changes when the thing doing the remembering is a machine that never forgets.</p>
 <blockquote><p><code>violations = []</code></p><p><code>for person in community:</code></p><p><code>    if person.broke_a_rule: violations.append(person)</code></p></blockquote>
@@ -249,7 +259,7 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 <blockquote><p>This data was produced with the express purpose of reducing people to bodies; bodies to easily</p><p>quantifiable aspects; and assigning value to those aspects which proved that the marginalized people to</p><p>whom they belonged were worth less than their elite counterparts.</p></blockquote>
 <p>Now picture that same ledger as a Python list of dictionaries — <code>{"name": "Mary", "status": "emigrant", "condition": "destitution"}</code> — processed by a loop, ranked by a <code>Counter</code>. <strong>The technology changes; the power to reduce, classify, and exclude is the constant.</strong> When you write your own loops this week, you're picking up a very old instrument.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml5_echoes.jpg" alt="A 19th-century almshouse records office, clerks reducing waiting people to ledger entries that dissolve into modern data-rows"><figcaption>A 19th-century almshouse records office, clerks reducing waiting people to ledger entries that dissolve into modern data-rows</figcaption></figure></div></div></section><section class="slide"><h2>What we choose to keep</h2><p>So lists and loops were never just technical skills. They're how a culture decides <strong>what it remembers and what it's allowed to forget</strong> — and now you're one of the people holding the pen.</p>
 <p>Our 123 comments are themselves a frozen memory: 123 people caught mid-argument on one summer day, who will never get to take it back, soften it, or grow past it. As you count and sort them this term, keep the live question open: <em>am I remembering these people, or just reducing them?</em> And the one the whole course keeps asking — <strong>make the choice visible.</strong> What you keep, what you drop, and what you let stay forgotten is an argument; leave the <code>#comment</code> that admits it.</p>
-<p>Going deeper (optional): Paul Connerton, <em>How Societies Remember</em>; Viktor Mayer-Schönberger, <em>Delete: The Virtue of Forgetting in the Digital Age</em>; José van Dijck, <em>Mediated Memories in the Digital Age</em>.</p></section></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<p>Going deeper (optional): Paul Connerton, <em>How Societies Remember</em>; Viktor Mayer-Schönberger, <em>Delete: The Virtue of Forgetting in the Digital Age</em>; José van Dijck, <em>Mediated Memories in the Digital Age</em>.</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml5.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
 <script>
 (function(){
   var s=[].slice.call(document.querySelectorAll('.slide'));

@@ -18,8 +18,23 @@ Design direction — *coding meets culture*, an editorial "reading room":
 `PAGE` wraps a body fragment into a full document; pass extra CSS via `extra_css`.
 """
 import os
+import re
 
 STYLESHEET_NAME = "styles.css"  # the shared external stylesheet site pages link
+
+# external links (http/https) open in a new tab so the course site isn't navigated away from;
+# relative/anchor links (intra-site) are untouched.
+_A_TAG = re.compile(r'<a\b[^>]*>', re.I)
+
+
+def _external_blank(html_fragment):
+    """Add target=_blank + rel=noopener to <a> tags whose href is absolute http(s)."""
+    def fix(m):
+        tag = m.group(0)
+        if "target=" in tag or not re.search(r'href="https?://', tag, re.I):
+            return tag
+        return '<a target="_blank" rel="noopener noreferrer"' + tag[2:]
+    return _A_TAG.sub(fix, html_fragment)
 
 THEME_CSS = r"""
 :root{
@@ -54,6 +69,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--green);letter-spac
 .masthead h1{margin:0 0 10px;font-size:31px;line-height:1.1;}
 .masthead .sub{margin:0 0 16px;font-family:var(--serif);font-style:italic;font-size:17.5px;color:#464b3d;}
 .masthead .meta{margin:0;font-size:13.5px;color:var(--muted);max-width:74ch;}
+/* masthead hero — a full-width landscape banner above the title */
+.mast-banner{margin:0 0 22px;}
+.mast-banner img{display:block;width:100%;height:clamp(150px,26vw,280px);object-fit:cover;
+  object-position:center top;border:1px solid var(--rule);border-radius:4px;}
 
 /* legend + mode pills (restrained, earthy — not a rainbow) */
 .legend{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:20px;}
@@ -216,6 +235,7 @@ def PAGE(title, body, extra_css="", wrap=True, css_href=STYLESHEET_NAME):
     wrap=True  -> body is centered in a max-width column (.wrap) — single-column pages.
     wrap=False -> body is emitted as-is — for full-bleed layouts like the sidebar shell (.app).
     """
+    body = _external_blank(body)
     inner = f'<div class="wrap">{body}</div>' if wrap else body
     if css_href is None:
         head_css = f"<style>{THEME_CSS}{extra_css}</style>"
