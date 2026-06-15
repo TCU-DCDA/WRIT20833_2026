@@ -1,7 +1,7 @@
 # Humanities & Coding
 ## Why a humanist learns to code
 
-<!-- meta: ML0 · Day 1 · the through-line -->
+<!-- meta: Day 1 · the through-line -->
 
 <!-- layout: split -->
 
