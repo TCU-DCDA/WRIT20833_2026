@@ -21,8 +21,15 @@ for the existing paintings** (`messy_humanities`, the brass valves, `humanities_
 | `ml6_title.jpg` | Data Archaeology (placeholder → thumbnail) | ML6 title slide (split) |
 | `ml6_raw.jpg` | — | ML6 "'Raw data' is an oxymoron" (split) |
 | `ml6_hear.jpg` | — | ML6 "Hear, don't extract" (split) |
-| `ml7_title.jpg` | Topic Modeling (placeholder → thumbnail) | (future ML7 deck) |
+| `ml7_title.jpg` | Topic Modeling (placeholder → thumbnail) | ML7 title slide (split) — ✅ active |
 | `ml9_title.jpg` | Going Public (placeholder → thumbnail) | (future ML9 deck) |
+
+**Still to generate (1):** `ml7_tangle.jpg` — ML7 "When real data fights back" (split). Prompt also lives
+as an `<!-- IMG PROMPT -->` in `ml7.md`; same shared style as above:
+*A person trying to sort one single tangled ball of yarn into three separate baskets, but every strand runs
+into all three baskets at once — the sorting refuses to come apart cleanly. Warm lamplight, scattered index
+cards.* Generate → downsize/JPEG → `materials/lectures/images/` → uncomment the `![]()` in `ml7.md` → rebuild.
+(The whole batch of 7 below is already generated; this is the one new deck-slide image since.)
 
 ---
 

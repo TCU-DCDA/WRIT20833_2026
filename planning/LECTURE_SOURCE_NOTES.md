@@ -232,9 +232,44 @@ both build scripts; dashboard card links it.
   (`ml6_raw.jpg`, river→sieve→cards), hear-don't-extract (`ml6_hear.jpg`, cupped ear vs mining rigs).
   Generate → uncomment → rebuild.
 
+## F25 `lecture-7-nlp-topic-modeling` (15-slide deck) — harvested 2026-06-16 → **ML7 authored**
+The 2026 **ML7** (`materials/lectures/ml7.md`, Day 14) is a tight single-thesis lecture — *the machine
+clusters the words, you name the meaning* — not a port of the 15-slide survey. Title art `ml7_title.jpg`
+(scholar sorting letters into ribboned stacks) is **active**; one interior split slot (`ml7_tangle.jpg`,
+tangled-yarn-into-three-baskets = the muddy single-issue corpus) is **prepped inert** (commented `![]()`
++ IMG PROMPT) — generate → uncomment to activate. Dashboard card flipped from placeholder → linked thumbnail.
+
+### ✅ Folded into ML7
+- **The arc recap** (term frequency → sentiment → "what is this whole pile about?") — pulled from the
+  code-along's opening, not the F25 deck; frames topic modeling as the deepest distant-reading move.
+- **"How humans understand meaning"** (slide 2: repeated words / keywords / tone; and *we can ask*) →
+  the **"You already do this"** slide.
+- **The NLP gap** (slide 3 humans-vs-computers; slide 6 ambiguity/idiom/sarcasm — *"I saw her duck," "that's
+  sick," "oh great, another meeting"*) → the **"computer gets only the words"** slide; the sarcasm/context
+  blind spot is deliberately reused to close the lecture ("what it can't hear").
+- **Library-without-reading analogy + LDA's two assumptions + recipe reverse-engineering** (slides 10–11)
+  → **"Organizing a library without reading the books."** Kept Gensim/LDA named (matches the code-along).
+- **"The algorithm doesn't know these are about politics — you interpret and label"** (slide 12 caption)
+  → promoted to ML7's **spine** ("the machine clusters; you name"), with the *American Dream* word-list
+  example from the code-along.
+- **Critical Questions** (slide 14: what gets counted / who interprets / what assumptions / what it misses)
+  → the closing **"what the model can't hear,"** wired to cross-refs: *Data Archaeology* (empty seats),
+  *Classification Logic* (whose categories), and the ambiguity blind spot from earlier in this same lecture.
+- **From the code-along (not the deck):** "no correct number of topics" (`num_topics` as an authored dial),
+  and the **123 Texas Ten Commandments** payoff (real single-issue data → muddy "more-of-the-same-argument"
+  topics; LDA stochastic → `random_state`). Keeps the lecture and Day-14 code-along in lockstep.
+
+### ❌ Skip
+- **Common NLP tasks grid** (slide 8: NER, text classification) — off ML7's spine; the lecture stays on
+  topic modeling, the one task the course actually runs.
+- **"You use NLP every day" list** (slide 5) — kept only a one-line nod (autocorrect/spam/translation);
+  the full bullet list is survey filler.
+- **News-articles four-topic example** (slide 12 politics/tech/health/sports) — replaced by the course's
+  own toy-corpus → real-corpus contrast, which carries the *limit* lesson the news example doesn't.
+
 ## Other F25 decks (not yet mined)
-Remaining: **ML7** `lecture-7-nlp-topic-modeling` (Day 14), plus the **parked** `lecture-8-code-rhetoric`
-(ML8) and `lecture-9-public-arguments` (ML9) — pending the open thread #9 audit. **ML2** `lecture-2-boundaries`
-is **CUT** (2026-06-15, open thread #9) — *not* to be mined; its core folded into ML6 + ML0. **Mined so
-far:** ML0 (`lecture1.html` + connotations), ML1, ML3, ML4, ML5, ML6. Mine each remaining deck into its
+Remaining: the **parked** `lecture-8-code-rhetoric` (ML8) and `lecture-9-public-arguments` (ML9) — pending
+the open thread #9 audit. **ML2** `lecture-2-boundaries` is **CUT** (2026-06-15, open thread #9) — *not* to
+be mined; its core folded into ML6 + ML0. **Mined so far:** ML0 (`lecture1.html` + connotations), ML1, ML3,
+ML4, ML5, ML6, **ML7** (`lecture-7-nlp-topic-modeling`, 2026-06-16). Mine each remaining deck into its
 `materials/lectures/ml*.md` when authored, and record the triage here. ML10–12 (GitHub/HTML/CSS) are cut.
