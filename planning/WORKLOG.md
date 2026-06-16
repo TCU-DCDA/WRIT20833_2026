@@ -2,7 +2,7 @@
 
 **Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
 https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-06-15
+`main`. · **Last updated:** 2026-06-16 (through PR #23)
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
 Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and
@@ -13,7 +13,28 @@ the private `TCU-DCDA/WRIT20833_2026_keys`.
 
 ---
 
-## Latest session — 2026-06-15 (lectures complete + site polish)
+## Latest session — 2026-06-16 (lecture imagery placed + CSV/HUM examples)
+- **First-half lecture imagery COMPLETE (PR #21).** The 7 warm-palette "Reading Room" paintings were
+  generated and placed: ML4 (AI Agency) + ML6 (Data Archaeology) got their title art + split-slide
+  images (slots uncommented in the `.md`, paths added to the `build_index.py` LECTURES tuples), so the
+  dashboard's last two **placeholder boxes for built lectures are now real thumbnails**. All six built
+  lectures (ML0/1/3/4/5/6) now ship with imagery. (The handoff's old "clearest next task" — imagery —
+  is **done**.)
+- **`materials/lectures/IMAGE_PROMPTS.md` added (PR #20)** — the shareable, reusable prompt spec for the
+  7 lecture images (warm parchment + muted-green palette), so re-generation/extension stays on-style.
+- **CSV/HUM core work-examples drafted (PR #22)** → `planning/CSV_HUM_WORK_EXAMPLES.md`, for the
+  instructor to trim to the AddRan re-vetting form (closes the #10 deliverable).
+- **Handoff hygiene (PRs #19, #23):** marked the syllabus complete in the docs (#19) and dropped the
+  instructor-only AddRan/Word to-do item from the handoff (#23).
+- **Net state:** the two remaining dashboard lecture cards with `link=None` are **NLP & Topic Modeling**
+  (ml7, Day 14) and **Going Public** (ml9, Day 17) — both have title art but **no `ml*.md` authored yet**.
+  ML7 is the clear next content task (core Day-14 payoff, unblocked, F25 source = `lecture-7-nlp-topic-
+  modeling`); ML8 (Code & Rhetoric) + ML9 stay **parked** pending the thread-#9 back-half audit.
+- **Session shipped PRs #19–#23, all merged + live.** No open GitHub issues.
+
+---
+
+## Earlier session — 2026-06-15 (lectures complete + site polish)
 - **Lectures ML4 (AI Agency) + ML6 (Data Archaeology) authored** (PR #8) → **first-half lectures complete**
   (ML0/1/3/4/5/6; reading page + self-contained deck each). ML5 + ML1/3/5 imagery merged first (PR #7).
 - **ML2 "Sacred Boundaries" SETTLED → CUT** (PR #9, open thread #9): redundant now that ML6 carries the

@@ -1,6 +1,6 @@
 # Next-session handoff prompt
 
-Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-15, PR #18.)
+Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-16, PR #23.)
 
 ---
 
@@ -43,25 +43,26 @@ Conventions to honor (see WORKLOG "Locked decisions"):
 - Validate notebooks with /opt/anaconda3/bin/python (has pandas/vaderSentiment/gensim).
 
 Open items (pick one, or tell me which):
-- FIRST-HALF LECTURES COMPLETE: ML0/1/3/4/5/6 done (reading page + self-contained deck each,
-  via build_lectures.py from materials/lectures/ml*.md). ML2 CUT (#9). Student-facing surfaces
-  show lectures by TITLE + DAY (ML numbers dropped; kept only as internal ml*.html slugs +
-  planning-doc labels). Layout directives in the md: `<!-- layout: split -->` (text|image 2-col)
-  and `<!-- layout: gallery -->`. planning/LECTURE_SOURCE_NOTES.md = the F25-mining ledger
-  (what's harvested per lecture) — READ before authoring more. Remaining lectures: ML7 (Topic
-  Modeling, Day 14); ML8/ML9 audit (#9).
-- LECTURE IMAGERY (the clearest next task): ML0/1/3/5 have warm-palette title art (real dashboard
-  thumbnails). ML4 + ML6 ship text-forward with PREPPED inert image slots in their md
-  (`<!-- IMG PROMPT … -->` + a commented `![]()`); the dashboard Lectures section shows 4 real
-  thumbnails + 4 PLACEHOLDER boxes (AI Agency, Data Archaeology, Topic Modeling, Going Public).
-  To fill one: generate the warm "Reading Room"-palette image → save to materials/lectures/images/
-  → (a) uncomment the `![]()` in the lecture md (activates its split slide) and (b) add the path
-  to that lecture's LECTURES tuple in build_index.py (turns the dashboard placeholder into a
-  thumbnail) → rerun the generators. Prompts can be drafted per lecture.
+- NEXT CONTENT TASK = ML7 (NLP & Topic Modeling, Day 14): title art exists (ml7_title.jpg) and the
+  dashboard already reserves its card (link=None in build_index.py LECTURES), but it is NOT yet
+  authored — no materials/lectures/ml7.md. Mine the F25 deck `lecture-7-nlp-topic-modeling` →
+  write ml7.md (reading page + self-contained deck) → build_lectures.py → flip the dashboard slot
+  from None to "lectures/ml7.html" → rerun generators. READ planning/LECTURE_SOURCE_NOTES.md first
+  (the F25-mining ledger) and record the triage there after.
+- FIRST-HALF LECTURES + IMAGERY COMPLETE: ML0/1/3/4/5/6 done (reading page + self-contained deck each,
+  via build_lectures.py from materials/lectures/ml*.md) AND all six now carry warm-palette imagery
+  (the ML4/ML6 title + split-slide art was placed in PR #21; reusable prompt spec in
+  materials/lectures/IMAGE_PROMPTS.md). ML2 CUT (#9). Student-facing surfaces show lectures by
+  TITLE + DAY (ML numbers dropped; kept only as internal ml*.html slugs + planning-doc labels).
+  Layout directives in the md: `<!-- layout: split -->` (text|image 2-col) and
+  `<!-- layout: gallery -->`. To add/replace imagery later: generate a "Reading Room"-palette image
+  → save to materials/lectures/images/ → uncomment the `![]()` in the lecture md + add the path to
+  that lecture's LECTURES tuple in build_index.py → rerun the generators.
+- PARKED — back-half lecture audit (#9): ML8 (Code & Rhetoric) + ML9 (Going Public, Day 17, shows
+  "(under review)" with title art but no md) await a keep/cut/fold decision before authoring.
 - CSV/HUM core work-examples (#10) DRAFTED → planning/CSV_HUM_WORK_EXAMPLES.md (instructor trims to the
-  vetting form). ML8/ML9 lecture audit (#9, ML2 settled→cut); parked
-  site-design questions (sidebar icons, nav filter) in the WORKLOG.
-  (DONE: Capstone sheet; Syllabus HUM core; site live + public.)
+  vetting form). Parked site-design questions (sidebar icons, nav filter) in the WORKLOG.
+  (DONE: Capstone sheet; Syllabus HUM core + full fill; lecture imagery; site live + public.)
 - SITE UX (all merged 2026-06-15): dashboard order 00 Start · 01 Lectures · 02 Code-alongs ·
   03 Homework · 04 Capstone · 05 Resources; masthead hero banner; deck home-nav; external links
   open in a new tab (auto via site_theme.PAGE); lecture-card thumbnails + placeholders. Always
