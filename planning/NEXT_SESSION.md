@@ -58,7 +58,8 @@ Open items (pick one, or tell me which):
   → (a) uncomment the `![]()` in the lecture md (activates its split slide) and (b) add the path
   to that lecture's LECTURES tuple in build_index.py (turns the dashboard placeholder into a
   thumbnail) → rerun the generators. Prompts can be drafted per lecture.
-- CSV/HUM core work-examples (#10); ML8/ML9 lecture audit (#9, ML2 settled→cut); parked
+- CSV/HUM core work-examples (#10) DRAFTED → planning/CSV_HUM_WORK_EXAMPLES.md (instructor trims to the
+  vetting form). ML8/ML9 lecture audit (#9, ML2 settled→cut); parked
   site-design questions (sidebar icons, nav filter) in the WORKLOG.
   (DONE: Capstone sheet; Syllabus HUM core; site live + public.)
 - SITE UX (all merged 2026-06-15): dashboard order 00 Start · 01 Lectures · 02 Code-alongs ·
