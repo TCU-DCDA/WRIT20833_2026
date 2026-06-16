@@ -2,7 +2,7 @@
 
 **Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
 https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-06-16 (through PR #23)
+`main`. · **Last updated:** 2026-06-16 (through PR #26)
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
 Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and
@@ -13,7 +13,26 @@ the private `TCU-DCDA/WRIT20833_2026_keys`.
 
 ---
 
-## Latest session — 2026-06-16 (lecture imagery placed + CSV/HUM examples)
+## Latest session — 2026-06-16 (ML7 authored → all scheduled lectures done; docs swept current)
+- **ML7 "NLP & Topic Modeling" (Day 14) AUTHORED (PR #25)** → **all scheduled lectures now complete**
+  (ML0/1/3/4/5/6/7). Mined the F25 `lecture-7-nlp-topic-modeling` deck into `materials/lectures/ml7.md`
+  (reading page + self-contained deck), registered it in `build_lectures.py`, and flipped its dashboard
+  card from placeholder → linked thumbnail in `build_index.py`. **Spine:** *the machine clusters the
+  words — you name the meaning.* Locked to the Day-14 Topic Modeling code-along (LDA/Gensim, `num_topics`
+  as an authored dial, the muddy 123-comment Texas Ten Commandments payoff, LDA stochasticity) and
+  cross-refs Data Archaeology + Classification Logic by concept. Title art `ml7_title.jpg` active; one
+  interior split slot (`ml7_tangle.jpg`) prepped inert. Triage logged in `LECTURE_SOURCE_NOTES.md`; the
+  new pending deck image tracked in `IMAGE_PROMPTS.md`.
+- **Handoff brought current (PRs #24, #26).** #24 caught the resume docs up from their stale "PR #18 /
+  imagery-is-next" state to PR #23; #26 (this pass) swept **all** planning docs current after ML7 landed —
+  NEXT_SESSION + WORKLOG now read "all scheduled lectures done, ML8/ML9 the only remaining (parked) work."
+- **Only remaining lecture work = the parked back-half audit (#9):** ML8 (Code & Rhetoric) + ML9 (Going
+  Public, Day 17) await a keep/cut/fold decision before any authoring. No open GitHub issues.
+- **Session shipped PRs #24–#26, all merged + live.** Site at https://tcu-dcda.github.io/WRIT20833_2026/.
+
+---
+
+## Earlier session — 2026-06-16 (lecture imagery placed + CSV/HUM examples)
 - **First-half lecture imagery COMPLETE (PR #21).** The 7 warm-palette "Reading Room" paintings were
   generated and placed: ML4 (AI Agency) + ML6 (Data Archaeology) got their title art + split-slide
   images (slots uncommented in the `.md`, paths added to the `build_index.py` LECTURES tuples), so the
@@ -346,12 +365,14 @@ is no longer all placeholders — ML0 is a live reading page; the other 8 cards 
   choice"). Other F25 ML0 images were off-palette; `data_as_categorization` + `tippingScales` earmarked
   for **ML3**. Instructor generated the title/valves images (ChatGPT) to match `messy_humanities`'s style.
 
-**Next (scale-out, when wanted):** author the remaining settled lectures as `materials/lectures/ml*.md`
-+ a registry line each — **ML1** Connotations & Code, **ML3** Classification Logic, **ML5** Collective
-Memory, **ML4** AI Agency, **ML6** Data Archaeology, **ML7** NLP & Topic Modeling (all "Mix" from the F25
-decks in `WRIT20833_2025/docs/lectures/mini-lectures/lecture-*` + the framework). **ML2/ML9 stay parked**
-pending the open thread #9 audit (cut/repurpose ML2; re-home ML9 → Day 17). Pattern is set; each new
-lecture is one md file + one `LECTURES` line + rerun both generators.
+**Scale-out — ✅ DONE (2026-06-16).** All settled lectures are authored as `materials/lectures/ml*.md`
+with a registry line each: **ML0** Humanities & Coding, **ML1** Connotations & Code, **ML3**
+Classification Logic, **ML5** Collective Memory, **ML4** AI Agency, **ML6** Data Archaeology, **ML7**
+NLP & Topic Modeling (Day 14, PR #25) — all "Mix" from the F25 decks in
+`WRIT20833_2025/docs/lectures/mini-lectures/lecture-*` + the framework. **ML2 CUT** (#9). **ML8/ML9 stay
+parked** pending the open thread #9 audit (re-home ML9 → Day 17; harvest ML8's thesis into the
+code-is-not-neutral thread). The authoring pattern, if those get greenlit: one md file + one `LECTURES`
+line + rerun both generators.
 
 ## Other open threads / next steps
 1. **Confirm scope** — drop-portfolio (current) vs. full-arc-tightened vs. foundations-only.
