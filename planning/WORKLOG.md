@@ -41,7 +41,16 @@ the private `TCU-DCDA/WRIT20833_2026_keys`.
   (#16):** `site_theme.assert_accessible(extra_css="")` fails the build if any `font:`/`font-size:` < 12px or
   if `--muted/--faint/--clay` drop below AA on paper/surface — called via `write_stylesheet()` (all
   generators) + `build_lectures` passes its `DECK_CSS`. So the WAVE fixes can't silently regress.
-- **Session shipped PRs #7–#16, all merged + live.** Site at https://tcu-dcda.github.io/WRIT20833_2026/.
+- **Syllabus fully filled (PR #18).** Pulled the instructor-completed fields out of
+  `WRIT20833-020_Summer2026_Rode.docx` (section 020, component LCL, Zoom, Dr. Curt Rode, office Schar 2006,
+  office hours via Calendly, phone, c.rode@tcu.edu, D2L d2l.tcu.edu, official catalog description, program
+  connections, CSV+HUM confirmed) and finished the rest in markdown (meeting time 10:05 AM–12:00 PM
+  Central; Grading Concerns; TCU Online submissions note; dropped loaner-laptop + supplementary-resources
+  lines). **No `[...]` placeholders remain.** The `.docx` is the maintained AddRan submission copy (QR
+  image + template formatting) — edited in Word, mirrored by hand, **not** regenerated from the md; so the
+  markdown-only edits (meeting time, submissions note, Grading Concerns, dropped lines) still need to be
+  entered in Word for submission.
+- **Session shipped PRs #7–#18, all merged + live.** Site at https://tcu-dcda.github.io/WRIT20833_2026/.
 
 ---
 
@@ -468,12 +477,11 @@ lecture is one md file + one `LECTURES` line + rerun both generators.
     via `pandoc … -f gfm` → `WRIT20833-[section]_Summer2026_Rode.docx` (38.6 KB; 9 tables, QR image
     embedded, AddRan section order preserved). The .docx is a **working draft edited in Word** and is
     **`.gitignore`d** (`WRIT20833-*_Summer2026_Rode.docx`) — `SYLLABUS_2026.md` stays the source of truth.
-    **Still instructor-only** (left as `[...]` in both md + docx): section number (also the filename),
-    meeting time, TCU email, phone, office hours, Zoom, TCU-Online course link; plus the soft fields kept
-    as placeholders by choice (Grading Concerns, submissions-module note, loaner-laptop, supplementary
-    resources). **Two to verify, not fabricate:** the catalog description (line 67) + exact CSV/HUM
-    outcome wording (line 90). In Word: rename `[section]` → real section, run the accessibility checker
-    (table headers + image alt text). *(The renamed export is `WRIT20833-020_...` — section 020.)*
+    **✅ SUPERSEDED — all of this is now done (PR #18, see the "Latest session" summary up top):** every
+    `[...]` field is filled (section 020, meeting time, contact, Zoom, office/hours, catalog desc,
+    CSV/HUM confirmed, Grading Concerns + submissions note authored, loaner/supplementary dropped). The
+    only remaining task is instructor-side **in Word**: mirror the markdown-only edits into the .docx and
+    run the accessibility checker (table headers + image alt text).
 
     **HUM core added (2026-06-12).** The course now carries **two** Core designations — CSV **and
     Humanities (HUM)**. Verified the official HUM outcome against `reference/TCU-Core-Curriculum-outcomes-1.pdf`:
