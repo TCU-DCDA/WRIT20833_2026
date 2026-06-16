@@ -7,6 +7,12 @@
 **Repo assessed:** `TCU-DCDA/WRIT20833_2026` (this repo)
 **Reference offering:** Fall 2025 (`TCU-DCDA/WRIT20833_2025`), **16-week** semester
 
+> **⏱ Snapshot — this is the initial readiness assessment (2026-06-09), kept as a record.** The port has
+> since been built: as of **2026-06-16** the homework spine (HW1–4) + all code-along notebooks are
+> complete and validated, the syllabus markdown is fully filled, the course site is live and public, and
+> all seven scheduled mini-lectures are authored. The "Gaps still open" and "port not started"
+> assessments below were true *at assessment time*; for current state see `planning/WORKLOG.md`.
+
 > **Sourcing note:** This revision incorporates the authoritative `WRIT20833_2025`
 > repository — first its README, then a **full clone** (284 files) inspected on
 > 2026-06-09 via the allowlisted `github.com`. Corrects several facts from the first
