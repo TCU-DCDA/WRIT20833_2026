@@ -29,7 +29,7 @@ Notebook links are relative paths into this repo (`notebooks/codeAlongs/`, `note
 ### Week 2 (Jul 13–17) — From text to data: ethics, pandas, AI
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 7/13** (6) | Data as evidence | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
+| **Mon 7/13** (6) | Data as evidence *(brief framing — no deck)* | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
 | **Tue 7/14** (7) | AI Agency | **Lab** → Reading & improving AI code + stylometry seed: [Reading for the Seams](materials/stylometry/Reading_for_the_Seams.md) (close reading) | — |
 | **Wed 7/15** (8) | Data Archaeology | **Code-along** → [Found data + collection ethics (pandas 01 + scraping)](notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb) | D2 post |
 | **Thu 7/16** (9) | — | **Code-along** → [Data cleaning (pandas 02)](notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb) | — |
@@ -65,6 +65,8 @@ authored fresh (no F25 source existed) and leads directly into HW2.
 *Notes on lectures:* "—" in **Lecture** marks recap / workshop / work-session days with no formal
 mini-lecture (Day 2 included — **"Sacred Boundaries" was cut**: its privacy/collection-ethics core
 lives in the Day-8 Data Archaeology lecture, and its noumena-limit point in the Day-1 opener.
+**Day 6 "Data as evidence" is a brief (~5-min) verbal framing**, not a built deck — the Week 1 → Week 2
+pivot (Python foundations → treating text as data), delivered live to open the Term-Frequency code-along.
 Still under review (see `WORKLOG.md` open thread #9): the **"Going Public"** frame (a candidate for Day 17 to
 anchor the capstone) and **"Code as Rhetoric"** (harvest into the code-is-not-neutral thread). The
 schedule will be adjusted to the class's pace; changes announced in class and on D2L.

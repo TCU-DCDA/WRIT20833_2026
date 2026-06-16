@@ -344,7 +344,7 @@ assessed before it's taught.*
 ### Week 2 (Jul 13–17) — From text to data: ethics, pandas, AI
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 7/13** (6) | Data as evidence | Term frequency + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
+| **Mon 7/13** (6) | Data as evidence *(brief framing)* | Term frequency + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
 | **Tue 7/14** (7) | AI Agency | Reading & improving AI code + stylometry seed | — |
 | **Wed 7/15** (8) | Data Archaeology | Found data + collection ethics (pandas 01 + scraping) | D2 post |
 | **Thu 7/16** (9) | — | Data cleaning (pandas 02) | — |
