@@ -280,9 +280,10 @@ collaboration" — cultural analytics of a site of difference).
 (central artifact), the **four threaded discussions**, the **three reflections**, and the **HW analyses**
 of the civic corpus.
 
-**Action items (re-vetting):** Core syllabi should *reflect* the CSV outcome; the submission form wants
-**2–3 concrete examples** of student work achieving it. `SYLLABUS_2026.md` now names the CSV designation;
-the 2–3 examples can be drafted from the capstone + discussions on request.
+**Action items (re-vetting):** Core syllabi should *reflect* the CSV + HUM outcomes (`SYLLABUS_2026.md`
+names both). The submission form wants **2–3 concrete examples** of student work per outcome — **✅ drafted
+in `planning/CSV_HUM_WORK_EXAMPLES.md`** (three each: CSV = capstone essay, discussions, reflections;
+HUM = HW analyses, capstone notebook, stylometry — trim to the form's field limits).
 
 ## Related documents
 - `SYLLABUS_2026.md` · `COURSE_SCHEDULE_2026.md` — the course as students meet it.

@@ -455,9 +455,9 @@ lecture is one md file + one `LECTURES` line + rerun both generators.
     diverse communities."* The course meets it directly (a contested public-policy debate = a diverse
     community in disagreement; the data-driven-opinion capstone + discussions + reflections are the
     evidence). Full mapping + the course's adjacent resonance (Humanities, Written Comm 2, Cultural
-    Awareness) in `CONCEPTUAL_FRAMEWORK_2026.md` §7; syllabus now names the CSV designation. **Task when
-    wanted:** draft the **2–3 concrete student-work examples** the CSV submission form requires (from the
-    capstone + discussions), once the instructor confirms the exact outcome to claim.
+    Awareness) in `CONCEPTUAL_FRAMEWORK_2026.md` §7; syllabus now names the CSV + HUM designations.
+    **✅ DONE:** the **student-work examples** (3 per outcome) are drafted in
+    `planning/CSV_HUM_WORK_EXAMPLES.md` — instructor trims to the vetting form's field limits.
 
 11. **TCU syllabus — ✅ ALIGNED TO AddRan + F25 (2026-06-11, second pass).** Reviewed the AddRan syllabus
     docs in `/Users/curtrode/Code/AddRan/syllabus-checker/source_files` (AddRan Simplified Template,
