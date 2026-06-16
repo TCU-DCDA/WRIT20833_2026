@@ -1,6 +1,6 @@
 # Next-session handoff prompt
 
-Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-15, PR #16.)
+Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-15, PR #18.)
 
 ---
 
@@ -69,8 +69,15 @@ Open items (pick one, or tell me which):
   all UI text ≥ 12px. `site_theme.assert_accessible()` GUARDS this at build time — the generators
   FAIL LOUDLY if a `font`/`font-size` < 12px or `--muted/--faint/--clay` drops below AA. So when
   retuning the THEME_CSS palette/type, stay within those limits or the build breaks (by design).
-- Instructor-only still pending: fill syllabus [...] fields + paste the 3 HUM blocks
-  into the WRIT20833-020 Word export; verify catalog + CSV/HUM outcome wording.
+- Syllabus: MARKDOWN fully filled (PR #18) — no [...] placeholders left. Section 020, contact,
+  meeting time (10:05 AM–12:00 PM Central), Zoom, office/hours, official catalog desc, CSV+HUM
+  confirmed, Grading Concerns + submissions note authored, loaner/supplementary dropped. The
+  WRIT20833-020_Summer2026_Rode.docx is the maintained AddRan submission copy (QR image +
+  template formatting) — edited directly in Word and mirrored by hand, NOT regenerated from the md.
+- Instructor-only still pending: mirror the markdown-only syllabus edits into the .docx for AddRan —
+  meeting time, the TCU Online submissions note, Grading Concerns, and the removed loaner/supplementary
+  lines (everything else already came from the docx). Confirm the two assumptions (meeting time
+  AM→noon/Central; submissions-note wording).
 
 Ask before large multi-file refactors or anything outward-facing.
 ```
