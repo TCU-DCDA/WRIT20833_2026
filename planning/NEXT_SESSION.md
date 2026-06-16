@@ -73,12 +73,8 @@ Open items (pick one, or tell me which):
 - Syllabus: MARKDOWN fully filled (PR #18) — no [...] placeholders left. Section 020, contact,
   meeting time (10:05 AM–12:00 PM Central), Zoom, office/hours, official catalog desc, CSV+HUM
   confirmed, Grading Concerns + submissions note authored, loaner/supplementary dropped. The
-  WRIT20833-020_Summer2026_Rode.docx is the maintained AddRan submission copy (QR image +
-  template formatting) — edited directly in Word and mirrored by hand, NOT regenerated from the md.
-- Instructor-only still pending: mirror the markdown-only syllabus edits into the .docx for AddRan —
-  meeting time, the TCU Online submissions note, Grading Concerns, and the removed loaner/supplementary
-  lines (everything else already came from the docx). Confirm the two assumptions (meeting time
-  AM→noon/Central; submissions-note wording).
+  WRIT20833-020_Summer2026_Rode.docx is the maintained AddRan submission copy, handled by the
+  instructor (Word formatting + QR image) — not regenerated from the md.
 
 Ask before large multi-file refactors or anything outward-facing.
 ```
