@@ -5,9 +5,10 @@
 > all) and the F25 WRIT 20833 syllabus.** Official University-policy text (Title IX, Disability/Access,
 > Religious Observations, Academic Conduct, Emergency Response, Recording) is **not pasted** — per
 > AddRan, it lives behind the **Student Resources & Policy Information** QR/link below; the syllabus
-> carries only course-specific policies. Remaining `[...]` placeholders are instructor/registrar
-> specifics (name, contact, section, credit hours, links). **For AddRan submission:** export to **Word**,
-> filename `WRIT20833-[section]_Summer2026_Rode`. Tables/images must meet TCU accessibility guidelines
+> carries only course-specific policies. Instructor/registrar fields are filled (section 020, contact,
+> meeting time, etc.). **For AddRan submission:** the maintained Word copy is
+> `WRIT20833-020_Summer2026_Rode.docx` (edited directly in Word — it holds the QR image + template
+> formatting; mirror any later edits here into it). Tables/images must meet TCU accessibility guidelines
 > (https://cte.tcu.edu/resources/accessibility/).
 
 ---
@@ -16,21 +17,21 @@
 | | |
 |---|---|
 | **Course Title** | Intro to Coding in the Humanities — "When Coding Meets Culture" |
-| **Prefix · Number · Section** | WRIT · 20833 · `[section]` |
+| **Prefix · Number · Section** | WRIT · 20833 · 020 |
 | **Semester & Year** | Summer 2026 |
-| **Course Component Type** | Lecture |
+| **Course Component Type** | LCL |
 | **Credit Hours** | 3 (lower-division undergraduate) |
-| **Class Meeting Days & Times** | **Monday–Friday, `[time]`–`[time]`, July 6–31, 2026** — **online synchronous** (20 live sessions; attendance at the live sessions is expected) |
+| **Class Meeting Days & Times** | **Monday–Friday, 10:05 AM–12:00 PM (Central), July 6–31, 2026** — **online synchronous** (20 live sessions; attendance at the live sessions is expected) |
 | **Class Location** | Online (synchronous via Zoom) |
-| **Zoom Access** | `[Zoom link + meeting ID/passcode]` |
+| **Zoom Access** | https://tcu.zoom.us/j/99120992930 |
 | **Prerequisites** | None — **no prior coding experience assumed** |
 | **Final Evaluative Exercise** | The **capstone** (data-driven-opinion notebook + short essay), presented and due on the final day, **Fri July 31**. There is no separate final exam. |
 | **Other Important Dates** | All activity occurs within the listed daily sessions; any deviations announced on TCU Online. |
 
-**Instructor:** Curt Rode · **Office Location:** N/A — online · **Office Hours:** `[days/times; virtual — access instructions]`
-**Telephone:** `[number or N/A]` · **Email:** `[TCU email]` · **Preferred Contact:** email via TCU Online
+**Instructor:** Dr. Curt Rode · **Office Location:** Schar 2006 · **Office Hours:** By appointment — https://calendly.com/c-rode/appointments
+**Telephone:** 817-257-6983 · **Email:** c.rode@tcu.edu · **Preferred Contact:** Email
 **Response Time:** within 24 hours on weekdays (longer on weekends and holidays)
-**Course site & submissions:** **TCU Online** (D2L) — `[course link]`. **Code runs in:** Google Colab (free; needs a Google account).
+**Course site & submissions:** **TCU Online** (D2L) — d2l.tcu.edu. **Code runs in:** Google Colab (free; needs a Google account).
 
 *Note for students:* The syllabus is your first course reading — it orients you to the flow and
 expectations of the course. Turn to it for details on assignments and policies.
@@ -55,7 +56,9 @@ Affiliated Tribes, upon whose historical homeland our university is located.
 ---
 
 ## Course Description
-This course is an invitation to *think with code* about culture. Over four intensive weeks you'll learn
+**From the official course catalog:** *This course is designed as an introduction to coding for students in the Humanities and/or the Digital Culture and Data Analytics (DCDA) Minor. Students will be introduced to the basics of a computer programming language (such as Python or R) as they pertain to the intellectual, cultural, and creative work central to the Humanities.*
+
+This offering of the course is an invitation to *think with code* about culture. Over four intensive weeks you'll learn
 enough Python to ask real humanistic questions of real text — social-media comments, public documents,
 your own chosen corpus — and to argue from what you find. We move from **predictions** to
 **computational analysis** to **data-driven insight**, always asking not just *what the code does* but
@@ -64,12 +67,9 @@ your own chosen corpus — and to argue from what you find. We move from **predi
 computation flattens from view. No prior coding experience is needed; bring curiosity and a willingness
 to be wrong out loud.
 
-`[Confirm against official course-catalog description.]`
-
 **Prerequisites & Concurrent Enrollment.** None — no prior coding experience assumed.
 
-**Program & Major Connections.** Introduces computational-text-analysis and data-literacy skills that
-support further work in writing, the digital humanities, and any field that reads culture from data.
+**Program & Major Connections.** This course satisfies the coding requirement for the Digital Culture and Data Analytics major and minor. It also satisfies elective requirements for the English and Writing majors and minors.
 
 ### TCU Core Curriculum — Citizenship & Social Values (CSV) and Humanities (HUM)
 This course carries **two** TCU Core Curriculum designations.
@@ -87,24 +87,19 @@ founding document, a corpus you choose), move between contemporary voices and hi
 every step what computation reveals and what it flattens. *(Evidence: the homework analyses, the capstone
 notebook + essay, and the close- vs. distant-reading work.)*
 
-`[Confirm the exact CSV and HUM outcome wording against the current core vetting on file.]`
-
 ---
 
 ## Course Materials
 **Required (no textbook to buy):**
 - **Google Colab** (free) — runs every notebook in your browser; no installation. Needs a Google account.
 - **TCU Online (D2L)** — readings, the four threaded discussions, and all submissions.
-- A laptop with a reliable internet connection for the live sessions. `[TCU loaner-laptop info if applicable.]`
+- A laptop with a reliable internet connection for the live sessions.
 - **No additional costs.** All course materials (notebooks, tutorials, data) are provided in the course.
 
 **A self-contained course.** Everything you need is *in this course* — our own code-along notebooks,
 short tutorials, and homework. Melanie Walsh's open *Introduction to Cultural Analytics* is a wonderful
 model and is offered as **optional** further reading, but nothing you're evaluated on requires an
 outside book.
-
-**Supplementary resources.** `[Optional: departmental tutoring, the Koehler Center, campus support, or
-extension resources for students who want to go further.]`
 
 ---
 
@@ -147,8 +142,7 @@ By the end of the course you will be able to:
 
 ### Assignments
 Each assignment is described below and connects to the learning outcomes; you submit and view feedback
-through **TCU Online**. `[Note the specific TCU Online module/tool for submissions and where grades and
-feedback appear.]`
+through **TCU Online**: submit homework notebooks and reflections in the **Assignments** area and post to the weekly **Discussions**; your marks and my feedback appear in **Grades**.
 
 | Work | How many | What it is | Course outcomes | Core (CSV · HUM) |
 |---|---|---|---|---|
@@ -258,8 +252,13 @@ self-evaluation is where you make your case for more. I confirm or adjust.
 B‑ 80–83.99 · C+ 77–79.99 · C 74–76.99 · C‑ 70–73.99 · D+ 67–69.99 · D 64–66.99 · D‑ 60–63.99 · F below 60.
 *(No individual piece carries points; these percentages describe only the final letter, set as above.)*
 
-**Grading Concerns.** `[State how/where students raise questions about a grade or mark, and your process
-for discussing it.]`
+**Grading Concerns.** Because the course is ungraded, there's nothing to "dispute" point-by-point — but my
+feedback is always open to conversation. If a comment doesn't sit right, email me at
+c.rode@tcu.edu and we'll talk it through: since each piece is evaluated on engagement and reflection rather than a
+right answer, the conversation is about what the work shows and how to strengthen it moving forward. The
+final letter grade isn't handed down unilaterally — you make an evidence-based case for it in your final
+self-evaluation (Reflection 3), and I confirm or adjust. For the University's formal grade-appeal
+procedure, see the **Student Resources & Policy Information** link above.
 
 ---
 
