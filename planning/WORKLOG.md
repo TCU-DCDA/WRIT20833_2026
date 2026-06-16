@@ -47,9 +47,7 @@ the private `TCU-DCDA/WRIT20833_2026_keys`.
   connections, CSV+HUM confirmed) and finished the rest in markdown (meeting time 10:05 AM–12:00 PM
   Central; Grading Concerns; TCU Online submissions note; dropped loaner-laptop + supplementary-resources
   lines). **No `[...]` placeholders remain.** The `.docx` is the maintained AddRan submission copy (QR
-  image + template formatting) — edited in Word, mirrored by hand, **not** regenerated from the md; so the
-  markdown-only edits (meeting time, submissions note, Grading Concerns, dropped lines) still need to be
-  entered in Word for submission.
+  image + template formatting), **handled by the instructor** and not regenerated from the md.
 - **Session shipped PRs #7–#18, all merged + live.** Site at https://tcu-dcda.github.io/WRIT20833_2026/.
 
 ---
