@@ -5,7 +5,7 @@
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): an archaeologist's hand with a soft brush sweeping dust off a half-buried clay tablet whose surface is inscribed not with cuneiform but with faint rows of a spreadsheet — excavating data like an artifact. -->
-<!-- ![A hand brushing dust from a half-buried clay tablet inscribed with faint spreadsheet rows](materials/lectures/images/ml6_title.jpg) -->
+![A hand brushing dust from a half-buried clay tablet inscribed with faint spreadsheet rows](materials/lectures/images/ml6_title.jpg)
 
 Today you start working with **found data** — a table you didn't make, full of words real people wrote for
 their own reasons. Before you load a single row in pandas, one idea has to land: **that data is not raw.**
@@ -40,7 +40,7 @@ it was made.* "Found" never means "neutral."
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, clay accent): a flowing river of human faces and voices narrowing as it pours through a wooden sieve; what drops out the bottom is a neat stack of identical paper cards, while most of the river spills off the sides, uncaptured. -->
-<!-- ![A river of faces pouring through a sieve that emits neat identical cards while most spills off uncaptured](materials/lectures/images/ml6_raw.jpg) -->
+![A river of faces pouring through a sieve that emits neat identical cards while most spills off uncaptured](materials/lectures/images/ml6_raw.jpg)
 
 We say "raw data" as if it arrived straight from nature, untouched. It never did. By the time a comment
 reaches your notebook, someone chose **which** platform to pull from, **when**, **which** field counted,
@@ -53,7 +53,7 @@ row at all. **The empty seats aren't in the file.** Treat "raw" as a warning lab
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, clay accent): two hands cupped to an ear, leaning toward a small crowd of warmly glowing figures who are speaking, set against a faint, cold background of industrial mining and harvesting machinery — listening, not mining. -->
-<!-- ![Hands cupped to listen toward a crowd of speaking figures, against faint mining machinery](materials/lectures/images/ml6_hear.jpg) -->
+![Hands cupped to listen toward a crowd of speaking figures, against faint mining machinery](materials/lectures/images/ml6_hear.jpg)
 
 Listen to the verbs data culture uses: *mine, scrape, harvest, crawl, extract.* Every one treats people
 like ore — raw material to be stripped out and processed. This course asks you to change the verb to
