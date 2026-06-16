@@ -5,7 +5,7 @@
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a person at a lamplit desk working the strings of a small wooden marionette that is typing at a tiny keyboard — the angle leaves it ambiguous who is moving whom; scattered manuscripts. -->
-<!-- ![A person at a desk working a small marionette that types at a keyboard — ambiguous who moves whom](materials/lectures/images/ml4_title.jpg) -->
+![A person at a desk working a small marionette that types at a keyboard — ambiguous who moves whom](materials/lectures/images/ml4_title.jpg)
 
 You can now turn to an AI and say *"write me ten lines of Python to score the sentiment of these
 comments,"* and ten seconds later you have ten working lines. The question this course cares about isn't
@@ -53,7 +53,7 @@ changed.**
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, clay accent): a split composition — on one side a person speaking, their own breath/voice rendered as flowing handwritten script; on the other side the same person as a ventriloquist's dummy, mouth open, the words trailing in from offstage. -->
-<!-- ![On one side a person speaking in their own hand; on the other a ventriloquist's dummy mouthing borrowed words](materials/lectures/images/ml4_ventriloquism.jpg) -->
+![On one side a person speaking in their own hand; on the other a ventriloquist's dummy mouthing borrowed words](materials/lectures/images/ml4_ventriloquism.jpg)
 
 Here's the distinction that decides which literacy you're building. **Learning a language** means you know
 what each piece does, you can adapt it to a new situation, and you can fix it when it breaks. The other
