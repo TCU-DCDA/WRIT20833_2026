@@ -58,7 +58,7 @@ LECTURES = [
     ("Collective Memory", "What a culture keeps and forgets.", "Day 4", "lectures/ml5.html", "materials/lectures/images/ml5_title.jpg"),
     ("AI Agency", "Reading & judging machine-written code.", "Day 7", "lectures/ml4.html", "materials/lectures/images/ml4_title.jpg"),
     ("Data Archaeology", "Where found data comes from.", "Day 8", "lectures/ml6.html", "materials/lectures/images/ml6_title.jpg"),
-    ("NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14", None, "materials/lectures/images/ml7_title.jpg"),
+    ("NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14", "lectures/ml7.html", "materials/lectures/images/ml7_title.jpg"),
     ("Going Public", "Analysis → public argument. (under review)", "Day 17", None, "materials/lectures/images/ml9_title.jpg"),
 ]
 
