@@ -2,7 +2,7 @@
 
 **Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
 https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-06-16 (through PR #26)
+`main`. · **Last updated:** 2026-06-17 (through PR #26 merged; PR #27 + #28 open)
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
 Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and
@@ -13,7 +13,48 @@ the private `TCU-DCDA/WRIT20833_2026_keys`.
 
 ---
 
-## Latest session — 2026-06-16 (ML7 authored → all scheduled lectures done; docs swept current)
+## Latest session — 2026-06-17 (first-half readiness check + chatbot-tutor evaluation)
+- **First-half readiness — ✅ READY TO TEACH (Days 1–10).** Verified every asset the first half touches,
+  by *executing* the notebooks (not just checking they exist): all 7 first-half code-alongs run clean
+  (Variables has exactly **1 intentional** TypeError — the "read the error message" teaching cell, fix
+  shown next); HW1 + HW2 execute clean with **no leaked answer keys**; the pandas notebooks are
+  self-contained (sample data embedded, live network calls commented out, so wifi/Colab hiccups won't
+  break class); six first-half lecture decks built; R1 + D1 + D2 prompts written; site live + public.
+- **One loose thread fixed (PR #27, OPEN):** Day 6 "Data as evidence" was the lone named lecture with no
+  built deck — relabeled it **"(brief framing — no deck)"** in `COURSE_SCHEDULE_2026.md` +
+  `SYLLABUS_2026.md` (it's the Week 1→2 pivot, delivered live to open the Term-Frequency code-along; the
+  day is already packed with HW1 due + debrief + code-along). Regenerated `docs/schedule.html`.
+- **Chatbot-tutor evaluation (no build yet — awaiting instructor's read of the voice).** Question raised:
+  is there value in a course chatbot like the **MALA 60970 tutor** (`../../MALA/MALA60970-chatbot`)?
+  - **What the MALA bot is:** a Socratic "guide-not-code-generator" tutor on a lean stack — Cloudflare
+    Worker + Claude **Haiku 4.5** + vanilla JS, ~5K LOC, no DB/RAG (system prompt + per-lesson content
+    modules), ~**$30–50/term**, ~2–3 wks to build. Same instructor + same TCU/D2L/Cloudflare plumbing +
+    **same developer** → architecture is copy-paste transferable.
+  - **Recommendation (mine):** YES, real value, but **re-aimed**. MALA is *async* so its bot replaces video
+    code-alongs; WRIT is *online synchronous*, so a tutor adds little *during* class. Point it instead at
+    the **independent homework + capstone** (HW done solo at night, on the student's *own* data the
+    instructor can't pre-debug). Fit is unusually good because the course's **"errors are learning" +
+    ungrading** pedagogy is exactly what a Socratic, traceback-reading, no-solutions tutor does best — it
+    *reinforces* ungrading instead of inviting cheating.
+  - **Scope:** an **MVP "Python debugging companion,"** not a clone of MALA's 19 fixed lessons — Python HW
+    is open-ended, so the analog is a lighter assignment-context selector (HW1–4 / capstone spec blocks)
+    appended to one strong system prompt. Est. **~3–5 days** (architecture already exists).
+  - **Timing decision (instructor's):** ship the MVP before launch (2026-07-06; HW1 lands Day 5) **or**
+    launch first, watch where students actually get stuck, build for the back half / next offering. I lean
+    MVP-before-launch *if* a few days are free this week; observe-first is the safer call otherwise.
+  - **Artifact:** the high-leverage piece — the full **draft system prompt** — is at
+    `planning/CHATBOT_TUTOR_SYSTEM_PROMPT_DRAFT.md` (committed PR #28). It encodes the WRIT voice (Colab not
+    VS Code; pandas/VADER/gensim; the TX Ten Commandments corpus; ungrading; predict-then-run; the "one
+    rule: guide, not code generator"; AI-honesty `#comment` disclosure aligned to the syllabus policy).
+  - **Offered next steps (not yet done):** (a) draft the **HW1 assignment-context block** (first thing the
+    bot needs at launch), or (b) write **adversarial test conversations** ("just give me the answer, I'm out
+    of time") to pressure-test the no-solutions guardrail. **← pick up here at the office.**
+- **PRs this session:** #27 (Day-6 label, OPEN) + #28 (this handoff + chatbot draft, OPEN). Merge both at
+  the office; nothing else pending. No open GitHub issues.
+
+---
+
+## Earlier session — 2026-06-16 (ML7 authored → all scheduled lectures done; docs swept current)
 - **ML7 "NLP & Topic Modeling" (Day 14) AUTHORED (PR #25)** → **all scheduled lectures now complete**
   (ML0/1/3/4/5/6/7). Mined the F25 `lecture-7-nlp-topic-modeling` deck into `materials/lectures/ml7.md`
   (reading page + self-contained deck), registered it in `build_lectures.py`, and flipped its dashboard

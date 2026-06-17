@@ -1,6 +1,7 @@
 # Next-session handoff prompt
 
-Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-16, PR #26.)
+Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-17; PR #26
+merged, PR #27 + #28 open — merge both first thing.)
 
 ---
 
@@ -43,6 +44,20 @@ Conventions to honor (see WORKLOG "Locked decisions"):
 - Validate notebooks with /opt/anaconda3/bin/python (has pandas/vaderSentiment/gensim).
 
 Open items (pick one, or tell me which):
+- ACTIVE THREAD — chatbot tutor (pick up here): evaluated whether to build a course Python tutor like the
+  MALA 60970 bot (../../MALA/MALA60970-chatbot — Cloudflare Worker + Claude Haiku 4.5 + vanilla JS, ~$30–50/
+  term, same dev/stack → transferable). Verdict: YES but re-aimed at the INDEPENDENT homework + capstone
+  (WRIT is synchronous, so a tutor helps after-hours, not during class); the "errors are learning" +
+  ungrading pedagogy is a strong fit for a Socratic, no-solutions tutor. Recommended an MVP "Python
+  debugging companion" (~3–5 days), NOT a clone of MALA's 19 lessons. Full DRAFT SYSTEM PROMPT written →
+  planning/CHATBOT_TUTOR_SYSTEM_PROMPT_DRAFT.md (read it to judge the voice). Open instructor decision:
+  build MVP before launch (2026-07-06) vs. observe-first. Offered next steps: (a) draft the HW1
+  assignment-context block, or (b) adversarial test convos to stress-test the no-solutions guardrail. See
+  WORKLOG "2026-06-17" for the full reasoning.
+- FIRST HALF (Days 1–10) = ✅ READY TO TEACH (verified 2026-06-17 by executing the notebooks): all 7
+  first-half code-alongs + HW1/HW2 run clean (Variables has 1 *intentional* error cell), pandas notebooks
+  self-contained, six lecture decks built, R1/D1/D2 prompts written. Day-6 "Data as evidence" relabeled a
+  brief framing (PR #27, open).
 - NEXT DECISION = back-half lecture audit (#9): the only remaining lecture work. ML8 (Code & Rhetoric)
   + ML9 (Going Public, Day 17, dashboard card shows "(under review)" with title art but no md) await a
   keep/cut/fold call before authoring. ML9's analysis→public-argument spine fits the capstone (only the
