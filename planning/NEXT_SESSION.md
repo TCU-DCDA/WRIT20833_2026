@@ -1,6 +1,6 @@
 # Next-session handoff prompt
 
-Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-16, PR #26.)
+Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-18; branch `claude/lecture-ml9` — ML9 authored, thread #9 closed.)
 
 ---
 
@@ -43,14 +43,18 @@ Conventions to honor (see WORKLOG "Locked decisions"):
 - Validate notebooks with /opt/anaconda3/bin/python (has pandas/vaderSentiment/gensim).
 
 Open items (pick one, or tell me which):
-- NEXT DECISION = back-half lecture audit (#9): the only remaining lecture work. ML8 (Code & Rhetoric)
-  + ML9 (Going Public, Day 17, dashboard card shows "(under review)" with title art but no md) await a
-  keep/cut/fold call before authoring. ML9's analysis→public-argument spine fits the capstone (only the
-  web-portfolio delivery is cut); ML8's HTML/CSS examples belong to the cut half, so likely just harvest
-  its "code is rhetoric" thesis into the code-is-not-neutral thread rather than author a full deck.
-- ALL SCHEDULED LECTURES COMPLETE: ML0/1/3/4/5/6/7 done (reading page + self-contained deck each, via
+- ⚠️ UNCOMMITTED: branch `claude/lecture-ml9` holds the 2026-06-18 work (ML9 authored + ML8 harvested) but
+  it is NOT yet committed/pushed/PR'd. If resuming fresh, first `git status` — commit + open the PR, OR if
+  already merged, ignore this line.
+- LECTURE TRACK FULLY DONE (thread #9 CLOSED 2026-06-18). ML9 "Going Public" authored + homed at Day 17;
+  ML8 "Code as Rhetoric" harvested into ML1 + ML9 (no deck). No remaining lecture work — don't re-open it.
+- NO OBVIOUS NEXT DECISION on the content track. Remaining items are instructor-side housekeeping (see
+  below): #7 test the Colab gensim install; CSV/HUM examples trim (#10); parked site-design questions
+  (sidebar icons, nav filter, themed syllabus.html). Ask the instructor what's next.
+- ALL LECTURES COMPLETE: ML0/1/3/4/5/6/7/9 done (reading page + self-contained deck each, via
   build_lectures.py from materials/lectures/ml*.md), all with warm-palette imagery on their dashboard
-  cards. ML7 (NLP & Topic Modeling, Day 14) authored PR #25. ML2 CUT (#9). Student-facing surfaces show
+  cards. ML7 (NLP & Topic Modeling, Day 14) authored PR #25; ML9 (Going Public, Day 17) authored
+  2026-06-18. ML2 + ML8 folded/harvested (no decks); ML10–12 cut. Student-facing surfaces show
   lectures by TITLE + DAY (ML numbers dropped; kept only as internal ml*.html slugs + planning-doc
   labels). Layout directives in the md: `<!-- layout: split -->` (text|image 2-col) and
   `<!-- layout: gallery -->`. One inert deck-slot remains optional: ML7's `ml7_tangle.jpg` (interior
