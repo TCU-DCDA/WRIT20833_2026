@@ -267,9 +267,52 @@ tangled-yarn-into-three-baskets = the muddy single-issue corpus) is **prepped in
 - **News-articles four-topic example** (slide 12 politics/tech/health/sports) — replaced by the course's
   own toy-corpus → real-corpus contrast, which carries the *limit* lesson the news example doesn't.
 
-## Other F25 decks (not yet mined)
-Remaining: the **parked** `lecture-8-code-rhetoric` (ML8) and `lecture-9-public-arguments` (ML9) — pending
-the open thread #9 audit. **ML2** `lecture-2-boundaries` is **CUT** (2026-06-15, open thread #9) — *not* to
-be mined; its core folded into ML6 + ML0. **Mined so far:** ML0 (`lecture1.html` + connotations), ML1, ML3,
-ML4, ML5, ML6, **ML7** (`lecture-7-nlp-topic-modeling`, 2026-06-16). Mine each remaining deck into its
-`materials/lectures/ml*.md` when authored, and record the triage here. ML10–12 (GitHub/HTML/CSS) are cut.
+## F25 `lecture-9-public-arguments` ("Going Public") — harvested 2026-06-18 → ML9
+Authored **ML9 "Going Public"** (`materials/lectures/ml9.md`, 6 body slides + title) homed at **Day 17**
+(Tue 7/28, the capstone-framing work session). Registered in `build_lectures.py` + `build_index.py` (card
+flipped from `link=None`/"(under review)" → live); Day-17 lecture cell set to "Going Public" in
+`COURSE_SCHEDULE_2026.md` + `SYLLABUS_2026.md`. Title art `ml9_title.jpg` (already generated) now active.
+**Spine:** *your analysis isn't finished until it argues* — analysis → public argument → the capstone.
+
+### ✅ Folded into ML9
+- **The problem with private knowledge** (F25 slide 2) — reframed "the notebook is not the destination":
+  a result locked on your laptop, in a dialect the people it's about can't read, changes nothing.
+- **What is a public argument** (slide 3) — accessible/engaging/actionable beyond academia; the "8 readers
+  vs. 8,000" arithmetic. **Re-homed to 2026:** the public artifact is the **capstone essay + presentation**,
+  not a website (web delivery is the cut half).
+- **Case study: *Mapping Police Violence*** (slide 4) — kept nearly whole; *same analysis skills + a public
+  face = a cultural intervention*. The durable, non-web-specific anchor.
+- **The public-humanities tradition** (slide 5) — public intellectuals / community archives / oral history,
+  trimmed; accessibility as an ethic. (Dropped the "Sacred Boundaries" framework ref — that lecture is cut.)
+- **Code as Argument** (slide 9, = the **ML8 harvest**, see below) — "how you present *is* the argument";
+  show your seams; ties to "being wrong as learning" (Day-17 work-session theme).
+- **Reflection prompt** (slide 11) — reworded as the capstone seed: *what did your analysis find that
+  someone outside this room needs to see — who are they, and what should they do?*
+- **Framework ties:** the moral floor ("make someone who didn't know to care, care"), knowledge→wisdom
+  (values = what you *do* with it), and **preserve the quarrel** (don't flatten the debate into a tidy take).
+
+### ❌ Skip (cut web-dev half / wrong course)
+- **"Your skills amplified" weeks-9–16 web column, "What you can build" (HTML/CSS dashboards/archives/
+  sites), "The web as democratic publishing" (GitHub-Pages portfolios), "Next up: Introduction to HTML"** —
+  all the web-portfolio delivery, cut (overlaps MALA 60970). The *analysis→argument* spine survives; only
+  the website medium is gone. The **digital-stewardship/portfolio** slide also dropped.
+
+## F25 `lecture-8-code-rhetoric` ("Code as Rhetoric") — HARVESTED, not built (2026-06-18)
+**Decision (instructor, 2026-06-18): harvest, no deck.** Its concrete examples are HTML/CSS (`<h1>`/`<aside>`
+emphasis, semantic tags as classification, three web layouts = three arguments) — the cut web-dev arc — so a
+full ML8 deck would teach material the 2026 course doesn't cover. Its **durable thesis** ("every technical
+choice is a rhetorical choice; structure = argument") was folded into two existing lectures:
+- **→ ML1 "Connotations & Code":** added a sentence to the closing "code is not neutral" slide elevating
+  *encodes a value* → *argues a value* (which number is the headline, which chart you reach for), forward-
+  linking to going public.
+- **→ ML9 "Going Public":** the "How you present *is* the argument" slide carries the rhetoric-of-presentation
+  point in its natural home (a public argument *is* persuasion to an audience).
+The F25 deck's per-slide `.md` files are **image-prompt specs only** (no prose body) + an off-palette
+purple/amber image set — nothing else to mine. `lecture-8-code-rhetoric` stays unmined beyond this thesis.
+
+## Other F25 decks
+**ML2** `lecture-2-boundaries` is **CUT** (2026-06-15) — *not* to be mined; its core folded into ML6 + ML0.
+**Mined / resolved:** ML0 (`lecture1.html` + connotations), ML1, ML3, ML4, ML5, ML6, **ML7**
+(`lecture-7-nlp-topic-modeling`), **ML8** (harvested into ML1+ML9, 2026-06-18), **ML9**
+(`lecture-9-public-arguments`, 2026-06-18). **All F25 mini-lecture audit decisions are now closed**
+(open thread #9 resolved). ML10–12 (GitHub/HTML/CSS) are cut.

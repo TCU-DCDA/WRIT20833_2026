@@ -110,6 +110,11 @@ Over the next four weeks *you* will be the one deciding. What counts as a "word"
 Which words are "stopwords" worth deleting? What score makes a comment "positive"? Where do you cut one
 topic from the next? Each is a small act of interpretation wearing the costume of a neutral function.
 
+And those choices don't merely *encode* a value — they *argue* one. Which number you make the headline,
+which chart you reach for, what you put first and what you bury: every one is a claim about what matters,
+aimed at whoever reads your result. Code isn't only structure; it's rhetoric. You'll feel that fully when
+you go public with an analysis at the end of the term — but it starts here, in the smallest function.
+
 That's the trap and the responsibility at once: a machine looks objective *precisely because* it hides the
 choices inside it. Your job as a humanist who codes is the double move from the opening lecture — **read data like a text,
 and write code that shows its seams.** Leave the `#comment` that says what you chose, and why. That comment
