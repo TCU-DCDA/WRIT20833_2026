@@ -1,6 +1,6 @@
 # Next-session handoff prompt
 
-Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-18; ML9 merged PR #29, chatbot-tutor eval reconciled onto main. Active thread = chatbot tutor build decision.)
+Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-18; ML9 merged PR #29; chatbot-tutor MVP BUILT in the private WRIT20833-chatbot repo — deployment pending.)
 
 ---
 
@@ -43,12 +43,14 @@ Conventions to honor (see WORKLOG "Locked decisions"):
 - Validate notebooks with /opt/anaconda3/bin/python (has pandas/vaderSentiment/gensim).
 
 Open items (pick one, or tell me which):
-- ⭐ ACTIVE THREAD — chatbot tutor. Decision to build an MVP "Python debugging companion" (a Socratic,
-  no-solutions, after-hours homework/capstone tutor modeled on the MALA 60970 bot) is evaluated and
-  RECOMMENDED but NOT yet decided — the open call is TIMING (ship before launch 2026-07-06 vs. observe-first).
-  Read `planning/CHATBOT_TUTOR_SCOPE.md` (full scope + decision) + `planning/CHATBOT_TUTOR_SYSTEM_PROMPT_DRAFT.md`
-  (the draft voice). When greenlit, next steps: (a) HW1 assignment-context block, (b) adversarial
-  no-solutions guardrail tests, (c) clone the private `TCU-DCDA/WRIT20833-chatbot` repo + fork the MALA worker.
+- ⭐ ACTIVE THREAD — chatbot tutor = MVP BUILT (2026-06-18), DEPLOYMENT PENDING. The "Python debugging
+  companion" (Socratic, no-solutions, after-hours homework/capstone tutor) is **code-complete in the private
+  sibling repo `TCU-DCDA/WRIT20833-chatbot`** (cloned at `../../WRIT20833-chatbot`): 5 assignment blocks
+  (HW1–4 + Capstone), hard no-solutions guardrail (adversarially tested), Colab-only, access-code gate +
+  rate limiting. **To resume: work in THAT repo** (its `CLAUDE.md` + `DEPLOY.md` are the guides; commit
+  straight to its `main`). **Remaining = deployment** (create KV namespace, set `ANTHROPIC_API_KEY` +
+  `ACCESS_CODE` secrets, set prod `API_URL` + CORS, `wrangler deploy`, host frontend on Pages, embed in D2L).
+  **Open dial:** the "confirm-my-guess" behavior. Full summary: `planning/CHATBOT_TUTOR_SCOPE.md`.
 - LECTURE TRACK FULLY DONE (thread #9 CLOSED 2026-06-18, merged PR #29). ML9 "Going Public" authored + homed
   at Day 17; ML8 "Code as Rhetoric" harvested into ML1 + ML9 (no deck). No remaining lecture work.
 - FIRST HALF (Days 1–10) = ✅ READY TO TEACH (verified 2026-06-17 by executing the notebooks). See WORKLOG.
