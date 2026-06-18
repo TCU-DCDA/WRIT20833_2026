@@ -29,7 +29,7 @@ Notebook links are relative paths into this repo (`notebooks/codeAlongs/`, `note
 ### Week 2 (Jul 13–17) — From text to data: ethics, pandas, AI
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 7/13** (6) | Data as evidence | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
+| **Mon 7/13** (6) | Data as evidence *(brief framing — no deck)* | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
 | **Tue 7/14** (7) | AI Agency | **Lab** → Reading & improving AI code + stylometry seed: [Reading for the Seams](materials/stylometry/Reading_for_the_Seams.md) (close reading) | — |
 | **Wed 7/15** (8) | Data Archaeology | **Code-along** → [Found data + collection ethics (pandas 01 + scraping)](notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb) | D2 post |
 | **Thu 7/16** (9) | — | **Code-along** → [Data cleaning (pandas 02)](notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb) | — |
@@ -61,6 +61,9 @@ Notebook links are relative paths into this repo (`notebooks/codeAlongs/`, `note
 **Days 14–15** the [Topic Modeling](notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb)
 notebook. Every coding day now links a real notebook — the term-frequency code-along (Day 6) was
 authored fresh (no F25 source existed) and leads directly into HW2.
+
+**Day 6 "Data as evidence" is a brief (~5-min) verbal framing**, not a built deck — the Week 1 → Week 2
+pivot (Python foundations → treating text as data), delivered live to open the Term-Frequency code-along.
 
 *Notes on lectures:* "—" in **Lecture** marks recap / workshop / work-session days with no formal
 mini-lecture (Day 2 included — **"Sacred Boundaries" was cut**: its privacy/collection-ethics core

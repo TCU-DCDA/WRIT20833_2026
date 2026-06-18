@@ -2,7 +2,8 @@
 
 **Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
 https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-06-18 (branch `claude/lecture-ml9`; ML9 authored, thread #9 closed)
+`main`. · **Last updated:** 2026-06-18 (ML9 merged PR #29; chatbot-tutor eval reconciled onto `main`,
+PRs #27 + #28 superseded; chatbot build = the active open thread)
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
 Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and
@@ -35,7 +36,28 @@ the private `TCU-DCDA/WRIT20833_2026_keys`.
   `CONCEPTUAL_FRAMEWORK_2026.md` §6 (homing dial → decided), and both schedule/syllabus footnotes.
 - **Build verified:** `build_lectures` + `build_index` + `build_schedule_html` all exit 0 (the
   `assert_accessible` guard passed); ml9 reading page + deck emitted (7 slides), card links, image resolves,
-  no markdown leak. **Not yet committed/PR'd as of this writing** — branch `claude/lecture-ml9`.
+  no markdown leak. Shipped as **PR #29 (merged)** — branch `claude/lecture-ml9` deleted.
+
+---
+
+## Earlier session — 2026-06-17 (first-half readiness check + chatbot-tutor evaluation)
+*(Authored on the home machine before a machine move; left on open PRs #27 + #28 that predated the ML9
+merge. Reconciled onto `main` 2026-06-18 — see the chatbot-scope PR; #27 + #28 closed as superseded.)*
+- **First-half readiness — ✅ READY TO TEACH (Days 1–10).** Verified every first-half asset by *executing*
+  the notebooks: all 7 first-half code-alongs run clean (Variables has exactly **1 intentional** TypeError —
+  the "read the error message" cell); HW1 + HW2 execute clean with **no leaked answer keys**; the pandas
+  notebooks are self-contained (sample data embedded, live network calls commented out); six first-half
+  lecture decks built; R1 + D1 + D2 prompts written.
+- **Day-6 relabel (was PR #27, now folded in):** "Data as evidence" is the lone named lecture with no deck →
+  relabeled **"(brief framing — no deck)"** in `COURSE_SCHEDULE_2026.md` + `SYLLABUS_2026.md` (the Week 1→2
+  pivot, delivered live to open the Term-Frequency code-along). `docs/schedule.html` regenerated.
+- **Chatbot-tutor evaluation (no build yet).** Evaluated whether to build a course Python tutor like the
+  MALA 60970 bot. **Verdict: YES, re-aimed at the independent homework + capstone** (WRIT is synchronous, so
+  a tutor helps after-hours, not during class); MVP "Python debugging companion," ~3–5 days, Haiku 4.5,
+  ~$30–50/term. **Full eval + the open timing decision now live in
+  [`CHATBOT_TUTOR_SCOPE.md`](CHATBOT_TUTOR_SCOPE.md)** (consolidated from this session's prose); the draft
+  system prompt is at `CHATBOT_TUTOR_SYSTEM_PROMPT_DRAFT.md` (was PR #28, now folded in). **Build remains an
+  open instructor decision** — nothing built.
 
 ---
 
