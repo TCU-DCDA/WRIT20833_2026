@@ -1,13 +1,15 @@
-# WRIT 20833 Tutor — system prompt (DRAFT for instructor review)
+# WRIT 20833 Tutor — system prompt (DRAFT — now IMPLEMENTED)
 
-> **Status: draft artifact for review — the tutor BUILD is not yet decided.** (Committed to the repo so it
-> survives a machine move; that's not a commitment to build.) This is the high-leverage piece — the bot's
-> voice and guardrails — written so Dr. Rode can judge the *feel* before deciding whether to build the tutor
-> (full reasoning in `planning/WORKLOG.md`, session 2026-06-17). If greenlit, this becomes the
-> `system-prompt.js` of a forked MALA60970-chatbot worker (Cloudflare Worker + Claude + vanilla JS).
-> Modeled on the MALA tutor's architecture but re-aimed: WRIT is **online synchronous**, so this bot is an
-> **after-hours debugging companion for the independent homework + capstone**, not a replacement for live
-> code-alongs. Everything below is editable prose; tune the voice freely.
+> **Status: ✅ IMPLEMENTED (2026-06-18) and hardened well beyond this draft.** The MVP was greenlit and built;
+> this draft became `worker/lessons/system-prompt.js` in the private **`WRIT20833-chatbot`** repo, then got a
+> much stronger no-solutions guardrail (worked ❌/✅ examples, adversarially tested) plus per-assignment
+> context blocks. **The live worker is the source of truth now** — edit there, not here. This file is kept as
+> the historical starting point + a readable view of the voice. See `planning/CHATBOT_TUTOR_SCOPE.md` for the
+> full build summary.
+>
+> *(Original note:)* The high-leverage piece — the bot's voice and guardrails — modeled on the MALA tutor's
+> architecture but re-aimed: WRIT is **online synchronous**, so this bot is an **after-hours debugging
+> companion for the independent homework + capstone**, not a replacement for live code-alongs.
 
 ---
 

@@ -2,8 +2,8 @@
 
 **Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
 https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-06-18 (ML9 merged PR #29; chatbot-tutor eval reconciled onto `main`,
-PRs #27 + #28 superseded; chatbot build = the active open thread)
+`main`. · **Last updated:** 2026-06-18 (ML9 merged PR #29; **chatbot-tutor MVP BUILT** in the private
+`WRIT20833-chatbot` repo — code-complete, deployment pending)
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
 Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and
@@ -14,7 +14,33 @@ the private `TCU-DCDA/WRIT20833_2026_keys`.
 
 ---
 
-## Latest session — 2026-06-18 (ML9 authored + ML8 harvested → open thread #9 CLOSED; ALL lecture work done)
+## Latest session — 2026-06-18 (chatbot-tutor MVP BUILT — code-complete, deployment pending)
+*Work lives in the private sibling repo **`TCU-DCDA/WRIT20833-chatbot`** (`../../WRIT20833-chatbot`), not this
+repo. Full scope + build summary: `planning/CHATBOT_TUTOR_SCOPE.md`. The repo's own `CLAUDE.md` + `DEPLOY.md`
+are the operating docs.*
+- **Greenlit + built the MVP** "Python debugging companion" — an **after-hours tutor for the independent
+  homework + capstone** (NOT code-along lessons; WRIT is synchronous). Re-aimed the existing March scaffold
+  off the code-along-lesson model and **stripped all web-dev content → Colab + Python only.**
+- **Five assignment-context blocks** authored (`worker/lessons/hw1.js…hw4.js`, `capstone.js`) from the
+  **STUDENT notebooks / capstone sheet only — never the answer keys** — solution-free, in a shared format.
+- **Hardened the "guide, not generator" guardrail** into a hard clamp: never writes code that completes an
+  exercise (tested against ~15 attack vectors — "show me the syntax," "is this right?", pseudocode,
+  authority, emotional pressure, multi-turn assembly, "similar template"…), tuned with worked ❌/✅ examples.
+  Two block-specific guards: **HW4 never names/interprets a student's topics**; the **Capstone never
+  ghostwrites the essay** (the AI-writing-honesty line — code help is fine, the prose must be theirs). It
+  still teaches concepts freely on **neutral** examples.
+- **Security added + verified:** access-code gate (`ACCESS_CODE` secret) + per-IP rate limiting (`RATE_LIMIT`
+  KV, 12/min + 300/day → 429). Model `claude-haiku-4-5`, ~$30–50/term.
+- **Docs:** the system-prompt draft in `planning/` is now **implemented** (live worker is source of truth);
+  `CHATBOT_TUTOR_SCOPE.md` marked BUILT; the chatbot repo got a rewritten `CLAUDE.md` + a new `DEPLOY.md`.
+- **Remaining = deployment only** (create KV namespace, set secrets, prod `API_URL` + CORS origins,
+  `wrangler deploy`, host the frontend on Pages, embed in D2L). **Open dial:** the "confirm-my-guess" behavior.
+- **Process note:** per instructor preference, this repo + the chatbot repo are **solo → commit straight to
+  `main`, no per-task branches/PRs** (recorded in session memory).
+
+---
+
+## Earlier session — 2026-06-18 (ML9 authored + ML8 harvested → open thread #9 CLOSED; ALL lecture work done)
 - **ML9 "Going Public" (Day 17) AUTHORED** (`materials/lectures/ml9.md`, branch `claude/lecture-ml9`).
   Mined the F25 `lecture-9-public-arguments` deck, **keeping the analysis→public-argument spine and cutting
   the web-portfolio delivery** (HTML/CSS/GitHub-Pages = the dropped web-dev half). **Re-homed to the

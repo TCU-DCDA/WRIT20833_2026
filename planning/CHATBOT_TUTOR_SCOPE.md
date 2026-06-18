@@ -1,9 +1,27 @@
 # Chatbot tutor — scope & decision note
 
-**Status:** evaluation complete; **build NOT yet decided** (awaiting the instructor's timing call). This is
-the single consolidated scoping doc — it supersedes the eval prose that was buried in `WORKLOG.md`
-(2026-06-17). The high-leverage artifact, the **draft system prompt**, lives beside it at
-[`CHATBOT_TUTOR_SYSTEM_PROMPT_DRAFT.md`](CHATBOT_TUTOR_SYSTEM_PROMPT_DRAFT.md). · *Last updated 2026-06-18.*
+**Status:** ✅ **MVP BUILT (2026-06-18)** — the instructor greenlit the MVP and it is **code-complete** in the
+private repo **`TCU-DCDA/WRIT20833-chatbot`** (cloned as a sibling at `../../WRIT20833-chatbot`). Remaining
+work is **deployment only** (see that repo's `DEPLOY.md`). The original evaluation/scope is preserved below
+for the record. · *Last updated 2026-06-18.*
+
+> **What got built (all on `main` in `WRIT20833-chatbot`):**
+> - Re-aimed the existing March scaffold from code-along lessons → an **after-hours homework/capstone tutor**
+>   (the synchronous-course logic in this doc). Stripped all web-dev content → **Colab + Python only.**
+> - **Five assignment-context blocks** — HW1–4 + Capstone — in `worker/lessons/`, authored from the STUDENT
+>   notebooks / capstone sheet only (no answer keys), solution-free.
+> - **Hardened the "guide, not generator" guardrail** into a hard clamp, tuned with worked ❌/✅ examples and
+>   adversarially tested (~15 attack vectors: "show me the syntax," "is this right?," pseudocode,
+>   authority, emotional, multi-turn assembly, "similar template," etc.). Plus two block-specific guards:
+>   HW4 won't name/interpret topics; the **Capstone won't ghostwrite the essay** (the AI-writing-honesty line).
+> - **Security:** access-code gate (`ACCESS_CODE` secret) + per-IP rate limiting (`RATE_LIMIT` KV, 12/min +
+>   300/day) — both verified locally.
+> - The **draft system prompt** in this folder is now **implemented** as
+>   `worker/lessons/system-prompt.js` (and hardened well beyond the draft). The live worker is the source of
+>   truth; the draft here is the historical starting point.
+> - **Open dial:** the "confirm-my-guess" behavior (light confirmation vs. verify-by-running).
+> - **Not done:** deployment (KV namespace, secrets, prod URL + CORS, `wrangler deploy`, host frontend,
+>   embed in D2L); authoring is not needed for that.
 
 ---
 
