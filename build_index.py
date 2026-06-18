@@ -47,7 +47,8 @@ HOMEWORK = [
 ]
 
 # --- mini-lectures (the ~25-min conceptual frames) — not yet built as pages ---
-# ML0-7 map cleanly to 2026; ML2 cut (folded into ML6 + ML0); ML9 under review (WORKLOG #9); ML10-12 (web) cut.
+# ML0-7 map cleanly to 2026; ML2 cut (folded into ML6 + ML0); ML9 "Going Public" homed at Day 17;
+# ML8 "Code as Rhetoric" harvested into ML1 + ML9 (no deck); ML10-12 (web) cut.
 # (title, desc, when, page, thumb) — page is a docs-relative URL when the lecture has an authored
 # reading page (None keeps it a "soon" placeholder card); thumb is the title-image path under the repo
 # (None → a proportion-matched placeholder box, to be filled when that lecture's art is generated).
@@ -59,7 +60,7 @@ LECTURES = [
     ("AI Agency", "Reading & judging machine-written code.", "Day 7", "lectures/ml4.html", "materials/lectures/images/ml4_title.jpg"),
     ("Data Archaeology", "Where found data comes from.", "Day 8", "lectures/ml6.html", "materials/lectures/images/ml6_title.jpg"),
     ("NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14", "lectures/ml7.html", "materials/lectures/images/ml7_title.jpg"),
-    ("Going Public", "Analysis → public argument. (under review)", "Day 17", None, "materials/lectures/images/ml9_title.jpg"),
+    ("Going Public", "Analysis → public argument.", "Day 17", "lectures/ml9.html", "materials/lectures/images/ml9_title.jpg"),
 ]
 
 RESOURCES = [
@@ -174,8 +175,8 @@ def render():
 
     lectures = section(
         "lectures", "01", "Lectures",
-        "The short conceptual frames that open each day — the “code is not neutral” throughline. "
-        "Most are live as reading pages; Topic Modeling (Day 14) is still in development and one more is under review.",
+        "The short conceptual frames that open each day — the “code is not neutral” throughline, "
+        "from Humanities &amp; Coding on Day 1 to Going Public on Day 17. Each is a live reading page with a slide deck.",
         grid([card("Mini-lecture", t, d, w, p, soon=(p is None),
                    img=(RAW + im if im else None), thumb=True)
               for (t, d, w, p, im) in LECTURES]))

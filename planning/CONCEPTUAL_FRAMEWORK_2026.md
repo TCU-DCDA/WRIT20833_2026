@@ -222,8 +222,11 @@ None of this is yet woven into student-facing materials; each is a small, option
 **Open design dials:**
 - **Vocabulary:** keep the explicit Kantian terms ("noumena/phenomena") or swap to plain language ("the
   thing itself / as it appears"). The diagram and argument survive either way.
-- **Lecture homing:** re-home **ML9 "Going Public"** at Day 17 (its analysis→public-argument spine fits
-  the capstone); harvest **ML8 "Code as Rhetoric"**'s thesis into the code-is-not-neutral thread.
+- **Lecture homing — ✅ DECIDED (2026-06-18).** **ML9 "Going Public"** is authored and homed at **Day 17**
+  (its analysis→public-argument spine anchors the capstone). **ML8 "Code as Rhetoric"** was **harvested,
+  not built**: its "every technical choice is rhetoric" thesis folded into **ML1 "Connotations & Code"**
+  (closing slide: code *argues* a value, not just encodes one) and **ML9** (presentation as public argument);
+  its HTML/CSS examples belong to the cut web-dev half. Open thread #9 is now fully closed.
 - **ML2 "Sacred Boundaries"** (Day 2): **CUT (2026-06-15).** Its privacy/collection-ethics core is served
   by **ML6 Data Archaeology** (Day 8), and its one durable idea — the noumena limit on religious
   conviction as an interiority distant reading can't reach — is already in **ML0** (the woman who "feels
