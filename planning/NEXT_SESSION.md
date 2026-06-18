@@ -1,6 +1,6 @@
 # Next-session handoff prompt
 
-Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-18; branch `claude/lecture-ml9` — ML9 authored, thread #9 closed.)
+Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-18; ML9 merged PR #29, chatbot-tutor eval reconciled onto main. Active thread = chatbot tutor build decision.)
 
 ---
 
@@ -43,14 +43,17 @@ Conventions to honor (see WORKLOG "Locked decisions"):
 - Validate notebooks with /opt/anaconda3/bin/python (has pandas/vaderSentiment/gensim).
 
 Open items (pick one, or tell me which):
-- ⚠️ UNCOMMITTED: branch `claude/lecture-ml9` holds the 2026-06-18 work (ML9 authored + ML8 harvested) but
-  it is NOT yet committed/pushed/PR'd. If resuming fresh, first `git status` — commit + open the PR, OR if
-  already merged, ignore this line.
-- LECTURE TRACK FULLY DONE (thread #9 CLOSED 2026-06-18). ML9 "Going Public" authored + homed at Day 17;
-  ML8 "Code as Rhetoric" harvested into ML1 + ML9 (no deck). No remaining lecture work — don't re-open it.
-- NO OBVIOUS NEXT DECISION on the content track. Remaining items are instructor-side housekeeping (see
-  below): #7 test the Colab gensim install; CSV/HUM examples trim (#10); parked site-design questions
-  (sidebar icons, nav filter, themed syllabus.html). Ask the instructor what's next.
+- ⭐ ACTIVE THREAD — chatbot tutor. Decision to build an MVP "Python debugging companion" (a Socratic,
+  no-solutions, after-hours homework/capstone tutor modeled on the MALA 60970 bot) is evaluated and
+  RECOMMENDED but NOT yet decided — the open call is TIMING (ship before launch 2026-07-06 vs. observe-first).
+  Read `planning/CHATBOT_TUTOR_SCOPE.md` (full scope + decision) + `planning/CHATBOT_TUTOR_SYSTEM_PROMPT_DRAFT.md`
+  (the draft voice). When greenlit, next steps: (a) HW1 assignment-context block, (b) adversarial
+  no-solutions guardrail tests, (c) clone the private `TCU-DCDA/WRIT20833-chatbot` repo + fork the MALA worker.
+- LECTURE TRACK FULLY DONE (thread #9 CLOSED 2026-06-18, merged PR #29). ML9 "Going Public" authored + homed
+  at Day 17; ML8 "Code as Rhetoric" harvested into ML1 + ML9 (no deck). No remaining lecture work.
+- FIRST HALF (Days 1–10) = ✅ READY TO TEACH (verified 2026-06-17 by executing the notebooks). See WORKLOG.
+- OTHER content-track items are instructor-side housekeeping: #7 test the Colab gensim install; CSV/HUM
+  examples trim (#10); parked site-design questions (sidebar icons, nav filter, themed syllabus.html).
 - ALL LECTURES COMPLETE: ML0/1/3/4/5/6/7/9 done (reading page + self-contained deck each, via
   build_lectures.py from materials/lectures/ml*.md), all with warm-palette imagery on their dashboard
   cards. ML7 (NLP & Topic Modeling, Day 14) authored PR #25; ML9 (Going Public, Day 17) authored
