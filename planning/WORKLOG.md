@@ -2,7 +2,7 @@
 
 **Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
 https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-06-16 (through PR #26)
+`main`. · **Last updated:** 2026-06-18 (branch `claude/lecture-ml9`; ML9 authored, thread #9 closed)
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
 Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and
@@ -13,7 +13,33 @@ the private `TCU-DCDA/WRIT20833_2026_keys`.
 
 ---
 
-## Latest session — 2026-06-16 (ML7 authored → all scheduled lectures done; docs swept current)
+## Latest session — 2026-06-18 (ML9 authored + ML8 harvested → open thread #9 CLOSED; ALL lecture work done)
+- **ML9 "Going Public" (Day 17) AUTHORED** (`materials/lectures/ml9.md`, branch `claude/lecture-ml9`).
+  Mined the F25 `lecture-9-public-arguments` deck, **keeping the analysis→public-argument spine and cutting
+  the web-portfolio delivery** (HTML/CSS/GitHub-Pages = the dropped web-dev half). **Re-homed to the
+  capstone:** the 2026 public artifact is the data-driven-opinion **essay + presentation**, not a website.
+  **Spine:** *your analysis isn't finished until it argues.* Kept *Mapping Police Violence* as the
+  analysis-as-public-intervention case, the public-humanities tradition, the moral floor + knowledge→wisdom
+  + preserve-the-quarrel framework ties, and the reflection-prompt-as-capstone-seed. Registered in
+  `build_lectures.py` + `build_index.py` (card flipped from "(under review)"/`link=None` → live thumbnail
+  using the already-generated `ml9_title.jpg`); Day-17 lecture cell set to "Going Public" in
+  `COURSE_SCHEDULE_2026.md` + `SYLLABUS_2026.md` (work session keeps "validation / being wrong as learning").
+- **ML8 "Code as Rhetoric" HARVESTED, not built** (instructor decision this session). Its examples are
+  HTML/CSS (cut half); its durable thesis — *every technical choice is a rhetorical choice; structure =
+  argument* — folded into **ML1 "Connotations & Code"** (closing slide now says code *argues* a value, not
+  just encodes one, forward-linking to going public) and **ML9** (presentation as public argument). No
+  `ml8.md`. F25 slide files were image-prompt specs only — nothing else to mine.
+- **Open thread #9 (back-half lecture audit) is now FULLY CLOSED** — ML2 cut, ML8 harvested, ML9 authored.
+  **There is no remaining lecture work.** All scheduled mini-lectures (ML0/1/3/4/5/6/7/9) are live reading
+  pages + decks; ML8 harvested; ML2/ML10–12 cut. Updated `LECTURE_SOURCE_NOTES.md` (ML8+ML9 triage),
+  `CONCEPTUAL_FRAMEWORK_2026.md` §6 (homing dial → decided), and both schedule/syllabus footnotes.
+- **Build verified:** `build_lectures` + `build_index` + `build_schedule_html` all exit 0 (the
+  `assert_accessible` guard passed); ml9 reading page + deck emitted (7 slides), card links, image resolves,
+  no markdown leak. **Not yet committed/PR'd as of this writing** — branch `claude/lecture-ml9`.
+
+---
+
+## Earlier session — 2026-06-16 (ML7 authored → all scheduled lectures done; docs swept current)
 - **ML7 "NLP & Topic Modeling" (Day 14) AUTHORED (PR #25)** → **all scheduled lectures now complete**
   (ML0/1/3/4/5/6/7). Mined the F25 `lecture-7-nlp-topic-modeling` deck into `materials/lectures/ml7.md`
   (reading page + self-contained deck), registered it in `build_lectures.py`, and flipped its dashboard
@@ -473,11 +499,11 @@ line + rerun both generators.
    gensim vaderSentiment` (no nltk, no pinned deps, no kernel restart — simpler than F25's cell);
    still verify it resolves cleanly on Colab's 2026 default image before Day 14.
 8. **A4 / HW1 note:** A4 intentionally demonstrates a TypeError via try/except — by design.
-9. **Lecture audit — ML8/ML9 (orphaned); ML2 "Sacred Boundaries" ✅ SETTLED → CUT (2026-06-15).** ML0–7
-   map cleanly to 2026; ML10–12 (GitHub/HTML/CSS) cut. Still to decide: **re-home ML9 "Going Public"** at
-   Day 17 (its analysis→public-argument spine fits the capstone; only the web-portfolio delivery is cut),
-   and **harvest ML8 "Code as Rhetoric"**'s thesis into the code-is-not-neutral thread (its HTML/CSS
-   examples belong to the cut half).
+9. **Lecture audit — ✅ FULLY CLOSED (2026-06-18).** ML0–7 mapped cleanly; ML10–12 (GitHub/HTML/CSS) cut;
+   **ML2 "Sacred Boundaries" CUT (2026-06-15)**; **ML9 "Going Public" AUTHORED + homed at Day 17
+   (2026-06-18)**; **ML8 "Code as Rhetoric" HARVESTED into ML1 + ML9, no deck (2026-06-18)**. Nothing left
+   to decide or build on the lecture track. (Authoring/harvest details in the 2026-06-18 session summary up
+   top + `LECTURE_SOURCE_NOTES.md`.)
    - **ML2 decision (instructor, 2026-06-15): CUT.** Rationale that tipped it: now that **ML6 Data
      Archaeology (Day 8)** is built, it fully carries ML2's privacy/collection-ethics core
      (hear-don't-extract, robots.txt, attribution) — ML2 became redundant. Its one other durable idea

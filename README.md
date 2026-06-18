@@ -18,11 +18,12 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 > **Status: in active development (draft).** The homework spine (HW1–HW4) and **all code-along notebooks**
 > (one per coding day) are complete and validated; the **syllabus markdown** is fully filled (no `[...]`
 > placeholders left) and aligned to the AddRan template; a **course website** (`docs/`) is live and public;
-> and the **capstone sheet** (`CAPSTONE_2026.md`) is drafted. **Lecture pages** — all seven scheduled
+> and the **capstone sheet** (`CAPSTONE_2026.md`) is drafted. **Lecture pages** — all eight scheduled
 > mini-lecture reading pages + slide decks are live (`build_lectures.py`): Humanities & Coding, Connotations
-> & Code, Classification Logic, Collective Memory, AI Agency, Data Archaeology, NLP & Topic Modeling. Two
-> back-half lectures (Code & Rhetoric, Going Public) stay **parked** pending a keep/cut/fold audit.
-> Remaining: that audit, the student-facing fold-ins of the conceptual framework, and instructor-handled
+> & Code, Classification Logic, Collective Memory, AI Agency, Data Archaeology, NLP & Topic Modeling, and
+> Going Public (Day 17). The back-half audit is closed: "Code as Rhetoric" was harvested into Connotations
+> & Code + Going Public (no standalone deck); "Sacred Boundaries" and the web-dev lectures are cut.
+> Remaining: the student-facing fold-ins of the conceptual framework, and instructor-handled
 > items (the AddRan Word export; verifying the Colab-2026 install cell). See `planning/WORKLOG.md`.
 
 ---
@@ -52,7 +53,7 @@ inquiry into human expression, close and distant, across space and time). (Vetti
   Constitution) + a `README.md`. Reused across HW2–HW4 and the capstone.
 - **`materials/stylometry/`** — "Reading for the Seams" close-reading exercise + notebook + exemplar.
 - **`materials/images/`** — the **noumena → wisdom** epistemological-spine graphic + its teaching notes.
-- **`materials/lectures/`** — mini-lecture **reading pages** (markdown source; all seven scheduled lectures authored, ML8/ML9 parked); rendered to `docs/lectures/` by `build_lectures.py`.
+- **`materials/lectures/`** — mini-lecture **reading pages** (markdown source; all eight scheduled lectures authored through Going Public on Day 17); rendered to `docs/lectures/` by `build_lectures.py`.
 - **`materials/Day1_Framing_Noumena_to_Wisdom.md`** — the Day-1 framing passage (now published as the opening Humanities & Coding reading page).
 
 ## Repository layout

@@ -363,14 +363,15 @@ assessed before it's taught.*
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
 | **Mon 7/27** (16) | Integration (close → distant → close) | Freq + sentiment + topics + stylometry demo | **Capstone proposal due** · D4 opens |
-| **Tue 7/28** (17) | "Being wrong as learning" · capstone framing | Validation + capstone framing | **HW4 due** · D4 post |
+| **Tue 7/28** (17) | Going Public | Validation · "being wrong as learning" · capstone framing | **HW4 due** · D4 post |
 | **Wed 7/29** (18) | — | Capstone work session 1 | — |
 | **Thu 7/30** (19) | — | Capstone work session 2 + peer review | D4 replies |
 | **Fri 7/31** (20) | — (wrap) | **Capstone presentations + wrap** | **Capstone due** · **R3 (final self-evaluation) due** |
 
 *Lecture "—" = recap / workshop / work-session days (Day 2 included — "Sacred Boundaries" was cut, its
-material folded into the Day-8 and Day-1 lectures). "Going Public" (Day 17) and
-"Code as Rhetoric" remain under review; see `planning/CONCEPTUAL_FRAMEWORK_2026.md`.*
+material folded into the Day-8 and Day-1 lectures). "Going Public" anchors Day 17 (analysis → public
+argument → the capstone); "Code as Rhetoric" was folded into the Day-1 and Day-17 lectures. See
+`planning/CONCEPTUAL_FRAMEWORK_2026.md`.*
 
 ---
 

@@ -48,7 +48,7 @@ Notebook links are relative paths into this repo (`notebooks/codeAlongs/`, `note
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
 | **Mon 7/27** (16) | Integration (close → distant → close) | **Lab** → Integration demo (frequency + sentiment + topics) via the [HW4 notebook](notebooks/homework/WRIT20833_HW4_2026.ipynb) + short [stylometry demo](materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb) | **[Capstone](CAPSTONE_2026.md) proposal due** · D4 opens |
-| **Tue 7/28** (17) | "Being wrong as learning" · capstone framing | **Work session** → Validation + capstone framing | **HW4 due** · D4 post |
+| **Tue 7/28** (17) | Going Public | **Work session** → Validation · "being wrong as learning" · capstone framing | **HW4 due** · D4 post |
 | **Wed 7/29** (18) | — | **Work session** → Capstone work session 1 (cultural dataset **or** stylometry) | — |
 | **Thu 7/30** (19) | — | **Work session** → Capstone work session 2 + peer review | D4 replies |
 | **Fri 7/31** (20) | — (wrap) | **Presentations** → Capstone presentations + wrap | **[Capstone](CAPSTONE_2026.md) due** · **R3 due (final self-evaluation)** |
@@ -65,6 +65,7 @@ authored fresh (no F25 source existed) and leads directly into HW2.
 *Notes on lectures:* "—" in **Lecture** marks recap / workshop / work-session days with no formal
 mini-lecture (Day 2 included — **"Sacred Boundaries" was cut**: its privacy/collection-ethics core
 lives in the Day-8 Data Archaeology lecture, and its noumena-limit point in the Day-1 opener.
-Still under review (see `WORKLOG.md` open thread #9): the **"Going Public"** frame (a candidate for Day 17 to
-anchor the capstone) and **"Code as Rhetoric"** (harvest into the code-is-not-neutral thread). The
-schedule will be adjusted to the class's pace; changes announced in class and on D2L.
+The **"Going Public"** lecture now anchors **Day 17** (analysis → public argument → the capstone);
+**"Code as Rhetoric"** was harvested into the Connotations & Code (Day 1) and Going Public lectures rather
+than built as its own deck (its HTML/CSS half belongs to the cut web-dev arc). The schedule will be
+adjusted to the class's pace; changes announced in class and on D2L.
