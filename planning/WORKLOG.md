@@ -2,8 +2,9 @@
 
 **Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
 https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-06-21 (open-thread #7 **topic-modeling install cell verified** on a
-py3.12 proxy — gensim 4.4.0 installs + imports + trains clean; one live Colab click remaining. Prior:
+`main`. · **Last updated:** 2026-06-21 (verification pass: open-thread #7 **topic-modeling install cell
+verified** on a py3.12 proxy — gensim 4.4.0 installs + imports + trains clean, one live Colab click
+remaining; **all 7 first-half code-alongs re-executed clean** — no bit-rot, Days 1–10 ready to teach. Prior:
 2026-06-18 ML9 merged PR #29; **chatbot-tutor MVP BUILT** in the private `WRIT20833-chatbot` repo —
 code-complete, deployment pending)
 
@@ -16,7 +17,30 @@ the private `TCU-DCDA/WRIT20833_2026_keys`.
 
 ---
 
-## Latest session — 2026-06-18 (chatbot-tutor MVP BUILT — code-complete, deployment pending)
+## Latest session — 2026-06-21 (verification pass: Day-14 install cell + first-half re-execution)
+No content authored — a **readiness-verification** pass (re-running things rather than trusting the log).
+- **Day-14 / HW4 topic-modeling install cell — ✅ VERIFIED (closes open-thread #7).** Tested
+  `!pip install -q gensim vaderSentiment` in a clean **Python-3.12 venv** (mid-2026 Colab proxy): resolves
+  **gensim 4.4.0 · numpy 2.4.6 · scipy 1.18.0**, the exact import chain imports clean, and a full LDA
+  smoke test passes (Dictionary + doc2bow incl. the empty-bag `[]` edge + `LdaModel` train + `show_topic`
+  + `get_document_topics`). Current gensim supports numpy 2.x + scipy ≥1.13 natively → the old
+  `scipy.linalg.triu` breakage class is gone; since Colab already ships numpy 2.x, expect no downgrade /
+  no restart. Older end of the range also confirmed (anaconda py3.11 · numpy 1.26 · scipy 1.11 · gensim
+  4.3.0 imports fine). **Residual = one 60-sec live Colab click before Day 14.** (Already shipped as commit
+  `c9c7a46`; open-thread #7 + top status line updated.)
+- **First-half (Days 1–10) code-alongs — ✅ RE-EXECUTED CLEAN TODAY (no bit-rot since the 2026-06-17 check).**
+  Ran all 7 first-half code-alongs top-to-bottom via `/opt/anaconda3/bin/python` (139 code cells; `!`
+  shell/pip lines skipped): Variables (25 — the lone error is the **intentional** "read the error message"
+  TypeError), Strings (21), Lists/Loops/Conditionals (30), Dictionaries/Functions (17), Term Frequency
+  (11), Pandas 01 Found Data (19), Pandas 02 Cleaning (16) — **all clean**.
+- **Readiness snapshot (this session's verdict):** **Day 1 = ready to teach (100%)** — both opening
+  lectures (page+deck+imagery), the Variables code-along, and the D1 prompt all confirmed live.
+  **Week 1 (Days 1–5) ≈ 98%**, **first half (Days 1–10) ≈ 96%**, **whole course ≈ 90%** (≈93–95% excluding
+  the optional, un-deployed chatbot). Every residual is instructor-discretion polish or non-content
+  paperwork (conceptual-framework fold-ins; AddRan Word `.docx` sync; CSV/HUM vetting-form trim) — **no
+  unbuilt or broken teachable material** anywhere in the first half.
+
+## Earlier session — 2026-06-18 (chatbot-tutor MVP BUILT — code-complete, deployment pending)
 *Work lives in the private sibling repo **`TCU-DCDA/WRIT20833-chatbot`** (`../../WRIT20833-chatbot`), not this
 repo. Full scope + build summary: `planning/CHATBOT_TUTOR_SCOPE.md`. The repo's own `CLAUDE.md` + `DEPLOY.md`
 are the operating docs.*
