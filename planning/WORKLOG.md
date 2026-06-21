@@ -2,8 +2,10 @@
 
 **Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
 https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-06-18 (ML9 merged PR #29; **chatbot-tutor MVP BUILT** in the private
-`WRIT20833-chatbot` repo — code-complete, deployment pending)
+`main`. · **Last updated:** 2026-06-21 (open-thread #7 **topic-modeling install cell verified** on a
+py3.12 proxy — gensim 4.4.0 installs + imports + trains clean; one live Colab click remaining. Prior:
+2026-06-18 ML9 merged PR #29; **chatbot-tutor MVP BUILT** in the private `WRIT20833-chatbot` repo —
+code-complete, deployment pending)
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
 Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and
@@ -543,9 +545,20 @@ line + rerun both generators.
    Ungrading evaluation section, AI-use policy (explain-don't-avoid), Walsh-independence, sensitive-topic
    note. Placeholders in `[...]` for instructor name/contact/office hours + TCU policy boilerplate.
 6. **Stylometry decisions** — fixed sample corpus vs. student-generated; essay weight; ethics emphasis.
-7. **Test the topic-modeling install cell on Colab's 2026 image.** HW4 uses a lean `!pip install -q
-   gensim vaderSentiment` (no nltk, no pinned deps, no kernel restart — simpler than F25's cell);
-   still verify it resolves cleanly on Colab's 2026 default image before Day 14.
+7. **Topic-modeling install cell — ✅ VERIFIED ON py3.12 PROXY (2026-06-21); one live Colab click remaining.**
+   The Day-14 code-along cell is `!pip install -q gensim`; HW4 is `!pip install -q gensim vaderSentiment`
+   (lean — no nltk, no pinned deps, no kernel restart, simpler than F25's cell). Tested in a **clean
+   Python-3.12 venv** (closest local proxy to a mid-2026 Colab image): bare install resolved
+   **gensim 4.4.0 · numpy 2.4.6 · scipy 1.18.0** with no errors; the exact import chain
+   (`from gensim import corpora` / `from gensim.models import LdaModel` / VADER) imports clean; and a full
+   LDA smoke test passed — `Dictionary` + `doc2bow` (incl. the **empty-bag `[]` edge** HW4/Day-14 A3
+   teaches) + `LdaModel(num_topics, random_state=42, passes=10)` + `show_topic` + `get_document_topics`.
+   **Key result:** current gensim (4.4.0) supports **numpy 2.x + scipy ≥1.13 natively**, so the old
+   `scipy.linalg.triu` / numpy-2 breakage class is gone — and since Colab already ships numpy 2.x, the
+   bare install should pull a compatible gensim with **no downgrade and no "Restart runtime" prompt**. Also
+   confirmed the *older* end of the range works (anaconda: py3.11 · numpy 1.26 · scipy 1.11 · gensim 4.3.0
+   imports fine), bracketing whatever Colab lands on in July 2026. **Residual = one 60-sec live click:**
+   open the notebook in Colab once before Day 14, run the install cell, confirm no red restart banner.
 8. **A4 / HW1 note:** A4 intentionally demonstrates a TypeError via try/except — by design.
 9. **Lecture audit — ✅ FULLY CLOSED (2026-06-18).** ML0–7 mapped cleanly; ML10–12 (GitHub/HTML/CSS) cut;
    **ML2 "Sacred Boundaries" CUT (2026-06-15)**; **ML9 "Going Public" AUTHORED + homed at Day 17
