@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Going Public (slides) — WRIT 20833</title>
+<style>
+:root{
+  /* surfaces & ink */
+  --paper:#f1eee4; --surface:#fbfaf3; --ink:#262a20; --muted:#696e5e; --faint:#6a6c61;
+  --rule:#dcd8c9;
+  /* greens — deepen across the term (week tints) + the primary */
+  --wk1:#3a6b54; --wk2:#2f5d49; --wk3:#26513e; --wk4:#1e3b2f;
+  --green:#1e3b2f; --green-mid:#2f5d49; --green-link:#2f6a4e;
+  /* the one warm accent */
+  --clay:#8c6338; --clay-bg:#ebdfc7; --clay-ink:#6a4922;
+  /* type */
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);
+  border-top:5px solid var(--green);-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1060px;margin:0 auto;padding:36px 20px 64px;}
+a{color:var(--green-link);text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb,var(--green-link) 26%,transparent);}
+a:hover{border-bottom-color:var(--green-link);}
+code{font:.88em var(--mono);background:color-mix(in srgb,var(--green) 8%,var(--surface));
+  padding:1px 5px;border-radius:4px;color:var(--green-mid);}
+h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--green);letter-spacing:-.01em;}
+
+/* masthead */
+.masthead{padding:2px 0 20px;border-bottom:2.5px solid var(--green);margin-bottom:28px;}
+.kicker{font:600 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--clay);margin-bottom:16px;}
+.masthead h1{margin:0 0 10px;font-size:31px;line-height:1.1;}
+.masthead .sub{margin:0 0 16px;font-family:var(--serif);font-style:italic;font-size:17.5px;color:#464b3d;}
+.masthead .meta{margin:0;font-size:13.5px;color:var(--muted);max-width:74ch;}
+/* masthead hero — a full-width landscape banner above the title */
+.mast-banner{margin:0 0 22px;}
+.mast-banner img{display:block;width:100%;height:clamp(150px,26vw,280px);object-fit:cover;
+  object-position:center top;border:1px solid var(--rule);border-radius:4px;}
+
+/* legend + mode pills (restrained, earthy — not a rainbow) */
+.legend{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:20px;}
+.legend .lbl{font:600 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-right:4px;}
+.mode{display:inline-block;font:600 12px/1 var(--sans);letter-spacing:.02em;
+  padding:5px 9px;border-radius:4px;color:#f3f0e6;white-space:nowrap;}
+.m-codealong{background:#2f5d49;} .m-lab{background:#4a6b67;} .m-workshop{background:#6d7a42;}
+.m-worksession{background:#8d6539;} .m-present{background:#825764;} .m-other{background:#6f7463;}
+
+/* week sections */
+.week{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--wk);
+  border-radius:3px;margin:22px 0;overflow:hidden;}
+.week h2{margin:0;padding:13px 20px;font-size:17px;color:var(--wk);
+  background:color-mix(in srgb,var(--wk) 7%,var(--surface));border-bottom:1px solid var(--rule);}
+
+/* tables */
+table{width:100%;border-collapse:collapse;}
+th,td{text-align:left;padding:12px 16px;vertical-align:top;border-top:1px solid var(--rule);}
+thead th{border-top:none;font:600 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);padding-top:13px;padding-bottom:11px;}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--green) 3%,var(--surface));}
+.c-day{width:72px;} .c-lec{width:25%;} .c-due{width:23%;}
+
+/* day cell — date leads, session number is a quiet mono tag */
+.day .wd{display:block;font-weight:700;font-size:14px;color:var(--ink);}
+.day .dt{display:block;font-size:13px;color:var(--muted);}
+.day .num{display:block;font:12px/1 var(--mono);color:var(--faint);margin-top:4px;letter-spacing:.02em;}
+.c-lec{font-size:14.5px;color:#3c4133;}
+.c-code{font-size:14.5px;}
+.c-code .mode{margin-right:5px;}
+
+/* due chips */
+.chip{display:inline-block;font-size:12px;padding:3px 8px;border-radius:4px;
+  background:color-mix(in srgb,var(--green) 6%,var(--surface));border:1px solid var(--rule);
+  color:var(--muted);margin:1px 0;}
+.chip-key{background:var(--clay-bg);border-color:color-mix(in srgb,var(--clay) 35%,transparent);
+  color:var(--clay-ink);font-weight:600;}
+.due-none{color:var(--faint);}
+
+/* notes + footer */
+.notes{border:1px solid var(--rule);border-radius:3px;background:var(--surface);
+  padding:16px 24px;margin:26px 0 0;color:#54594a;font-size:13.5px;line-height:1.65;}
+.notes p{margin:10px 0;} .notes strong{color:var(--green);}
+footer{font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-align:center;margin-top:30px;}
+
+@media (max-width:720px){.c-lec,.c-due{width:auto;} body{font-size:15px;}}
+@media print{body{background:#fff;border-top-color:#000;} .week{break-inside:avoid;}}
+
+/* ---- site components (landing dashboard) ---- */
+/* top nav — an anchor launchpad */
+.topnav{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;
+  background:var(--paper);border-bottom:1px solid var(--rule);padding:11px 0;margin-bottom:6px;
+  font:600 12.5px/1 var(--sans);}
+.topnav a{color:var(--green);border:none;}
+.topnav a:hover{color:var(--clay);}
+.topnav .spacer{flex:1;}
+.topnav .ext{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+/* sections */
+.sec{margin:38px 0 0;}
+.sec>h2{display:flex;align-items:baseline;gap:10px;font-size:21px;margin:0;
+  padding-bottom:8px;border-bottom:2px solid var(--green);}
+.sec>h2 .n{font:600 12px/1 var(--mono);color:var(--clay);letter-spacing:.1em;}
+.sec>.lede{margin:12px 0 16px;color:var(--muted);font-size:14px;max-width:76ch;}
+
+/* card grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:14px;margin-top:16px;}
+.card{display:block;border:1px solid var(--rule);border-left:3px solid var(--green-mid);
+  border-radius:3px;background:var(--surface);padding:14px 16px;color:inherit;}
+a.card{text-decoration:none;border-bottom:none;}
+a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--green) 3%,var(--surface));}
+.card .lbl{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.card h3{margin:6px 0 5px;font-size:16px;line-height:1.22;}
+.card p{margin:0;font-size:13px;color:var(--muted);line-height:1.5;}
+.card .when{display:inline-block;font:600 12px/1 var(--mono);color:var(--clay);margin-top:9px;letter-spacing:.03em;}
+.card.soon{opacity:.62;} .card.soon:hover{border-left-color:var(--green-mid);background:var(--surface);}
+/* thumbnail cards — image (or proportion-matched placeholder) above the text */
+.card.has-thumb{padding:0;overflow:hidden;}
+.card .thumb{display:block;aspect-ratio:3/2;border-bottom:1px solid var(--rule);
+  background:color-mix(in srgb,var(--green) 7%,var(--surface));}
+.card .thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.card .thumb.ph{background:
+  repeating-linear-gradient(45deg,transparent 0 11px,color-mix(in srgb,var(--green) 7%,transparent) 11px 12px),
+  color-mix(in srgb,var(--green) 6%,var(--surface));}
+.card-body{display:block;padding:13px 16px 15px;}
+
+/* resource list */
+.reslist{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px 26px;
+  list-style:none;padding:0;margin:16px 0 0;}
+.reslist li{font-size:14px;border-bottom:1px solid var(--rule);padding:8px 0;}
+.reslist li .k{display:block;font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:3px;}
+.muted{color:var(--muted);}
+
+/* ---- two-column app layout (left sidebar) ---- */
+.app{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh;}
+.sidebar{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;
+  background:color-mix(in srgb,var(--green) 5%,var(--paper));border-right:1px solid var(--rule);
+  padding:26px 20px;}
+.sidebar .brand{font:600 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--clay);margin-bottom:6px;}
+.sidebar .brandname{display:block;font-family:var(--serif);font-size:18px;line-height:1.18;
+  color:var(--green);margin-bottom:24px;}
+.sidenav{display:flex;flex-direction:column;gap:2px;}
+.sidenav a{display:flex;align-items:baseline;gap:9px;padding:8px 11px;border-radius:6px;border:none;
+  color:var(--ink);font:600 13.5px/1.2 var(--sans);}
+.sidenav a .n{font:600 12px/1 var(--mono);color:var(--faint);min-width:16px;}
+.sidenav a:hover{background:color-mix(in srgb,var(--green) 9%,transparent);color:var(--green);}
+.sidenav a.active{background:var(--green);color:var(--paper);}
+.sidenav a.active .n{color:color-mix(in srgb,var(--paper) 65%,transparent);}
+.side-ext{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:9px;}
+.side-ext a{border:none;font:600 12px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);}
+.side-ext a:hover{color:var(--clay);}
+.main{min-width:0;padding:34px 34px 64px;}
+.main>*{max-width:960px;}
+
+/* week sub-groups (e.g. code-alongs split by week) */
+.wkgroup{margin-top:20px;}
+.wkgroup>h3{display:flex;align-items:baseline;gap:9px;margin:0 0 2px;font-family:var(--sans);
+  font-size:14px;color:var(--green);}
+.wkgroup>h3 .wkn{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--clay);}
+
+@media (max-width:860px){
+  .app{grid-template-columns:1fr;}
+  .sidebar{position:static;height:auto;overflow:visible;border-right:none;
+    border-bottom:1px solid var(--rule);padding:14px 18px;}
+  .sidebar .brandname{display:none;} .sidebar .brand{margin-bottom:10px;}
+  .sidenav{flex-direction:row;flex-wrap:wrap;gap:4px 6px;}
+  .sidenav a{padding:5px 9px;font-size:12.5px;}
+  .sidenav a .n{display:none;}
+  .side-ext{flex-direction:row;gap:14px;margin-top:12px;padding-top:12px;}
+  .main{padding:22px 18px 48px;}
+}
+
+/* ---- lecture / reading pages ---- */
+.reading{max-width:50rem;margin:0 auto;}
+.reading .backlink{display:flex;gap:13px;align-items:baseline;font:600 12.5px/1 var(--sans);margin-bottom:14px;}
+.reading .backlink a{color:var(--green);border:none;} .reading .backlink a:hover{color:var(--clay);}
+.reading .backlink .sep{color:var(--faint);}
+.reading p{margin:0 0 17px;font-size:16.5px;}
+.reading p.lead{font-family:var(--serif);font-size:19px;line-height:1.5;color:#3c4133;margin-bottom:22px;}
+.reading h2{font-size:22px;margin:34px 0 10px;}
+.reading h3{font-size:16.5px;margin:24px 0 7px;color:var(--green-mid);}
+.reading ul{margin:0 0 17px;padding-left:22px;} .reading li{margin:6px 0;}
+.reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
+  font-family:var(--serif);font-style:italic;color:#474c3d;}
+.reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+.reading figure{margin:24px 0;}
+.reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
+  border-radius:3px;background:var(--surface);padding:6px;}
+.reading figcaption{margin-top:8px;font:12px/1.5 var(--mono);letter-spacing:.02em;color:var(--muted);}
+.reading hr{border:none;border-top:1px solid var(--rule);margin:30px 0;}
+.reading footer{text-align:left;border-top:1px solid var(--rule);padding-top:14px;margin-top:34px;}
+
+.deck{position:fixed;inset:0;background:var(--paper);overflow:hidden;}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:flex-start;
+  padding:7vh 8vw 9vh;overflow:auto;}
+.slide.active{display:flex;} .slide.title{justify-content:center;}
+.slide>*{max-width:62rem;width:100%;}
+.slide .kicker{font:600 13px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--clay);margin-bottom:18px;}
+.slide.title h1{font-family:var(--serif);color:var(--green);font-size:clamp(30px,5.4vw,56px);
+  line-height:1.08;margin:0 0 16px;}
+.slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
+  color:#464b3d;margin:0 0 20px;}
+.slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
+  margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
+.slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
+.slide p.lead{font-family:var(--serif);color:#3c4133;}
+.slide ul{font-size:clamp(16px,2vw,23px);line-height:1.45;margin:0 0 16px;padding-left:1.1em;}
+.slide li{margin:10px 0;}
+.slide blockquote{margin:10px 0 18px;padding:6px 0 6px 22px;border-left:4px solid var(--clay);
+  font-family:var(--serif);font-style:italic;color:#474c3d;}
+.slide blockquote p{font-size:clamp(19px,2.9vw,31px);line-height:1.38;margin:0;}
+.slide figure{margin:6px 0;text-align:center;}
+.slide figure img{max-height:62vh;width:auto;max-width:100%;border:1px solid var(--rule);
+  border-radius:3px;background:var(--surface);padding:6px;}
+.slide figcaption{font:12px/1.5 var(--mono);color:var(--muted);margin-top:8px;}
+/* two-column split slide (text | image) */
+.slide.split>.split-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:5%;align-items:center;
+  max-width:76rem;width:100%;}
+.slide.split .col-text>*:first-child{margin-top:0;}
+.slide.split .col-img figure{margin:0;}
+.slide.split .col-img figure img{max-height:72vh;}
+@media (max-width:760px){.slide.split>.split-grid{grid-template-columns:1fr;gap:20px;}}
+/* gallery slide — text on top, figures in a row underneath */
+.slide.gallery .fig-row{display:grid;gap:4%;align-items:start;max-width:74rem;width:100%;margin-top:6px;}
+.slide.gallery .fig-row.cols-2{grid-template-columns:1fr 1fr;}
+.slide.gallery .fig-row.cols-3{grid-template-columns:repeat(3,1fr);}
+.slide.gallery .fig-row.cols-4{grid-template-columns:repeat(2,1fr);}
+.slide.gallery .fig-row figure{margin:0;}
+.slide.gallery .fig-row figure img{max-height:42vh;width:100%;object-fit:contain;background:#fbfaf6;}
+.slide.gallery .fig-row figcaption{font-size:12px;}
+@media (max-width:760px){.slide.gallery .fig-row{grid-template-columns:1fr !important;gap:16px;}}
+.deck-progress{position:fixed;left:0;bottom:0;height:4px;background:var(--green);width:0;
+  transition:width .2s;z-index:10;}
+.deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
+.deck-hint{position:fixed;left:16px;bottom:11px;font:600 12px/1 var(--mono);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint);z-index:10;}
+.deck-home{position:fixed;left:16px;top:13px;z-index:10;display:flex;gap:11px;align-items:baseline;
+  font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
+.deck-home:hover{opacity:1;}
+.deck-home a{color:var(--green-mid);border:none;text-decoration:none;}
+.deck-home a:hover{color:var(--clay);}
+.deck-home .sep{color:var(--faint);}
+@media print{.deck{position:static;overflow:visible;}
+  .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
+    border-bottom:1px solid var(--rule);}
+  .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
+</style></head>
+<body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 17 · the through-line</div><h1>Going Public</h1><p class="sub">Your analysis isn't finished until it argues</p><p class="lead">You have counted the words, scored the feeling, and modeled the themes of 123 comments about a contested law. You can say, with evidence, what that crowd was arguing about and how it felt. Here is the question this whole course has been walking toward: <strong>so what — and who is it for?</strong> An analysis that never leaves your laptop changes exactly nothing. Today is about the last move, the one that turns a finding into an argument a human can act on.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml9_title.jpg" alt="A scholar carrying one bound page out of a lamplit study toward a crowd waiting in an open doorway"><figcaption>A scholar carrying one bound page out of a lamplit study toward a crowd waiting in an open doorway</figcaption></figure></div></div></section><section class="slide"><h2>The notebook is not the destination</h2><p>It is easy to mistake the analysis for the finish line. You ran the cells, the chart rendered, the topics came back — done. But a result sitting in a private notebook is knowledge <strong>locked away</strong>: trapped on your machine, written in a dialect (pandas, VADER, LDA) that the people your analysis is <em>about</em> cannot read. The commenters whose words you counted will never see what you found. The point of hearing the human at scale was never to file the hearing away. It was to <strong>say something back.</strong></p></section><section class="slide"><h2>What a public argument is</h2><p>A public argument takes a scholarly or cultural insight and makes it <strong>accessible, engaging, and actionable</strong> for people beyond this seminar. Not dumbed down — translated. The difference is plain arithmetic: a result you keep reaches the handful of people already in the room; a result you frame for an audience can reach everyone who needs it.</p>
+<blockquote><p>A finding in a journal nobody outside the field reads has eight readers. The same finding, argued for a</p><p>public, can have eight thousand. The analysis is identical. What changed is that you decided to be</p><p><em>understood.</em></p></blockquote>
+<p>In this course your public artifact isn't a website — that delivery belongs to a different class. It's your <strong>capstone: a data-driven-opinion essay and a short presentation.</strong> Same move, humbler medium.</p></section><section class="slide"><h2>Your skills are already a public intervention</h2><p>This isn't theory. Consider <em>Mapping Police Violence</em> — a project built on exactly the skills you have been learning: collect public records, analyze them for pattern over time and geography, visualize the result, and put a clear public face on it. The technical work is ordinary — scraping, a DataFrame, a chart. What makes it <strong>matter</strong> is that it made an invisible pattern visible to journalists, families, and policymakers, and got cited in debates that move real lives.</p>
+<p>That is the whole equation: <em>the same analysis skills you practiced this month + a public face = a cultural intervention.</em> You are closer to that than you think.</p></section><section class="slide"><h2>You are joining an old tradition</h2><p>Going public is not a new internet trick. It runs back through the <strong>public intellectuals</strong> who wrote for newspapers instead of only for each other, the <strong>community archives</strong> that preserved neighborhood memory the official record skipped, and the <strong>oral-history projects</strong> that carried marginalized voices into the permanent record. Each one made the same bet you are about to make: that expert knowledge has a duty to <strong>reach the people it concerns,</strong> not just circulate among experts. Accessibility isn't a courtesy here. It's an ethic.</p></section><section class="slide"><h2>How you present <em>is</em> the argument</h2><p>Here is the rhetorical catch, and it carries straight over from the Connotations lecture. The choices you make in presenting an analysis are not neutral packaging — they <strong>argue.</strong> What you put first and what you bury in an appendix; which number you make the headline; the chart you reach for and the one you don't: every one is a claim about what matters, aimed at a reader. Structure is rhetoric. Code is rhetoric.</p>
+<p>So the standard from day one holds in public, too — <strong>show your seams.</strong> An honest public argument says what it counted <em>and what it left out,</em> names the cutoff it chose and why, and admits where it might be wrong. A polished take that hides its choices isn't more persuasive; it's just less honest. Being willing to be wrong out loud is not a weakness in a public argument. It's the thing that makes it trustworthy.</p></section><section class="slide"><h2>What you do with what you found</h2><p>Knowledge becomes wisdom only in what you <strong>do</strong> with it. The reason to hear a crowd at scale is, in the end, a moral one: to make someone who didn't know to care begin to care — and you can't move anyone with a finding they never see. That is the work this last move is for.</p>
+<p>One caution carried from the whole term: going public is not flattening. Your job is not to resolve the quarrel into a tidy verdict the way a single topic-list pretends a messy debate was clean. The honest public argument <strong>preserves the disagreement</strong> even as it takes a position — it gives voice to the crowd without pretending the crowd agreed.</p>
+<blockquote><p>The reflection that becomes your capstone: <em>what did your analysis find that someone outside this room needs to see — who are they, and what should they do once they have seen it?</em></p></blockquote>
+<p>You already have the insight. The last skill is the courage and the craft to hand it to the people it's for.</p>
+<p>Going deeper (optional): Sheila Brennan, "Public, First" (<em>Debates in the Digital Humanities</em>); Catherine D'Ignazio &amp; Lauren Klein, <em>Data Feminism</em> (on whose knowledge reaches whom); the <em>Mapping Police Violence</em> project (mappingpoliceviolence.org) as a worked example of analysis-as-public-intervention.</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml9.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<script>
+(function(){
+  var s=[].slice.call(document.querySelectorAll('.slide'));
+  var prog=document.querySelector('.deck-progress'), cnt=document.querySelector('.deck-count'), i=0;
+  function show(n){i=Math.max(0,Math.min(s.length-1,n));
+    s.forEach(function(el,k){el.classList.toggle('active',k===i);el.scrollTop=0;});
+    if(prog)prog.style.width=((i+1)/s.length*100)+'%';
+    if(cnt)cnt.textContent=(i+1)+' / '+s.length;
+    if(history.replaceState)history.replaceState(null,'','#'+(i+1));}
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1);}
+    else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(i-1);}
+    else if(e.key==='Home'){show(0);} else if(e.key==='End'){show(s.length-1);}});
+  document.addEventListener('click',function(e){if(!e.target.closest('a'))show(i+1);});
+  var h=parseInt((location.hash||'').slice(1),10); show(h?h-1:0);
+})();
+</script>
+</body></html>

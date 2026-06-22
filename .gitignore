@@ -24,6 +24,22 @@ env/
 .idea/
 *.swp
 
+# Microsoft Word lock/owner files (created while a .docx is open)
+~$*
+
 # Misc
 *.log
 .cache/
+
+# Instructor-only — answer keys + the solution-bearing homework builders live in the
+# PRIVATE companion repo TCU-DCDA/WRIT20833_2026_keys, never in this student-facing repo.
+*_ANSWER_KEY.ipynb
+notebooks/homework/_build_hw*.py
+
+# Generated AddRan Word export of the syllabus — a working draft edited in Word
+# (pandoc'd from SYLLABUS_2026.md, which stays the source of truth). The glob matches
+# both the [section] placeholder name and the renamed WRIT20833-<section>_… version.
+WRIT20833-*_Summer2026_Rode.docx
+
+# Throwaway local site previews (image paths rewritten to local files)
+*.preview.html

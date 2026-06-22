@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3)",
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(./node_modules/.bin/wrangler --version)",
+      "Bash(node -e \"import\\('./worker/lessons/system-prompt.js'\\).then\\(m=>console.log\\('system-prompt.js OK, length', m.getSystemPrompt\\(\\).length\\)\\).catch\\(e=>{console.error\\('PARSE ERROR',e.message\\);process.exit\\(1\\)}\\)\")",
+      "Bash(node -e \"import\\('./worker/lessons/system-prompt.js'\\).then\\(m=>console.log\\('system-prompt.js OK —', m.getSystemPrompt\\(\\).length, 'chars'\\)\\).catch\\(e=>{console.error\\('PARSE ERROR',e.message\\);process.exit\\(1\\)}\\)\")",
+      "Bash(pkill -f \"wrangler dev\")"
+    ],
+    "additionalDirectories": [
+      "/Users/curtrode/Code/Teaching/WRIT/WRIT20833/WRIT20833-chatbot"
+    ]
+  }
+}
