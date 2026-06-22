@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NLP &amp; Topic Modeling (slides) — WRIT 20833</title>
+<style>
+:root{
+  /* surfaces & ink */
+  --paper:#f1eee4; --surface:#fbfaf3; --ink:#262a20; --muted:#696e5e; --faint:#6a6c61;
+  --rule:#dcd8c9;
+  /* greens — deepen across the term (week tints) + the primary */
+  --wk1:#3a6b54; --wk2:#2f5d49; --wk3:#26513e; --wk4:#1e3b2f;
+  --green:#1e3b2f; --green-mid:#2f5d49; --green-link:#2f6a4e;
+  /* the one warm accent */
+  --clay:#8c6338; --clay-bg:#ebdfc7; --clay-ink:#6a4922;
+  /* type */
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);
+  border-top:5px solid var(--green);-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1060px;margin:0 auto;padding:36px 20px 64px;}
+a{color:var(--green-link);text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb,var(--green-link) 26%,transparent);}
+a:hover{border-bottom-color:var(--green-link);}
+code{font:.88em var(--mono);background:color-mix(in srgb,var(--green) 8%,var(--surface));
+  padding:1px 5px;border-radius:4px;color:var(--green-mid);}
+h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--green);letter-spacing:-.01em;}
+
+/* masthead */
+.masthead{padding:2px 0 20px;border-bottom:2.5px solid var(--green);margin-bottom:28px;}
+.kicker{font:600 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--clay);margin-bottom:16px;}
+.masthead h1{margin:0 0 10px;font-size:31px;line-height:1.1;}
+.masthead .sub{margin:0 0 16px;font-family:var(--serif);font-style:italic;font-size:17.5px;color:#464b3d;}
+.masthead .meta{margin:0;font-size:13.5px;color:var(--muted);max-width:74ch;}
+/* masthead hero — a full-width landscape banner above the title */
+.mast-banner{margin:0 0 22px;}
+.mast-banner img{display:block;width:100%;height:clamp(150px,26vw,280px);object-fit:cover;
+  object-position:center top;border:1px solid var(--rule);border-radius:4px;}
+
+/* legend + mode pills (restrained, earthy — not a rainbow) */
+.legend{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:20px;}
+.legend .lbl{font:600 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-right:4px;}
+.mode{display:inline-block;font:600 12px/1 var(--sans);letter-spacing:.02em;
+  padding:5px 9px;border-radius:4px;color:#f3f0e6;white-space:nowrap;}
+.m-codealong{background:#2f5d49;} .m-lab{background:#4a6b67;} .m-workshop{background:#6d7a42;}
+.m-worksession{background:#8d6539;} .m-present{background:#825764;} .m-other{background:#6f7463;}
+
+/* week sections */
+.week{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--wk);
+  border-radius:3px;margin:22px 0;overflow:hidden;}
+.week h2{margin:0;padding:13px 20px;font-size:17px;color:var(--wk);
+  background:color-mix(in srgb,var(--wk) 7%,var(--surface));border-bottom:1px solid var(--rule);}
+
+/* tables */
+table{width:100%;border-collapse:collapse;}
+th,td{text-align:left;padding:12px 16px;vertical-align:top;border-top:1px solid var(--rule);}
+thead th{border-top:none;font:600 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);padding-top:13px;padding-bottom:11px;}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--green) 3%,var(--surface));}
+.c-day{width:72px;} .c-lec{width:25%;} .c-due{width:23%;}
+
+/* day cell — date leads, session number is a quiet mono tag */
+.day .wd{display:block;font-weight:700;font-size:14px;color:var(--ink);}
+.day .dt{display:block;font-size:13px;color:var(--muted);}
+.day .num{display:block;font:12px/1 var(--mono);color:var(--faint);margin-top:4px;letter-spacing:.02em;}
+.c-lec{font-size:14.5px;color:#3c4133;}
+.c-code{font-size:14.5px;}
+.c-code .mode{margin-right:5px;}
+
+/* due chips */
+.chip{display:inline-block;font-size:12px;padding:3px 8px;border-radius:4px;
+  background:color-mix(in srgb,var(--green) 6%,var(--surface));border:1px solid var(--rule);
+  color:var(--muted);margin:1px 0;}
+.chip-key{background:var(--clay-bg);border-color:color-mix(in srgb,var(--clay) 35%,transparent);
+  color:var(--clay-ink);font-weight:600;}
+.due-none{color:var(--faint);}
+
+/* notes + footer */
+.notes{border:1px solid var(--rule);border-radius:3px;background:var(--surface);
+  padding:16px 24px;margin:26px 0 0;color:#54594a;font-size:13.5px;line-height:1.65;}
+.notes p{margin:10px 0;} .notes strong{color:var(--green);}
+footer{font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-align:center;margin-top:30px;}
+
+@media (max-width:720px){.c-lec,.c-due{width:auto;} body{font-size:15px;}}
+@media print{body{background:#fff;border-top-color:#000;} .week{break-inside:avoid;}}
+
+/* ---- site components (landing dashboard) ---- */
+/* top nav — an anchor launchpad */
+.topnav{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;
+  background:var(--paper);border-bottom:1px solid var(--rule);padding:11px 0;margin-bottom:6px;
+  font:600 12.5px/1 var(--sans);}
+.topnav a{color:var(--green);border:none;}
+.topnav a:hover{color:var(--clay);}
+.topnav .spacer{flex:1;}
+.topnav .ext{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+/* sections */
+.sec{margin:38px 0 0;}
+.sec>h2{display:flex;align-items:baseline;gap:10px;font-size:21px;margin:0;
+  padding-bottom:8px;border-bottom:2px solid var(--green);}
+.sec>h2 .n{font:600 12px/1 var(--mono);color:var(--clay);letter-spacing:.1em;}
+.sec>.lede{margin:12px 0 16px;color:var(--muted);font-size:14px;max-width:76ch;}
+
+/* card grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:14px;margin-top:16px;}
+.card{display:block;border:1px solid var(--rule);border-left:3px solid var(--green-mid);
+  border-radius:3px;background:var(--surface);padding:14px 16px;color:inherit;}
+a.card{text-decoration:none;border-bottom:none;}
+a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--green) 3%,var(--surface));}
+.card .lbl{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.card h3{margin:6px 0 5px;font-size:16px;line-height:1.22;}
+.card p{margin:0;font-size:13px;color:var(--muted);line-height:1.5;}
+.card .when{display:inline-block;font:600 12px/1 var(--mono);color:var(--clay);margin-top:9px;letter-spacing:.03em;}
+.card.soon{opacity:.62;} .card.soon:hover{border-left-color:var(--green-mid);background:var(--surface);}
+/* thumbnail cards — image (or proportion-matched placeholder) above the text */
+.card.has-thumb{padding:0;overflow:hidden;}
+.card .thumb{display:block;aspect-ratio:3/2;border-bottom:1px solid var(--rule);
+  background:color-mix(in srgb,var(--green) 7%,var(--surface));}
+.card .thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.card .thumb.ph{background:
+  repeating-linear-gradient(45deg,transparent 0 11px,color-mix(in srgb,var(--green) 7%,transparent) 11px 12px),
+  color-mix(in srgb,var(--green) 6%,var(--surface));}
+.card-body{display:block;padding:13px 16px 15px;}
+
+/* resource list */
+.reslist{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px 26px;
+  list-style:none;padding:0;margin:16px 0 0;}
+.reslist li{font-size:14px;border-bottom:1px solid var(--rule);padding:8px 0;}
+.reslist li .k{display:block;font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:3px;}
+.muted{color:var(--muted);}
+
+/* ---- two-column app layout (left sidebar) ---- */
+.app{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh;}
+.sidebar{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;
+  background:color-mix(in srgb,var(--green) 5%,var(--paper));border-right:1px solid var(--rule);
+  padding:26px 20px;}
+.sidebar .brand{font:600 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--clay);margin-bottom:6px;}
+.sidebar .brandname{display:block;font-family:var(--serif);font-size:18px;line-height:1.18;
+  color:var(--green);margin-bottom:24px;}
+.sidenav{display:flex;flex-direction:column;gap:2px;}
+.sidenav a{display:flex;align-items:baseline;gap:9px;padding:8px 11px;border-radius:6px;border:none;
+  color:var(--ink);font:600 13.5px/1.2 var(--sans);}
+.sidenav a .n{font:600 12px/1 var(--mono);color:var(--faint);min-width:16px;}
+.sidenav a:hover{background:color-mix(in srgb,var(--green) 9%,transparent);color:var(--green);}
+.sidenav a.active{background:var(--green);color:var(--paper);}
+.sidenav a.active .n{color:color-mix(in srgb,var(--paper) 65%,transparent);}
+.side-ext{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:9px;}
+.side-ext a{border:none;font:600 12px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);}
+.side-ext a:hover{color:var(--clay);}
+.main{min-width:0;padding:34px 34px 64px;}
+.main>*{max-width:960px;}
+
+/* week sub-groups (e.g. code-alongs split by week) */
+.wkgroup{margin-top:20px;}
+.wkgroup>h3{display:flex;align-items:baseline;gap:9px;margin:0 0 2px;font-family:var(--sans);
+  font-size:14px;color:var(--green);}
+.wkgroup>h3 .wkn{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--clay);}
+
+@media (max-width:860px){
+  .app{grid-template-columns:1fr;}
+  .sidebar{position:static;height:auto;overflow:visible;border-right:none;
+    border-bottom:1px solid var(--rule);padding:14px 18px;}
+  .sidebar .brandname{display:none;} .sidebar .brand{margin-bottom:10px;}
+  .sidenav{flex-direction:row;flex-wrap:wrap;gap:4px 6px;}
+  .sidenav a{padding:5px 9px;font-size:12.5px;}
+  .sidenav a .n{display:none;}
+  .side-ext{flex-direction:row;gap:14px;margin-top:12px;padding-top:12px;}
+  .main{padding:22px 18px 48px;}
+}
+
+/* ---- lecture / reading pages ---- */
+.reading{max-width:50rem;margin:0 auto;}
+.reading .backlink{display:flex;gap:13px;align-items:baseline;font:600 12.5px/1 var(--sans);margin-bottom:14px;}
+.reading .backlink a{color:var(--green);border:none;} .reading .backlink a:hover{color:var(--clay);}
+.reading .backlink .sep{color:var(--faint);}
+.reading p{margin:0 0 17px;font-size:16.5px;}
+.reading p.lead{font-family:var(--serif);font-size:19px;line-height:1.5;color:#3c4133;margin-bottom:22px;}
+.reading h2{font-size:22px;margin:34px 0 10px;}
+.reading h3{font-size:16.5px;margin:24px 0 7px;color:var(--green-mid);}
+.reading ul{margin:0 0 17px;padding-left:22px;} .reading li{margin:6px 0;}
+.reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
+  font-family:var(--serif);font-style:italic;color:#474c3d;}
+.reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+.reading figure{margin:24px 0;}
+.reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
+  border-radius:3px;background:var(--surface);padding:6px;}
+.reading figcaption{margin-top:8px;font:12px/1.5 var(--mono);letter-spacing:.02em;color:var(--muted);}
+.reading hr{border:none;border-top:1px solid var(--rule);margin:30px 0;}
+.reading footer{text-align:left;border-top:1px solid var(--rule);padding-top:14px;margin-top:34px;}
+
+.deck{position:fixed;inset:0;background:var(--paper);overflow:hidden;}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:flex-start;
+  padding:7vh 8vw 9vh;overflow:auto;}
+.slide.active{display:flex;} .slide.title{justify-content:center;}
+.slide>*{max-width:62rem;width:100%;}
+.slide .kicker{font:600 13px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--clay);margin-bottom:18px;}
+.slide.title h1{font-family:var(--serif);color:var(--green);font-size:clamp(30px,5.4vw,56px);
+  line-height:1.08;margin:0 0 16px;}
+.slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
+  color:#464b3d;margin:0 0 20px;}
+.slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
+  margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
+.slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
+.slide p.lead{font-family:var(--serif);color:#3c4133;}
+.slide ul{font-size:clamp(16px,2vw,23px);line-height:1.45;margin:0 0 16px;padding-left:1.1em;}
+.slide li{margin:10px 0;}
+.slide blockquote{margin:10px 0 18px;padding:6px 0 6px 22px;border-left:4px solid var(--clay);
+  font-family:var(--serif);font-style:italic;color:#474c3d;}
+.slide blockquote p{font-size:clamp(19px,2.9vw,31px);line-height:1.38;margin:0;}
+.slide figure{margin:6px 0;text-align:center;}
+.slide figure img{max-height:62vh;width:auto;max-width:100%;border:1px solid var(--rule);
+  border-radius:3px;background:var(--surface);padding:6px;}
+.slide figcaption{font:12px/1.5 var(--mono);color:var(--muted);margin-top:8px;}
+/* two-column split slide (text | image) */
+.slide.split>.split-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:5%;align-items:center;
+  max-width:76rem;width:100%;}
+.slide.split .col-text>*:first-child{margin-top:0;}
+.slide.split .col-img figure{margin:0;}
+.slide.split .col-img figure img{max-height:72vh;}
+@media (max-width:760px){.slide.split>.split-grid{grid-template-columns:1fr;gap:20px;}}
+/* gallery slide — text on top, figures in a row underneath */
+.slide.gallery .fig-row{display:grid;gap:4%;align-items:start;max-width:74rem;width:100%;margin-top:6px;}
+.slide.gallery .fig-row.cols-2{grid-template-columns:1fr 1fr;}
+.slide.gallery .fig-row.cols-3{grid-template-columns:repeat(3,1fr);}
+.slide.gallery .fig-row.cols-4{grid-template-columns:repeat(2,1fr);}
+.slide.gallery .fig-row figure{margin:0;}
+.slide.gallery .fig-row figure img{max-height:42vh;width:100%;object-fit:contain;background:#fbfaf6;}
+.slide.gallery .fig-row figcaption{font-size:12px;}
+@media (max-width:760px){.slide.gallery .fig-row{grid-template-columns:1fr !important;gap:16px;}}
+.deck-progress{position:fixed;left:0;bottom:0;height:4px;background:var(--green);width:0;
+  transition:width .2s;z-index:10;}
+.deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
+.deck-hint{position:fixed;left:16px;bottom:11px;font:600 12px/1 var(--mono);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint);z-index:10;}
+.deck-home{position:fixed;left:16px;top:13px;z-index:10;display:flex;gap:11px;align-items:baseline;
+  font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
+.deck-home:hover{opacity:1;}
+.deck-home a{color:var(--green-mid);border:none;text-decoration:none;}
+.deck-home a:hover{color:var(--clay);}
+.deck-home .sep{color:var(--faint);}
+@media print{.deck{position:static;overflow:visible;}
+  .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
+    border-bottom:1px solid var(--rule);}
+  .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
+</style></head>
+<body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 14 · the through-line</div><h1>NLP &amp; Topic Modeling</h1><p class="sub">The machine clusters the words — you name the meaning</p><p class="lead">Your text-analysis journey has been a ladder of bigger questions. Counting words asked <em>what appears most?</em> Sentiment asked <em>how does it feel?</em> Today you climb to the biggest one yet: <em>what is this whole pile of text even <strong>about</strong>?</em> Topic modeling is the deepest "distant reading" move in the course — it surfaces themes running through hundreds of documents that no one could find reading one comment at a time. But it works by a move you should be suspicious of, and getting clear on that move is the whole lesson.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml7_title.jpg" alt="A scholar sorting a scattered heap of letters into a few ribbon-bound stacks by theme"><figcaption>A scholar sorting a scattered heap of letters into a few ribbon-bound stacks by theme</figcaption></figure></div></div></section><section class="slide"><h2>You already do this — instantly</h2><p>Drop into a conversation halfway through and you figure out what it's about in seconds. Somebody keeps saying <em>budget</em> and <em>deadline</em> — it's a work project. <em>Election</em>, <em>campaign</em>, <em>vote</em> — politics. You read the <strong>repeated words</strong>, the <strong>keywords</strong>, the <strong>tone</strong>, and you infer the subject without anyone announcing it. And when you can't tell, you do the one thing that matters most: you <strong>ask</strong> — <em>"wait, the group project or the internship?"</em></p>
+<p>That instant, unconscious sorting is exactly the skill we're about to hand to a machine. Watching it try is the fastest way to see what's easy about reading and what's quietly hard.</p></section><section class="slide"><h2>The computer gets only the words</h2><p>Here's the gap. You bring tone of voice, facial expression, cultural memory, and the prior conversation to every sentence — and you can always ask <em>"what do you mean?"</em> A computer gets <strong>just the words on the screen.</strong> No tone, no context, no cultural knowledge unless someone programmed it in, and no way to ask a clarifying question. Closing that gap is the whole field of <strong>Natural Language Processing</strong> — the autocorrect, spam filters, and translation you already use daily.</p>
+<p>Language fights back, because it was built for humans, not machines. <em>"I saw her duck"</em> — the pet or the motion? <em>"That's sick"</em> — disgust or delight? <em>"Oh, great, another meeting"</em> — the words say positive, the meaning is the opposite. Ambiguity, idiom, and sarcasm are easy for you and brutal for a machine, because they live in the <strong>context</strong> the machine can't see. Keep that blind spot in mind; it comes back at the end.</p></section><section class="slide"><h2>Organizing a library without reading the books</h2><p>So how does a machine find themes in text it can't actually understand? Imagine sorting a library with no time to read a single book. You'd look at which words appear together on each cover and back, and infer shelves: <em>history, romance, science fiction.</em> You never read for meaning — you just notice <strong>what co-occurs.</strong></p>
+<p>That's topic modeling. We'll use <strong>LDA</strong> (Latent Dirichlet Allocation) from the <strong>Gensim</strong> library, and it rests on two assumptions:</p>
+<ul><li>Each <strong>topic</strong> is a <em>cluster of words that tend to show up together.</em></li><li>Each <strong>document</strong> is a <em>mixture</em> of those topics — not filed under one, but "70% this, 30% that."</li></ul>
+<p>LDA works <em>backward</em> from the finished text to guess what clusters must have produced it — like reverse-engineering a recipe from the plated dish. <em>tomato + basil + mozzarella</em> → an "Italian" topic. It finds the pattern by raw co-occurrence. That is <strong>all it ever does.</strong></p></section><section class="slide"><h2>The machine clusters; you name</h2><p>Here is the move to be suspicious of — and the most important sentence in this lecture. LDA hands you back <strong>lists of words.</strong> It never hands you a name.</p>
+<blockquote><p>Topic 3: <em>money, dream, green, light, decay, gold.</em> The algorithm does not know this is "the American Dream."</p><p><strong>You</strong> know that. Naming it is your move, not the machine's.</p></blockquote>
+<p>The computer discovered that those words travel together; it has no idea what they <em>mean</em>, that they're about ambition or disappointment or Gatsby. <strong>Interpretation is the humanist's job</strong> — and it's not neutral. What you name a cluster depends on what you already know, what you're looking for, and where you stand. Two readers can label the same word-list differently and both be defensible. The statistics are the machine's; the meaning is yours. Own that, and don't dress your interpretation up as something the algorithm "found."</p></section><section class="slide"><h2>There is no correct number of topics</h2><p>Before LDA runs, you tell it how many topics to look for — <code>num_topics</code>. People assume the algorithm will <em>reveal</em> the right number. It won't. Ask the same comments for two topics and unrelated themes get mashed together; ask for ten and one real theme splinters into fragments.</p>
+<p>Neither answer is "wrong." <strong>Choosing the number of topics is a research decision you justify</strong> — by how interpretable and useful the result is, not by a truth the model uncovered. It's the course's recurring lesson wearing new clothes: a knob you turned is doing work that's easy to mistake for a fact the data handed you. Make the choice visible, and say why you made it.</p></section><section class="slide"><h2>When real data fights back</h2><p>A toy corpus — fifteen comments pulled from sports, music, and food forums — topic-models beautifully: three obvious subjects, three clean word-lists you can name in a second. That clarity is a setup. Now point the same machine at our <strong>123 Texas Ten Commandments comments</strong>, where every voice is arguing about <em>one law</em>, in overlapping vocabulary.</p>
+<p>The topics come back <strong>muddy.</strong> LDA still hands you three tidy word-lists — it always will — but here each one is just <em>more of the same argument</em>, not three distinct themes. There weren't separate subjects to find, so the model imposed structure anyway. <strong>That's the warning:</strong> the algorithm produces clusters whether or not real themes exist, so part of your job is judging whether the output means anything at all. (And because LDA is <strong>stochastic</strong>, rerun it or run it on another machine and the groupings shift — which is why we pin <code>random_state</code> just to talk about the <em>same</em> result twice.)</p></section><section class="slide"><h2>What the model can't hear</h2><p>The bird's-eye view is real power — you can see across hundreds of documents at once, a scale no close reading reaches. But hold it to the same questions you've asked all term:</p>
+<ul><li><strong>Whose text got counted?</strong> Topic models only see what was digitized and collected. The empty seats aren't in the file — the same lesson the data-as-artifact work pressed on you.</li><li><strong>Who decides what it means?</strong> The algorithm produces word clusters; <em>humans</em> name them. Whose categories, whose authority? You've met this question before as the logic of classification.</li><li><strong>What does it miss?</strong> Irony, sarcasm, coded language, the context that flips a meaning — exactly the things that made language hard at the start of this lecture. Computational reading has blind spots, and they're not random.</li></ul>
+<p>LDA assumes topics are stable categories. Culture is fluid and contextual. So use the model for what it's genuinely good at — a map of a pile too big to read — and never confuse the map for the territory. The machine finds the pattern; <strong>you</strong> decide whether the pattern is a finding or just order imposed on noise.</p>
+<p>Going deeper (optional): David M. Blei, "Topic Modeling and Digital Humanities" (<em>Journal of Digital Humanities</em>); Ted Underwood, "Topic Modeling Made Just Simple Enough"; Benjamin Schmidt, "Words Alone: Dismantling Topic Models in the Humanities" (the skeptic's case); Catherine D'Ignazio &amp; Lauren Klein, <em>Data Feminism</em> (whose data, whose categories).</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml7.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<script>
+(function(){
+  var s=[].slice.call(document.querySelectorAll('.slide'));
+  var prog=document.querySelector('.deck-progress'), cnt=document.querySelector('.deck-count'), i=0;
+  function show(n){i=Math.max(0,Math.min(s.length-1,n));
+    s.forEach(function(el,k){el.classList.toggle('active',k===i);el.scrollTop=0;});
+    if(prog)prog.style.width=((i+1)/s.length*100)+'%';
+    if(cnt)cnt.textContent=(i+1)+' / '+s.length;
+    if(history.replaceState)history.replaceState(null,'','#'+(i+1));}
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1);}
+    else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(i-1);}
+    else if(e.key==='Home'){show(0);} else if(e.key==='End'){show(s.length-1);}});
+  document.addEventListener('click',function(e){if(!e.target.closest('a'))show(i+1);});
+  var h=parseInt((location.hash||'').slice(1),10); show(h?h-1:0);
+})();
+</script>
+</body></html>

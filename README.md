@@ -8,40 +8,62 @@ and to argue from what they find — while staying honest about what computation
 
 This repo is a **port** of the mature 16-week Fall 2025 course (`TCU-DCDA/WRIT20833_2025`), re-paced and
 trimmed to a 4-week cultural-analytics arc (the web-dev/portfolio half is dropped — it overlaps MALA
-60970). See `PORT_ASSESSMENT_2026.md` for the rationale.
+60970). See `planning/PORT_ASSESSMENT_2026.md` for the rationale.
 
-The course carries TCU **Citizenship & Social Values (CSV)** core-curriculum credit — it trains
-evidence-based civic participation around a real public-policy debate. (Vetting: `TCU-Core-Curriculum-outcomes-1.pdf`
-+ `Citizenship-and-Social-Values-5-5-10.doc`; how the course delivers it: `CONCEPTUAL_FRAMEWORK_2026.md` §7.)
+The course carries two TCU core-curriculum designations — **Citizenship & Social Values (CSV)** (trains
+evidence-based civic participation around a real public-policy debate) and **Humanities (HUM)** (humanistic
+inquiry into human expression, close and distant, across space and time). (Vetting: `reference/TCU-Core-Curriculum-outcomes-1.pdf`
++ `reference/Citizenship-and-Social-Values-5-5-10.doc`; how the course delivers them: `planning/CONCEPTUAL_FRAMEWORK_2026.md` §7.)
 
-> **Status: in active development (draft).** The homework spine (HW1–HW4) is complete and validated; the
-> syllabus, schedule, and conceptual framework are drafted. Code-along porting, the capstone sheet, and
-> the student-facing fold-ins of the conceptual framework are in progress. See `WORKLOG.md`.
+> **Status: in active development (draft).** The homework spine (HW1–HW4) and **all code-along notebooks**
+> (one per coding day) are complete and validated; the **syllabus markdown** is fully filled (no `[...]`
+> placeholders left) and aligned to the AddRan template; a **course website** (`docs/`) is live and public;
+> and the **capstone sheet** (`CAPSTONE_2026.md`) is drafted. **Lecture pages** — all eight scheduled
+> mini-lecture reading pages + slide decks are live (`build_lectures.py`): Humanities & Coding, Connotations
+> & Code, Classification Logic, Collective Memory, AI Agency, Data Archaeology, NLP & Topic Modeling, and
+> Going Public (Day 17). The back-half audit is closed: "Code as Rhetoric" was harvested into Connotations
+> & Code + Going Public (no standalone deck); "Sacred Boundaries" and the web-dev lectures are cut.
+> Remaining: the student-facing fold-ins of the conceptual framework, and instructor-handled
+> items (the AddRan Word export; verifying the Colab-2026 install cell). See `planning/WORKLOG.md`.
 
 ---
 
 ## Start here
 | Document | What it is |
 |---|---|
-| **`SYLLABUS_2026.md`** | The course as students meet it — outcomes, ungrading policy, schedule, AI-use policy, the 3 reflections + 4 discussions. *(DRAFT; has `[...]` instructor placeholders.)* |
-| **`COURSE_SCHEDULE_2026.md`** | Day-at-a-glance grid: **Date · Lecture · Coding · Due** across the 20 sessions. |
-| **`CONCEPTUAL_FRAMEWORK_2026.md`** | The course's intellectual through-line — *why* beneath the code. Read this to understand what the course is *about*. |
-| **`WORKLOG.md`** | Running session handoff + decision log. Read first to resume work with zero ramp-up. |
-| **`PORT_ASSESSMENT_2026.md`** | The 2026 readiness/port analysis vs. the F25 source. |
-| **`PROPOSED_4WEEK_SCHEDULE.md`** | The design draft behind the schedule (F25-asset mappings, scope rationale). |
-| **`ACKNOWLEDGMENTS.md`** | Credits Melanie Walsh's *Intro to Cultural Analytics* as inspiration/model (the course is otherwise self-contained — "Walsh-independent"). |
+| **`docs/index.html`** | The **course website** — a left-nav dashboard that launches the schedule, code-alongs (→ Colab), homework, capstone, lectures, and resources. Built by `build_index.py` + `site_theme.py`; publishes via GitHub Pages (`main` / `docs`). |
+| **`SYLLABUS_2026.md`** | The course as students meet it — outcomes, ungrading policy, schedule, AI-use policy, the 3 reflections + 4 discussions. *(Markdown fully filled — no `[...]` placeholders; aligned to the AddRan template. The `.docx` is the instructor-maintained Word submission copy.)* |
+| **`COURSE_SCHEDULE_2026.md`** | Day-at-a-glance grid: **Date · Lecture · Coding · Due** across the 20 sessions (rendered as `docs/schedule.html`). |
+| **`CAPSTONE_2026.md`** | The **capstone assignment sheet** — the Final Evaluative Exercise (notebook + data-driven-opinion essay + presentation), with both tracks (cultural dataset · stylometry), the timeline, and the ungrading rubric. *(DRAFT.)* |
+| **`planning/CONCEPTUAL_FRAMEWORK_2026.md`** | The course's intellectual through-line — *why* beneath the code. Read this to understand what the course is *about*. |
+| **`planning/WORKLOG.md`** | Running session handoff + decision log. Read first to resume work with zero ramp-up. |
+| **`planning/PORT_ASSESSMENT_2026.md`** | The 2026 readiness/port analysis vs. the F25 source. |
+| **`planning/PROPOSED_4WEEK_SCHEDULE.md`** | The design draft behind the schedule (F25-asset mappings, scope rationale). |
+| **`planning/ACKNOWLEDGMENTS.md`** | Credits Melanie Walsh's *Intro to Cultural Analytics* as inspiration/model (the course is otherwise self-contained — "Walsh-independent"). |
 
 ## Course materials
 - **`notebooks/homework/`** — **HW1** (foundations) · **HW2** (term frequency) · **HW3** (sentiment) ·
-  **HW4** (topic modeling + integration), each with an `_ANSWER_KEY` and a `_build_*.py` generator.
-  *All answer keys validated to run top-to-bottom.*
-- **`notebooks/codeAlongs/`** — Variables/Data Types · Lists/Loops/Conditionals · Dictionaries/Functions
-  *(more being ported from F25 — see WORKLOG thread #4).*
+  **HW4** (topic modeling + integration), as student notebooks. *Answer keys and the solution-bearing
+  `_build_hw*.py` generators live in the **private** instructor repo `TCU-DCDA/WRIT20833_2026_keys`, not
+  in this student-facing repo.*
+- **`notebooks/codeAlongs/`** — one notebook per coding day: Variables/Data Types · Strings · Lists/Loops/
+  Conditionals · Dictionaries/Functions · Term Frequency · Found Data & Pandas · Data Cleaning · VADER
+  Sentiment · Topic Modeling (see `COURSE_SCHEDULE_2026.md` for the day-by-day mapping).
 - **`notebooks/data/`** — the corpora (123 real YouTube comments on the TX Ten Commandments law; the U.S.
   Constitution) + a `README.md`. Reused across HW2–HW4 and the capstone.
 - **`materials/stylometry/`** — "Reading for the Seams" close-reading exercise + notebook + exemplar.
 - **`materials/images/`** — the **noumena → wisdom** epistemological-spine graphic + its teaching notes.
-- **`materials/Day1_Framing_Noumena_to_Wisdom.md`** — a drafted Day-1 framing passage.
+- **`materials/lectures/`** — mini-lecture **reading pages** (markdown source; all eight scheduled lectures authored through Going Public on Day 17); rendered to `docs/lectures/` by `build_lectures.py`.
+- **`materials/Day1_Framing_Noumena_to_Wisdom.md`** — the Day-1 framing passage (now published as the opening Humanities & Coding reading page).
+
+## Repository layout
+- **`docs/`** — the published **course site** (GitHub Pages from `/docs`): `index.html` dashboard + `schedule.html` + `lectures/`.
+- **`notebooks/`** — `codeAlongs/` (one per coding day), `homework/` (HW1–4 student notebooks), `data/` (corpora).
+- **`materials/`** — the stylometry exercise, images, the lecture reading pages, and the Day-1 framing passage.
+- **`reference/`** — TCU/AddRan syllabus templates + core-curriculum vetting (source documents, not course content).
+- **`planning/`** — instructor process docs (WORKLOG, conceptual framework, port assessment, syllabus crosswalk…).
+- **Root** — this README, `SYLLABUS_2026.md`, `COURSE_SCHEDULE_2026.md`, `CAPSTONE_2026.md`, and the site generators (`site_theme.py`, `build_index.py`, `build_schedule_html.py`, `build_lectures.py`).
+- *Answer keys + the solution-bearing `_build_hw*.py` generators live in the **private** `TCU-DCDA/WRIT20833_2026_keys`.*
 
 ## The idea in one paragraph
 The course teaches three computational methods, but its real subject is one humanistic problem: **how do
@@ -49,7 +71,7 @@ we hear human voices at a scale no person could read by hand, without flattening
 view?** Every homework stages the same move — run a computation, then ask *what did this flatten, who
 chose this, can you trust it?* The full architecture (the noumena→wisdom spine; "hear the human at
 scale"; the quarrel; voice-through-difficulty in the age of AI; the moral stakes) is in
-`CONCEPTUAL_FRAMEWORK_2026.md`. Assessment is **ungrading**: earned insight over clean code.
+`planning/CONCEPTUAL_FRAMEWORK_2026.md`. Assessment is **ungrading**: earned insight over clean code.
 
 ## Conventions (for anyone authoring materials)
 - **Walsh-independent** — required work never depends on an outside textbook.
@@ -59,5 +81,8 @@ scale"; the quarrel; voice-through-difficulty in the age of AI; the moral stakes
   routines are prefab you'd normally borrow (build once to *read and judge* a borrowed/AI version).
 - **House style** — homeworks share a Part A/B/C + Weekly Experiments + Submit structure; code-alongs use
   warm cultural examples + concept→code→"your turn" + Playground.
+- **Accessibility (site)** — the generated site is kept WAVE-clean: all UI text ≥ 12px and the muted theme
+  tokens clear WCAG AA 4.5:1. `site_theme.assert_accessible()` enforces this **at build time** (the
+  generators fail loudly on a regression), so retune the `THEME_CSS` palette/type within those limits.
 
-*Full detail and rationale: `CONCEPTUAL_FRAMEWORK_2026.md` and `WORKLOG.md`.*
+*Full detail and rationale: `planning/CONCEPTUAL_FRAMEWORK_2026.md` and `planning/WORKLOG.md`.*

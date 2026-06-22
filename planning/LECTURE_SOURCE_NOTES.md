@@ -1,0 +1,318 @@
+# Lecture source notes — what to harvest from F25 for the 2026 mini-lectures
+
+A running ledger of **reusable content mined from the F25 lecture decks** (`WRIT20833_2025/docs/lectures/`),
+so the scale-out of ML1–ML7 doesn't re-discover the same material. Pairs with the `build_lectures.py`
+registry and the WORKLOG "Lecture pages" section. When a later ML is authored, move the relevant rows here
+into that lecture and check them off.
+
+---
+
+## F25 `docs/lectures/main/lecture1.html` (the full 23-slide Day-1 deck) — harvested 2026-06-13
+
+The 2026 **ML0** (`materials/lectures/ml0.md`) is a tight single-thesis argument, *not* a port of this
+survey deck. Triage below.
+
+### ✅ Folded into ML0 (done this pass)
+- **Rushkoff quote** ("…not the power to determine the value-creating capabilities of these technologies
+  for [ourselves]") + the **Montfort** "think in new ways / understand culture / improve society" line —
+  now the **"Use the programs, or shape them"** slide. This is ML0's own thesis, said by someone citable.
+- **Project gallery** ("what distant reading looks like in the wild") — now the **"What it looks like in
+  the wild"** slide: Every Noise at Once, Pudding hip-hop vocabulary, Trucks & Beer (country lyrics),
+  Ben Schmidt gendered teacher reviews, Open Syllabus. (Photogrammar dropped to keep the list to 5; it's
+  a good swap-in if one link rots.) The Trucks & Beer / hip-hop-vocabulary items also **preview HW2 + the
+  Day-6 term-frequency code-along** (counting words in lyrics).
+- **Two project chart images** for that slide (a 2-up row via the new `gallery` layout): the F25
+  country-music "girl/love" scatter (`slide_09` → `materials/lectures/images/proj_country_love.png`) and
+  Ben Schmidt's gendered-teacher-review dot plot (`slide_12` → `proj_teacher_reviews.png`). **Image audit
+  (2026-06-13):** these were the *only two* F25 project screenshots that are legible data-viz; the rest
+  are text-screenshots (`slide_08`/`slide_10`) or muddy/illegible (`slide_11`), and Open
+  Syllabus/Photogrammar are logos only. **Every Noise at Once has no F25 image.** If a fuller image grid
+  is wanted later, generate warm-palette images to match ML0's other slides (the `gallery` layout already
+  supports `cols-2/3/4`).
+
+### 🔶 Earmarked for LATER MLs (do NOT put in ML0 — would blur its spine)
+- **→ ML1 "Connotations & Code" / "Code is not neutral":** the **data-feminism binaries material** —
+  *"Rethink Binaries and Hierarchies"* (slide 17) and **Facebook's gender binary** (slide 18, with the
+  quote: technical systems "default to binary classifications for computational efficiency and advertiser
+  convenience… embed[ding] particular worldviews about gender into algorithmic systems"). Source cited:
+  Data Feminism, https://data-feminism.mitpress.mit.edu/pub/h1w0nbqp/release/3. Strong "neutral coding
+  decisions aren't neutral" anchor.
+  - Also reusable for ML1: the **Rushkoff "program or be programmed"** framing has a second life here as
+    "whose values are in the tool," if ML0 only uses the value-capabilities half.
+- **→ ML3 "Classification Logic" (whose categories?):** the same binaries/Facebook-gender example doubles
+  as a *sorting-as-judgment* case — pick whichever lecture (ML1 vs ML3) leans harder on it so they don't
+  duplicate. Open Syllabus ("the canon," whose authority?) also fits ML3's "whose categories" frame.
+  (WORKLOG already earmarks F25 `data_as_categorization` + `tippingScales` images for ML3.)
+- **→ ML4 "AI Agency" (reading/judging machine code):** Rushkoff's "use the programs made for us" is the
+  perfect setup for "…and now the programs write themselves — can you still judge them?"
+- **Close vs. distant reading as *named* methodologies** (slides 7–8, "Traditional/Newer Methodology") —
+  ML0 enacts the move but never names "distant reading" (Moretti). If a later lecture wants the vocabulary
+  explicit, it's here. Candidate: wherever the close→distant→close arc is taught (Day 12 lecture).
+
+### ❌ Skip (off-scope or contradicts ML0's honesty)
+- **Semester overview** (Sept–Dec, "10 Labs / 12 Journal Entries") — F25 16-week structure; wrong course.
+  The 2026 schedule already lives in `COURSE_SCHEDULE_2026.md` / `docs/schedule.html`.
+- **Tools / Skills slides** listing **HTML/CSS/JavaScript / web publishing / version control** — the cut
+  web-dev half (overlaps MALA 60970). Off-scope for the drop-portfolio 2026 port.
+- **Two-instructor slide** (Dr. Lucas, Calendly, photos) — 2026 is Rode solo; contact lives in the syllabus.
+- **"Coding gives us superpowers" framing** (scale/pattern/preservation/accessibility as unalloyed wins) —
+  techno-optimist; ML0 deliberately balances the payoff against "what the counting flattens."
+- **DH definition grid** (Traditional Humanities vs Digital Methods two-column) — ML0's close-vs-distant
+  move covers this more elegantly without the listy survey feel.
+
+---
+
+## F25 `mini-lectures/lecture-1-connotations/` ("Data Has Connotations") — harvested 2026-06-13 → ML1
+
+Authored **ML1 "Connotations & Code"** (`materials/lectures/ml1.md`, 7 slides) in ML0's voice, ported from
+F25's 8-slide deck. Title page links live (`build_lectures.py` registry + `build_index.py` card).
+
+### ✅ Folded into ML1
+- **Denotation vs. connotation** (the deck's core) — reframed as "the humanities' oldest tool, and it
+  works on numbers too" (house/home/residence → "single-mother household" → numbers have connotation).
+- **The myth of neutral data** (3 false sayings) — kept, tied back to ML0's "bias is the material."
+- **Test-scores case study** (School A 1240 / School B 980 → deficit/systemic/cultural) — kept; the
+  cleanest "same denotation, three connotations" example.
+- **Who controls the story** (institutions/media/researchers) and **missing data / missing voices** —
+  kept; the "missing voices" slide is re-grounded in *our* corpus (the 123 comments are only the public
+  that *posted*; ML0's woman who said nothing isn't in the file).
+- Synthesis slide **"code is not neutral"** ties the linguistic concept to the code students will write
+  (what counts as a "word," stopwords, the "positive" cutoff) → back to ML0's "make your choices visible."
+
+### Image audit (2026-06-13): nothing usable to harvest
+- The deck references 8 `images/JPEG/*.jpg` that **were never generated** — only `.prompt` files exist.
+- The one rendered image (`lecture-1-connotations/images/slide1_data_connotations.jpg`) is **deep-purple/
+  neon** (the old F25 cyberpunk palette) — clashes with the warm "Reading Room" look, same reason ML0's
+  F25 images were rejected. **ML1 ships text-forward.** If imagery is wanted later, generate warm-palette
+  images (as the instructor did for ML0) and drop them in via the `split`/`gallery` layouts; F25's
+  `IMAGE_PROMPTS.md` / `image-generation-prompts.md` in that deck folder are usable prompt starting points.
+- **Image slots prepped (2026-06-13):** 4 slides are marked `<!-- layout: split -->` with a ready-to-use
+  warm-palette **image prompt + target filename + a commented `![]()` line** embedded right in
+  `ml1.md` — title (`ml1_title.jpg`), Denotation (`ml1_denotation.jpg`), Missing/uncounted
+  (`ml1_missing.jpg`), Code-is-not-neutral (`ml1_code.jpg`). The prompts are HTML comments (inert — the
+  slides render clean full-width until art exists). **To add an image:** generate it, save to
+  `materials/lectures/images/<name>.jpg`, uncomment the `![]()` line, rerun the generators — the 2-column
+  split activates automatically. Same pattern is the template for future lectures' image slots.
+
+### Division of labor with ML3 (decided 2026-06-13)
+- ML1 owns **connotation / the myth of neutral data**. The **data-feminism binaries + Facebook
+  gender-binary** example (from `lecture1.html`, earmarked above) stays with **ML3 "Classification Logic"**
+  (forced categories / sorting-as-judgment) to avoid duplication.
+
+## F25 `mini-lectures/lecture-3-classification/` ("Coding Taboo Logic") — harvested 2026-06-14 → ML3
+
+Authored **ML3 "Classification Logic"** (`materials/lectures/ml3.md`, 7 slides). Pairs with the **Day-3
+(Wed 7/8) conditionals/booleans code-along** (schedule-confirmed) — it's the humanities frame for the
+`if/else` students learn that day. Registered in both build scripts; dashboard card links it.
+
+### ✅ Folded into ML3
+- **Code decides / classification encodes values** (F25 slides 2, 6) — reframed as "to classify is to
+  judge; there is no neutral box."
+- **Status as data** (F25 slide 3) — kept as "status has always gated access," boolean variables
+  (`credit_score`, `criminal_background`, …) as the automated gate.
+- **The threshold** (F25's `if credit_score > 650` example) — built into its own slide and **threaded to
+  HW3's `compound > 0.05` cutoff** (framework's "classification is authored" row).
+- **Classified BY vs. building the sort** (F25 slide 6/8) — kept nearly whole; the power point.
+- **Readings** (Noble *Algorithms of Oppression*, Benjamin *Race After Technology*, O'Neil *Weapons of
+  Math Destruction*) — kept as an optional "going deeper" line on the last slide.
+- **The binaries / Facebook gender-binary example** (earmarked from `lecture1.html`) **landed here**, on
+  "The tyranny of the tidy box," with the Data Feminism gloss — as decided in the ML1 entry.
+
+### Deliberately changed / dropped
+- **De-emphasized the "sacred / taboo" framing** that titles the F25 deck ("Coding Taboo Logic," ritual
+  purity, sacred/profane). That's **parked-ML2 territory** (open thread #9), and leaning on "sacred
+  categories" sits badly next to a *literally sacred* corpus (the Ten Commandments). ML3 keeps the durable
+  core — sorting as judgment — and only gestures at the historical "status gated access" point.
+- Dropped F25's `1847`-data Colab tutorial link (F25-specific) and the emoji/checkpoint chrome.
+
+### Image audit (2026-06-14): earmark superseded — used as composition comps, not dropped in raw
+- The two earmarked images **exist but are off-palette**: `images/JPEG/data_as_categorization.jpg` is
+  black/cyan **cyberpunk** (people routed into category-circles); `images/JPEG/tippingScales.png` is a
+  **blue cartoon** (people-vs-institutions balance). Neither matches the warm oil-painting "Reading Room"
+  look (same call as ML0/ML1's F25 art).
+- **Resolution:** ML3 ships text-forward with **3 split-ready slides + embedded warm-palette prompts**
+  (title `ml3_title.jpg`, threshold `ml3_threshold.jpg`, tidy-box `ml3_schema.jpg`). The prompts **reuse
+  the *concepts*** of the two F25 images recomposed in warm paint (the schema prompt explicitly recomposes
+  `data_as_categorization`'s people-into-boxes idea; the threshold prompt echoes ml0's brass-valves). Same
+  inert-comment pattern as ML1 — generate → save → uncomment → rebuild activates the 2-column split.
+
+## F25 `mini-lectures/lecture-5-memory/` ("Collective Digital Memory") — harvested 2026-06-14 → ML5
+
+Authored **ML5 "Collective Memory"** (`materials/lectures/ml5.md`, 7 slides). Pairs with the **Day-4 (Thu
+7/9) lists & loops code-along** — the humanities frame for lists/loops, exactly as ML3 framed `if/else`.
+Registered in both build scripts; dashboard card links it.
+
+### ✅ Folded into ML5
+- **Two kinds of memory** (F25 slide 2) — selective/forgiving human memory vs. total/unforgiving digital
+  memory; reframed around "forgetting was also grace."
+- **Lists = populations** (slide 3) and **loops = systematic processing** (slide 4) — kept as the two core
+  slides ("a list is a population," "a loop is a verdict, repeated"); the loop slide threads back to ML3's
+  threshold ("the loop is how that one cutoff hits a million people").
+- **Counting = surveillance** (slide 5) — "the power to count is the power to decide what matters" + the
+  who-counts/who-sees/what-about-the-uncounted questions (ties ML1 missing voices).
+- **Historical echoes** (slide 6) — kept the **Bellevue Almshouse + Anelise Shrout quote** verbatim (the
+  moral heart) and the "list of dicts = the same reduction" parallel.
+- **Readings** (Connerton *How Societies Remember*, Mayer-Schönberger *Delete*, van Dijck *Mediated
+  Memories*) — kept as the optional "going deeper" line; the forgetting-as-virtue angle is distinctive.
+- Dropped F25's Colab tutorial link + the "tools for social justice" agency slide's lighter bullets
+  (folded the agency point into the synthesis "What we choose to keep").
+
+### Image audit (2026-06-14): `newImages/` higher-craft but still off-palette
+- ML5 has its own `newImages/` (9 imgs) — better than the older decks but still **neon cyberpunk**
+  (slide01 purple→green filing cabinets/servers); slide06 is **half warm-sepia / half cold-blue**. Not
+  consistently warm Reading Room.
+- **Resolution (same pattern):** text-forward + **3 split-ready slides with warm-palette prompts** (title
+  `ml5_title.jpg` = warm card-catalog-of-memory, recomposing slide01; population `ml5_population.jpg`;
+  echoes `ml5_echoes.jpg` = recompose slide06's then/now records office kept warm/sepia). Inert comments;
+  generate → uncomment → rebuild activates the split.
+
+## F25 `mini-lectures/lecture-4-agency/` ("Agentic Coding — Power or Pseudo-Agency?") — harvested 2026-06-15 → ML4
+
+Authored **ML4 "AI Agency"** (`materials/lectures/ml4.md`, 6 slides). Pairs with the **Day-7 (Tue 7/14)
+Lab** "Reading & improving AI code + stylometry seed" — the frame for that lab, not a code-along.
+Registered in both build scripts; dashboard card links it.
+
+### ✅ Folded into ML4
+- **The demo hook** (F25 slide 1: "write me 10 lines… *do you understand each line?*") — opens the lecture.
+- **The Promise** (lower barriers / act without mastering syntax / focus on the question) — kept, tied to
+  the **borrowed-code convention**: borrowing the tool is normal practice, expected all term.
+- **The Risks** (black box / dependency / pseudo-agency / hidden biases) — kept, condensed to one slide.
+- **Scaffold vs. replacement** + **Tier-1 (adapt/debug/critique) vs Tier-2 (copy-paste)** literacy — the
+  central distinction; threaded to the **syllabus AI policy** ("explain any code you submit; note where AI
+  helped").
+- **"Learning a language vs. ventriloquism"** (F25's strongest slide) — the spine slide, fused with the
+  framework's **§2c "borrow the tool, never outsource the voice"**: code is borrowable, *writing* is not.
+  Added **Ted Chiang's "blurry JPEG of the web"** (AI as a lossy average → be the opposite of an average) —
+  the framework's "AI prose : your voice :: mean sentiment : the crowd's quarrel" point, made citable.
+- **The central question** ("learning to think computationally, or outsourcing it?") — the closer.
+- Earmark from `lecture1.html` consumed: Rushkoff "use the programs made for us → now the programs write
+  themselves, can you still judge them?" is the implicit setup; Rushkoff cited in "going deeper."
+
+### ❌ Skipped / changed
+- F25's techno-optimist "democratize creation" framing trimmed to one honest sentence (the deck over-sells
+  it across 3 slides); the "global annotation workforces / scraped creative content" critique is gestured
+  at via "biases baked into the tool" rather than its own slide (belongs more to ML6/Day-8 ethics).
+
+### Image audit (2026-06-15): text-forward, 2 split slots prepped
+- No usable F25 art (agency images are the dark/stock-tech `JPEG/agentic_*`/`AI-Box_*` set — off the warm
+  palette, same call as ML0/ML1/ML3/ML5). **ML4 ships text-forward.** Slots prepped (inert
+  `<!-- IMG PROMPT … -->` + commented `![]()`): title (`ml4_title.jpg`, ambiguous marionette) +
+  ventriloquism (`ml4_ventriloquism.jpg`). Generate → save → uncomment → rebuild activates the split.
+
+## F25 `mini-lectures/lecture-6-archaeology/` ("Digital Archaeology — Finding Stories in Found Data") — harvested 2026-06-15 → ML6
+
+Authored **ML6 "Data Archaeology"** (`materials/lectures/ml6.md`, 6 slides). Pairs with the **Day-8 (Wed
+7/15) code-along** (Pandas 01 Found Data + collection ethics) — the humanities frame for it. Registered in
+both build scripts; dashboard card links it.
+
+### ✅ Folded into ML6
+- **The archaeology analogy** (pottery shards → dining habits; dataset rows → cultural patterns) — kept as
+  "reading traces of a life"; our 123 comments = a dig site; **"shards, not the meal"** ties to ML0's
+  pipeline (data is downstream of the lived thing).
+- **Created vs. found data** (you didn't design a survey; culture left the clues) — kept; "found never
+  means neutral."
+- **The data biography / provenance** (Origin · Journey · Transformations · Limitations) — kept nearly
+  whole as the actionable slide; "transparency = credibility"; the **one-row-three-layers**
+  (surface/cultural/societal) folded in; ties to **make-your-choices-visible**.
+- **Ethics** (robots.txt / credit sources / "these represent real people") — reframed by the framework's
+  **§2 "hear, don't extract"** metaphor (mine/scrape/harvest/crawl treat people as ore; *hear* assumes a
+  someone): the legal "am I allowed?" vs the humanist "am I listening or extracting?". ML6's moral heart,
+  and the **phenomena→raw arrow** of the noumena pipeline.
+- New synthesis slide **"'Raw data' is an oxymoron"** — wrap-fragments as capture artifacts; the uncounted
+  ("empty seats aren't in the file") ties **ML1's missing voices**.
+
+### ❌ Skipped / changed
+- F25's **data-source directory** (Kaggle/IMDb/Spotify/government lists) dropped — it's a how-to for the
+  Day-10 "collect your own data" workshop, not a conceptual frame; the workshop/Pandas-01 own that.
+- Replaced the techno-neutral "every dataset is a digital diary" tone with the hear-vs-extract edge.
+
+### Image audit (2026-06-15): text-forward, 3 split slots prepped
+- F25 archaeology images (`image1–15.png`, `slide1–9.jpg`) are off the warm palette. **ML6 ships
+  text-forward.** Slots prepped: title (`ml6_title.jpg`, brush on a spreadsheet-tablet), "raw data"
+  (`ml6_raw.jpg`, river→sieve→cards), hear-don't-extract (`ml6_hear.jpg`, cupped ear vs mining rigs).
+  Generate → uncomment → rebuild.
+
+## F25 `lecture-7-nlp-topic-modeling` (15-slide deck) — harvested 2026-06-16 → **ML7 authored**
+The 2026 **ML7** (`materials/lectures/ml7.md`, Day 14) is a tight single-thesis lecture — *the machine
+clusters the words, you name the meaning* — not a port of the 15-slide survey. Title art `ml7_title.jpg`
+(scholar sorting letters into ribboned stacks) is **active**; one interior split slot (`ml7_tangle.jpg`,
+tangled-yarn-into-three-baskets = the muddy single-issue corpus) is **prepped inert** (commented `![]()`
++ IMG PROMPT) — generate → uncomment to activate. Dashboard card flipped from placeholder → linked thumbnail.
+
+### ✅ Folded into ML7
+- **The arc recap** (term frequency → sentiment → "what is this whole pile about?") — pulled from the
+  code-along's opening, not the F25 deck; frames topic modeling as the deepest distant-reading move.
+- **"How humans understand meaning"** (slide 2: repeated words / keywords / tone; and *we can ask*) →
+  the **"You already do this"** slide.
+- **The NLP gap** (slide 3 humans-vs-computers; slide 6 ambiguity/idiom/sarcasm — *"I saw her duck," "that's
+  sick," "oh great, another meeting"*) → the **"computer gets only the words"** slide; the sarcasm/context
+  blind spot is deliberately reused to close the lecture ("what it can't hear").
+- **Library-without-reading analogy + LDA's two assumptions + recipe reverse-engineering** (slides 10–11)
+  → **"Organizing a library without reading the books."** Kept Gensim/LDA named (matches the code-along).
+- **"The algorithm doesn't know these are about politics — you interpret and label"** (slide 12 caption)
+  → promoted to ML7's **spine** ("the machine clusters; you name"), with the *American Dream* word-list
+  example from the code-along.
+- **Critical Questions** (slide 14: what gets counted / who interprets / what assumptions / what it misses)
+  → the closing **"what the model can't hear,"** wired to cross-refs: *Data Archaeology* (empty seats),
+  *Classification Logic* (whose categories), and the ambiguity blind spot from earlier in this same lecture.
+- **From the code-along (not the deck):** "no correct number of topics" (`num_topics` as an authored dial),
+  and the **123 Texas Ten Commandments** payoff (real single-issue data → muddy "more-of-the-same-argument"
+  topics; LDA stochastic → `random_state`). Keeps the lecture and Day-14 code-along in lockstep.
+
+### ❌ Skip
+- **Common NLP tasks grid** (slide 8: NER, text classification) — off ML7's spine; the lecture stays on
+  topic modeling, the one task the course actually runs.
+- **"You use NLP every day" list** (slide 5) — kept only a one-line nod (autocorrect/spam/translation);
+  the full bullet list is survey filler.
+- **News-articles four-topic example** (slide 12 politics/tech/health/sports) — replaced by the course's
+  own toy-corpus → real-corpus contrast, which carries the *limit* lesson the news example doesn't.
+
+## F25 `lecture-9-public-arguments` ("Going Public") — harvested 2026-06-18 → ML9
+Authored **ML9 "Going Public"** (`materials/lectures/ml9.md`, 6 body slides + title) homed at **Day 17**
+(Tue 7/28, the capstone-framing work session). Registered in `build_lectures.py` + `build_index.py` (card
+flipped from `link=None`/"(under review)" → live); Day-17 lecture cell set to "Going Public" in
+`COURSE_SCHEDULE_2026.md` + `SYLLABUS_2026.md`. Title art `ml9_title.jpg` (already generated) now active.
+**Spine:** *your analysis isn't finished until it argues* — analysis → public argument → the capstone.
+
+### ✅ Folded into ML9
+- **The problem with private knowledge** (F25 slide 2) — reframed "the notebook is not the destination":
+  a result locked on your laptop, in a dialect the people it's about can't read, changes nothing.
+- **What is a public argument** (slide 3) — accessible/engaging/actionable beyond academia; the "8 readers
+  vs. 8,000" arithmetic. **Re-homed to 2026:** the public artifact is the **capstone essay + presentation**,
+  not a website (web delivery is the cut half).
+- **Case study: *Mapping Police Violence*** (slide 4) — kept nearly whole; *same analysis skills + a public
+  face = a cultural intervention*. The durable, non-web-specific anchor.
+- **The public-humanities tradition** (slide 5) — public intellectuals / community archives / oral history,
+  trimmed; accessibility as an ethic. (Dropped the "Sacred Boundaries" framework ref — that lecture is cut.)
+- **Code as Argument** (slide 9, = the **ML8 harvest**, see below) — "how you present *is* the argument";
+  show your seams; ties to "being wrong as learning" (Day-17 work-session theme).
+- **Reflection prompt** (slide 11) — reworded as the capstone seed: *what did your analysis find that
+  someone outside this room needs to see — who are they, and what should they do?*
+- **Framework ties:** the moral floor ("make someone who didn't know to care, care"), knowledge→wisdom
+  (values = what you *do* with it), and **preserve the quarrel** (don't flatten the debate into a tidy take).
+
+### ❌ Skip (cut web-dev half / wrong course)
+- **"Your skills amplified" weeks-9–16 web column, "What you can build" (HTML/CSS dashboards/archives/
+  sites), "The web as democratic publishing" (GitHub-Pages portfolios), "Next up: Introduction to HTML"** —
+  all the web-portfolio delivery, cut (overlaps MALA 60970). The *analysis→argument* spine survives; only
+  the website medium is gone. The **digital-stewardship/portfolio** slide also dropped.
+
+## F25 `lecture-8-code-rhetoric` ("Code as Rhetoric") — HARVESTED, not built (2026-06-18)
+**Decision (instructor, 2026-06-18): harvest, no deck.** Its concrete examples are HTML/CSS (`<h1>`/`<aside>`
+emphasis, semantic tags as classification, three web layouts = three arguments) — the cut web-dev arc — so a
+full ML8 deck would teach material the 2026 course doesn't cover. Its **durable thesis** ("every technical
+choice is a rhetorical choice; structure = argument") was folded into two existing lectures:
+- **→ ML1 "Connotations & Code":** added a sentence to the closing "code is not neutral" slide elevating
+  *encodes a value* → *argues a value* (which number is the headline, which chart you reach for), forward-
+  linking to going public.
+- **→ ML9 "Going Public":** the "How you present *is* the argument" slide carries the rhetoric-of-presentation
+  point in its natural home (a public argument *is* persuasion to an audience).
+The F25 deck's per-slide `.md` files are **image-prompt specs only** (no prose body) + an off-palette
+purple/amber image set — nothing else to mine. `lecture-8-code-rhetoric` stays unmined beyond this thesis.
+
+## Other F25 decks
+**ML2** `lecture-2-boundaries` is **CUT** (2026-06-15) — *not* to be mined; its core folded into ML6 + ML0.
+**Mined / resolved:** ML0 (`lecture1.html` + connotations), ML1, ML3, ML4, ML5, ML6, **ML7**
+(`lecture-7-nlp-topic-modeling`), **ML8** (harvested into ML1+ML9, 2026-06-18), **ML9**
+(`lecture-9-public-arguments`, 2026-06-18). **All F25 mini-lecture audit decisions are now closed**
+(open thread #9 resolved). ML10–12 (GitHub/HTML/CSS) are cut.

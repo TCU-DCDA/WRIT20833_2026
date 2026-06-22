@@ -37,6 +37,8 @@ def notebook(cells):
 
 
 cells = [
+    md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>'),
+
     md('''# WRIT 20833 — Dictionaries & Functions
 
 **When Coding Meets Culture: Developing Data-Driven Opinions**
