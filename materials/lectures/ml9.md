@@ -1,7 +1,7 @@
 # Going Public
 ## Your analysis isn't finished until it argues
 
-<!-- meta: Day 17 · the through-line -->
+<!-- meta: Day 19 · the through-line -->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0/ml7 images): A scholar stepping out of a small lamplit study, carrying a single bound page, toward an open doorway where a crowd waits in warm daylight — private work crossing into a public square. Warm lamplight inside, open light beyond. -->
