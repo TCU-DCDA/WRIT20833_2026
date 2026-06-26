@@ -73,8 +73,8 @@ Open items (pick one, or tell me which):
   split, commented out + IMG PROMPT in ml7.md). To add/replace imagery: generate a "Reading Room"-palette
   image → save to materials/lectures/images/ → uncomment the `![]()` in the lecture md (+ add the path to
   that lecture's LECTURES tuple in build_index.py if it's a title image) → rerun the generators.
-- CSV/HUM core work-examples (#10) DRAFTED → planning/CSV_HUM_WORK_EXAMPLES.md (instructor trims to the
-  vetting form). Parked site-design questions (sidebar icons, nav filter) in the WORKLOG.
+- CSV/HUM (#10) ✅ CLOSED — course already carries both designations (confirmed); no submission form needed.
+  Work-examples draft at planning/CSV_HUM_WORK_EXAMPLES.md is reference only (handy if TCU re-vets). Parked site-design questions (sidebar icons, nav filter) in the WORKLOG.
   (DONE: Capstone sheet; Syllabus HUM core + full fill; all scheduled lectures + imagery; site live + public.)
 - SITE UX (all merged 2026-06-15): dashboard order 00 Start · 01 Lectures · 02 Code-alongs ·
   03 Homework · 04 Capstone · 05 Resources; masthead hero banner; deck home-nav; external links

@@ -83,7 +83,7 @@ No content authored — a **readiness-verification** pass (re-running things rat
   lectures (page+deck+imagery), the Variables code-along, and the D1 prompt all confirmed live.
   **Week 1 (Days 1–5) ≈ 98%**, **first half (Days 1–10) ≈ 96%**, **whole course ≈ 90%** (≈93–95% excluding
   the optional, un-deployed chatbot). Every residual is instructor-discretion polish or non-content
-  paperwork (conceptual-framework fold-ins; AddRan Word `.docx` sync; CSV/HUM vetting-form trim) — **no
+  paperwork (conceptual-framework fold-ins; AddRan Word `.docx` sync) — **no
   unbuilt or broken teachable material** anywhere in the first half.
 
 ## Earlier session — 2026-06-18 (chatbot-tutor MVP BUILT — code-complete, deployment pending)
@@ -645,16 +645,12 @@ line + rerun both generators.
      Day-2 lecture cell → "—" in `COURSE_SCHEDULE_2026.md` + `SYLLABUS_2026.md` (+ both lecture-notes
      updated); `CONCEPTUAL_FRAMEWORK_2026.md` §6 dial marked decided; `LECTURE_SOURCE_NOTES.md` updated.
      **Not authored** (no ml2.md) — the cut means zero build. `lecture-2-boundaries` stays unmined in F25.
-10. **TCU Core Curriculum — CSV vetting (context + a task).** The course **carries Citizenship & Social
-    Values (CSV)** credit. Vetting docs are in `reference/`: `reference/TCU-Core-Curriculum-outcomes-1.pdf`
-    (current outcomes matrix) + `reference/Citizenship-and-Social-Values-5-5-10.doc` (older HMVV form). Current CSV
-    outcome: *"examine the knowledge, skills, values, or motivation needed to participate or lead within
-    diverse communities."* The course meets it directly (a contested public-policy debate = a diverse
-    community in disagreement; the data-driven-opinion capstone + discussions + reflections are the
-    evidence). Full mapping + the course's adjacent resonance (Humanities, Written Comm 2, Cultural
-    Awareness) in `CONCEPTUAL_FRAMEWORK_2026.md` §7; syllabus now names the CSV + HUM designations.
-    **✅ DONE:** the **student-work examples** (3 per outcome) are drafted in
-    `planning/CSV_HUM_WORK_EXAMPLES.md` — instructor trims to the vetting form's field limits.
+10. **TCU Core Curriculum — CSV + HUM designations. ✅ CLOSED (2026-06-26).** The course already carries
+    both **CSV (Citizenship & Social Values)** and **HUM (Humanities)** as confirmed attributes — no
+    submission or re-vetting is pending. The student-work examples (3 per outcome) are drafted in
+    `planning/CSV_HUM_WORK_EXAMPLES.md` as reference material only (useful if TCU ever runs a
+    periodic re-vetting), not a required deliverable. Full outcome rationale in
+    `CONCEPTUAL_FRAMEWORK_2026.md` §7.
 
 11. **TCU syllabus — ✅ ALIGNED TO AddRan + F25 (2026-06-11, second pass).** Reviewed the AddRan syllabus
     docs in `/Users/curtrode/Code/AddRan/syllabus-checker/source_files` (AddRan Simplified Template,
