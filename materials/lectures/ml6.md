@@ -1,7 +1,7 @@
 # Data Archaeology
 ## Where found data comes from
 
-<!-- meta: Day 8 · the through-line -->
+<!-- meta: Day 10 · the through-line -->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): an archaeologist's hand with a soft brush sweeping dust off a half-buried clay tablet whose surface is inscribed not with cuneiform but with faint rows of a spreadsheet — excavating data like an artifact. -->

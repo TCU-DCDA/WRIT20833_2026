@@ -1,5 +1,10 @@
 # PROPOSED — WRIT 20833, Summer 2026: 4-Week (20-Session) Schedule
 
+> **⚠️ SUPERSEDED (2026-06-26).** The July 4-week summer section was **canceled**. The course now runs as an
+> **8-week, in-person, MWF fall offering (Oct 19 – Dec 18, 2026; 24 sessions)** — see `COURSE_SCHEDULE_2026.md`
+> and `SYLLABUS_2026.md` for the live plan. This document is kept only as the original design rationale
+> (F25-asset mappings, scope cuts); its dates, session count, and 5-day pacing no longer apply.
+
 > **Status: DRAFT for instructor review.** Built by sequencing existing Fall 2025
 > assets into the 2026 format. Nothing here is finalized; cuts and placements are
 > proposals. New content (HW1 rebuild, stylometry exercise) is drafted separately

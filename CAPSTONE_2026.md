@@ -1,6 +1,6 @@
 # Capstone — A Data-Driven Opinion
 
-**WRIT 20833 — Intro to Coding in the Humanities · "When Coding Meets Culture" · Summer 2026**
+**WRIT 20833 — Intro to Coding in the Humanities · "When Coding Meets Culture" · Fall 2026**
 
 > **DRAFT for instructor review.** Authored in the 2026 house style and ungrading voice; cross-checked
 > against `SYLLABUS_2026.md`, `COURSE_SCHEDULE_2026.md`, and `planning/CONCEPTUAL_FRAMEWORK_2026.md`.
@@ -23,8 +23,8 @@ You hand in three things, all about the **same** dataset:
 
 This is **HW4's B4/C2 grown up.** In HW4 you wrote "your capstone in miniature"; this is the full size.
 
-**Due dates** (see the schedule): **proposal — Mon 7/27** · **notebook + essay — Fri 7/31** (presented in
-class that day). The final self-evaluation (**Reflection 3**) is also due Fri 7/31 — the capstone is the
+**Due dates** (see the schedule): **proposal — Fri 12/4** · **notebook + essay — Fri 12/18** (presented in
+class that day). The final self-evaluation (**Reflection 3**) is also due Fri 12/18 — the capstone is the
 biggest piece of evidence you'll cite in it.
 
 ---
@@ -119,7 +119,7 @@ forfeits the one thing the tools can't give back.
 
 ---
 
-## The presentation *(last day, Fri 7/31)*
+## The presentation *(last day, Fri 12/18)*
 
 A short, low-stakes share (~`[3–5]` minutes): your dataset and question, **one finding**, and **one thing
 your method got wrong.** No slides required — walk us through a cell or two of your notebook. This mirrors
@@ -131,13 +131,15 @@ the Week-4 discussion (D4): what computation reveals *and* hides.
 
 | When | What | Due |
 |---|---|---|
-| **Mon 7/27** (Day 16) | Integration demo + stylometry demo in class | **Proposal due** |
-| **Tue 7/28** (Day 17) | "Being wrong as learning" · capstone framing; validation | HW4 due |
-| **Wed 7/29** (Day 18) | Capstone work session 1 (with support) | — |
-| **Thu 7/30** (Day 19) | Capstone work session 2 + **peer review** | — |
-| **Fri 7/31** (Day 20) | **Capstone presentations** + course wrap | **Capstone due** · **R3 due** |
+| **Fri 12/4** (Day 18) | Integration demo + stylometry demo in class | **Proposal due** |
+| **Mon 12/7** (Day 19) | "Being wrong as learning" · capstone framing; validation | HW4 due |
+| **Wed 12/9** (Day 20) | Capstone work session 1 (with support) | — |
+| **Fri 12/11** (Day 21) | Capstone work session 2 | — |
+| **Mon 12/14** (Day 22) | Capstone work session 3 + **peer review** | — |
+| **Wed 12/16** (Day 23) | Capstone polish + presentation dry-run | — |
+| **Fri 12/18** (Day 24) | **Capstone presentations** + course wrap | **Capstone due** · **R3 due** |
 
-### The proposal (due Mon 7/27)
+### The proposal (due Fri 12/4)
 One short paragraph — really an expanded version of your **HW4 C2** plan. Tell me:
 - **which dataset** (your own, ideally — or the provided corpus / a stylometry corpus);
 - **your question** — the humanistic question you're actually curious about;
@@ -183,7 +185,7 @@ Before you turn in your notebook + essay `[to: upload location / TCU Online]`:
 - [ ] My essay (~800–1,200 words) makes **one argument**, grounded in specifics from the notebook,
       **preserves any disagreement** in my data, and is honest about what my method flattens.
 - [ ] The **writing is my own voice** (AI for code and feedback is fine; the prose is mine).
-- [ ] I'm ready to share **one finding and one thing my tools got wrong** in class on Fri 7/31.
+- [ ] I'm ready to share **one finding and one thing my tools got wrong** in class on Fri 12/18.
 
 ---
 
