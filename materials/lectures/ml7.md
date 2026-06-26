@@ -1,7 +1,7 @@
 # NLP & Topic Modeling
 ## The machine clusters the words — you name the meaning
 
-<!-- meta: Day 14 · the through-line -->
+<!-- meta: Day 16 · the through-line -->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): A scholar at a long wooden table sorting one large scattered heap of handwritten letters into several distinct stacks, each stack bound with a different muted-color ribbon (clay, sage, ochre) — many documents resolving into a few themes. Warm lamplight. -->

@@ -21,33 +21,33 @@ HERO = RAW + "materials/lectures/images/messy_humanities.jpg"
 
 # --- code-alongs, grouped by week ---
 CODEALONGS_BY_WEEK = [
-    ("Week 1", "Python foundations", [
+    ("Weeks 1–2", "Python foundations", [
         ("Variables & Data Types", "How Python stores text and numbers.", "Day 1", "notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb"),
         ("Strings & String Methods", "Slicing, cleaning, and splitting text.", "Day 2", "notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb"),
         ("Lists, Loops & Conditionals", "Collections, iteration, and decisions.", "Days 3–4", "notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb"),
         ("Dictionaries & Functions", "Key–value data and reusable tools.", "Day 5", "notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb"),
     ]),
-    ("Week 2", "From text to data", [
-        ("Term Frequency", "Counting words to hear what a text is about.", "Day 6", "notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb"),
-        ("Found Data & Pandas", "Collection ethics, then DataFrames.", "Day 8", "notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb"),
-        ("Data Cleaning", "Turning messy scraped data tidy.", "Day 9", "notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb"),
+    ("Weeks 3–4", "From text to data", [
+        ("Term Frequency", "Counting words to hear what a text is about.", "Day 7", "notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb"),
+        ("Found Data & Pandas", "Collection ethics, then DataFrames.", "Day 10", "notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb"),
+        ("Data Cleaning", "Turning messy scraped data tidy.", "Day 11", "notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb"),
     ]),
-    ("Week 3", "Computational text analysis", [
-        ("Sentiment with VADER", "Scoring emotional tone — and judging it.", "Days 11–12", "notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb"),
-        ("Topic Modeling (Gensim)", "Discovering themes across a corpus.", "Days 14–15", "notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb"),
+    ("Weeks 5–6", "Computational text analysis", [
+        ("Sentiment with VADER", "Scoring emotional tone — and judging it.", "Days 13–14", "notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb"),
+        ("Topic Modeling (Gensim)", "Discovering themes across a corpus.", "Days 16–17", "notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb"),
     ]),
 ]
 
 # --- homework ---
 HOMEWORK = [
-    ("HW1 · Foundations", "Python basics on real text.", "due Day 6", "notebooks/homework/WRIT20833_HW1_2026.ipynb"),
+    ("HW1 · Foundations", "Python basics on real text.", "due Day 7", "notebooks/homework/WRIT20833_HW1_2026.ipynb"),
     ("HW2 · Term Frequency", "“Whose words win?” — comments vs. the Constitution.", "due Day 10", "notebooks/homework/WRIT20833_HW2_2026.ipynb"),
-    ("HW3 · Sentiment", "Support, opposition, and what counting missed.", "due Day 15", "notebooks/homework/WRIT20833_HW3_2026.ipynb"),
-    ("HW4 · Topic Modeling + Integration", "Themes, then all three lenses together.", "due Day 17", "notebooks/homework/WRIT20833_HW4_2026.ipynb"),
+    ("HW3 · Sentiment", "Support, opposition, and what counting missed.", "due Day 16", "notebooks/homework/WRIT20833_HW3_2026.ipynb"),
+    ("HW4 · Topic Modeling + Integration", "Themes, then all three lenses together.", "due Day 19", "notebooks/homework/WRIT20833_HW4_2026.ipynb"),
 ]
 
 # --- mini-lectures (the ~25-min conceptual frames) — not yet built as pages ---
-# ML0-7 map cleanly to 2026; ML2 cut (folded into ML6 + ML0); ML9 "Going Public" homed at Day 17;
+# ML0-7 map cleanly to 2026; ML2 cut (folded into ML6 + ML0); ML9 "Going Public" homed at Day 19;
 # ML8 "Code as Rhetoric" harvested into ML1 + ML9 (no deck); ML10-12 (web) cut.
 # (title, desc, when, page, thumb) — page is a docs-relative URL when the lecture has an authored
 # reading page (None keeps it a "soon" placeholder card); thumb is the title-image path under the repo
@@ -57,10 +57,10 @@ LECTURES = [
     ("Connotations & Code", "Code is not neutral.", "Day 1", "lectures/ml1.html", "materials/lectures/images/ml1_title.jpg"),
     ("Classification Logic", "Whose categories? Sorting as judgment.", "Day 3", "lectures/ml3.html", "materials/lectures/images/ml3_title.jpg"),
     ("Collective Memory", "What a culture keeps and forgets.", "Day 4", "lectures/ml5.html", "materials/lectures/images/ml5_title.jpg"),
-    ("AI Agency", "Reading & judging machine-written code.", "Day 7", "lectures/ml4.html", "materials/lectures/images/ml4_title.jpg"),
-    ("Data Archaeology", "Where found data comes from.", "Day 8", "lectures/ml6.html", "materials/lectures/images/ml6_title.jpg"),
-    ("NLP & Topic Modeling", "Teaching machines to read culture.", "Day 14", "lectures/ml7.html", "materials/lectures/images/ml7_title.jpg"),
-    ("Going Public", "Analysis → public argument.", "Day 17", "lectures/ml9.html", "materials/lectures/images/ml9_title.jpg"),
+    ("AI Agency", "Reading & judging machine-written code.", "Day 8", "lectures/ml4.html", "materials/lectures/images/ml4_title.jpg"),
+    ("Data Archaeology", "Where found data comes from.", "Day 10", "lectures/ml6.html", "materials/lectures/images/ml6_title.jpg"),
+    ("NLP & Topic Modeling", "Teaching machines to read culture.", "Day 16", "lectures/ml7.html", "materials/lectures/images/ml7_title.jpg"),
+    ("Going Public", "Analysis → public argument.", "Day 19", "lectures/ml9.html", "materials/lectures/images/ml9_title.jpg"),
 ]
 
 RESOURCES = [
@@ -105,7 +105,7 @@ def section(anchor, n, title, lede, body):
 
 def render():
     side = sidebar(
-        "WRIT 20833 · Summer 2026",
+        "WRIT 20833 · Fall 2026",
         "When Coding Meets Culture",
         [("#start", "Start here", "00"),
          ("#lectures", "Lectures", "01"),
@@ -121,9 +121,9 @@ def render():
         f'<figure class="mast-banner"><img src="{HERO}" alt="A warm painting of the humanities — a bust, '
         'a seated thinker, a portrait on an easel, a guitar, a theatre mask, and scattered manuscripts">'
         '</figure>'
-        '<div class="kicker">WRIT 20833 · Summer 2026 · TCU</div>'
+        '<div class="kicker">WRIT 20833 · Fall 2026 · TCU</div>'
         '<h1>When Coding Meets Culture</h1>'
-        '<p class="sub">Developing data-driven opinions — a four-week introduction to coding in the '
+        '<p class="sub">Developing data-driven opinions — an eight-week introduction to coding in the '
         'humanities.</p>'
         '<p class="meta">Learn just enough Python to ask humanistic questions of real text — term '
         'frequency, sentiment, topic modeling — and to argue from what you find, while staying honest '
@@ -137,7 +137,7 @@ def render():
         "The two documents that frame the course.",
         grid([
             card("Schedule", "Course Schedule", "Day-by-day: lecture, coding, and what's due.",
-                 "20 sessions", "schedule.html"),
+                 "24 sessions", "schedule.html"),
             card("Syllabus", "Syllabus", "Outcomes, the ungrading policy, AI-use policy, and dates.",
                  "draft", GH_BLOB + "SYLLABUS_2026.md"),
         ]))
@@ -165,18 +165,18 @@ def render():
         "The final evaluative exercise integrates all three methods on data you choose; the stylometry "
         "track is an alternative path.",
         grid([
-            card("Capstone", "Data-Driven Opinion", "Notebook analysis + short essay, presented Fri 7/31.",
-                 "Week 4", GH_BLOB + "CAPSTONE_2026.md"),
+            card("Capstone", "Data-Driven Opinion", "Notebook analysis + short essay, presented Fri 12/18.",
+                 "Week 8", GH_BLOB + "CAPSTONE_2026.md"),
             card("Exercise", "Reading for the Seams", "Stylometry close-reading: hearing a human (or AI) voice.",
-                 "Day 7 · Week 4", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
+                 "Day 8 · Week 8", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
             card("Notebook", "Stylometry (computational)", "The computational half of the stylometry exercise.",
-                 "Week 4", COLAB + "materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb"),
+                 "Week 8", COLAB + "materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb"),
         ]))
 
     lectures = section(
         "lectures", "01", "Lectures",
         "The short conceptual frames that open each day — the “code is not neutral” throughline, "
-        "from Humanities &amp; Coding on Day 1 to Going Public on Day 17. Each is a live reading page with a slide deck.",
+        "from Humanities &amp; Coding on Day 1 to Going Public on Day 19. Each is a live reading page with a slide deck.",
         grid([card("Mini-lecture", t, d, w, p, soon=(p is None),
                    img=(RAW + im if im else None), thumb=True)
               for (t, d, w, p, im) in LECTURES]))
@@ -190,7 +190,7 @@ def render():
                  f'<ul class="reslist">{res_items}</ul></section>')
 
     main = (masthead + start + lectures + codealongs + homework + capstone + resources +
-            '<footer>WRIT 20833 · Summer 2026 · “hear the human at scale” · '
+            '<footer>WRIT 20833 · Fall 2026 · “hear the human at scale” · '
             'a working draft, adjusted to the class’s pace</footer>')
     return PAGE("WRIT 20833 — When Coding Meets Culture", shell(side, main), wrap=False)
 
