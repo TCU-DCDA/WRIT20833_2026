@@ -2,11 +2,57 @@
 
 **Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
 https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-06-21 (verification pass: open-thread #7 **topic-modeling install cell
-verified** on a py3.12 proxy — gensim 4.4.0 installs + imports + trains clean, one live Colab click
-remaining; **all 7 first-half code-alongs re-executed clean** — no bit-rot, Days 1–10 ready to teach. Prior:
-2026-06-18 ML9 merged PR #29; **chatbot-tutor MVP BUILT** in the private `WRIT20833-chatbot` repo —
+`main`. · **Last updated:** 2026-06-26 (**FORMAT CHANGE: course re-paced from a 4-week summer intensive to
+an 8-week in-person fall offering** — see the session entry directly below. Prior: 2026-06-21 verification
+pass; 2026-06-18 ML9 merged PR #29; **chatbot-tutor MVP BUILT** in the private `WRIT20833-chatbot` repo —
 code-complete, deployment pending)
+
+---
+
+## Latest session — 2026-06-26 (FORMAT CHANGE: 4-week summer → 8-week fall, in-person)
+**The July section was canceled.** The course now runs as the TCU **second 8-week session ("8W2"): Mon Oct
+19 – Fri Dec 18, 2026, Monday/Wednesday/Friday, 2 hrs/day, IN PERSON, enrollment ≤ 20.** That's **24
+sessions / ~48 contact hours** (up from the summer plan's 20/40 — actually back to F25's full budget). No
+class the week of Thanksgiving (Nov 23–27; classes recess after Fri Nov 20, resume Mon Nov 30) — verified
+against the TCU registrar's Fall-2026 8W2 calendar. The capstone presentation on Fri Dec 18 is the Final
+Evaluative Exercise (no separate final; grades due Mon Dec 21).
+
+**Key framing:** the **content is calendar-agnostic** (notebooks/lectures/HW use "Day N / Week N", not
+dates) — so **no notebook or lecture content changed.** This was a **re-pacing + re-dating + in-person
+re-framing**, not a content rebuild. **Assignments unchanged: 5 graded pieces (HW1–4 + Capstone).** The +4
+sessions were spent as breathing room (Week-1 foundations un-compressed into 2 weeks; an HW2 work session;
+more capstone development + a presentation dry-run), NOT new deliverables.
+
+**New pacing (8 weeks × MWF = 24 sessions):**
+- Wk1 (Oct 19–23): foundations — variables · strings · conditionals · **R1 due Fri 10/23** · D1
+- Wk2 (Oct 26–30): foundations — lists/loops · functions/dicts · recap · **HW1 assigned**
+- Wk3 (Nov 2–6): term frequency + HW1 debrief (**HW1 due, HW2 assigned**) · AI code+stylometry seed · HW2 work · D2
+- Wk4 (Nov 9–13): pandas 01 (**HW2 due**) · pandas 02 · data workshop
+- Wk5 (Nov 16–20): VADER (**R2 midterm, HW3 assigned**) · VADER deep · HW3 work · D3 — *break begins after Fri 11/20*
+- Wk6 (Nov 30–Dec 4): topic intro (**HW3 due**) · topic deep (**HW4 assigned**) · integration demo (**capstone proposal due**)
+- Wk7 (Dec 7–11): Going Public (**HW4 due**) · capstone work 1 · capstone work 2 · D4
+- Wk8 (Dec 14–18): capstone work 3 + peer review · polish/dry-run · **presentations (Capstone + R3 due) Fri 12/18**
+
+Lecture day-homes shifted: AI Agency D7→D8, Data Archaeology D8→D10, NLP & Topic Modeling D14→D16, Going
+Public D17→D19 (updated in `build_lectures.py` + each `materials/lectures/ml*.md` meta + `build_index.py`).
+Discussions now biweekly (Wks 1/3/5/7).
+
+**Files updated this session (all in this student-facing repo; NOT yet committed):**
+- `COURSE_SCHEDULE_2026.md` — full rewrite to the 8-week/24-session MWF grid + Thanksgiving gap.
+- `SYLLABUS_2026.md` — term/dates/meeting block, **in-person modality** (dropped Zoom + class-recording;
+  reworked Attendance, Technology, Class Norms), all due dates, skills map, embedded grid, lecture notes.
+- `CAPSTONE_2026.md` — dates + timeline table.
+- `build_index.py`, `build_schedule_html.py`, `build_lectures.py`, the 4 `ml*.md` metas — labels, session
+  count, day-homes, 8-week week-tint palette. **Regenerated `docs/` (index + schedule + 8 lecture pages/decks).**
+- `README.md` — front-matter; both `PROPOSED_4WEEK_SCHEDULE.md` copies banner-marked **SUPERSEDED**.
+
+**Instructor follow-ups:**
+- ✅ **Section / meeting time / room confirmed (2026-06-26):** section **020**, **MWF 10:00–11:50 AM**,
+  **Schar Hall Room 2003** — filled into the syllabus.
+- The AddRan Word copy is now `WRIT20833-020_Fall2026_Rode.docx` (instructor-maintained in Word).
+- Secondary/historical docs NOT rewritten (still reference the summer framing): `planning/PORT_ASSESSMENT_2026.md`
+  (contact-hour history), `planning/SYLLABUS_COMPLIANCE.md`, the chatbot scope/system-prompt drafts. Update
+  if/when they're next touched; none are student-facing.
 
 A running handoff so any new session (VS Code, web, or CLI) can resume with zero ramp-up.
 Read this first, then `planning/PORT_ASSESSMENT_2026.md` (context) and

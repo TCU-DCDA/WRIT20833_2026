@@ -29,8 +29,9 @@ def _abs(href):
         return GH_BLOB + href
     return href
 
-# greens deepening across the term (match --wk1..4 in site_theme.py)
-WEEK_COLORS = ["#3a6b54", "#2f5d49", "#26513e", "#1e3b2f"]
+# greens deepening across the term (8 instructional weeks; extends --wk1..4 in site_theme.py)
+WEEK_COLORS = ["#3a6b54", "#356450", "#305d49", "#2b5643",
+               "#26503e", "#214a39", "#1c4333", "#1e3b2f"]
 MODE_CLASS = {
     "Code-along": "m-codealong", "Lab": "m-lab", "Workshop": "m-workshop",
     "Work session": "m-worksession", "Presentations": "m-present",
@@ -147,7 +148,7 @@ def render():
                  + [(f"#week-{i+1}", f"Week {i+1}", f"0{i+1}") for i in range(len(weeks))]
                  + [(GH_BLOB + "SYLLABUS_2026.md", "Syllabus", None)])
     side = sidebar(
-        "WRIT 20833 · Summer 2026", "Course Schedule",
+        "WRIT 20833 · Fall 2026", "Course Schedule",
         nav_items,
         [(f"https://github.com/{REPO}", "GitHub ↗"), ("https://colab.research.google.com/", "Colab ↗")],
     )
@@ -157,14 +158,14 @@ def render():
         '<div class="kicker">WRIT 20833 · When Coding Meets Culture</div>'
         '<h1>Course Schedule</h1>'
         f'<p class="sub">{md_inline(subtitle)}</p>'
-        '<p class="meta">Summer 2026 · a day-at-a-glance companion to the syllabus '
+        '<p class="meta">Fall 2026 · a day-at-a-glance companion to the syllabus '
         '(full assignment descriptions, the ungrading policy, and the reflection / discussion prompts '
         'live there). Generated from <code>COURSE_SCHEDULE_2026.md</code>.</p>'
         f'<div class="legend"><span class="lbl">Coding modes</span>{legend}</div>'
         '</header>'
         + "".join(week_html)
         + f'<div class="notes">{notes_html}</div>'
-        + '<footer>WRIT 20833 · Summer 2026 · a working plan, adjusted to the class’s pace</footer>'
+        + '<footer>WRIT 20833 · Fall 2026 · a working plan, adjusted to the class’s pace</footer>'
     )
     return PAGE(html.escape(title), shell(side, main), wrap=False)
 

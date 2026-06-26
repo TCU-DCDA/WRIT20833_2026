@@ -1,6 +1,13 @@
 # Next-session handoff prompt
 
-Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-18; ML9 merged PR #29; chatbot-tutor MVP BUILT in the private WRIT20833-chatbot repo — deployment pending.)
+> **⚠️ FORMAT CHANGE (2026-06-26): the July 4-week summer section was canceled.** The course now runs
+> **8 weeks, in person, MWF, Oct 19 – Dec 18, 2026 (TCU "8W2"), 24 sessions, enrollment ≤ 20**, no class
+> Thanksgiving week (Nov 23–27). Schedule + syllabus + capstone + site are re-paced/re-dated to match;
+> content (notebooks/lectures/HW) is unchanged — it's all "Day N / Week N". See the 2026-06-26 entry at the
+> top of `planning/WORKLOG.md` for the full record + the new week-by-week pacing. Section number + meeting
+> time/room remain `[...]` placeholders in the syllabus pending registrar confirmation.
+
+Paste the block below into a fresh thread to resume with zero ramp-up. (Last updated 2026-06-26; course re-paced to the 8-week in-person fall offering. Prior: ML9 merged PR #29; chatbot-tutor MVP BUILT in the private WRIT20833-chatbot repo — deployment pending.)
 
 ---
 

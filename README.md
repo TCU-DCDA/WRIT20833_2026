@@ -1,14 +1,16 @@
 # WRIT 20833 — Intro to Coding in the Humanities (2026)
 ### "When Coding Meets Culture: Developing Data-Driven Opinions"
 
-A **lower-division undergraduate, 4-week, online-synchronous** offering of WRIT 20833 at TCU — **Mon Jul 6 – Fri Jul 31,
-2026**, Monday–Friday, 2 hrs/day (20 sessions). Students with **no prior coding experience** learn just
+A **lower-division undergraduate, 8-week, in-person** offering of WRIT 20833 at TCU — **Mon Oct 19 – Fri Dec 18,
+2026** (TCU second 8-week session, "8W2"), Monday/Wednesday/Friday, 2 hrs/day (24 sessions; no class the
+week of Thanksgiving). Students with **no prior coding experience** learn just
 enough Python to ask humanistic questions of real text (term frequency → sentiment → topic modeling),
 and to argue from what they find — while staying honest about what computation reveals and flattens.
 
 This repo is a **port** of the mature 16-week Fall 2025 course (`TCU-DCDA/WRIT20833_2025`), re-paced and
-trimmed to a 4-week cultural-analytics arc (the web-dev/portfolio half is dropped — it overlaps MALA
-60970). See `planning/PORT_ASSESSMENT_2026.md` for the rationale.
+trimmed to an 8-week cultural-analytics arc (the web-dev/portfolio half is dropped — it overlaps MALA
+60970). See `planning/PORT_ASSESSMENT_2026.md` for the rationale. *(Originally drafted as a 4-week summer
+intensive; that July section was canceled and the course moved to this 8-week fall offering.)*
 
 The course carries two TCU core-curriculum designations — **Citizenship & Social Values (CSV)** (trains
 evidence-based civic participation around a real public-policy debate) and **Humanities (HUM)** (humanistic
@@ -21,7 +23,7 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 > and the **capstone sheet** (`CAPSTONE_2026.md`) is drafted. **Lecture pages** — all eight scheduled
 > mini-lecture reading pages + slide decks are live (`build_lectures.py`): Humanities & Coding, Connotations
 > & Code, Classification Logic, Collective Memory, AI Agency, Data Archaeology, NLP & Topic Modeling, and
-> Going Public (Day 17). The back-half audit is closed: "Code as Rhetoric" was harvested into Connotations
+> Going Public (Day 19). The back-half audit is closed: "Code as Rhetoric" was harvested into Connotations
 > & Code + Going Public (no standalone deck); "Sacred Boundaries" and the web-dev lectures are cut.
 > Remaining: the student-facing fold-ins of the conceptual framework, and instructor-handled
 > items (the AddRan Word export; verifying the Colab-2026 install cell). See `planning/WORKLOG.md`.
@@ -33,7 +35,7 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 |---|---|
 | **`docs/index.html`** | The **course website** — a left-nav dashboard that launches the schedule, code-alongs (→ Colab), homework, capstone, lectures, and resources. Built by `build_index.py` + `site_theme.py`; publishes via GitHub Pages (`main` / `docs`). |
 | **`SYLLABUS_2026.md`** | The course as students meet it — outcomes, ungrading policy, schedule, AI-use policy, the 3 reflections + 4 discussions. *(Markdown fully filled — no `[...]` placeholders; aligned to the AddRan template. The `.docx` is the instructor-maintained Word submission copy.)* |
-| **`COURSE_SCHEDULE_2026.md`** | Day-at-a-glance grid: **Date · Lecture · Coding · Due** across the 20 sessions (rendered as `docs/schedule.html`). |
+| **`COURSE_SCHEDULE_2026.md`** | Day-at-a-glance grid: **Date · Lecture · Coding · Due** across the 24 sessions (rendered as `docs/schedule.html`). |
 | **`CAPSTONE_2026.md`** | The **capstone assignment sheet** — the Final Evaluative Exercise (notebook + data-driven-opinion essay + presentation), with both tracks (cultural dataset · stylometry), the timeline, and the ungrading rubric. *(DRAFT.)* |
 | **`planning/CONCEPTUAL_FRAMEWORK_2026.md`** | The course's intellectual through-line — *why* beneath the code. Read this to understand what the course is *about*. |
 | **`planning/WORKLOG.md`** | Running session handoff + decision log. Read first to resume work with zero ramp-up. |
@@ -53,7 +55,7 @@ inquiry into human expression, close and distant, across space and time). (Vetti
   Constitution) + a `README.md`. Reused across HW2–HW4 and the capstone.
 - **`materials/stylometry/`** — "Reading for the Seams" close-reading exercise + notebook + exemplar.
 - **`materials/images/`** — the **noumena → wisdom** epistemological-spine graphic + its teaching notes.
-- **`materials/lectures/`** — mini-lecture **reading pages** (markdown source; all eight scheduled lectures authored through Going Public on Day 17); rendered to `docs/lectures/` by `build_lectures.py`.
+- **`materials/lectures/`** — mini-lecture **reading pages** (markdown source; all eight scheduled lectures authored through Going Public on Day 19); rendered to `docs/lectures/` by `build_lectures.py`.
 - **`materials/Day1_Framing_Noumena_to_Wisdom.md`** — the Day-1 framing passage (now published as the opening Humanities & Coding reading page).
 
 ## Repository layout
