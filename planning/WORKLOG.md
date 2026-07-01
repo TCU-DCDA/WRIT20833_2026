@@ -33,6 +33,9 @@ consistency · day-by-day content coverage · open threads/git state), all claim
   branch (instructor):** the files remain readable in git *history* until re-scrubbed — re-run the BFG
   scrub + force-push `main`, hard-reset all other clones per "Working across two machines" below, verify
   on a fresh clone (`git log --all -- '*_ANSWER_KEY.ipynb' …` → empty). Details: report §1.
+- **SCHEDULE-LINK FIX (same day, after PR #32 merged):** closed report §2 — `_abs()` in
+  `build_schedule_html.py` now maps root-level `.md` links (`CAPSTONE_2026.md`) to the absolute GitHub
+  URL like `build_index.py` does; regenerated `docs/schedule.html` (both capstone links verified).
 
 ---
 

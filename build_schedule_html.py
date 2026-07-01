@@ -27,6 +27,8 @@ def _abs(href):
         return COLAB + href
     if href.startswith(("notebooks/", "materials/", "planning/", "reference/", "docs/")):
         return GH_BLOB + href
+    if href.endswith(".md"):  # root-level docs (e.g. CAPSTONE_2026.md) aren't copied into /docs
+        return GH_BLOB + href
     return href
 
 # greens deepening across the term (8 instructional weeks; extends --wk1..4 in site_theme.py)
