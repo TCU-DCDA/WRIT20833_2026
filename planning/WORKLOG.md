@@ -25,6 +25,14 @@ consistency · day-by-day content coverage · open threads/git state), all claim
   (dates, due dates, day-homes D8/D10/D16/D19, no stale summer text, no `[...]` left in the syllabus),
   and all 24 sessions have their promised artifacts (9/9 code-alongs, HW1–4, 8/8 lecture pairs, corpora,
   stylometry bundle). Readiness verdict ≈ the standing ~90% — the key exposure is the one real fire.
+- **KEY-EXPOSURE FOLLOW-UP (same day, same branch) — partial fix applied:** verified all 7 files were
+  last touched **2026-06-10 (pre-scrub)**, so nothing here is newer than the private keys repo; then
+  **`git rm`'d the 7 files from the tip** and added a **CI recurrence guard**
+  (`.github/workflows/guard-instructor-files.yml` — fails any push/PR where `git ls-files` matches
+  `*_ANSWER_KEY.ipynb` / `notebooks/homework/_build_hw*.py`). **🔴 Still required after merging this
+  branch (instructor):** the files remain readable in git *history* until re-scrubbed — re-run the BFG
+  scrub + force-push `main`, hard-reset all other clones per "Working across two machines" below, verify
+  on a fresh clone (`git log --all -- '*_ANSWER_KEY.ipynb' …` → empty). Details: report §1.
 
 ---
 
