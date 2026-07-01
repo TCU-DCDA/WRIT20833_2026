@@ -1,0 +1,23 @@
+# Guard against the answer keys / solution-bearing HW builders ever being tracked in this
+# PUBLIC student-facing repo again. They live ONLY in the private TCU-DCDA/WRIT20833_2026_keys
+# repo (see .gitignore + planning/WORKLOG.md "Working across two machines" — a pull after a
+# history rewrite reintroduced them once, 2026-06; this check makes a recurrence fail loudly).
+name: Guard instructor-only files
+
+on: [push, pull_request]
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail if answer keys or HW builders are tracked
+        run: |
+          hits=$(git ls-files -- '*_ANSWER_KEY.ipynb' 'notebooks/homework/_build_hw*.py')
+          if [ -n "$hits" ]; then
+            echo "::error::Instructor-only files are tracked in this public repo:"
+            echo "$hits"
+            echo "Remove them (git rm) — they belong only in the private keys repo."
+            exit 1
+          fi
+          echo "OK — no instructor-only files tracked."
