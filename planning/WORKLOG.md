@@ -2,10 +2,37 @@
 
 **Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
 https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-06-26 (**FORMAT CHANGE: course re-paced from a 4-week summer intensive to
-an 8-week in-person fall offering** — see the session entry directly below. Prior: 2026-06-21 verification
-pass; 2026-06-18 ML9 merged PR #29; **chatbot-tutor MVP BUILT** in the private `WRIT20833-chatbot` repo —
-code-complete, deployment pending)
+`main`. · **Last updated:** 2026-07-01 (**project-evaluation pass — 🔴 found the HW answer keys + builders
+re-committed to public `main`**; see the session entry directly below + `planning/PROJECT_EVALUATION_2026-07-01.md`.
+Prior: 2026-06-26 FORMAT CHANGE to the 8-week in-person fall offering; 2026-06-21 verification pass;
+chatbot-tutor MVP BUILT in the private `WRIT20833-chatbot` repo — deployment pending)
+
+---
+
+## Latest session — 2026-07-01 (project-evaluation pass — full open-state audit)
+No content changed — an **evaluation-only** pass (report: `planning/PROJECT_EVALUATION_2026-07-01.md`,
+authored on branch `claude/open-project-evaluation-lzee77`). Three parallel audits (re-pacing
+consistency · day-by-day content coverage · open threads/git state), all claims re-verified directly.
+- **🔴 URGENT FINDING — the HW1–4 answer keys + `_build_hw2/3/4.py` are tracked on public `main` again.**
+  Merge `67899e9` merged a stale pre-scrub clone back over the 2026-06-11 BFG rewrite (parent ^1 has the
+  7 files, parent ^2 = scrubbed main has 0) — the exact two-machine `pull`-after-force-push failure this
+  WORKLOG warns about below. Remediation (instructor: re-scrub + force-push + hard-reset clones + a
+  guard against recurrence) is spelled out in the report §1. **Not fixed in this pass** (history rewrite
+  on `main` = instructor's call).
+- **🟠 Bug:** `docs/schedule.html` has 2 broken `href="CAPSTONE_2026.md"` links (404 on Pages); fix =
+  map it to the absolute GitHub URL in `build_schedule_html.py` (as `build_index.py` does) + regenerate.
+- **✅ Otherwise clean:** the 8-week re-pacing is 100% consistent across every student-facing surface
+  (dates, due dates, day-homes D8/D10/D16/D19, no stale summer text, no `[...]` left in the syllabus),
+  and all 24 sessions have their promised artifacts (9/9 code-alongs, HW1–4, 8/8 lecture pairs, corpora,
+  stylometry bundle). Readiness verdict ≈ the standing ~90% — the key exposure is the one real fire.
+- **KEY-EXPOSURE FOLLOW-UP (same day, same branch) — partial fix applied:** verified all 7 files were
+  last touched **2026-06-10 (pre-scrub)**, so nothing here is newer than the private keys repo; then
+  **`git rm`'d the 7 files from the tip** and added a **CI recurrence guard**
+  (`.github/workflows/guard-instructor-files.yml` — fails any push/PR where `git ls-files` matches
+  `*_ANSWER_KEY.ipynb` / `notebooks/homework/_build_hw*.py`). **🔴 Still required after merging this
+  branch (instructor):** the files remain readable in git *history* until re-scrubbed — re-run the BFG
+  scrub + force-push `main`, hard-reset all other clones per "Working across two machines" below, verify
+  on a fresh clone (`git log --all -- '*_ANSWER_KEY.ipynb' …` → empty). Details: report §1.
 
 ---
 
