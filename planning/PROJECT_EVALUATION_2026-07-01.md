@@ -88,9 +88,9 @@ the ungrading posture that depends on students doing the struggle themselves.
 exist → **404 on the live GitHub Pages site**. `docs/index.html` handles the same target correctly with
 the absolute URL `https://github.com/TCU-DCDA/WRIT20833_2026/blob/main/CAPSTONE_2026.md`.
 
-**Fix (one line):** in `build_schedule_html.py`'s link-rewriting helper (`_abs()`, ~line 30), map
-`CAPSTONE_2026.md` to the absolute GitHub blob URL (as `build_index.py` already does), then regenerate
-`docs/` and push. Not applied here — this pass is evaluation-only.
+**Fix — ✅ APPLIED (2026-07-01, follow-up commit):** `_abs()` in `build_schedule_html.py` now maps
+root-level `.md` links (e.g. `CAPSTONE_2026.md`) to the absolute GitHub blob URL (as `build_index.py`
+already does); `docs/schedule.html` regenerated — both capstone links verified absolute.
 
 ---
 
@@ -174,7 +174,7 @@ palette retune, ML7 interior image slot.
 |---|---|---|---|
 | 1 | 🔴 Now | ~~Remove keys + builders from the tip~~ ✅ done on this branch; **re-scrub history + force-push `main` + hard-reset all clones + verify on fresh clone** (§1) | Instructor |
 | 2 | 🔴 Now | ~~CI guard against instructor-only files being tracked~~ ✅ done (`.github/workflows/guard-instructor-files.yml`) | — |
-| 3 | 🟠 Soon | Fix the Capstone link mapping in `build_schedule_html.py`; regenerate `docs/` (§2) | Either |
+| 3 | 🟠 Soon | ~~Fix the Capstone link mapping in `build_schedule_html.py`; regenerate `docs/`~~ ✅ done (§2) | — |
 | 4 | 🟡 Pre-launch | Fill the two capstone placeholders; the Day-16 live Colab click | Instructor |
 | 5 | 🟡 Whenever | §5 doc nits; decide the chatbot deployment timing | Instructor |
 
