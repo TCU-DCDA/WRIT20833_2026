@@ -59,21 +59,25 @@ so the *history* is re-exposed too, not just the tips.
 them) straight off the public GitHub Pages repo. It quietly defeats the whole private-keys design and
 the ungrading posture that depends on students doing the struggle themselves.
 
-**Recommended remediation (instructor action — needs a force-push to `main`, so not performed by this
-evaluation):**
+**Remediation status (updated 2026-07-01, same day — partial fix applied on this branch):**
 
-1. **First, diff the 7 files against the private keys repo** — if any edits landed here since 2026-06-11,
-   copy them into `WRIT20833_2026_keys` before deleting anything.
-2. On the tip: `git rm --cached` the 7 files, commit, then **re-run the BFG scrub** for
-   `*_ANSWER_KEY.ipynb` + `notebooks/homework/_build_hw*.py` and force-push `main`
-   (same procedure as 2026-06-11).
-3. **Re-sync every other clone with a hard reset, not a pull** — follow the exact block in
-   `planning/WORKLOG.md` § "Working across two machines" (fetch → `reset --hard origin/main` →
-   `reflog expire` + `gc`). This is the step that was missed last time.
-4. Verify on a fresh clone: `git log --all --oneline -- '*_ANSWER_KEY.ipynb' 'notebooks/homework/_build_hw*.py'`
-   → **expect empty**.
-5. Optional belt-and-suspenders: a pre-push hook or CI check that fails if `git ls-files` matches either
-   pattern, so a third recurrence can't reach the remote silently.
+- ✅ **Divergence check:** all 7 files' last commits date to **2026-06-10, before the scrub** — no edits
+  landed here that the private keys repo lacks, so removal loses nothing.
+- ✅ **Tip removal:** the 7 files are `git rm`'d on `claude/open-project-evaluation-lzee77`. Once merged,
+  the public repo's browsable tree no longer serves them.
+- ✅ **Recurrence guard:** `.github/workflows/guard-instructor-files.yml` — CI fails any push/PR where
+  `git ls-files` matches `*_ANSWER_KEY.ipynb` or `notebooks/homework/_build_hw*.py`.
+- 🔴 **STILL REQUIRED (instructor — needs a force-push to `main`):** the files remain readable in **git
+  history** until it is rewritten. After merging this branch:
+  1. **Re-run the BFG scrub** for `*_ANSWER_KEY.ipynb` + `notebooks/homework/_build_hw*.py` and
+     force-push `main` (same procedure as 2026-06-11).
+  2. **Re-sync every other clone with a hard reset, not a pull** — follow the exact block in
+     `planning/WORKLOG.md` § "Working across two machines" (fetch → `reset --hard origin/main` →
+     `reflog expire` + `gc`). This is the step that was missed last time.
+  3. Verify on a fresh clone: `git log --all --oneline -- '*_ANSWER_KEY.ipynb' 'notebooks/homework/_build_hw*.py'`
+     → **expect empty**.
+  4. GitHub may cache the old commits server-side until GC; contact GitHub support to purge if the SHAs
+     stay reachable by URL.
 
 ---
 
@@ -168,8 +172,8 @@ palette retune, ML7 interior image slot.
 
 | # | Priority | Action | Owner |
 |---|---|---|---|
-| 1 | 🔴 Now | Remove keys + builders from public `main`; re-scrub history; hard-reset all clones; verify on fresh clone (§1) | Instructor |
-| 2 | 🔴 Now | Add a pre-push/CI guard against `*_ANSWER_KEY.ipynb` / `_build_hw*.py` ever being tracked (§1.5) | Either |
+| 1 | 🔴 Now | ~~Remove keys + builders from the tip~~ ✅ done on this branch; **re-scrub history + force-push `main` + hard-reset all clones + verify on fresh clone** (§1) | Instructor |
+| 2 | 🔴 Now | ~~CI guard against instructor-only files being tracked~~ ✅ done (`.github/workflows/guard-instructor-files.yml`) | — |
 | 3 | 🟠 Soon | Fix the Capstone link mapping in `build_schedule_html.py`; regenerate `docs/` (§2) | Either |
 | 4 | 🟡 Pre-launch | Fill the two capstone placeholders; the Day-16 live Colab click | Instructor |
 | 5 | 🟡 Whenever | §5 doc nits; decide the chatbot deployment timing | Instructor |
