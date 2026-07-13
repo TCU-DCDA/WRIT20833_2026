@@ -68,6 +68,43 @@ away the one thing this course exists to grow. **Borrow the tool; never outsourc
 which is which.** (Ted Chiang calls a language model "a blurry JPEG of the web" — a lossy average of
 everything ever written. A voice worth having is the opposite of an average.)
 
+## Eloquence is not evidence
+
+There's one more property of the machine's writing you have to reckon with: it is **fluent** —
+confident, structured, grammatically flawless — *whether it is right or wrong.*
+
+That matters because of a shortcut your gut has been using your whole life. For all of human history,
+polished prose was **expensive**: producing it meant someone had actually done the thinking, so judging
+writing by its polish was a fair proxy for judging the mind behind it. Language models broke that
+correlation. Fluency is now free — and it reads *exactly the same* when the claim is true and when it is
+invented. Our instincts haven't updated: a well-made paragraph still *feels* vetted before any judgment
+has convened. Stephen Colbert coined a word for that feeling — **truthiness**, when something feels true
+from the gut before the evidence arrives. An AI is a machine for making anything feel gut-true.
+
+Philosophy has a blunter word. Harry Frankfurt distinguished the **liar** — who knows the truth and
+conceals it — from the **bullshitter**, who simply doesn't care what's true, only what lands. Some
+philosophers now argue "hallucination" is the wrong name for AI errors: a hallucination implies a mind
+mistaking false for true, but a language model has *no regard for truth at all* — it produces the most
+plausible next words, and when they're true, that's incidental. In Frankfurt's strict sense, an LLM is a
+bullshit engine even when it happens to be right.
+
+None of this is new; only the machinery is. Plato watched the sophists sell exactly this in Athens —
+Gorgias boasted that a skilled speaker would beat the physician in a debate about medicine, before an
+audience that knew no medicine — because eloquence feels like expertise from the inside. And the Greeks
+had a name for what settles into a person (or a city) that gets its beliefs that way: **amathia**. Not
+ignorance — *agnoia*, which more information fixes — but **un-wisdom**: the condition of the
+well-informed, well-assisted person whom nothing any longer teaches. Remember the Day-1 diagram? Amathia
+is the shadow at its bottom-right corner: knowledge that never becomes wisdom, because the labor between
+them — the friction where understanding actually happens — got outsourced.
+
+Two things to carry out of that word. First, **it points at us, never at them.** Amathia is not a
+diagnosis you hand to the 123 commenters in our data or to anyone across a political argument; it's the
+temptation *you* face every time an eloquent answer arrives faster than your judgment. Second, the fix is
+not an attitude ("trust AI less") — attitudes don't beat gut-level habits. The fix is **procedural
+friction**: run the code, check the citation, find the source, read the seams. Which is exactly where
+we're headed. The refrain to keep, right next to *the score is never the meaning*: **eloquence is not
+evidence.**
+
 ## Today: read the seams
 
 That's exactly today's lab. You'll take a chunk of **AI-written code, read it line by line, and improve
@@ -82,4 +119,6 @@ AI, and say what you changed.
 
 Going deeper (optional): Douglas Rushkoff, *Program or Be Programmed*; Ted Chiang, "ChatGPT Is a Blurry
 JPEG of the Web" (*The New Yorker*, 2023); Nick Montfort, *Exploratory Programming for the Arts and
-Humanities*.
+Humanities*; Harry Frankfurt, *On Bullshit* (2005); Michael Townsen Hicks, James Humphries & Joe Slater,
+"ChatGPT Is Bullshit" (*Ethics and Information Technology*, 2024); Plato, *Gorgias* (the original argument
+about persuasion without knowledge).

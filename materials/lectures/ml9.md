@@ -65,7 +65,10 @@ every one is a claim about what matters, aimed at a reader. Structure is rhetori
 So the standard from day one holds in public, too — **show your seams.** An honest public argument says
 what it counted *and what it left out,* names the cutoff it chose and why, and admits where it might be
 wrong. A polished take that hides its choices isn't more persuasive; it's just less honest. Being willing
-to be wrong out loud is not a weakness in a public argument. It's the thing that makes it trustworthy.
+to be wrong out loud is not a weakness in a public argument. It's the thing that makes it trustworthy —
+and it's the opposite of the condition the AI Agency lecture warned you about: *amathia*, the writer
+nothing can teach. An argument that runs on what *feels* true is just truthiness with a megaphone; an
+argument that shows its seams stays teachable in public.
 
 ## What you do with what you found
 

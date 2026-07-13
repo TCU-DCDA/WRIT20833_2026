@@ -20,7 +20,9 @@ vocabulary, locally-grounded detail.
 This exercise teaches students to read for those seams two ways — by hand (**close reading**)
 and by measurement (**distant reading**) — and to hold conclusions loosely. **AI-detection is
 unreliable and biased** (notably against non-native English writers); the goal is *insight
-about voice, averaging, and standardization*, not catching cheaters.
+about voice, averaging, and standardization*, not catching cheaters. It is also the working
+answer to ML4's warning that **eloquence is not evidence**: once fluency is free, the reader's
+only defense is learning to read past it — which is precisely this skill.
 
 The companion file **`ai_voice_claude_analysis.pdf`** is the worked exemplar: an AI model
 close-reading a human-edited AI email, separating "likely AI scaffolding" from "likely human

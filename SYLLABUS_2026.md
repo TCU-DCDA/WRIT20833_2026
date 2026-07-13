@@ -172,7 +172,8 @@ substantive replies by Friday**):
 3. **D3 (Wk 5) — Close vs. distant reading.** What does counting/sentiment let you see that reading by
    hand can't — and what does it flatten?
 4. **D4 (Wk 7) — What computation reveals and hides.** Share your capstone finding and one thing your
-   methods get wrong. *(The course is designed for 4 discussions; D4 may be dropped to a 3-discussion
+   methods get wrong — including, if you caught one, a moment you trusted a result mainly because it
+   *sounded* right. *(The course is designed for 4 discussions; D4 may be dropped to a 3-discussion
    minimum if end-of-term capstone load is heavy.)*
 
 ### Grading Philosophy (ungrading)
