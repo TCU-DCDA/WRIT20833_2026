@@ -81,6 +81,14 @@ quarrel into a tidy verdict the way a single topic-list pretends a messy debate 
 argument **preserves the disagreement** even as it takes a position — it gives voice to the crowd without
 pretending the crowd agreed.
 
+You already know what the failure sounds like, because politicians of every party say it: *"The American
+people feel…"* Six words that flatten a split crowd into one voice, dress a poll number up as a feeling —
+and often there's no poll at all, just the speaker's own position wearing the crowd as a costume. That's
+the ventriloquism the AI Agency lecture warned about, run in reverse and at national scale: the crowd
+appears to speak; the speaker chose the words. So here is the drafting test for your capstone: **never
+write a sentence about your 123 that you'd roll your eyes at from a politician.** "The commenters feel…"
+is the same move in miniature — and your own numbers know better.
+
 > The reflection that becomes your capstone: *what did your analysis find that someone outside this room needs to see — who are they, and what should they do once they have seen it?*
 
 You already have the insight. The last skill is the courage and the craft to hand it to the people it's for.

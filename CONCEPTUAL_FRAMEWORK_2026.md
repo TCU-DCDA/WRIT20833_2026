@@ -225,6 +225,14 @@ student-facing use must carry this framing.
 - **ML9** and the stylometry exercise: one-line callbacks (being wrong in public as the anti-amathia
   posture; reading past fluency as the retired heuristic).
 - Deliberately *not* in D1–D3 prompts, the homework notebooks, or the capstone sheet.
+- **Negative exemplar in the wild (added 2026-07-13):** the political trope *"The American people
+  feel…"* — the flattening move in six words (split mean → unanimous subject; a poll answer dressed up
+  as a "feeling"; often no data at all, i.e. Frankfurtian authorization; the speaker's position wearing
+  the crowd as a costume — ML4's ventriloquism run in reverse at national scale). Lives as a drafting
+  test in **ML9** (the preserve-the-disagreement caution: "never write a sentence about your 123 that
+  you'd roll your eyes at from a politician") and in **HW3 B4** (plain-language version, no Greek — the
+  *term* amathia still stays out of the notebooks). Reflexive by construction: it targets the student's
+  own drafting habit, not the commenters.
 
 ---
 
