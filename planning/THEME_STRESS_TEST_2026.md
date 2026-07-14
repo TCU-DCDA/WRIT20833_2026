@@ -200,6 +200,62 @@ is rich in how analyses go wrong and thin on what makes one right enough to act 
 
 ---
 
+## Postscript — provenance, and a live instance of #4 *(2026-07-14)*
+
+The instructor raised the reflexive question this document was fishing for: **much of this
+theme was developed in conversation with Claude — how much of #4 is attributable to that?**
+The honest answer, recorded here because it is evidence, not confession:
+
+**Direct attribution is substantial.** The refrains added in the 2026-07 revision — "eloquence
+is not evidence," "the bullshit → truthiness → amathia braid," "the last arrow no tool can
+cross for you," "never write a sentence about your 123 that you'd roll your eyes at from a
+politician," "say split" — were all AI-drafted, in seconds, at zero cost. An aphorism engine
+was in the room, and quotable compression is free to it. A human co-author produces three
+refrains in a semester of drafting; this process produced six in an afternoon. The
+vocabulary-budget inflation the materials keep worrying about is partly an artifact of the
+collaborator.
+
+**There is a logged instance, not just a risk.** Hole #6 above documents the AI telling the
+tidy "fluency was a costly signal until three years ago" story; it survived the first draft
+*because* it was eloquent, and was flagged only under an instructed adversarial pass — the AI
+attacking its own work. Related epistemic limit: the AI cannot audit its own contributions
+from the inside (its original "amathia fits strikingly well" judgment was itself fluent and
+fast). External checks — colleagues, the questions students actually ask, whether the
+concepts survive real teaching — outrank the collaborator's self-assessment, including the
+self-assessment in this postscript.
+
+**But #4's failure mode is unaudited adoption, not provenance.** A formulation is not false
+because a model produced it (VADER's scores are not wrong because we didn't write VADER); the
+course's own audit-and-own standard (patch #7) is the right test. By that test the process
+mostly avoided the failure mode: integration was refused when only assessment was wanted; the
+reflexive rule was set as non-negotiable by the instructor; placements, scope, and the
+vocabulary budget were instructor calls; and the stress test itself was commissioned — the
+tools turned on their maker. The provenance question this postscript answers is the audit
+continuing.
+
+**Where the residual risk lives — two places text can't fully patch:**
+1. **Selection.** AI formulations survive into the documents partly because they are
+   *memorable*, and memorable ≠ true. The theme's spine passed through an
+   eloquence-selecting filter; after-the-fact auditing cannot fully undo a selection effect.
+2. **Friction.** ML4's own claim is that a voice is forged in the difficulty of finding your
+   own words; AI drafts arrive pre-polished, so every borrowed section is friction the author
+   didn't experience. By the course's own theory, the theme is slightly less the
+   instructor's than if each sentence had been fought for.
+
+**Mitigation = the #4 patch, applied to the instructor:** every refrain must *leave a mark on
+the notebook* — change what actually happens in the classroom (how the instructor responds
+when a student aims "amathia" across the aisle; whether students are really made to "say who
+you heard") — or be recognized as decoration, and cut.
+
+**Pedagogical upside (open option).** A sharp student will eventually notice that the lecture
+warning about AI eloquence was AI-drafted, eloquently. Disclosed, this is the strongest
+available demonstration of the scaffold-vs-replacement line: "my AI collaborator wrote the
+first draft of this warning; here is where I pushed back, and here is the document where I
+made it attack its own work." This postscript exists partly so that disclosure, if chosen,
+has a citable artifact.
+
+---
+
 ## Related documents
 - `CONCEPTUAL_FRAMEWORK_2026.md` — the through-line these objections target (esp. §1, §4).
 - `materials/lectures/ml0.md`, `ml4.md`, `ml9.md` — where patches #1, #6/#7, #2/#9 would land.
