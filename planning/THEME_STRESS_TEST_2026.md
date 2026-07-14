@@ -200,6 +200,70 @@ is rich in how analyses go wrong and thin on what makes one right enough to act 
 
 ---
 
+## Addendum — distribution & clustering: the technical half of the #3 patch *(2026-07-14)*
+
+Follow-on design conversation. The instructor asked whether stats/viz concepts —
+**distribution** and **clustering** — would strengthen the theme. Answer: substantially, and
+they earn their places differently. Both consolidate ideas the course currently makes
+*verbally* into things students can *see*; the vocabulary cost is method-vocabulary
+(center, spread, shape, tails), not theme-vocabulary, so it doesn't strain the Greek-terms
+budget.
+
+**Restating the #3 point this extends.** The course teaches a complete negative epistemology
+(how analyses go wrong) and almost no positive one (what makes an analysis right enough to
+act on). "Make your choices visible" is an honesty standard, not a validity standard —
+**visible ≠ valid** — and the course never draws the line. Predictable costs: the week-2
+question ("if it's bias all the way down, why is any analysis better than any other?") has
+no answer on the page; the strategic student exits into sophisticated relativism; the
+capstone resolves the preserve-the-quarrel / take-a-position tension as hedge-everything
+false equivalence (#9). The four ingredients of the answer are already taught but never
+assembled: **convergence** (Day 18 integration), **survival of the close read**
+(human-vs-VADER), **robustness** (the 0.05-cutoff experiment), **stated falsifiability**
+(what would change your mind). One-sentence version: *the course teaches students to
+distrust every answer and never teaches them how to trust one.*
+
+**Distribution — the missing visual proof of the central claim.** The split-mean insight,
+"preserve the quarrel," and the "American people feel…" critique are all one statistics
+concept: reporting the central tendency of a bimodal distribution. A histogram of the 123
+VADER compound scores makes the point in one glance — the humps *are* the quarrel; the mean
+sits in the valley, a number that describes nobody. Enables the single best demo available
+to the course (~6 lines of matplotlib): **two fake corpora with the same mean** — one all
+near 0.0 (lukewarm crowd), one half +0.9 / half −0.9 (a war); identical mean, opposite
+human realities, side-by-side histograms. That is "the score is never the meaning" *proven*
+rather than asserted. Candidate refrain: **never report a center without its shape.** Bonus:
+HW3's "read the extremes" = *visiting the tails* — close reading gets a location on the
+chart, making close → distant → close literal.
+
+**Clustering — the missing critical lens on HW4.** LDA is clustering, and clustering
+algorithms **always find exactly as many clusters as you ask for** — Gensim will produce
+`num_topics` topics whether the corpus contains that many themes, two, or mush; it never
+answers "actually there are two" or "this is noise." That reframes `num_topics` as the
+deepest version of classification-is-authored: topic lists are answers to a leading
+question, not discoveries. Five-minute demo: same corpus at `num_topics=2`, `4`, `8` —
+coherent-looking topics materialize at every setting. Secondary point: a cluster is a
+manufactured demographic; the distance metric decides who counts as "similar," and
+word-overlap similarity ≠ shared belief (the `commandments`-in-both-camps finding is two
+opposed camps a naive similarity measure would merge).
+
+**Firm boundary — descriptive and visual only; no inferential statistics.** For 123
+self-selected, platform-ranked comments, a p-value is false precision; "statistically
+significant" is eloquence for numbers people and would license overclaiming with the
+course's apparent blessing. Saying *why* the course refuses inferential stats ("our sample
+can't support it — say who you heard") is itself a lesson in the theme and reinforces
+patch #2.
+
+**Placement if adopted:** the histogram + same-mean demo → Week 5 (VADER code-along or HW3
+B2, which already plots); the clustering material → ML7 / HW4 where `num_topics` lives. A
+demo cell and a few sentences each; no new lectures. Net effect on #3: "earned"
+description-claims become *distributional* claims (shape, split, named sample), and the
+robustness test — does the split survive a cutoff change? — becomes askable because
+students can finally see shape. **Distribution is the technical half of the "what earned
+looks like" standard this document says is missing.**
+
+**Status: open — design option, not yet adopted.**
+
+---
+
 ## Postscript — provenance, and a live instance of #4 *(2026-07-14)*
 
 The instructor raised the reflexive question this document was fishing for: **much of this
