@@ -341,3 +341,6 @@ HUM = HW analyses, capstone notebook, stylometry — trim to the form's field li
 - `materials/Day1_Framing_Noumena_to_Wisdom.md` — the drafted Day-1 teaching passage.
 - `PORT_ASSESSMENT_2026.md` · `PROPOSED_4WEEK_SCHEDULE.md` — the port rationale and design.
 - `WORKLOG.md` — running session handoff and decision log (points here for the conceptual framework).
+- `THEME_STRESS_TEST_2026.md` — devil's-advocate pass at this framework (2026-07-14): nine
+  plausible objections with candidate patches; headline finding is the need for a *positive*
+  epistemology (what makes an insight earned) to match the negative one.
