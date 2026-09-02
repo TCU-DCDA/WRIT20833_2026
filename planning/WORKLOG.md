@@ -1,15 +1,83 @@
 # WORKLOG — WRIT 20833 2026 port (session handoff)
 
-**Status:** all work merged to `main`; repo **public**; course site **live** (GitHub Pages, `main/docs` →
+**Status:** all work merged to `main`; **repo is currently PRIVATE** (⚠️ see below — this breaks the
+public course site for students); course site built + live (GitHub Pages, `main/docs` →
 https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-07-01 (**project-evaluation pass — 🔴 found the HW answer keys + builders
-re-committed to public `main`**; see the session entry directly below + `planning/PROJECT_EVALUATION_2026-07-01.md`.
-Prior: 2026-06-26 FORMAT CHANGE to the 8-week in-person fall offering; 2026-06-21 verification pass;
-chatbot-tutor MVP BUILT in the private `WRIT20833-chatbot` repo — deployment pending)
+`main`. · **Last updated:** 2026-09-02 (**pre-launch readiness audit, ≈7 weeks to Day 1** — content
+verified done; **🔴 one launch blocker: the repo went private, so all Colab links, site images, and HW
+data-loaders 404 for students, and flipping it back public would re-expose the answer keys still in git
+history**. See the session entry directly below + `planning/NEXT_SESSION.md`. Prior: 2026-07-01
+project-evaluation pass; 2026-06-26 FORMAT CHANGE to the 8-week in-person fall offering; 2026-06-21
+verification pass; chatbot-tutor MVP BUILT in the private `WRIT20833-chatbot` repo — deployment pending)
 
 ---
 
-## Latest session — 2026-07-01 (project-evaluation pass — full open-state audit)
+## Latest session — 2026-09-02 (pre-launch readiness audit — ≈7 weeks to Day 1)
+A **verification** pass, not an authoring one: every claim below was re-established by running or fetching
+something, not by reading this log. **Verdict: the teaching material is complete and works; the course
+cannot currently be delivered as designed, for a repo-settings reason.**
+
+### 🔴 BLOCKER — the repo is PRIVATE and the public site points into it
+`gh repo view TCU-DCDA/WRIT20833_2026` → `"visibility": "PRIVATE"`, while
+`gh api .../pages` → `"public": true, "status": "built"`. Confirmed by anonymous fetch:
+- **97 links** on the live site 404 — **all 31 "Open in Colab" links** (every code-along), the syllabus,
+  the capstone sheet, the data folder.
+- **Every image on the live site is broken.** `build_lectures.py` / `build_index.py` rewrite repo-relative
+  images to absolute `raw.githubusercontent.com/.../main/materials/...` (the "outside /docs → absolute"
+  rule) — which 404s while private. Tested every `src` on `lectures/ml0.html` and on the dashboard.
+- **HW2/HW3/HW4 data-loader cells fail** — they fetch `raw.githubusercontent.com/.../main/notebooks/data/`.
+
+**It cannot simply be flipped public:** the 2026-07-01 audit removed the answer keys from the *tip* and
+added the CI guard, but **history was never rewritten** — `git log origin/main -- '*_ANSWER_KEY.ipynb'`
+still reaches `665d4f6`, `5b63c73`, `bceef16`, `2b36aef`. Required order: **BFG scrub → force-push →
+hard-reset all clones (never `pull`) → flip public → verify on a fresh clone.** Steps in
+`planning/NEXT_SESSION.md`.
+
+### ✅ Verified working (re-run today)
+- **All 9 code-along notebooks + the stylometry notebook execute clean** — 165 code cells; the lone error
+  is the **intentional** "read the error message" `TypeError` in Variables. Stack: pandas 2.3.3 · numpy
+  2.0.2 · gensim 4.4.0 · vaderSentiment. **The Day 16–17 gensim LDA notebook ran clean**, which retires
+  the long-standing topic-modeling risk (residual = one live Colab click on the install cell).
+- **`docs/` is in sync** — re-running all three generators reproduces the committed site **byte-identically**.
+- **Syllabus complete** — no `[...]`; section 020 · MWF 10:00–11:50 AM · Schar Hall 2003; all D1–D4 +
+  R1–R3 prompts present; dates agree across syllabus, schedule, and capstone sheet.
+- **Lecture day-homes correct** post-repacing: ml0+ml1 D1 · ml3 D3 · ml5 D4 · ml4 D8 · ml6 D10 · ml7 D16 ·
+  ml9 D19; all 8 reading pages + decks live and returning 200.
+
+### 🟡 Open, non-blocking (detail + options in `planning/NEXT_SESSION.md`)
+- **Four second-half sessions have lecture titles but no material** — Day 13 "Quantifying connotation,"
+  Day 14 "Close vs. distant reading," Day 15 "Predictions on the record," Day 18 "Integration." Author
+  them, write speaking notes, or mark them "(verbal)" in the schedule.
+- **HW1's window is one weekend** — assigned Fri 10/30, due Mon 11/2, for 12 exercises + Weekly
+  Experiments from six-session-old beginners; HW2–4 each get a week *plus* a work session. Instructor call.
+- **Capstone placeholders** (presentation length ×2, upload location) — needed by Fri 12/4, not Day 1.
+- **Chatbot tutor** untouched since 2026-06-18; still undeployed. Ship-vs-skip is an open decision.
+
+### Housekeeping done this session
+- **This machine's clone (`/Users/crode/Code/curtrode/01-Teaching/4-WRIT/WRIT20833/WRIT20833_2026`) was 6
+  commits behind and still tracked all 7 answer-key/builder files.** Fast-forwarded to `origin/main`
+  (verified it was a strict ancestor first, so no merge could reintroduce them); the 7 files are now gone
+  from this working tree. **After the coming history rewrite, re-sync with `reset --hard`, not `pull`.**
+- **Toolchain note:** `/opt/anaconda3/bin/python`, cited throughout this log, **does not exist on the
+  `/Users/crode/...` machine** — plain `python3` there carries pandas/numpy/gensim/vaderSentiment.
+- **Deleted the stale root duplicates** (June-reorg leftovers, instructor-approved this session): root
+  `WORKLOG.md` + `CONCEPTUAL_FRAMEWORK_2026.md` (both **2026-06-10**, still describing the *4-week summer*
+  course) and root `ACKNOWLEDGMENTS.md` + `PROPOSED_4WEEK_SCHEDULE.md` (byte-identical to theirs).
+  **`planning/` is now the single source** for process docs — which is where README already pointed.
+  Verified first that nothing links to the root copies (only prose backtick mentions inside the docs
+  themselves), and re-ran all three generators afterward: clean, `docs/` unchanged. **Root now carries only
+  the four student-facing docs** (README · SYLLABUS_2026 · COURSE_SCHEDULE_2026 · CAPSTONE_2026) + the
+  generators + `site_theme.py`. *(Still duplicated at root: the five TCU/AddRan source `.docx`/`.pdf`/`.doc`
+  files that also live in `reference/` — same reorg leftover, not touched.)*
+- `planning/NEXT_SESSION.md` rewritten (it still carried summer-era framing, the other machine's paths,
+  and closed threads) — it is now the blocker brief + a four-lane plan for the next session.
+
+**Readiness:** Day 1 content **100%** · Week 1 **100%** · first half (Days 1–12) **~99%** · second half
+**~90%** — **all of it gated on the blocker above.**
+
+---
+
+## Earlier session — 2026-07-01 (project-evaluation pass — full open-state audit)
 No content changed — an **evaluation-only** pass (report: `planning/PROJECT_EVALUATION_2026-07-01.md`,
 authored on branch `claude/open-project-evaluation-lzee77`). Three parallel audits (re-pacing
 consistency · day-by-day content coverage · open threads/git state), all claims re-verified directly.
@@ -39,7 +107,7 @@ consistency · day-by-day content coverage · open threads/git state), all claim
 
 ---
 
-## Latest session — 2026-06-26 (FORMAT CHANGE: 4-week summer → 8-week fall, in-person)
+## Earlier session — 2026-06-26 (FORMAT CHANGE: 4-week summer → 8-week fall, in-person)
 **The July section was canceled.** The course now runs as the TCU **second 8-week session ("8W2"): Mon Oct
 19 – Fri Dec 18, 2026, Monday/Wednesday/Friday, 2 hrs/day, IN PERSON, enrollment ≤ 20.** That's **24
 sessions / ~48 contact hours** (up from the summer plan's 20/40 — actually back to F25's full budget). No
@@ -93,7 +161,7 @@ the private `TCU-DCDA/WRIT20833_2026_keys`.
 
 ---
 
-## Latest session — 2026-06-21 (verification pass: Day-14 install cell + first-half re-execution)
+## Earlier session — 2026-06-21 (verification pass: Day-14 install cell + first-half re-execution)
 No content authored — a **readiness-verification** pass (re-running things rather than trusting the log).
 - **Day-14 / HW4 topic-modeling install cell — ✅ VERIFIED (closes open-thread #7).** Tested
   `!pip install -q gensim vaderSentiment` in a clean **Python-3.12 venv** (mid-2026 Colab proxy): resolves
