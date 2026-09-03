@@ -70,10 +70,11 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
 
 **Lane D — pre-launch checks not in this repo.** TCU Online (D2L) shell built: 4 discussion topics
 (D1 Wk1 · D2 Wk3 · D3 Wk5 · D4 Wk7), 3 reflection dropboxes, 4 HW dropboxes, capstone dropbox; the
-AddRan Word syllabus (`SYLLABUS_2026.docx`, added 2026-08-27) synced to `SYLLABUS_2026.md`; CSV/HUM
-work-examples trimmed to the vetting form (`planning/CSV_HUM_WORK_EXAMPLES.md`); the 🟦 registrar
-double-checks in `planning/SYLLABUS_COMPLIANCE.md`; one 60-sec live Colab click on the Day-16 gensim
-install cell.
+AddRan Word syllabus (`SYLLABUS_2026.docx`, added 2026-08-27) synced to `SYLLABUS_2026.md`; the 🟦
+registrar wording double-checks in `planning/SYLLABUS_COMPLIANCE.md`; one 60-sec live Colab click on the
+Day-16 gensim install cell. **Not a task:** the CSV/HUM vetting-form trim — the course already carries
+both designations and nothing is pending (closed 2026-06-26; WORKLOG item #10). `CSV_HUM_WORK_EXAMPLES.md`
+is reference only.
 
 ---
 
