@@ -1,18 +1,65 @@
 # WORKLOG — WRIT 20833 2026 port (session handoff)
 
-**Status:** all work merged to `main`; **repo is currently PRIVATE** (⚠️ see below — this breaks the
-public course site for students); course site built + live (GitHub Pages, `main/docs` →
-https://tcu-dcda.github.io/WRIT20833_2026/). No active feature branch — start a fresh one per task off
-`main`. · **Last updated:** 2026-09-02 (**pre-launch readiness audit, ≈7 weeks to Day 1** — content
-verified done; **🔴 one launch blocker: the repo went private, so all Colab links, site images, and HW
-data-loaders 404 for students, and flipping it back public would re-expose the answer keys still in git
-history**. See the session entry directly below + `planning/NEXT_SESSION.md`. Prior: 2026-07-01
-project-evaluation pass; 2026-06-26 FORMAT CHANGE to the 8-week in-person fall offering; 2026-06-21
-verification pass; chatbot-tutor MVP BUILT in the private `WRIT20833-chatbot` repo — deployment pending)
+**Status:** all work merged to `main`. **History scrubbed 2026-09-03 — the answer keys are gone from
+this repo for good** (`git-filter-repo`, force-pushed; verified on a fresh clone). **⚠️ The repo is still
+PRIVATE, so the public course site is still broken for students** — flipping it public is now the ONLY
+remaining step of the launch blocker, and it is safe to do. Course site: GitHub Pages, `main/docs` →
+https://tcu-dcda.github.io/WRIT20833_2026/. No feature branches — `main` is the only ref. · **Last
+updated:** 2026-09-03 (scrub + PR #34 merged + thread #10 closed; prior: 2026-09-02 pre-launch readiness
+audit; 2026-07-01 project evaluation; 2026-06-26 FORMAT CHANGE to the 8-week in-person fall offering;
+chatbot-tutor MVP built in the private `WRIT20833-chatbot` repo — deployment pending)
 
 ---
 
-## Latest session — 2026-09-02 (pre-launch readiness audit — ≈7 weeks to Day 1)
+## Latest session — 2026-09-03 (answer keys scrubbed for good; PR #34 merged; branches cleared)
+
+### ✅ The key exposure is CLOSED — history rewritten with `git-filter-repo`
+The 2026-06-11 BFG scrub was undone by a stale re-merge; the 2026-07-01 audit removed the keys from the
+tip but left them in history. **Both are now fixed at the root.**
+
+- **Tool: `git-filter-repo`, not BFG** — BFG 1.15.0 is installed on this machine but has **no Java
+  runtime**, and filter-repo is the maintained path (git's own docs point at it), needs no JVM, and
+  refuses to run outside a fresh clone. Command, run in a throwaway clone:
+  `git filter-repo --invert-paths --path-glob '*_ANSWER_KEY.ipynb' --path-glob 'notebooks/homework/_build_hw*.py'`
+  then re-add `origin` and `git push --force origin main`. Old tip `c45502b` → new tip `648f1e4`.
+- **Verified on a brand-new clone:** no commit touches either pattern; `git rev-list --objects --all`
+  finds no key blob; and the old key-bearing SHAs (`2b36aef`, `665d4f6`, `5b63c73`, `bceef16`, `f0e8c8d`,
+  and the bad merge `67899e9`) are all **unresolvable**.
+- **Nothing was lost.** The tip tree is **byte-identical** to pre-scrub `main` (`68f6b24…`). Commit count
+  fell 184 → 152, and every one of the 32 was a **duplicate**: 32 subjects appeared twice before, exactly
+  once after, with **zero** subjects left without a surviving copy. That is the duplicated pre-scrub
+  lineage — the one merge `67899e9` grafted back on in June — finally collapsing into the single scrubbed
+  lineage. Content checks after: 9 code-alongs · 4 HW notebooks · 16 lecture pages/decks · 2 corpora, and
+  the generators still reproduce `docs/` byte-identically. CI guard green on the new tip.
+- **⚠️ SHAs in older WORKLOG entries and in `planning/PROJECT_EVALUATION_2026-07-01.md` are now dangling** —
+  every commit on `main` was rewritten. The prose is still accurate; only the hashes are unresolvable.
+  Not chased down; noted here instead.
+
+### 🟠 What remains of the launch blocker: flip the repo PUBLIC
+Everything upstream of that is done. Until it flips, the public Pages site still serves students 97 dead
+links (all 31 Colab links included), 404s every image, and breaks the HW2/3/4 data-loader cells. Flipping
+is now **safe** — the keys are not recoverable from any ref. Then verify logged-out: one Colab link opens,
+one lecture-page image renders. *(Left to the instructor — deliberately not done by Claude.)*
+
+### Also this session
+- **PR #34 merged** (`2445709`) — the amathia / "eloquence is not evidence" thread that had sat open since
+  2026-07-20: ML4's new section, the ML0 Day-1 tease, ML9 + HW3's *"The American people feel…"* trope, and
+  `planning/THEME_STRESS_TEST_2026.md`. One conflict (root `CONCEPTUAL_FRAMEWORK_2026.md`, deleted here vs.
+  modified there) resolved by keeping the deletion — verified lossless, the two 48-line additions differed
+  only in one cross-reference path, correct as-is in the `planning/` copy. **Note:** HW3's B4 paragraph was
+  hand-applied to the *student* notebook, so `_build_hw3.py` in the keys repo needs the same text or a
+  rebuild will drop it.
+- **Thread #10 (CSV+HUM) closed** — carried over from the stale branch `claude/review-open-gh-project-j2r7fy`:
+  the course already carries both designations, nothing is pending, `CSV_HUM_WORK_EXAMPLES.md` is reference
+  only. The branch itself no longer applied, so the substance was landed directly (`c45502b`, now `648f1e4`).
+- **All feature branches deleted** — `main` is the only ref, which also kept the rewrite to a single branch.
+- **Lesson reinforced:** the June failure was never the tool, it was re-syncing a stale clone with `pull`
+  instead of `reset --hard`. That procedure is in § "Working across two machines" — follow it on the other
+  machine before doing anything else there.
+
+---
+
+## Earlier session — 2026-09-02 (pre-launch readiness audit — ≈7 weeks to Day 1)
 A **verification** pass, not an authoring one: every claim below was re-established by running or fetching
 something, not by reading this log. **Verdict: the teaching material is complete and works; the course
 cannot currently be delivered as designed, for a repo-settings reason.**

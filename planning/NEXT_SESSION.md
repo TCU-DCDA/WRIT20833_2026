@@ -6,30 +6,31 @@
 
 ---
 
-## The one blocker — read this first
+## The one blocker — DOWN TO ONE STEP: flip the repo public
 
-**`TCU-DCDA/WRIT20833_2026` is now PRIVATE, but its GitHub Pages site is public and links into it.**
-Verified 2026-09-02: `gh repo view` → `PRIVATE`; Pages → `"public": true, "status": "built"`.
+**Status 2026-09-03: the history scrub is DONE; only the visibility flip remains, and it is now safe.**
 
-Consequences for students, all confirmed by anonymous fetch:
-- **97 links** on the live site 404 — including **all 31 "Open in Colab" links** (every code-along),
-  the syllabus, the capstone sheet, and the data folder.
-- **Every image on the live site is broken** — lecture pages + dashboard cards rewrite images to
-  `raw.githubusercontent.com/.../main/materials/...`, which 404s while private.
-- **HW2/HW3/HW4 data-loader cells fail** — they fetch from `raw.githubusercontent.com/.../main/notebooks/data/`.
+✅ **Done — answer keys scrubbed from history** (`git-filter-repo`, force-pushed; old tip `c45502b` → new
+tip `648f1e4`). Verified on a fresh clone: no commit touches `*_ANSWER_KEY.ipynb` or
+`notebooks/homework/_build_hw*.py`, no key blob in any object, and the old key-bearing SHAs (`2b36aef`,
+`665d4f6`, `5b63c73`, `bceef16`, `f0e8c8d`, merge `67899e9`) are unresolvable. Nothing lost — the tip tree
+is byte-identical to pre-scrub `main`; the 184 → 152 commit drop was the duplicated pre-scrub lineage
+collapsing (every dropped subject has a surviving copy). CI guard green.
 
-**Why it can't just be flipped back:** going public **re-exposes the answer keys in git history.** The
-2026-07-01 audit removed them from the *tip* and added a CI guard, but the history was never rewritten —
-`git log origin/main -- '*_ANSWER_KEY.ipynb'` still reaches `665d4f6`, `5b63c73`, `bceef16`, `2b36aef`.
+✅ **Done — all clones re-synced.** This machine's clone was `reset --hard` (not pulled) + `reflog expire`
++ `gc`. **The OTHER machine has not been touched** — before doing anything there, follow
+`planning/WORKLOG.md` § "Working across two machines": `fetch --prune` → `reset --hard origin/main` →
+`reflog expire --expire=now --all` → `gc --prune=now`. **Never `pull`** — that is what undid the June scrub.
 
-**Required order (instructor-run; needs a force-push):**
-1. BFG scrub `*_ANSWER_KEY.ipynb` + `notebooks/homework/_build_hw*.py`, force-push `main`
-   (same procedure as 2026-06-11; see WORKLOG § "Answer keys live in a PRIVATE companion repo").
-2. **Hard-reset every clone** — `fetch` → `reset --hard origin/main` → `reflog expire` + `gc`.
-   *Never `pull`* after a rewrite; that is exactly what reintroduced the keys in June.
-3. Flip the repo **public**.
-4. Verify: `git log --all --oneline -- '*_ANSWER_KEY.ipynb' 'notebooks/homework/_build_hw*.py'` → empty;
-   one anonymous Colab link opens; one lecture-page image loads in a logged-out browser.
+🟠 **REMAINING — flip `TCU-DCDA/WRIT20833_2026` to PUBLIC.** Deliberately left to the instructor. Until it
+flips, the public Pages site still serves students **97 dead links** (all 31 "Open in Colab" links, the
+syllabus, the capstone sheet, the data folder), **404s every image** (pages rewrite images to
+`raw.githubusercontent.com/.../main/materials/...`), and **breaks the HW2/3/4 data-loader cells**.
+
+**Then verify, logged out** (a private window, not your own session):
+1. one Colab link opens the notebook — e.g. the Variables code-along from the dashboard;
+2. one lecture-page image renders — e.g. `lectures/ml0.html`;
+3. `docs/schedule.html`'s Capstone links resolve.
 
 ---
 
