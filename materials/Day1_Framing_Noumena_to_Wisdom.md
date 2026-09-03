@@ -78,5 +78,10 @@ been honest about every arrow above them.
   as too much Kant for this audience, swap in "the thing itself / the thing as it appears" and keep the
   diagram — the *argument* survives without the terms.
 - **The score is never the meaning** is the one-line version; good as a recurring refrain.
+- **Amathia callback (added 2026-07-13).** ML0 now closes with an *unnamed* tease of the pipeline's
+  failure mode ("knowledge that never changes you"; the last arrow no tool can cross for you); **ML4
+  (AI Agency)** names it — ***amathia*** — inside its "Eloquence is not evidence" section (truthiness /
+  Frankfurt-bullshit / sophist braid). Reflexive rule is non-negotiable: the term names the *analyst's*
+  temptation, never the commenters in the corpus. Full treatment: CONCEPTUAL_FRAMEWORK §4.
 - Pairs naturally with **ML9 "Going Public"** at the end (analysis → public argument = the climb into
   the right column) and with the **close-vs-distant reading** hinge (Day 7).

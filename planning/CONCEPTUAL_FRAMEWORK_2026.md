@@ -190,6 +190,50 @@ It grounds the whole computational enterprise in the oldest humanistic question 
 suffering that isn't ours?* — is itself an *image-about-seeing* that pairs with the noumena graphic, and
 is voice doing exactly the work the course asks of students. (A poem, in a writing course, doing the job.)
 
+### The named failure mode — amathia *(added 2026-07-13)*
+
+The pipeline's telos (**wisdom**) has a named antonym: **amathia** (ἀμαθία) — not *agnoia* (simple
+ignorance, an absence of information) but culpable **un-wisdom**: knowledge that never becomes
+understanding; the well-informed person whom nothing any longer teaches. The Greek distinction maps
+exactly onto the course's own: *agnoia* is "hasn't collected the data yet"; *amathia* is "flattened the
+humans out of view and didn't mind." **Auden's ploughman is amathia in a single image** — not wrong about
+anything, just never looking up.
+
+**The modern braid** (the AI-age version): *the model supplies the bullshit, eloquence triggers the
+truthiness, habitual acceptance settles into amathia.*
+- **Bullshit** (Frankfurt, *On Bullshit*): speech indifferent to truth-value — which, some philosophers
+  argue, is literally what LLM output is (Hicks, Humphries & Slater, "ChatGPT Is Bullshit," *Ethics and
+  Information Technology*, 2024: "hallucination" wrongly implies a regard for truth the model lacks; it
+  produces plausible continuations, and truth is incidental).
+- **Truthiness** (Colbert): the gut outrunning the evidence. The supporting mechanism: fluent prose was
+  historically a *costly signal* of thought, so polish-as-proxy was a valid heuristic; LLMs made fluency
+  free and uniform across true and false, and our guts haven't updated.
+- **Amathia**: what the habit hardens into. Classical parallel: the LLM as sophist (Plato's *Gorgias* —
+  conviction without knowledge; eloquence feels like expertise from the inside).
+
+**Design constraint — reflexive use only (non-negotiable).** The term names the *analyst's* temptation —
+ours, the instructor's, the AI-assisted writer's — never the 123 commenters nor anyone across a political
+argument. In a course whose corpus is a live culture-war debate, letting the word become a diagnosis of
+the other side would re-enact the manufactured-consensus move the course warns against. Every
+student-facing use must carry this framing.
+
+**Where it lives** (per the vocabulary dial: introduced *once* at full strength, then callbacks only):
+- **ML0** (Day 1): an *unnamed* tease — "knowledge that never changes you"; the diagram's last arrow is
+  the only one no tool can cross for you.
+- **ML4** (AI Agency): the naming, in the "Eloquence is not evidence" section — the course's second
+  refrain, beside "the score is never the meaning."
+- **ML9** and the stylometry exercise: one-line callbacks (being wrong in public as the anti-amathia
+  posture; reading past fluency as the retired heuristic).
+- Deliberately *not* in D1–D3 prompts, the homework notebooks, or the capstone sheet.
+- **Negative exemplar in the wild (added 2026-07-13):** the political trope *"The American people
+  feel…"* — the flattening move in six words (split mean → unanimous subject; a poll answer dressed up
+  as a "feeling"; often no data at all, i.e. Frankfurtian authorization; the speaker's position wearing
+  the crowd as a costume — ML4's ventriloquism run in reverse at national scale). Lives as a drafting
+  test in **ML9** (the preserve-the-disagreement caution: "never write a sentence about your 123 that
+  you'd roll your eyes at from a politician") and in **HW3 B4** (plain-language version, no Greek — the
+  *term* amathia still stays out of the notebooks). Reflexive by construction: it targets the student's
+  own drafting habit, not the commenters.
+
 ---
 
 ## 5. How the framework maps to the built materials
@@ -204,6 +248,7 @@ is voice doing exactly the work the course asks of students. (A poem, in a writi
 | Return to the individual | HW3 reading the extremes + human-vs-VADER; HW4 "human names the topics" |
 | Voice through difficulty | Ungrading; the reflections; the capstone essay; the AI-use policy |
 | The whole spine, visualized | `materials/images/noumena_to_wisdom_pipeline.png` + Day-1 framing |
+| Amathia / "eloquence is not evidence" | ML0 closing tease; ML4 "Eloquence is not evidence"; ML9 + stylometry callbacks |
 
 ---
 
@@ -296,3 +341,6 @@ HUM = HW analyses, capstone notebook, stylometry — trim to the form's field li
 - `materials/Day1_Framing_Noumena_to_Wisdom.md` — the drafted Day-1 teaching passage.
 - `PORT_ASSESSMENT_2026.md` · `PROPOSED_4WEEK_SCHEDULE.md` — the port rationale and design.
 - `WORKLOG.md` — running session handoff and decision log (points here for the conceptual framework).
+- `THEME_STRESS_TEST_2026.md` — devil's-advocate pass at this framework (2026-07-14): nine
+  plausible objections with candidate patches; headline finding is the need for a *positive*
+  epistemology (what makes an insight earned) to match the negative one.

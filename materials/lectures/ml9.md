@@ -65,7 +65,10 @@ every one is a claim about what matters, aimed at a reader. Structure is rhetori
 So the standard from day one holds in public, too — **show your seams.** An honest public argument says
 what it counted *and what it left out,* names the cutoff it chose and why, and admits where it might be
 wrong. A polished take that hides its choices isn't more persuasive; it's just less honest. Being willing
-to be wrong out loud is not a weakness in a public argument. It's the thing that makes it trustworthy.
+to be wrong out loud is not a weakness in a public argument. It's the thing that makes it trustworthy —
+and it's the opposite of the condition the AI Agency lecture warned you about: *amathia*, the writer
+nothing can teach. An argument that runs on what *feels* true is just truthiness with a megaphone; an
+argument that shows its seams stays teachable in public.
 
 ## What you do with what you found
 
@@ -77,6 +80,14 @@ One caution carried from the whole term: going public is not flattening. Your jo
 quarrel into a tidy verdict the way a single topic-list pretends a messy debate was clean. The honest public
 argument **preserves the disagreement** even as it takes a position — it gives voice to the crowd without
 pretending the crowd agreed.
+
+You already know what the failure sounds like, because politicians of every party say it: *"The American
+people feel…"* Six words that flatten a split crowd into one voice, dress a poll number up as a feeling —
+and often there's no poll at all, just the speaker's own position wearing the crowd as a costume. That's
+the ventriloquism the AI Agency lecture warned about, run in reverse and at national scale: the crowd
+appears to speak; the speaker chose the words. So here is the drafting test for your capstone: **never
+write a sentence about your 123 that you'd roll your eyes at from a politician.** "The commenters feel…"
+is the same move in miniature — and your own numbers know better.
 
 > The reflection that becomes your capstone: *what did your analysis find that someone outside this room needs to see — who are they, and what should they do once they have seen it?*
 

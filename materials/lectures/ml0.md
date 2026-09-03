@@ -127,5 +127,11 @@ compute — they're what's left after you've been honest about every arrow above
 reflection, the question won't be *"did you get the right answer?"* It will be **"do you understand
 everything you chose along the way?"**
 
+One more thing about that bottom-right corner. The climb from knowledge to wisdom can fail — and the
+failure isn't *ignorance*, which more information fixes. It's something stubborner: being full of
+knowledge that never changes you. The Greeks had a word for it, and in a few weeks — when we ask what
+happens if you let an AI do your thinking for you — you'll learn it. For now, just notice that the
+diagram's last arrow is the only one no tool can cross for you.
+
 The humanities aren't about solving the mess of being human. They're about understanding it — and now,
 with a new set of tools, understanding it at a scale you could never reach by hand.
