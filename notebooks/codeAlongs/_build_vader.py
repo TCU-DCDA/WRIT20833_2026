@@ -55,7 +55,7 @@ cells = [
 
 Make an editable copy of this worksheet by going to **File > Save a copy in Drive**'''),
 
-    md('''In Week 2 you *counted* words — what a text is about. Now we ask a different question: how does
+    md('''In Week 3 you *counted* words — what a text is about. Now we ask a different question: how does
 it **feel**? **Sentiment analysis** scores the emotional tone of a text, from negative to positive.
 We'll use **VADER**, a tool built for exactly the kind of informal, punctuation-and-caps-heavy language
 people use online. And true to this course, we won't just trust its number — we'll check it against our
@@ -231,7 +231,7 @@ print(analyzer.polarity_scores(my_text)["compound"])
 **In HW3** you'll do all of this on a dataset *you* collected: score it, visualize the spread, and
 write up where VADER tracked your reading and where it broke. The mismatches are the point.
 
-**Next week (Days 14–15)** brings the last technique: **topic modeling**. Sentiment asked *what
+**After Thanksgiving break (Days 16–17)** comes the last technique: **topic modeling**. Sentiment asked *what
 feeling?*; topic modeling asks *what is this whole pile of text even about?* — letting the computer
 surface the recurring themes across hundreds of comments at once. Counting, feeling, themes: three
 different ways to hear a crowd.'''),

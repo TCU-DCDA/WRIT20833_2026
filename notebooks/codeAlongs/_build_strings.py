@@ -232,7 +232,7 @@ for word in words:
 print(counts)'''),
     md('''Don't worry about every line yet — that's the next two lessons. But notice the shape of it:
 **split a text into words, then count them.** That single idea, scaled up to thousands of real
-comments, is **term frequency** — the first real analysis you'll run in Week 2, and the start of
+comments, is **term frequency** — the first real analysis you'll run in Week 3, and the start of
 hearing what a crowd is actually saying.'''),
 
     md('# Playground'),
