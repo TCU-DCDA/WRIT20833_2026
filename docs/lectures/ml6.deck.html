@@ -200,7 +200,13 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .deck{position:fixed;inset:0;background:var(--paper);overflow:hidden;}
 .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:flex-start;
   padding:7vh 8vw 9vh;overflow:auto;}
-.slide.active{display:flex;} .slide.title{justify-content:center;}
+.slide.active{display:flex;}
+/* auto-fit: --fit scales a slide's type/figure to the screen it lands on */
+.slide.fitted h1{font-size:calc(clamp(30px,5.4vw,56px)*var(--fit,1));}
+.slide.fitted h2{font-size:calc(clamp(24px,4vw,42px)*var(--fit,1));}
+.slide.fitted p,.slide.fitted li{font-size:calc(clamp(16px,2.05vw,24px)*var(--fit,1));}
+.slide.fitted blockquote p{font-size:calc(clamp(19px,2.9vw,31px)*var(--fit,1));}
+.slide.fitted figure img{max-height:calc(62vh*var(--fit,1));max-width:calc(100%*var(--fit,1));} .slide.title{justify-content:center;}
 .slide>*{max-width:62rem;width:100%;}
 .slide .kicker{font:600 13px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;
   color:var(--clay);margin-bottom:18px;}
@@ -208,6 +214,7 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
   line-height:1.08;margin:0 0 16px;}
 .slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
   color:#464b3d;margin:0 0 20px;}
+.slide h2.cont{opacity:.55;font-size:clamp(19px,2.7vw,29px);}
 .slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
   margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
 .slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
@@ -217,7 +224,8 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .slide blockquote{margin:10px 0 18px;padding:6px 0 6px 22px;border-left:4px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .slide blockquote p{font-size:clamp(19px,2.9vw,31px);line-height:1.38;margin:0;}
-.slide figure{margin:6px 0;text-align:center;}
+.slide figure{margin:6px 0;text-align:center;min-height:0;flex:0 1 auto;}
+
 .slide figure img{max-height:62vh;width:auto;max-width:100%;border:1px solid var(--rule);
   border-radius:3px;background:var(--surface);padding:6px;}
 .slide figcaption{font:12px/1.5 var(--mono);color:var(--muted);margin-top:8px;}
@@ -253,15 +261,27 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
     border-bottom:1px solid var(--rule);}
   .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
 </style></head>
-<body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 10 · the through-line</div><h1>Data Archaeology</h1><p class="sub">Where found data comes from</p><p class="lead">Today you start working with <strong>found data</strong> — a table you didn't make, full of words real people wrote for their own reasons. Before you load a single row in pandas, one idea has to land: <strong>that data is not raw.</strong> It's an artifact. Someone produced it, by making choices, and reading it well is closer to archaeology than to chemistry.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml6_title.jpg" alt="A hand brushing dust from a half-buried clay tablet inscribed with faint spreadsheet rows"><figcaption>A hand brushing dust from a half-buried clay tablet inscribed with faint spreadsheet rows</figcaption></figure></div></div></section><section class="slide"><h2>Reading traces of a life</h2><p>An archaeologist never has the thing itself — the meal, the ritual, the household. They have what survived: a pottery shard, a posthole, a midden of bones. From those <em>traces</em> they reconstruct how people lived.</p>
-<blockquote><p>Pottery shards → ancient dining habits.   Dataset rows → cultural patterns.</p></blockquote>
-<p>You're making the same move. Our 123 comments are a dig site — traces a community left while arguing about a law one summer. You'll excavate patterns from them, but like any archaeologist you have to remember you're holding <strong>shards, not the meal</strong>: a partial record of something larger you'll never fully recover. (That's the noumena pipeline again — what reaches you is already several steps downstream of the lived thing.)</p></section><section class="slide"><h2>You found it; you didn't make it</h2><p>There are two kinds of data, and this course runs almost entirely on the second.</p>
-<ul><li><strong>Created data</strong> — surveys you design, experiments you run. <em>You</em> control the questions.</li><li><strong>Found data</strong> — traces that already exist because culture left them: comments, reviews, lyrics, posts. <em>Culture</em> chose the questions, not you.</li></ul>
-<p>Found data is thrilling because it's <strong>real</strong> — nobody was performing for a researcher. It's treacherous for the same reason: it wasn't built for your question, its gaps aren't random, and <em>you weren't there when it was made.</em> "Found" never means "neutral."</p></section><section class="slide split"><h2>"Raw data" is an oxymoron</h2><div class="split-grid"><div class="col-text"><p>We say "raw data" as if it arrived straight from nature, untouched. It never did. By the time a comment reaches your notebook, someone chose <strong>which</strong> platform to pull from, <strong>when</strong>, <strong>which</strong> field counted, and <strong>what</strong> got dropped — remember the wrap-fragments in our own corpus, sentences chopped in half by the export. Every dataset is the <em>survivors</em> of a collection process, and the ones who didn't survive — the people who never posted, the comment that was deleted, the language the scraper couldn't parse — leave no row at all. <strong>The empty seats aren't in the file.</strong> Treat "raw" as a warning label, not a fact.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml6_raw.jpg" alt="A river of faces pouring through a sieve that emits neat identical cards while most spills off uncaptured"><figcaption>A river of faces pouring through a sieve that emits neat identical cards while most spills off uncaptured</figcaption></figure></div></div></section><section class="slide split"><h2>Hear, don't extract</h2><div class="split-grid"><div class="col-text"><p>Listen to the verbs data culture uses: <em>mine, scrape, harvest, crawl, extract.</em> Every one treats people like ore — raw material to be stripped out and processed. This course asks you to change the verb to <strong>hear.</strong> "Hearing" assumes the other end is a <em>someone</em>, with something to say and a claim on being received with care.</p>
-<p>That one swap reframes the ethics of collection — which you'll practice in code today (robots.txt, fair use, attribution). The legal question is <em>"am I allowed to take this?"</em> The humanist question underneath is <strong>"am I listening, or am I extracting?"</strong> Both matter; only the second is about the people in the data.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml6_hear.jpg" alt="Hands cupped to listen toward a crowd of speaking figures, against faint mining machinery"><figcaption>Hands cupped to listen toward a crowd of speaking figures, against faint mining machinery</figcaption></figure></div></div></section><section class="slide"><h2>Keep a data biography</h2><p>So before the analysis, become the artifact's biographer. An archaeologist logs an object's <strong>provenance</strong>; you log your data's. Four things, written plainly in your notebook:</p>
-<ul><li><strong>Origin</strong> — who made this, when, and why?</li><li><strong>Journey</strong> — how was it collected, processed, shared?</li><li><strong>Transformations</strong> — what did <em>you</em> clean, filter, or drop?</li><li><strong>Limitations</strong> — what's missing, and <em>who's</em> missing?</li></ul>
-<p>This isn't busywork; it's <strong>credibility.</strong> A reader can only trust your reading if they can see where the data came from and what you did to it — and remember that a single row is layered (surface: who/what/when; cultural: the trend it hints at; societal: the values underneath). It's the habit the whole course keeps asking for: <strong>make your choices visible.</strong> You're interpreting human cultural behavior — handle it with care.</p>
-<p>Going deeper (optional): Lisa Gitelman, ed., <em>"Raw Data" Is an Oxymoron</em>; Catherine D'Ignazio &amp; Lauren Klein, <em>Data Feminism</em>; Johanna Drucker, "Humanities Approaches to Graphical Display" (data as <em>capta</em>, not "given").</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml6.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<body><div class="deck"><section class="slide title"><div class="kicker">Day 10 · the through-line</div><h1>Data Archaeology</h1><p class="sub">Where found data comes from</p><p class="lead">Today you start working with <strong>found data</strong> — a table you didn't make, full of words real people wrote for their own reasons.</p>
+<p>Before you load a single row in pandas, one idea has to land:</p>
+<h3>That data is not raw. It's an artifact.</h3>
+<p><em>Someone produced it, by making choices. Reading it well is closer to archaeology than to chemistry.</em></p></section><section class="slide"><h2>Reading traces of a life</h2><p>An archaeologist never has the thing itself — the meal, the ritual, the household. They have what survived: a pottery shard, a posthole, a midden of bones. From those <em>traces</em> they reconstruct how people lived.</p>
+<blockquote><p>Pottery shards → ancient dining habits.</p><p>Dataset rows → cultural patterns.</p></blockquote></section><section class="slide"><h2 class="cont">Reading traces of a life</h2><p>You're making the same move. Our 123 comments are a <strong>dig site</strong> — traces a community left while arguing about a law one summer.</p>
+<p>You'll excavate patterns from them, but like any archaeologist you have to remember you're holding <strong>shards, not the meal</strong>: a partial record of something larger you'll never fully recover.</p></section><section class="slide"><h2>You found it; you didn't make it</h2><p>Two kinds of data — and this course runs almost entirely on the second.</p>
+<ul><li><strong>Created data</strong> — surveys you design, experiments you run. <em>You</em> control the questions.</li><li><strong>Found data</strong> — traces that already exist because culture left them: comments, reviews, lyrics, posts. ***Culture* chose the questions, not you.**</li></ul></section><section class="slide"><h2 class="cont">You found it; you didn't make it</h2><p>Found data is thrilling because it's <strong>real</strong> — nobody was performing for a researcher.</p>
+<p>It's treacherous for exactly the same reason: it wasn't built for your question, its gaps aren't random, and <strong>you weren't there when it was made.</strong></p>
+<h3>"Found" never means "neutral."</h3></section><section class="slide split"><h2>"Raw data" is an oxymoron</h2><div class="split-grid"><div class="col-text"><p>We say "raw data" as if it arrived straight from nature, untouched. It never did.</p>
+<p>By the time a comment reaches your notebook, someone chose <strong>which</strong> platform to pull from, <strong>when</strong>, <strong>which</strong> field counted, and <strong>what</strong> got dropped — remember the wrap-fragments in our own corpus, sentences chopped in half by the export.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml6_raw.jpg" alt="A river of faces pouring through a sieve that emits neat identical cards while most spills off uncaptured"></figure></div></div></section><section class="slide"><h2 class="cont">"Raw data" is an oxymoron</h2><p>Every dataset is the <strong>survivors</strong> of a collection process.</p>
+<p>And the ones who didn't survive — the people who never posted, the comment that was deleted, the language the scraper couldn't parse — leave no row at all.</p>
+<h3>The empty seats aren't in the file.</h3>
+<p><em>Treat "raw" as a warning label, not a fact.</em></p></section><section class="slide split"><h2>Hear, don't extract</h2><div class="split-grid"><div class="col-text"><p>Listen to the verbs data culture uses: <em>mine, scrape, harvest, crawl, extract.</em></p>
+<p>Every one treats people like <strong>ore</strong> — raw material to be stripped out and processed.</p>
+<h3>This course asks you to change the verb to <em>hear.</em></h3></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml6_hear.jpg" alt="Hands cupped to listen toward a crowd of speaking figures, against faint mining machinery"></figure></div></div></section><section class="slide"><h2 class="cont">Hear, don't extract</h2><p>"Hearing" assumes the other end is a <strong>someone</strong> — with something to say and a claim on being received with care.</p>
+<p>That one swap reframes the ethics of collection, which you'll practice in code today (robots.txt, fair use, attribution).</p>
+<p>The legal question is <em>"am I allowed to take this?"</em> The humanist question underneath is <strong>"am I listening, or am I extracting?"</strong></p>
+<p><em>Both matter. Only the second is about the people in the data.</em></p></section><section class="slide"><h2>Keep a data biography</h2><p>Before the analysis, become the artifact's biographer. An archaeologist logs an object's <strong>provenance</strong>; you log your data's. Four things, written plainly in your notebook:</p>
+<ul><li><strong>Origin</strong> — who made this, when, and why?</li><li><strong>Journey</strong> — how was it collected, processed, shared?</li><li><strong>Transformations</strong> — what did <em>you</em> clean, filter, or drop?</li><li><strong>Limitations</strong> — what's missing, and <em>who's</em> missing?</li></ul></section><section class="slide"><h2 class="cont">Keep a data biography</h2><p>This isn't busywork. It's <strong>credibility.</strong></p>
+<p>A reader can only trust your reading if they can see where the data came from and what you did to it — and remember that a single row is layered: surface (who, what, when), cultural (the trend it hints at), societal (the values underneath).</p>
+<p><em>You're interpreting human cultural behavior. Handle it with care.</em></p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml6.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
 <script>
 (function(){
   var s=[].slice.call(document.querySelectorAll('.slide'));
@@ -276,6 +296,40 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
     else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(i-1);}
     else if(e.key==='Home'){show(0);} else if(e.key==='End'){show(s.length-1);}});
   document.addEventListener('click',function(e){if(!e.target.closest('a'))show(i+1);});
+  // ---- auto-fit -------------------------------------------------------
+  // A room projector may be 1024x768 or 1920x1080; we can't know. Scale each
+  // slide's type down just enough to fit — but never below FLOOR, because a
+  // slide nobody can read from the back row is worse than one that scrolls.
+  var FLOOR = 0.72;                       // 72% of authored size, empirically legible
+  function fit(el){
+    el.style.removeProperty('--fit');
+    var prev = el.style.display; if(!el.classList.contains('active')) el.style.display='flex';
+    var avail = el.clientHeight
+              - parseFloat(getComputedStyle(el).paddingTop)
+              - parseFloat(getComputedStyle(el).paddingBottom);
+    var need = 0;
+    [].slice.call(el.children).forEach(function(c){
+      var r=c.getBoundingClientRect(), m=getComputedStyle(c);
+      need += r.height + (parseFloat(m.marginTop)||0) + (parseFloat(m.marginBottom)||0);
+    });
+    if(need > avail*0.99 && need > 0){
+      // aim 2% under: a width-constrained figure doesn't shrink with --fit alone
+      var k = Math.max(FLOOR, (avail*0.98)/need);
+      el.style.setProperty('--fit', k.toFixed(3));
+      el.classList.add('fitted');
+      if((avail*0.98)/need < FLOOR) el.setAttribute('data-overfull','');
+    } else { el.classList.remove('fitted'); el.removeAttribute('data-overfull'); }
+    if(!el.classList.contains('active')) el.style.display = prev;
+  }
+  // two passes: the first can leave a few px when a figure is the tall child
+  function fitAll(){ s.forEach(fit); s.forEach(fit); }
+  var t; addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(fitAll,120); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+  [].slice.call(document.images).forEach(function(im){
+    if(!im.complete) im.addEventListener('load', fitAll);
+  });
+  addEventListener('load', fitAll);
+  fitAll();
   var h=parseInt((location.hash||'').slice(1),10); show(h?h-1:0);
 })();
 </script>

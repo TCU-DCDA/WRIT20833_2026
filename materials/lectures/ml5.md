@@ -7,6 +7,15 @@
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a tall wall of wooden card-catalog drawers; a few drawers hang open, spilling warm handwritten letters and old photographs into the light, while most stay sealed shut — memory as a thing that keeps some of us and loses the rest. -->
 ![A wall of wooden card-catalog drawers, a few open and spilling letters and photographs into the light](materials/lectures/images/ml5_title.jpg)
 
+<!-- slide:
+Today: **lists** and **loops** — how to hold many things at once,
+and how to do the same thing to every one of them.
+
+That's the technical skill. The human story underneath it is **memory**:
+who gets remembered, who gets to be forgotten, and what changes when
+the thing doing the remembering is a machine that never forgets.
+-->
+
 Today you learn **lists** and **loops** — how to hold many things at once, and how to do the same thing to
 every one of them. That's the technical skill. The human story underneath it is **memory**: who gets
 remembered, who gets to be forgotten, and what changes when the thing doing the remembering is a machine
@@ -21,6 +30,33 @@ worst day. Let's talk about what that does.
 
 ## Two kinds of memory
 
+<!-- slide:
+> `violations = []`
+> `for person in community:`
+> `    if person.broke_a_rule: violations.append(person)`
+
+Three lines. A list, a loop, a condition — and a community that now keeps
+a permanent record of everyone's worst day.
+-->
+
+<!-- slide:
+For most of human history a community's memory was a **human** thing —
+and being human, it forgot.
+
+- **Human memory is selective, contextual, forgiving.** Things fade.
+  Stories soften with each retelling. Time heals; the village lets it go.
+- **Digital memory is total, fixed, unforgiving.** Everything is recorded.
+  A data point doesn't mellow with age; your past quietly decides
+  your future access.
+-->
+
+<!-- slide:
+That shift — from a memory that mercifully forgets
+to one that structurally **can't** — is the whole lecture.
+
+### Forgetting, it turns out, was never just failure. It was also grace.
+-->
+
 For most of human history, a community's memory was a **human** thing — and being human, it forgot.
 
 - **Human memory is selective, contextual, forgiving.** Some things fade. Stories soften with each
@@ -32,6 +68,24 @@ That shift — from a memory that mercifully forgets to one that structurally ca
 Forgetting, it turns out, was never just failure. It was also grace.
 
 ## A list is a population
+
+<!-- slide:
+> `community = ["Mary", "John", "Kate", "Ahmed", "Rosa", ...]`
+
+Notice what just happened. A moment ago these were **people.**
+Now they're a **population** — a thing you can sort, filter, slice,
+and count all at once.
+-->
+
+<!-- slide:
+The list is the exact point where **the individual becomes the demographic.**
+
+That move is enormously powerful — it's how you'll hear
+a thousand voices at once.
+
+And it is quietly dangerous — it's how a thousand people become
+a single number someone can act on.
+-->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, clay accent): a crowd of distinct individuals, each one being threaded onto a single long ledger-line like beads on a string — separate faces becoming uniform rows in a register. -->
@@ -48,6 +102,29 @@ quietly dangerous (it's how a thousand people become a single number someone can
 
 ## A loop is a verdict, repeated
 
+<!-- slide:
+A village elder judged **case by case** — knowing the person, weighing
+the circumstances, leaving room for the exception, the mercy,
+the second look.
+
+> `for person in population: apply_the_same_rule(person)`
+
+A loop doesn't. It presses one rule onto every single person —
+no context, no exceptions, thousands in a blink.
+-->
+
+<!-- slide:
+"The same rule for everyone" *sounds* like the definition of fairness.
+
+### It is also the end of mercy.
+
+The loop cannot see the one case that deserved an exception,
+because seeing exceptions is exactly what it was built to stop doing.
+
+*Remember the threshold from last time? The loop is how one cutoff
+reaches a million people before lunch.*
+-->
+
 A village elder judged **case by case** — knowing the person, weighing the circumstances, leaving room for
 the exception, the mercy, the second look. A loop doesn't.
 
@@ -61,6 +138,29 @@ a million people before lunch.
 
 ## The power to count
 
+<!-- slide:
+Counting feels neutral — you're just tallying what's there.
+
+But **the power to count is the power to decide what matters**,
+because first someone has to choose the categories,
+and choosing categories is choosing what's worth seeing.
+
+> `Counter(violations).most_common()`
+
+*One line, and a messy human record becomes a ranked list of "what's wrong here."*
+-->
+
+<!-- slide:
+So ask: who decided what counted as a violation? Who gets to see the tally?
+How does a count become a **justification** — for a policy, a denial,
+a crackdown?
+
+And the question that never goes away:
+
+*what happened to the people who didn't fit any category,
+and so were never counted at all?*
+-->
+
 Counting feels neutral — you're just tallying what's there. But **the power to count is the power to
 decide what matters**, because first someone has to choose the categories, and choosing categories is
 choosing what's worth seeing.
@@ -73,6 +173,34 @@ policy, a denial, a crackdown? And the question from the Connotations lecture th
 who didn't fit any category, and so were never counted at all?
 
 ## Historical echoes
+
+<!-- slide:
+None of this is new. Only the machinery is.
+
+In the 1840s the **Bellevue Almshouse** in New York kept meticulous records
+of the poor, the sick, and the newly arrived. The historian Anelise Shrout
+describes what those records were *for*:
+-->
+
+<!-- slide:
+> This data was produced with the express purpose of reducing people
+> to bodies; bodies to easily quantifiable aspects; and assigning value
+> to those aspects which proved that the marginalized people to whom
+> they belonged were worth less than their elite counterparts.
+
+— Anelise Shrout
+-->
+
+<!-- slide:
+Now picture that same ledger as a Python list of dictionaries —
+`{"name": "Mary", "status": "emigrant", "condition": "destitution"}` —
+processed by a loop, ranked by a `Counter`.
+
+### The technology changes; the power to reduce, classify, and exclude is the constant.
+
+*When you write your own loops this week, you're picking up
+a very old instrument.*
+-->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm sepia oil painting — aged parchment tones, muted greens, clay accent; recompose F25's then/now idea but keep it warm, not blue/neon): a 19th-century almshouse records office, clerks at wooden desks reducing a line of waiting people to entries in heavy ledgers; the ledger rows trail off to the right and dissolve into an endless stream of identical modern data-rows. -->
@@ -93,6 +221,23 @@ power to reduce, classify, and exclude is the constant.** When you write your ow
 picking up a very old instrument.
 
 ## What we choose to keep
+
+<!-- slide:
+Lists and loops were never just technical skills. They're how a culture
+decides **what it remembers and what it's allowed to forget** —
+
+and now you're one of the people holding the pen.
+-->
+
+<!-- slide:
+Our 123 comments are themselves a frozen memory: 123 people caught
+mid-argument on one summer day, who will never get to take it back,
+soften it, or grow past it.
+
+As you count and sort them this term, keep the live question open:
+
+### Am I remembering these people, or just reducing them?
+-->
 
 So lists and loops were never just technical skills. They're how a culture decides **what it remembers and
 what it's allowed to forget** — and now you're one of the people holding the pen.

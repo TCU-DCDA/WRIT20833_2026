@@ -7,12 +7,36 @@
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a person at a lamplit desk working the strings of a small wooden marionette that is typing at a tiny keyboard — the angle leaves it ambiguous who is moving whom; scattered manuscripts. -->
 ![A person at a desk working a small marionette that types at a keyboard — ambiguous who moves whom](materials/lectures/images/ml4_title.jpg)
 
+<!-- slide:
+You can now say *"write me ten lines of Python to score the sentiment
+of these comments"* — and ten seconds later you have ten working lines.
+
+The question this course cares about isn't *can the machine write the code.*
+It plainly can. It's the one you'll answer about every line it hands you:
+
+### Do you understand it well enough to judge it?
+-->
+
 You can now turn to an AI and say *"write me ten lines of Python to score the sentiment of these
 comments,"* and ten seconds later you have ten working lines. The question this course cares about isn't
 *can the machine write the code* — it plainly can. It's the one you'll have to answer about every line it
 hands you: **do you understand it well enough to judge it?**
 
 ## The promise is real
+
+<!-- slide:
+Be fair to the tool first. AI-assisted coding genuinely
+**lowers the barrier**:
+
+- act without having memorized every function
+- spend your energy on the *question* instead of the syntax
+- build in an afternoon what used to take a semester
+
+This is not cheating, and it isn't new in spirit — programmers have
+borrowed from manuals, colleagues, and Stack Overflow for decades.
+
+*You'll lean on VADER, pandas, and Gensim all term.*
+-->
 
 Be fair to the tool first. AI-assisted coding genuinely **lowers the barrier**: you can act without having
 memorized every function, spend your energy on the *question* instead of the syntax, and build in an
@@ -22,6 +46,28 @@ practice**, and this course expects it; you'll lean on libraries you didn't writ
 all term.
 
 ## The risk is also real
+
+<!-- slide:
+The danger isn't borrowing — it's **borrowing what you can't read.**
+Code you didn't write and can't explain is a **black box**:
+
+> *"It runs on my test data… but will it hold on real data?
+> I can't tell — I don't actually know what it does."*
+
+When the box breaks — and it will — you're stuck.
+You can't debug what you never understood.
+-->
+
+<!-- slide:
+Subtler is the quiet failure: **pseudo-agency.**
+
+You *feel* powerful — "I built this!" — while becoming more dependent,
+unable to modify, maintain, or vouch for the thing with your name on it.
+
+And you can't weigh the **biases baked into the tool** — whose data
+trained it, what it quietly treats as normal — if you take its output
+as a given.
+-->
 
 The danger isn't borrowing — it's borrowing what you can't read. Code you didn't write and can't explain is
 a **black box**:
@@ -37,6 +83,25 @@ a given.
 
 ## Scaffold, not replacement
 
+<!-- slide:
+So the line isn't "AI or no AI." It's **scaffold vs. replacement.**
+
+- **Scaffold** — the AI handles boilerplate; *you* hold the research
+  question, the definitions, the interpretation, and you can explain,
+  test, and extend every line. You come out understanding *more.*
+- **Replacement** — paste a prompt, paste the answer, submit.
+  You come out understanding *nothing*, and the AI has spoken *for* you.
+-->
+
+<!-- slide:
+That's the gap between two literacies: one that can **adapt, debug,
+and critique** what it borrows, and one that can only **copy and paste.**
+
+The course's rule follows directly — and it's in your syllabus:
+
+### You must be able to explain any code you submit, and note in a `#comment` where AI helped and what you changed.
+-->
+
 So the line isn't "AI or no AI." It's **scaffold vs. replacement.**
 
 - **Scaffold:** the AI handles boilerplate; *you* hold the research question, the definitions, the
@@ -50,6 +115,38 @@ must be able to explain any code you submit, and you note in a `#comment` where 
 changed.**
 
 ## Learning a language vs. letting someone speak for you
+
+<!-- slide:
+**Learning a language** means you know what each piece does,
+you can adapt it to a new situation, and you can fix it when it breaks.
+
+The other thing — output that runs but that you can't explain, adapt,
+or repair — is **ventriloquism**:
+
+*the words come out of your mouth, but someone else is choosing them.*
+-->
+
+<!-- slide:
+Here is where coding and *writing* meet, and where the rule flips.
+
+Nobody's voice lives in a stopword list, so **borrow the tool freely** —
+understand it, judge it, move on.
+
+But your reflections, your discussion posts, and your capstone essay
+*are* your voice — and a voice is forged only in the friction
+of finding your own words.
+-->
+
+<!-- slide:
+Let an AI write your *code* and you've saved time.
+Let it write your *prose* and you've handed away the one thing
+this course exists to grow.
+
+### Borrow the tool; never outsource the voice — and know which is which.
+
+*Ted Chiang calls a language model "a blurry JPEG of the web."
+A voice worth having is the opposite of an average.*
+-->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, clay accent): a split composition — on one side a person speaking, their own breath/voice rendered as flowing handwritten script; on the other side the same person as a ventriloquist's dummy, mouth open, the words trailing in from offstage. -->
@@ -69,6 +166,75 @@ which is which.** (Ted Chiang calls a language model "a blurry JPEG of the web" 
 everything ever written. A voice worth having is the opposite of an average.)
 
 ## Eloquence is not evidence
+
+<!-- slide:
+One more property of the machine's writing: it is **fluent** —
+confident, structured, grammatically flawless — *whether it is right or wrong.*
+
+For all of human history, polished prose was **expensive**: producing it
+meant someone had actually done the thinking. Language models broke
+that correlation. Fluency is now free, and it reads *exactly the same*
+when the claim is true and when it is invented.
+-->
+
+<!-- slide:
+Our instincts haven't updated: a well-made paragraph still *feels* vetted
+before any judgment has convened.
+
+Colbert coined a word for that feeling — **truthiness**, when something
+feels true from the gut before the evidence arrives.
+
+### An AI is a machine for making anything feel gut-true.
+-->
+
+<!-- slide:
+Philosophy has a blunter word. Frankfurt distinguished the **liar** —
+who knows the truth and conceals it — from the **bullshitter**,
+who simply doesn't care what's true, only what lands.
+
+Some philosophers argue "hallucination" is the wrong name for AI errors:
+a hallucination implies a mind mistaking false for true, but a model
+has *no regard for truth at all.*
+
+*In Frankfurt's strict sense, an LLM is a bullshit engine
+even when it happens to be right.*
+-->
+
+<!-- slide:
+None of this is new; only the machinery is. Plato watched the sophists
+sell exactly this in Athens — Gorgias boasted a skilled speaker would beat
+the physician in a debate about medicine, before an audience
+that knew no medicine.
+
+*Because eloquence feels like expertise from the inside.*
+-->
+
+<!-- slide:
+The Greeks named what settles into a person who gets their beliefs
+that way: **amathia.**
+
+Not ignorance — *agnoia*, which more information fixes — but **un-wisdom**:
+the condition of the well-informed, well-assisted person
+whom nothing any longer teaches.
+
+*Remember the Day-1 diagram? Amathia is the shadow at its bottom-right
+corner: knowledge that never becomes wisdom, because the labor between
+them got outsourced.*
+-->
+
+<!-- slide:
+Two things to carry out of that word.
+
+**First, it points at us, never at them.** Not a diagnosis you hand
+to the 123 commenters — it's the temptation *you* face every time
+an eloquent answer arrives faster than your judgment.
+
+**Second, the fix is not an attitude.** Attitudes don't beat gut-level
+habits. The fix is **procedural friction**: run the code, check the citation,
+find the source, read the seams.
+
+### Right next to *the score is never the meaning*: eloquence is not evidence.
+-->
 
 There's one more property of the machine's writing you have to reckon with: it is **fluent** —
 confident, structured, grammatically flawless — *whether it is right or wrong.*
@@ -106,6 +272,28 @@ we're headed. The refrain to keep, right next to *the score is never the meaning
 evidence.**
 
 ## Today: read the seams
+
+<!-- slide:
+That's exactly today's lab. You'll take a chunk of **AI-written code,
+read it line by line, and improve it** — practicing the judgment
+that turns borrowing into understanding.
+
+Then we plant the **stylometry seed**: reading for the *seams* between
+human and machine writing — the tells of a voice that was averaged
+into being versus one that was lived into being.
+-->
+
+<!-- slide:
+Carry one question out of here:
+
+### Are you learning to think computationally, or just outsourcing the thinking?
+
+The same tool allows either. The difference is whether you can still
+explain, judge, and own what you made — and whether the words
+are finally yours.
+
+*As always: make the choice visible. Cite the AI, and say what you changed.*
+-->
 
 That's exactly today's lab. You'll take a chunk of **AI-written code, read it line by line, and improve
 it** — practicing the judgment that turns borrowing into understanding. Then we plant the **stylometry

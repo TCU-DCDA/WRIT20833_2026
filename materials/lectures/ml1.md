@@ -7,6 +7,17 @@
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a single large printed numeral resting on parchment, casting a long shadow that resolves into a knot of small human figures arguing and gesturing — the bare number carries a story behind it. -->
 ![A printed numeral on parchment casting a shadow shaped like a crowd of arguing figures](materials/lectures/images/ml1_title.jpg)
 
+<!-- slide:
+Every arrow from a lived human fact to an "insight" is a human choice.
+Today we turn that on the very first thing you'll touch — **a plain number.**
+
+> In 123 comments on the Texas Ten Commandments law, the word
+> **"commandments"** appears **25** times. **"Constitution"** appears **8**.
+
+Flat, true, countable. *And already leaning* — already telling you
+whose ground the argument is being fought on.
+-->
+
 The opening lecture left us with a claim: every arrow in the pipeline from a lived human fact to an "insight" is a human
 choice. This lecture turns that claim on the very first thing you'll touch — a plain number — and shows
 that even *it* arrives already leaning.
@@ -21,6 +32,30 @@ ground the argument is being fought on. Before we run a single line of code, ask
 what is that number already saying, and who decided what got counted?
 
 ## Denotation and connotation
+
+<!-- slide:
+You already own the tool this lecture needs.
+
+- A word's **denotation** is what it literally points to.
+  *House, home,* and *residence* denote the same thing: a building people live in.
+- Its **connotation** is everything it carries on top — warmth, money,
+  bureaucracy, belonging.
+
+*Home* and *residence* denote alike and connote worlds apart.
+-->
+
+<!-- slide:
+Now the move that makes you a data humanist:
+
+### Numbers have connotation too.
+
+"Single-mother household" **denotes** a category on a form. It **connotes**
+a whole contested story about blame and worth — and which story you hear
+depends on who's speaking.
+
+*The denotation is the surface. The connotation is where the culture lives —
+and where the argument is.*
+-->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent): the same modest house painted three times on one canvas — a glowing lamplit cottage (home/belonging), a cold stamped notarial document reading "RESIDENCE," and a flat real-estate listing card — one denotation, three connotations. -->
@@ -40,6 +75,27 @@ lives — and where the argument is.
 
 ## The myth of neutral data
 
+<!-- slide:
+Three comforting things people say about data. Each one is false.
+
+- *"Data doesn't lie."* — It doesn't have to lie to mislead.
+  It can simply leave things out.
+- *"The numbers speak for themselves."* — They never do.
+  Someone always speaks for them, by choosing the frame.
+- *"It's just objective analysis."* — Every dataset records somebody's
+  choices about what was worth counting.
+-->
+
+<!-- slide:
+Data carries the **values, assumptions, and blind spots** of whoever
+collected, sorted, and counted it.
+
+That isn't a flaw to scrub out — it's the noumena pipeline again,
+one layer down:
+
+### Bias isn't contamination that sneaks into the data. It's the material the data is made of.
+-->
+
 Three comforting things people say about data. Each one is false.
 
 - *"Data doesn't lie."* — It doesn't have to lie to mislead. It can simply leave things out.
@@ -53,6 +109,26 @@ That isn't a flaw to scrub out — it's the noumena pipeline's point again, one 
 sneaks *into* the data, it's the material the data is made *of*.
 
 ## Same numbers, three stories
+
+<!-- slide:
+> School A — average SAT **1240**.  School B — average SAT **980**.
+
+Watch the *same denotation* spin into three connotations,
+each quietly handing the blame to someone else:
+
+- **Deficit story** — School B's students are underperforming. *(It's the kids.)*
+- **Systemic story** — School B is under-resourced and underfunded. *(It's the system.)*
+- **Cultural story** — the SAT measures one kind of knowledge. *(It's the test.)*
+-->
+
+<!-- slide:
+Nothing *in* the numbers tells you which story is true.
+
+The numbers are the easy part. **Choosing the story is the human part** —
+
+*and it is already an argument about fairness,
+wearing the costume of arithmetic.*
+-->
 
 Two real numbers:
 
@@ -70,6 +146,24 @@ is the human part — and it is already an argument about fairness, wearing the 
 
 ## Who's doing the telling?
 
+<!-- slide:
+If numbers don't tell their own story, someone does —
+usually someone with power over the frame.
+
+- **Institutions** define the categories — a government writes the census
+  boxes, a university decides what "success" counts as
+- **Media** sets the frame — the headline, the axis a chart starts at,
+  the context cut for space
+- **Researchers** choose the question — who gets sampled, and who paid for the asking
+-->
+
+<!-- slide:
+So the reflex this course wants to build.
+Every time a number lands in front of you, ask:
+
+### Who collected this, why, and what story do they need it to tell?
+-->
+
 If numbers don't tell their own story, someone does — usually someone with power over the frame.
 
 - **Institutions** define the categories: a government writes the census boxes, a university decides what
@@ -81,6 +175,25 @@ So the reflex this course wants to build: every time a number lands in front of 
 this, why, and what story do they need it to tell?**
 
 ## The missing and the uncounted
+
+<!-- slide:
+The loudest thing about a dataset is often **what isn't in it.**
+
+Our 123 comments are not "the public." They're the slice of the public
+that *posted* — people online, fired up enough to type,
+willing to be seen arguing.
+-->
+
+<!-- slide:
+The woman from the opening lecture — who felt something complete
+and entirely her own, and then said nothing — **is not in the file at all.**
+Neither is anyone without the wifi, the time, or the nerve.
+
+### Absence from the data is not absence from reality.
+
+*Some of the most important voices in any cultural question are exactly
+the ones the counting never reaches.*
+-->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent): a hall of seated figures rendered in muted green; several chairs sit empty and a few silhouettes are faint and only half-painted — the uncounted. A handful of speech-bubbles rise from the solid figures while the faded ones stay silent. -->
@@ -98,6 +211,37 @@ question are exactly the ones the counting never reaches. A good distant reading
 silence at its edges.
 
 ## So: code is not neutral
+
+<!-- slide:
+Code inherits every connotation above — and adds its own,
+because **code runs on definitions, and a definition is a decision.**
+
+Over the next weeks *you* decide. What counts as a "word" when you split
+a comment? Which words are "stopwords" worth deleting? What score makes
+a comment "positive"? Where do you cut one topic from the next?
+-->
+
+<!-- slide:
+Each is a small act of interpretation wearing the costume
+of a neutral function.
+
+And those choices don't merely *encode* a value — they **argue** one.
+Which number you make the headline, which chart you reach for,
+what you put first and what you bury: every one is a claim
+about what matters, aimed at whoever reads your result.
+
+*Code isn't only structure. It's rhetoric.*
+-->
+
+<!-- slide:
+That's the trap and the responsibility at once: a machine looks objective
+**precisely because** it hides the choices inside it.
+
+### Read data like a text, and write code that shows its seams.
+
+Leave the `#comment` that says what you chose, and why.
+*That comment is not housekeeping. It's the honesty.*
+-->
 
 <!-- layout: split -->
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent; echoes ml0's brass-valves "every arrow is a choice"): a hand over a keyboard whose keys are tiny brass levers and valves; each keypress releases a thread of golden light down a branching track — code as a chain of human choices behind a neutral-looking surface. -->

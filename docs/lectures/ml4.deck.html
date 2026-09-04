@@ -200,7 +200,13 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .deck{position:fixed;inset:0;background:var(--paper);overflow:hidden;}
 .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:flex-start;
   padding:7vh 8vw 9vh;overflow:auto;}
-.slide.active{display:flex;} .slide.title{justify-content:center;}
+.slide.active{display:flex;}
+/* auto-fit: --fit scales a slide's type/figure to the screen it lands on */
+.slide.fitted h1{font-size:calc(clamp(30px,5.4vw,56px)*var(--fit,1));}
+.slide.fitted h2{font-size:calc(clamp(24px,4vw,42px)*var(--fit,1));}
+.slide.fitted p,.slide.fitted li{font-size:calc(clamp(16px,2.05vw,24px)*var(--fit,1));}
+.slide.fitted blockquote p{font-size:calc(clamp(19px,2.9vw,31px)*var(--fit,1));}
+.slide.fitted figure img{max-height:calc(62vh*var(--fit,1));max-width:calc(100%*var(--fit,1));} .slide.title{justify-content:center;}
 .slide>*{max-width:62rem;width:100%;}
 .slide .kicker{font:600 13px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;
   color:var(--clay);margin-bottom:18px;}
@@ -208,6 +214,7 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
   line-height:1.08;margin:0 0 16px;}
 .slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
   color:#464b3d;margin:0 0 20px;}
+.slide h2.cont{opacity:.55;font-size:clamp(19px,2.7vw,29px);}
 .slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
   margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
 .slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
@@ -217,7 +224,8 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .slide blockquote{margin:10px 0 18px;padding:6px 0 6px 22px;border-left:4px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .slide blockquote p{font-size:clamp(19px,2.9vw,31px);line-height:1.38;margin:0;}
-.slide figure{margin:6px 0;text-align:center;}
+.slide figure{margin:6px 0;text-align:center;min-height:0;flex:0 1 auto;}
+
 .slide figure img{max-height:62vh;width:auto;max-width:100%;border:1px solid var(--rule);
   border-radius:3px;background:var(--surface);padding:6px;}
 .slide figcaption{font:12px/1.5 var(--mono);color:var(--muted);margin-top:8px;}
@@ -253,18 +261,40 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
     border-bottom:1px solid var(--rule);}
   .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
 </style></head>
-<body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 8 · the through-line</div><h1>AI Agency</h1><p class="sub">Borrow the tool — don't outsource the thinking</p><p class="lead">You can now turn to an AI and say <em>"write me ten lines of Python to score the sentiment of these comments,"</em> and ten seconds later you have ten working lines. The question this course cares about isn't <em>can the machine write the code</em> — it plainly can. It's the one you'll have to answer about every line it hands you: <strong>do you understand it well enough to judge it?</strong></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml4_title.jpg" alt="A person at a desk working a small marionette that types at a keyboard — ambiguous who moves whom"><figcaption>A person at a desk working a small marionette that types at a keyboard — ambiguous who moves whom</figcaption></figure></div></div></section><section class="slide"><h2>The promise is real</h2><p>Be fair to the tool first. AI-assisted coding genuinely <strong>lowers the barrier</strong>: you can act without having memorized every function, spend your energy on the <em>question</em> instead of the syntax, and build in an afternoon what used to take a semester. This is not cheating, and it isn't new in spirit — programmers have borrowed code from manuals, colleagues, and Stack Overflow for decades. <strong>Borrowing the tool is normal practice</strong>, and this course expects it; you'll lean on libraries you didn't write (VADER, pandas, Gensim) all term.</p></section><section class="slide"><h2>The risk is also real</h2><p>The danger isn't borrowing — it's borrowing what you can't read. Code you didn't write and can't explain is a <strong>black box</strong>:</p>
-<blockquote><p>*"It runs on my test data… but will it hold on real data? I can't tell — I don't actually know what it</p><p>does."*</p></blockquote>
-<p>When the box breaks (and it will), you're stuck: you can't debug what you never understood. Subtler is the quiet failure — <strong>pseudo-agency</strong>: you <em>feel</em> powerful ("I built this!") while becoming more dependent, unable to modify, maintain, or vouch for the thing with your name on it. And you can't weigh the <strong>biases baked into the tool</strong> — whose data trained it, what it quietly treats as normal — if you take its output as a given.</p></section><section class="slide"><h2>Scaffold, not replacement</h2><p>So the line isn't "AI or no AI." It's <strong>scaffold vs. replacement.</strong></p>
-<ul><li><strong>Scaffold:</strong> the AI handles boilerplate; <em>you</em> hold the research question, the definitions, the interpretation — and you can explain, test, and extend every line. You come out understanding <em>more.</em></li><li><strong>Replacement:</strong> you paste a prompt, paste the answer, submit. You come out understanding <em>nothing</em>, and the AI has spoken <em>for</em> you.</li></ul>
-<p>That's the gap between two literacies: one that can <strong>adapt, debug, and critique</strong> what it borrows, and one that can only <strong>copy and paste.</strong> The course's rule follows directly — and it's in your syllabus: <strong>you must be able to explain any code you submit, and you note in a <code>#comment</code> where AI helped and what you changed.</strong></p></section><section class="slide split"><h2>Learning a language vs. letting someone speak for you</h2><div class="split-grid"><div class="col-text"><p>Here's the distinction that decides which literacy you're building. <strong>Learning a language</strong> means you know what each piece does, you can adapt it to a new situation, and you can fix it when it breaks. The other thing — output that runs but that you can't explain, adapt, or repair — is <strong>ventriloquism</strong>: the words come out of your mouth, but someone else is choosing them.</p>
-<p>This is where coding and <em>writing</em> meet, and where the rule flips. Nobody's voice lives in a stopword list, so <strong>borrow the tool freely</strong> — understand it, judge it, move on. But your reflections, your discussion posts, and your capstone essay <em>are</em> your voice, and a voice is forged only in the friction of finding your own words. Let an AI write your <em>code</em> and you've saved time; let it write your <em>prose</em> and you've handed away the one thing this course exists to grow. <strong>Borrow the tool; never outsource the voice — and know which is which.</strong> (Ted Chiang calls a language model "a blurry JPEG of the web" — a lossy average of everything ever written. A voice worth having is the opposite of an average.)</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml4_ventriloquism.jpg" alt="On one side a person speaking in their own hand; on the other a ventriloquist&#x27;s dummy mouthing borrowed words"><figcaption>On one side a person speaking in their own hand; on the other a ventriloquist&#x27;s dummy mouthing borrowed words</figcaption></figure></div></div></section><section class="slide"><h2>Eloquence is not evidence</h2><p>There's one more property of the machine's writing you have to reckon with: it is <strong>fluent</strong> — confident, structured, grammatically flawless — <em>whether it is right or wrong.</em></p>
-<p>That matters because of a shortcut your gut has been using your whole life. For all of human history, polished prose was <strong>expensive</strong>: producing it meant someone had actually done the thinking, so judging writing by its polish was a fair proxy for judging the mind behind it. Language models broke that correlation. Fluency is now free — and it reads <em>exactly the same</em> when the claim is true and when it is invented. Our instincts haven't updated: a well-made paragraph still <em>feels</em> vetted before any judgment has convened. Stephen Colbert coined a word for that feeling — <strong>truthiness</strong>, when something feels true from the gut before the evidence arrives. An AI is a machine for making anything feel gut-true.</p>
-<p>Philosophy has a blunter word. Harry Frankfurt distinguished the <strong>liar</strong> — who knows the truth and conceals it — from the <strong>bullshitter</strong>, who simply doesn't care what's true, only what lands. Some philosophers now argue "hallucination" is the wrong name for AI errors: a hallucination implies a mind mistaking false for true, but a language model has <em>no regard for truth at all</em> — it produces the most plausible next words, and when they're true, that's incidental. In Frankfurt's strict sense, an LLM is a bullshit engine even when it happens to be right.</p>
-<p>None of this is new; only the machinery is. Plato watched the sophists sell exactly this in Athens — Gorgias boasted that a skilled speaker would beat the physician in a debate about medicine, before an audience that knew no medicine — because eloquence feels like expertise from the inside. And the Greeks had a name for what settles into a person (or a city) that gets its beliefs that way: <strong>amathia</strong>. Not ignorance — <em>agnoia</em>, which more information fixes — but <strong>un-wisdom</strong>: the condition of the well-informed, well-assisted person whom nothing any longer teaches. Remember the Day-1 diagram? Amathia is the shadow at its bottom-right corner: knowledge that never becomes wisdom, because the labor between them — the friction where understanding actually happens — got outsourced.</p>
-<p>Two things to carry out of that word. First, <strong>it points at us, never at them.</strong> Amathia is not a diagnosis you hand to the 123 commenters in our data or to anyone across a political argument; it's the temptation <em>you</em> face every time an eloquent answer arrives faster than your judgment. Second, the fix is not an attitude ("trust AI less") — attitudes don't beat gut-level habits. The fix is <strong>procedural friction</strong>: run the code, check the citation, find the source, read the seams. Which is exactly where we're headed. The refrain to keep, right next to <em>the score is never the meaning</em>: <strong>eloquence is not evidence.</strong></p></section><section class="slide"><h2>Today: read the seams</h2><p>That's exactly today's lab. You'll take a chunk of <strong>AI-written code, read it line by line, and improve it</strong> — practicing the judgment that turns borrowing into understanding. Then we plant the <strong>stylometry seed</strong>: learning to read for the <em>seams</em> between human and machine writing — the tells of a voice that was averaged into being versus one that was lived into being.</p>
-<p>Carry one question out of here: <strong>are you learning to think computationally, or just outsourcing the thinking?</strong> The same tool allows either. The difference is whether you can still explain, judge, and own what you made — and whether the words are finally yours. As always: <strong>make the choice visible</strong> — cite the AI, and say what you changed.</p>
-<p>Going deeper (optional): Douglas Rushkoff, <em>Program or Be Programmed</em>; Ted Chiang, "ChatGPT Is a Blurry JPEG of the Web" (<em>The New Yorker</em>, 2023); Nick Montfort, <em>Exploratory Programming for the Arts and Humanities</em>; Harry Frankfurt, <em>On Bullshit</em> (2005); Michael Townsen Hicks, James Humphries &amp; Joe Slater, "ChatGPT Is Bullshit" (<em>Ethics and Information Technology</em>, 2024); Plato, <em>Gorgias</em> (the original argument about persuasion without knowledge).</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml4.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<body><div class="deck"><section class="slide title"><div class="kicker">Day 8 · the through-line</div><h1>AI Agency</h1><p class="sub">Borrow the tool — don't outsource the thinking</p><p class="lead">You can now say <em>"write me ten lines of Python to score the sentiment of these comments"</em> — and ten seconds later you have ten working lines.</p>
+<p>The question this course cares about isn't <em>can the machine write the code.</em> It plainly can. It's the one you'll answer about every line it hands you:</p>
+<h3>Do you understand it well enough to judge it?</h3></section><section class="slide"><h2>The promise is real</h2><p>Be fair to the tool first. AI-assisted coding genuinely <strong>lowers the barrier</strong>:</p>
+<ul><li>act without having memorized every function</li><li>spend your energy on the <em>question</em> instead of the syntax</li><li>build in an afternoon what used to take a semester</li></ul>
+<p>This is not cheating, and it isn't new in spirit — programmers have borrowed from manuals, colleagues, and Stack Overflow for decades.</p>
+<p><em>You'll lean on VADER, pandas, and Gensim all term.</em></p></section><section class="slide"><h2>The risk is also real</h2><p>The danger isn't borrowing — it's <strong>borrowing what you can't read.</strong> Code you didn't write and can't explain is a <strong>black box</strong>:</p>
+<blockquote><p>*"It runs on my test data… but will it hold on real data?</p><p>I can't tell — I don't actually know what it does."*</p></blockquote>
+<p>When the box breaks — and it will — you're stuck. You can't debug what you never understood.</p></section><section class="slide"><h2 class="cont">The risk is also real</h2><p>Subtler is the quiet failure: <strong>pseudo-agency.</strong></p>
+<p>You <em>feel</em> powerful — "I built this!" — while becoming more dependent, unable to modify, maintain, or vouch for the thing with your name on it.</p>
+<p>And you can't weigh the <strong>biases baked into the tool</strong> — whose data trained it, what it quietly treats as normal — if you take its output as a given.</p></section><section class="slide"><h2>Scaffold, not replacement</h2><p>So the line isn't "AI or no AI." It's <strong>scaffold vs. replacement.</strong></p>
+<ul><li><strong>Scaffold</strong> — the AI handles boilerplate; <em>you</em> hold the research question, the definitions, the interpretation, and you can explain, test, and extend every line. You come out understanding <em>more.</em></li><li><strong>Replacement</strong> — paste a prompt, paste the answer, submit. You come out understanding <em>nothing</em>, and the AI has spoken <em>for</em> you.</li></ul></section><section class="slide"><h2 class="cont">Scaffold, not replacement</h2><p>That's the gap between two literacies: one that can <strong>adapt, debug, and critique</strong> what it borrows, and one that can only <strong>copy and paste.</strong></p>
+<p>The course's rule follows directly — and it's in your syllabus:</p>
+<h3>You must be able to explain any code you submit, and note in a <code>#comment</code> where AI helped and what you changed.</h3></section><section class="slide split"><h2>Learning a language vs. letting someone speak for you</h2><div class="split-grid"><div class="col-text"><p><strong>Learning a language</strong> means you know what each piece does, you can adapt it to a new situation, and you can fix it when it breaks.</p>
+<p>The other thing — output that runs but that you can't explain, adapt, or repair — is <strong>ventriloquism</strong>:</p>
+<p><em>the words come out of your mouth, but someone else is choosing them.</em></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml4_ventriloquism.jpg" alt="On one side a person speaking in their own hand; on the other a ventriloquist&#x27;s dummy mouthing borrowed words"></figure></div></div></section><section class="slide"><h2 class="cont">Learning a language vs. letting someone speak for you</h2><p>Here is where coding and <em>writing</em> meet, and where the rule flips.</p>
+<p>Nobody's voice lives in a stopword list, so <strong>borrow the tool freely</strong> — understand it, judge it, move on.</p>
+<p>But your reflections, your discussion posts, and your capstone essay <em>are</em> your voice — and a voice is forged only in the friction of finding your own words.</p></section><section class="slide"><h2 class="cont">Learning a language vs. letting someone speak for you</h2><p>Let an AI write your <em>code</em> and you've saved time. Let it write your <em>prose</em> and you've handed away the one thing this course exists to grow.</p>
+<h3>Borrow the tool; never outsource the voice — and know which is which.</h3>
+<p><em>Ted Chiang calls a language model "a blurry JPEG of the web." A voice worth having is the opposite of an average.</em></p></section><section class="slide"><h2>Eloquence is not evidence</h2><p>One more property of the machine's writing: it is <strong>fluent</strong> — confident, structured, grammatically flawless — <em>whether it is right or wrong.</em></p>
+<p>For all of human history, polished prose was <strong>expensive</strong>: producing it meant someone had actually done the thinking. Language models broke that correlation. Fluency is now free, and it reads <em>exactly the same</em> when the claim is true and when it is invented.</p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>Our instincts haven't updated: a well-made paragraph still <em>feels</em> vetted before any judgment has convened.</p>
+<p>Colbert coined a word for that feeling — <strong>truthiness</strong>, when something feels true from the gut before the evidence arrives.</p>
+<h3>An AI is a machine for making anything feel gut-true.</h3></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>Philosophy has a blunter word. Frankfurt distinguished the <strong>liar</strong> — who knows the truth and conceals it — from the <strong>bullshitter</strong>, who simply doesn't care what's true, only what lands.</p>
+<p>Some philosophers argue "hallucination" is the wrong name for AI errors: a hallucination implies a mind mistaking false for true, but a model has <em>no regard for truth at all.</em></p>
+<p><em>In Frankfurt's strict sense, an LLM is a bullshit engine even when it happens to be right.</em></p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>None of this is new; only the machinery is. Plato watched the sophists sell exactly this in Athens — Gorgias boasted a skilled speaker would beat the physician in a debate about medicine, before an audience that knew no medicine.</p>
+<p><em>Because eloquence feels like expertise from the inside.</em></p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>The Greeks named what settles into a person who gets their beliefs that way: <strong>amathia.</strong></p>
+<p>Not ignorance — <em>agnoia</em>, which more information fixes — but <strong>un-wisdom</strong>: the condition of the well-informed, well-assisted person whom nothing any longer teaches.</p>
+<p><em>Remember the Day-1 diagram? Amathia is the shadow at its bottom-right corner: knowledge that never becomes wisdom, because the labor between them got outsourced.</em></p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>Two things to carry out of that word.</p>
+<p><strong>First, it points at us, never at them.</strong> Not a diagnosis you hand to the 123 commenters — it's the temptation <em>you</em> face every time an eloquent answer arrives faster than your judgment.</p>
+<p><strong>Second, the fix is not an attitude.</strong> Attitudes don't beat gut-level habits. The fix is <strong>procedural friction</strong>: run the code, check the citation, find the source, read the seams.</p>
+<h3>Right next to <em>the score is never the meaning</em>: eloquence is not evidence.</h3></section><section class="slide"><h2>Today: read the seams</h2><p>That's exactly today's lab. You'll take a chunk of <strong>AI-written code, read it line by line, and improve it</strong> — practicing the judgment that turns borrowing into understanding.</p>
+<p>Then we plant the <strong>stylometry seed</strong>: reading for the <em>seams</em> between human and machine writing — the tells of a voice that was averaged into being versus one that was lived into being.</p></section><section class="slide"><h2 class="cont">Today: read the seams</h2><p>Carry one question out of here:</p>
+<h3>Are you learning to think computationally, or just outsourcing the thinking?</h3>
+<p>The same tool allows either. The difference is whether you can still explain, judge, and own what you made — and whether the words are finally yours.</p>
+<p><em>As always: make the choice visible. Cite the AI, and say what you changed.</em></p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml4.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
 <script>
 (function(){
   var s=[].slice.call(document.querySelectorAll('.slide'));
@@ -279,6 +309,40 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
     else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(i-1);}
     else if(e.key==='Home'){show(0);} else if(e.key==='End'){show(s.length-1);}});
   document.addEventListener('click',function(e){if(!e.target.closest('a'))show(i+1);});
+  // ---- auto-fit -------------------------------------------------------
+  // A room projector may be 1024x768 or 1920x1080; we can't know. Scale each
+  // slide's type down just enough to fit — but never below FLOOR, because a
+  // slide nobody can read from the back row is worse than one that scrolls.
+  var FLOOR = 0.72;                       // 72% of authored size, empirically legible
+  function fit(el){
+    el.style.removeProperty('--fit');
+    var prev = el.style.display; if(!el.classList.contains('active')) el.style.display='flex';
+    var avail = el.clientHeight
+              - parseFloat(getComputedStyle(el).paddingTop)
+              - parseFloat(getComputedStyle(el).paddingBottom);
+    var need = 0;
+    [].slice.call(el.children).forEach(function(c){
+      var r=c.getBoundingClientRect(), m=getComputedStyle(c);
+      need += r.height + (parseFloat(m.marginTop)||0) + (parseFloat(m.marginBottom)||0);
+    });
+    if(need > avail*0.99 && need > 0){
+      // aim 2% under: a width-constrained figure doesn't shrink with --fit alone
+      var k = Math.max(FLOOR, (avail*0.98)/need);
+      el.style.setProperty('--fit', k.toFixed(3));
+      el.classList.add('fitted');
+      if((avail*0.98)/need < FLOOR) el.setAttribute('data-overfull','');
+    } else { el.classList.remove('fitted'); el.removeAttribute('data-overfull'); }
+    if(!el.classList.contains('active')) el.style.display = prev;
+  }
+  // two passes: the first can leave a few px when a figure is the tall child
+  function fitAll(){ s.forEach(fit); s.forEach(fit); }
+  var t; addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(fitAll,120); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+  [].slice.call(document.images).forEach(function(im){
+    if(!im.complete) im.addEventListener('load', fitAll);
+  });
+  addEventListener('load', fitAll);
+  fitAll();
   var h=parseInt((location.hash||'').slice(1),10); show(h?h-1:0);
 })();
 </script>

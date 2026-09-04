@@ -135,6 +135,7 @@ def render_body(lines, lead=False):
 # ---------- reading page ----------
 
 def build_reading(slug, title, subtitle, kicker, body):
+    body = strip_slide_blocks(body)
     masthead = (
         '<div class="backlink"><a href="../index.html">← Dashboard</a>'
         '<span class="sep">·</span><a href="../index.html#lectures">Lectures</a>'
@@ -159,7 +160,13 @@ DECK_CSS = r"""
 .deck{position:fixed;inset:0;background:var(--paper);overflow:hidden;}
 .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:flex-start;
   padding:7vh 8vw 9vh;overflow:auto;}
-.slide.active{display:flex;} .slide.title{justify-content:center;}
+.slide.active{display:flex;}
+/* auto-fit: --fit scales a slide's type/figure to the screen it lands on */
+.slide.fitted h1{font-size:calc(clamp(30px,5.4vw,56px)*var(--fit,1));}
+.slide.fitted h2{font-size:calc(clamp(24px,4vw,42px)*var(--fit,1));}
+.slide.fitted p,.slide.fitted li{font-size:calc(clamp(16px,2.05vw,24px)*var(--fit,1));}
+.slide.fitted blockquote p{font-size:calc(clamp(19px,2.9vw,31px)*var(--fit,1));}
+.slide.fitted figure img{max-height:calc(62vh*var(--fit,1));max-width:calc(100%*var(--fit,1));} .slide.title{justify-content:center;}
 .slide>*{max-width:62rem;width:100%;}
 .slide .kicker{font:600 13px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;
   color:var(--clay);margin-bottom:18px;}
@@ -167,6 +174,7 @@ DECK_CSS = r"""
   line-height:1.08;margin:0 0 16px;}
 .slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
   color:#464b3d;margin:0 0 20px;}
+.slide h2.cont{opacity:.55;font-size:clamp(19px,2.7vw,29px);}
 .slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
   margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
 .slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
@@ -176,7 +184,8 @@ DECK_CSS = r"""
 .slide blockquote{margin:10px 0 18px;padding:6px 0 6px 22px;border-left:4px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .slide blockquote p{font-size:clamp(19px,2.9vw,31px);line-height:1.38;margin:0;}
-.slide figure{margin:6px 0;text-align:center;}
+.slide figure{margin:6px 0;text-align:center;min-height:0;flex:0 1 auto;}
+
 .slide figure img{max-height:62vh;width:auto;max-width:100%;border:1px solid var(--rule);
   border-radius:3px;background:var(--surface);padding:6px;}
 .slide figcaption{font:12px/1.5 var(--mono);color:var(--muted);margin-top:8px;}
@@ -228,10 +237,88 @@ DECK_SCRIPT = """
     else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(i-1);}
     else if(e.key==='Home'){show(0);} else if(e.key==='End'){show(s.length-1);}});
   document.addEventListener('click',function(e){if(!e.target.closest('a'))show(i+1);});
+  // ---- auto-fit -------------------------------------------------------
+  // A room projector may be 1024x768 or 1920x1080; we can't know. Scale each
+  // slide's type down just enough to fit — but never below FLOOR, because a
+  // slide nobody can read from the back row is worse than one that scrolls.
+  var FLOOR = 0.72;                       // 72% of authored size, empirically legible
+  function fit(el){
+    el.style.removeProperty('--fit');
+    var prev = el.style.display; if(!el.classList.contains('active')) el.style.display='flex';
+    var avail = el.clientHeight
+              - parseFloat(getComputedStyle(el).paddingTop)
+              - parseFloat(getComputedStyle(el).paddingBottom);
+    var need = 0;
+    [].slice.call(el.children).forEach(function(c){
+      var r=c.getBoundingClientRect(), m=getComputedStyle(c);
+      need += r.height + (parseFloat(m.marginTop)||0) + (parseFloat(m.marginBottom)||0);
+    });
+    if(need > avail*0.99 && need > 0){
+      // aim 2% under: a width-constrained figure doesn't shrink with --fit alone
+      var k = Math.max(FLOOR, (avail*0.98)/need);
+      el.style.setProperty('--fit', k.toFixed(3));
+      el.classList.add('fitted');
+      if((avail*0.98)/need < FLOOR) el.setAttribute('data-overfull','');
+    } else { el.classList.remove('fitted'); el.removeAttribute('data-overfull'); }
+    if(!el.classList.contains('active')) el.style.display = prev;
+  }
+  // two passes: the first can leave a few px when a figure is the tall child
+  function fitAll(){ s.forEach(fit); s.forEach(fit); }
+  var t; addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(fitAll,120); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+  [].slice.call(document.images).forEach(function(im){
+    if(!im.complete) im.addEventListener('load', fitAll);
+  });
+  addEventListener('load', fitAll);
+  fitAll();
   var h=parseInt((location.hash||'').slice(1),10); show(h?h-1:0);
 })();
 </script>
 """
+
+
+# ---------- deck distillation ----------
+# A lecture section may carry a deck-only condensation:
+#
+#     <!-- slide:
+#     Fluency used to be **expensive** — so polish was a fair proxy for thought.
+#     - Language models broke that correlation
+#     - **Truthiness** — feels true before the evidence arrives
+#     -->
+#
+# The DECK renders that instead of the section's prose; the READING PAGE renders the
+# prose and never shows the block. Sections without one fall back to the old behavior
+# (the whole section on the slide). Figures always come from the section itself, so
+# images and the layout directives keep working untouched.
+
+def pop_slide_blocks(lines):
+    """Return (list_of_slide_blocks, lines_without_them).
+
+    A section may carry SEVERAL blocks — each becomes its own deck slide under the
+    same heading, so one prose section can pace out over as many screens as it needs.
+    """
+    out, blocks, cur, i, n = [], [], None, 0, len(lines)
+    while i < n:
+        st = lines[i].strip()
+        if cur is None and re.match(r"^<!--\s*slide:\s*$", st):
+            cur, i = [], i + 1
+            while i < n and lines[i].strip() != "-->":
+                cur.append(lines[i]); i += 1
+            blocks.append(cur); cur = None; i += 1
+            continue
+        out.append(lines[i]); i += 1
+    return blocks, out
+
+
+def pop_slide_block(lines):
+    """First block only (used for the title/lead slide)."""
+    blocks, rest = pop_slide_blocks(lines)
+    return (blocks[0] if blocks else None), rest
+
+
+def strip_slide_blocks(lines):
+    """Reading-page path: drop deck-only blocks entirely."""
+    return pop_slide_blocks(lines)[1]
 
 
 def split_slides(body_lines):
@@ -249,6 +336,31 @@ def split_slides(body_lines):
     return slides
 
 
+def _render_one_slide(head, blocks, split, gallery, cont=False):
+    """Render a single <section> from already-rendered blocks.
+
+    Figure captions are dropped on slides — they are long descriptive alt text,
+    written for the reading page. The <img alt=...> keeps them for screen readers.
+    """
+    blocks = [(k, (re.sub(r"<figcaption>.*?</figcaption>", "", h, flags=re.S)
+                   if k == "figure" else h)) for k, h in blocks]
+    figs = [h for k, h in blocks if k == "figure"]
+    h2 = f"<h2>{md_inline(head)}</h2>" if head else ""
+    if cont:  # continuation of the same heading — keep it, mark it quietly
+        h2 = f'<h2 class="cont">{md_inline(head)}</h2>' if head else ""
+    if gallery and figs:
+        text = "\n".join(h for k, h in blocks if k != "figure")
+        figrow = f'<div class="fig-row cols-{min(len(figs), 4)}">' + "".join(figs) + "</div>"
+        return f'<section class="slide gallery">{h2}{text}{figrow}</section>'
+    if split and figs:
+        text = "\n".join(h for k, h in blocks if k != "figure")
+        inner = (f'{h2}<div class="split-grid"><div class="col-text">{text}</div>'
+                 f'<div class="col-img">{"".join(figs)}</div></div>')
+        return f'<section class="slide split">{inner}</section>'
+    body_html = "\n".join(h for _, h in blocks)
+    return f'<section class="slide">{h2}{body_html}</section>'
+
+
 def _content_slide(head, lines):
     """One deck content slide.
 
@@ -258,6 +370,24 @@ def _content_slide(head, lines):
     """
     split = any("<!-- layout: split -->" in ln for ln in lines)
     gallery = any("<!-- layout: gallery -->" in ln for ln in lines)
+    slide_blocks, prose_lines = pop_slide_blocks(lines)
+    if slide_blocks:
+        # deck-only condensation supplies the text; figures still come from the section.
+        # Several blocks -> several slides; the figures ride on the LAST one.
+        figs_only = [h for k, h in render_blocks(prose_lines) if k == "figure"]
+        rendered = [render_blocks(sl) for sl in slide_blocks]
+        # A block may carry its own image (repeat the ![]() inside it). If none does,
+        # the section's figures ride on the FIRST slide — where the opening beat is.
+        owns_fig = [any(k == "figure" for k, _ in r) for r in rendered]
+        host = owns_fig.index(True) if any(owns_fig) else 0
+        out = []
+        for n_, bl in enumerate(rendered):
+            if not any(owns_fig) and n_ == host:
+                bl = bl + [("figure", h) for h in figs_only]
+            has_fig = any(k == "figure" for k, _ in bl)
+            out.append(_render_one_slide(head, bl, split and has_fig, gallery and has_fig,
+                                         cont=(n_ > 0)))
+        return "".join(out)
     blocks = render_blocks(lines)
     figs = [h for k, h in blocks if k == "figure"]
     if gallery and figs:
@@ -276,7 +406,7 @@ def _content_slide(head, lines):
 
 def build_deck(slug, title, subtitle, kicker, body):
     segs = split_slides(body)
-    lead_lines = segs[0][1]
+    lead_lines = pop_slide_block(segs[0][1])[0] or segs[0][1]
     lead_split = any("<!-- layout: split -->" in ln for ln in lead_lines)
     lead_blocks = render_blocks(lead_lines, lead=True)
     lead_figs = [h for k, h in lead_blocks if k == "figure"]
