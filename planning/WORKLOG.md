@@ -1,17 +1,90 @@
 # WORKLOG — WRIT 20833 2026 port (session handoff)
 
-**Status:** all work merged to `main`. **History scrubbed 2026-09-03 — the answer keys are gone from
-this repo for good** (`git-filter-repo`, force-pushed; verified on a fresh clone). **⚠️ The repo is still
-PRIVATE, so the public course site is still broken for students** — flipping it public is now the ONLY
-remaining step of the launch blocker, and it is safe to do. Course site: GitHub Pages, `main/docs` →
-https://tcu-dcda.github.io/WRIT20833_2026/. No feature branches — `main` is the only ref. · **Last
-updated:** 2026-09-03 (scrub + PR #34 merged + thread #10 closed; prior: 2026-09-02 pre-launch readiness
-audit; 2026-07-01 project evaluation; 2026-06-26 FORMAT CHANGE to the 8-week in-person fall offering;
-chatbot-tutor MVP built in the private `WRIT20833-chatbot` repo — deployment pending)
+**Status:** 🚀 **LAUNCH BLOCKER CLEARED (2026-09-04).** The repo is **PUBLIC**, the course site is
+**live and fully working for students** (all 43 repo-pointing links, every image, every Colab link, and
+the HW data-loaders verified anonymously), and **the answer keys are unreachable from it** — including at
+the old pre-scrub SHAs. ⚠️ **This is a NEW repository.** The compromised one was renamed to the private
+`TCU-DCDA/WRIT20833_2026_archive`; `TCU-DCDA/WRIT20833_2026` was recreated and the clean history pushed
+into it, so the URL, the Pages site, and every Colab link are unchanged. Site: `main/docs` →
+https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last updated:** 2026-09-04
+(rename-and-republish migration + HW3 builder sync; prior: 2026-09-03 history scrub + PR #34 merged;
+2026-09-02 pre-launch readiness audit; 2026-07-01 project evaluation; 2026-06-26 FORMAT CHANGE to the
+8-week in-person fall offering; chatbot-tutor MVP built in the private `WRIT20833-chatbot` repo —
+**not deployed**)
 
 ---
 
-## Latest session — 2026-09-03 (answer keys scrubbed for good; PR #34 merged; branches cleared)
+## Latest session — 2026-09-04 (repo migrated to a clean one; site LIVE; blocker cleared)
+
+### Why a migration was needed: the scrub was necessary but not sufficient
+Yesterday's `git-filter-repo` rewrite removed the keys from every **ref** — but **GitHub kept serving the
+unreachable objects**. Verified by fetching them: `GET /repos/.../commits/665d4f6` returned the commit,
+and `contents/...WRIT20833_HW2_2026_ANSWER_KEY.ipynb?ref=665d4f6` returned **17,297 bytes of real answer
+key** (blob `82a4537…`, a 47-byte-older revision of the copy in the private keys repo). A force-push does
+not trigger GitHub's GC. **So "scrubbed" ≠ "unreachable on GitHub," and flipping that repo public would
+have re-exposed the keys** — the more so because three planning docs and one commit message on `main`
+listed those exact SHAs, i.e. the student-facing repo would have shipped a map to them.
+
+The documented remedy is a GitHub Support GC request, which the instructor's account did not cover.
+*(Note for the record: the **org** is on a **Team** plan, which does include support — the ticket route is
+probably available from the org context if it is ever needed again.)*
+
+### The fix: rename-and-republish (no support ticket, no history loss, no URL change)
+The dangling objects belong to the **repository**, not to the history. A brand-new repo receiving the
+already-clean history has none of them.
+
+1. **Safety net** — `git bundle create ~/WRIT20833_2026_scrubbed.bundle --all`; verified "complete
+   history" and test-restored (153 commits, tree `44a617e…`, zero key commits). **This file is the whole
+   course in one artifact — keep a copy off this machine.**
+2. **Renamed** `WRIT20833_2026` → **`WRIT20833_2026_archive`**, kept **private** forever. Nothing deleted;
+   the old objects stay sealed there. ⚠️ **The rename carried Pages with it** and the archive briefly
+   served the whole site publicly at `…github.io/WRIT20833_2026_archive/` — its Pages config was deleted
+   (a stale CDN copy may linger until it ages out; `docs/` holds nothing sensitive).
+3. **Recreated** `TCU-DCDA/WRIT20833_2026` empty + private, **pushed the clean 153-commit history**,
+   enabled Pages (`main` / `docs`), then flipped it **public**.
+
+### Verification — done anonymously, with no credentials (this is what a student gets)
+- **Works:** index, schedule, all 8 lecture pages + decks → 200. **43 of 43** repo-pointing links pass,
+  including every Colab link and every image. Both HW corpora load.
+- **Unreachable:** all 4 answer keys by path on `main` → 404; the builders → 404; **the keys at the old
+  pre-scrub SHAs → 404 on both `raw.githubusercontent.com` and `github.com/.../blob/<sha>/...`**; the
+  archive repo and its raw contents → 404.
+- **Intact:** 153 commits, tree `44a617e…` identical to the bundle and the working clone; 9 code-alongs ·
+  4 HW · 16 lecture pages · 2 corpora.
+
+### What this changes for future sessions
+- **`WRIT20833_2026` is a different repository than the one described in every entry below.** Same owner,
+  same name, same URL, same history — but a new object store, created 2026-09-04. Old SHAs cited in
+  earlier entries and in `PROJECT_EVALUATION_2026-07-01.md` **do not resolve here** (harmless — the prose
+  is still accurate).
+- **`WRIT20833_2026_archive` (private) is the only place the pre-scrub history exists on GitHub.** Never
+  make it public. It has no Pages.
+- **The other machine's clone still points at the old repo and holds the pre-scrub history.** Re-clone it
+  fresh rather than pulling; the § "Working across two machines" reset assumes the same repo.
+
+### Also this session — HW3 builder drift closed
+`_build_hw3.py` (private keys repo, `3e7d559`) now carries PR #34's B4 drafting rule, which had been
+hand-applied to the *student* notebook only — the next rebuild would have silently dropped a paragraph
+that is live in front of students. Course repo `d8ae23a` re-emits HW3 from that builder so the two are
+byte-identical (whitespace only; all 37 cells render identically). **The answer key needed no change** —
+it carries its own "B4 (model answer)" cell and never included the student prompt.
+
+### Chatbot tutor — checked, unchanged
+Private `TCU-DCDA/WRIT20833-chatbot`, last commit **2026-06-18**, **not deployed**: `worker/wrangler.toml`
+still reads `id = "REPLACE_WITH_KV_ID"` and `script.js` still points at localhost. **Instructor decision
+2026-09-04: it will NOT be embedded in the D2L shell** → drop the D2L origin from the CORS step, and
+students reach it by a **link from the course site + syllabus** (the access-code gate is what protects it,
+not obscurity). Real deadline is **HW1's assignment date, Fri Oct 30**, not Day 1.
+
+### Open, none blocking
+Lane B (Days 13/14/15/18 have lecture titles but no material) · capstone placeholders (presentation
+length ×2, upload location; needed by Fri 12/4) · chatbot ship-or-skip · D2L shell · **post-launch
+robustness: copy `materials/**` images into `docs/` at build time** so the site stops depending on repo
+visibility — one settings change blanked every image at once, and that coupling is avoidable.
+
+---
+
+## Earlier session — 2026-09-03 (answer keys scrubbed for good; PR #34 merged; branches cleared)
 
 ### ✅ The key exposure is CLOSED — history rewritten with `git-filter-repo`
 The 2026-06-11 BFG scrub was undone by a stale re-merge; the 2026-07-01 audit removed the keys from the

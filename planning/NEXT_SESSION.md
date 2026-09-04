@@ -1,43 +1,43 @@
 # Next-session handoff prompt
 
-> **Course starts Mon Oct 19, 2026.** Last audit: **2026-09-02** (≈7 weeks out). Verdict: **the teaching
-> material is done and verified; one launch blocker remains, and it is a repo-settings/git problem, not a
-> content problem.** Full detail: the 2026-09-02 entry at the top of `planning/WORKLOG.md`.
+> **Course starts Mon Oct 19, 2026.** Status as of **2026-09-04**: 🚀 **the launch blocker is CLEARED —
+> the repo is public, the site is live, and the answer keys are unreachable from it.** The teaching
+> material was already verified. What remains is polish and instructor decisions, none of it blocking
+> Days 1–12. Full detail: the 2026-09-04 entry at the top of `planning/WORKLOG.md`.
 
 ---
 
-## The one blocker — DOWN TO ONE STEP: flip the repo public
+## ⚠️ First, know which repo you are in
 
-**Status 2026-09-03: the history scrub is DONE; only the visibility flip remains, and it is now safe.**
+**`TCU-DCDA/WRIT20833_2026` was recreated on 2026-09-04.** Same owner, same name, same URL, same 153-commit
+history — but a **new repository**. The old one (which kept serving the answer keys from unreachable
+objects even after the history rewrite) was renamed to the **private `TCU-DCDA/WRIT20833_2026_archive`**
+and must never be made public.
 
-✅ **Done — answer keys scrubbed from history** (`git-filter-repo`, force-pushed; old tip `c45502b` → new
-tip `648f1e4`). Verified on a fresh clone: no commit touches `*_ANSWER_KEY.ipynb` or
-`notebooks/homework/_build_hw*.py`, no key blob in any object, and the old key-bearing SHAs (`2b36aef`,
-`665d4f6`, `5b63c73`, `bceef16`, `f0e8c8d`, merge `67899e9`) are unresolvable. Nothing lost — the tip tree
-is byte-identical to pre-scrub `main`; the 184 → 152 commit drop was the duplicated pre-scrub lineage
-collapsing (every dropped subject has a surviving copy). CI guard green.
+- **SHAs cited in WORKLOG entries before 2026-09-04 and in `PROJECT_EVALUATION_2026-07-01.md` do not
+  resolve here.** The prose is still accurate; only the hashes are dead.
+- **The other machine's clone points at the old repo and still holds the pre-scrub history.**
+  **Re-clone it fresh** — do not pull, and do not push from it.
+- A full safety copy exists at **`~/WRIT20833_2026_scrubbed.bundle`** (verified restorable; 153 commits).
+  Keep a copy off that machine — right now it is the only backup.
 
-✅ **Done — all clones re-synced.** This machine's clone was `reset --hard` (not pulled) + `reflog expire`
-+ `gc`. **The OTHER machine has not been touched** — before doing anything there, follow
-`planning/WORKLOG.md` § "Working across two machines": `fetch --prune` → `reset --hard origin/main` →
-`reflog expire --expire=now --all` → `gc --prune=now`. **Never `pull`** — that is what undid the June scrub.
+## ✅ Launch blocker — CLEARED 2026-09-04
 
-🟠 **REMAINING — flip `TCU-DCDA/WRIT20833_2026` to PUBLIC.** Deliberately left to the instructor. Until it
-flips, the public Pages site still serves students **97 dead links** (all 31 "Open in Colab" links, the
-syllabus, the capstone sheet, the data folder), **404s every image** (pages rewrite images to
-`raw.githubusercontent.com/.../main/materials/...`), and **breaks the HW2/3/4 data-loader cells**.
+Verified **anonymously**, which is what a student actually gets: index · schedule · all 8 lecture pages +
+decks → 200; **43/43** repo-pointing links pass (every Colab link, every image); both HW corpora load.
+And the other half: all 4 answer keys → 404 on `main`, the builders → 404, **the keys at the old
+pre-scrub SHAs → 404 on both `raw.githubusercontent.com` and `github.com/.../blob/<sha>/`**, archive → 404.
 
-**Then verify, logged out** (a private window, not your own session):
-1. one Colab link opens the notebook — e.g. the Variables code-along from the dashboard;
-2. one lecture-page image renders — e.g. `lectures/ml0.html`;
-3. `docs/schedule.html`'s Capstone links resolve.
+**The site is deliverable end-to-end. Days 1–12 need nothing further.**
 
 ---
 
 ## Plan for the next working session (pick a lane)
 
-**Lane A — clear the blocker (highest value, ~1 hr, instructor-run).** The 4 steps above. Everything else
-in the course is downstream of this: until it's done, Day 1 cannot be delivered as designed.
+**~~Lane A — clear the blocker~~ ✅ DONE 2026-09-04.** Scrub → rename → republish → public → verified.
+Nothing here is outstanding. *(If a similar exposure ever recurs: a history rewrite alone is NOT enough —
+GitHub keeps serving unreachable objects until it GCs. Either open a support ticket from the org, which is
+on a Team plan, or repeat the rename-and-republish, which needs no one's permission and preserves the URL.)*
 
 **Lane B — author the four missing second-half lecture framings (~2–3 hrs).** The schedule's Lecture column
 names four sessions that have **no built material** — they are verbal framings only:
@@ -112,10 +112,12 @@ READ FIRST: planning/NEXT_SESSION.md (the blocker + the lane you're picking), th
 planning/WORKLOG.md (decision log). planning/PROJECT_EVALUATION_2026-07-01.md is the last
 full audit; the 2026-09-02 WORKLOG entry is the most recent verification.
 
-REPO STATE: main is at origin/main; repo is currently PRIVATE and the public Pages site is
-therefore broken for students (see NEXT_SESSION.md). Solo maintainer → commit straight to
-`main`, no per-task branches/PRs. After any history rewrite, re-sync clones with
-`reset --hard`, NEVER `pull`.
+REPO STATE: PUBLIC, site live and verified working for students. NOTE: this repo was
+RECREATED 2026-09-04 (the compromised one is the private WRIT20833_2026_archive — never
+make it public). Same URL and history, new object store; pre-2026-09-04 SHAs in the docs
+do not resolve. The other machine's clone points at the old repo — re-clone it fresh, do
+not pull or push from it. Backup: ~/WRIT20833_2026_scrubbed.bundle. Solo maintainer →
+commit straight to `main`, no per-task branches/PRs.
 
 Answer keys + the solution-bearing _build_hw2/3/4.py live ONLY in the private
 TCU-DCDA/WRIT20833_2026_keys. A CI guard (.github/workflows/guard-instructor-files.yml)
