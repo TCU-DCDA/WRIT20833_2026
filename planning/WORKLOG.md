@@ -6,11 +6,113 @@ the HW data-loaders verified anonymously), and **the answer keys are unreachable
 the old pre-scrub SHAs. ⚠️ **This is a NEW repository.** The compromised one was renamed to the private
 `TCU-DCDA/WRIT20833_2026_archive`; `TCU-DCDA/WRIT20833_2026` was recreated and the clean history pushed
 into it, so the URL, the Pages site, and every Colab link are unchanged. Site: `main/docs` →
-https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last updated:** 2026-09-04
-(rename-and-republish migration + HW3 builder sync; prior: 2026-09-03 history scrub + PR #34 merged;
+https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last updated:** 2026-09-05
+(code-along ↔ homework continuity audit + HW2–4 builder sync, keys `4fa8490` **committed not pushed**; prior: 2026-09-04 rename-and-republish migration + HW3 builder sync; 2026-09-03 history scrub + PR #34 merged;
 2026-09-02 pre-launch readiness audit; 2026-07-01 project evaluation; 2026-06-26 FORMAT CHANGE to the
 8-week in-person fall offering; chatbot-tutor MVP built in the private `WRIT20833-chatbot` repo —
 **not deployed**)
+
+---
+
+## Latest session — 2026-09-05 (code-along ↔ homework continuity audit; builder drift closed same session)
+
+### What was done
+Read all 9 code-alongs against the 4 homeworks they build toward, **executed every one**, and
+simulated completed student solutions against the real corpora (rather than just running the `TODO`
+stubs, which pass while teaching nothing). Committed `0821ee6`, pushed; 8 files, 22 lines,
+line-for-line with no reformatting.
+
+**Fixed (mechanical only, no pedagogy touched):**
+- **Day/week cross-refs**, corrected against `COURSE_SCHEDULE_2026.md` — HW2/3/4 "Day 7, reading and
+  improving AI code" → **Day 8**; HW2 "don't scrape until Day 8" → **Day 10**; HW3/HW4 "the Day 10
+  workshop" → **Day 12** (Day 10 is the pandas-01 code-along; the collect-and-clean workshop is Day
+  12); VADER "Next week (Days 14–15)" → "After Thanksgiving break (**Days 16–17**)"; VADER + String
+  Methods "Week 2" → **Week 3**; HW1 "Tutorial 2 / Tutorial 4" → **Day 3 / Day 4** (the course numbers
+  these ml3/ml5 and uses "Tutorial" nowhere else). HW3's line also read as a forward reference to a day
+  already past — now past tense.
+- **Corpus count** — HW2 said **93** comments in two places; it is **123** everywhere else (data
+  README, two sneak previews, ml1's "25 vs. 8" slide, HW4 A3). Verified: 123 non-blank lines.
+- **Notebook names** — HW1/HW2 prep lists cited a "String Methods / Conditionals / Loops" code-along
+  that does not exist → "Strings & String Methods" / "Lists, Loops & Conditionals".
+- **HW4 B1 `dominant_topic` — a real defect, not a typo.** The empty-document guard was dead code:
+  gensim 4.x returns a *uniform distribution* for an empty bag, not `[]`, so `if not topic_probs` never
+  fired. The two fragment rows (`"The"`, `"But i do and or have."`) were silently filed under Topic 0 by
+  `max()`'s tie-break, and the `-1` bar that **A3** asks students to predict and **B2** describes in the
+  chart could never appear. Now guards on the bag itself; verified on the course corpus that `-1`
+  collects exactly those two rows.
+
+Also corrected `notebooks/data/README.md`, which had two errors of its own: it claimed blanks were
+removed (the file is 132 physical lines — 123 comments + 9 blanks, which every loader filters), and its
+"comments →" top-words list omitted `ten`/`10`, which are actually 3rd and 5th. Added the
+`main`-fallback verification and a **do-not-clean** warning on the two fragment rows, since HW4 A3/B2
+now depend on them.
+
+### Builder drift — recreated, then closed (keys repo `4fa8490`)
+The HW2–4 fixes above were first hand-applied to the `.ipynb` files directly — exactly the trap
+yesterday's "HW3 builder drift closed" entry describes, and the next rebuild would have reverted all of
+them. The keys repo was cloned to this machine mid-session, so it was closed properly rather than left
+as a handoff item. HW1 has no builder; its edits were always safe.
+
+**`4fa8490` in the private `TCU-DCDA/WRIT20833_2026_keys`** carries the same edits into
+`_build_hw2/3/4.py`. Verified: all three builders now emit student notebooks **byte-identical** to
+course-repo `0821ee6` (and were byte-identical to `0821ee6^` beforehand, so the baseline was clean).
+⚠️ **Committed locally, NOT pushed** — push from that repo when convenient.
+
+**Three further defects of the same class, found only in the answer-key teaching notes** (instructor-
+facing, so they never reached students, and they are fixed in the same commit): HW2's "preview the Day 7
+AI-Agency lesson" → Day 8, "scraping is taught Day 8" → Day 10, and "the Week-2 workshop" → the Day-12
+workshop; HW3's "Day 7 (AI Agency)" → Day 8.
+
+**The answer key also carried the HW4 bug twice** — the key's own `dominant_topic` solution had the same
+dead guard, and the A3 teaching note *asserted the buggy behaviour* ("empty docs get a
+meaningless/near-uniform topic"). Both fixed; the note now explains why the guard must test the **bag**
+rather than the result. All three keys execute top-to-bottom with **zero errors**, and HW4's B2 now
+reports `-1 = 2 rows`.
+
+*(Standing rule written into the new root `CLAUDE.md` §1, so a future session meets it before touching a
+notebook rather than after.)*
+
+### Also verified this session
+- **All seven code-along builders are byte-identical to their notebooks** (checked by regenerating into
+  a scratch dir and diffing, before and after the edits). The two builder-less code-alongs
+  (`Variables_DataTypes`, `Lists_Loops_Conditionals`) were edited directly — correct, they have no
+  generator.
+- **The Colab/raw fallback is live on `main`** — both corpora and both notebook paths return HTTP 200
+  anonymously, so `load_text()`'s download path works for students out of the box. The data README's
+  "works once this branch is merged to `main`" caveat is now retired.
+- Stack on this machine: pandas 2.3.3 · numpy 2.0.2 · gensim 4.4.0 · vaderSentiment · matplotlib 3.9.4,
+  all under plain `python3`.
+
+### Six judgment-call items left open (need instructor voice, not mechanics)
+Filed as **Lane E** in `NEXT_SESSION.md`. In priority order:
+1. **HW3 conflates tone with stance** — the VADER code-along's Part 4 is titled "Tone Is Not the Same as
+   Stance," then HW3 opens "use sentiment to hear the **stance**," subtitles C1 "now split by stance"
+   while splitting on VADER's label, and B4 asks "does this crowd **support or oppose**" from sentiment
+   alone. HW3's corpus also has no hand-labeled stance column, so the two-axis comparison the code-along
+   builds cannot be reproduced. *The homework teaches against its own code-along.*
+2. **Day 3 / Day 4 split fights the notebook.** Schedule and syllabus both assign Day 3 = conditionals,
+   Day 4 = lists & loops, but `Lists_Loops_Conditionals` runs Lists → Conditionals → Loops and the
+   conditionals section depends on `platforms` from the Lists section. Reorder the notebook or swap the
+   days.
+3. **Topic Modeling Part 1's "clear example" isn't clear** on gensim 4.4.0 / `random_state=42` — 3 of
+   the 5 music docs land in the sports or food topic and "song" appears inside the sports topic's top 6,
+   while the narration promises "a comment or two" misfiled. Ironically the k=4 run in Part 2 separates
+   cleanly. Re-tune the toy corpus or the seed.
+4. **Term Frequency's "distinctive words" cell** computes `comment_top - official_top` (top-8 minus
+   top-8). The lists are fully disjoint, so nothing is ever subtracted and the point is invisible. HW2
+   **B3** does it correctly against the full vocabulary — the code-along should match the homework.
+5. **False provenance claims.** The Term Frequency setup says "the same tools from Day 5 and HW1: a
+   `split_into_words` helper, the long `stopwords` skip-list" and HW2 repeats it — Day 5 has neither and
+   HW1 A6's list is five words, explicitly a preview. Both are genuinely new on Day 7. Relatedly, HW2's
+   prep list never cites the Day-5 code-along, though A5 (write a function) and `Counter` both come from
+   it; and the syllabus maps Day 5 → HW1 while HW1 contains no `def`, no `{}`, no `Counter`.
+6. **Smaller:** list comprehensions appear in Term Frequency's given code and HW2 A3's hint but are
+   never taught; HW2's own-data exercise is marked *optional* while Day 9 is a scheduled "term frequency
+   on your data" work session; HW4's capstone-bridge (C2) is due Day 19, a day **after** the capstone
+   proposal it is meant to inform (Day 18). Also cosmetic: Term Frequency's prose lists top words as
+   "schools, religion, country, god, kids" (actual order puts `kids` before `god`), the VADER
+   "predict first" cell's intended *mixed* line scores **+0.714** — higher than the lukewarm one, and 5
+   of its 11 demo comments score exactly 0.0000, so Part 3's extremes rest on thin signal.
 
 ---
 

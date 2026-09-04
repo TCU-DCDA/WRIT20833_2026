@@ -1,9 +1,14 @@
 # Next-session handoff prompt
 
-> **Course starts Mon Oct 19, 2026.** Status as of **2026-09-04**: 🚀 **the launch blocker is CLEARED —
-> the repo is public, the site is live, and the answer keys are unreachable from it.** The teaching
-> material was already verified. What remains is polish and instructor decisions, none of it blocking
-> Days 1–12. Full detail: the 2026-09-04 entry at the top of `planning/WORKLOG.md`.
+> **Course starts Mon Oct 19, 2026.** Status as of **2026-09-05**: 🚀 **the launch blocker is CLEARED —
+> the repo is public, the site is live, and the answer keys are unreachable from it.** A **continuity
+> audit** (2026-09-05) then read the code-alongs against the homework they build toward and fixed the
+> mechanical defects — day numbers, a wrong corpus count, a dead guard in HW4 — in both the course repo
+> (`0821ee6`, pushed) and the keys builders (`4fa8490`, **committed not pushed**). What remains is
+> polish and instructor decisions, none of it blocking Days 1–12. Full detail: the 2026-09-05 and
+> 2026-09-04 entries at the top of `planning/WORKLOG.md`.
+>
+> ⏩ **One loose end:** `git push` the keys repo (`../WRIT20833_2026_keys`, one commit ahead).
 
 ---
 
@@ -69,6 +74,41 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
   `TCU-DCDA/WRIT20833-chatbot`. Ship before launch, or observe first and skip this term? Deployment =
   KV namespace, secrets, prod `API_URL` + CORS, `wrangler deploy`, Pages frontend, D2L embed.
 
+**Lane E — the six judgment calls the 2026-09-05 audit left open (needs your voice, not mechanics).**
+The mechanical fixes shipped; these change what the assignments *say*, so they were not applied
+unilaterally. In priority order:
+1. **HW3 conflates tone with stance.** The VADER code-along's Part 4 is titled "Tone Is Not the Same as
+   Stance" — then HW3 opens "use sentiment to hear the **stance**," subtitles C1 "now split by stance"
+   while splitting on VADER's label, and B4 asks "does this crowd **support or oppose**" from sentiment
+   alone. HW3's corpus has no hand-labeled stance column, so the two-axis comparison the code-along
+   builds cannot be reproduced there. **The homework teaches against its own code-along** — this is the
+   one worth fixing before Day 13.
+2. **Day 3 / Day 4 split fights the notebook.** Both schedule and syllabus assign Day 3 = conditionals,
+   Day 4 = lists & loops, but `Lists_Loops_Conditionals` runs Lists → Conditionals → Loops and the
+   conditionals section depends on `platforms` from the Lists section. Reorder the notebook (it has no
+   builder — edit directly) or swap the two days. **Bites on Day 3**, so it is the most urgent by date.
+3. **Topic Modeling Part 1's "clear example" isn't clear** on gensim 4.4.0 / `random_state=42`: 3 of the
+   5 music docs land in the sports or food topic and "song" sits in the sports topic's top 6, while the
+   narration promises "a comment or two" misfiled. The k=4 run in Part 2 separates cleanly. Re-tune the
+   toy corpus or the seed.
+4. **Term Frequency's "distinctive words" cell** computes `comment_top - official_top` (top-8 minus
+   top-8). The lists are fully disjoint, so nothing is ever subtracted and the point is invisible. HW2
+   **B3** does it correctly against the full vocabulary — make the code-along match.
+5. **False provenance.** Term Frequency's setup claims "the same tools from Day 5 and HW1: a
+   `split_into_words` helper, the long `stopwords` skip-list"; HW2 repeats it. Day 5 has neither and
+   HW1 A6's list is five words, explicitly a preview — both are new on Day 7. Relatedly HW2's prep list
+   never cites the Day-5 code-along though A5 and `Counter` come from it, and the syllabus maps Day 5 →
+   HW1 while HW1 has no `def`, no `{}`, no `Counter`.
+6. **Smaller:** list comprehensions appear in Term Frequency's given code and HW2 A3's hint but are
+   never taught; HW2's own-data exercise is *optional* while Day 9 is a scheduled "term frequency on
+   your data" work session; HW4's capstone bridge (C2) is due Day 19, a day **after** the capstone
+   proposal it should inform (Day 18). Cosmetic: Term Frequency's prose word order, and the VADER
+   "predict first" cell whose intended *mixed* line scores **+0.714** (higher than the lukewarm one)
+   while 5 of its 11 demo comments score exactly 0.0000.
+
+⚠️ **Any HW2–4 change goes through `_build_hw2/3/4.py` in `../WRIT20833_2026_keys`, never the `.ipynb`.**
+See the new root `CLAUDE.md` §1.
+
 **Lane D — pre-launch checks not in this repo.** TCU Online (D2L) shell built: 4 discussion topics
 (D1 Wk1 · D2 Wk3 · D3 Wk5 · D4 Wk7), 3 reflection dropboxes, 4 HW dropboxes, capstone dropbox; the
 AddRan Word syllabus (`SYLLABUS_2026.docx`, added 2026-08-27) synced to `SYLLABUS_2026.md`; the 🟦
@@ -81,7 +121,15 @@ is reference only.
 
 ## What is already verified — do not re-do
 
-Re-verified by execution on **2026-09-02** (not read from the log):
+Re-verified by execution on **2026-09-05** (not read from the log):
+- **All 7 code-along builders and all 3 HW builders emit byte-identical output** to what is committed
+  in each repo — no drift anywhere as of `0821ee6` / keys `4fa8490`.
+- **All 3 answer keys execute top-to-bottom with zero errors**, including HW4 with the corrected `-1`
+  guard (B2 now reports 2 fragment rows).
+- **The Colab/raw fallback is live on `main`** — both corpora and both notebook paths return HTTP 200
+  anonymously, so `load_text()`'s download path works for students out of the box.
+
+Re-verified by execution on **2026-09-02**:
 - **All 9 code-along notebooks + the stylometry notebook execute clean** — 165 code cells; the only error
   is the *intentional* "read the error message" `TypeError` in Variables. Stack: pandas 2.3.3 / numpy
   2.0.2 / gensim 4.4.0 / vaderSentiment. **The Day 16–17 gensim LDA notebook ran clean** (the standing
@@ -108,7 +156,9 @@ Repo (this machine): /Users/crode/Code/curtrode/01-Teaching/4-WRIT/WRIT20833/WRI
 Course: 8 weeks, IN PERSON, MWF 10:00–11:50 AM, Oct 19 – Dec 18 2026, TCU 8W2, section 020,
 Schar Hall 2003, 24 sessions, enrollment ≤ 20. No class Thanksgiving week (Nov 23–27).
 
-READ FIRST: planning/NEXT_SESSION.md (the blocker + the lane you're picking), then
+READ FIRST: CLAUDE.md (which files are generated — HW2-4 come from builders in the
+private keys repo, NOT from the .ipynb), then planning/NEXT_SESSION.md (the lane you're
+picking; Lane E holds the six open judgment calls from the 2026-09-05 continuity audit), then
 planning/WORKLOG.md (decision log). planning/PROJECT_EVALUATION_2026-07-01.md is the last
 full audit; the 2026-09-02 WORKLOG entry is the most recent verification.
 

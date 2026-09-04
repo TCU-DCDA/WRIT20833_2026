@@ -18,7 +18,10 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 + `reference/Citizenship-and-Social-Values-5-5-10.doc`; how the course delivers them: `planning/CONCEPTUAL_FRAMEWORK_2026.md` §7.)
 
 > **Status: in active development (draft).** The homework spine (HW1–HW4) and **all code-along notebooks**
-> (one per coding day) are complete and validated; the **syllabus markdown** is fully filled (no `[...]`
+> (one per coding day) are complete and execute clean; a **2026-09-05 continuity audit** read the
+> code-alongs against the homework they build toward and fixed the mechanical defects it found (stale day
+> numbers, a wrong corpus count, a dead guard in HW4) — **six judgment-call items remain open**, listed in
+> `planning/NEXT_SESSION.md` Lane E. The **syllabus markdown** is fully filled (no `[...]`
 > placeholders left) and aligned to the AddRan template; a **course website** (`docs/`) is live and public;
 > and the **capstone sheet** (`CAPSTONE_2026.md`) is drafted. **Lecture pages** — all eight scheduled
 > mini-lecture reading pages + slide decks are live (`build_lectures.py`): Humanities & Coding, Connotations
@@ -64,7 +67,7 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 - **`materials/`** — the stylometry exercise, images, the lecture reading pages, and the Day-1 framing passage.
 - **`reference/`** — TCU/AddRan syllabus templates + core-curriculum vetting (source documents, not course content).
 - **`planning/`** — instructor process docs (WORKLOG, conceptual framework, port assessment, syllabus crosswalk…).
-- **Root** — this README, `SYLLABUS_2026.md`, `COURSE_SCHEDULE_2026.md`, `CAPSTONE_2026.md`, and the site generators (`site_theme.py`, `build_index.py`, `build_schedule_html.py`, `build_lectures.py`).
+- **Root** — this README, `CLAUDE.md` (authoring/agent working rules), `SYLLABUS_2026.md`, `COURSE_SCHEDULE_2026.md`, `CAPSTONE_2026.md`, and the site generators (`site_theme.py`, `build_index.py`, `build_schedule_html.py`, `build_lectures.py`).
 - *Answer keys + the solution-bearing `_build_hw*.py` generators live in the **private** `TCU-DCDA/WRIT20833_2026_keys`.*
 
 ## The idea in one paragraph
@@ -76,6 +79,8 @@ scale"; the quarrel; voice-through-difficulty in the age of AI; the moral stakes
 `planning/CONCEPTUAL_FRAMEWORK_2026.md`. Assessment is **ungrading**: earned insight over clean code.
 
 ## Conventions (for anyone authoring materials)
+*(Working rules for coding agents — which files are generated, what must never be committed, how to
+validate — are in **`CLAUDE.md`** at the repo root.)*
 - **Walsh-independent** — required work never depends on an outside textbook.
 - **Ungrading** — evaluate engagement/reflection/labor, not correctness; answer keys are references, not
   rubrics; avoid grade/points framing.
