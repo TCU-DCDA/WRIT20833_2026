@@ -222,8 +222,11 @@ def landing(kind, title, desc=None, buttons=(), img=None, note=None, body_html=N
     p = [f'<div style="font-family:Arial,Helvetica,sans-serif;line-height:1.55;'
          f'color:{INK};max-width:44rem">']
     if img:
-        p.append(f'<img src="{esc(img)}" alt="" style="width:100%;max-height:240px;'
-                 f'object-fit:cover;border-radius:12px;border:1px solid {RULE};margin-bottom:22px">')
+        # Never crop: the images are 16:9, 3:2, square and portrait. Each shows whole,
+        # at most 360px tall, so a portrait image comes out narrower rather than sliced.
+        p.append(f'<img src="{esc(img)}" alt="" style="display:block;width:auto;height:auto;'
+                 f'max-width:100%;max-height:360px;border-radius:12px;border:1px solid {RULE};'
+                 f'margin-bottom:22px">')
     p.append(f'<p style="margin:0 0 6px;font-size:13px;letter-spacing:.08em;'
              f'text-transform:uppercase;color:{MUTED}">{esc(kind)}</p>')
     p.append(f'<h2 style="margin:0 0 14px;color:{GREEN};font-size:26px;line-height:1.2">'

@@ -191,7 +191,7 @@ H = f'style="color:{c.GREEN}"'
 def orientation_page():
     return f"""<div {STYLE}>
 <img src="{c.index.HERO}" alt=""
-  style="width:100%;max-height:220px;object-fit:cover;border-radius:12px;
+  style="display:block;width:100%;height:auto;border-radius:12px;
   border:1px solid {c.RULE};margin-bottom:24px">
 
 <h2 {H}>How this course works</h2>
