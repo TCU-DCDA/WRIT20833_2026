@@ -367,8 +367,8 @@ def homepage_widget():
      Images load from the public GitHub repo. -->
 <div style="font-family:Arial,Helvetica,sans-serif;color:{c.INK};line-height:1.55;
   max-width:56rem;margin:0 auto;padding:8px 32px 16px">
-  <img src="{c.index.HERO}" alt="" style="width:100%;max-height:200px;object-fit:cover;
-    border-radius:12px;display:block;margin-bottom:18px">
+  <img src="{c.index.HERO}" alt="" style="width:100%;height:auto;max-height:420px;object-fit:cover;
+    object-position:center 30%;border-radius:12px;display:block;margin-bottom:18px">
   <h2 style="margin:0 0 6px;color:{c.GREEN};font-size:24px">When Coding Meets Culture</h2>
   <p style="margin:0 0 18px;font-size:14px;color:{c.MUTED}">WRIT 20833 &middot; Fall 2026
     &middot; MWF 10:00&ndash;11:50 &middot; Schar Hall 2003</p>
