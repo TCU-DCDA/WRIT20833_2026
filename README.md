@@ -41,6 +41,7 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 | **`SYLLABUS_2026.md`** | The course as students meet it — outcomes, ungrading policy, schedule, AI-use policy, the 3 reflections + 4 discussions. *(Markdown fully filled — no `[...]` placeholders; aligned to the AddRan template. The `.docx` is the instructor-maintained Word submission copy.)* |
 | **`COURSE_SCHEDULE_2026.md`** | Day-at-a-glance grid: **Date · Lecture · Coding · Due** across the 24 sessions (rendered as `docs/schedule.html`). |
 | **`CAPSTONE_2026.md`** | The **capstone assignment sheet** — the Final Evaluative Exercise (notebook + data-driven-opinion essay + presentation), with both tracks (cultural dataset · stylometry), the timeline, and the ungrading rubric. *(DRAFT.)* |
+| **`d2l/`** | Instructor-only generators for the **TCU Online (D2L) shell**: a Common Cartridge of weekly modules (`build_d2l_package.py`) and the 9 submission folders (`build_assignments.py`), both read from the schedule and syllabus. The packages are gitignored build products; `d2l/WIRING_CHECKLIST.md` covers what's hand-wired. |
 | **`planning/CONCEPTUAL_FRAMEWORK_2026.md`** | The course's intellectual through-line — *why* beneath the code. Read this to understand what the course is *about*. |
 | **`planning/WORKLOG.md`** | Running session handoff + decision log. Read first to resume work with zero ramp-up. |
 | **`planning/PORT_ASSESSMENT_2026.md`** | The 2026 readiness/port analysis vs. the F25 source. |

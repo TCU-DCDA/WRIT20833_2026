@@ -42,7 +42,7 @@ CODEALONGS_BY_WEEK = [
 HOMEWORK = [
     ("HW1 · Foundations", "Python basics on real text.", "due Day 7", "notebooks/homework/WRIT20833_HW1_2026.ipynb"),
     ("HW2 · Term Frequency", "“Whose words win?” — comments vs. the Constitution.", "due Day 10", "notebooks/homework/WRIT20833_HW2_2026.ipynb"),
-    ("HW3 · Sentiment", "Support, opposition, and what counting missed.", "due Day 16", "notebooks/homework/WRIT20833_HW3_2026.ipynb"),
+    ("HW3 · Sentiment", "Tone, stance, and what counting missed.", "due Day 16", "notebooks/homework/WRIT20833_HW3_2026.ipynb"),
     ("HW4 · Topic Modeling + Integration", "Themes, then all three lenses together.", "due Day 19", "notebooks/homework/WRIT20833_HW4_2026.ipynb"),
 ]
 

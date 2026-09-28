@@ -9,7 +9,7 @@
 > what is committed (re-verified 2026-09-28).
 >
 > ⏩ **Next up:** Lane C (the capstone placeholders, and the chatbot go/no-go) → Lane B (four lecture
-> framings) → Lane D (the D2L shell and other checks outside this repo).
+> framings) → Lane D (import the D2L packages built 2026-09-28 and wire the shell per `d2l/WIRING_CHECKLIST.md`, plus the checks outside this repo).
 > ✍️ **Hand edit pending:** mirror the 2026-09-28 Day 6 and Day 9 label changes into the Word syllabus
 > (`WRIT20833-020_Fall2026_Rode.docx`).
 
@@ -114,8 +114,14 @@ unilaterally. In priority order:
 ⚠️ **Any HW2–4 change goes through `_build_hw2/3/4.py` in `../WRIT20833_2026_keys`, never the `.ipynb`.**
 See the new root `CLAUDE.md` §1.
 
-**Lane D — pre-launch checks not in this repo.** TCU Online (D2L) shell built: 4 discussion topics
-(D1 Wk1 · D2 Wk3 · D3 Wk5 · D4 Wk7), 3 reflection dropboxes, 4 HW dropboxes, capstone dropbox; the
+**Lane D — pre-launch checks not in this repo.** **D2L tooling BUILT 2026-09-28; import not done.**
+`d2l/build_d2l_package.py` (cartridge: Start Here, Weeks 1–8, Homework and Capstone, the 4 discussion
+topics) and `d2l/build_assignments.py` (9 folders: HW1–4, R1–3, capstone proposal, capstone) are
+adapted from WRIT 40363's `d2l/` and read every date and prompt from the schedule and syllabus. Next:
+import both into the empty shell, then hand-wire the grade scheme, 12 grade items, discussion dates,
+syllabus PDF and homepage widget per **`d2l/WIRING_CHECKLIST.md`**. ⚠️ The CC discussion topics are
+**unverified** on TCU's instance (checklist §1 has the fallback). Two calls to confirm there: discussion
+deadlines = start of class, and the extra capstone-proposal folder. Remaining Lane D items: the
 AddRan Word syllabus (`SYLLABUS_2026.docx`, added 2026-08-27) synced to `SYLLABUS_2026.md`; the 🟦
 registrar wording double-checks in `planning/SYLLABUS_COMPLIANCE.md`; one 60-sec live Colab click on the
 Day-16 gensim install cell. **Not a task:** the CSV/HUM vetting-form trim — the course already carries

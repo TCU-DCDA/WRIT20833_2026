@@ -22,6 +22,7 @@ Check the table below *before* you open a notebook.
 | A **code-along** notebook (`notebooks/codeAlongs/*.ipynb`) | its `_build_*.py` **in the same directory** | `python3 _build_<name>.py`, commit both |
 | **HW2 / HW3 / HW4** (`notebooks/homework/*.ipynb`) | `_build_hw2/3/4.py` in the **private `TCU-DCDA/WRIT20833_2026_keys`** | run it there, copy the regenerated *student* notebook back, commit here |
 | **HW1** | the `.ipynb` directly | — it has no builder |
+| The **TCU Online (D2L)** shell | the source (schedule, syllabus, `build_index.py`, notebooks), or `d2l/build_d2l_package.py` / `d2l/build_assignments.py` | rebuild, then follow `d2l/WIRING_CHECKLIST.md` → *Updating a live shell*. D2L imports are **additive**; never re-import a full package onto a live shell |
 | Anything in **`docs/`** | the markdown/lecture source + `build_index.py`, `build_schedule_html.py`, `build_lectures.py` | re-run the generators; never hand-edit `docs/` |
 
 Two code-alongs (`Variables_DataTypes`, `Lists_Loops_Conditionals`) have **no builder** —
@@ -41,7 +42,8 @@ here. Never copy a `*_ANSWER_KEY.ipynb` into this repo — see §2.
 
 Keys and the solution-bearing `_build_hw*.py` live **only** in the private
 `TCU-DCDA/WRIT20833_2026_keys`. `.github/workflows/guard-instructor-files.yml` fails any
-push that tracks them. A pull after a history rewrite reintroduced them once (2026-06) and
+push that tracks them. It also fails on raw D2L exports (`D2LExport_*`, which carry the
+course's org-unit id) and on built D2L packages (`*.imscc`, `d2l/WRIT20833_Fall2026_*`). A pull after a history rewrite reintroduced them once (2026-06) and
 a public-visibility flip nearly shipped them (2026-09-03/04) — treat this as load-bearing,
 not hygiene.
 

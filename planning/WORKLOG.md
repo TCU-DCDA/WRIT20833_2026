@@ -14,7 +14,38 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-09-28 (cont.) — Lane E #3 and #6: Lane E closed
+## Latest session — 2026-09-28 (cont.) — Lane D: D2L shell generators
+
+**Built `d2l/`**, adapted from WRIT 40363's `d2l/` (tested there against a live Fall 2026 shell).
+Nothing has been imported yet.
+
+- **`build_d2l_package.py`** is a Common Cartridge 1.3 thin shell: 11 modules, 49 items. Every
+  item is a landing page that hands off to Colab, the course site, or GitHub, and no content is
+  copied. It reads the schedule through `build_schedule_html.parse()`, so it doesn't scrape HTML
+  the way 40363's does. Blurbs and thumbnails come from `build_index.py`, notebook titles from the
+  notebooks, and the four discussion prompts from the syllabus as CC discussion topics. `--modules`
+  builds partial packages, because D2L imports only add.
+- **`build_assignments.py`** writes a Brightspace-native `dropbox_d2l.xml` in the format 40363
+  copied from a real export. It has 9 folders: HW1–4 (open 12:01 a.m. on the assigned day),
+  R1–3, the capstone proposal, and the capstone. Each is due at the start of class, per the syllabus
+  rule, with **no end date** because the late-work policy is "talk to me." The build **fails if the
+  syllabus's printed reflection dates disagree with the schedule.**
+- **Timezone fix over 40363:** all local times go through `zoneinfo("America/Chicago")`. 40363
+  hard-codes UTC−5, which this term (it crosses DST's end on Nov 1) would turn into deadlines an hour
+  early from HW1 onward. 40363 should get the same fix before its next term.
+- **Public-repo hygiene:** packages and `D2LExport_*` are gitignored, and the guard workflow now fails
+  on them. 40363 is private and tracks a raw export; this repo can't.
+- **Verified:** all generated XML is well-formed, all 45 URLs in the packages return 200 anonymously,
+  and the dates are right on both sides of Nov 1 (15:00 UTC before, 16:00 after).
+- **Drift fixed while here:** the HW3 site card still said "Support, opposition, …" after the Lane E
+  tone reframe. It now says "Tone, stance, and what counting missed," and `docs/index.html` was
+  regenerated. It would otherwise have been copied into the HW3 folder.
+- **Open (in `d2l/WIRING_CHECKLIST.md`):** CC discussion import is unverified on TCU's instance.
+  Two calls to confirm: discussion deadlines = start of class, and the extra proposal folder. The
+  stylometry notebook still says "DRAFT exercise for review" and calls its handout "Day-7"; the
+  schedule has Day 8.
+
+## Earlier session — 2026-09-28 (cont.) — Lane E #3 and #6: Lane E closed
 
 **#3 — Topic Modeling toy corpus** (`_build_topicmodeling.py`). At seed 42, 3 of the 5 music comments
 landed in the wrong topic, and only 15/100 seeds separated all three themes. Raising `passes` helped

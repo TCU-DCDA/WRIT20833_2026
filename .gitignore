@@ -43,3 +43,14 @@ WRIT20833-*_Summer2026_Rode.docx
 
 # Throwaway local site previews (image paths rewritten to local files)
 *.preview.html
+
+# TCU Online (D2L) build products — the generators in d2l/ and WIRING_CHECKLIST.md are what's
+# tracked; the packages are reproducible. Raw D2L exports carry the course's org-unit id and
+# must never land in this public repo (the guard workflow checks for them).
+d2l/WRIT20833_Fall2026_*/
+d2l/WRIT20833_Fall2026_*.imscc
+d2l/WRIT20833_Fall2026_*.zip
+d2l/WRIT20833_Fall2026_*-homepage-widget.html
+*.imscc
+D2LExport_*/
+d2l/__pycache__/
