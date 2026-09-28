@@ -213,31 +213,35 @@ def esc(s):
     return html.escape(s, quote=True)
 
 
+def two_col(img, text_html, img_basis="220px", img_max="300px", gap="28px"):
+    """Image beside text, wrapping to image-above-text on narrow screens.
+
+    D2L strips <style> blocks, so there are no media queries: a wrapping flex row does
+    the job. The image column is about a third of the width and the image is never
+    cropped (the course's images are 16:9, 3:2, square and portrait).
+    """
+    return (f'<div style="display:flex;flex-wrap:wrap;gap:{gap};align-items:flex-start;'
+            f'margin-bottom:22px">'
+            f'<div style="flex:1 1 {img_basis};max-width:{img_max}">'
+            f'<img src="{esc(img)}" alt="" style="display:block;width:100%;height:auto;'
+            f'border-radius:12px;border:1px solid {RULE}"></div>'
+            f'<div style="flex:2 1 300px;min-width:0">{text_html}</div></div>')
+
+
 def landing(kind, title, desc=None, buttons=(), img=None, note=None, body_html=None):
     """A small page inside D2L that frames an item and hands the student onward.
 
     Inline styles only: D2L's editor strips <style> blocks. `buttons` is
-    [(label, url), ...]; the first is primary, the rest are outlined.
+    [(label, url), ...]; the first is primary, the rest are outlined. With an image,
+    the head (kicker, title, blurb, buttons) sits beside it so it lands above the fold.
     """
-    p = [f'<div style="font-family:Arial,Helvetica,sans-serif;line-height:1.55;'
-         f'color:{INK};max-width:44rem">']
-    if img:
-        # Never crop: the images are 16:9, 3:2, square and portrait. Each shows whole,
-        # at most 360px tall, so a portrait image comes out narrower rather than sliced.
-        p.append(f'<img src="{esc(img)}" alt="" style="display:block;width:auto;height:auto;'
-                 f'max-width:100%;max-height:360px;border-radius:12px;border:1px solid {RULE};'
-                 f'margin-bottom:22px">')
-    p.append(f'<p style="margin:0 0 6px;font-size:13px;letter-spacing:.08em;'
-             f'text-transform:uppercase;color:{MUTED}">{esc(kind)}</p>')
-    p.append(f'<h2 style="margin:0 0 14px;color:{GREEN};font-size:26px;line-height:1.2">'
-             f'{esc(title)}</h2>')
+    head = [f'<p style="margin:0 0 6px;font-size:13px;letter-spacing:.08em;'
+            f'text-transform:uppercase;color:{MUTED}">{esc(kind)}</p>',
+            f'<h2 style="margin:0 0 14px;color:{GREEN};font-size:26px;line-height:1.2">'
+            f'{esc(title)}</h2>']
     if desc:
-        p.append(f'<p style="margin:0 0 20px;font-size:16px">{esc(desc)}</p>')
-    if body_html:
-        p.append(f'<div style="margin:0 0 22px;font-size:16px">{body_html}</div>')
-    if note:
-        p.append(f'<p style="margin:0 0 22px;background:{SOFT};border-left:4px solid {GREEN};'
-                 f'border-radius:0 8px 8px 0;padding:12px 16px;font-size:15px">{note}</p>')
+        head.append(f'<p style="margin:0 0 20px;font-size:16px">{esc(desc)}</p>')
+    btn_html = ""
     if buttons:
         btns = []
         for i, (label, url) in enumerate(buttons):
@@ -247,7 +251,27 @@ def landing(kind, title, desc=None, buttons=(), img=None, note=None, body_html=N
                         f'style="display:inline-block;{look};text-decoration:none;'
                         f'font-weight:bold;font-size:16px;padding:11px 22px;border-radius:8px;'
                         f'margin:0 10px 10px 0">{esc(label)} &rarr;</a>')
-        p.append(f'<p style="margin:0 0 12px">{"".join(btns)}</p>')
+        btn_html = f'<p style="margin:0 0 12px">{"".join(btns)}</p>'
+
+    rest = []
+    if body_html:
+        rest.append(f'<div style="margin:0 0 22px;font-size:16px">{body_html}</div>')
+    if note:
+        rest.append(f'<p style="margin:0 0 22px;background:{SOFT};border-left:4px solid {GREEN};'
+                    f'border-radius:0 8px 8px 0;padding:12px 16px;font-size:15px">{note}</p>')
+
+    p = [f'<div style="font-family:Arial,Helvetica,sans-serif;line-height:1.55;'
+         f'color:{INK};max-width:{"50rem" if img else "44rem"}">']
+    if img:
+        # Buttons ride in the side column only when nothing sits between them and the head.
+        side = "".join(head) + (btn_html if not rest else "")
+        p.append(two_col(img, side))
+        p += rest
+        if rest:
+            p.append(btn_html)
+    else:
+        p += head + rest + [btn_html]
+    if buttons:
         p.append(f'<p style="margin:0;padding-top:14px;border-top:1px solid {RULE};'
                  f'font-size:14px;color:{MUTED}">Opens in a new tab, so this page stays here '
                  f'if you need to find your way back.</p>')

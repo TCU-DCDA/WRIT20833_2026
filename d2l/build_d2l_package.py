@@ -189,15 +189,9 @@ H = f'style="color:{c.GREEN}"'
 
 
 def orientation_page():
-    return f"""<div {STYLE}>
-<img src="{c.index.HERO}" alt=""
-  style="display:block;width:100%;height:auto;border-radius:12px;
-  border:1px solid {c.RULE};margin-bottom:24px">
-
-<h2 {H}>How this course works</h2>
-
+    intro = f"""<h2 style="color:{c.GREEN};margin-top:0">How this course works</h2>
 <p>The course lives in three places, and each does one job:</p>
-<ul>
+<ul style="padding-left:1.1rem">
   <li><strong>The <a href="{c.SITE}/" target="_blank">course site</a></strong> &mdash;
       the schedule, the mini-lectures, and a card for every notebook.</li>
   <li><strong>Google Colab</strong> &mdash; where the code runs. Every notebook opens there;
@@ -205,7 +199,9 @@ def orientation_page():
   <li><strong>TCU Online</strong> (here) &mdash; the weekly modules, the four discussions,
       and the Assignments folders where you turn work in.</li>
 </ul>
-<p>Follow the weekly modules here and they will send you to the right place.</p>
+<p>Follow the weekly modules here and they will send you to the right place.</p>"""
+    return f"""<div style="font-family:Arial,Helvetica,sans-serif;line-height:1.55;max-width:50rem;color:{c.INK}">
+{c.two_col(c.index.HERO, intro, img_basis="260px", img_max="340px")}
 
 <h3 {H}>Opening a notebook</h3>
 <p>{c.NOTEBOOK_NOTE} To hand in a homework notebook, use <strong>File &rarr; Download
@@ -362,19 +358,18 @@ def homepage_widget():
             f'<span style="display:block;color:{c.GREEN};font-weight:bold;font-size:16px;'
             f'margin-bottom:3px">{title} &rarr;</span>'
             f'<span style="display:block;color:{c.MUTED};font-size:13px">{blurb}</span></a>')
+    head = (f'<h2 style="margin:0 0 6px;color:{c.GREEN};font-size:24px">When Coding Meets Culture</h2>'
+            f'<p style="margin:0 0 14px;font-size:14px;color:{c.MUTED}">WRIT 20833 &middot; Fall 2026 '
+            f'&middot; MWF 10:00&ndash;11:50 &middot; Schar Hall 2003</p>'
+            f'<p style="margin:0;font-size:16px">Notebooks run in Google Colab and the lectures live '
+            f'on the course site. Use the weekly modules here to find them, to post to the '
+            f'discussions, and to turn work in under Assignments.</p>')
     return f"""<!-- Paste into a D2L Custom Widget: Course Admin -> Homepages -> Widgets ->
      Create Widget -> Content (source view). Then add the widget to the course homepage.
      Images load from the public GitHub repo. -->
 <div style="font-family:Arial,Helvetica,sans-serif;color:{c.INK};line-height:1.55;
   max-width:56rem;margin:0 auto;padding:8px 32px 16px">
-  <img src="{c.index.HERO}" alt="" style="width:100%;height:auto;max-height:420px;object-fit:cover;
-    object-position:center 30%;border-radius:12px;display:block;margin-bottom:18px">
-  <h2 style="margin:0 0 6px;color:{c.GREEN};font-size:24px">When Coding Meets Culture</h2>
-  <p style="margin:0 0 18px;font-size:14px;color:{c.MUTED}">WRIT 20833 &middot; Fall 2026
-    &middot; MWF 10:00&ndash;11:50 &middot; Schar Hall 2003</p>
-  <p style="margin:0 0 20px;font-size:16px">Notebooks run in Google Colab and the lectures
-    live on the course site. Use the weekly modules here to find them, to post to the
-    discussions, and to turn work in under Assignments.</p>
+  {c.two_col(c.index.HERO, head, img_basis="260px", img_max="380px")}
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
     {"".join(cards)}</div>
   <p style="margin:20px 0 0;padding-top:14px;border-top:1px solid {c.RULE};font-size:14px;
