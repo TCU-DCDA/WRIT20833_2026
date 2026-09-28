@@ -33,7 +33,7 @@ the final day (Fri Dec 18) is the course's Final Evaluative Exercise — there i
 |---|---|---|---|
 | **Mon 10/26** (4) | Collective Memory | **Code-along** → [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) | — |
 | **Wed 10/28** (5) | — | **Code-along** → [Functions & dictionaries](notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb) | — |
-| **Fri 10/30** (6) | — (recap) | **Work session** → foundations recap + practice | **HW1 assigned** |
+| **Fri 10/30** (6) | — (recap) | **Work session** → foundations recap + **start HW1 in class** | **HW1 assigned** |
 
 ### Week 3 (Nov 2–6) — From text to data: term frequency & AI
 | Date | Lecture | Coding | Due |

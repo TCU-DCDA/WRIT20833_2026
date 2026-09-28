@@ -14,7 +14,17 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-09-28 (cont.) — Lane E #5: false provenance
+## Latest session — 2026-09-28 (cont.) — Lane C: HW1 window
+
+HW1 (Fri 10/30 → Mon 11/2, ~2.5–3 hrs by its own estimate) had the tightest window of the four
+homeworks. **Kept the due date.** Relabeled Day 6 from "foundations recap + practice" to "foundations
+recap + **start HW1 in class**" in `COURSE_SCHEDULE_2026.md` and `SYLLABUS_2026.md`, and regenerated
+`docs/schedule.html`. Moving the deadline was rejected: it would overlap HW2 and crowd the Day 8 lab.
+**The Word syllabus still needs the same edit.**
+
+---
+
+## Session — 2026-09-28 (cont.) — Lane E #5: false provenance
 
 Checked each claim against the notebooks. Day 5 does build `count_words` and previews `Counter`.
 `split_into_words` and the long stopwords list are new on Day 7: HW1 A6 has a five-word list, and HW1

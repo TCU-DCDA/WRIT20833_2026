@@ -344,7 +344,7 @@ assessed before it's taught.*
 |---|---|---|---|
 | **Mon 10/26** (4) | Collective Memory | Lists & loops | — |
 | **Wed 10/28** (5) | — | Functions & dictionaries | — |
-| **Fri 10/30** (6) | — (recap) | Foundations recap + practice | **HW1 assigned** |
+| **Fri 10/30** (6) | — (recap) | Foundations recap + start HW1 in class | **HW1 assigned** |
 
 ### Week 3 (Nov 2–6) — From text to data: term frequency & AI
 | Date | Lecture | Coding | Due |

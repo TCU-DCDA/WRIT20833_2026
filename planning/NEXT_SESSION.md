@@ -61,10 +61,10 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
 **Lane C — instructor decisions to close (~20 min, needs your judgment, not research).**
 - **Capstone placeholders** — presentation length `[3–5]` min (2 spots) and `[to: upload location]`
   in `CAPSTONE_2026.md`. Needed by **Fri 12/4** (proposal), not Day 1.
-- **HW1 window** — assigned Fri 10/30, due **Mon 11/2**: one weekend for 12 exercises + Weekly
-  Experiments, from students six sessions into their first Python. HW2–4 each get a full week *plus* a
-  work session. Moving HW1's due date to Wed 11/4 costs nothing structurally (Day 7 is its debrief —
-  that would need to move too, or the debrief stays and only the deadline slides).
+- ✅ **HW1 window — DECIDED 2026-09-28.** The due date stays Mon 11/2. The Day 6 work session is relabeled
+  "foundations recap + **start HW1 in class**" in the schedule and syllabus, so the window is one class
+  session plus a weekend, about the same as HW4. ⚠️ Mirror this into the Word syllabus
+  (`WRIT20833-020_Fall2026_Rode.docx`).
 - ✅ **Stale root duplicates — DELETED 2026-09-02.** The June reorg had left four tracked copies at the
   repo root; root `WORKLOG.md` and `CONCEPTUAL_FRAMEWORK_2026.md` still dated to 2026-06-10 and described
   the *4-week summer* course. All four (`WORKLOG.md`, `CONCEPTUAL_FRAMEWORK_2026.md`, `ACKNOWLEDGMENTS.md`,
