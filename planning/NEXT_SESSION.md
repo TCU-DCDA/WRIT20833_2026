@@ -9,7 +9,7 @@
 > 2026-09-04 entries at the top of `planning/WORKLOG.md`.
 >
 > ✅ Keys repo `4fa8490` is pushed (verified 2026-09-28: in sync with `origin/main`).
-> **2026-09-28:** Lane E #2 (Day 3/4 split) fixed. Lane E #1 (HW3 tone vs. stance) fixed the same day. E #4 fixed too. **Next up: Lane E #3, #5, #6, or Lane C.**
+> **2026-09-28:** Lane E #2 (Day 3/4 split) fixed. Lane E #1 (HW3 tone vs. stance) fixed the same day. E #4 fixed too. E #5 fixed too. **Next up: Lane E #3 (Topic Modeling toy corpus), #6, or Lane C.**
 
 ---
 
@@ -95,11 +95,11 @@ unilaterally. In priority order:
 4. ✅ **Term Frequency "distinctive words" — FIXED 2026-09-28.** The cell now checks the comments' top 8
    against the official text's *full* vocabulary, using a loop with `if` (no set comprehension). Output:
    7 distinctive, 1 shared (**religion**). A new sentence names that shared word as where the two voices meet.
-5. **False provenance.** Term Frequency's setup claims "the same tools from Day 5 and HW1: a
-   `split_into_words` helper, the long `stopwords` skip-list"; HW2 repeats it. Day 5 has neither and
-   HW1 A6's list is five words, explicitly a preview — both are new on Day 7. Relatedly HW2's prep list
-   never cites the Day-5 code-along though A5 and `Counter` come from it, and the syllabus maps Day 5 →
-   HW1 while HW1 has no `def`, no `{}`, no `Counter`.
+5. ✅ **False provenance — FIXED 2026-09-28.** Term Frequency's setup now says `split_into_words` and
+   the long `stopwords` list are **new on Day 7** (HW1 A6 previewed five words), and that `Counter` is
+   from the end of Day 5. HW2's setup, tool list, and A5 header were corrected to match. HW2's prep list
+   now cites the Term Frequency and Dictionaries & Functions code-alongs. HW3's "you built in HW2" is now
+   "you used". The syllabus maps Day 5 → "HW2 · every HW after" (HW1 has no `def`).
 6. **Smaller:** list comprehensions appear in Term Frequency's given code and HW2 A3's hint but are
    never taught; HW2's own-data exercise is *optional* while Day 9 is a scheduled "term frequency on
    your data" work session; HW4's capstone bridge (C2) is due Day 19, a day **after** the capstone

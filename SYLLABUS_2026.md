@@ -324,7 +324,7 @@ assessed before it's taught.*
 | Strings & string methods | Day 2 (Wed 10/21) | HW1, HW2 |
 | Comparisons & conditionals | Day 3 (Fri 10/23) | HW1 |
 | Lists & loops | Day 4 (Mon 10/26) | HW1, HW2 |
-| Functions & dictionaries | Day 5 (Wed 10/28) | HW1 · every HW |
+| Functions & dictionaries | Day 5 (Wed 10/28) | HW2 · every HW after |
 | Counting & term frequency | Day 7 (Mon 11/2) | HW2 |
 | pandas DataFrames | Day 10 (Mon 11/9) | HW3, HW4, capstone |
 | Cleaning & `.apply()` | Day 11 (Wed 11/11) | HW3, HW4 |

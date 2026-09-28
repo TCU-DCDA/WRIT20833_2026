@@ -14,7 +14,25 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-09-28 (cont.) — Lane E #4: Term Frequency "distinctive words"
+## Latest session — 2026-09-28 (cont.) — Lane E #5: false provenance
+
+Checked each claim against the notebooks. Day 5 does build `count_words` and previews `Counter`.
+`split_into_words` and the long stopwords list are new on Day 7: HW1 A6 has a five-word list, and HW1
+has no `def`, `{}`, or `Counter`. Fixed:
+- **Term Frequency setup** (`_build_termfreq.py`) now says two of its tools are new today and one
+  (`Counter`) is from Day 5.
+- **HW2** (`_build_hw2.py`, keys): setup comment, tool list, and the A5 header, which now says
+  "Recall Day 5" instead of HW1. The prep list gained the Term Frequency code-along (HW2's actual engine)
+  and Dictionaries & Functions (A5's source).
+- **HW3** setup: "you built in HW2" → "you used" (HW2 hands these over in its setup cell).
+- **Syllabus** skills table: Day 5 → "HW2 · every HW after" (was "HW1 · every HW").
+
+Verified: Term Frequency and the HW2/HW3 keys execute clean. `docs/` had no diff; the site links to the
+syllabus rather than rendering it.
+
+---
+
+## Session — 2026-09-28 (cont.) — Lane E #4: Term Frequency "distinctive words"
 
 The cell computed `comment_top - official_top`, subtracting two top-8 sets. They never overlap, so
 nothing was ever removed and every word came out "distinctive". Rewrote it in `_build_termfreq.py` to
