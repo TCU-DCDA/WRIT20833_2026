@@ -140,7 +140,8 @@ the Week-4 discussion (D4): what computation reveals *and* hides.
 | **Fri 12/18** (Day 24) | **Capstone presentations** + course wrap | **Capstone due** · **R3 due** |
 
 ### The proposal (due Fri 12/4)
-One short paragraph — really an expanded version of your **HW4 C2** plan. Tell me:
+One short paragraph. (You'll look back at it in **HW4 C2**, due the next Monday, once you've run all three
+lenses yourself.) Tell me:
 - **which dataset** (your own, ideally — or the provided corpus / a stylometry corpus);
 - **your question** — the humanistic question you're actually curious about;
 - **which lenses** (frequency / sentiment / topics — or the stylometry measures) you expect to use, and why;

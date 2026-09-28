@@ -9,7 +9,7 @@
 > 2026-09-04 entries at the top of `planning/WORKLOG.md`.
 >
 > ✅ Keys repo `4fa8490` is pushed (verified 2026-09-28: in sync with `origin/main`).
-> **2026-09-28:** Lane E #2 (Day 3/4 split) fixed. Lane E #1 (HW3 tone vs. stance) fixed the same day. E #4 fixed too. E #5 fixed too. **Next up: Lane E #3 (Topic Modeling toy corpus), #6, or Lane C.**
+> **2026-09-28:** Lane E #2 (Day 3/4 split) fixed. Lane E #1 (HW3 tone vs. stance) fixed the same day. E #4 fixed too. **All of Lane E closed 2026-09-28.** Next up: Lane C (capstone placeholders, chatbot) or Lane B.
 
 ---
 
@@ -88,10 +88,10 @@ unilaterally. In priority order:
    pairing — ml3 "Classification Logic" / ml5 "Collective Memory" — belongs with the days). The two
    `platforms`-dependent `in` checks now use strings (a Day-2 callback); added a Day-3 "your turn" and a
    "🛑 Day 3 stops here" marker. Filename unchanged, so Colab links still resolve.
-3. **Topic Modeling Part 1's "clear example" isn't clear** on gensim 4.4.0 / `random_state=42`: 3 of the
-   5 music docs land in the sports or food topic and "song" sits in the sports topic's top 6, while the
-   narration promises "a comment or two" misfiled. The k=4 run in Part 2 separates cleanly. Re-tune the
-   toy corpus or the seed.
+3. ✅ **Topic Modeling toy corpus — FIXED 2026-09-28.** The 15 toy comments were rewritten so the three
+   themes share no vocabulary. Seed 42 on gensim 4.4.0 now files all 15 correctly (it was 12/15); across
+   seeds, 54/100 are clean (it was 15/100). A corpus this size tops out around 75%. The prose now says the
+   split depends on the seed, and explains why.
 4. ✅ **Term Frequency "distinctive words" — FIXED 2026-09-28.** The cell now checks the comments' top 8
    against the official text's *full* vocabulary, using a loop with `if` (no set comprehension). Output:
    7 distinctive, 1 shared (**religion**). A new sentence names that shared word as where the two voices meet.
@@ -100,12 +100,14 @@ unilaterally. In priority order:
    from the end of Day 5. HW2's setup, tool list, and A5 header were corrected to match. HW2's prep list
    now cites the Term Frequency and Dictionaries & Functions code-alongs. HW3's "you built in HW2" is now
    "you used". The syllabus maps Day 5 → "HW2 · every HW after" (HW1 has no `def`).
-6. **Smaller:** list comprehensions appear in Term Frequency's given code and HW2 A3's hint but are
-   never taught; HW2's own-data exercise is *optional* while Day 9 is a scheduled "term frequency on
-   your data" work session; HW4's capstone bridge (C2) is due Day 19, a day **after** the capstone
-   proposal it should inform (Day 18). Cosmetic: Term Frequency's prose word order, and the VADER
-   "predict first" cell whose intended *mixed* line scores **+0.714** (higher than the lukewarm one)
-   while 5 of its 11 demo comments score exactly 0.0000.
+6. ✅ **Smaller items — FIXED 2026-09-28.** List comprehensions are taught once in Term Frequency,
+   next to the Day-4 loop version. Day 9 is relabeled "HW2 (+ optional C2: text of your own)"; students
+   don't collect their own data until Day 12. HW4 C2 now revisits the Day-18 proposal instead of planning
+   it, and the capstone sheet was fixed to match. Cosmetic fixes: Term Frequency's word order now matches
+   its output; VADER has notes on why the "mixed" line scores high (*pointless* is not in the lexicon,
+   *honestly* is rated positive) and why four demo comments score 0.000 ("no evidence," not "no opinion").
+
+**Lane E is closed.**
 
 ⚠️ **Any HW2–4 change goes through `_build_hw2/3/4.py` in `../WRIT20833_2026_keys`, never the `.ipynb`.**
 See the new root `CLAUDE.md` §1.

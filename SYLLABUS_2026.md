@@ -351,7 +351,7 @@ assessed before it's taught.*
 |---|---|---|---|
 | **Mon 11/2** (7) | Data as evidence *(brief framing)* | Term frequency + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
 | **Wed 11/4** (8) | AI Agency | Reading & improving AI code + stylometry seed | D2 post |
-| **Fri 11/6** (9) | — | HW2 work session (term frequency on your data) | D2 replies |
+| **Fri 11/6** (9) | — | HW2 work session (+ optional C2: text of your own) | D2 replies |
 
 ### Week 4 (Nov 9–13) — Found data, ethics & pandas
 | Date | Lecture | Coding | Due |

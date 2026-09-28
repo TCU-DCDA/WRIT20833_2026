@@ -110,6 +110,22 @@ print(Counter(words).most_common(10))'''),
 *schools* and *religion* are climbing up too, because they repeat a lot — but they're elbow to elbow with
 noise.) The single most frequent words are meaningless, which makes the whole ranking untrustworthy.
 Let's clear the noise out so the count actually means something.'''),
+    md('''### A new shape of code: the list comprehension
+That line `[w for w in split_into_words(comments_text) if w]` is a **list comprehension**, Python's
+one-line shorthand for a pattern you already know from Day 4 ("Building new lists from old ones"):
+start with an empty list, loop, and `.append()` whatever passes a test. The two versions below build
+the exact same list. You'll see the one-line form a lot, in our notebooks and in AI-written code, so
+it's worth being able to read it back into the long form.'''),
+    code('''# the long way (Day 4)
+words_long = []
+for w in split_into_words(comments_text):
+    if w:
+        words_long.append(w)
+
+# the list comprehension -- same thing, one line
+words_short = [w for w in split_into_words(comments_text) if w]
+
+print(words_long == words_short)'''),
 
     # ---- Part 2: meaningful words ----
     md('''# Part 2 — Keep Only the Meaningful Words
@@ -121,7 +137,7 @@ the top.'''),
 
 print("Meaningful words kept:", len(meaningful))
 print(Counter(meaningful).most_common(10))'''),
-    md('''*That's* term frequency. Now the top words — **schools, religion, country, god, kids** —
+    md('''*That's* term frequency. Now the top words — **schools, religion, country, kids, god** —
 actually tell you what this pile of comments is about. Same text, same counting; we just stopped
 counting the noise.'''),
     md('''> **About borrowed code.** `Counter` is a tool you `import` — it does in one line what your
@@ -167,7 +183,7 @@ The Congress shall have power to make all laws necessary and proper.
 print("Comments:", top_meaningful_words(comments_text, 5))
 print("Official: ", top_meaningful_words(official_text, 5))'''),
     md('''Same method, two different *aboutnesses*. The official text runs on **shall, congress, states,
-law**; the comments on **schools, religion, country, god**. Neither list is the "right" one —
+law**; the comments on **schools, religion, country, kids**. Neither list is the "right" one —
 together they show two voices talking about the same issue in completely different words. That gap *is*
 the analysis.'''),
     md('''We can even name the words that are distinctive to one side — the comments' top words that the

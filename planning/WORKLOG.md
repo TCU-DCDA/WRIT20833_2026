@@ -14,7 +14,35 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-09-28 (cont.) — Lane C: HW1 window
+## Latest session — 2026-09-28 (cont.) — Lane E #3 and #6: Lane E closed
+
+**#3 — Topic Modeling toy corpus** (`_build_topicmodeling.py`). At seed 42, 3 of the 5 music comments
+landed in the wrong topic, and only 15/100 seeds separated all three themes. Raising `passes` helped
+little (23/100 at 100 passes). The comments themselves were the problem, so I rewrote them so the three
+themes share no vocabulary. Seed 42 is now clean (15/15), and 54/100 seeds are clean at `passes=10`.
+Tighter variants reached ~75% but failed at seed 42; that seems to be the ceiling for 15 short
+documents. The follow-up prose used to promise "a comment or two" misfiled. It now says the split
+depends on the seed, and explains why: LDA starts from a random guess and gets little evidence here.
+The builder header's stale "Days 14–15" is now 16–17.
+
+**#6 — smaller items:**
+- **List comprehensions** are taught once, in Term Frequency Part 1, next to the Day-4 loop-and-append
+  version (the cell prints `True`). HW2 A3's hint now points at something students have seen.
+- **Day 9** is relabeled "HW2 (+ optional C2: text of your own)" in the schedule and syllabus. Students
+  don't collect their own data until Day 12, so "on your data" promised something they couldn't do yet.
+- **HW4 C2** now revisits the Day-18 proposal, since HW4 is due Day 19, instead of being the plan that
+  feeds it. The key note was updated to match. `CAPSTONE_2026.md` had called the proposal "an expanded
+  version of your HW4 C2 plan"; it now says C2 looks back at it.
+- **Cosmetic:** Term Frequency's word order now matches its output (country, kids, god). VADER gets a
+  "check your predictions" note: the mixed line scores +0.714 because *pointless* is not in the lexicon
+  and *honestly* is rated +2.0. It also gets a "0.000 means no evidence, not no opinion" note on the
+  four zero-scoring demo comments. Fixed the "That's it quantifying" typo.
+
+Verified: Term Frequency, VADER, Topic Modeling, and the HW4 key execute clean. `docs/` regenerated.
+
+---
+
+## Session — 2026-09-28 (cont.) — Lane C: HW1 window
 
 HW1 (Fri 10/30 → Mon 11/2, ~2.5–3 hrs by its own estimate) had the tightest window of the four
 homeworks. **Kept the due date.** Relabeled Day 6 from "foundations recap + practice" to "foundations

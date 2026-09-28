@@ -40,7 +40,7 @@ the final day (Fri Dec 18) is the course's Final Evaluative Exercise — there i
 |---|---|---|---|
 | **Mon 11/2** (7) | Data as evidence *(brief framing — no deck)* | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
 | **Wed 11/4** (8) | AI Agency | **Lab** → Reading & improving AI code + stylometry seed: [Reading for the Seams](materials/stylometry/Reading_for_the_Seams.md) (close reading) | D2 post |
-| **Fri 11/6** (9) | — | **Work session** → HW2 (term frequency on your data) | D2 replies |
+| **Fri 11/6** (9) | — | **Work session** → HW2 (+ optional C2: term frequency on text of your own) | D2 replies |
 
 ### Week 4 (Nov 9–13) — Found data, ethics & pandas
 | Date | Lecture | Coding | Due |

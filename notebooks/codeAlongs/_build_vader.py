@@ -93,9 +93,14 @@ negative? Which is mixed? Then check yourself.'''),
 for text in samples:
     c = analyzer.polarity_scores(text)["compound"]
     print(f"{c:+.3f}   {text}")'''),
+    md('''**Check your predictions.** Did the mixed line come out mixed? *"It was good but honestly kind of
+pointless"* scores well above zero, higher even than the lukewarm *"okay, nothing special"* line.
+Two reasons, and both are about the word list VADER relies on: **pointless** isn't in its list at all, so it
+counts for nothing, and **honestly** *is* in the list, rated as a positive word. A lexicon can only hear
+the words it was given.'''),
 
     md('''### Sentiment = quantifying connotation
-Notice what just happened: VADER turned *feeling* into a *number*. That's it **quantifying
+Notice what just happened: VADER turned *feeling* into a *number*. That's **quantifying
 connotation** — the emotional coloring of words, beyond their dictionary meaning. "Inexpensive" and
 "cheap" mean the same thing but feel different; VADER scores that difference. It can because it leans on
 a **lexicon** — a fixed list of ~7,500 words each pre-rated for sentiment. Caps, `!!!`, and emoji nudge
@@ -140,6 +145,10 @@ column move you used with pandas. We add the result as a new `sentiment` column.
 
 comments_df["sentiment"] = comments_df["comment"].apply(tone)
 comments_df'''),
+    md('''Notice the **0.000**s. Several comments score exactly zero, including *"The Ten Commandments belong in
+every classroom, period."*, a firm position if there ever was one. VADER isn't calling them neutral. It
+found none of their words in its lexicon, so it has nothing to add up. **Zero means "no evidence," not
+"no opinion."**'''),
 
     # ---- interpret ----
     md('''# Part 3 — Reading the Results
