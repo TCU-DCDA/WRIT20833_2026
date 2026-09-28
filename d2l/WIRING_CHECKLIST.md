@@ -4,7 +4,9 @@ Instructor-only. Adapted from WRIT 40363's `d2l/WIRING_CHECKLIST.md`, which was 
 against a live Fall 2026 shell. Where this course differs, it says so.
 
 > **Status, Fall 2026 shell:** §1 and §2 imported 2026-09-28 (both packages). **Not yet confirmed:**
-> the discussion topics (§1 ⚠️) and the Nov 1 date spot-check (§2). §3–§6 not started.
+> the discussion topics (§1 ⚠️) and the Nov 1 date spot-check (§2). Start Here + Weeks + Homework were
+> re-imported once (uncropped images). §6 widget is live. §3–§5 not started. Resume point:
+> `planning/NEXT_SESSION.md` → Lane D.
 
 Two generators, two packages, one widget:
 

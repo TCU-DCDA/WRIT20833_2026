@@ -115,6 +115,19 @@ unilaterally. In priority order:
 See the new root `CLAUDE.md` §1.
 
 **Lane D — pre-launch checks not in this repo.** **D2L tooling BUILT and both packages IMPORTED 2026-09-28** (`.imscc` + assignments `.zip`); hand-wiring not done.
+**▶ Resume here (D2L, left mid-task 2026-09-28):**
+1. **Layout decision pending.** The shell holds the *second* import (single-column pages, images uncropped).
+   Commit `85e193e` switched pages + widget to a two-column layout (image beside title/buttons). Choose:
+   (a) re-paste the widget only (`d2l/WRIT20833_Fall2026_D2L-homepage-widget.html`, via Widgets → Course
+   Welcome → Content → `</>`); (b) also swap *How this course works* by hand (source:
+   `d2l/WRIT20833_Fall2026_D2L/content/pg_0001.html`); or (c) third import — permanently delete Start Here,
+   Weeks 1–8, Homework and Capstone; import `python3 d2l/build_d2l_package.py --modules
+   start,1,2,3,4,5,6,7,8,homework --out d2l/WRIT20833_Fall2026_D2L_replace`; drag Discussions to the bottom.
+   Build products are gitignored — rebuild them first on a fresh clone.
+2. **Widget:** created and active on a copied homepage; default D2L banner still above it (remove via its ⋯
+   menu, or keep). "New here?" line not yet a Quicklink (and any Quicklink breaks if Start Here is re-imported).
+3. **Still unconfirmed:** discussion topics landed in Discussions (checklist §1); Nov 1 date spot-check (§2).
+4. **Then checklist §3–5:** discussion dates, 3-point grade scheme + 12 grade items, syllabus PDF.
 `d2l/build_d2l_package.py` (cartridge: Start Here, Weeks 1–8, Homework and Capstone, the 4 discussion
 topics) and `d2l/build_assignments.py` (9 folders: HW1–4, R1–3, capstone proposal, capstone) are
 adapted from WRIT 40363's `d2l/` and read every date and prompt from the schedule and syllabus. Next:

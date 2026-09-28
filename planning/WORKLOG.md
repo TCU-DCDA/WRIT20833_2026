@@ -43,6 +43,11 @@ Nothing has been imported yet.
 - **Imported 2026-09-28:** both the `.imscc` and the assignments `.zip` went into the Fall 2026 shell
   without errors. Not yet confirmed: that the discussions landed as Discussions topics, and the Nov 1 date
   spot-check. Next: checklist §3–6 (discussion dates, grade scheme + 12 items, syllabus PDF, widget).
+- **Later the same day (shell work):** the homepage widget is live on a copied homepage; its width is
+  capped, its banner is taller, and it's under D2L's default banner. The package images were being cropped
+  into 220–240px strips, so images are never cropped now (`d424430`); the content modules were re-imported
+  with that fix. Then a two-column layout (image beside the head, wrapping on narrow screens) went into
+  pages and widget (`85e193e`), **not yet applied in D2L**. Resume point: NEXT_SESSION → Lane D.
 - **Open (in `d2l/WIRING_CHECKLIST.md`):** CC discussion import is unverified on TCU's instance.
   Two calls to confirm: discussion deadlines = start of class, and the extra proposal folder. The
   stylometry notebook still says "DRAFT exercise for review" and calls its handout "Day-7"; the
