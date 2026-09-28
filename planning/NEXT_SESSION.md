@@ -9,7 +9,7 @@
 > 2026-09-04 entries at the top of `planning/WORKLOG.md`.
 >
 > ✅ Keys repo `4fa8490` is pushed (verified 2026-09-28: in sync with `origin/main`).
-> **2026-09-28:** Lane E #2 (Day 3/4 split) fixed. Lane E #1 (HW3 tone vs. stance) fixed the same day. **Next up: Lane E #3–#6, or Lane C.**
+> **2026-09-28:** Lane E #2 (Day 3/4 split) fixed. Lane E #1 (HW3 tone vs. stance) fixed the same day. E #4 fixed too. **Next up: Lane E #3, #5, #6, or Lane C.**
 
 ---
 
@@ -92,9 +92,9 @@ unilaterally. In priority order:
    5 music docs land in the sports or food topic and "song" sits in the sports topic's top 6, while the
    narration promises "a comment or two" misfiled. The k=4 run in Part 2 separates cleanly. Re-tune the
    toy corpus or the seed.
-4. **Term Frequency's "distinctive words" cell** computes `comment_top - official_top` (top-8 minus
-   top-8). The lists are fully disjoint, so nothing is ever subtracted and the point is invisible. HW2
-   **B3** does it correctly against the full vocabulary — make the code-along match.
+4. ✅ **Term Frequency "distinctive words" — FIXED 2026-09-28.** The cell now checks the comments' top 8
+   against the official text's *full* vocabulary, using a loop with `if` (no set comprehension). Output:
+   7 distinctive, 1 shared (**religion**). A new sentence names that shared word as where the two voices meet.
 5. **False provenance.** Term Frequency's setup claims "the same tools from Day 5 and HW1: a
    `split_into_words` helper, the long `stopwords` skip-list"; HW2 repeats it. Day 5 has neither and
    HW1 A6's list is five words, explicitly a preview — both are new on Day 7. Relatedly HW2's prep list

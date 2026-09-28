@@ -169,12 +169,20 @@ print("Official: ", top_meaningful_words(official_text, 5))'''),
 law**; the comments on **schools, religion, country, god**. Neither list is the "right" one —
 together they show two voices talking about the same issue in completely different words. That gap *is*
 the analysis.'''),
-    md('''We can even name the words that are distinctive to one side — the meaningful words in the
-comments that the official text never reaches for:'''),
-    code('''comment_top = {word for word, count in top_meaningful_words(comments_text, 8)}
-official_top = {word for word, count in top_meaningful_words(official_text, 8)}
+    md('''We can even name the words that are distinctive to one side — the comments' top words that the
+official text never uses **at all**. That means checking against *every* word in the official text, not
+just its top few (two top-8 lists can easily share nothing, which would make every word look
+"distinctive"):'''),
+    code('''official_words = set(split_into_words(official_text))   # every word the official text uses
 
-print("Distinctive to the comments:", comment_top - official_top)'''),
+for word, count in top_meaningful_words(comments_text, 8):
+    if word in official_words:
+        print(f"shared       {word} ({count})")
+    else:
+        print(f"distinctive  {word} ({count})")'''),
+    md('''Almost everything the commenters care about — **schools, kids, god, freedom** — is a word the legal
+text never uses. The one word they share is **religion**. That is where the two voices actually meet,
+and it's the word they are arguing over.'''),
 
     # ---- Putting it together ----
     md('''# Putting It All Together

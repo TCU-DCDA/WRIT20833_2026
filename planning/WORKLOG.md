@@ -14,7 +14,19 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-09-28 (cont.) — Lane E #1: HW3 tone vs. stance
+## Latest session — 2026-09-28 (cont.) — Lane E #4: Term Frequency "distinctive words"
+
+The cell computed `comment_top - official_top`, subtracting two top-8 sets. They never overlap, so
+nothing was ever removed and every word came out "distinctive". Rewrote it in `_build_termfreq.py` to
+check each of the comments' top 8 against the official text's **full** vocabulary, the way HW2 B3 does.
+It's written as a `for` loop with an `if` (Days 3–4 material) rather than a set comprehension. On the
+code-along's texts the result is 7 distinctive words and 1 shared: **religion**, the comments' #2 word.
+The prose now calls that shared word the place where the two voices meet. Verified: the notebook
+executes clean, and `docs/` regenerated with no diff.
+
+---
+
+## Session — 2026-09-28 (cont.) — Lane E #1: HW3 tone vs. stance
 
 The VADER code-along's Part 4 teaches that **tone is not stance**. HW3 then used VADER's tone labels as
 stance throughout: the title, the intro, B4 ("support or oppose"), and C1 ("split by stance"). The key
