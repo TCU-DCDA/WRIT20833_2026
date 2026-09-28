@@ -20,8 +20,9 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 > **Status: in active development (draft).** The homework spine (HW1–HW4) and **all code-along notebooks**
 > (one per coding day) are complete and execute clean; a **2026-09-05 continuity audit** read the
 > code-alongs against the homework they build toward and fixed the mechanical defects it found (stale day
-> numbers, a wrong corpus count, a dead guard in HW4) — **six judgment-call items remain open**, listed in
-> `planning/NEXT_SESSION.md` Lane E. The **syllabus markdown** is fully filled (no `[...]`
+> numbers, a wrong corpus count, a dead guard in HW4). All six judgment-call items it left open (Lane E in
+> `planning/NEXT_SESSION.md`) were **resolved on 2026-09-28**, among them HW3's tone-vs-stance framing and the
+> Day 3/4 notebook order. The **syllabus markdown** is fully filled (no `[...]`
 > placeholders left) and aligned to the AddRan template; a **course website** (`docs/`) is live and public;
 > and the **capstone sheet** (`CAPSTONE_2026.md`) is drafted. **Lecture pages** — all eight scheduled
 > mini-lecture reading pages + slide decks are live (`build_lectures.py`): Humanities & Coding, Connotations

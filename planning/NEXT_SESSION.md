@@ -1,15 +1,17 @@
 # Next-session handoff prompt
 
-> **Course starts Mon Oct 19, 2026.** Status as of **2026-09-05**: 🚀 **the launch blocker is CLEARED —
-> the repo is public, the site is live, and the answer keys are unreachable from it.** A **continuity
-> audit** (2026-09-05) then read the code-alongs against the homework they build toward and fixed the
-> mechanical defects — day numbers, a wrong corpus count, a dead guard in HW4 — in both the course repo
-> (`0821ee6`, pushed) and the keys builders (`4fa8490`, **committed not pushed**). What remains is
-> polish and instructor decisions, none of it blocking Days 1–12. Full detail: the 2026-09-05 and
-> 2026-09-04 entries at the top of `planning/WORKLOG.md`.
+> **Course starts Mon Oct 19, 2026.** Status as of **2026-09-28**: the repo is public, the site is live,
+> and the answer keys are unreachable from it. **Lane E is closed.** All six judgment calls from the
+> 2026-09-05 continuity audit were fixed and pushed on 2026-09-28: the HW3 tone/stance framing, the
+> Day 3/4 notebook order, the Topic Modeling toy corpus, Term Frequency's distinctive-words cell, the
+> false provenance claims, and the smaller items. The Lane C decision on the HW1 window is also made
+> (Day 6 = start HW1 in class). Both repos are in sync with `origin/main`. Every builder reproduces
+> what is committed (re-verified 2026-09-28).
 >
-> ✅ Keys repo `4fa8490` is pushed (verified 2026-09-28: in sync with `origin/main`).
-> **2026-09-28:** Lane E #2 (Day 3/4 split) fixed. Lane E #1 (HW3 tone vs. stance) fixed the same day. E #4 fixed too. **All of Lane E closed 2026-09-28.** Next up: Lane C (capstone placeholders, chatbot) or Lane B.
+> ⏩ **Next up:** Lane C (the capstone placeholders, and the chatbot go/no-go) → Lane B (four lecture
+> framings) → Lane D (the D2L shell and other checks outside this repo).
+> ✍️ **Hand edit pending:** mirror the 2026-09-28 Day 6 and Day 9 label changes into the Word syllabus
+> (`WRIT20833-020_Fall2026_Rode.docx`).
 
 ---
 
@@ -161,7 +163,7 @@ Schar Hall 2003, 24 sessions, enrollment ≤ 20. No class Thanksgiving week (Nov
 
 READ FIRST: CLAUDE.md (which files are generated — HW2-4 come from builders in the
 private keys repo, NOT from the .ipynb), then planning/NEXT_SESSION.md (the lane you're
-picking; Lane E holds the six open judgment calls from the 2026-09-05 continuity audit), then
+picking; Lane E, the 2026-09-05 continuity audit's judgment calls, is closed as of 2026-09-28), then
 planning/WORKLOG.md (decision log). planning/PROJECT_EVALUATION_2026-07-01.md is the last
 full audit; the 2026-09-02 WORKLOG entry is the most recent verification.
 

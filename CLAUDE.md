@@ -28,8 +28,10 @@ Two code-alongs (`Variables_DataTypes`, `Lists_Loops_Conditionals`) have **no bu
 edit those `.ipynb` directly.
 
 Check for drift before trusting a notebook: copy the builders to a scratch dir, run them
-there, and `diff` against the committed notebooks. As of 2026-09-05 all seven code-along
-builders and all three HW builders emit byte-identical output to what is committed.
+there, and `diff` against the committed notebooks. As of 2026-09-28 all seven code-along
+builders and all three HW builders emit byte-identical output to what is committed (student
+notebooks here *and* answer keys in the keys repo). The keys repo tracks only the keys and the
+builders; the student notebooks it generates are untracked there.
 
 The keys repo is cloned at `../WRIT20833_2026_keys`. Its builders write **both** the student
 notebook and the answer key into the keys repo; only the *student* notebook is copied back
@@ -63,12 +65,21 @@ hold. The 2026-09-05 audit found several that did not.
 The only expected error in any notebook is the intentional `TypeError` in
 `Variables_DataTypes` ("read the error message carefully").
 
+`jupyter`/`nbconvert` are **not installed**. To execute a notebook, `exec` its code cells in
+order in one namespace, skipping `!pip` lines and using `matplotlib.use("Agg")`.
+
+LDA output depends on the seed and on the gensim version. If you change a topic-modeling example,
+check it at `random_state=42` *and* across many seeds; don't stop at "it looks fine once." Prose
+must not promise a specific split.
+
 ## 4. Cross-references are a standing hazard
 
 Notebooks cite each other and the calendar constantly — "Day 8," "next week," "the same
 tools from HW1," "123 comments." These were ported from a 16-week course and re-paced to 8
 weeks, so day numbers drift silently. **`COURSE_SCHEDULE_2026.md` is the source of truth**
-for day numbers; `notebooks/data/README.md` for corpus facts. Grep for `Day \d`, `Week \d`,
+for day numbers; `notebooks/data/README.md` for corpus facts. Any edit to
+`SYLLABUS_2026.md` must also be made **by hand** in the Word syllabus
+(`WRIT20833-020_Fall2026_Rode.docx`), which holds the AddRan template formatting. Grep for `Day \d`, `Week \d`,
 and bare counts after any re-paced edit.
 
 ## 5. Voice and house style
