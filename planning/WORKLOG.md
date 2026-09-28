@@ -40,6 +40,9 @@ Nothing has been imported yet.
 - **Drift fixed while here:** the HW3 site card still said "Support, opposition, …" after the Lane E
   tone reframe. It now says "Tone, stance, and what counting missed," and `docs/index.html` was
   regenerated. It would otherwise have been copied into the HW3 folder.
+- **Imported 2026-09-28:** both the `.imscc` and the assignments `.zip` went into the Fall 2026 shell
+  without errors. Not yet confirmed: that the discussions landed as Discussions topics, and the Nov 1 date
+  spot-check. Next: checklist §3–6 (discussion dates, grade scheme + 12 items, syllabus PDF, widget).
 - **Open (in `d2l/WIRING_CHECKLIST.md`):** CC discussion import is unverified on TCU's instance.
   Two calls to confirm: discussion deadlines = start of class, and the extra proposal folder. The
   stylometry notebook still says "DRAFT exercise for review" and calls its handout "Day-7"; the

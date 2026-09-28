@@ -3,6 +3,9 @@
 Instructor-only. Adapted from WRIT 40363's `d2l/WIRING_CHECKLIST.md`, which was tested
 against a live Fall 2026 shell. Where this course differs, it says so.
 
+> **Status, Fall 2026 shell:** §1 and §2 imported 2026-09-28 (both packages). **Not yet confirmed:**
+> the discussion topics (§1 ⚠️) and the Nov 1 date spot-check (§2). §3–§6 not started.
+
 Two generators, two packages, one widget:
 
 | Build | Carries | Import as |
