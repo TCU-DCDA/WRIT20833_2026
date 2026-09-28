@@ -14,7 +14,34 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-09-28 (Lane E #2: Day 3 / Day 4 split)
+## Latest session — 2026-09-28 (cont.) — Lane E #1: HW3 tone vs. stance
+
+The VADER code-along's Part 4 teaches that **tone is not stance**. HW3 then used VADER's tone labels as
+stance throughout: the title, the intro, B4 ("support or oppose"), and C1 ("split by stance"). The key
+went further ("sentiment disentangles them"). The corpus has no stance column, so none of those
+claims could be checked.
+
+**Fix (in `_build_hw3.py` / `_build_hw4.py`, keys repo; student notebooks copied back):**
+- Reframed around **tone**: the title is now "Tone, Stance, and What Counting Missed", and the intro
+  names the tone/stance gap and points ahead to B3.
+- **B3** is now a two-cell exercise. Students print the 5 warmest and 5 coldest comments
+  (`nlargest`/`nsmallest`, deterministic), then hand-label each one's stance in a `my_stance` dict and
+  set it beside VADER's label. This is the code-along's two-axis comparison, with the student as the
+  labeler. Exercise count is unchanged.
+- **B4** asks for tone first, then "could you have read stance off tone?", citing the B3 counts.
+  **C1** splits by tone and asks whether warm-plus-"commandments" means support.
+- **Key:** instructor labels for all ten, with reasons. **Warmest 5 = 4 oppose, 1 unclear, 0 support.
+  Coldest 5 = 2 support, 1 oppose, 2 unclear.** On this corpus positive tone points the *wrong* way as
+  a stance proxy. The B4 model answer and C1 note were rewritten, and the stale "Day-10 workshop" is
+  now Day 12.
+- **HW4:** "how people feel (support vs. opposition)" and "how do the camps feel" were reworded to match.
+
+Verified: both answer keys execute with zero errors. A simulated student run (A5 and B1 filled in)
+works through B3; unfilled labels show `NaN` rather than an error. `docs/` regenerated with no diff.
+
+---
+
+## Session — 2026-09-28 (Lane E #2: Day 3 / Day 4 split)
 
 Schedule and syllabus put conditionals on Day 3 and lists & loops on Day 4, but
 `Lists_Loops_Conditionals` taught Lists → Conditionals → Loops, and its conditionals depended on the

@@ -9,7 +9,7 @@
 > 2026-09-04 entries at the top of `planning/WORKLOG.md`.
 >
 > ✅ Keys repo `4fa8490` is pushed (verified 2026-09-28: in sync with `origin/main`).
-> **2026-09-28:** Lane E #2 (Day 3/4 split) fixed. **Next up: Lane E #1 (HW3 tone vs. stance), before Day 13.**
+> **2026-09-28:** Lane E #2 (Day 3/4 split) fixed. Lane E #1 (HW3 tone vs. stance) fixed the same day. **Next up: Lane E #3–#6, or Lane C.**
 
 ---
 
@@ -78,12 +78,11 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
 **Lane E — the six judgment calls the 2026-09-05 audit left open (needs your voice, not mechanics).**
 The mechanical fixes shipped; these change what the assignments *say*, so they were not applied
 unilaterally. In priority order:
-1. **HW3 conflates tone with stance.** The VADER code-along's Part 4 is titled "Tone Is Not the Same as
-   Stance" — then HW3 opens "use sentiment to hear the **stance**," subtitles C1 "now split by stance"
-   while splitting on VADER's label, and B4 asks "does this crowd **support or oppose**" from sentiment
-   alone. HW3's corpus has no hand-labeled stance column, so the two-axis comparison the code-along
-   builds cannot be reproduced there. **The homework teaches against its own code-along** — this is the
-   one worth fixing before Day 13.
+1. ✅ **HW3 tone vs. stance — FIXED 2026-09-28.** HW3 is reframed around **tone** (title, intro, Part B
+   heading, B4, C1). **B3** now has students hand-label the stance of the 5 warmest and 5 coldest
+   comments, which reproduces the code-along's Part 4 on real data. On the course corpus the warmest 5
+   are 4 oppose / 0 support. The key's "sentiment disentangles support and opposition" claim is gone.
+   HW4's two support/oppose lines were fixed to match. Keys commit carries the builders.
 2. ✅ **Day 3 / Day 4 split — FIXED 2026-09-28.** `Lists_Loops_Conditionals` reordered to
    Conditionals → Lists → Loops so it matches the calendar (the calendar was kept because the lecture
    pairing — ml3 "Classification Logic" / ml5 "Collective Memory" — belongs with the days). The two
