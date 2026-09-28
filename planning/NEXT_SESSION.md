@@ -8,7 +8,8 @@
 > polish and instructor decisions, none of it blocking Days 1–12. Full detail: the 2026-09-05 and
 > 2026-09-04 entries at the top of `planning/WORKLOG.md`.
 >
-> ⏩ **One loose end:** `git push` the keys repo (`../WRIT20833_2026_keys`, one commit ahead).
+> ✅ Keys repo `4fa8490` is pushed (verified 2026-09-28: in sync with `origin/main`).
+> **2026-09-28:** Lane E #2 (Day 3/4 split) fixed. **Next up: Lane E #1 (HW3 tone vs. stance), before Day 13.**
 
 ---
 
@@ -83,10 +84,11 @@ unilaterally. In priority order:
    alone. HW3's corpus has no hand-labeled stance column, so the two-axis comparison the code-along
    builds cannot be reproduced there. **The homework teaches against its own code-along** — this is the
    one worth fixing before Day 13.
-2. **Day 3 / Day 4 split fights the notebook.** Both schedule and syllabus assign Day 3 = conditionals,
-   Day 4 = lists & loops, but `Lists_Loops_Conditionals` runs Lists → Conditionals → Loops and the
-   conditionals section depends on `platforms` from the Lists section. Reorder the notebook (it has no
-   builder — edit directly) or swap the two days. **Bites on Day 3**, so it is the most urgent by date.
+2. ✅ **Day 3 / Day 4 split — FIXED 2026-09-28.** `Lists_Loops_Conditionals` reordered to
+   Conditionals → Lists → Loops so it matches the calendar (the calendar was kept because the lecture
+   pairing — ml3 "Classification Logic" / ml5 "Collective Memory" — belongs with the days). The two
+   `platforms`-dependent `in` checks now use strings (a Day-2 callback); added a Day-3 "your turn" and a
+   "🛑 Day 3 stops here" marker. Filename unchanged, so Colab links still resolve.
 3. **Topic Modeling Part 1's "clear example" isn't clear** on gensim 4.4.0 / `random_state=42`: 3 of the
    5 music docs land in the sports or food topic and "song" sits in the sports topic's top 6, while the
    narration promises "a comment or two" misfiled. The k=4 run in Part 2 separates cleanly. Re-tune the

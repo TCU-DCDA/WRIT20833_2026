@@ -14,7 +14,29 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-09-05 (code-along ↔ homework continuity audit; builder drift closed same session)
+## Latest session — 2026-09-28 (Lane E #2: Day 3 / Day 4 split)
+
+Schedule and syllabus put conditionals on Day 3 and lists & loops on Day 4, but
+`Lists_Loops_Conditionals` taught Lists → Conditionals → Loops, and its conditionals depended on the
+`platforms` list. **Fixed the notebook, not the calendar** — swapping the days would have separated the
+lectures from the code they frame (ml3 "Classification Logic" ↔ conditionals, ml5 "Collective Memory"
+↔ lists).
+
+- Moved the Comparisons & Conditionals section (6 cells) to directly after the title.
+- Replaced the two `in platforms` checks with string membership (`"Frogs" in "TCU Horned Frogs"`, a bio
+  string). `in` on strings is already taught on Days 1–2, so these are callbacks rather than new material.
+- Rewrote the intro sentence and the `in` row of the operator table; changed "Last time we stored…" to
+  "So far…" in Lists.
+- Added a Day-3 "your turn" (if/elif/else sorter) and a "🛑 Day 3 stops here" marker.
+- Filename and title unchanged, so Colab and schedule links hold. No builder, so this was a direct `.ipynb` edit.
+
+Verified: every code cell executes in order with no errors (cells were exec'd directly; `nbconvert` is
+not installed here). No other file described the old order. Regenerated `docs/` with no diffs.
+Also confirmed keys `4fa8490` was already pushed.
+
+---
+
+## Session — 2026-09-05 (code-along ↔ homework continuity audit; builder drift closed same session)
 
 ### What was done
 Read all 9 code-alongs against the 4 homeworks they build toward, **executed every one**, and
