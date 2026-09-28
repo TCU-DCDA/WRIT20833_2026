@@ -1,17 +1,18 @@
-"""Builder for the 2026 'Topic Modeling with Gensim' code-along (Days 14-15).
+"""Builder for the 2026 'Topic Modeling with Gensim' code-along (Days 16-17).
 
 Dedups F25's THREE overlapping topic-modeling notebooks (Topic_Modeling_Gensim 41c,
 Topic_Modeling_Part1_Introduction 29c, Topic_Modeling_Part2_Research_Application 24c) into ONE
 combined Gensim code-along in the 2026 house style (warm cultural examples; concept -> code ->
 'your turn'; Putting It All Together -> Sneak Preview -> Playground; colab metadata; no HW-style
-#comments). Walsh-independent. Spans the two sessions (Day 14 intro + Day 15 deep/num_topics/limits).
+#comments). Walsh-independent. Spans the two sessions (Day 16 intro + Day 17 deep/num_topics/limits).
 
 Design choices vs F25:
 - ALIGNS WITH HW4's simplified stack: gensim only (NO nltk/WordNet lemmatization, NO pyLDAvis —
   both fragile), and reuses the course's EXACT split_into_words + stopwords idiom from HW2/HW3/HW4
   (copied verbatim below) so the code-along preprocessing == the homework preprocessing.
 - Teaches mechanics on a CLEAR 3-theme toy corpus (sports / music / food — distinct vocab so LDA
-  separates cleanly and topic interpretation actually lands), THEN applies LDA to the real
+  separates cleanly and topic interpretation actually lands; re-tuned 2026-09-28 so seed 42 on gensim
+  4.4.0 files all 15 correctly, ~54/100 seeds clean vs. 15/100 before — tiny corpora can't do much better), THEN applies LDA to the real
   single-issue Ten Commandments comments to show topics BLUR — which is the Day-15 'limits' lesson
   and matches the WORKLOG's HW4 caveat (single-issue corpus -> weak/overlapping topics).
 - LDA is STOCHASTIC + version-sensitive: random_state=42 pins within-environment, but NO topic words
@@ -113,23 +114,23 @@ are fifteen short online comments pulled from three very different corners of th
 how many topics are here, and what are they?'''),
     code('''docs = [
     # one corner of the internet
-    "The team won the game and the players thanked the coach after a long season.",
-    "Fans filled the stadium as the team scored late to win the game.",
-    "The coach pushed the players all season and the team won the championship game.",
-    "Our players lost the game but the coach says the team will win next season.",
-    "The stadium roared when the team scored; the fans love this winning season.",
+    "The team won the game and the coach thanked the players and the fans.",
+    "Fans filled the stadium to watch the team win the game for the coach.",
+    "The coach said the players gave the fans their best game of the season.",
+    "Our team lost the game, but the coach and the players will win next season.",
+    "The stadium fans cheered when the players scored and the team won the game.",
     # another corner
     "The band recorded a new album and the singer wrote every song on guitar.",
-    "At the concert the band played songs from the album on a huge stage.",
-    "The singer and the guitar player recorded the album and every song is a hit.",
-    "Crowds heard the band play the new album live, song after song on stage.",
-    "The album songs feature guitar and vocals while the band tours every concert stage.",
+    "At the concert the band played every song from the album on guitar.",
+    "The singer and the band recorded the album, and each song features guitar.",
+    "The singer sang every song from the album while the band played the concert.",
+    "The singer played guitar, the band played drums, and the concert ended with a song from the album.",
     # a third corner
-    "We cooked dinner with a recipe for pasta, tomato sauce, garlic, and cheese.",
-    "The kitchen smelled of garlic and fresh bread while the pasta sauce simmered.",
-    "I cooked a dinner of pasta and bread, adding garlic, cheese, and tomato sauce.",
-    "The recipe needs garlic, cheese, and tomato; we baked bread for dinner in the kitchen.",
-    "Dinner was pasta with garlic sauce and warm bread fresh from the kitchen.",
+    "We cooked dinner from a recipe with pasta, tomato sauce, garlic, and cheese.",
+    "The kitchen smelled of garlic and bread while the pasta sauce cooked for dinner.",
+    "I cooked pasta for dinner and added garlic, cheese, and tomato sauce from the recipe.",
+    "The recipe calls for garlic, cheese, and tomato; we baked bread in the kitchen for dinner.",
+    "Dinner was pasta with garlic sauce, cheese, and warm bread from the kitchen.",
 ]
 
 tokens = [preprocess_for_topics(d) for d in docs]
@@ -169,12 +170,14 @@ LDA never files a document under one topic — it gives every document a **mixtu
     dist = lda.get_document_topics(doc_bow)
     dominant = max(dist, key=lambda pair: pair[1])[0]
     print(f"Topic {dominant}  |  {docs[i][:55]}...")'''),
-    md('''Most land where you'd expect — but you'll likely spot a comment or two filed under a neighbor.
-That's the *mixture* showing through: these comments are short (a few words each), so a single shared
-word can tip the balance. The fix is more, longer text per document — exactly the difference you're
-about to see between this tidy example and real data.'''),
+    md('''Each comment should land with its own corner of the internet. But that result is less sturdy
+than it looks. Change `random_state=42` to another number and rerun: sometimes a comment or two gets
+filed under a neighbor, even though no word here is shared between corners. LDA starts from a random
+guess and improves it, and fifteen comments of a few words each give it very little evidence to
+improve on. The fix is more, longer text per document, which is exactly the difference you're about to
+see between this tidy example and real data.'''),
 
-    # ---- Day 15: the knob ----
+    # ---- Day 17: the knob ----
     md('''# Part 2 — How Many Topics? (an authored choice)
 
 There is **no correct number of topics**. `num_topics` is a dial *you* set, and it changes what the
@@ -189,7 +192,7 @@ Watch what happens when we ask the same fifteen comments for 2 topics, then 4.''
     md('''Neither is "wrong." Choosing the number of topics is a **research decision** you justify by how
 interpretable the result is — not a truth the algorithm reveals.'''),
 
-    # ---- Day 15: the limits, on the real corpus ----
+    # ---- Day 17: the limits, on the real corpus ----
     md('''# Part 3 — The Limits: Real Comments Fight Back
 
 That toy corpus was easy on purpose — three obviously different subjects. Now point the same machine
