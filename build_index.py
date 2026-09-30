@@ -10,6 +10,7 @@ Run from repo root:  python3 build_index.py
 import html
 import os
 from site_theme import PAGE, sidebar, shell, write_stylesheet
+from build_chatbot import CHAT_API_URL  # the Code Guide card appears only once its Worker is deployed
 
 OUT = "docs/index.html"
 REPO = "TCU-DCDA/WRIT20833_2026"
@@ -132,15 +133,19 @@ def render():
         '</header>'
     )
 
+    start_cards = [
+        card("Schedule", "Course Schedule", "Day-by-day: lecture, coding, and what's due.",
+             "24 sessions", "schedule.html"),
+        card("Syllabus", "Syllabus", "Outcomes, the ungrading policy, AI-use policy, and dates.",
+             "draft", GH_BLOB + "SYLLABUS_2026.md"),
+    ]
+    if CHAT_API_URL:
+        start_cards.append(card("Tutor", "Code Guide", "An after-hours tutor for your homework and capstone.",
+                                "optional", "chatbot.html"))
     start = section(
         "start", "00", "Start here",
-        "The two documents that frame the course.",
-        grid([
-            card("Schedule", "Course Schedule", "Day-by-day: lecture, coding, and what's due.",
-                 "24 sessions", "schedule.html"),
-            card("Syllabus", "Syllabus", "Outcomes, the ungrading policy, AI-use policy, and dates.",
-                 "draft", GH_BLOB + "SYLLABUS_2026.md"),
-        ]))
+        "The documents that frame the course." if CHAT_API_URL else "The two documents that frame the course.",
+        grid(start_cards))
 
     ca_body = "".join(
         '<div class="wkgroup"><h3><span class="wkn">' + html.escape(wk) + '</span>'

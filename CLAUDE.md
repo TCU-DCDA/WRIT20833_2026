@@ -24,6 +24,7 @@ Check the table below *before* you open a notebook.
 | **HW1** | the `.ipynb` directly | — it has no builder |
 | The **TCU Online (D2L)** shell | the source (schedule, syllabus, `build_index.py`, notebooks), or `d2l/build_d2l_package.py` / `d2l/build_assignments.py` | rebuild, then follow `d2l/WIRING_CHECKLIST.md` → *Updating a live shell*. D2L imports are **additive**; never re-import a full package onto a live shell |
 | Anything in **`docs/`** | the markdown/lecture source + `build_index.py`, `build_schedule_html.py`, `build_lectures.py` | re-run the generators; never hand-edit `docs/` |
+| The **Code Guide chat page** (`docs/chatbot.html`, `docs/chatbot.js`) | `chatbot/chatbot.js` + `build_chatbot.py` (set `CHAT_API_URL` there; the home-page card appears only once it's set). The tutor's prompt and Worker are in the private `TCU-DCDA/WRIT20833-chatbot` — never copy them here | `python3 build_chatbot.py && python3 build_index.py` |
 
 Two code-alongs (`Variables_DataTypes`, `Lists_Loops_Conditionals`) have **no builder** —
 edit those `.ipynb` directly.
