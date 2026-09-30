@@ -73,9 +73,9 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
   `PROPOSED_4WEEK_SCHEDULE.md`) are `git rm`'d — `planning/` is the single source, which is where README
   already pointed. Nothing linked to them and all three generators still build clean. **Root now holds only
   the four student-facing docs** (README · SYLLABUS · COURSE_SCHEDULE · CAPSTONE) + the generators.
-- **Chatbot tutor** — untouched since 2026-06-18, still code-complete/undeployed in the private
+- **Chatbot tutor** — code-complete, still undeployed, in the private
   `TCU-DCDA/WRIT20833-chatbot`. Ship before launch, or observe first and skip this term? Deployment =
-  KV namespace, secrets, prod `API_URL` + CORS, `wrangler deploy`, Pages frontend, D2L embed.
+  KV namespace, secrets, prod `API_URL`, `wrangler deploy`, Pages frontend, then a link from the course site + syllabus (**not** D2L; CORS already set to `tcu-dcda.github.io`). Context blocks re-synced to the fall notebooks 2026-09-30.
 
 **Lane E — the six judgment calls the 2026-09-05 audit left open (needs your voice, not mechanics).**
 The mechanical fixes shipped; these change what the assignments *say*, so they were not applied
