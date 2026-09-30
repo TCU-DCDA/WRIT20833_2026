@@ -36,9 +36,9 @@ the same way.
 
 ### Track A — Cultural dataset *(the main path)*
 Analyze a corpus of real human language about something you care about — ideally **your own dataset**,
-the one you collected and cleaned in the Week-2 workshop and carried through HW3/HW4. Examples: comments
-on a news video or post, song lyrics by an artist, reviews, a public figure's speeches, forum threads,
-your own social feed. If your own data didn't come together, the **provided Ten Commandments comment
+the one you collected and cleaned in the Day 12 workshop (Fri 11/13) and carried through HW3/HW4.
+Examples: comments on a news video or post, song lyrics by an artist, reviews, a public figure's
+speeches, forum threads, your own social feed. If your own data didn't come together, the **provided Ten Commandments comment
 corpus** (`notebooks/data/`) is a ready fallback — the same one our code-alongs and homeworks use.
 
 The question that drives Track A: **what is this conversation actually about, and how do the people in it
