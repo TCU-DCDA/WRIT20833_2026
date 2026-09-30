@@ -163,6 +163,10 @@ analyses and the capstone — the forms of evidence each core submission cites.)
 3. **Reflection 3 — "Final self-evaluation" (due Fri 12/18).** Review your own body of work and make an
    evidence-based case for the final grade you've earned (see *Grading Scale*).
 
+For Reflections 2 and 3 you may cite or attach a **Code Guide** chat export as evidence of your process.
+It's optional, like the tutor itself. Attaching one shares that conversation with me, and I treat it like
+any other work you submit.
+
 **The four threaded discussions** (open Monday of their week; **initial post by Wednesday, two
 substantive replies by Friday**):
 1. **D1 (Wk 1) — Is code neutral?** When a program sorts people or words into categories, whose judgment
@@ -290,6 +294,18 @@ borrowing:
   essay are where you *become a writer.* A unique voice is forged through the difficulty of finding your
   own words; letting AI generate your writing forfeits that. **Use AI for feedback if you like, but the
   writing itself must be yours.** When in doubt, ask.
+
+**The Code Guide (optional AI tutor).** The course site links an after-hours tutor for the homework and
+the capstone. Using it is up to you. It explains concepts and code (including code an AI wrote for you),
+helps you read errors, and gives feedback on your written interpretations, but it won't complete an
+exercise, supply your stance labels or topic names, or write your prose. If it contradicts a notebook,
+the notebook wins. **Where your words go:** chats are saved only in your browser, and the course doesn't
+keep what you write. To answer you, your messages pass through Cloudflare to Anthropic, the company that
+makes the Claude model behind the tutor. To prevent misuse, the course's server keeps a counter for your
+network address that disappears about a day after your last message, and it counts which assignments and
+kinds of errors come up, never what anyone wrote. Please don't paste personal information, passwords, or
+classmates' work, and when asking about your own dataset, paste a few example lines rather than the whole
+file.
 
 ### Technology & Recording
 - **Technology.** Bring a laptop that can run a web browser — all code runs in **Google Colab**, so
