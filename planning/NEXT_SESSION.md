@@ -8,7 +8,7 @@
 > (Day 6 = start HW1 in class). Both repos are in sync with `origin/main`. Every builder reproduces
 > what is committed (re-verified 2026-09-28).
 >
-> ⏩ **Next up:** Lane C (the capstone placeholders, and the chatbot go/no-go) → Lane B (four lecture
+> ⏩ **Next up:** Lane C (the capstone placeholders; the chatbot is launch-ready, deploy steps below) → Lane B (four lecture
 > framings) → Lane D (both D2L packages imported 2026-09-28; confirm the discussions + DST dates, then hand-wire the shell per `d2l/WIRING_CHECKLIST.md` §3–6, plus the checks outside this repo).
 > ✍️ **Hand edit pending:** mirror the 2026-09-28 Day 6 and Day 9 label changes into the Word syllabus
 > (`WRIT20833-020_Fall2026_Rode.docx`).
@@ -73,9 +73,20 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
   `PROPOSED_4WEEK_SCHEDULE.md`) are `git rm`'d — `planning/` is the single source, which is where README
   already pointed. Nothing linked to them and all three generators still build clean. **Root now holds only
   the four student-facing docs** (README · SYLLABUS · COURSE_SCHEDULE · CAPSTONE) + the generators.
-- **Chatbot tutor** — code-complete, still undeployed, in the private
-  `TCU-DCDA/WRIT20833-chatbot`. Ship before launch, or observe first and skip this term? Deployment =
-  KV namespace, secrets, prod `API_URL`, `wrangler deploy`, Pages frontend, then a link from the course site + syllabus (**not** D2L; CORS already set to `tcu-dcda.github.io`). Context blocks re-synced to the fall notebooks 2026-09-30.
+- **Chatbot tutor ("Code Guide")** — **launch-ready as of 2026-09-30, not yet deployed.** Real deadline: HW1
+  is assigned Fri 10/30. Worker, prompt, and assignment blocks are in the private `TCU-DCDA/WRIT20833-chatbot`
+  (`CLAUDE.md` + `DEPLOY.md` there are current); the **chat page is in this repo** (`chatbot/chatbot.js` +
+  `build_chatbot.py` → `docs/chatbot.html`), live but **unlinked** until `CHAT_API_URL` is set. Done 9/30,
+  modeled on the WRIT 40363 Lab Guide: blocks re-synced to the fall notebooks (HW3 tone ≠ stance, capstone
+  dates); whole-conversation guardrail; not-a-substitute-for-class rules; worker hardening + prompt caching;
+  "Choose your assignment…" default + `?assignment=` deep links; anonymous usage tags → Workers Analytics
+  Engine (`npm run usage`); 47 tests (`npm test`). **Remaining, in order:** (1) deploy per the chatbot repo's
+  `DEPLOY.md` — KV namespace, `ANTHROPIC_API_KEY` + `ACCESS_CODE` secrets, confirm Analytics Engine on the
+  plan, `npm test`, `npx wrangler deploy`; (2) set `CHAT_API_URL` in `build_chatbot.py`, run it +
+  `build_index.py`, push (the home-page card appears); (3) live checks — cache reads, Haiku emits the tag
+  line, no `[[tag:` in the chat, a few escalation probes on HW3 stance / HW4 topic names; (4) syllabus line
+  about the tutor + what it counts, in `SYLLABUS_2026.md` **and** the Word syllabus. Open dial: the
+  "confirm-my-guess" behavior.
 
 **Lane E — the six judgment calls the 2026-09-05 audit left open (needs your voice, not mechanics).**
 The mechanical fixes shipped; these change what the assignments *say*, so they were not applied
