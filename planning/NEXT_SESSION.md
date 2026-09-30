@@ -10,8 +10,10 @@
 >
 > ⏩ **Next up:** Lane C (the capstone placeholders; the chatbot is launch-ready, deploy steps below) → Lane B (four lecture
 > framings) → Lane D (both D2L packages imported 2026-09-28; confirm the discussions + DST dates, then hand-wire the shell per `d2l/WIRING_CHECKLIST.md` §3–6, plus the checks outside this repo).
-> ✍️ **Hand edit pending:** mirror the 2026-09-28 Day 6 and Day 9 label changes into the Word syllabus
-> (`WRIT20833-020_Fall2026_Rode.docx`).
+> ✍️ **Hand edits pending (Word syllabus `WRIT20833-020_Fall2026_Rode.docx`):** (1) the 2026-09-28 Day 6 and
+> Day 9 label changes; (2) the two 2026-09-30 Code Guide paragraphs now in `SYLLABUS_2026.md` (after the
+> reflections list, and at the end of the AI Use Policy). Then **re-upload the syllabus PDF to D2L**
+> (`d2l/WIRING_CHECKLIST.md` → *Updating a live shell*).
 
 ---
 
@@ -73,20 +75,27 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
   `PROPOSED_4WEEK_SCHEDULE.md`) are `git rm`'d — `planning/` is the single source, which is where README
   already pointed. Nothing linked to them and all three generators still build clean. **Root now holds only
   the four student-facing docs** (README · SYLLABUS · COURSE_SCHEDULE · CAPSTONE) + the generators.
-- **Chatbot tutor ("Code Guide")** — **launch-ready as of 2026-09-30, not yet deployed.** Real deadline: HW1
-  is assigned Fri 10/30. Worker, prompt, and assignment blocks are in the private `TCU-DCDA/WRIT20833-chatbot`
-  (`CLAUDE.md` + `DEPLOY.md` there are current); the **chat page is in this repo** (`chatbot/chatbot.js` +
-  `build_chatbot.py` → `docs/chatbot.html`), live but **unlinked** until `CHAT_API_URL` is set. Done 9/30,
-  modeled on the WRIT 40363 Lab Guide: blocks re-synced to the fall notebooks (HW3 tone ≠ stance, capstone
-  dates); whole-conversation guardrail; not-a-substitute-for-class rules; worker hardening + prompt caching;
-  "Choose your assignment…" default + `?assignment=` deep links; anonymous usage tags → Workers Analytics
-  Engine (`npm run usage`); 47 tests (`npm test`). **Remaining, in order:** (1) deploy per the chatbot repo's
-  `DEPLOY.md` — KV namespace, `ANTHROPIC_API_KEY` + `ACCESS_CODE` secrets, confirm Analytics Engine on the
-  plan, `npm test`, `npx wrangler deploy`; (2) set `CHAT_API_URL` in `build_chatbot.py`, run it +
-  `build_index.py`, push (the home-page card appears); (3) live checks — cache reads, Haiku emits the tag
-  line, no `[[tag:` in the chat, a few escalation probes on HW3 stance / HW4 topic names; (4) syllabus line
-  about the tutor + what it counts, in `SYLLABUS_2026.md` **and** the Word syllabus. Open dial: the
-  "confirm-my-guess" behavior.
+- **Chatbot tutor ("Code Guide")** — **code-ready and reviewed; deployment pending.** Real deadline: HW1 is
+  assigned Fri 10/30. Worker, prompt, and assignment blocks: private `TCU-DCDA/WRIT20833-chatbot` (its
+  `CLAUDE.md` + `DEPLOY.md` are current). Chat page: this repo (`chatbot/chatbot.js` + `chatbot/render.js` +
+  `build_chatbot.py` → `docs/chatbot.html`), live but **unlinked** until `CHAT_API_URL` is set.
+  - **2026-09-30:** two independent reviews (`COURSE_CONTEXT_REVIEW_*` / `COURSE_REVIEW_EXPANDED_*` in the
+    chatbot repo, with replies recording Dr. Rode's six decisions). Work order done: permitted-help prompt
+    revision (explain supplied + AI-written code; homework-writing feedback; concepts; no due dates; Track B
+    context); page fixes (verbatim code rendering, per-request state, clean rollback; `node --test
+    chatbot/render.test.js` + `chatbot/browser-check.mjs`); worker (Sonnet 5.5 at low effort, refusal/error
+    stream endings, access gate before a 60/min + 800/day per-network limit that fails open); HW2 checklist
+    (C2 optional) + HW3 B3 own-data sentence via the keys-repo builders; syllabus + page privacy wording;
+    live acceptance probe run 1: 12/12 pass (`worker/retest/RESULTS.md`).
+  - **Remaining, in order:** (1) deploy per the chatbot repo's `DEPLOY.md`: KV namespace, `ANTHROPIC_API_KEY`
+    + `ACCESS_CODE` secrets, Anthropic spend cap, confirm Analytics Engine on the plan, `npm test`, `npx
+    wrangler deploy`; (2) set `CHAT_API_URL` in `build_chatbot.py`, run it + `build_index.py`, push (the
+    home-page card appears); (3) re-run `worker/retest/acceptance-probe.mjs` against the deployed Worker and
+    read the transcripts; (4) the Word syllabus + D2L PDF hand steps above.
+  - **Open decisions:** the "confirm-my-guess" dial (seen live in probe A10: "the loop line you wrote is built
+    correctly"); and review of the stylometry handout + notebook (`materials/stylometry/`), still marked
+    "DRAFT" with pre-re-pacing "Day 7" / "Week 4" references (Track B context maps them to Day 8 / capstone
+    weeks). Watch reply length with real students (~250–450 words in the probe).
 
 **Lane E — the six judgment calls the 2026-09-05 audit left open (needs your voice, not mechanics).**
 The mechanical fixes shipped; these change what the assignments *say*, so they were not applied
