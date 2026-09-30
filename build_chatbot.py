@@ -4,7 +4,8 @@ Only the chat WINDOW lives here, in the public course repo. The tutor's instruct
 context, and the Cloudflare Worker that calls the model live in the private `TCU-DCDA/WRIT20833-chatbot`
 repo: publishing the rules would publish the recipe for talking the tutor out of them.
 
-Sources: `chatbot/chatbot.js` (the page script) + this file (markup and page CSS, in the site theme).
+Sources: `chatbot/chatbot.js` (the page script), `chatbot/render.js` (reply rendering; unit tests in
+`chatbot/render.test.js`) + this file (markup and page CSS, in the site theme).
 Set CHAT_API_URL once the Worker is deployed; until then the page builds but build_index.py does not
 link it, so students can't land on a chat window with nothing behind it.
 
@@ -17,6 +18,8 @@ from site_theme import PAGE, sidebar, shell, write_stylesheet, assert_accessible
 OUT = "docs/chatbot.html"
 JS_SRC = "chatbot/chatbot.js"
 JS_OUT = "docs/chatbot.js"
+RENDER_SRC = "chatbot/render.js"   # reply rendering, no DOM: unit-tested with `node --test chatbot/render.test.js`
+RENDER_OUT = "docs/render.js"
 
 # The deployed Worker's chat endpoint, e.g. "https://writ20833-codeguide.<subdomain>.workers.dev/api/chat".
 # Empty = not deployed yet: the page is built but not linked from the home page.
@@ -129,6 +132,7 @@ def render():
         '<button type="submit" id="send-btn">Send</button>'
         '</form>'
         '</section>'
+        '<script src="render.js"></script>'
         '<script src="chatbot.js"></script>'
     )
     return PAGE("Code Guide — WRIT 20833", shell(side, main), extra_css=CHAT_CSS, wrap=False)
@@ -140,6 +144,8 @@ def write_js():
     assert "__CHAT_API_URL__" in src, f"{JS_SRC} lost its __CHAT_API_URL__ placeholder"
     with open(JS_OUT, "w", encoding="utf-8") as f:
         f.write(src.replace("__CHAT_API_URL__", CHAT_API_URL))
+    with open(RENDER_SRC, encoding="utf-8") as f, open(RENDER_OUT, "w", encoding="utf-8") as g:
+        g.write(f.read())
 
 
 if __name__ == "__main__":

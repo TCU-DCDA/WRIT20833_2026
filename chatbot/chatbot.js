@@ -35,10 +35,10 @@ function getStorageKey() {
     return `codeguide-history-${lessonSelect.value}`;
 }
 
-function saveHistory() {
+function saveHistory(key = getStorageKey(), history = conversationHistory) {
     try {
-        localStorage.setItem(getStorageKey(), JSON.stringify(conversationHistory));
-        console.log('[CodeGuide] Saved', conversationHistory.length, 'messages to', getStorageKey());
+        localStorage.setItem(key, JSON.stringify(history));
+        console.log('[CodeGuide] Saved', history.length, 'messages to', key);
     } catch (e) {
         console.warn('[CodeGuide] Failed to save history:', e.message);
     }
@@ -180,8 +180,16 @@ userInput.addEventListener('keydown', (e) => {
 });
 
 // Handle form submission
+//
+// Invariant: what the student sees and what is saved stay in step. A reply is saved only after the Worker
+// says it finished (`[DONE]`). If anything goes wrong (an HTTP error, a refusal, a provider error, a reply
+// cut off), the whole turn is rolled back: the partial reply and the student's bubble are removed, the
+// pending turn leaves the history, and their message goes back in the box for a retry.
+let requestInFlight = false;
+
 chatForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (requestInFlight) return;
 
     const message = userInput.value.trim();
     if (!message) return;
@@ -192,19 +200,34 @@ chatForm.addEventListener('submit', async (e) => {
         return;
     }
 
-    // Add user message to UI
-    appendMessage('user', message);
-    conversationHistory.push({ role: 'user', content: message });
+    // Pin everything this request touches to the conversation it started in. The assignment picker and
+    // Start Over are locked while it runs (setInputEnabled), and even if one weren't, a late reply lands in
+    // the conversation it belongs to, never the one on screen.
+    const lessonId = lessonSelect.value;
+    const storageKey = getStorageKey();
+    const history = conversationHistory;
 
-    // Clear input
+    const userEl = appendMessage('user', message);
+    history.push({ role: 'user', content: message });
     userInput.value = '';
     userInput.style.height = 'auto';
 
-    // Disable input while waiting
+    requestInFlight = true;
     setInputEnabled(false);
-
-    // Show typing indicator
     const typingEl = showTypingIndicator();
+
+    const rollback = (notice) => {
+        typingEl.remove();
+        userEl.remove();
+        const last = history[history.length - 1];
+        if (last && last.role === 'user' && last.content === message) history.pop();
+        if (!userInput.value) {
+            userInput.value = message;
+            userInput.style.height = 'auto';
+            userInput.style.height = Math.min(userInput.scrollHeight, 150) + 'px';
+        }
+        appendMessage('error', `${notice} Your message is back in the box, ready to send again.`);
+    };
 
     try {
         const response = await fetch(API_URL, {
@@ -212,74 +235,65 @@ chatForm.addEventListener('submit', async (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 message: message,
-                lessonId: lessonSelect.value,
+                lessonId: lessonId,
                 accessCode: storedAccessCode(),
                 // Send recent history only (sliding window) — exclude the message we just added
-                history: conversationHistory.slice(-MAX_HISTORY_TO_API - 1, -1)
+                history: history.slice(-MAX_HISTORY_TO_API - 1, -1)
             })
         });
-
-        // Remove typing indicator
         typingEl.remove();
 
-        // 401 = the access gate is on and our code was missing/wrong. Prompt once, store it,
-        // and ask the student to resend (we don't auto-retry to keep the flow simple).
+        // 401 = the access gate is on and our code was missing/wrong. Prompt once and store it.
         if (response.status === 401) {
             const code = (window.prompt('Enter the course access code to use the Code Guide:') || '').trim();
             if (code) {
                 localStorage.setItem(ACCESS_CODE_KEY, code);
-                appendMessage('error', 'Access code saved — send your message again.');
+                rollback('Access code saved.');
             } else {
                 localStorage.removeItem(ACCESS_CODE_KEY);
-                appendMessage('error', 'An access code is required to use the tutor.');
+                rollback('An access code is required to use the tutor.');
             }
             return;
         }
-
         if (response.status === 429) {
             const errorData = await response.json().catch(() => ({}));
-            appendMessage('error', errorData.error || 'Too many requests — please wait a bit and try again.');
+            rollback(errorData.error || 'Too many requests. Please wait a bit and try again.');
+            return;
+        }
+        if (!response.ok || !response.headers.get('content-type')?.includes('text/event-stream')) {
+            const errorData = await response.json().catch(() => ({}));
+            rollback(`Something went wrong (${errorData.error || `server error ${response.status}`}).`);
             return;
         }
 
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.error || `Server error (${response.status})`);
+        const result = await handleStreamingResponse(response);
+        if (result.status !== 'done') {
+            rollback(result.notice);
+            return;
         }
 
-        // Handle streaming response
-        if (response.headers.get('content-type')?.includes('text/event-stream')) {
-            const assistantText = await handleStreamingResponse(response);
-            conversationHistory.push({ role: 'assistant', content: assistantText });
-        } else {
-            // Non-streaming fallback
-            const data = await response.json();
-            const assistantText = data.response || data.content || 'Sorry, I didn\'t get a response.';
-            appendMessage('assistant', assistantText);
-            conversationHistory.push({ role: 'assistant', content: assistantText });
+        history.push({ role: 'assistant', content: result.text });
+        saveHistory(storageKey, history);
+        if (history === conversationHistory) {
+            startOverBtn.style.display = 'block';
+            exportBtn.style.display = 'block';
         }
-
-        // Persist conversation and show Start Over button
-        saveHistory();
-        startOverBtn.style.display = 'block';
-        exportBtn.style.display = 'block';
     } catch (error) {
-        typingEl.remove();
-        appendMessage('error', `Something went wrong: ${error.message}. Please try again.`);
-        // Remove the failed user message from history so conversation stays clean
-        conversationHistory.pop();
+        rollback("Something went wrong reaching the tutor.");
     } finally {
+        requestInFlight = false;
         setInputEnabled(true);
         userInput.focus();
     }
 });
 
-// Handle streaming SSE response
+// Read the Worker's SSE stream into an assistant bubble. Returns { status, text, notice }:
+// status is 'done' only when the Worker sent [DONE] after a non-empty reply. For every other ending
+// ('refusal', 'error', 'interrupted') the partial bubble is removed here and `notice` says what happened.
 async function handleStreamingResponse(response) {
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
 
-    // Create the assistant message element
     const messageEl = document.createElement('div');
     messageEl.className = 'message assistant';
     const contentEl = document.createElement('div');
@@ -289,45 +303,53 @@ async function handleStreamingResponse(response) {
 
     let fullText = '';
     let buffer = '';
+    let status = 'interrupted';
+    let notice = 'The reply was cut off before it finished.';
 
-    while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+    try {
+        while (status === 'interrupted') {
+            const { done, value } = await reader.read();
+            if (done) break;
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split('\n');
+            buffer = lines.pop(); // keep the incomplete line for the next chunk
 
-        buffer += decoder.decode(value, { stream: true });
-
-        // Parse SSE events from buffer
-        const lines = buffer.split('\n');
-        buffer = lines.pop(); // keep incomplete line in buffer
-
-        for (const line of lines) {
-            if (line.startsWith('data: ')) {
-                const data = line.slice(6);
-                if (data === '[DONE]') continue;
-
-                try {
-                    const parsed = JSON.parse(data);
-                    if (parsed.type === 'text') {
-                        fullText += parsed.content;
-                        contentEl.innerHTML = renderMarkdown(fullText);
-                        scrollToBottom();
-                    } else if (parsed.type === 'error') {
-                        throw new Error(parsed.content);
-                    }
-                } catch (e) {
-                    if (e.message && !e.message.includes('JSON')) {
-                        throw e;
-                    }
-                    // Ignore JSON parse errors for incomplete chunks
+            for (const line of lines) {
+                if (!line.startsWith('data: ')) continue;
+                const data = line.slice(6).trim();
+                if (data === '[DONE]') { status = 'done'; break; }
+                let parsed;
+                try { parsed = JSON.parse(data); } catch { continue; }   // skip a malformed chunk
+                if (parsed.type === 'text') {
+                    fullText += parsed.content;
+                    contentEl.innerHTML = renderMarkdown(fullText);
+                    scrollToBottom();
+                } else if (parsed.type === 'refusal') {
+                    status = 'refusal';
+                    notice = `${parsed.content}.`;
+                    break;
+                } else if (parsed.type === 'error') {
+                    status = 'error';
+                    notice = 'The reply broke off partway because of a problem on the AI service\'s end.';
+                    break;
                 }
             }
         }
+    } catch {
+        status = 'interrupted';
     }
 
-    // Final render
+    if (status === 'done' && !fullText.trim()) {
+        status = 'error';
+        notice = 'The tutor sent back an empty reply.';
+    }
+    if (status !== 'done') {
+        messageEl.remove();
+        return { status, text: '', notice };
+    }
     contentEl.innerHTML = renderMarkdown(fullText);
     scrollToBottom();
-    return fullText;
+    return { status, text: fullText, notice: null };
 }
 
 // Append a message to the chat
@@ -342,6 +364,7 @@ function appendMessage(role, text) {
     messageEl.appendChild(contentEl);
     messagesContainer.appendChild(messageEl);
     scrollToBottom();
+    return messageEl;
 }
 
 // Show typing indicator, returns the element so caller can remove it
@@ -358,10 +381,14 @@ function showTypingIndicator() {
     return el;
 }
 
-// Enable/disable input
+// Enable/disable input. While a reply is loading, everything that could change which conversation is on
+// screen (the assignment picker, Start Over) is locked too, so a late reply can't land in the wrong one.
 function setInputEnabled(enabled) {
     userInput.disabled = !enabled;
     sendBtn.disabled = !enabled;
+    lessonSelect.disabled = !enabled;
+    startOverBtn.disabled = !enabled;
+    exportBtn.disabled = !enabled;
 }
 
 // Scroll chat to bottom
@@ -369,76 +396,7 @@ function scrollToBottom() {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
-// Markdown rendering (code blocks, inline code, bold, italic, lists, headings, paragraphs)
-function renderMarkdown(text) {
-    // Escape HTML first (except we'll add back our formatted elements)
-    let html = escapeHtml(text);
-
-    // Code blocks: ```lang\ncode\n``` — with copy button and language label
-    html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
-        const langLabel = lang ? `<span class="code-lang">${lang}</span>` : '';
-        return `<div class="code-block">${langLabel}<button class="copy-btn" onclick="copyCode(this)">Copy</button><pre><code>${code.trim()}</code></pre></div>`;
-    });
-
-    // Inline code: `code`
-    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-    // Bold: **text**
-    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-
-    // Italic: *text*
-    html = html.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>');
-
-    // Split into blocks by double newline
-    const blocks = html.split(/\n\n+/).map(b => b.trim()).filter(b => b);
-
-    html = blocks.map(block => {
-        // Don't wrap code blocks
-        if (block.startsWith('<div class="code-block">')) return block;
-        if (block.startsWith('<pre>')) return block;
-
-        // Blockquotes: lines starting with >
-        const lines = block.split('\n');
-        if (lines.every(l => l.startsWith('&gt; ') || l === '&gt;')) {
-            const inner = lines.map(l => l.replace(/^&gt; ?/, '')).join('<br>');
-            // Detect callout type
-            if (/checkpoint|you should see|check your|preview|output/i.test(inner)) {
-                return `<div class="callout callout-check">${inner}</div>`;
-            }
-            if (/tip|hint|remember/i.test(inner)) {
-                return `<div class="callout callout-tip">${inner}</div>`;
-            }
-            return `<blockquote>${inner}</blockquote>`;
-        }
-
-        // Headings: ### heading, ## heading, # heading
-        if (/^#{1,3} /.test(block)) {
-            const match = block.match(/^(#{1,3}) (.+)$/);
-            if (match) {
-                const level = match[1].length + 1; // offset so # = h2, ## = h3 (don't use h1 in chat)
-                const tag = `h${Math.min(level, 4)}`;
-                return `<${tag}>${match[2]}</${tag}>`;
-            }
-        }
-
-        // Unordered lists: lines starting with - or *
-        if (lines.every(l => /^[\-\*] /.test(l))) {
-            const items = lines.map(l => `<li>${l.replace(/^[\-\*] /, '')}</li>`).join('');
-            return `<ul>${items}</ul>`;
-        }
-
-        // Ordered lists: lines starting with 1. 2. etc.
-        if (lines.every(l => /^\d+\. /.test(l))) {
-            const items = lines.map(l => `<li>${l.replace(/^\d+\. /, '')}</li>`).join('');
-            return `<ol>${items}</ol>`;
-        }
-
-        // Regular paragraph
-        return `<p>${block.replace(/\n/g, '<br>')}</p>`;
-    }).join('');
-
-    return html;
-}
+// renderMarkdown() and escapeHtml() live in render.js (loaded first; unit-tested in Node).
 
 // Copy code block content to clipboard
 function copyCode(button) {
@@ -449,9 +407,3 @@ function copyCode(button) {
     });
 }
 
-// Escape HTML to prevent XSS
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
