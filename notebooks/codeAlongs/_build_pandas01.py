@@ -191,14 +191,10 @@ import matplotlib.pyplot as plt'''),
     md('''A real CSV you'd load with `pd.read_csv("yourfile.csv")`. To keep this notebook self-contained,
 here's a small **sample** of the kind of data Instant Data Scraper produces — real-shaped YouTube
 comments on the Texas Ten Commandments law, the conversation this course keeps returning to.'''),
-    pair(code(DATA + """
-
-# type along — turn `data` into a DataFrame named comments_df, then show it
-"""),
-         code(DATA + """
+    code(DATA + """
 
 comments_df = pd.DataFrame(data)
-comments_df""")),
+comments_df"""),
 
     md('''## Always explore first
 Before analyzing found data, get to know it. What's its shape? What are the columns? What does a row
