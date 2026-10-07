@@ -14,7 +14,7 @@
 > (Day 6 = start HW1 in class). Both repos are in sync with `origin/main`. Every builder reproduces
 > what is committed (re-verified 2026-09-28).
 >
-> ⏩ **Next up:** Code Guide smoke test + access code to students (below) → Lane D (D2L hand-wiring — hardest deadline,
+> ⏩ **Next up:** Code Guide link in syllabus + access code to students via D2L (below) → Lane D (D2L hand-wiring — hardest deadline,
 > students land there Oct 19) → Lane C (the capstone placeholders) → Lane B (four lecture
 > framings) → Lane D (both D2L packages imported 2026-09-28; confirm the discussions + DST dates, then hand-wire the shell per `d2l/WIRING_CHECKLIST.md` §3–6, plus the checks outside this repo).
 > ✍️ **Hand edits pending (Word syllabus `WRIT20833-020_Fall2026_Rode.docx`):** (1) the 2026-09-28 Day 6 and
@@ -96,8 +96,10 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
     live acceptance probe run 1: 12/12 pass (`worker/retest/RESULTS.md`).
   - ✅ **Done 2026-10-07:** deploy, `CHAT_API_URL` + home-page card, live probe runs 3–4 against the deployed
     Worker (all pass on reading; chatbot repo `worker/retest/RESULTS.md`).
-  - **Remaining, in order:** (1) browser smoke test (chatbot repo `DEPLOY.md` → "Smoke test after deploy");
-    (2) add the chat link to the syllabus and give students the access code; (3) the Word syllabus + D2L PDF
+  - ✅ **Browser smoke test passed 2026-10-07** (16-prompt list; class access code reset the same day — in this
+    Mac's Keychain as `writ20833-access-code`, never in this public repo). Bot runs Sonnet 5.5, low effort.
+  - **Remaining, in order:** (1) — done; (2) add the chat link to the syllabus (line ~298, AI Use Policy) and give
+    students the access code **via D2L or in class only**; (3) the Word syllabus + D2L PDF
     hand steps above. Teardown after 12/18: the chatbot repo's `MOTHBALL.md`.
   - **Open decisions:** the "confirm-my-guess" dial (seen live in probe A10: "the loop line you wrote is built
     correctly"); and review of the stylometry handout + notebook (`materials/stylometry/`), still marked
