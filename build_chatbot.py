@@ -28,7 +28,7 @@ CHAT_API_URL = ""
 GH = "https://github.com/TCU-DCDA/WRIT20833_2026"
 
 ASSIGNMENTS = [
-    ("hw1", "Homework 1 — Conditionals & Loops"),
+    ("hw1", "Homework 1 — Comparisons, Conditionals, Lists & Loops"),
     ("hw2", "Homework 2 — Term Frequency"),
     ("hw3", "Homework 3 — Sentiment Analysis"),
     ("hw4", "Homework 4 — Topic Modeling & Integration"),
