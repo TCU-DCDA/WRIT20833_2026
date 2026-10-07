@@ -34,6 +34,8 @@ what is that number already saying, and who decided what got counted?
 ## Denotation and connotation
 
 <!-- slide:
+![The same house painted three ways — warm cottage, notarized "residence," listing card — one denotation, three connotations](materials/lectures/images/ml1_denotation.jpg)
+
 You already own the tool this lecture needs.
 
 - A word's **denotation** is what it literally points to.
@@ -45,6 +47,8 @@ You already own the tool this lecture needs.
 -->
 
 <!-- slide:
+![The same house painted three ways — warm cottage, notarized "residence," listing card — one denotation, three connotations](materials/lectures/images/ml1_denotation.jpg)
+
 Now the move that makes you a data humanist:
 
 ### Numbers have connotation too.
@@ -76,6 +80,8 @@ lives — and where the argument is.
 ## The myth of neutral data
 
 <!-- slide:
+![A weaver at a lamplit loom drawing threads from spools carved with faces; the cloth coming off the loom is woven in rows of tally marks](materials/lectures/images/ml1_loom.jpg)
+
 Three comforting things people say about data. Each one is false.
 
 - *"Data doesn't lie."* — It doesn't have to lie to mislead.
@@ -87,6 +93,8 @@ Three comforting things people say about data. Each one is false.
 -->
 
 <!-- slide:
+![A weaver at a lamplit loom drawing threads from spools carved with faces; the cloth coming off the loom is woven in rows of tally marks](materials/lectures/images/ml1_loom.jpg)
+
 Data carries the **values, assumptions, and blind spots** of whoever
 collected, sorted, and counted it.
 
@@ -95,6 +103,10 @@ one layer down:
 
 ### Bias isn't contamination that sneaks into the data. It's the material the data is made of.
 -->
+
+<!-- layout: split -->
+<!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent): a weaver at a lamplit loom; the cloth coming off it is woven in rows of tally marks, and every thread runs back to the weaver's own spools — the bias is the material, not dirt on the cloth. -->
+![A weaver at a lamplit loom drawing threads from spools carved with faces; the cloth coming off the loom is woven in rows of tally marks](materials/lectures/images/ml1_loom.jpg)
 
 Three comforting things people say about data. Each one is false.
 
@@ -111,6 +123,8 @@ sneaks *into* the data, it's the material the data is made *of*.
 ## Same numbers, three stories
 
 <!-- slide:
+![Two stacks of graded papers on a schoolroom table, one tall and one short; tired students, a man pointing at a leaking ceiling, and a woman pointing at a thick exam booklet each blame something different](materials/lectures/images/ml1_three_stories.jpg)
+
 > School A — average SAT **1240**.  School B — average SAT **980**.
 
 Watch the *same denotation* spin into three connotations,
@@ -122,6 +136,8 @@ each quietly handing the blame to someone else:
 -->
 
 <!-- slide:
+![Two stacks of graded papers on a schoolroom table, one tall and one short; tired students, a man pointing at a leaking ceiling, and a woman pointing at a thick exam booklet each blame something different](materials/lectures/images/ml1_three_stories.jpg)
+
 Nothing *in* the numbers tells you which story is true.
 
 The numbers are the easy part. **Choosing the story is the human part** —
@@ -129,6 +145,10 @@ The numbers are the easy part. **Choosing the story is the human part** —
 *and it is already an argument about fairness,
 wearing the costume of arithmetic.*
 -->
+
+<!-- layout: split -->
+<!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent): two stacks of graded exam papers on a table, one tall, one short; three figures each point elsewhere — at tired students, at a water-stained schoolhouse ceiling, at a thick exam booklet. Same papers, the blame moves. -->
+![Two stacks of graded papers on a schoolroom table, one tall and one short; tired students, a man pointing at a leaking ceiling, and a woman pointing at a thick exam booklet each blame something different](materials/lectures/images/ml1_three_stories.jpg)
 
 Two real numbers:
 
@@ -147,6 +167,8 @@ is the human part — and it is already an argument about fairness, wearing the 
 ## Who's doing the telling?
 
 <!-- slide:
+![A hand holds an empty wooden picture frame up to a crowded market street; only a small slice of the scene falls inside it](materials/lectures/images/ml1_frame.jpg)
+
 If numbers don't tell their own story, someone does —
 usually someone with power over the frame.
 
@@ -158,11 +180,17 @@ usually someone with power over the frame.
 -->
 
 <!-- slide:
+![A hand holds an empty wooden picture frame up to a crowded market street; only a small slice of the scene falls inside it](materials/lectures/images/ml1_frame.jpg)
+
 So the reflex this course wants to build.
 Every time a number lands in front of you, ask:
 
 ### Who collected this, why, and what story do they need it to tell?
 -->
+
+<!-- layout: split -->
+<!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent): a hand holding an empty wooden picture frame up to a crowded market street; only a small slice falls inside the frame while the scene carries on all around it. -->
+![A hand holds an empty wooden picture frame up to a crowded market street; only a small slice of the scene falls inside it](materials/lectures/images/ml1_frame.jpg)
 
 If numbers don't tell their own story, someone does — usually someone with power over the frame.
 
