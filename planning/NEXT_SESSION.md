@@ -4,7 +4,10 @@
 > home page (2026-10-06/07; the chatbot repo's `CLAUDE.md` has the details), and the lecture decks got a visual pass
 > (WORKLOG 2026-10-07: title bar + slide numbers, takeaway callouts, title-slide images restored, ml0 Pudding swap,
 > three new ml1 paintings). Pandas 01 and String Methods gained student copies with type-along blanks (2026-10-06).
-> All pushed through `a094e56`.
+> Later 2026-10-07: HW2's Constitution corpus reframed as the 1787 text (keys + Code Guide redeployed, `333c1eee`);
+> class access code reset (Keychain `writ20833-access-code`); smoke test passed; syllabus links the Code Guide;
+> **first-half Codex review done** (no student-facing defects; builder docstrings fixed) and its ML0–ML4 teaching
+> suggestions applied (code examples, glosses, sourced claims). All three repos pushed and in sync at session end.
 >
 > Earlier status, as of **2026-09-28**: the repo is public, the site is live,
 > and the answer keys are unreachable from it. **Lane E is closed.** All six judgment calls from the
@@ -14,18 +17,22 @@
 > (Day 6 = start HW1 in class). Both repos are in sync with `origin/main`. Every builder reproduces
 > what is committed (re-verified 2026-09-28).
 >
-> 🔎 **First-half external review (Codex):** brief at `planning/REVIEW_BRIEF_FIRST_HALF_2026-10.md`; fill in the
-> commit at hand-off. **Stylometry is excluded** and still needs its own pass **before Wed Nov 4 (Day 8)**: drop the
+> ✅ **First-half external review (Codex): DONE 2026-10-07** against `3706094` (results: WORKLOG; raw replies in the
+> local, gitignored `codex_review/`). Reuse `planning/REVIEW_BRIEF_FIRST_HALF_2026-10.md` as the template for the
+> **second-half review ~Nov 6–9**, after Lane B. **Stylometry was excluded** and still needs its own pass **before Wed Nov 4 (Day 8)**: drop the
 > DRAFT label and fix the "Day 7" / "Week 4" references (→ Day 8 / capstone weeks).
 > ⚠️ **Day 8 lab gap:** the schedule's "Reading & improving AI code" half of the Day 8 lab has **no built
 > handout** (only the stylometry piece exists). ML4 now models the move (an AI-style `count_words` + a
 > checklist); decide whether the lab needs its own sheet before Wed Nov 4.
-> ⏩ **Next up:** access code to students via D2L (the syllabus now says it's posted there) → Lane D (D2L hand-wiring — hardest deadline,
-> students land there Oct 19) → Lane C (the capstone placeholders) → Lane B (four lecture
-> framings) → Lane D (both D2L packages imported 2026-09-28; confirm the discussions + DST dates, then hand-wire the shell per `d2l/WIRING_CHECKLIST.md` §3–6, plus the checks outside this repo).
+> ⏩ **Next up (in order):** (1) post the access code + chat link in TCU Online — the syllabus already says it's
+> there; (2) Lane D D2L hand-wiring before Oct 19; (3) Word syllabus hand edits (now also the Code Guide URL
+> paragraph) + re-upload the PDF; (4) stylometry + Day 8 AI-code lab sheet before Nov 4; (5) the
+> "confirm-my-guess" decision before HW1 (Oct 30); then Lane C (the capstone placeholders, by 12/4) → Lane B (four
+> lecture framings, before Day 13 on Nov 16). D2L detail: both packages imported 2026-09-28; confirm the discussions
+> + DST dates, then hand-wire the shell per `d2l/WIRING_CHECKLIST.md` §3–6, plus the checks outside this repo.
 > ✍️ **Hand edits pending (Word syllabus `WRIT20833-020_Fall2026_Rode.docx`):** (1) the 2026-09-28 Day 6 and
 > Day 9 label changes; (2) the two 2026-09-30 Code Guide paragraphs now in `SYLLABUS_2026.md` (after the
-> reflections list, and at the end of the AI Use Policy). Then **re-upload the syllabus PDF to D2L**
+> reflections list, and at the end of the AI Use Policy); (3) the 2026-10-07 Code Guide URL + "access code is posted in TCU Online" sentence at the start of the Code Guide paragraph. Then **re-upload the syllabus PDF to D2L**
 > (`d2l/WIRING_CHECKLIST.md` → *Updating a live shell*).
 
 ---
