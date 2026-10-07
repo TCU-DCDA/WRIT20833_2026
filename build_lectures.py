@@ -42,10 +42,13 @@ def _img_src(src):
     return RAW + src.lstrip("./")
 
 
+_NEW_TAB = ' target="_blank" rel="noopener"'   # outside links: a click mustn't leave the deck
+
+
 def md_inline(t):
     """Minimal inline markdown -> HTML: escape, then links/bold/italic/code."""
     t = html.escape(t, quote=False)
-    t = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', t)
+    t = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', lambda m: f'<a href="{m.group(2)}"{_NEW_TAB if m.group(2).startswith(("http://", "https://")) else ""}>{m.group(1)}</a>', t)
     t = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', t)
     t = re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)', r'<em>\1</em>', t)
     t = re.sub(r'`([^`]+)`', r'<code>\1</code>', t)
@@ -94,7 +97,7 @@ def render_blocks(lines, lead=False):
             cap = f"<figcaption>{alt}</figcaption>" if alt else ""
             img = f'<img src="{_img_src(m.group(2))}" alt="{alt}">'
             if m.lastindex == 3:                               # opens the project in a new tab
-                img = f'<a href="{html.escape(m.group(3))}" target="_blank" rel="noopener">{img}</a>'
+                img = f'<a href="{html.escape(m.group(3))}"{_NEW_TAB}>{img}</a>'
             out.append(("figure", f'<figure>{img}{cap}</figure>'))
             i += 1; continue
         if s == "---":

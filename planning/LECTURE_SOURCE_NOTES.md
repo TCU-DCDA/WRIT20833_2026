@@ -23,7 +23,7 @@ survey deck. Triage below.
   Day-6 term-frequency code-along** (counting words in lyrics).
 - **Two project chart images** for that slide (a 2-up row via the new `gallery` layout): the F25
   country-music "girl/love" scatter (`slide_09` → `materials/lectures/images/proj_country_love.png`) and
-  Ben Schmidt's gendered-teacher-review dot plot (`slide_12` → `proj_teacher_reviews.png`). **Image audit
+  Ben Schmidt's gendered-teacher-review dot plot (`slide_12` → `proj_teacher_reviews.png`). **2026-10-07:** Schmidt swapped out (benschmidt.org/profGender/ timed out) for the Pudding hip-hop vocabulary piece, which moved up from "A few more"; image `proj_hiphop_vocab.png` is the article's own Wu-Tang chart (its og:image belongs to a different Pudding project). **Image audit
   (2026-06-13):** these were the *only two* F25 project screenshots that are legible data-viz; the rest
   are text-screenshots (`slide_08`/`slide_10`) or muddy/illegible (`slide_11`), and Open
   Syllabus/Photogrammar are logos only. **Every Noise at Once has no F25 image.** If a fuller image grid

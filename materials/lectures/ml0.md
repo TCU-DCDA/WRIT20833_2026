@@ -116,8 +116,8 @@ Before the cautions, the payoff — real projects that turn a pile of culture
 into a pattern you can suddenly *see.* Two that count words much as you soon will:
 
 - **"Trucks and Beer"** — what country songs *actually* sing about
-- **Gendered Language in Teacher Reviews** — the same words landing
-  differently by the professor's gender
+- **The Pudding, "The Largest Vocabulary in Hip-Hop"** — rappers ranked
+  by unique words used
 -->
 
 Before the cautions, the payoff — real projects that turn a pile of culture into a pattern you can
@@ -126,20 +126,18 @@ suddenly *see*. Start with two that count words much the way you soon will:
 <!-- layout: gallery -->
 
 - ["Trucks and Beer"](https://www.johnwmillr.com/trucks-and-beer/) — counts what country songs *actually* sing about (turns out, not just trucks and beer).
-- [Gendered Language in Teacher Reviews](https://benschmidt.org/profGender/) — the same words land very differently depending on the professor's gender.
+- [The Pudding, "The Largest Vocabulary in Hip-Hop"](https://pudding.cool/2017/02/vocabulary/) — ranks rappers by how many unique words they use in their first 35,000 lyrics.
 
 [![Scatter plot — mentions of "girl" vs. "love" across popular country songs, colored by artist gender (the "Trucks and Beer" analysis)](materials/lectures/images/proj_country_love.png)](https://www.johnwmillr.com/trucks-and-beer/)
 
-[![Dot plot — words from 14 million RateMyProfessor reviews split by professor gender (Ben Schmidt, "Gendered Language in Teacher Reviews")](materials/lectures/images/proj_teacher_reviews.png)](https://benschmidt.org/profGender/)
+[![Number line — unique words used by each Wu-Tang Clan member within their first 3,500 lyrics, from Method Man near 1,050 to U-God near 1,370 (Matt Daniels, The Pudding, "The Largest Vocabulary in Hip-Hop")](materials/lectures/images/proj_hiphop_vocab.png)](https://pudding.cool/2017/02/vocabulary/)
 
 ## A few more worth a look
 
 <!-- slide:
-- **Every Noise at Once** — a navigable map of 6,000+ music genres,
+- **[Every Noise at Once](https://everynoise.com/)** — a navigable map of 6,000+ music genres,
   drawn from audio analysis
-- **The Pudding, "The Largest Vocabulary in Hip-Hop"** — rappers ranked
-  by unique words used
-- **Open Syllabus** — millions of college syllabi; Plato is assigned
+- **[Open Syllabus](https://opensyllabus.org/)** — millions of college syllabi; Plato is assigned
   more than any other author on earth
 
 *Notice the move every one of them makes: a question about **people**
@@ -149,7 +147,6 @@ comes first, then the counting. The tool serves the question.*
 No screenshots — these are worth visiting live:
 
 - [Every Noise at Once](https://everynoise.com/) — a navigable map of 6,000+ music genres, drawn from audio analysis.
-- [The Pudding, "The Largest Vocabulary in Hip-Hop"](https://pudding.cool/2017/02/vocabulary/) — ranks rappers by how many unique words they use.
 - [Open Syllabus](https://opensyllabus.org/) — maps millions of college syllabi; Plato is assigned more than any other author on earth.
 
 Notice the move every one of them makes: a question about *people* comes first, then the counting. The
