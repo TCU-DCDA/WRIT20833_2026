@@ -54,3 +54,6 @@ d2l/WRIT20833_Fall2026_*-homepage-widget.html
 *.imscc
 D2LExport_*/
 d2l/__pycache__/
+
+# Local Codex review output (not for the public repo)
+codex_review/
