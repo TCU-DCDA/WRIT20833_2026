@@ -1,6 +1,12 @@
 # Next-session handoff prompt
 
-> **Course starts Mon Oct 19, 2026.** Status as of **2026-09-28**: the repo is public, the site is live,
+> **Course starts Mon Oct 19, 2026.** Updated **2026-10-07**: the **Code Guide is deployed and linked** from the
+> home page (2026-10-06/07; the chatbot repo's `CLAUDE.md` has the details), and the lecture decks got a visual pass
+> (WORKLOG 2026-10-07: title bar + slide numbers, takeaway callouts, title-slide images restored, ml0 Pudding swap,
+> three new ml1 paintings). Pandas 01 and String Methods gained student copies with type-along blanks (2026-10-06).
+> All pushed through `a094e56`.
+>
+> Earlier status, as of **2026-09-28**: the repo is public, the site is live,
 > and the answer keys are unreachable from it. **Lane E is closed.** All six judgment calls from the
 > 2026-09-05 continuity audit were fixed and pushed on 2026-09-28: the HW3 tone/stance framing, the
 > Day 3/4 notebook order, the Topic Modeling toy corpus, Term Frequency's distinctive-words cell, the
@@ -8,7 +14,8 @@
 > (Day 6 = start HW1 in class). Both repos are in sync with `origin/main`. Every builder reproduces
 > what is committed (re-verified 2026-09-28).
 >
-> ⏩ **Next up:** Lane C (the capstone placeholders; the chatbot is launch-ready, deploy steps below) → Lane B (four lecture
+> ⏩ **Next up:** Code Guide smoke test + access code to students (below) → Lane D (D2L hand-wiring — hardest deadline,
+> students land there Oct 19) → Lane C (the capstone placeholders) → Lane B (four lecture
 > framings) → Lane D (both D2L packages imported 2026-09-28; confirm the discussions + DST dates, then hand-wire the shell per `d2l/WIRING_CHECKLIST.md` §3–6, plus the checks outside this repo).
 > ✍️ **Hand edits pending (Word syllabus `WRIT20833-020_Fall2026_Rode.docx`):** (1) the 2026-09-28 Day 6 and
 > Day 9 label changes; (2) the two 2026-09-30 Code Guide paragraphs now in `SYLLABUS_2026.md` (after the
@@ -75,10 +82,10 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
   `PROPOSED_4WEEK_SCHEDULE.md`) are `git rm`'d — `planning/` is the single source, which is where README
   already pointed. Nothing linked to them and all three generators still build clean. **Root now holds only
   the four student-facing docs** (README · SYLLABUS · COURSE_SCHEDULE · CAPSTONE) + the generators.
-- **Chatbot tutor ("Code Guide")** — **code-ready and reviewed; deployment pending.** Real deadline: HW1 is
-  assigned Fri 10/30. Worker, prompt, and assignment blocks: private `TCU-DCDA/WRIT20833-chatbot` (its
+- **Chatbot tutor ("Code Guide")** — ✅ **DEPLOYED 2026-10-07** (`writ20833-codeguide` Worker) and **linked** from the
+  home page (`CHAT_API_URL` set, `6c576dc`). Real deadline: HW1 is assigned Fri 10/30. Worker, prompt, and assignment blocks: private `TCU-DCDA/WRIT20833-chatbot` (its
   `CLAUDE.md` + `DEPLOY.md` are current). Chat page: this repo (`chatbot/chatbot.js` + `chatbot/render.js` +
-  `build_chatbot.py` → `docs/chatbot.html`), live but **unlinked** until `CHAT_API_URL` is set.
+  `build_chatbot.py` → `docs/chatbot.html`), live and linked.
   - **2026-09-30:** two independent reviews (`COURSE_CONTEXT_REVIEW_*` / `COURSE_REVIEW_EXPANDED_*` in the
     chatbot repo, with replies recording Dr. Rode's six decisions). Work order done: permitted-help prompt
     revision (explain supplied + AI-written code; homework-writing feedback; concepts; no due dates; Track B
@@ -87,11 +94,11 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
     stream endings, access gate before a 60/min + 800/day per-network limit that fails open); HW2 checklist
     (C2 optional) + HW3 B3 own-data sentence via the keys-repo builders; syllabus + page privacy wording;
     live acceptance probe run 1: 12/12 pass (`worker/retest/RESULTS.md`).
-  - **Remaining, in order:** (1) deploy per the chatbot repo's `DEPLOY.md`: KV namespace, `ANTHROPIC_API_KEY`
-    + `ACCESS_CODE` secrets, Anthropic spend cap, confirm Analytics Engine on the plan, `npm test`, `npx
-    wrangler deploy`; (2) set `CHAT_API_URL` in `build_chatbot.py`, run it + `build_index.py`, push (the
-    home-page card appears); (3) re-run `worker/retest/acceptance-probe.mjs` against the deployed Worker and
-    read the transcripts; (4) the Word syllabus + D2L PDF hand steps above.
+  - ✅ **Done 2026-10-07:** deploy, `CHAT_API_URL` + home-page card, live probe runs 3–4 against the deployed
+    Worker (all pass on reading; chatbot repo `worker/retest/RESULTS.md`).
+  - **Remaining, in order:** (1) browser smoke test (chatbot repo `DEPLOY.md` → "Smoke test after deploy");
+    (2) add the chat link to the syllabus and give students the access code; (3) the Word syllabus + D2L PDF
+    hand steps above. Teardown after 12/18: the chatbot repo's `MOTHBALL.md`.
   - **Open decisions:** the "confirm-my-guess" dial (seen live in probe A10: "the loop line you wrote is built
     correctly"); and review of the stylometry handout + notebook (`materials/stylometry/`), still marked
     "DRAFT" with pre-re-pacing "Day 7" / "Week 4" references (Track B context maps them to Day 8 / capstone
