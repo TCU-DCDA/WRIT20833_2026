@@ -267,3 +267,12 @@ Reference: `codex_review/d2l_learning_traces.md`.
 - [ ] Create a private instructor tracking method for present evidence, absent-but-caught-up, incomplete, and needs-contact.
 - [ ] Explain in the syllabus and D2L that attendance is an engagement indicator, not a proxy for motivation or a separate grade.
 - [ ] Mirror any syllabus wording changes in the Word syllabus and re-upload the syllabus PDF to D2L.
+
+### Ongoing TODOs — course site
+
+- [ ] **Add site search.** Model: WRIT 40363's Pagefind setup (Pagefind 1.5.2, pinned; index built into
+  `docs/pagefind/` from the finished pages; a search box injected into every page header). Here it should be a
+  step the generators run (or a script beside them), not a hand-edited `docs/` file, and the search box must pass
+  `site_theme.assert_accessible()`. Scope to decide: the site pages and lecture reading pages are searchable as
+  built; the notebooks live on GitHub/Colab and would be out of the index unless their titles/blurbs are indexed
+  from the dashboard. Skip the slide decks if they duplicate the reading pages in results.
