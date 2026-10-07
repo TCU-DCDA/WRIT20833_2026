@@ -28,6 +28,16 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 - **Bug fixed:** a title section with a `<!-- slide: -->` block dropped its image and split layout, so no
   deck's title slide had ever shown its painting. It now does, on all 8.
 - Verified by screenshots at 1920×1080, 1280×720 and 1024×768: 0 overfull slides in any deck.
+- **Constitution corpus reframed (pre-review check).** `us_constitution.txt` is the 1787 text with **no
+  amendments** (ends at the signatures; ~4,550 words), but HW2, the data README, Term Frequency and the
+  Code Guide called it the full Constitution, so HW2 B3 would teach that the Constitution never mentions
+  religion. **Decided: keep the text, relabel it** (option a). HW2 intro now says "as signed in 1787 …
+  before the Bill of Rights"; B3's prompt adds that *religion* enters with the First Amendment (1791) and
+  asks what "silent" means; the key's B3 note and model answer match. HW2 C1 no longer blames "amp" (not in
+  the corpus). Counts unchanged. Keys builder + student copy, `_build_termfreq.py`, data README, chatbot
+  `worker/lessons/hw2.js` (**Worker redeploy pending**). Same session: every code-along, stylometry, HW1 and
+  HW2 run clean; all builders reproduce their notebooks; review brief at
+  `planning/REVIEW_BRIEF_FIRST_HALF_2026-10.md`.
 
 ## Earlier session — 2026-09-28 (cont.) — Lane D: D2L shell generators
 

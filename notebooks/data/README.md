@@ -20,7 +20,7 @@ four homeworks see 123 rows); and a few lines are short CSV→txt wrap-fragments
 chart, so **do not "clean" these away** without rewriting those exercises.
 
 ### `us_constitution.txt` — the document the public invokes
-The full U.S. Constitution (Preamble through the amendments), ~4,550 words. Public domain,
+The U.S. Constitution **as signed in 1787** (Preamble through Article VII and the signatures), ~4,550 words: **no Bill of Rights or later amendments.** Its only mention of faith is Article VI's "no religious Test"; *religion* enters with the First Amendment (1791), so HW2 B3 lists it among the words the text never uses, and the HW2 prompt asks students to notice why. Public domain,
 sourced from Project Gutenberg eBook #5 with the Gutenberg/transcriber boilerplate stripped
 (text begins at "THE CONSTITUTION OF THE UNITED STATES OF AMERICA, 1787").
 

@@ -224,7 +224,7 @@ print("B ->", top_meaningful_words(text_b, 5))
     md('''# Sneak Preview: Where This Is Going
 
 **HW2 ("Whose Words Win?")** is this exact move at full scale: you'll run term frequency on **123 real
-YouTube comments** about the Texas law and on the **entire U.S. Constitution**, and read what the
+YouTube comments** about the Texas law and on the **U.S. Constitution as signed in 1787**, and read what the
 contrast reveals about a public's voice versus the document it keeps invoking.
 
 And keep one thing in mind as you go — *counting is already interpreting.* **We** decided to split on

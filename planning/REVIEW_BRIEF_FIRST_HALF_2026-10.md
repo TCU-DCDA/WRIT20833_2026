@@ -60,7 +60,7 @@ When two files disagree, these win:
 - **HW3 and HW4 raise six errors when run unfilled** (`KeyError`/`NameError`): each comes from a cell that depends on a column or variable the student creates in an earlier exercise. Expected. Both are second-half homework anyway.
 - **The intentional `TypeError`** in Variables_DataTypes ("read the error message carefully").
 - **Second half (Days 13–24):** the four lecture framings with no built material (Days 13, 14, 15, 18), the capstone sheet's placeholders, HW3, HW4, VADER, Topic Modeling. A second review covers these in November.
-- **`us_constitution.txt` is the 1787 text without the amendments**, while `notebooks/data/README.md` and HW2 call it the full Constitution. Already found (2026-10-07); a fix is pending the instructor's decision. You may note anything else that depends on it, such as HW2 B3's "the founding document is simply silent on" religion.
+- **`us_constitution.txt` is the 1787 text without the amendments.** Found and reframed 2026-10-07 (the text was kept): HW2, the data README, Term Frequency's Sneak Preview, and the Code Guide's HW2 notes now call it the Constitution as signed in 1787, and HW2 B3 asks students why *religion* is absent (the First Amendment, 1791). Do report any place that still calls it the full or entire Constitution.
 - **Stylometry materials:** `<instructor: fixed / excluded — fill in at hand-off>`.
 - D2L (TCU Online) and the Word syllabus are outside this repository.
 
