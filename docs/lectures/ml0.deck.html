@@ -190,6 +190,7 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+figure a{border-bottom:none;}   /* a linked image needs no underline */
 .reading figure{margin:24px 0;}
 .reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
   border-radius:3px;background:var(--surface);padding:6px;}
@@ -214,9 +215,23 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
   line-height:1.08;margin:0 0 16px;}
 .slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
   color:#464b3d;margin:0 0 20px;}
-.slide h2.cont{opacity:.55;font-size:clamp(19px,2.7vw,29px);}
-.slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
-  margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
+.slide h2{font-family:var(--serif);color:var(--paper);background:var(--green);
+  font-size:clamp(24px,4vw,42px);line-height:1.12;
+  margin:-7vh -8vw 4.5vh;padding:3.2vh 8vw;width:auto;max-width:none;
+  display:flex;justify-content:space-between;align-items:center;gap:32px;}
+/* slide-number pill — filled in by the script, so inserting a slide never means renumbering */
+.slide h2 .num{flex-shrink:0;font:700 clamp(13px,1.3vw,18px)/1 var(--mono);color:var(--ink);
+  background:var(--clay-bg);padding:.55em 1.1em;border-radius:999px;}
+/* takeaway: a slide's closing paragraph, set wholly in italics, becomes a callout box */
+.slide p.callout{background:var(--clay-bg);border:2px solid var(--green);border-radius:14px;
+  padding:2.2vh 2vw;margin-top:10px;font-family:var(--serif);color:var(--ink);}
+.slide p.callout em{font-style:normal;}
+.slide.title .kicker{width:fit-content;background:var(--clay-bg);color:var(--clay-ink);
+  padding:10px 18px;border-radius:999px;margin-bottom:26px;}
+.slide .dots{display:flex;gap:10px;margin:2px 0 22px;}
+.slide .dots i{width:11px;height:11px;border-radius:999px;background:var(--clay);}
+.slide .dots i:first-child{width:40px;background:var(--green);}
+.slide .dots i:last-child{background:var(--green-mid);}
 .slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
 .slide p.lead{font-family:var(--serif);color:#3c4133;}
 .slide ul{font-size:clamp(16px,2vw,23px);line-height:1.45;margin:0 0 16px;padding-left:1.1em;}
@@ -247,10 +262,9 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 @media (max-width:760px){.slide.gallery .fig-row{grid-template-columns:1fr !important;gap:16px;}}
 .deck-progress{position:fixed;left:0;bottom:0;height:4px;background:var(--green);width:0;
   transition:width .2s;z-index:10;}
-.deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
 .deck-hint{position:fixed;left:16px;bottom:11px;font:600 12px/1 var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint);z-index:10;}
-.deck-home{position:fixed;left:16px;top:13px;z-index:10;display:flex;gap:11px;align-items:baseline;
+.deck-home{position:fixed;right:16px;bottom:11px;z-index:10;display:flex;gap:11px;align-items:baseline;
   font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
 .deck-home:hover{opacity:1;}
 .deck-home a{color:var(--green-mid);border:none;text-decoration:none;}
@@ -259,45 +273,47 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 @media print{.deck{position:static;overflow:visible;}
   .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
     border-bottom:1px solid var(--rule);}
-  .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
+  .deck-progress,.deck-hint,.deck-home{display:none;}}
 </style></head>
-<body><div class="deck"><section class="slide title"><div class="kicker">Day 1 · the through-line</div><h1>Humanities &amp; Coding</h1><p class="sub">Why a humanist learns to code</p><p class="lead"><strong>What do you do with knowledge that can't be measured?</strong></p>
+<body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 1 · the through-line</div><h1>Humanities &amp; Coding</h1><p class="sub">Why a humanist learns to code</p><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p class="lead"><strong>What do you do with knowledge that can't be measured?</strong></p>
 <p><em>That question is the humanities.</em> Love and grief, justice and beauty, the meaning of a poem or a protest — the things that matter most tend to be exactly the things that resist a number.</p>
-<p>Eight weeks turning human language into numbers. Let's be honest on day one about what that does and doesn't get us.</p></section><section class="slide split"><h2>The human mess</h2><div class="split-grid"><div class="col-text"><p>The humanities study the <strong>mess</strong> of the human condition — and they don't tidy it up. They explore it.</p>
+<p>Eight weeks turning human language into numbers. Let's be honest on day one about what that does and doesn't get us.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/humanities_coding_script_to_structure.jpg" alt="A warm oil painting of a hand with a quill turning cursive manuscript lines into ordered rows of abstract printed characters"></figure></div></div></section><section class="slide split"><h2>The human mess</h2><div class="split-grid"><div class="col-text"><p>The humanities study the <strong>mess</strong> of the human condition — and they don't tidy it up. They explore it.</p>
 <ul><li><strong>Contradiction</strong> — we hold conflicting values at once; we can love and resent the same person</li><li><strong>Ambiguity</strong> — a text means more than one thing. Is Hamlet mad, or pretending?</li><li><strong>Subjectivity</strong> — beauty and justice look different from different lives</li></ul></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/messy_humanities.jpg" alt="A warm sepia painting of the humanities — a bust, a seated thinker, a portrait on an easel, a guitar, a theatre mask, and scattered manuscripts"></figure></div></div></section><section class="slide"><h2 class="cont">The human mess</h2><p>The sciences reduce complexity to principles — one elegant law that explains every case.</p>
 <p>The humanities do something else: they <strong>map the contours of the complexity itself.</strong> Where other fields see noise to filter out, we often see the signal.</p>
 <blockquote><p>Keats called the needed temperament <em>negative capability</em> — being</p><p>"in uncertainties, mysteries, doubts, without any irritable reaching</p><p>after fact and reason."</p></blockquote>
-<p><em>This whole course lives inside that phrase.</em></p></section><section class="slide"><h2>So why learn to code?</h2><p>The productive tension you'll feel all term:</p>
+<p class="callout">This whole course lives inside that phrase.</p></section><section class="slide"><h2>So why learn to code?</h2><p>The productive tension you'll feel all term:</p>
 <blockquote><p>**Code wants to categorize, measure, and systematize.</p><p>Culture is ambiguous, contextual, and messy.**</p></blockquote>
 <p>Can a sentiment score capture a sarcastic comment? What gets lost when a heated public argument is flattened into one average number? Who decides which categories matter when we collect data?</p></section><section class="slide"><h2 class="cont">So why learn to code?</h2><p>These aren't bugs in the software — they're <strong>humanities questions</strong>, and a humanist is exactly the person equipped to ask them.</p>
 <p>We don't learn to code in order to stop thinking like humanists. We learn it to <strong>bring humanities questions to computational methods</strong> — to hear more voices than close reading could ever reach, while staying honest about what the counting flattens.</p>
-<p><em>Listen at scale — and refuse the false tidy answer. That's the course.</em></p></section><section class="slide gallery"><h2>What it looks like in the wild</h2><p>Before the cautions, the payoff — real projects that turn a pile of culture into a pattern you can suddenly <em>see.</em> Two that count words much as you soon will:</p>
-<ul><li><strong>"Trucks and Beer"</strong> — what country songs <em>actually</em> sing about</li><li><strong>The Pudding, "The Largest Vocabulary in Hip-Hop"</strong> — rappers ranked by unique words used</li></ul><div class="fig-row cols-2"><figure><a href="https://www.johnwmillr.com/trucks-and-beer/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/proj_country_love.png" alt="Scatter plot — mentions of &quot;girl&quot; vs. &quot;love&quot; across popular country songs, colored by artist gender (the &quot;Trucks and Beer&quot; analysis)"></a></figure><figure><a href="https://pudding.cool/2017/02/vocabulary/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/proj_hiphop_vocab.png" alt="Number line — unique words used by each Wu-Tang Clan member within their first 3,500 lyrics, from Method Man near 1,050 to U-God near 1,370 (Matt Daniels, The Pudding, &quot;The Largest Vocabulary in Hip-Hop&quot;)"></a></figure></div></section><section class="slide"><h2>A few more worth a look</h2><ul><li><strong><a href="https://everynoise.com/" target="_blank" rel="noopener">Every Noise at Once</a></strong> — a navigable map of 6,000+ music genres, drawn from audio analysis</li><li><strong><a href="https://opensyllabus.org/" target="_blank" rel="noopener">Open Syllabus</a></strong> — millions of college syllabi; Plato is assigned more than any other author on earth</li></ul>
-<p><em>Notice the move every one of them makes: a question about <strong>people</strong> comes first, then the counting. The tool serves the question.</em></p></section><section class="slide"><h2>Use the programs, or shape them</h2><blockquote><p>The underlying capability of the computer era is actually programming —</p><p>which almost none of us know how to do. We simply use the programs that</p><p>have been made for us, and enter our text in the appropriate box…</p><p>This means we have access to the capabilities given to us by others,</p><p>but not the power to determine the value-creating capabilities</p><p>of these technologies for ourselves.</p></blockquote>
+<p class="callout">Listen at scale — and refuse the false tidy answer. That's the course.</p></section><section class="slide gallery"><h2>What it looks like in the wild</h2><p>Before the cautions, the payoff — real projects that turn a pile of culture into a pattern you can suddenly <em>see.</em> Two that count words much as you soon will:</p>
+<ul><li><strong>"Trucks and Beer"</strong> — what country songs <em>actually</em> sing about</li><li><strong>The Pudding, "The Largest Vocabulary in Hip-Hop"</strong> — rappers ranked by unique words used</li></ul><div class="fig-row cols-2"><figure><a target="_blank" rel="noopener noreferrer" href="https://www.johnwmillr.com/trucks-and-beer/"><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/proj_country_love.png" alt="Scatter plot — mentions of &quot;girl&quot; vs. &quot;love&quot; across popular country songs, colored by artist gender (the &quot;Trucks and Beer&quot; analysis)"></a></figure><figure><a target="_blank" rel="noopener noreferrer" href="https://pudding.cool/2017/02/vocabulary/"><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/proj_hiphop_vocab.png" alt="Number line — unique words used by each Wu-Tang Clan member within their first 3,500 lyrics, from Method Man near 1,050 to U-God near 1,370 (Matt Daniels, The Pudding, &quot;The Largest Vocabulary in Hip-Hop&quot;)"></a></figure></div></section><section class="slide"><h2>A few more worth a look</h2><ul><li><strong><a target="_blank" rel="noopener noreferrer" href="https://everynoise.com/">Every Noise at Once</a></strong> — a navigable map of 6,000+ music genres, drawn from audio analysis</li><li><strong><a target="_blank" rel="noopener noreferrer" href="https://opensyllabus.org/">Open Syllabus</a></strong> — millions of college syllabi; Plato is assigned more than any other author on earth</li></ul>
+<p class="callout">Notice the move every one of them makes: a question about <strong>people</strong> comes first, then the counting. The tool serves the question.</p></section><section class="slide"><h2>Use the programs, or shape them</h2><blockquote><p>The underlying capability of the computer era is actually programming —</p><p>which almost none of us know how to do. We simply use the programs that</p><p>have been made for us, and enter our text in the appropriate box…</p><p>This means we have access to the capabilities given to us by others,</p><p>but not the power to determine the value-creating capabilities</p><p>of these technologies for ourselves.</p></blockquote>
 <p>— Douglas Rushkoff, <em>Program or Be Programmed</em></p></section><section class="slide"><h2 class="cont">Use the programs, or shape them</h2><p>Nick Montfort names the upside just as plainly. Learning to code in the humanities lets us <strong>think in new ways</strong>, <strong>understand culture and media systems</strong> more deeply, and maybe <strong>help improve society.</strong></p>
 <p>You don't have to leave here a programmer. But knowing what's inside the box — even a little — is the difference between <em>using</em> the tools that sort our culture and being able to <strong>question</strong> them.</p></section><section class="slide split"><h2>The score is never the meaning</h2><div class="split-grid"><div class="col-text"><p>Look at this diagram. We'll come back to it every week.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/images/noumena_to_wisdom_pipeline.png" alt="The noumena-to-wisdom pipeline: noumena, phenomena, raw data, structured data, analyzed data, insight, knowledge, wisdom"></figure></div></div></section><section class="slide"><h2 class="cont">The score is never the meaning</h2><p>It begins much further from "the truth" than you'd guess.</p>
 <p>At the top sits the <em><strong>noumenon</strong></em> — Kant's word for a thing <strong>as it actually is</strong>, the whole lived human fact. A woman in Texas reads that her child's classroom will display the Ten Commandments, and feels something complete and entirely her own.</p>
 <h3>We will never have that feeling.</h3>
 <p>What we <em>can</em> have is what she typed — already a lossy, public projection of an inner state.</p></section><section class="slide"><h2 class="cont">The score is never the meaning</h2><p>Then we <strong>scrape</strong> it — and some comments are missed. We <strong>clean</strong> it — we choose what counts as a "word." We <strong>model</strong> it — a tool decides what "great" means.</p>
 <p>And only <em>then</em> do we reach for <strong>insight, knowledge,</strong> and — maybe, by the end — <strong>wisdom.</strong></p>
-<p><em>Eight steps from the woman to the number. Every one of them ours.</em></p></section><section class="slide split"><h2>Every arrow is a choice</h2><div class="split-grid"><div class="col-text"><p><strong>Every arrow on that diagram is a human decision</strong> — not a neutral pipe, but a choice, with a person and a value behind it.</p>
+<p class="callout">Eight steps from the woman to the number. Every one of them ours.</p></section><section class="slide split"><h2>Every arrow is a choice</h2><div class="split-grid"><div class="col-text"><p><strong>Every arrow on that diagram is a human decision</strong> — not a neutral pipe, but a choice, with a person and a value behind it.</p>
 <p>It's tempting to call each step <em>contamination</em>, as if a clean signal up top got dirtied on the way down. But look again: <strong>there is no clean signal up top.</strong> The very first step is already an interpretation.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/every_arrow_valves.jpg" alt="A warm oil painting of a hand reaching to turn one of several brass valves along a pipe carrying flowing golden light"></figure></div></div></section><section class="slide"><h2 class="cont">Every arrow is a choice</h2><h3>Bias isn't what sneaks into the data — bias is the material the data is made of.</h3>
 <p>That's not cause for despair, and not a reason to distrust everything. It's the reason for the one habit this course asks of you constantly: <strong>make your choices visible.</strong></p>
 <p>Every time you delete a word, set a threshold, or name a topic, you leave a <code>#comment</code> saying what you did and why.</p>
-<p><em>The honest move isn't pretending you found the truth. It's showing where you stood.</em></p></section><section class="slide"><h2>What this course is really grading</h2><p>This is why we don't grade you on clean code.</p>
+<p class="callout">The honest move isn't pretending you found the truth. It's showing where you stood.</p></section><section class="slide"><h2>What this course is really grading</h2><p>This is why we don't grade you on clean code.</p>
 <p><strong>Insight, knowledge, wisdom</strong> aren't outputs you can compute — they're what's left after you've been honest about every arrow above them.</p>
 <p>By your final reflection the question won't be <em>"did you get the right answer?"</em> It will be:</p>
 <h3>"Do you understand everything you chose along the way?"</h3></section><section class="slide"><h2 class="cont">What this course is really grading</h2><p>One more thing about that bottom-right corner.</p>
 <p>The climb from knowledge to wisdom can fail — and the failure isn't <em>ignorance</em>, which more information fixes. It's stubborner: being full of knowledge that never changes you. The Greeks had a word for it, and in a few weeks you'll learn it.</p>
-<p><em>For now, notice that the diagram's last arrow is the only one no tool can cross for you.</em></p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml0.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<p class="callout">For now, notice that the diagram's last arrow is the only one no tool can cross for you.</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml0.html">Reading</a></div><div class="deck-progress"></div><div class="deck-hint">← → navigate · click to advance</div>
 <script>
 (function(){
   var s=[].slice.call(document.querySelectorAll('.slide'));
-  var prog=document.querySelector('.deck-progress'), cnt=document.querySelector('.deck-count'), i=0;
+  var prog=document.querySelector('.deck-progress'), i=0;
+  s.forEach(function(el,k){var h=el.querySelector('h2'); if(!h)return;
+    var n=document.createElement('span'); n.className='num'; n.textContent=String(k+1).padStart(2,'0');
+    n.setAttribute('aria-label','slide '+(k+1)+' of '+s.length); h.appendChild(n);});
   function show(n){i=Math.max(0,Math.min(s.length-1,n));
     s.forEach(function(el,k){el.classList.toggle('active',k===i);el.scrollTop=0;});
     if(prog)prog.style.width=((i+1)/s.length*100)+'%';
-    if(cnt)cnt.textContent=(i+1)+' / '+s.length;
     if(history.replaceState)history.replaceState(null,'','#'+(i+1));}
   document.addEventListener('keydown',function(e){
     if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1);}

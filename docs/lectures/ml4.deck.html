@@ -190,6 +190,7 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+figure a{border-bottom:none;}   /* a linked image needs no underline */
 .reading figure{margin:24px 0;}
 .reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
   border-radius:3px;background:var(--surface);padding:6px;}
@@ -214,9 +215,23 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
   line-height:1.08;margin:0 0 16px;}
 .slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
   color:#464b3d;margin:0 0 20px;}
-.slide h2.cont{opacity:.55;font-size:clamp(19px,2.7vw,29px);}
-.slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
-  margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
+.slide h2{font-family:var(--serif);color:var(--paper);background:var(--green);
+  font-size:clamp(24px,4vw,42px);line-height:1.12;
+  margin:-7vh -8vw 4.5vh;padding:3.2vh 8vw;width:auto;max-width:none;
+  display:flex;justify-content:space-between;align-items:center;gap:32px;}
+/* slide-number pill — filled in by the script, so inserting a slide never means renumbering */
+.slide h2 .num{flex-shrink:0;font:700 clamp(13px,1.3vw,18px)/1 var(--mono);color:var(--ink);
+  background:var(--clay-bg);padding:.55em 1.1em;border-radius:999px;}
+/* takeaway: a slide's closing paragraph, set wholly in italics, becomes a callout box */
+.slide p.callout{background:var(--clay-bg);border:2px solid var(--green);border-radius:14px;
+  padding:2.2vh 2vw;margin-top:10px;font-family:var(--serif);color:var(--ink);}
+.slide p.callout em{font-style:normal;}
+.slide.title .kicker{width:fit-content;background:var(--clay-bg);color:var(--clay-ink);
+  padding:10px 18px;border-radius:999px;margin-bottom:26px;}
+.slide .dots{display:flex;gap:10px;margin:2px 0 22px;}
+.slide .dots i{width:11px;height:11px;border-radius:999px;background:var(--clay);}
+.slide .dots i:first-child{width:40px;background:var(--green);}
+.slide .dots i:last-child{background:var(--green-mid);}
 .slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
 .slide p.lead{font-family:var(--serif);color:#3c4133;}
 .slide ul{font-size:clamp(16px,2vw,23px);line-height:1.45;margin:0 0 16px;padding-left:1.1em;}
@@ -247,10 +262,9 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 @media (max-width:760px){.slide.gallery .fig-row{grid-template-columns:1fr !important;gap:16px;}}
 .deck-progress{position:fixed;left:0;bottom:0;height:4px;background:var(--green);width:0;
   transition:width .2s;z-index:10;}
-.deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
 .deck-hint{position:fixed;left:16px;bottom:11px;font:600 12px/1 var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint);z-index:10;}
-.deck-home{position:fixed;left:16px;top:13px;z-index:10;display:flex;gap:11px;align-items:baseline;
+.deck-home{position:fixed;right:16px;bottom:11px;z-index:10;display:flex;gap:11px;align-items:baseline;
   font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
 .deck-home:hover{opacity:1;}
 .deck-home a{color:var(--green-mid);border:none;text-decoration:none;}
@@ -259,14 +273,14 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 @media print{.deck{position:static;overflow:visible;}
   .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
     border-bottom:1px solid var(--rule);}
-  .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
+  .deck-progress,.deck-hint,.deck-home{display:none;}}
 </style></head>
-<body><div class="deck"><section class="slide title"><div class="kicker">Day 8 · the through-line</div><h1>AI Agency</h1><p class="sub">Borrow the tool — don't outsource the thinking</p><p class="lead">You can now say <em>"write me ten lines of Python to score the sentiment of these comments"</em> — and ten seconds later you have ten working lines.</p>
+<body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 8 · the through-line</div><h1>AI Agency</h1><p class="sub">Borrow the tool — don't outsource the thinking</p><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p class="lead">You can now say <em>"write me ten lines of Python to score the sentiment of these comments"</em> — and ten seconds later you have ten working lines.</p>
 <p>The question this course cares about isn't <em>can the machine write the code.</em> It plainly can. It's the one you'll answer about every line it hands you:</p>
-<h3>Do you understand it well enough to judge it?</h3></section><section class="slide"><h2>The promise is real</h2><p>Be fair to the tool first. AI-assisted coding genuinely <strong>lowers the barrier</strong>:</p>
+<h3>Do you understand it well enough to judge it?</h3></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml4_title.jpg" alt="A person at a desk working a small marionette that types at a keyboard — ambiguous who moves whom"></figure></div></div></section><section class="slide"><h2>The promise is real</h2><p>Be fair to the tool first. AI-assisted coding genuinely <strong>lowers the barrier</strong>:</p>
 <ul><li>act without having memorized every function</li><li>spend your energy on the <em>question</em> instead of the syntax</li><li>build in an afternoon what used to take a semester</li></ul>
 <p>This is not cheating, and it isn't new in spirit — programmers have borrowed from manuals, colleagues, and Stack Overflow for decades.</p>
-<p><em>You'll lean on VADER, pandas, and Gensim all term.</em></p></section><section class="slide"><h2>The risk is also real</h2><p>The danger isn't borrowing — it's <strong>borrowing what you can't read.</strong> Code you didn't write and can't explain is a <strong>black box</strong>:</p>
+<p class="callout">You'll lean on VADER, pandas, and Gensim all term.</p></section><section class="slide"><h2>The risk is also real</h2><p>The danger isn't borrowing — it's <strong>borrowing what you can't read.</strong> Code you didn't write and can't explain is a <strong>black box</strong>:</p>
 <blockquote><p>*"It runs on my test data… but will it hold on real data?</p><p>I can't tell — I don't actually know what it does."*</p></blockquote>
 <p>When the box breaks — and it will — you're stuck. You can't debug what you never understood.</p></section><section class="slide"><h2 class="cont">The risk is also real</h2><p>Subtler is the quiet failure: <strong>pseudo-agency.</strong></p>
 <p>You <em>feel</em> powerful — "I built this!" — while becoming more dependent, unable to modify, maintain, or vouch for the thing with your name on it.</p>
@@ -275,34 +289,36 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 <p>The course's rule follows directly — and it's in your syllabus:</p>
 <h3>You must be able to explain any code you submit, and note in a <code>#comment</code> where AI helped and what you changed.</h3></section><section class="slide split"><h2>Learning a language vs. letting someone speak for you</h2><div class="split-grid"><div class="col-text"><p><strong>Learning a language</strong> means you know what each piece does, you can adapt it to a new situation, and you can fix it when it breaks.</p>
 <p>The other thing — output that runs but that you can't explain, adapt, or repair — is <strong>ventriloquism</strong>:</p>
-<p><em>the words come out of your mouth, but someone else is choosing them.</em></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml4_ventriloquism.jpg" alt="On one side a person speaking in their own hand; on the other a ventriloquist&#x27;s dummy mouthing borrowed words"></figure></div></div></section><section class="slide"><h2 class="cont">Learning a language vs. letting someone speak for you</h2><p>Here is where coding and <em>writing</em> meet, and where the rule flips.</p>
+<p class="callout">the words come out of your mouth, but someone else is choosing them.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml4_ventriloquism.jpg" alt="On one side a person speaking in their own hand; on the other a ventriloquist&#x27;s dummy mouthing borrowed words"></figure></div></div></section><section class="slide"><h2 class="cont">Learning a language vs. letting someone speak for you</h2><p>Here is where coding and <em>writing</em> meet, and where the rule flips.</p>
 <p>Nobody's voice lives in a stopword list, so <strong>borrow the tool freely</strong> — understand it, judge it, move on.</p>
 <p>But your reflections, your discussion posts, and your capstone essay <em>are</em> your voice — and a voice is forged only in the friction of finding your own words.</p></section><section class="slide"><h2 class="cont">Learning a language vs. letting someone speak for you</h2><p>Let an AI write your <em>code</em> and you've saved time. Let it write your <em>prose</em> and you've handed away the one thing this course exists to grow.</p>
 <h3>Borrow the tool; never outsource the voice — and know which is which.</h3>
-<p><em>Ted Chiang calls a language model "a blurry JPEG of the web." A voice worth having is the opposite of an average.</em></p></section><section class="slide"><h2>Eloquence is not evidence</h2><p>One more property of the machine's writing: it is <strong>fluent</strong> — confident, structured, grammatically flawless — <em>whether it is right or wrong.</em></p>
+<p class="callout">Ted Chiang calls a language model "a blurry JPEG of the web." A voice worth having is the opposite of an average.</p></section><section class="slide"><h2>Eloquence is not evidence</h2><p>One more property of the machine's writing: it is <strong>fluent</strong> — confident, structured, grammatically flawless — <em>whether it is right or wrong.</em></p>
 <p>For all of human history, polished prose was <strong>expensive</strong>: producing it meant someone had actually done the thinking. Language models broke that correlation. Fluency is now free, and it reads <em>exactly the same</em> when the claim is true and when it is invented.</p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>Our instincts haven't updated: a well-made paragraph still <em>feels</em> vetted before any judgment has convened.</p>
 <p>Colbert coined a word for that feeling — <strong>truthiness</strong>, when something feels true from the gut before the evidence arrives.</p>
 <h3>An AI is a machine for making anything feel gut-true.</h3></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>Philosophy has a blunter word. Frankfurt distinguished the <strong>liar</strong> — who knows the truth and conceals it — from the <strong>bullshitter</strong>, who simply doesn't care what's true, only what lands.</p>
 <p>Some philosophers argue "hallucination" is the wrong name for AI errors: a hallucination implies a mind mistaking false for true, but a model has <em>no regard for truth at all.</em></p>
-<p><em>In Frankfurt's strict sense, an LLM is a bullshit engine even when it happens to be right.</em></p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>None of this is new; only the machinery is. Plato watched the sophists sell exactly this in Athens — Gorgias boasted a skilled speaker would beat the physician in a debate about medicine, before an audience that knew no medicine.</p>
-<p><em>Because eloquence feels like expertise from the inside.</em></p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>The Greeks named what settles into a person who gets their beliefs that way: <strong>amathia.</strong></p>
+<p class="callout">In Frankfurt's strict sense, an LLM is a bullshit engine even when it happens to be right.</p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>None of this is new; only the machinery is. Plato watched the sophists sell exactly this in Athens — Gorgias boasted a skilled speaker would beat the physician in a debate about medicine, before an audience that knew no medicine.</p>
+<p class="callout">Because eloquence feels like expertise from the inside.</p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>The Greeks named what settles into a person who gets their beliefs that way: <strong>amathia.</strong></p>
 <p>Not ignorance — <em>agnoia</em>, which more information fixes — but <strong>un-wisdom</strong>: the condition of the well-informed, well-assisted person whom nothing any longer teaches.</p>
-<p><em>Remember the Day-1 diagram? Amathia is the shadow at its bottom-right corner: knowledge that never becomes wisdom, because the labor between them got outsourced.</em></p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>Two things to carry out of that word.</p>
+<p class="callout">Remember the Day-1 diagram? Amathia is the shadow at its bottom-right corner: knowledge that never becomes wisdom, because the labor between them got outsourced.</p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>Two things to carry out of that word.</p>
 <p><strong>First, it points at us, never at them.</strong> Not a diagnosis you hand to the 123 commenters — it's the temptation <em>you</em> face every time an eloquent answer arrives faster than your judgment.</p>
 <p><strong>Second, the fix is not an attitude.</strong> Attitudes don't beat gut-level habits. The fix is <strong>procedural friction</strong>: run the code, check the citation, find the source, read the seams.</p>
 <h3>Right next to <em>the score is never the meaning</em>: eloquence is not evidence.</h3></section><section class="slide"><h2>Today: read the seams</h2><p>That's exactly today's lab. You'll take a chunk of <strong>AI-written code, read it line by line, and improve it</strong> — practicing the judgment that turns borrowing into understanding.</p>
 <p>Then we plant the <strong>stylometry seed</strong>: reading for the <em>seams</em> between human and machine writing — the tells of a voice that was averaged into being versus one that was lived into being.</p></section><section class="slide"><h2 class="cont">Today: read the seams</h2><p>Carry one question out of here:</p>
 <h3>Are you learning to think computationally, or just outsourcing the thinking?</h3>
 <p>The same tool allows either. The difference is whether you can still explain, judge, and own what you made — and whether the words are finally yours.</p>
-<p><em>As always: make the choice visible. Cite the AI, and say what you changed.</em></p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml4.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<p class="callout">As always: make the choice visible. Cite the AI, and say what you changed.</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml4.html">Reading</a></div><div class="deck-progress"></div><div class="deck-hint">← → navigate · click to advance</div>
 <script>
 (function(){
   var s=[].slice.call(document.querySelectorAll('.slide'));
-  var prog=document.querySelector('.deck-progress'), cnt=document.querySelector('.deck-count'), i=0;
+  var prog=document.querySelector('.deck-progress'), i=0;
+  s.forEach(function(el,k){var h=el.querySelector('h2'); if(!h)return;
+    var n=document.createElement('span'); n.className='num'; n.textContent=String(k+1).padStart(2,'0');
+    n.setAttribute('aria-label','slide '+(k+1)+' of '+s.length); h.appendChild(n);});
   function show(n){i=Math.max(0,Math.min(s.length-1,n));
     s.forEach(function(el,k){el.classList.toggle('active',k===i);el.scrollTop=0;});
     if(prog)prog.style.width=((i+1)/s.length*100)+'%';
-    if(cnt)cnt.textContent=(i+1)+' / '+s.length;
     if(history.replaceState)history.replaceState(null,'','#'+(i+1));}
   document.addEventListener('keydown',function(e){
     if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1);}

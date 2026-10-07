@@ -14,7 +14,22 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-09-28 (cont.) — Lane D: D2L shell generators
+## Latest session — 2026-10-07 — Lecture decks: 40363-style touches in the 20833 theme
+
+- **ml0:** the Pudding's "Largest Vocabulary in Hip-Hop" replaces Ben Schmidt's teacher-reviews example
+  (benschmidt.org/profGender/ timed out); project thumbnails link to their projects. `build_lectures.py`
+  reads `[![alt](img)](url)`; `site_theme.PAGE()` already opens outside links in a new tab.
+- **Deck look, borrowed from WRIT 40363's hand-written decks but kept in 20833's tokens and generator:**
+  slide headings sit in a full-width green bar with an auto-numbered pill (it replaced the bottom-right
+  counter; the Lectures · Reading links moved to that corner); a slide's **closing** paragraph, when it is
+  wholly in italics, renders as a callout box (no new markdown syntax; 44 across the 8 decks); the title
+  slide's kicker is a pill with a three-dot accent. Switching to 40363's per-deck HTML was considered and
+  declined: it would split each lecture into two hand-kept copies and drop the accessibility assertion.
+- **Bug fixed:** a title section with a `<!-- slide: -->` block dropped its image and split layout, so no
+  deck's title slide had ever shown its painting. It now does, on all 8.
+- Verified by screenshots at 1920×1080, 1280×720 and 1024×768: 0 overfull slides in any deck.
+
+## Earlier session — 2026-09-28 (cont.) — Lane D: D2L shell generators
 
 **Built `d2l/`**, adapted from WRIT 40363's `d2l/` (tested there against a live Fall 2026 shell).
 Nothing has been imported yet.

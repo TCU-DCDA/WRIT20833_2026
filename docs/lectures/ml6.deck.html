@@ -190,6 +190,7 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+figure a{border-bottom:none;}   /* a linked image needs no underline */
 .reading figure{margin:24px 0;}
 .reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
   border-radius:3px;background:var(--surface);padding:6px;}
@@ -214,9 +215,23 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
   line-height:1.08;margin:0 0 16px;}
 .slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
   color:#464b3d;margin:0 0 20px;}
-.slide h2.cont{opacity:.55;font-size:clamp(19px,2.7vw,29px);}
-.slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
-  margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
+.slide h2{font-family:var(--serif);color:var(--paper);background:var(--green);
+  font-size:clamp(24px,4vw,42px);line-height:1.12;
+  margin:-7vh -8vw 4.5vh;padding:3.2vh 8vw;width:auto;max-width:none;
+  display:flex;justify-content:space-between;align-items:center;gap:32px;}
+/* slide-number pill — filled in by the script, so inserting a slide never means renumbering */
+.slide h2 .num{flex-shrink:0;font:700 clamp(13px,1.3vw,18px)/1 var(--mono);color:var(--ink);
+  background:var(--clay-bg);padding:.55em 1.1em;border-radius:999px;}
+/* takeaway: a slide's closing paragraph, set wholly in italics, becomes a callout box */
+.slide p.callout{background:var(--clay-bg);border:2px solid var(--green);border-radius:14px;
+  padding:2.2vh 2vw;margin-top:10px;font-family:var(--serif);color:var(--ink);}
+.slide p.callout em{font-style:normal;}
+.slide.title .kicker{width:fit-content;background:var(--clay-bg);color:var(--clay-ink);
+  padding:10px 18px;border-radius:999px;margin-bottom:26px;}
+.slide .dots{display:flex;gap:10px;margin:2px 0 22px;}
+.slide .dots i{width:11px;height:11px;border-radius:999px;background:var(--clay);}
+.slide .dots i:first-child{width:40px;background:var(--green);}
+.slide .dots i:last-child{background:var(--green-mid);}
 .slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
 .slide p.lead{font-family:var(--serif);color:#3c4133;}
 .slide ul{font-size:clamp(16px,2vw,23px);line-height:1.45;margin:0 0 16px;padding-left:1.1em;}
@@ -247,10 +262,9 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 @media (max-width:760px){.slide.gallery .fig-row{grid-template-columns:1fr !important;gap:16px;}}
 .deck-progress{position:fixed;left:0;bottom:0;height:4px;background:var(--green);width:0;
   transition:width .2s;z-index:10;}
-.deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
 .deck-hint{position:fixed;left:16px;bottom:11px;font:600 12px/1 var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint);z-index:10;}
-.deck-home{position:fixed;left:16px;top:13px;z-index:10;display:flex;gap:11px;align-items:baseline;
+.deck-home{position:fixed;right:16px;bottom:11px;z-index:10;display:flex;gap:11px;align-items:baseline;
   font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
 .deck-home:hover{opacity:1;}
 .deck-home a{color:var(--green-mid);border:none;text-decoration:none;}
@@ -259,12 +273,12 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 @media print{.deck{position:static;overflow:visible;}
   .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
     border-bottom:1px solid var(--rule);}
-  .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
+  .deck-progress,.deck-hint,.deck-home{display:none;}}
 </style></head>
-<body><div class="deck"><section class="slide title"><div class="kicker">Day 10 · the through-line</div><h1>Data Archaeology</h1><p class="sub">Where found data comes from</p><p class="lead">Today you start working with <strong>found data</strong> — a table you didn't make, full of words real people wrote for their own reasons.</p>
+<body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 10 · the through-line</div><h1>Data Archaeology</h1><p class="sub">Where found data comes from</p><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p class="lead">Today you start working with <strong>found data</strong> — a table you didn't make, full of words real people wrote for their own reasons.</p>
 <p>Before you load a single row in pandas, one idea has to land:</p>
 <h3>That data is not raw. It's an artifact.</h3>
-<p><em>Someone produced it, by making choices. Reading it well is closer to archaeology than to chemistry.</em></p></section><section class="slide"><h2>Reading traces of a life</h2><p>An archaeologist never has the thing itself — the meal, the ritual, the household. They have what survived: a pottery shard, a posthole, a midden of bones. From those <em>traces</em> they reconstruct how people lived.</p>
+<p><em>Someone produced it, by making choices. Reading it well is closer to archaeology than to chemistry.</em></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml6_title.jpg" alt="A hand brushing dust from a half-buried clay tablet inscribed with faint spreadsheet rows"></figure></div></div></section><section class="slide"><h2>Reading traces of a life</h2><p>An archaeologist never has the thing itself — the meal, the ritual, the household. They have what survived: a pottery shard, a posthole, a midden of bones. From those <em>traces</em> they reconstruct how people lived.</p>
 <blockquote><p>Pottery shards → ancient dining habits.</p><p>Dataset rows → cultural patterns.</p></blockquote></section><section class="slide"><h2 class="cont">Reading traces of a life</h2><p>You're making the same move. Our 123 comments are a <strong>dig site</strong> — traces a community left while arguing about a law one summer.</p>
 <p>You'll excavate patterns from them, but like any archaeologist you have to remember you're holding <strong>shards, not the meal</strong>: a partial record of something larger you'll never fully recover.</p></section><section class="slide"><h2>You found it; you didn't make it</h2><p>Two kinds of data — and this course runs almost entirely on the second.</p>
 <ul><li><strong>Created data</strong> — surveys you design, experiments you run. <em>You</em> control the questions.</li><li><strong>Found data</strong> — traces that already exist because culture left them: comments, reviews, lyrics, posts. ***Culture* chose the questions, not you.**</li></ul></section><section class="slide"><h2 class="cont">You found it; you didn't make it</h2><p>Found data is thrilling because it's <strong>real</strong> — nobody was performing for a researcher.</p>
@@ -273,23 +287,25 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 <p>By the time a comment reaches your notebook, someone chose <strong>which</strong> platform to pull from, <strong>when</strong>, <strong>which</strong> field counted, and <strong>what</strong> got dropped — remember the wrap-fragments in our own corpus, sentences chopped in half by the export.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml6_raw.jpg" alt="A river of faces pouring through a sieve that emits neat identical cards while most spills off uncaptured"></figure></div></div></section><section class="slide"><h2 class="cont">"Raw data" is an oxymoron</h2><p>Every dataset is the <strong>survivors</strong> of a collection process.</p>
 <p>And the ones who didn't survive — the people who never posted, the comment that was deleted, the language the scraper couldn't parse — leave no row at all.</p>
 <h3>The empty seats aren't in the file.</h3>
-<p><em>Treat "raw" as a warning label, not a fact.</em></p></section><section class="slide split"><h2>Hear, don't extract</h2><div class="split-grid"><div class="col-text"><p>Listen to the verbs data culture uses: <em>mine, scrape, harvest, crawl, extract.</em></p>
+<p class="callout">Treat "raw" as a warning label, not a fact.</p></section><section class="slide split"><h2>Hear, don't extract</h2><div class="split-grid"><div class="col-text"><p>Listen to the verbs data culture uses: <em>mine, scrape, harvest, crawl, extract.</em></p>
 <p>Every one treats people like <strong>ore</strong> — raw material to be stripped out and processed.</p>
 <h3>This course asks you to change the verb to <em>hear.</em></h3></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml6_hear.jpg" alt="Hands cupped to listen toward a crowd of speaking figures, against faint mining machinery"></figure></div></div></section><section class="slide"><h2 class="cont">Hear, don't extract</h2><p>"Hearing" assumes the other end is a <strong>someone</strong> — with something to say and a claim on being received with care.</p>
 <p>That one swap reframes the ethics of collection, which you'll practice in code today (robots.txt, fair use, attribution).</p>
 <p>The legal question is <em>"am I allowed to take this?"</em> The humanist question underneath is <strong>"am I listening, or am I extracting?"</strong></p>
-<p><em>Both matter. Only the second is about the people in the data.</em></p></section><section class="slide"><h2>Keep a data biography</h2><p>Before the analysis, become the artifact's biographer. An archaeologist logs an object's <strong>provenance</strong>; you log your data's. Four things, written plainly in your notebook:</p>
+<p class="callout">Both matter. Only the second is about the people in the data.</p></section><section class="slide"><h2>Keep a data biography</h2><p>Before the analysis, become the artifact's biographer. An archaeologist logs an object's <strong>provenance</strong>; you log your data's. Four things, written plainly in your notebook:</p>
 <ul><li><strong>Origin</strong> — who made this, when, and why?</li><li><strong>Journey</strong> — how was it collected, processed, shared?</li><li><strong>Transformations</strong> — what did <em>you</em> clean, filter, or drop?</li><li><strong>Limitations</strong> — what's missing, and <em>who's</em> missing?</li></ul></section><section class="slide"><h2 class="cont">Keep a data biography</h2><p>This isn't busywork. It's <strong>credibility.</strong></p>
 <p>A reader can only trust your reading if they can see where the data came from and what you did to it — and remember that a single row is layered: surface (who, what, when), cultural (the trend it hints at), societal (the values underneath).</p>
-<p><em>You're interpreting human cultural behavior. Handle it with care.</em></p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml6.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<p class="callout">You're interpreting human cultural behavior. Handle it with care.</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml6.html">Reading</a></div><div class="deck-progress"></div><div class="deck-hint">← → navigate · click to advance</div>
 <script>
 (function(){
   var s=[].slice.call(document.querySelectorAll('.slide'));
-  var prog=document.querySelector('.deck-progress'), cnt=document.querySelector('.deck-count'), i=0;
+  var prog=document.querySelector('.deck-progress'), i=0;
+  s.forEach(function(el,k){var h=el.querySelector('h2'); if(!h)return;
+    var n=document.createElement('span'); n.className='num'; n.textContent=String(k+1).padStart(2,'0');
+    n.setAttribute('aria-label','slide '+(k+1)+' of '+s.length); h.appendChild(n);});
   function show(n){i=Math.max(0,Math.min(s.length-1,n));
     s.forEach(function(el,k){el.classList.toggle('active',k===i);el.scrollTop=0;});
     if(prog)prog.style.width=((i+1)/s.length*100)+'%';
-    if(cnt)cnt.textContent=(i+1)+' / '+s.length;
     if(history.replaceState)history.replaceState(null,'','#'+(i+1));}
   document.addEventListener('keydown',function(e){
     if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1);}

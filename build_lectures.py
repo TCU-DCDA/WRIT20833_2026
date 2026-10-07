@@ -42,13 +42,10 @@ def _img_src(src):
     return RAW + src.lstrip("./")
 
 
-_NEW_TAB = ' target="_blank" rel="noopener"'   # outside links: a click mustn't leave the deck
-
-
 def md_inline(t):
     """Minimal inline markdown -> HTML: escape, then links/bold/italic/code."""
     t = html.escape(t, quote=False)
-    t = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', lambda m: f'<a href="{m.group(2)}"{_NEW_TAB if m.group(2).startswith(("http://", "https://")) else ""}>{m.group(1)}</a>', t)
+    t = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', t)
     t = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', t)
     t = re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)', r'<em>\1</em>', t)
     t = re.sub(r'`([^`]+)`', r'<code>\1</code>', t)
@@ -96,8 +93,8 @@ def render_blocks(lines, lead=False):
             alt = html.escape(m.group(1))
             cap = f"<figcaption>{alt}</figcaption>" if alt else ""
             img = f'<img src="{_img_src(m.group(2))}" alt="{alt}">'
-            if m.lastindex == 3:                               # opens the project in a new tab
-                img = f'<a href="{html.escape(m.group(3))}"{_NEW_TAB}>{img}</a>'
+            if m.lastindex == 3:                               # PAGE() makes outside links open a new tab
+                img = f'<a href="{html.escape(m.group(3))}">{img}</a>'
             out.append(("figure", f'<figure>{img}{cap}</figure>'))
             i += 1; continue
         if s == "---":
@@ -181,9 +178,23 @@ DECK_CSS = r"""
   line-height:1.08;margin:0 0 16px;}
 .slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
   color:#464b3d;margin:0 0 20px;}
-.slide h2.cont{opacity:.55;font-size:clamp(19px,2.7vw,29px);}
-.slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
-  margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
+.slide h2{font-family:var(--serif);color:var(--paper);background:var(--green);
+  font-size:clamp(24px,4vw,42px);line-height:1.12;
+  margin:-7vh -8vw 4.5vh;padding:3.2vh 8vw;width:auto;max-width:none;
+  display:flex;justify-content:space-between;align-items:center;gap:32px;}
+/* slide-number pill — filled in by the script, so inserting a slide never means renumbering */
+.slide h2 .num{flex-shrink:0;font:700 clamp(13px,1.3vw,18px)/1 var(--mono);color:var(--ink);
+  background:var(--clay-bg);padding:.55em 1.1em;border-radius:999px;}
+/* takeaway: a slide's closing paragraph, set wholly in italics, becomes a callout box */
+.slide p.callout{background:var(--clay-bg);border:2px solid var(--green);border-radius:14px;
+  padding:2.2vh 2vw;margin-top:10px;font-family:var(--serif);color:var(--ink);}
+.slide p.callout em{font-style:normal;}
+.slide.title .kicker{width:fit-content;background:var(--clay-bg);color:var(--clay-ink);
+  padding:10px 18px;border-radius:999px;margin-bottom:26px;}
+.slide .dots{display:flex;gap:10px;margin:2px 0 22px;}
+.slide .dots i{width:11px;height:11px;border-radius:999px;background:var(--clay);}
+.slide .dots i:first-child{width:40px;background:var(--green);}
+.slide .dots i:last-child{background:var(--green-mid);}
 .slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
 .slide p.lead{font-family:var(--serif);color:#3c4133;}
 .slide ul{font-size:clamp(16px,2vw,23px);line-height:1.45;margin:0 0 16px;padding-left:1.1em;}
@@ -214,10 +225,9 @@ DECK_CSS = r"""
 @media (max-width:760px){.slide.gallery .fig-row{grid-template-columns:1fr !important;gap:16px;}}
 .deck-progress{position:fixed;left:0;bottom:0;height:4px;background:var(--green);width:0;
   transition:width .2s;z-index:10;}
-.deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
 .deck-hint{position:fixed;left:16px;bottom:11px;font:600 12px/1 var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint);z-index:10;}
-.deck-home{position:fixed;left:16px;top:13px;z-index:10;display:flex;gap:11px;align-items:baseline;
+.deck-home{position:fixed;right:16px;bottom:11px;z-index:10;display:flex;gap:11px;align-items:baseline;
   font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
 .deck-home:hover{opacity:1;}
 .deck-home a{color:var(--green-mid);border:none;text-decoration:none;}
@@ -226,18 +236,20 @@ DECK_CSS = r"""
 @media print{.deck{position:static;overflow:visible;}
   .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
     border-bottom:1px solid var(--rule);}
-  .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
+  .deck-progress,.deck-hint,.deck-home{display:none;}}
 """
 
 DECK_SCRIPT = """
 <script>
 (function(){
   var s=[].slice.call(document.querySelectorAll('.slide'));
-  var prog=document.querySelector('.deck-progress'), cnt=document.querySelector('.deck-count'), i=0;
+  var prog=document.querySelector('.deck-progress'), i=0;
+  s.forEach(function(el,k){var h=el.querySelector('h2'); if(!h)return;
+    var n=document.createElement('span'); n.className='num'; n.textContent=String(k+1).padStart(2,'0');
+    n.setAttribute('aria-label','slide '+(k+1)+' of '+s.length); h.appendChild(n);});
   function show(n){i=Math.max(0,Math.min(s.length-1,n));
     s.forEach(function(el,k){el.classList.toggle('active',k===i);el.scrollTop=0;});
     if(prog)prog.style.width=((i+1)/s.length*100)+'%';
-    if(cnt)cnt.textContent=(i+1)+' / '+s.length;
     if(history.replaceState)history.replaceState(null,'','#'+(i+1));}
   document.addEventListener('keydown',function(e){
     if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1);}
@@ -343,6 +355,9 @@ def split_slides(body_lines):
     return slides
 
 
+_CALLOUT = re.compile(r'^<p><em>((?:(?!</?em>).)*)</em></p>$', re.S)   # closing takeaway line -> callout
+
+
 def _render_one_slide(head, blocks, split, gallery, cont=False):
     """Render a single <section> from already-rendered blocks.
 
@@ -351,6 +366,10 @@ def _render_one_slide(head, blocks, split, gallery, cont=False):
     """
     blocks = [(k, (re.sub(r"<figcaption>.*?</figcaption>", "", h, flags=re.S)
                    if k == "figure" else h)) for k, h in blocks]
+    texts = [n for n, (k, _) in enumerate(blocks) if k != "figure"]
+    if texts:  # only the slide's closing line can be the takeaway
+        k, h = blocks[texts[-1]]
+        blocks[texts[-1]] = (k, _CALLOUT.sub(r'<p class="callout">\1</p>', h))
     figs = [h for k, h in blocks if k == "figure"]
     h2 = f"<h2>{md_inline(head)}</h2>" if head else ""
     if cont:  # continuation of the same heading — keep it, mark it quietly
@@ -413,14 +432,19 @@ def _content_slide(head, lines):
 
 def build_deck(slug, title, subtitle, kicker, body):
     segs = split_slides(body)
-    lead_lines = pop_slide_block(segs[0][1])[0] or segs[0][1]
-    lead_split = any("<!-- layout: split -->" in ln for ln in lead_lines)
-    lead_blocks = render_blocks(lead_lines, lead=True)
-    lead_figs = [h for k, h in lead_blocks if k == "figure"]
+    block, lead_rest = pop_slide_block(segs[0][1])
+    lead_split = any("<!-- layout: split -->" in ln for ln in segs[0][1])
+    lead_blocks = render_blocks(block or segs[0][1], lead=True)
+    if block and not any(k == "figure" for k, _ in lead_blocks):
+        # as on content slides, the condensation supplies the text and the figures come from the section
+        lead_blocks += [(k, h) for k, h in render_blocks(lead_rest) if k == "figure"]
+    lead_figs = [re.sub(r"<figcaption>.*?</figcaption>", "", h, flags=re.S)
+                 for k, h in lead_blocks if k == "figure"]
     title_head = (
         f'<div class="kicker">{html.escape(kicker)}</div>'
         f"<h1>{md_inline(title)}</h1>"
         + (f'<p class="sub">{md_inline(subtitle)}</p>' if subtitle else "")
+        + '<div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>'
     )
     if lead_split and lead_figs:
         lead_text = "\n".join(h for k, h in lead_blocks if k != "figure")
@@ -440,7 +464,7 @@ def build_deck(slug, title, subtitle, kicker, body):
     content = "".join(_content_slide(head, lines) for head, lines in segs[1:] if head)
     nav = (f'<div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a>'
            f'<span class="sep">·</span><a href="{slug}.html">Reading</a></div>'
-           '<div class="deck-progress"></div><div class="deck-count"></div>'
+           '<div class="deck-progress"></div>'
            '<div class="deck-hint">← → navigate · click to advance</div>')
     body_html = f'<div class="deck">{title_slide}{content}</div>{nav}{DECK_SCRIPT}'
     page = PAGE(html.escape(f"{title} (slides) — WRIT 20833"), body_html,

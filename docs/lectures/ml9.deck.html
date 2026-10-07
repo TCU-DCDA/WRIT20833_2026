@@ -190,6 +190,7 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+figure a{border-bottom:none;}   /* a linked image needs no underline */
 .reading figure{margin:24px 0;}
 .reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
   border-radius:3px;background:var(--surface);padding:6px;}
@@ -214,9 +215,23 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
   line-height:1.08;margin:0 0 16px;}
 .slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
   color:#464b3d;margin:0 0 20px;}
-.slide h2.cont{opacity:.55;font-size:clamp(19px,2.7vw,29px);}
-.slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
-  margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
+.slide h2{font-family:var(--serif);color:var(--paper);background:var(--green);
+  font-size:clamp(24px,4vw,42px);line-height:1.12;
+  margin:-7vh -8vw 4.5vh;padding:3.2vh 8vw;width:auto;max-width:none;
+  display:flex;justify-content:space-between;align-items:center;gap:32px;}
+/* slide-number pill — filled in by the script, so inserting a slide never means renumbering */
+.slide h2 .num{flex-shrink:0;font:700 clamp(13px,1.3vw,18px)/1 var(--mono);color:var(--ink);
+  background:var(--clay-bg);padding:.55em 1.1em;border-radius:999px;}
+/* takeaway: a slide's closing paragraph, set wholly in italics, becomes a callout box */
+.slide p.callout{background:var(--clay-bg);border:2px solid var(--green);border-radius:14px;
+  padding:2.2vh 2vw;margin-top:10px;font-family:var(--serif);color:var(--ink);}
+.slide p.callout em{font-style:normal;}
+.slide.title .kicker{width:fit-content;background:var(--clay-bg);color:var(--clay-ink);
+  padding:10px 18px;border-radius:999px;margin-bottom:26px;}
+.slide .dots{display:flex;gap:10px;margin:2px 0 22px;}
+.slide .dots i{width:11px;height:11px;border-radius:999px;background:var(--clay);}
+.slide .dots i:first-child{width:40px;background:var(--green);}
+.slide .dots i:last-child{background:var(--green-mid);}
 .slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
 .slide p.lead{font-family:var(--serif);color:#3c4133;}
 .slide ul{font-size:clamp(16px,2vw,23px);line-height:1.45;margin:0 0 16px;padding-left:1.1em;}
@@ -247,10 +262,9 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 @media (max-width:760px){.slide.gallery .fig-row{grid-template-columns:1fr !important;gap:16px;}}
 .deck-progress{position:fixed;left:0;bottom:0;height:4px;background:var(--green);width:0;
   transition:width .2s;z-index:10;}
-.deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
 .deck-hint{position:fixed;left:16px;bottom:11px;font:600 12px/1 var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint);z-index:10;}
-.deck-home{position:fixed;left:16px;top:13px;z-index:10;display:flex;gap:11px;align-items:baseline;
+.deck-home{position:fixed;right:16px;bottom:11px;z-index:10;display:flex;gap:11px;align-items:baseline;
   font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
 .deck-home:hover{opacity:1;}
 .deck-home a{color:var(--green-mid);border:none;text-decoration:none;}
@@ -259,46 +273,48 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 @media print{.deck{position:static;overflow:visible;}
   .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
     border-bottom:1px solid var(--rule);}
-  .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
+  .deck-progress,.deck-hint,.deck-home{display:none;}}
 </style></head>
-<body><div class="deck"><section class="slide title"><div class="kicker">Day 19 · the through-line</div><h1>Going Public</h1><p class="sub">Your analysis isn't finished until it argues</p><p class="lead">You have counted the words, scored the feeling, and modeled the themes of 123 comments about a contested law. You can say, with evidence, what that crowd was arguing about and how it felt.</p>
+<body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 19 · the through-line</div><h1>Going Public</h1><p class="sub">Your analysis isn't finished until it argues</p><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p class="lead">You have counted the words, scored the feeling, and modeled the themes of 123 comments about a contested law. You can say, with evidence, what that crowd was arguing about and how it felt.</p>
 <p>Here is the question this whole course has been walking toward:</p>
 <h3>So what — and who is it for?</h3>
-<p><em>An analysis that never leaves your laptop changes exactly nothing.</em></p></section><section class="slide"><h2>The notebook is not the destination</h2><p>It is easy to mistake the analysis for the finish line. You ran the cells, the chart rendered, the topics came back — done.</p>
+<p><em>An analysis that never leaves your laptop changes exactly nothing.</em></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml9_title.jpg" alt="A scholar carrying one bound page out of a lamplit study toward a crowd waiting in an open doorway"></figure></div></div></section><section class="slide"><h2>The notebook is not the destination</h2><p>It is easy to mistake the analysis for the finish line. You ran the cells, the chart rendered, the topics came back — done.</p>
 <p>But a result sitting in a private notebook is knowledge <strong>locked away</strong>: trapped on your machine, written in a dialect — pandas, VADER, LDA — that the people your analysis is <em>about</em> cannot read.</p></section><section class="slide"><h2 class="cont">The notebook is not the destination</h2><p>The commenters whose words you counted will never see what you found.</p>
 <p>The point of hearing the human at scale was never to file the hearing away.</p>
 <h3>It was to say something back.</h3></section><section class="slide"><h2>What a public argument is</h2><p>A public argument takes a scholarly or cultural insight and makes it <strong>accessible, engaging, and actionable</strong> for people beyond this seminar.</p>
 <p><strong>Not dumbed down — translated.</strong></p>
 <p>The difference is plain arithmetic: a result you keep reaches the handful already in the room; a result you frame for an audience can reach everyone who needs it.</p></section><section class="slide"><h2 class="cont">What a public argument is</h2><blockquote><p>A finding in a journal nobody outside the field reads has eight readers.</p><p>The same finding, argued for a public, can have eight thousand.</p><p>The analysis is identical. What changed is that you decided</p><p>to be <em>understood.</em></p></blockquote>
-<p><em>In this course your public artifact isn't a website — it's your capstone: a data-driven-opinion essay and a short presentation. Same move, humbler medium.</em></p></section><section class="slide"><h2>Your skills are already a public intervention</h2><p>This isn't theory. Consider <em><strong>Mapping Police Violence</strong></em> — a project built on exactly the skills you have been learning: collect public records, analyze them for pattern over time and geography, visualize the result, and put a clear public face on it.</p>
+<p class="callout">In this course your public artifact isn't a website — it's your capstone: a data-driven-opinion essay and a short presentation. Same move, humbler medium.</p></section><section class="slide"><h2>Your skills are already a public intervention</h2><p>This isn't theory. Consider <em><strong>Mapping Police Violence</strong></em> — a project built on exactly the skills you have been learning: collect public records, analyze them for pattern over time and geography, visualize the result, and put a clear public face on it.</p>
 <p><strong>The technical work is ordinary</strong> — scraping, a DataFrame, a chart.</p></section><section class="slide"><h2 class="cont">Your skills are already a public intervention</h2><p>What makes it <strong>matter</strong> is that it made an invisible pattern visible to journalists, families, and policymakers — and got cited in debates that move real lives.</p>
 <h3>The same analysis skills you practiced this term + a public face = a cultural intervention.</h3>
-<p><em>You are closer to that than you think.</em></p></section><section class="slide"><h2>You are joining an old tradition</h2><p>Going public is not a new internet trick. It runs back through —</p>
+<p class="callout">You are closer to that than you think.</p></section><section class="slide"><h2>You are joining an old tradition</h2><p>Going public is not a new internet trick. It runs back through —</p>
 <ul><li>the <strong>public intellectuals</strong> who wrote for newspapers instead of only for each other</li><li>the <strong>community archives</strong> that preserved neighborhood memory the official record skipped</li><li>the <strong>oral-history projects</strong> that carried marginalized voices into the permanent record</li></ul></section><section class="slide"><h2 class="cont">You are joining an old tradition</h2><p>Each one made the same bet you are about to make: that expert knowledge has a duty to <strong>reach the people it concerns</strong>, not just circulate among experts.</p>
 <h3>Accessibility isn't a courtesy here. It's an ethic.</h3></section><section class="slide"><h2>How you present <em>is</em> the argument</h2><p>Here is the rhetorical catch, and it carries straight over from the Connotations lecture.</p>
 <p>The choices you make in presenting an analysis are not neutral packaging — they <strong>argue.</strong> What you put first and what you bury in an appendix; which number you make the headline; the chart you reach for and the one you don't.</p>
-<p><em>Every one is a claim about what matters, aimed at a reader. Structure is rhetoric. Code is rhetoric.</em></p></section><section class="slide"><h2 class="cont">How you present <em>is</em> the argument</h2><p>So the standard from day one holds in public too — <strong>show your seams.</strong></p>
+<p class="callout">Every one is a claim about what matters, aimed at a reader. Structure is rhetoric. Code is rhetoric.</p></section><section class="slide"><h2 class="cont">How you present <em>is</em> the argument</h2><p>So the standard from day one holds in public too — <strong>show your seams.</strong></p>
 <p>An honest public argument says what it counted <em>and what it left out</em>, names the cutoff it chose and why, and admits where it might be wrong.</p>
-<p><em>A polished take that hides its choices isn't more persuasive; it's just less honest.</em></p></section><section class="slide"><h2 class="cont">How you present <em>is</em> the argument</h2><p>Being willing to be wrong out loud is not a weakness in a public argument. It's the thing that makes it <strong>trustworthy</strong> —</p>
+<p class="callout">A polished take that hides its choices isn't more persuasive; it's just less honest.</p></section><section class="slide"><h2 class="cont">How you present <em>is</em> the argument</h2><p>Being willing to be wrong out loud is not a weakness in a public argument. It's the thing that makes it <strong>trustworthy</strong> —</p>
 <p>and it's the opposite of the condition the AI Agency lecture warned about: <em>amathia</em>, the writer nothing can teach.</p>
 <h3>An argument that runs on what feels true is just truthiness with a megaphone.</h3></section><section class="slide"><h2>What you do with what you found</h2><p>Knowledge becomes wisdom only in what you <strong>do</strong> with it.</p>
 <p>The reason to hear a crowd at scale is, in the end, a moral one: to make someone who didn't know to care begin to care —</p>
-<p><em>and you can't move anyone with a finding they never see.</em></p></section><section class="slide"><h2 class="cont">What you do with what you found</h2><p>One caution carried from the whole term: <strong>going public is not flattening.</strong></p>
+<p class="callout">and you can't move anyone with a finding they never see.</p></section><section class="slide"><h2 class="cont">What you do with what you found</h2><p>One caution carried from the whole term: <strong>going public is not flattening.</strong></p>
 <p>Your job is not to resolve the quarrel into a tidy verdict, the way a single topic-list pretends a messy debate was clean.</p>
 <p>The honest public argument <strong>preserves the disagreement</strong> even as it takes a position — it gives voice to the crowd without pretending the crowd agreed.</p></section><section class="slide"><h2 class="cont">What you do with what you found</h2><p>You already know what the failure sounds like, because politicians of every party say it: <em><strong>"The American people feel…"</strong></em></p>
 <p>Six words that flatten a split crowd into one voice, and dress a poll number up as a feeling — often with no poll at all, just the speaker's own position wearing the crowd as a costume.</p>
-<p><em>That's ventriloquism run in reverse, at national scale: the crowd appears to speak; the speaker chose the words.</em></p></section><section class="slide"><h2 class="cont">What you do with what you found</h2><p>So here is the drafting test for your capstone:</p>
+<p class="callout">That's ventriloquism run in reverse, at national scale: the crowd appears to speak; the speaker chose the words.</p></section><section class="slide"><h2 class="cont">What you do with what you found</h2><p>So here is the drafting test for your capstone:</p>
 <h3>Never write a sentence about your 123 that you'd roll your eyes at from a politician.</h3>
-<p><em>"The commenters feel…" is the same move in miniature — and your own numbers know better.</em></p></section><section class="slide"><h2 class="cont">What you do with what you found</h2><blockquote><p>The reflection that becomes your capstone: what did your analysis find</p><p>that someone outside this room needs to see — who are they,</p><p>and what should they do once they have seen it?</p></blockquote>
-<p><em>You already have the insight. The last skill is the courage and the craft to hand it to the people it's for.</em></p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml9.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<p class="callout">"The commenters feel…" is the same move in miniature — and your own numbers know better.</p></section><section class="slide"><h2 class="cont">What you do with what you found</h2><blockquote><p>The reflection that becomes your capstone: what did your analysis find</p><p>that someone outside this room needs to see — who are they,</p><p>and what should they do once they have seen it?</p></blockquote>
+<p class="callout">You already have the insight. The last skill is the courage and the craft to hand it to the people it's for.</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml9.html">Reading</a></div><div class="deck-progress"></div><div class="deck-hint">← → navigate · click to advance</div>
 <script>
 (function(){
   var s=[].slice.call(document.querySelectorAll('.slide'));
-  var prog=document.querySelector('.deck-progress'), cnt=document.querySelector('.deck-count'), i=0;
+  var prog=document.querySelector('.deck-progress'), i=0;
+  s.forEach(function(el,k){var h=el.querySelector('h2'); if(!h)return;
+    var n=document.createElement('span'); n.className='num'; n.textContent=String(k+1).padStart(2,'0');
+    n.setAttribute('aria-label','slide '+(k+1)+' of '+s.length); h.appendChild(n);});
   function show(n){i=Math.max(0,Math.min(s.length-1,n));
     s.forEach(function(el,k){el.classList.toggle('active',k===i);el.scrollTop=0;});
     if(prog)prog.style.width=((i+1)/s.length*100)+'%';
-    if(cnt)cnt.textContent=(i+1)+' / '+s.length;
     if(history.replaceState)history.replaceState(null,'','#'+(i+1));}
   document.addEventListener('keydown',function(e){
     if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1);}

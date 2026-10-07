@@ -190,6 +190,7 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+figure a{border-bottom:none;}   /* a linked image needs no underline */
 .reading figure{margin:24px 0;}
 .reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
   border-radius:3px;background:var(--surface);padding:6px;}
@@ -214,9 +215,23 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
   line-height:1.08;margin:0 0 16px;}
 .slide.title .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.7vw,27px);
   color:#464b3d;margin:0 0 20px;}
-.slide h2.cont{opacity:.55;font-size:clamp(19px,2.7vw,29px);}
-.slide h2{font-family:var(--serif);color:var(--green);font-size:clamp(24px,4vw,42px);line-height:1.12;
-  margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--green);}
+.slide h2{font-family:var(--serif);color:var(--paper);background:var(--green);
+  font-size:clamp(24px,4vw,42px);line-height:1.12;
+  margin:-7vh -8vw 4.5vh;padding:3.2vh 8vw;width:auto;max-width:none;
+  display:flex;justify-content:space-between;align-items:center;gap:32px;}
+/* slide-number pill — filled in by the script, so inserting a slide never means renumbering */
+.slide h2 .num{flex-shrink:0;font:700 clamp(13px,1.3vw,18px)/1 var(--mono);color:var(--ink);
+  background:var(--clay-bg);padding:.55em 1.1em;border-radius:999px;}
+/* takeaway: a slide's closing paragraph, set wholly in italics, becomes a callout box */
+.slide p.callout{background:var(--clay-bg);border:2px solid var(--green);border-radius:14px;
+  padding:2.2vh 2vw;margin-top:10px;font-family:var(--serif);color:var(--ink);}
+.slide p.callout em{font-style:normal;}
+.slide.title .kicker{width:fit-content;background:var(--clay-bg);color:var(--clay-ink);
+  padding:10px 18px;border-radius:999px;margin-bottom:26px;}
+.slide .dots{display:flex;gap:10px;margin:2px 0 22px;}
+.slide .dots i{width:11px;height:11px;border-radius:999px;background:var(--clay);}
+.slide .dots i:first-child{width:40px;background:var(--green);}
+.slide .dots i:last-child{background:var(--green-mid);}
 .slide p{font-size:clamp(16px,2.05vw,24px);line-height:1.5;margin:0 0 16px;color:var(--ink);}
 .slide p.lead{font-family:var(--serif);color:#3c4133;}
 .slide ul{font-size:clamp(16px,2vw,23px);line-height:1.45;margin:0 0 16px;padding-left:1.1em;}
@@ -247,10 +262,9 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 @media (max-width:760px){.slide.gallery .fig-row{grid-template-columns:1fr !important;gap:16px;}}
 .deck-progress{position:fixed;left:0;bottom:0;height:4px;background:var(--green);width:0;
   transition:width .2s;z-index:10;}
-.deck-count{position:fixed;right:16px;bottom:11px;font:600 12px/1 var(--mono);color:var(--muted);z-index:10;}
 .deck-hint{position:fixed;left:16px;bottom:11px;font:600 12px/1 var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint);z-index:10;}
-.deck-home{position:fixed;left:16px;top:13px;z-index:10;display:flex;gap:11px;align-items:baseline;
+.deck-home{position:fixed;right:16px;bottom:11px;z-index:10;display:flex;gap:11px;align-items:baseline;
   font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
 .deck-home:hover{opacity:1;}
 .deck-home a{color:var(--green-mid);border:none;text-decoration:none;}
@@ -259,43 +273,45 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 @media print{.deck{position:static;overflow:visible;}
   .slide{display:flex !important;position:relative;inset:auto;min-height:88vh;page-break-after:always;
     border-bottom:1px solid var(--rule);}
-  .deck-progress,.deck-count,.deck-hint,.deck-home{display:none;}}
+  .deck-progress,.deck-hint,.deck-home{display:none;}}
 </style></head>
-<body><div class="deck"><section class="slide title"><div class="kicker">Day 3 · the through-line</div><h1>Classification Logic</h1><p class="sub">Whose categories? Sorting as judgment</p><p class="lead">Today you learn <code>if</code>, <code>else</code>, and the booleans that drive them.</p>
+<body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 3 · the through-line</div><h1>Classification Logic</h1><p class="sub">Whose categories? Sorting as judgment</p><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p class="lead">Today you learn <code>if</code>, <code>else</code>, and the booleans that drive them.</p>
 <p>The most innocent-looking tool in all of programming — and the exact machinery by which software decides who gets the loan, the match, the apartment, the interview, the flag.</p>
-<p><strong>The moment your code says <code>if</code>, it has begun sorting people — and sorting is never neutral. Someone drew the line.</strong></p></section><section class="slide"><h2>To classify is to judge</h2><p>A category is a decision: <strong>this counts as the same; that counts as different.</strong> Drawing the box is an act of judgment before it is ever an act of code.</p>
+<p><strong>The moment your code says <code>if</code>, it has begun sorting people — and sorting is never neutral. Someone drew the line.</strong></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml3_title.jpg" alt="A road forking like an if/else branch, a gate at the split sorting a line of people left or right"></figure></div></div></section><section class="slide"><h2>To classify is to judge</h2><p>A category is a decision: <strong>this counts as the same; that counts as different.</strong> Drawing the box is an act of judgment before it is ever an act of code.</p>
 <ul><li>Put "single mother," "widow," and "divorced dad" in one bin marked <em>non-traditional household</em> — you've made an argument about what <em>traditional</em> is supposed to mean</li><li>Mark a comment "positive" or "negative" — you've flattened a mixed, sarcastic, grieving, joking sentence into one of two boxes</li></ul></section><section class="slide"><h2 class="cont">To classify is to judge</h2><h3>There is no neutral box.</h3>
 <p>Every classification system encodes <strong>values</strong> — about what matters, what counts, and who belongs where.</p>
-<p><em>The last lecture said code is not neutral. Classification is the sharpest place you will feel it.</em></p></section><section class="slide"><h2>Status has always gated access</h2><p>Long before computers, a single status decided which doors opened: <em>noble</em> or <em>commoner</em>, <em>citizen</em> or <em>foreigner</em>, <em>insider</em> or <em>outsider</em>.</p>
+<p class="callout">The last lecture said code is not neutral. Classification is the sharpest place you will feel it.</p></section><section class="slide"><h2>Status has always gated access</h2><p>Long before computers, a single status decided which doors opened: <em>noble</em> or <em>commoner</em>, <em>citizen</em> or <em>foreigner</em>, <em>insider</em> or <em>outsider</em>.</p>
 <p>The variable was social — but it worked exactly like a boolean. <strong>One bit, and the gate swung open or stayed shut.</strong></p></section><section class="slide"><h2 class="cont">Status has always gated access</h2><p>The software era didn't invent the gate. It <strong>automated</strong> it, and renamed the variables:</p>
 <blockquote><p><code>credit_score</code> · <code>criminal_background</code> · <code>relationship_status</code></p><p>· <code>employment_status</code> · <code>immigration_status</code></p></blockquote>
 <p>Same logic, new costume: a value about a person, checked at a threshold, deciding what they get to reach.</p>
-<p><em>What changed is scale, speed — and that the judgment now hides inside a function that looks like math.</em></p></section><section class="slide split"><h2>The threshold problem</h2><div class="split-grid"><div class="col-text"><p>A real loan rule, in the syntax you'll write this week:</p>
+<p class="callout">What changed is scale, speed — and that the judgment now hides inside a function that looks like math.</p></section><section class="slide split"><h2>The threshold problem</h2><div class="split-grid"><div class="col-text"><p>A real loan rule, in the syntax you'll write this week:</p>
 <blockquote><p><code>if credit_score &gt; 650 and income &gt; 50000: approve()</code></p></blockquote>
 <p><strong>Who chose 650?</strong> Is the person at 649 truly different from the person at 651 — or did a round number just decide their year?</p>
-<p><em>Why income and credit, and not rent history, or the reason the score dipped in the first place?</em></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml3_threshold.jpg" alt="A hand turning a brass dial on a gate; people just above the mark pass into light, those just below are turned away"></figure></div></div></section><section class="slide"><h2 class="cont">The threshold problem</h2><p>A threshold is the most ordinary line in programming, and one of the most consequential.</p>
+<p class="callout">Why income and credit, and not rent history, or the reason the score dipped in the first place?</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml3_threshold.jpg" alt="A hand turning a brass dial on a gate; people just above the mark pass into light, those just below are turned away"></figure></div></div></section><section class="slide"><h2 class="cont">The threshold problem</h2><p>A threshold is the most ordinary line in programming, and one of the most consequential.</p>
 <h3>It is an act of power wearing the costume of arithmetic.</h3>
 <p>You'll meet your own soon: in HW3 a single cutoff — <code>compound &gt; 0.05</code> — sorts every comment into positive, negative, or neutral.</p>
-<p><em>The number will feel objective. It won't be. It will be yours.</em></p></section><section class="slide split"><h2>The tyranny of the tidy box</h2><div class="split-grid"><div class="col-text"><p>Code needs clean categories, and people don't come clean. So the system forces the fit — and whatever won't fit the schema simply <strong>disappears.</strong></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml3_schema.jpg" alt="Varied human figures pressed into identical pigeonhole drawers, the parts that don&#x27;t fit spilling over and fading"></figure></div></div></section><section class="slide"><h2 class="cont">The tyranny of the tidy box</h2><p>For years a certain social platform stored <strong>gender as a single bit</strong> — male or female, <code>0</code> or <code>1</code>.</p>
+<p class="callout">The number will feel objective. It won't be. It will be yours.</p></section><section class="slide split"><h2>The tyranny of the tidy box</h2><div class="split-grid"><div class="col-text"><p>Code needs clean categories, and people don't come clean. So the system forces the fit — and whatever won't fit the schema simply <strong>disappears.</strong></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml3_schema.jpg" alt="Varied human figures pressed into identical pigeonhole drawers, the parts that don&#x27;t fit spilling over and fading"></figure></div></div></section><section class="slide"><h2 class="cont">The tyranny of the tidy box</h2><p>For years a certain social platform stored <strong>gender as a single bit</strong> — male or female, <code>0</code> or <code>1</code>.</p>
 <p>Not because its engineers believed that was the whole truth of human gender, but because one bit is cheap to store, easy to sort, and convenient for advertisers.</p>
 <h3>The schema, not reality, decided who was legible.</h3></section><section class="slide"><h2 class="cont">The tyranny of the tidy box</h2><p>Remember the missing voices from the last lecture: <strong>absence from the data isn't absence from reality.</strong></p>
 <p>Here is one of the mechanisms. People go missing not only because they never posted —</p>
-<p><em>but because the categories had no drawer for them.</em></p></section><section class="slide"><h2>Classified by, or building the sort</h2><p>Two ways to stand in relation to all this machinery.</p>
+<p class="callout">but because the categories had no drawer for them.</p></section><section class="slide"><h2>Classified by, or building the sort</h2><p>Two ways to stand in relation to all this machinery.</p>
 <ul><li><strong>Without coding literacy, you are classified BY systems</strong> you can't see: algorithms sort you, other people define the categories, and you never get a vote in the logic that decides your loan, your feed, your risk score</li><li><strong>With it, you can read the sort</strong> — question a category, expose a buried threshold, redraw a box to fit the people it forgot</li></ul></section><section class="slide"><h2 class="cont">Classified by, or building the sort</h2><p>You don't have to become an engineer.</p>
 <h3>You only have to become unwilling to be sorted silently.</h3>
 <p>That isn't every line of code — most of it really is plumbing. But the <strong>key choices about people</strong> — the variables, the categories, the cutoffs — encode values and land on real lives.</p></section><section class="slide"><h2>Your turn at the line</h2><p>In a few weeks <em>you</em> will be the one drawing lines: which words are "stopwords" worth deleting, which comment is "positive," where one "topic" ends and the next begins.</p>
 <p>**Each is a classification, and each is a judgment you are making <em>for</em> someone else.**</p></section><section class="slide"><h2 class="cont">Your turn at the line</h2><h3>Make the cut visible.</h3>
 <p>Leave the <code>#comment</code> that says where you drew the line, and why.</p>
 <p>The honest classifier isn't the one who found the true categories — there are none.</p>
-<p><em>It's the one who shows you where they stood when they drew the box.</em></p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml3.html">Reading</a></div><div class="deck-progress"></div><div class="deck-count"></div><div class="deck-hint">← → navigate · click to advance</div>
+<p class="callout">It's the one who shows you where they stood when they drew the box.</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml3.html">Reading</a></div><div class="deck-progress"></div><div class="deck-hint">← → navigate · click to advance</div>
 <script>
 (function(){
   var s=[].slice.call(document.querySelectorAll('.slide'));
-  var prog=document.querySelector('.deck-progress'), cnt=document.querySelector('.deck-count'), i=0;
+  var prog=document.querySelector('.deck-progress'), i=0;
+  s.forEach(function(el,k){var h=el.querySelector('h2'); if(!h)return;
+    var n=document.createElement('span'); n.className='num'; n.textContent=String(k+1).padStart(2,'0');
+    n.setAttribute('aria-label','slide '+(k+1)+' of '+s.length); h.appendChild(n);});
   function show(n){i=Math.max(0,Math.min(s.length-1,n));
     s.forEach(function(el,k){el.classList.toggle('active',k===i);el.scrollTop=0;});
     if(prog)prog.style.width=((i+1)/s.length*100)+'%';
-    if(cnt)cnt.textContent=(i+1)+' / '+s.length;
     if(history.replaceState)history.replaceState(null,'','#'+(i+1));}
   document.addEventListener('keydown',function(e){
     if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1);}
