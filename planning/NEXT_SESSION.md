@@ -270,6 +270,10 @@ Reference: `codex_review/d2l_learning_traces.md`.
 
 ### Ongoing TODOs — course site
 
+- [ ] **Decide whether to make the repo private.** Plan + measurements: `planning/PRIVATE_REPO_PLAN.md`. First answer
+  *what* should stop being public: instructor material only (Option A, ~1 hr, nothing breaks) or the whole repo
+  (Option B, ~4–6 hrs + D2L: self-contained `docs/`, a public notebooks mirror for Colab). If B, do it before the
+  D2L hand-wiring or after Dec 18.
 - [ ] **Add site search.** Model: WRIT 40363's Pagefind setup (Pagefind 1.5.2, pinned; index built into
   `docs/pagefind/` from the finished pages; a search box injected into every page header). Here it should be a
   step the generators run (or a script beside them), not a hand-edited `docs/` file, and the search box must pass
