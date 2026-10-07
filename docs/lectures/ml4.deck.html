@@ -248,6 +248,7 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 .slide.split>.split-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:5%;align-items:center;
   max-width:76rem;width:100%;}
 .slide.split .col-text>*:first-child{margin-top:0;}
+.slide.split:not(.title)>.split-grid{align-items:start;}   /* text starts level with the image top */
 .slide.split .col-img figure{margin:0;}
 .slide.split .col-img figure img{max-height:72vh;}
 @media (max-width:760px){.slide.split>.split-grid{grid-template-columns:1fr;gap:20px;}}

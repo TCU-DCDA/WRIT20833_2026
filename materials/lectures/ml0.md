@@ -189,10 +189,14 @@ difference between *using* the tools that sort our culture and being able to *qu
 ## The score is never the meaning
 
 <!-- slide:
+![The noumena-to-wisdom pipeline: noumena, phenomena, raw data, structured data, analyzed data, insight, knowledge, wisdom](materials/images/noumena_to_wisdom_pipeline.png)
+
 Look at this diagram. We'll come back to it every week.
 -->
 
 <!-- slide:
+![The noumena-to-wisdom pipeline: noumena, phenomena, raw data, structured data, analyzed data, insight, knowledge, wisdom](materials/images/noumena_to_wisdom_pipeline.png)
+
 It begins much further from "the truth" than you'd guess.
 
 At the top sits the ***noumenon*** — Kant's word for a thing
@@ -207,6 +211,8 @@ of an inner state.
 -->
 
 <!-- slide:
+![The noumena-to-wisdom pipeline: noumena, phenomena, raw data, structured data, analyzed data, insight, knowledge, wisdom](materials/images/noumena_to_wisdom_pipeline.png)
+
 Then we **scrape** it — and some comments are missed.
 We **clean** it — we choose what counts as a "word."
 We **model** it — a tool decides what "great" means.
