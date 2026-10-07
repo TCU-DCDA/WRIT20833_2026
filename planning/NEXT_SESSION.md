@@ -5,7 +5,7 @@
 > (WORKLOG 2026-10-07: title bar + slide numbers, takeaway callouts, title-slide images restored, ml0 Pudding swap,
 > three new ml1 paintings). Pandas 01 and String Methods gained student copies with type-along blanks (2026-10-06).
 > Later 2026-10-07: HW2's Constitution corpus reframed as the 1787 text (keys + Code Guide redeployed, `333c1eee`);
-> class access code reset (Keychain `writ20833-access-code`); smoke test passed; syllabus links the Code Guide;
+> class access code reset (kept off-repo: the chatbot repo's gitignored `worker/.probe-code`; Keychain optional); smoke test passed; syllabus links the Code Guide;
 > **first-half Codex review done** (no student-facing defects; builder docstrings fixed) and its ML0–ML4 teaching
 > suggestions applied (code examples, glosses, sourced claims). All three repos pushed and in sync at session end.
 >
@@ -109,8 +109,8 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
     live acceptance probe run 1: 12/12 pass (`worker/retest/RESULTS.md`).
   - ✅ **Done 2026-10-07:** deploy, `CHAT_API_URL` + home-page card, live probe runs 3–4 against the deployed
     Worker (all pass on reading; chatbot repo `worker/retest/RESULTS.md`).
-  - ✅ **Browser smoke test passed 2026-10-07** (16-prompt list; class access code reset the same day — in this
-    Mac's Keychain as `writ20833-access-code`, never in this public repo). Bot runs Sonnet 5.5, low effort.
+  - ✅ **Browser smoke test passed 2026-10-07** (16-prompt list; class access code reset the same day — kept in the
+    chatbot repo's gitignored `worker/.probe-code`, never in this public repo). Bot runs Sonnet 5.5, low effort.
   - **Remaining, in order:** (1) — done; (2) add the chat link to the syllabus (line ~298, AI Use Policy) and give
     students the access code **via D2L or in class only**; (3) the Word syllabus + D2L PDF
     hand steps above. Teardown after 12/18: the chatbot repo's `MOTHBALL.md`.
@@ -248,3 +248,22 @@ and HW3/HW4. Validate notebooks with `python3`. Regenerate docs/ after any conte
 
 Ask before anything outward-facing (force-push, visibility flip, publishing to students).
 ```
+
+## New planning note — D2L learning traces and attendance
+
+To support the ungrading policy without adding attendance points, collect a cumulative **Learning Traces** artifact in D2L. Students add brief traces of participation—predictions, tested cells, `#comments`, errors, methodological choices, interpretations, or questions—and submit the cumulative record at four checkpoints: Days 6, 12, 18, and 24. The artifact is ungraded and should be excluded from the gradebook; it becomes evidence students can use in Reflection 3 and evidence the instructor can use to notice gaps in engagement.
+
+Attendance should not be interpreted as proof of casual interest. A repeated absence pattern is evidence of limited participation only when considered alongside missing work, reflections, communication, and growth. Students who miss class should complete a short catch-up trace explaining what they recreated, learned, and still need to understand. Workshops, peer review, and presentations require an equivalent arrangement with the instructor.
+
+Reference: `codex_review/d2l_learning_traces.md`.
+
+### Ongoing TODOs — syllabus and D2L
+
+- [ ] Add the Learning Traces policy and catch-up language to `SYLLABUS_2026.md` and mirror it in the Word syllabus.
+- [ ] Decide the D2L submission format: uploaded cumulative file, Google Doc link, or Colab notebook link.
+- [ ] Create the ungraded multiple-submission D2L assignment and four checkpoint dates.
+- [ ] Exclude the artifact from the gradebook, or use a zero-point item that does not affect the final grade.
+- [ ] Add the Learning Traces item and instructions to the live D2L shell.
+- [ ] Create a private instructor tracking method for present evidence, absent-but-caught-up, incomplete, and needs-contact.
+- [ ] Explain in the syllabus and D2L that attendance is an engagement indicator, not a proxy for motivation or a separate grade.
+- [ ] Mirror any syllabus wording changes in the Word syllabus and re-upload the syllabus PDF to D2L.
