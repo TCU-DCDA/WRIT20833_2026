@@ -46,6 +46,20 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
   and the Code Guide lesson files checked consistent. An earlier pedagogy pass on ML0–ML4
   (`codex_review/decks1_4.md`) caught three reading-page "four weeks" leftovers (fixed, `3706094`); its teaching
   suggestions are with the instructor.
+- **ML0–ML4 teaching suggestions applied (instructor: "address").** `build_lectures.py` now renders fenced
+  code blocks (`pre.codeblock`, styled in `site_theme`). ML0: "One line of code, three honest answers"
+  (`comments_text.count` → 13 / lowercased 25 / singular 27, verified on the corpus) + plain glosses for the
+  pipeline stages and scrape/clean/model. ML1: corpus defined; provenance (fall 2025, one CBS news video on
+  YouTube, browser scraper, **top-level comments only, no replies**, de-duplicated — verified against the F25
+  CSV); difference-vs-cause after the SAT example ("Two real numbers" → "Two plain numbers": they're
+  illustrative); stopword/threshold glosses + the "drop words used <5 times" rhetoric example. ML3: complete
+  runnable conditional (score 649 → "review") replaces the `approve()` one-liner, comparison/Boolean/threshold
+  defined, VADER `compound` (−1 to +1, Day 13) explained before the cutoff; the unsourced "certain social
+  platform … single bit" is now Facebook's two-option sign-up until 2014. ML4: "bullshit engine" attributed as
+  Hicks, Humphries & Slater's argument; new slides with an AI-style `count_words` (`.get` deliberately
+  unfamiliar; it splits "Commandments"/"commandments,") and a five-point "you understand code when you can"
+  checklist tied to the syllabus AI rule. **Not done:** an explicit Day 8 lab deliverable — the AI-code half
+  of the Day 8 lab has **no built handout** (only stylometry exists). 0 overfull slides at 1920/1280/1024.
 
 ## Earlier session — 2026-09-28 (cont.) — Lane D: D2L shell generators
 

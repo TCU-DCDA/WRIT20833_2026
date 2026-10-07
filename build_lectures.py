@@ -74,7 +74,7 @@ def parse_head(lines):
     return title, subtitle, meta, lines[consumed + 1:]
 
 
-_BLOCK_START = re.compile(r'^(#{2,3}\s|>\s|-\s|!\[|\[!\[|---\s*$)')
+_BLOCK_START = re.compile(r'^(#{2,3}\s|>\s|-\s|!\[|\[!\[|```|---\s*$)')
 
 
 def render_blocks(lines, lead=False):
@@ -97,6 +97,14 @@ def render_blocks(lines, lead=False):
                 img = f'<a href="{html.escape(m.group(3))}">{img}</a>'
             out.append(("figure", f'<figure>{img}{cap}</figure>'))
             i += 1; continue
+        if s.startswith("```"):                                 # fenced code block, shown verbatim
+            i += 1; code_lines = []
+            while i < n and not lines[i].strip().startswith("```"):
+                code_lines.append(lines[i]); i += 1
+            i += 1
+            body = html.escape("\n".join(code_lines), quote=False)
+            out.append(("text", f'<pre class="codeblock"><code>{body}</code></pre>'))
+            continue
         if s == "---":
             out.append(("text", "<hr>")); i += 1; continue
         if s.startswith("### "):
@@ -189,6 +197,7 @@ DECK_CSS = r"""
 .slide p.callout{background:var(--clay-bg);border:2px solid var(--green);border-radius:14px;
   padding:2.2vh 2vw;margin-top:10px;font-family:var(--serif);color:var(--ink);}
 .slide p.callout em{font-style:normal;}
+.slide pre.codeblock{font-size:clamp(15px,1.6vw,21px);}
 .slide.title .kicker{width:fit-content;background:var(--clay-bg);color:var(--clay-ink);
   padding:10px 18px;border-radius:999px;margin-bottom:26px;}
 .slide .dots{display:flex;gap:10px;margin:2px 0 22px;}

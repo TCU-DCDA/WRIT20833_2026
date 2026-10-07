@@ -190,6 +190,10 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+pre.codeblock{margin:6px 0 18px;padding:12px 16px;background:color-mix(in srgb,var(--green) 6%,var(--surface));
+  border:1px solid var(--rule);border-left:3px solid var(--green-mid);border-radius:6px;overflow-x:auto;
+  font:14.5px/1.55 var(--mono);color:var(--ink);}
+pre.codeblock code{font:inherit;background:none;padding:0;color:inherit;}
 figure a{border-bottom:none;}   /* a linked image needs no underline */
 .reading figure{margin:24px 0;}
 .reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
@@ -226,6 +230,7 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 .slide p.callout{background:var(--clay-bg);border:2px solid var(--green);border-radius:14px;
   padding:2.2vh 2vw;margin-top:10px;font-family:var(--serif);color:var(--ink);}
 .slide p.callout em{font-style:normal;}
+.slide pre.codeblock{font-size:clamp(15px,1.6vw,21px);}
 .slide.title .kicker{width:fit-content;background:var(--clay-bg);color:var(--clay-ink);
   padding:10px 18px;border-radius:999px;margin-bottom:26px;}
 .slide .dots{display:flex;gap:10px;margin:2px 0 22px;}
@@ -296,7 +301,11 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 <p>What we <em>can</em> have is what she typed — already a lossy, public projection of an inner state.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/images/noumena_to_wisdom_pipeline.png" alt="The noumena-to-wisdom pipeline: noumena, phenomena, raw data, structured data, analyzed data, insight, knowledge, wisdom"></figure></div></div></section><section class="slide split"><h2 class="cont">The score is never the meaning</h2><div class="split-grid"><div class="col-text"><p>Then we <strong>scrape</strong> it — and some comments are missed. We <strong>clean</strong> it — we choose what counts as a "word." We <strong>model</strong> it — a tool decides what "great" means.</p>
 <p>And only <em>then</em> do we reach for <strong>insight, knowledge,</strong> and — maybe, by the end — <strong>wisdom.</strong></p>
 <p class="callout">Eight steps from the woman to the number. Every one of them ours.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/images/noumena_to_wisdom_pipeline.png" alt="The noumena-to-wisdom pipeline: noumena, phenomena, raw data, structured data, analyzed data, insight, knowledge, wisdom"></figure></div></div></section><section class="slide split"><h2>Every arrow is a choice</h2><div class="split-grid"><div class="col-text"><p><strong>Every arrow on that diagram is a human decision</strong> — not a neutral pipe, but a choice, with a person and a value behind it.</p>
-<p>It's tempting to call each step <em>contamination</em>, as if a clean signal up top got dirtied on the way down. But look again: <strong>there is no clean signal up top.</strong> The very first step is already an interpretation.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/every_arrow_valves.jpg" alt="A warm oil painting of a hand reaching to turn one of several brass valves along a pipe carrying flowing golden light"></figure></div></div></section><section class="slide"><h2 class="cont">Every arrow is a choice</h2><h3>Bias isn't what sneaks into the data — bias is the material the data is made of.</h3>
+<p>It's tempting to call each step <em>contamination</em>, as if a clean signal up top got dirtied on the way down. But look again: <strong>there is no clean signal up top.</strong> The very first step is already an interpretation.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/every_arrow_valves.jpg" alt="A warm oil painting of a hand reaching to turn one of several brass valves along a pipe carrying flowing golden light"></figure></div></div></section><section class="slide"><h2 class="cont">Every arrow is a choice</h2><h3>One line of code, three honest answers</h3>
+<pre class="codeblock"><code>comments_text.count("commandments")           # 13
+comments_text.lower().count("commandments")   # 25
+comments_text.lower().count("commandment")    # 27</code></pre>
+<p>Same 123 comments. Ignore capital letters, or don't. Count the singular too, or don't. <strong>Each choice is defensible, and each one gives a different number.</strong></p></section><section class="slide"><h2 class="cont">Every arrow is a choice</h2><h3>Bias isn't what sneaks into the data — bias is the material the data is made of.</h3>
 <p>That's not cause for despair, and not a reason to distrust everything. It's the reason for the one habit this course asks of you constantly: <strong>make your choices visible.</strong></p>
 <p>Every time you delete a word, set a threshold, or name a topic, you leave a <code>#comment</code> saying what you did and why.</p>
 <p class="callout">The honest move isn't pretending you found the truth. It's showing where you stood.</p></section><section class="slide"><h2>What this course is really grading</h2><p>This is why we don't grade you on clean code.</p>

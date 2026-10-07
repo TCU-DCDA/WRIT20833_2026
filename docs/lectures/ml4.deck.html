@@ -190,6 +190,10 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+pre.codeblock{margin:6px 0 18px;padding:12px 16px;background:color-mix(in srgb,var(--green) 6%,var(--surface));
+  border:1px solid var(--rule);border-left:3px solid var(--green-mid);border-radius:6px;overflow-x:auto;
+  font:14.5px/1.55 var(--mono);color:var(--ink);}
+pre.codeblock code{font:inherit;background:none;padding:0;color:inherit;}
 figure a{border-bottom:none;}   /* a linked image needs no underline */
 .reading figure{margin:24px 0;}
 .reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
@@ -226,6 +230,7 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 .slide p.callout{background:var(--clay-bg);border:2px solid var(--green);border-radius:14px;
   padding:2.2vh 2vw;margin-top:10px;font-family:var(--serif);color:var(--ink);}
 .slide p.callout em{font-style:normal;}
+.slide pre.codeblock{font-size:clamp(15px,1.6vw,21px);}
 .slide.title .kicker{width:fit-content;background:var(--clay-bg);color:var(--clay-ink);
   padding:10px 18px;border-radius:999px;margin-bottom:26px;}
 .slide .dots{display:flex;gap:10px;margin:2px 0 22px;}
@@ -299,14 +304,22 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 <p>Colbert coined a word for that feeling — <strong>truthiness</strong>, when something feels true from the gut before the evidence arrives.</p>
 <h3>An AI is a machine for making anything feel gut-true.</h3></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>Philosophy has a blunter word. Frankfurt distinguished the <strong>liar</strong> — who knows the truth and conceals it — from the <strong>bullshitter</strong>, who simply doesn't care what's true, only what lands.</p>
 <p>Some philosophers argue "hallucination" is the wrong name for AI errors: a hallucination implies a mind mistaking false for true, but a model has <em>no regard for truth at all.</em></p>
-<p class="callout">In Frankfurt's strict sense, an LLM is a bullshit engine even when it happens to be right.</p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>None of this is new; only the machinery is. Plato watched the sophists sell exactly this in Athens — Gorgias boasted a skilled speaker would beat the physician in a debate about medicine, before an audience that knew no medicine.</p>
+<p class="callout">On that argument, an LLM is a bullshit engine in Frankfurt's strict sense, even when it happens to be right.</p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>None of this is new; only the machinery is. Plato watched the sophists sell exactly this in Athens — Gorgias boasted a skilled speaker would beat the physician in a debate about medicine, before an audience that knew no medicine.</p>
 <p class="callout">Because eloquence feels like expertise from the inside.</p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>The Greeks named what settles into a person who gets their beliefs that way: <strong>amathia.</strong></p>
 <p>Not ignorance — <em>agnoia</em>, which more information fixes — but <strong>un-wisdom</strong>: the condition of the well-informed, well-assisted person whom nothing any longer teaches.</p>
 <p class="callout">Remember the Day-1 diagram? Amathia is the shadow at its bottom-right corner: knowledge that never becomes wisdom, because the labor between them got outsourced.</p></section><section class="slide"><h2 class="cont">Eloquence is not evidence</h2><p>Two things to carry out of that word.</p>
 <p><strong>First, it points at us, never at them.</strong> Not a diagnosis you hand to the 123 commenters — it's the temptation <em>you</em> face every time an eloquent answer arrives faster than your judgment.</p>
 <p><strong>Second, the fix is not an attitude.</strong> Attitudes don't beat gut-level habits. The fix is <strong>procedural friction</strong>: run the code, check the citation, find the source, read the seams.</p>
 <h3>Right next to <em>the score is never the meaning</em>: eloquence is not evidence.</h3></section><section class="slide"><h2>Today: read the seams</h2><p>That's exactly today's lab. You'll take a chunk of <strong>AI-written code, read it line by line, and improve it</strong> — practicing the judgment that turns borrowing into understanding.</p>
-<p>Then we plant the <strong>stylometry seed</strong>: reading for the <em>seams</em> between human and machine writing — the tells of a voice that was averaged into being versus one that was lived into being.</p></section><section class="slide"><h2 class="cont">Today: read the seams</h2><p>Carry one question out of here:</p>
+<p>Then we plant the <strong>stylometry seed</strong>: reading for the <em>seams</em> between human and machine writing — the tells of a voice that was averaged into being versus one that was lived into being.</p></section><section class="slide"><h2 class="cont">Today: read the seams</h2><h3>The kind of code an AI hands you</h3>
+<pre class="codeblock"><code>def count_words(text):
+    counts = {}
+    for word in text.split():
+        counts[word] = counts.get(word, 0) + 1
+    return counts</code></pre>
+<p>It runs. It looks finished. Now read it. What is <code>word</code> on each pass? What does <code>.get(word, 0)</code> do? <em>(You haven't seen it yet. Find out.)</em> Are "Commandments" and "commandments," one word or two?</p></section><section class="slide"><h2 class="cont">Today: read the seams</h2><h3>You understand code when you can:</h3>
+<ul><li>say what each line takes in and hands back</li><li>name the type of each important variable</li><li>predict what an unusual input will do</li><li>name one thing it gets wrong</li><li>change one thing, and test that the change worked</li></ul>
+<p class="callout">The syllabus asks this of anything you borrow: explain it, and note in your #comments where AI helped and what you changed.</p></section><section class="slide"><h2 class="cont">Today: read the seams</h2><p>Carry one question out of here:</p>
 <h3>Are you learning to think computationally, or just outsourcing the thinking?</h3>
 <p>The same tool allows either. The difference is whether you can still explain, judge, and own what you made — and whether the words are finally yours.</p>
 <p class="callout">As always: make the choice visible. Cite the AI, and say what you changed.</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml4.html">Reading</a></div><div class="deck-progress"></div><div class="deck-hint">← → navigate · click to advance</div>

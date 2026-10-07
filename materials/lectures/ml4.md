@@ -196,8 +196,8 @@ Some philosophers argue "hallucination" is the wrong name for AI errors:
 a hallucination implies a mind mistaking false for true, but a model
 has *no regard for truth at all.*
 
-*In Frankfurt's strict sense, an LLM is a bullshit engine
-even when it happens to be right.*
+*On that argument, an LLM is a bullshit engine in Frankfurt's
+strict sense, even when it happens to be right.*
 -->
 
 <!-- slide:
@@ -251,8 +251,9 @@ Philosophy has a blunter word. Harry Frankfurt distinguished the **liar** — wh
 conceals it — from the **bullshitter**, who simply doesn't care what's true, only what lands. Some
 philosophers now argue "hallucination" is the wrong name for AI errors: a hallucination implies a mind
 mistaking false for true, but a language model has *no regard for truth at all* — it produces the most
-plausible next words, and when they're true, that's incidental. In Frankfurt's strict sense, an LLM is a
-bullshit engine even when it happens to be right.
+plausible next words, and when they're true, that's incidental. On their argument (Hicks, Humphries and
+Slater, 2024), an LLM is a bullshit engine in Frankfurt's strict sense, even when it happens to be right.
+You don't have to accept the label to take the practical point: fluency can't count as evidence.
 
 None of this is new; only the machinery is. Plato watched the sophists sell exactly this in Athens —
 Gorgias boasted that a skilled speaker would beat the physician in a debate about medicine, before an
@@ -284,6 +285,35 @@ into being versus one that was lived into being.
 -->
 
 <!-- slide:
+### The kind of code an AI hands you
+
+```
+def count_words(text):
+    counts = {}
+    for word in text.split():
+        counts[word] = counts.get(word, 0) + 1
+    return counts
+```
+
+It runs. It looks finished. Now read it.
+What is `word` on each pass? What does `.get(word, 0)` do? *(You
+haven't seen it yet. Find out.)* Are "Commandments" and "commandments,"
+one word or two?
+-->
+
+<!-- slide:
+### You understand code when you can:
+
+- say what each line takes in and hands back
+- name the type of each important variable
+- predict what an unusual input will do
+- name one thing it gets wrong
+- change one thing, and test that the change worked
+
+*The syllabus asks this of anything you borrow: explain it, and note in your #comments where AI helped and what you changed.*
+-->
+
+<!-- slide:
 Carry one question out of here:
 
 ### Are you learning to think computationally, or just outsourcing the thinking?
@@ -299,6 +329,28 @@ That's exactly today's lab. You'll take a chunk of **AI-written code, read it li
 it** — practicing the judgment that turns borrowing into understanding. Then we plant the **stylometry
 seed**: learning to read for the *seams* between human and machine writing — the tells of a voice that was
 averaged into being versus one that was lived into being.
+
+Here is the kind of word counter an AI assistant will happily write for you:
+
+```
+def count_words(text):
+    counts = {}
+    for word in text.split():
+        counts[word] = counts.get(word, 0) + 1
+    return counts
+```
+
+It runs, and it looks finished. Reading it is another matter. What is `word` on each pass through the loop?
+What does `.get(word, 0)` do? You haven't seen it yet, which is exactly the situation borrowed code puts you
+in: find out before you trust it. And are "Commandments" and "commandments," one word or two? (Two.
+`.split()` keeps capital letters and punctuation, so the counter splits one word into several. Remember the
+13 and the 25 from the opening lecture.)
+
+What does "understanding the code" look like, concretely? You can say what each line takes in and hands
+back; name the type of each important variable; predict what an unusual input will do; name at least one
+thing the code gets wrong; and change one thing and test that the change worked. That's also what the
+syllabus asks of any code you borrow: be able to explain it, and note in your `#comments` where AI helped
+and what you changed.
 
 Carry one question out of here: **are you learning to think computationally, or just outsourcing the
 thinking?** The same tool allows either. The difference is whether you can still explain, judge, and own

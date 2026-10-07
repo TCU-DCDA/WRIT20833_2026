@@ -97,9 +97,17 @@ What changed is scale and speed — and that the judgment now hides inside a fun
 ## The threshold problem
 
 <!-- slide:
-A real loan rule, in the syntax you'll write this week:
+A loan rule of the kind lenders use, in the syntax you'll write this week:
 
-> `if credit_score > 650 and income > 50000: approve()`
+```
+credit_score = 649
+income = 72000
+if credit_score > 650 and income > 50000:
+    decision = "approve"
+else:
+    decision = "review"
+print(decision)    # review
+```
 
 **Who chose 650?** Is the person at 649 truly different from the person
 at 651 — or did a round number just decide their year?
@@ -114,8 +122,8 @@ and one of the most consequential.
 
 ### It is an act of power wearing the costume of arithmetic.
 
-You'll meet your own soon: in HW3 a single cutoff — `compound > 0.05` —
-sorts every comment into positive, negative, or neutral.
+You'll meet your own soon: in HW3 a single cutoff — `compound > 0.05`,
+on VADER's overall score from −1 to +1 — sorts every comment into positive, negative, or neutral.
 
 *The number will feel objective. It won't be. It will be yours.*
 -->
@@ -124,16 +132,31 @@ sorts every comment into positive, negative, or neutral.
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, clay accent; cousin to ml0's brass-valves image): a hand turning a single brass dial set into a gate; the people just above the dial's mark pass through into warm light, the people just below are turned back into shadow — one arbitrary line. -->
 ![A hand turning a brass dial on a gate; people just above the mark pass into light, those just below are turned away](materials/lectures/images/ml3_threshold.jpg)
 
-Here is a real loan rule, in the syntax you'll write this week:
+Here is a loan rule of the kind lenders use, written in the syntax you'll learn this week:
 
-> `if credit_score > 650 and income > 50000: approve()`
+```
+credit_score = 649
+income = 72000
+if credit_score > 650 and income > 50000:
+    decision = "approve"
+else:
+    decision = "review"
+print(decision)    # review
+```
+
+Read it line by line. `credit_score > 650` is a **comparison**: it asks a yes-or-no question, and the answer
+comes back as a **Boolean**, `True` or `False`. `and` means both comparisons must be `True`. If they are,
+`if` runs the line under it; if not, `else` catches everything else. Here the score is 649, one point short,
+so the answer is "review." The 650 is a **threshold**: a cutoff that turns a continuous number into a
+category.
 
 Now ask the humanist's questions. **Who chose 650?** Is the person at 649 truly different from the person at
 651, or did a round number just decide their year? Why income *and* credit, and not rent history, or the
 reason the score dipped in the first place?
 
 A threshold is the most ordinary line in programming and one of the most consequential. It is an act of
-power wearing the costume of arithmetic. You'll meet your own threshold soon: in HW3, a single cutoff
+power wearing the costume of arithmetic. You'll meet your own threshold soon. On Day 13 you'll use VADER, a tool that gives each comment an overall
+`compound` score from −1 (most negative) to +1 (most positive). In HW3, a single cutoff
 (`compound > 0.05`) will sort every comment into positive, negative, or neutral. The number will feel
 objective. It won't be. It will be yours.
 
@@ -146,11 +169,11 @@ simply **disappears.**
 -->
 
 <!-- slide:
-For years a certain social platform stored **gender as a single bit** —
-male or female, `0` or `1`.
+Until 2014, Facebook asked every new user to choose one of two genders:
+male or female. A two-option field is, in effect, **a single bit**: `0` or `1`.
 
-Not because its engineers believed that was the whole truth of human gender,
-but because one bit is cheap to store, easy to sort,
+Not because anyone believed that was the whole truth of human gender,
+but because two options are cheap to store, easy to sort,
 and convenient for advertisers.
 
 ### The schema, not reality, decided who was legible.
@@ -173,9 +196,10 @@ they never posted —
 Code needs clean categories, and people don't come clean. So the system forces the fit — and whatever
 won't fit the schema simply disappears.
 
-For years a certain social platform stored **gender as a single bit**: male or female, `0` or `1`. Not
-because its engineers believed that was the whole truth of human gender, but because one bit is cheap to
-store, easy to sort, and convenient for advertisers. The schema, not reality, decided who was legible.
+Until 2014, Facebook asked every new user to choose one of two genders, male or female; that year it added
+dozens of custom options. A two-option field is, in effect, **a single bit**: `0` or `1`. Not because anyone
+believed that was the whole truth of human gender, but because two options are cheap to store, easy to sort,
+and convenient for advertisers. The schema, not reality, decided who was legible.
 *(That's the Data Feminism point: a "default" binary, chosen for computational convenience, quietly encodes
 a whole worldview — and erases everyone who doesn't fit it.)*
 

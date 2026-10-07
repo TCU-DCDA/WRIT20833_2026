@@ -23,7 +23,12 @@ choice. This lecture turns that claim on the very first thing you'll touch — a
 that even *it* arrives already leaning.
 
 Here is a fact about the corpus we'll work with all term: 123 YouTube comments on a Texas law that puts
-the Ten Commandments in public-school classrooms.
+the Ten Commandments in public-school classrooms. (A **corpus** is simply a collection of texts gathered
+for analysis.) The comments were copied in fall 2025 from under one TV-news video on YouTube, using a
+browser scraping tool. The tool caught top-level comments but not the replies under them, and duplicates
+were removed. They are not a sample of Texans, or even of YouTube:
+they're whoever chose to comment on that one video, and whatever the tool caught. We'll come back to who
+that leaves out.
 
 > In those 123 comments, the word **"commandments"** appears 25 times. **"Constitution"** appears 8.
 
@@ -139,6 +144,7 @@ each quietly handing the blame to someone else:
 ![Two stacks of graded papers on a schoolroom table, one tall and one short; tired students, a man pointing at a leaking ceiling, and a woman pointing at a thick exam booklet each blame something different](materials/lectures/images/ml1_three_stories.jpg)
 
 Nothing *in* the numbers tells you which story is true.
+They show a **difference**, not its **cause**.
 
 The numbers are the easy part. **Choosing the story is the human part** —
 
@@ -150,7 +156,7 @@ wearing the costume of arithmetic.*
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent): two stacks of graded exam papers on a table, one tall, one short; three figures each point elsewhere — at tired students, at a water-stained schoolhouse ceiling, at a thick exam booklet. Same papers, the blame moves. -->
 ![Two stacks of graded papers on a schoolroom table, one tall and one short; tired students, a man pointing at a leaking ceiling, and a woman pointing at a thick exam booklet each blame something different](materials/lectures/images/ml1_three_stories.jpg)
 
-Two real numbers:
+Two plain numbers:
 
 > School A — average SAT **1240**. School B — average SAT **980**.
 
@@ -161,8 +167,9 @@ someone else:
 - **Systemic story** — School B is under-resourced and underfunded. *(It's the system.)*
 - **Cultural story** — the SAT measures one particular kind of knowledge. *(It's the test.)*
 
-Nothing *in* the numbers tells you which story is true. The numbers are the easy part. Choosing the story
-is the human part — and it is already an argument about fairness, wearing the costume of arithmetic.
+Nothing *in* the numbers tells you which story is true. They show a *difference*, not its *cause*; to
+argue about causes, you'd need more evidence than the two scores. The numbers are the easy part. Choosing
+the story is the human part — and it is already an argument about fairness, wearing the costume of arithmetic.
 
 ## Who's doing the telling?
 
@@ -258,6 +265,9 @@ Which number you make the headline, which chart you reach for,
 what you put first and what you bury: every one is a claim
 about what matters, aimed at whoever reads your result.
 
+Drop every word used fewer than five times, and your code has
+*claimed* that rare words matter less.
+
 *Code isn't only structure. It's rhetoric.*
 -->
 
@@ -282,9 +292,15 @@ Over the next eight weeks *you* will be the one deciding. What counts as a "word
 Which words are "stopwords" worth deleting? What score makes a comment "positive"? Where do you cut one
 topic from the next? Each is a small act of interpretation wearing the costume of a neutral function.
 
+In code, those decisions are concrete operations. You'll **split** text into words, **count** them,
+**delete** the ones on a *stopword* list (common words like *the* and *of* that an analyst chooses to skip),
+**score** each comment and set a *threshold* (a cutoff that turns a continuous score into a category like
+"positive"), and **group** comments that use similar words. Every one of those verbs hides a choice.
+
 And those choices don't merely *encode* a value — they *argue* one. Which number you make the headline,
 which chart you reach for, what you put first and what you bury: every one is a claim about what matters,
-aimed at whoever reads your result. Code isn't only structure; it's rhetoric. You'll feel that fully when
+aimed at whoever reads your result. If your code drops every word that appears fewer than five times, it
+has made a claim: that rare words are less useful, or less meaningful. Code isn't only structure; it's rhetoric. You'll feel that fully when
 you go public with an analysis at the end of the term — but it starts here, in the smallest function.
 
 That's the trap and the responsibility at once: a machine looks objective *precisely because* it hides the

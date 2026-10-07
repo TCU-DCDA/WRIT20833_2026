@@ -17,6 +17,9 @@
 > 🔎 **First-half external review (Codex):** brief at `planning/REVIEW_BRIEF_FIRST_HALF_2026-10.md`; fill in the
 > commit at hand-off. **Stylometry is excluded** and still needs its own pass **before Wed Nov 4 (Day 8)**: drop the
 > DRAFT label and fix the "Day 7" / "Week 4" references (→ Day 8 / capstone weeks).
+> ⚠️ **Day 8 lab gap:** the schedule's "Reading & improving AI code" half of the Day 8 lab has **no built
+> handout** (only the stylometry piece exists). ML4 now models the move (an AI-style `count_words` + a
+> checklist); decide whether the lab needs its own sheet before Wed Nov 4.
 > ⏩ **Next up:** access code to students via D2L (the syllabus now says it's posted there) → Lane D (D2L hand-wiring — hardest deadline,
 > students land there Oct 19) → Lane C (the capstone placeholders) → Lane B (four lecture
 > framings) → Lane D (both D2L packages imported 2026-09-28; confirm the discussions + DST dates, then hand-wire the shell per `d2l/WIRING_CHECKLIST.md` §3–6, plus the checks outside this repo).

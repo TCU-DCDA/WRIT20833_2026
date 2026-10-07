@@ -190,6 +190,10 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+pre.codeblock{margin:6px 0 18px;padding:12px 16px;background:color-mix(in srgb,var(--green) 6%,var(--surface));
+  border:1px solid var(--rule);border-left:3px solid var(--green-mid);border-radius:6px;overflow-x:auto;
+  font:14.5px/1.55 var(--mono);color:var(--ink);}
+pre.codeblock code{font:inherit;background:none;padding:0;color:inherit;}
 figure a{border-bottom:none;}   /* a linked image needs no underline */
 .reading figure{margin:24px 0;}
 .reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
@@ -226,6 +230,7 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 .slide p.callout{background:var(--clay-bg);border:2px solid var(--green);border-radius:14px;
   padding:2.2vh 2vw;margin-top:10px;font-family:var(--serif);color:var(--ink);}
 .slide p.callout em{font-style:normal;}
+.slide pre.codeblock{font-size:clamp(15px,1.6vw,21px);}
 .slide.title .kicker{width:fit-content;background:var(--clay-bg);color:var(--clay-ink);
   padding:10px 18px;border-radius:999px;margin-bottom:26px;}
 .slide .dots{display:flex;gap:10px;margin:2px 0 22px;}
@@ -285,14 +290,20 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 <p>The variable was social — but it worked exactly like a boolean. <strong>One bit, and the gate swung open or stayed shut.</strong></p></section><section class="slide"><h2 class="cont">Status has always gated access</h2><p>The software era didn't invent the gate. It <strong>automated</strong> it, and renamed the variables:</p>
 <blockquote><p><code>credit_score</code> · <code>criminal_background</code> · <code>relationship_status</code></p><p>· <code>employment_status</code> · <code>immigration_status</code></p></blockquote>
 <p>Same logic, new costume: a value about a person, checked at a threshold, deciding what they get to reach.</p>
-<p class="callout">What changed is scale, speed — and that the judgment now hides inside a function that looks like math.</p></section><section class="slide split"><h2>The threshold problem</h2><div class="split-grid"><div class="col-text"><p>A real loan rule, in the syntax you'll write this week:</p>
-<blockquote><p><code>if credit_score &gt; 650 and income &gt; 50000: approve()</code></p></blockquote>
+<p class="callout">What changed is scale, speed — and that the judgment now hides inside a function that looks like math.</p></section><section class="slide split"><h2>The threshold problem</h2><div class="split-grid"><div class="col-text"><p>A loan rule of the kind lenders use, in the syntax you'll write this week:</p>
+<pre class="codeblock"><code>credit_score = 649
+income = 72000
+if credit_score &gt; 650 and income &gt; 50000:
+    decision = "approve"
+else:
+    decision = "review"
+print(decision)    # review</code></pre>
 <p><strong>Who chose 650?</strong> Is the person at 649 truly different from the person at 651 — or did a round number just decide their year?</p>
 <p class="callout">Why income and credit, and not rent history, or the reason the score dipped in the first place?</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml3_threshold.jpg" alt="A hand turning a brass dial on a gate; people just above the mark pass into light, those just below are turned away"></figure></div></div></section><section class="slide"><h2 class="cont">The threshold problem</h2><p>A threshold is the most ordinary line in programming, and one of the most consequential.</p>
 <h3>It is an act of power wearing the costume of arithmetic.</h3>
-<p>You'll meet your own soon: in HW3 a single cutoff — <code>compound &gt; 0.05</code> — sorts every comment into positive, negative, or neutral.</p>
-<p class="callout">The number will feel objective. It won't be. It will be yours.</p></section><section class="slide split"><h2>The tyranny of the tidy box</h2><div class="split-grid"><div class="col-text"><p>Code needs clean categories, and people don't come clean. So the system forces the fit — and whatever won't fit the schema simply <strong>disappears.</strong></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml3_schema.jpg" alt="Varied human figures pressed into identical pigeonhole drawers, the parts that don&#x27;t fit spilling over and fading"></figure></div></div></section><section class="slide"><h2 class="cont">The tyranny of the tidy box</h2><p>For years a certain social platform stored <strong>gender as a single bit</strong> — male or female, <code>0</code> or <code>1</code>.</p>
-<p>Not because its engineers believed that was the whole truth of human gender, but because one bit is cheap to store, easy to sort, and convenient for advertisers.</p>
+<p>You'll meet your own soon: in HW3 a single cutoff — <code>compound &gt; 0.05</code>, on VADER's overall score from −1 to +1 — sorts every comment into positive, negative, or neutral.</p>
+<p class="callout">The number will feel objective. It won't be. It will be yours.</p></section><section class="slide split"><h2>The tyranny of the tidy box</h2><div class="split-grid"><div class="col-text"><p>Code needs clean categories, and people don't come clean. So the system forces the fit — and whatever won't fit the schema simply <strong>disappears.</strong></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml3_schema.jpg" alt="Varied human figures pressed into identical pigeonhole drawers, the parts that don&#x27;t fit spilling over and fading"></figure></div></div></section><section class="slide"><h2 class="cont">The tyranny of the tidy box</h2><p>Until 2014, Facebook asked every new user to choose one of two genders: male or female. A two-option field is, in effect, <strong>a single bit</strong>: <code>0</code> or <code>1</code>.</p>
+<p>Not because anyone believed that was the whole truth of human gender, but because two options are cheap to store, easy to sort, and convenient for advertisers.</p>
 <h3>The schema, not reality, decided who was legible.</h3></section><section class="slide"><h2 class="cont">The tyranny of the tidy box</h2><p>Remember the missing voices from the last lecture: <strong>absence from the data isn't absence from reality.</strong></p>
 <p>Here is one of the mechanisms. People go missing not only because they never posted —</p>
 <p class="callout">but because the categories had no drawer for them.</p></section><section class="slide"><h2>Classified by, or building the sort</h2><p>Two ways to stand in relation to all this machinery.</p>

@@ -190,6 +190,10 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .reading blockquote{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
+pre.codeblock{margin:6px 0 18px;padding:12px 16px;background:color-mix(in srgb,var(--green) 6%,var(--surface));
+  border:1px solid var(--rule);border-left:3px solid var(--green-mid);border-radius:6px;overflow-x:auto;
+  font:14.5px/1.55 var(--mono);color:var(--ink);}
+pre.codeblock code{font:inherit;background:none;padding:0;color:inherit;}
 figure a{border-bottom:none;}   /* a linked image needs no underline */
 .reading figure{margin:24px 0;}
 .reading figure img{display:block;max-width:100%;height:auto;border:1px solid var(--rule);
@@ -226,6 +230,7 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 .slide p.callout{background:var(--clay-bg);border:2px solid var(--green);border-radius:14px;
   padding:2.2vh 2vw;margin-top:10px;font-family:var(--serif);color:var(--ink);}
 .slide p.callout em{font-style:normal;}
+.slide pre.codeblock{font-size:clamp(15px,1.6vw,21px);}
 .slide.title .kicker{width:fit-content;background:var(--clay-bg);color:var(--clay-ink);
   padding:10px 18px;border-radius:999px;margin-bottom:26px;}
 .slide .dots{display:flex;gap:10px;margin:2px 0 22px;}

@@ -237,6 +237,12 @@ public projection of an inner state. Then we **scrape** it (and some comments ar
 (we choose what counts as a "word"), **model** it (a tool decides what "great" means), and only *then* do
 we reach for **insight, knowledge,** and — maybe, by the end — **wisdom.**
 
+In plainer terms, the stages run: lived experience (*noumena*) → what people express in public (*phenomena*)
+→ what we collect (*raw data*) → what we organize into rows and columns (*structured data*) → what a method
+computes from it (*analyzed data*) → what we make of that (*insight, knowledge, wisdom*). Three verbs carry
+us between them. To **scrape** is to have a program copy text off a web page. To **clean** is to fix and
+standardize what was copied. To **model** is to apply a method that scores, sorts, or groups it.
+
 ## Every arrow is a choice
 
 <!-- slide:
@@ -246,6 +252,19 @@ but a choice, with a person and a value behind it.
 It's tempting to call each step *contamination*, as if a clean signal
 up top got dirtied on the way down. But look again: **there is no clean
 signal up top.** The very first step is already an interpretation.
+-->
+
+<!-- slide:
+### One line of code, three honest answers
+
+```
+comments_text.count("commandments")           # 13
+comments_text.lower().count("commandments")   # 25
+comments_text.lower().count("commandment")    # 27
+```
+
+Same 123 comments. Ignore capital letters, or don't. Count the singular too, or don't.
+**Each choice is defensible, and each one gives a different number.**
 -->
 
 <!-- slide:
@@ -271,6 +290,17 @@ a value behind it. It's tempting to call each step *contamination*, as if a clea
 dirtied on the way down. But look again: there *is* no clean signal up top. The very first step is
 already an interpretation. **Bias isn't what sneaks into the data — bias is the material the data is made
 of.**
+
+Here is how small a choice can be. Each of these lines counts the word "commandments" in our 123 comments:
+
+```
+comments_text.count("commandments")           # 13
+comments_text.lower().count("commandments")   # 25
+comments_text.lower().count("commandment")    # 27
+```
+
+The first misses every "Commandments" with a capital C. The second lowercases the text first. The third
+also catches the singular. None of them is wrong, and none of them is *the* count. Someone has to decide.
 
 That's not cause for despair, and it's not a reason to distrust everything. It's the reason for the one
 habit this course asks of you constantly: **make your choices visible.** Every time you delete a word,
