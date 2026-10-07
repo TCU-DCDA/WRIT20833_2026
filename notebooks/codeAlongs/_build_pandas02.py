@@ -1,4 +1,4 @@
-"""Builder for the 2026 'Data Cleaning with Pandas' code-along (Day 9).
+"""Builder for the 2026 'Data Cleaning with Pandas' code-along (Day 11).
 
 Ports F25's WRIT20833_Pandas_02_Data_Cleaning_Analysis_Pandas_F25.ipynb (57 cells, a sprawling
 literary-publications dataset + advanced groupby/regex/viz) into a focused 2-hour Day-9 code-along
@@ -6,11 +6,11 @@ in the 2026 house style (warm cultural examples; concept -> code -> 'your turn';
 Together -> Sneak Preview -> Playground; colab metadata; no HW-style #comments). Walsh-independent.
 
 Design choices vs F25:
-- Held to the CLEANING core (the point of Day 9): diagnose mess (isnull/unique/duplicated),
+- Held to the CLEANING core (the point of Day 11): diagnose mess (isnull/unique/duplicated),
   handle missing values (fillna + the ethics of filling), standardize text (.str.strip/.lower/
   .title/.replace + map variants), drop duplicates. F25's heavy multi-agg groupby, bubble-chart
   viz, and regex author-origin guessing are dropped as too much for one session.
-- CONTINUITY: cleans a *messy version of the same YouTube-comments table from Pandas 01 (Day 8)* —
+- CONTINUITY: cleans a *messy version of the same YouTube-comments table from Pandas 01 (Day 10)* —
   inconsistent stance labels, whitespace/newlines, a missing likes value, an exact duplicate row —
   and turns it back into the tidy table students already met. Reinforces that real scraped data is
   messy, and keeps the course corpus (TX Ten Commandments) the throughline into HW3/HW4.

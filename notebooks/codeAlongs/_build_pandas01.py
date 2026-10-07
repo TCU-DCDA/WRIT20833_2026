@@ -1,6 +1,6 @@
-"""Builder for the 2026 'Found Data & Pandas Fundamentals' code-along (Day 8).
+"""Builder for the 2026 'Found Data & Pandas Fundamentals' code-along (Day 10).
 
-Merges the two F25 notebooks that map to Day 8 ("Found data + collection ethics") —
+Merges the two F25 notebooks that map to Day 10 ("Found data + collection ethics") —
 WRIT20833_Pandas_01_Found_Data_Fundamentals_F25 (54 cells) and
 WRIT20833_Instant_Data_Scraper_Ethics_F25 (31 cells) — into ONE focused 2-hour code-along in the
 2026 house style (warm cultural examples; concept -> code -> 'your turn'; Putting It All Together ->
@@ -17,7 +17,7 @@ Design choices vs F25:
   runs in Colab with no upload.
 - Pandas scope held to fundamentals: read a DataFrame, head/shape/info, select columns (Series vs
   DataFrame), filter rows (boolean indexing), value_counts, basic stats, one light df.plot bar chart.
-  Cleaning (.str methods, missing values) is deliberately deferred to Pandas 02 (Day 9).
+  Cleaning (.str methods, missing values) is deliberately deferred to Pandas 02 (Day 11).
 
 Two outputs from one cell list (2026-10-06):
 - WRIT20833_Pandas_01_Found_Data_2026.ipynb — the STUDENT copy. "Type along" cells are left blank

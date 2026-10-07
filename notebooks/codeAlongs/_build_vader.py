@@ -1,15 +1,15 @@
-"""Builder for the 2026 'Sentiment Analysis with VADER' code-along (Days 11-12).
+"""Builder for the 2026 'Sentiment Analysis with VADER' code-along (Days 13-14).
 
 Ports F25's WRIT20833_VADER_Sentiment_Analysis_F25.ipynb (32 cells) into the 2026 code-along house
 style (warm cultural examples; concept -> code -> 'your turn'; Putting It All Together -> Sneak
 Preview -> Playground; colab metadata; no HW-style #comments). Walsh-independent. Spans the two
-VADER sessions (Day 11 "Sentiment with VADER" + Day 12 "VADER deep dive") as one basics->deep-dive arc.
+VADER sessions (Day 13 "Sentiment with VADER" + Day 14 "VADER deep dive") as one basics->deep-dive arc.
 
 Design choices vs F25:
-- CONTINUITY: scores the SAME cleaned YouTube-comments table from Days 8-9 (comment + hand-labeled
+- CONTINUITY: scores the SAME cleaned YouTube-comments table from Days 10-11 (comment + hand-labeled
   stance), not F25's Broadway-reviews data. The payoff exercise compares VADER's emotional *tone* to
   the human *stance* label and shows they're DIFFERENT axes (an opposing comment can be warm; a
-  supporting one can be angry) — the course's close-vs-distant-reading theme (Day 12 lecture) made
+  supporting one can be angry) — the course's close-vs-distant-reading theme (Day 14 lecture) made
   concrete, and exactly the "human vs automated" check the WORKLOG flags as a strong critical exercise.
 - Keeps the "honest about borrowed code" house convention: VADER is the textbook pip-installed model
   nobody writes from scratch; we run it to learn to *judge* it, including where it fails.

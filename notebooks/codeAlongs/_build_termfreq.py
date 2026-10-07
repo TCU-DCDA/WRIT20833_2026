@@ -1,4 +1,4 @@
-"""Builder for the 2026 'Term Frequency' code-along (Day 6).
+"""Builder for the 2026 'Term Frequency' code-along (Day 7).
 
 No F25 standalone source existed for term frequency (it was taught inside HW1/HW2), so this is
 authored fresh in the 2026 code-along house style (warm cultural examples; concept -> code -> 'your
@@ -6,7 +6,7 @@ turn'; Putting It All Together -> Sneak Preview -> Playground; colab badge + met
 #comments). Walsh-independent.
 
 Design:
-- PLAIN PYTHON, pre-pandas — matches HW2's deliberate pre-pandas approach (Day 6 introduces term
+- PLAIN PYTHON, pre-pandas — matches HW2's deliberate pre-pandas approach (Day 7 introduces term
   frequency; HW2 "Whose Words Win?" then applies it). Reuses the EXACT split_into_words + stopwords +
   Counter + top_meaningful_words idiom from _build_hw2.py (copied verbatim) so the code-along teaches
   precisely what HW2 expects.
