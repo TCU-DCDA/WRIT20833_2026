@@ -4,8 +4,10 @@ const API_URL = '__CHAT_API_URL__';
 
 // Max messages sent to the API (sliding window — older messages are kept in
 // the chat display and localStorage but not sent to the AI, keeping costs
-// low and avoiding context window limits)
-const MAX_HISTORY_TO_API = 50;
+// low and avoiding context window limits). Matches the Worker's own ceiling
+// (MAX_HISTORY_MESSAGES = 40 in the private WRIT20833-chatbot repo), which the
+// tutor's prompt describes to it; change both together.
+const MAX_HISTORY_TO_API = 40;
 
 // Welcome message content (single source of truth)
 const WELCOME_MESSAGE = `<p>Welcome! I'm your after-hours tutor for WRIT 20833. Pick the assignment you're working on from the dropdown above, and tell me where you're stuck.</p>
