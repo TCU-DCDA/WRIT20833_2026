@@ -25,7 +25,6 @@ instructor runs (see `CLAUDE.md` §1). A direct edit to `docs/` or a homework `.
 | Code-alongs, Days 1–11 | `notebooks/codeAlongs/`: Variables_DataTypes, String_Methods, Lists_Loops_Conditionals, Dictionaries_Functions, Term_Frequency, Pandas_01_Found_Data, Pandas_02_Cleaning. The `_complete` copies are the unlinked instructor versions of the type-along notebooks; check that they match their student copies apart from the blanks. |
 | Homework | `notebooks/homework/WRIT20833_HW1_2026.ipynb`, `WRIT20833_HW2_2026.ipynb` |
 | Lecture pages | `materials/lectures/ml0, ml1, ml3, ml4, ml5, ml6.md` (Days 1, 3, 4, 8, 10). The built pages in `docs/lectures/` come from these. |
-| Day 8 lab | `materials/stylometry/` (see the note under "Known") |
 | Corpora | `notebooks/data/README.md` against `tc_youtube_comments.txt` and `us_constitution.txt` |
 | Course site | `docs/index.html`, `docs/schedule.html` (generated; check what students see, report against the source) |
 | *Optional:* Code Guide | The tutor's instructions and assignment blocks in the private `TCU-DCDA/WRIT20833-chatbot`, if you were given access: does the tutor describe the assignments, days and rules the way the course materials do? |
@@ -61,13 +60,12 @@ When two files disagree, these win:
 - **The intentional `TypeError`** in Variables_DataTypes ("read the error message carefully").
 - **Second half (Days 13–24):** the four lecture framings with no built material (Days 13, 14, 15, 18), the capstone sheet's placeholders, HW3, HW4, VADER, Topic Modeling. A second review covers these in November.
 - **`us_constitution.txt` is the 1787 text without the amendments.** Found and reframed 2026-10-07 (the text was kept): HW2, the data README, Term Frequency's Sneak Preview, and the Code Guide's HW2 notes now call it the Constitution as signed in 1787, and HW2 B3 asks students why *religion* is absent (the First Amendment, 1791). Do report any place that still calls it the full or entire Constitution.
-- **Stylometry materials:** `<instructor: fixed / excluded — fill in at hand-off>`.
+- **Stylometry materials (`materials/stylometry/`, the Day 8 lab seed) are excluded from this review.** They are still marked DRAFT with pre-re-pacing "Day 7" / "Week 4" references; the instructor revises them before Nov 4.
 - D2L (TCU Online) and the Word syllabus are outside this repository.
 
 ## Verification already done (2026-10-07)
 
-All seven code-along builders reproduce the committed notebooks byte for byte. Every code-along, the
-stylometry notebook, HW1 and HW2 execute top to bottom with no errors except the intentional one. A
+All seven code-along builders reproduce the committed notebooks byte for byte. Every code-along, HW1 and HW2 execute top to bottom with no errors except the intentional one. A
 simulated HW2 solution confirms 123 comments; "commandments" 25 and "constitution" 8 among the comments'
 meaningful words; and that "10" and "ten" rank in the comments' top 5. HW1's and HW2's day references
 match the schedule.

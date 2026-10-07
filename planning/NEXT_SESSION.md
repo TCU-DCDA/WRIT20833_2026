@@ -14,7 +14,10 @@
 > (Day 6 = start HW1 in class). Both repos are in sync with `origin/main`. Every builder reproduces
 > what is committed (re-verified 2026-09-28).
 >
-> ⏩ **Next up:** Code Guide link in syllabus + access code to students via D2L (below) → Lane D (D2L hand-wiring — hardest deadline,
+> 🔎 **First-half external review (Codex):** brief at `planning/REVIEW_BRIEF_FIRST_HALF_2026-10.md`; fill in the
+> commit at hand-off. **Stylometry is excluded** and still needs its own pass **before Wed Nov 4 (Day 8)**: drop the
+> DRAFT label and fix the "Day 7" / "Week 4" references (→ Day 8 / capstone weeks).
+> ⏩ **Next up:** access code to students via D2L (the syllabus now says it's posted there) → Lane D (D2L hand-wiring — hardest deadline,
 > students land there Oct 19) → Lane C (the capstone placeholders) → Lane B (four lecture
 > framings) → Lane D (both D2L packages imported 2026-09-28; confirm the discussions + DST dates, then hand-wire the shell per `d2l/WIRING_CHECKLIST.md` §3–6, plus the checks outside this repo).
 > ✍️ **Hand edits pending (Word syllabus `WRIT20833-020_Fall2026_Rode.docx`):** (1) the 2026-09-28 Day 6 and
