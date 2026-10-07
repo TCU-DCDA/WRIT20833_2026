@@ -1,7 +1,7 @@
 # External review brief — WRIT 20833, first half (Days 1–12)
 
 **For:** an outside reviewer (Codex) checking that the course materials agree with each other.
-**Review this commit:** `<fill in at hand-off>` on `main` of `TCU-DCDA/WRIT20833_2026`. Please don't
+**Review this commit:** `3706094` on `main` of `TCU-DCDA/WRIT20833_2026`. Please don't
 review a later commit; your line numbers need to match what the instructor sees.
 
 ## What this course is
@@ -27,7 +27,7 @@ instructor runs (see `CLAUDE.md` §1). A direct edit to `docs/` or a homework `.
 | Lecture pages | `materials/lectures/ml0, ml1, ml3, ml4, ml5, ml6.md` (Days 1, 3, 4, 8, 10). The built pages in `docs/lectures/` come from these. |
 | Corpora | `notebooks/data/README.md` against `tc_youtube_comments.txt` and `us_constitution.txt` |
 | Course site | `docs/index.html`, `docs/schedule.html` (generated; check what students see, report against the source) |
-| *Optional:* Code Guide | The tutor's instructions and assignment blocks in the private `TCU-DCDA/WRIT20833-chatbot`, if you were given access: does the tutor describe the assignments, days and rules the way the course materials do? |
+| Code Guide | The tutor's instructions and assignment blocks in the private `TCU-DCDA/WRIT20833-chatbot` (`worker/lessons/`: `system-prompt.js`, `hw1.js`, `hw2.js`, `python-variables.js`, `registry.js`): does the tutor describe the assignments, days, corpus and rules the way the course materials do? Review the same day as the course commit; the live Worker is version `333c1eee`. |
 
 ## Sources of truth
 
@@ -61,6 +61,8 @@ When two files disagree, these win:
 - **Second half (Days 13–24):** the four lecture framings with no built material (Days 13, 14, 15, 18), the capstone sheet's placeholders, HW3, HW4, VADER, Topic Modeling. A second review covers these in November.
 - **`us_constitution.txt` is the 1787 text without the amendments.** Found and reframed 2026-10-07 (the text was kept): HW2, the data README, Term Frequency's Sneak Preview, and the Code Guide's HW2 notes now call it the Constitution as signed in 1787, and HW2 B3 asks students why *religion* is absent (the First Amendment, 1791). Do report any place that still calls it the full or entire Constitution.
 - **Stylometry materials (`materials/stylometry/`, the Day 8 lab seed) are excluded from this review.** They are still marked DRAFT with pre-re-pacing "Day 7" / "Week 4" references; the instructor revises them before Nov 4.
+- **Code Guide, one open decision:** when a student asks "is this right?" about their own line, the tutor sometimes confirms it ("the loop line you wrote is built correctly"). Whether it should is undecided. Describe what you see, but don't report it as a bug.
+- **Pedagogy review of ML0–ML4 already done** (`codex_review/decks1_4.md`, local, not in the repo): suggestions to add small code examples, gloss technical terms on first use, explain the 123-comment dataset's source and limits, add a difference-vs-causation line after the SAT example, label `approve()` as pseudocode, qualify the "bullshit engine" claim, and make the ML4 lab deliverable explicit. Those are with the instructor. **Don't repeat them**; this review is about consistency. Its one consistency catch (reading pages saying "four weeks" in ML0, ML1, ML3) is fixed in `3706094`. Its unsourced "a certain social platform" in ML3 is with the instructor.
 - D2L (TCU Online) and the Word syllabus are outside this repository.
 
 ## Verification already done (2026-10-07)
