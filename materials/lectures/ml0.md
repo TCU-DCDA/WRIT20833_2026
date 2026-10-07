@@ -128,9 +128,9 @@ suddenly *see*. Start with two that count words much the way you soon will:
 - ["Trucks and Beer"](https://www.johnwmillr.com/trucks-and-beer/) — counts what country songs *actually* sing about (turns out, not just trucks and beer).
 - [Gendered Language in Teacher Reviews](https://benschmidt.org/profGender/) — the same words land very differently depending on the professor's gender.
 
-![Scatter plot — mentions of "girl" vs. "love" across popular country songs, colored by artist gender (the "Trucks and Beer" analysis)](materials/lectures/images/proj_country_love.png)
+[![Scatter plot — mentions of "girl" vs. "love" across popular country songs, colored by artist gender (the "Trucks and Beer" analysis)](materials/lectures/images/proj_country_love.png)](https://www.johnwmillr.com/trucks-and-beer/)
 
-![Dot plot — words from 14 million RateMyProfessor reviews split by professor gender (Ben Schmidt, "Gendered Language in Teacher Reviews")](materials/lectures/images/proj_teacher_reviews.png)
+[![Dot plot — words from 14 million RateMyProfessor reviews split by professor gender (Ben Schmidt, "Gendered Language in Teacher Reviews")](materials/lectures/images/proj_teacher_reviews.png)](https://benschmidt.org/profGender/)
 
 ## A few more worth a look
 

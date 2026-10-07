@@ -74,7 +74,7 @@ def parse_head(lines):
     return title, subtitle, meta, lines[consumed + 1:]
 
 
-_BLOCK_START = re.compile(r'^(#{2,3}\s|>\s|-\s|!\[|---\s*$)')
+_BLOCK_START = re.compile(r'^(#{2,3}\s|>\s|-\s|!\[|\[!\[|---\s*$)')
 
 
 def render_blocks(lines, lead=False):
@@ -87,11 +87,15 @@ def render_blocks(lines, lead=False):
         s = lines[i].strip()
         if not s or s.startswith("<!--"):                      # blank / comment / directive
             i += 1; continue
-        m = re.match(r'!\[([^\]]*)\]\(([^)]+)\)', s)          # standalone image -> figure
+        m = (re.match(r'\[!\[([^\]]*)\]\(([^)]+)\)\]\(([^)]+)\)$', s)    # linked image -> figure
+             or re.match(r'!\[([^\]]*)\]\(([^)]+)\)', s))                # standalone image -> figure
         if m:
             alt = html.escape(m.group(1))
             cap = f"<figcaption>{alt}</figcaption>" if alt else ""
-            out.append(("figure", f'<figure><img src="{_img_src(m.group(2))}" alt="{alt}">{cap}</figure>'))
+            img = f'<img src="{_img_src(m.group(2))}" alt="{alt}">'
+            if m.lastindex == 3:                               # opens the project in a new tab
+                img = f'<a href="{html.escape(m.group(3))}" target="_blank" rel="noopener">{img}</a>'
+            out.append(("figure", f'<figure>{img}{cap}</figure>'))
             i += 1; continue
         if s == "---":
             out.append(("text", "<hr>")); i += 1; continue
