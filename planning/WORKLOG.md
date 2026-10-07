@@ -38,6 +38,14 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
   `worker/lessons/hw2.js` (**Worker redeploy pending**). Same session: every code-along, stylometry, HW1 and
   HW2 run clean; all builders reproduce their notebooks; review brief at
   `planning/REVIEW_BRIEF_FIRST_HALF_2026-10.md`.
+- **First-half Codex review returned (same day, `codex_review/review_reply_first_half.md`, local/gitignored),
+  against `3706094`.** Two findings: (1) Term Frequency "top words" claim — **false positive** (the code-along
+  counts its own 8-sentence sample, which yields exactly schools/religion/country/kids/god; the reviewer ran
+  the real corpus file); (2) stale day numbers in builder docstrings — **fixed** for Term Frequency, Pandas
+  01/02 and VADER (internal notes only; notebooks byte-identical). Corpus facts, the 1787 Constitution framing,
+  and the Code Guide lesson files checked consistent. An earlier pedagogy pass on ML0–ML4
+  (`codex_review/decks1_4.md`) caught three reading-page "four weeks" leftovers (fixed, `3706094`); its teaching
+  suggestions are with the instructor.
 
 ## Earlier session — 2026-09-28 (cont.) — Lane D: D2L shell generators
 
