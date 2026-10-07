@@ -23,7 +23,7 @@ measured?**
 
 That question *is* the humanities. Love and grief, justice and beauty, the meaning of a poem or a
 protest — the things that matter most about being human tend to be exactly the things that resist a
-number. This course is going to spend four weeks turning human language *into* numbers. So let's be
+number. This course is going to spend eight weeks turning human language *into* numbers. So let's be
 honest, on day one, about what that does and doesn't get us.
 
 ## The human mess

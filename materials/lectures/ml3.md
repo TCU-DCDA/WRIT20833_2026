@@ -239,7 +239,7 @@ there are none.
 *It's the one who shows you where they stood when they drew the box.*
 -->
 
-In four weeks *you* will be the one drawing lines: which words are "stopwords" worth deleting, which comment
+In the weeks ahead *you* will be the one drawing lines: which words are "stopwords" worth deleting, which comment
 is "positive," where one "topic" ends and the next begins. Each is a classification, and each is a judgment
 you are making *for* someone else.
 

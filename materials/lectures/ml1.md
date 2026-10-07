@@ -278,7 +278,7 @@ Leave the `#comment` that says what you chose, and why.
 Code inherits every connotation above — and then adds its own, because code runs on definitions, and a
 definition is a decision.
 
-Over the next four weeks *you* will be the one deciding. What counts as a "word" when you split a comment?
+Over the next eight weeks *you* will be the one deciding. What counts as a "word" when you split a comment?
 Which words are "stopwords" worth deleting? What score makes a comment "positive"? Where do you cut one
 topic from the next? Each is a small act of interpretation wearing the costume of a neutral function.
 
