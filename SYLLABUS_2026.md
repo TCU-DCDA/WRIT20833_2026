@@ -295,8 +295,9 @@ borrowing:
   own words; letting AI generate your writing forfeits that. **Use AI for feedback if you like, but the
   writing itself must be yours.** When in doubt, ask.
 
-**The Code Guide (optional AI tutor).** The course site links an after-hours tutor for the homework and
-the capstone. Using it is up to you. It explains concepts and code (including code an AI wrote for you),
+**The Code Guide (optional AI tutor).** An after-hours tutor for the homework and the capstone lives at
+[tcu-dcda.github.io/WRIT20833_2026/chatbot.html](https://tcu-dcda.github.io/WRIT20833_2026/chatbot.html)
+(also linked from the course site). The class access code is posted in TCU Online. Using it is up to you. It explains concepts and code (including code an AI wrote for you),
 helps you read errors, and gives feedback on your written interpretations, but it won't complete an
 exercise, supply your stance labels or topic names, or write your prose. If it contradicts a notebook,
 the notebook wins. **Where your words go:** chats are saved only in your browser, and the course doesn't
