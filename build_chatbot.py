@@ -23,7 +23,7 @@ RENDER_OUT = "docs/render.js"
 
 # The deployed Worker's chat endpoint, e.g. "https://writ20833-codeguide.<subdomain>.workers.dev/api/chat".
 # Empty = not deployed yet: the page is built but not linked from the home page.
-CHAT_API_URL = ""
+CHAT_API_URL = "https://writ20833-codeguide.0expatriate0.workers.dev/api/chat"
 
 GH = "https://github.com/TCU-DCDA/WRIT20833_2026"
 

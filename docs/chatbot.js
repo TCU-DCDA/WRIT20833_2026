@@ -1,6 +1,6 @@
 // Configuration. SOURCE file: build_chatbot.py copies this to docs/chatbot.js and fills in
-//  from its CHAT_API_URL setting. Edit here, never in docs/.
-const API_URL = '';
+// https://writ20833-codeguide.0expatriate0.workers.dev/api/chat from its CHAT_API_URL setting. Edit here, never in docs/.
+const API_URL = 'https://writ20833-codeguide.0expatriate0.workers.dev/api/chat';
 
 // Max messages sent to the API (sliding window — older messages are kept in
 // the chat display and localStorage but not sent to the AI, keeping costs
