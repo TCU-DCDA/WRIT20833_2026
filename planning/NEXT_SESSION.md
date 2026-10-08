@@ -296,3 +296,9 @@ Reference: `codex_review/d2l_learning_traces.md`.
   `site_theme.assert_accessible()`. Scope to decide: the site pages and lecture reading pages are searchable as
   built; the notebooks live on GitHub/Colab and would be out of the index unless their titles/blurbs are indexed
   from the dashboard. Skip the slide decks if they duplicate the reading pages in results.
+- [ ] **Code Guide: count test traffic apart from students before handing out the access code.** The chatbot
+  repo's CLAUDE.md (current-state section, 2026-10-07) has the design, copied from WRIT 40363, where a third of
+  all counted use turned out to be the harness and the instructor and had to be separated by hand: a second
+  secret, `TEST_CODE`, that the Worker's gate accepts and tags as testing in the Analytics Engine record, with
+  `npm run usage` filtering it out. No change to this repo's page: the instructor just enters the test code at
+  the page's prompt in a private window. Only the Worker, its harness and `.probe-code` change.
