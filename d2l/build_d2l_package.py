@@ -342,6 +342,22 @@ def build(out_dir, selectors=None):
     return modules
 
 
+def discussions_paste():
+    """The four topic descriptions as one HTML page, for updating a live shell by hand.
+
+    Imports are additive, so a changed prompt is pasted into the existing topic rather
+    than re-imported. Open this file in a browser and copy each block into the topic's
+    Description, or paste the block's HTML into the editor's source view."""
+    ev = c.events(c.schedule_days())
+    blocks = []
+    for code, week, title, prompt in c.discussions():
+        title = title.rstrip(".")
+        blocks.append(f'<h2 style="font-family:Arial,sans-serif">{c.esc(f"{code} (Week {week}) · {title}")}</h2>\n'
+                      f'{discussion_body(code, title, prompt, ev)}\n<hr>')
+    return ('<!doctype html><meta charset="utf-8"><title>D2L discussion topics</title>\n'
+            + "\n".join(blocks) + "\n")
+
+
 def homepage_widget():
     """HTML for a D2L Custom Widget; a cartridge cannot set the course homepage."""
     links = [
@@ -404,6 +420,7 @@ if __name__ == "__main__":
     mods = build(a.out, selectors)
     zip_package(a.out, a.out.rstrip("/") + ".imscc")
     open(a.out.rstrip("/") + "-homepage-widget.html", "w", encoding="utf-8").write(homepage_widget())
+    open(a.out.rstrip("/") + "-discussions.html", "w", encoding="utf-8").write(discussions_paste())
 
     scope = "full package" if selectors is None else f"partial: {a.modules}"
     print(f"wrote {a.out}.imscc -- modules: {len(mods)}, items: {sum(len(i) for _, i in mods)} ({scope})")

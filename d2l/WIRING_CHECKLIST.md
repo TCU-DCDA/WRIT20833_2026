@@ -15,6 +15,7 @@ Two generators, two packages, one widget:
 | `python3 d2l/build_d2l_package.py` → `WRIT20833_Fall2026_D2L.imscc` | Start Here, Weeks 1–8, Homework and Capstone, the 4 discussion topics | Import Components → all |
 | `python3 d2l/build_assignments.py` → `WRIT20833_Fall2026_Assignments.zip` | 9 submission folders in 3 categories, with dates | Import Components → **Assignments only** |
 | (the first build also writes) `WRIT20833_Fall2026_D2L-homepage-widget.html` | the course homepage card | paste by hand (§6) |
+| (the first build also writes) `WRIT20833_Fall2026_D2L-discussions.html` | the 4 discussion topic descriptions | open in a browser; paste into the existing topics when a prompt changes (don't re-import) |
 
 Every item is a small landing page (a title, the site's one-line blurb, a button out to Colab,
 the course site, or GitHub), not a copy of the content. Dates, titles and prompts are read

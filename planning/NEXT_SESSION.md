@@ -36,8 +36,8 @@
 > (`d2l/WIRING_CHECKLIST.md` → *Updating a live shell*).
 > 💬 **2026-10-12: discussion prompts D1–D4 rewritten** (they had invited parroting the lecture). Each now starts
 > from student evidence, with a reply task. **Hand edits:** (4) the Word syllabus's discussion block; (5) the four
-> topic texts in the **live D2L shell** — paste from the rebuilt `d2l/WRIT20833_Fall2026_D2L/discussions/*.xml`, do
-> not re-import. **D1 opens Mon 10/19.**
+> topic texts in the **live D2L shell** — open `d2l/WRIT20833_Fall2026_D2L-discussions.html` (written by the build) in a
+> browser and paste each block in. Do not re-import. **D1 opens Mon 10/19.**
 
 ---
 
