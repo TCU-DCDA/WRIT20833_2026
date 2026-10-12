@@ -39,6 +39,9 @@
 > **93 comments stored as 123 rows** everywhere (WORKLOG). Open: the private Code Guide prompt likely still says "~123
 > comments". **Wording batch F02–F04, F07, F09, F11–F13 also done.** Remaining: F05/F06/F08/F10 need instructor
 > framing calls, plus the audit's "Additional prose and citation issues" list.
+> 📌 **Do first next session: credit Melanie Walsh in ML5** (instructor decision 2026-10-12). Her Bellevue lesson
+> (https://melaniewalsh.github.io/Intro-Cultural-Analytics/02-Python/10-Lists-Loops-Part2.html) is how the course met
+> the Shrout essay and dataset. Add the credit near the Shrout citation in the reading view, and on the slide if it fits.
 > 💬 **2026-10-12: discussion prompts D1–D4 rewritten** (they had invited parroting the lecture). Each now starts
 > from student evidence, with a reply task. ✅ **Live D2L topics updated by hand 2026-10-12.** Still pending: (4) the
 > Word syllabus's discussion block. For future prompt changes, paste from `d2l/WRIT20833_Fall2026_D2L-discussions.html`
