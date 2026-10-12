@@ -35,9 +35,9 @@
 > reflections list, and at the end of the AI Use Policy); (3) the 2026-10-07 Code Guide URL + "access code is posted in TCU Online" sentence at the start of the Code Guide paragraph. Then **re-upload the syllabus PDF to D2L**
 > (`d2l/WIRING_CHECKLIST.md` → *Updating a live shell*).
 > 💬 **2026-10-12: discussion prompts D1–D4 rewritten** (they had invited parroting the lecture). Each now starts
-> from student evidence, with a reply task. **Hand edits:** (4) the Word syllabus's discussion block; (5) the four
-> topic texts in the **live D2L shell** — open `d2l/WRIT20833_Fall2026_D2L-discussions.html` (written by the build) in a
-> browser and paste each block in. Do not re-import. **D1 opens Mon 10/19.**
+> from student evidence, with a reply task. ✅ **Live D2L topics updated by hand 2026-10-12.** Still pending: (4) the
+> Word syllabus's discussion block. For future prompt changes, paste from `d2l/WRIT20833_Fall2026_D2L-discussions.html`
+> (written by the build); do not re-import.
 
 ---
 
