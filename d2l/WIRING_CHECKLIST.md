@@ -38,8 +38,8 @@ Verify:
 - Open any week overview; it should render the day list, not raw HTML.
 - Open one notebook item (say *Term Frequency*, Week 3). You should see a titled page, a
   one-line description, a green **Open in Colab** button, and the "Save a copy in Drive" note.
-- Open a mini-lecture (say *Humanities & Coding*, Week 1): the image, **Read the lecture**,
-  and **Slides**. Images load from the public GitHub repo, so a broken image means the repo
+- Open a mini-lecture (say *Humanities & Coding*, Week 1): the image, **Slides**,
+  and **Full text**. Images load from the public GitHub repo, so a broken image means the repo
   is unreachable, not that the package is wrong.
 
 **⚠️ Unverified: the discussions.** WRIT 40363 had no discussions, so the Common Cartridge

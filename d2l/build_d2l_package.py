@@ -138,12 +138,12 @@ def notebook_item(cart, rel, kind=None):
 
 
 def lecture_item(cart, page):
-    """Landing page for a mini-lecture: reading page plus its slide deck."""
+    """Landing page for a mini-lecture: slide deck first, full-text reading page second."""
     title, desc, img = BLURBS[page]
     deck = page.replace(".html", ".deck.html")
     return cart.page(title, c.landing(
         "Mini-lecture", title, desc,
-        [("Read the lecture", f"{c.SITE}/{page}"), ("Slides", f"{c.SITE}/{deck}")], img=img))
+        [("Slides", f"{c.SITE}/{deck}"), ("Full text", f"{c.SITE}/{page}")], img=img))
 
 
 def doc_item(cart, label, rel, desc=None, kind="Course document"):

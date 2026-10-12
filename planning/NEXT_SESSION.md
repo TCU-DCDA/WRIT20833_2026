@@ -274,6 +274,10 @@ Reference: `codex_review/d2l_learning_traces.md`.
 
 ### Ongoing TODOs — course site
 
+- [ ] **Live D2L lecture pages: Slides first.** The repo build now puts **Slides** first and **Full text** second
+  (2026-10-12). The imported shell still shows "Read the lecture" first. Both links work, so this is cosmetic. Either
+  hand-edit the 8 lecture pages or rebuild + re-import the week modules (`d2l/WIRING_CHECKLIST.md` → *Partial
+  re-import*), ideally alongside the next week-module change.
 - [ ] **Decide whether to make the repo private.** Plan + measurements: `planning/PRIVATE_REPO_PLAN.md`. First answer
   *what* should stop being public: instructor material only (Option A, ~1 hr, nothing breaks) or the whole repo
   (Option B, ~4–6 hrs + D2L: self-contained `docs/`, a public notebooks mirror for Colab). If B, do it before the

@@ -473,7 +473,7 @@ def build_deck(slug, title, subtitle, kicker, body):
         )
     content = "".join(_content_slide(head, lines) for head, lines in segs[1:] if head)
     nav = (f'<div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a>'
-           f'<span class="sep">·</span><a href="{slug}.html">Reading</a></div>'
+           f'<span class="sep">·</span><a href="{slug}.html">Full text</a></div>'
            '<div class="deck-progress"></div>'
            '<div class="deck-hint">← → navigate · click to advance</div>')
     body_html = f'<div class="deck">{title_slide}{content}</div>{nav}{DECK_SCRIPT}'

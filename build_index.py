@@ -76,9 +76,15 @@ RESOURCES = [
 ]
 
 
-def card(label, title, desc, when, href, soon=False, img=None, thumb=False):
+def card(label, title, desc, when, href, soon=False, img=None, thumb=False, alt=None):
+    """alt=(label, href) adds a second link; the card is then a <div> whose title link stretches
+    over the whole card (links can't nest), so clicking anywhere still opens `href`."""
     cls = "card soon" if soon else "card"
     when_html = f'<span class="when">{html.escape(when)}</span>' if when else ""
+    if alt and href:
+        cls += " linked"
+        when_html += f'<a class="alt" href="{alt[1]}">{html.escape(alt[0])}</a>'
+        title = f'<a class="stretch" href="{href}">{title}</a>'
     body = (f'<span class="lbl">{html.escape(label)}</span>'
             f'<h3>{title}</h3><p>{html.escape(desc)}</p>{when_html}')
     if thumb:
@@ -89,7 +95,7 @@ def card(label, title, desc, when, href, soon=False, img=None, thumb=False):
         inner = f'{thumb_html}<span class="card-body">{body}</span>'
     else:
         inner = body
-    if href:
+    if href and not alt:
         return f'<a class="{cls}" href="{href}">{inner}</a>'
     return f'<div class="{cls}">{inner}</div>'
 
@@ -181,9 +187,9 @@ def render():
     lectures = section(
         "lectures", "01", "Lectures",
         "The short conceptual frames that open each day — the “code is not neutral” throughline, "
-        "from Humanities &amp; Coding on Day 1 to Going Public on Day 19. Each is a live reading page with a slide deck.",
-        grid([card("Mini-lecture", t, d, w, p, soon=(p is None),
-                   img=(RAW + im if im else None), thumb=True)
+        "from Humanities &amp; Coding on Day 1 to Going Public on Day 19. Each opens as a slide deck; the full text is linked on every card.",
+        grid([card("Mini-lecture", t, d, w, p and p.replace(".html", ".deck.html"), soon=(p is None),
+                   img=(RAW + im if im else None), thumb=True, alt=p and ("Full text", p))
               for (t, d, w, p, im) in LECTURES]))
 
     res_items = "".join(

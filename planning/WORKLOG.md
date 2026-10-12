@@ -14,7 +14,20 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-10-12 — Discussion prompts: evidence first, replies that act
+## Latest session — 2026-10-12 — Lectures open as slide decks; reading-page images capped
+
+- **Asked (instructor):** link the decks rather than the full text, and fix ML0's oversized images.
+  All 8 decks were already complete (every `##` section has a `<!-- slide: -->` condensation).
+- **Decided:** keep both views, since one markdown source means they can't drift, but make the deck the **primary** link.
+  Dashboard lecture cards open `*.deck.html` and carry a small "Full text" link. The card is a `<div>` with a
+  stretched title link because links can't nest (`card(..., alt=)` in `build_index.py`). D2L lecture pages
+  put **Slides** first and **Full text** second. The deck's corner nav says "Full text" instead of "Reading".
+- **Images:** `.reading figure img` is capped at `min(60vh, 520px)` tall and centered. ML0's 1120×1400 portraits went from
+  ~790×985 to 417×518. Square art in ML4/6/7/9 gets the same cap.
+- **Live D2L shell:** the week modules' lecture pages still list "Read the lecture" first. That's cosmetic, and the
+  re-import is pending (NEXT_SESSION).
+
+## Earlier session — 2026-10-12 — Discussion prompts: evidence first, replies that act
 
 - **Problem (instructor):** D1–D3 were the lectures' own theses ("So: code is not neutral" is an ml1 heading;
   "whose data" is in ml4; "flatten" runs through ml0/3/7/9), so a post could restate the lecture and meet
