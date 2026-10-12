@@ -15,6 +15,7 @@ raw.githubusercontent URLs the published site can reach (resolves once the repo 
 Run from repo root:  python3 build_lectures.py
 """
 import re, html, os
+from PIL import Image
 from site_theme import PAGE, write_stylesheet, assert_accessible
 
 REPO = "TCU-DCDA/WRIT20833_2026"
@@ -40,6 +41,16 @@ def _img_src(src):
     if src.startswith(("http://", "https://")):
         return src
     return RAW + src.lstrip("./")
+
+
+def _is_upright(src):
+    """True for a local portrait or square image. The reading page sets these beside the text, not full width."""
+    path = src.lstrip("./")
+    if src.startswith(("http://", "https://")) or not os.path.exists(path):
+        return False
+    with Image.open(path) as im:
+        w, h = im.size
+    return h >= w * 0.95
 
 
 def md_inline(t):
@@ -95,7 +106,8 @@ def render_blocks(lines, lead=False):
             img = f'<img src="{_img_src(m.group(2))}" alt="{alt}">'
             if m.lastindex == 3:                               # PAGE() makes outside links open a new tab
                 img = f'<a href="{html.escape(m.group(3))}">{img}</a>'
-            out.append(("figure", f'<figure>{img}{cap}</figure>'))
+            cls = ' class="upright"' if _is_upright(m.group(2)) else ""
+            out.append(("figure", f'<figure{cls}>{img}{cap}</figure>'))
             i += 1; continue
         if s.startswith("```"):                                 # fenced code block, shown verbatim
             i += 1; code_lines = []

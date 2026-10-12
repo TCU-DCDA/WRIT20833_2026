@@ -206,6 +206,13 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 .reading figure img{display:block;max-width:100%;max-height:min(60vh,520px);width:auto;height:auto;margin:0 auto;border:1px solid var(--rule);
   border-radius:3px;background:var(--surface);padding:6px;}
 .reading figcaption{margin:8px auto 0;max-width:60ch;text-align:center;font:12px/1.5 var(--mono);letter-spacing:.02em;color:var(--muted);}
+/* portrait/square art sits beside the text that follows it; headings start below it */
+.reading figure.upright{float:right;width:min(42%,340px);margin:6px 0 18px 28px;}
+.reading figure.upright img{max-height:none;width:100%;}
+.reading figure.upright figcaption{text-align:left;}
+.reading h2,.reading h3,.reading hr,.reading footer,.reading pre.codeblock{clear:both;}   /* code needs the full column */
+@media (max-width:700px){.reading figure.upright{float:none;width:auto;margin:24px 0;}
+  .reading figure.upright img{width:auto;max-height:min(60vh,520px);}}
 .reading hr{border:none;border-top:1px solid var(--rule);margin:30px 0;}
 .reading footer{text-align:left;border-top:1px solid var(--rule);padding-top:14px;margin-top:34px;}
 
@@ -290,7 +297,7 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 </style></head>
 <body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 8 · the through-line</div><h1>AI Agency</h1><p class="sub">Borrow the tool — don't outsource the thinking</p><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p class="lead">You can now say <em>"write me ten lines of Python to score the sentiment of these comments"</em> — and ten seconds later you have ten working lines.</p>
 <p>The question this course cares about isn't <em>can the machine write the code.</em> It plainly can. It's the one you'll answer about every line it hands you:</p>
-<h3>Do you understand it well enough to judge it?</h3></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml4_title.jpg" alt="A person at a desk working a small marionette that types at a keyboard — ambiguous who moves whom"></figure></div></div></section><section class="slide"><h2>The promise is real</h2><p>Be fair to the tool first. AI-assisted coding genuinely <strong>lowers the barrier</strong>:</p>
+<h3>Do you understand it well enough to judge it?</h3></div><div class="col-img"><figure class="upright"><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml4_title.jpg" alt="A person at a desk working a small marionette that types at a keyboard — ambiguous who moves whom"></figure></div></div></section><section class="slide"><h2>The promise is real</h2><p>Be fair to the tool first. AI-assisted coding genuinely <strong>lowers the barrier</strong>:</p>
 <ul><li>act without having memorized every function</li><li>spend your energy on the <em>question</em> instead of the syntax</li><li>build in an afternoon what used to take a semester</li></ul>
 <p>This is not cheating, and it isn't new in spirit — programmers have borrowed from manuals, colleagues, and Stack Overflow for decades.</p>
 <p class="callout">You'll lean on VADER, pandas, and Gensim all term.</p></section><section class="slide"><h2>The risk is also real</h2><p>The danger isn't borrowing — it's <strong>borrowing what you can't read.</strong> Code you didn't write and can't explain is a <strong>black box</strong>:</p>
@@ -302,7 +309,7 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 <p>The course's rule follows directly — and it's in your syllabus:</p>
 <h3>You must be able to explain any code you submit, and note in a <code>#comment</code> where AI helped and what you changed.</h3></section><section class="slide split"><h2>Learning a language vs. letting someone speak for you</h2><div class="split-grid"><div class="col-text"><p><strong>Learning a language</strong> means you know what each piece does, you can adapt it to a new situation, and you can fix it when it breaks.</p>
 <p>The other thing — output that runs but that you can't explain, adapt, or repair — is <strong>ventriloquism</strong>:</p>
-<p class="callout">the words come out of your mouth, but someone else is choosing them.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml4_ventriloquism.jpg" alt="On one side a person speaking in their own hand; on the other a ventriloquist&#x27;s dummy mouthing borrowed words"></figure></div></div></section><section class="slide"><h2 class="cont">Learning a language vs. letting someone speak for you</h2><p>Here is where coding and <em>writing</em> meet, and where the rule flips.</p>
+<p class="callout">the words come out of your mouth, but someone else is choosing them.</p></div><div class="col-img"><figure class="upright"><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml4_ventriloquism.jpg" alt="On one side a person speaking in their own hand; on the other a ventriloquist&#x27;s dummy mouthing borrowed words"></figure></div></div></section><section class="slide"><h2 class="cont">Learning a language vs. letting someone speak for you</h2><p>Here is where coding and <em>writing</em> meet, and where the rule flips.</p>
 <p>Nobody's voice lives in a stopword list, so <strong>borrow the tool freely</strong> — understand it, judge it, move on.</p>
 <p>But your reflections, your discussion posts, and your capstone essay <em>are</em> your voice — and a voice is forged only in the friction of finding your own words.</p></section><section class="slide"><h2 class="cont">Learning a language vs. letting someone speak for you</h2><p>Let an AI write your <em>code</em> and you've saved time. Let it write your <em>prose</em> and you've handed away the one thing this course exists to grow.</p>
 <h3>Borrow the tool; never outsource the voice — and know which is which.</h3>

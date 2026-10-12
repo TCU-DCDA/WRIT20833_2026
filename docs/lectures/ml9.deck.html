@@ -206,6 +206,13 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 .reading figure img{display:block;max-width:100%;max-height:min(60vh,520px);width:auto;height:auto;margin:0 auto;border:1px solid var(--rule);
   border-radius:3px;background:var(--surface);padding:6px;}
 .reading figcaption{margin:8px auto 0;max-width:60ch;text-align:center;font:12px/1.5 var(--mono);letter-spacing:.02em;color:var(--muted);}
+/* portrait/square art sits beside the text that follows it; headings start below it */
+.reading figure.upright{float:right;width:min(42%,340px);margin:6px 0 18px 28px;}
+.reading figure.upright img{max-height:none;width:100%;}
+.reading figure.upright figcaption{text-align:left;}
+.reading h2,.reading h3,.reading hr,.reading footer,.reading pre.codeblock{clear:both;}   /* code needs the full column */
+@media (max-width:700px){.reading figure.upright{float:none;width:auto;margin:24px 0;}
+  .reading figure.upright img{width:auto;max-height:min(60vh,520px);}}
 .reading hr{border:none;border-top:1px solid var(--rule);margin:30px 0;}
 .reading footer{text-align:left;border-top:1px solid var(--rule);padding-top:14px;margin-top:34px;}
 
@@ -291,7 +298,7 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 <body><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 19 · the through-line</div><h1>Going Public</h1><p class="sub">Your analysis isn't finished until it argues</p><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p class="lead">You have counted the words, scored the feeling, and modeled the themes of 123 comments about a contested law. You can say, with evidence, what that crowd was arguing about and how it felt.</p>
 <p>Here is the question this whole course has been walking toward:</p>
 <h3>So what — and who is it for?</h3>
-<p><em>An analysis that never leaves your laptop changes exactly nothing.</em></p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml9_title.jpg" alt="A scholar carrying one bound page out of a lamplit study toward a crowd waiting in an open doorway"></figure></div></div></section><section class="slide"><h2>The notebook is not the destination</h2><p>It is easy to mistake the analysis for the finish line. You ran the cells, the chart rendered, the topics came back — done.</p>
+<p><em>An analysis that never leaves your laptop changes exactly nothing.</em></p></div><div class="col-img"><figure class="upright"><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml9_title.jpg" alt="A scholar carrying one bound page out of a lamplit study toward a crowd waiting in an open doorway"></figure></div></div></section><section class="slide"><h2>The notebook is not the destination</h2><p>It is easy to mistake the analysis for the finish line. You ran the cells, the chart rendered, the topics came back — done.</p>
 <p>But a result sitting in a private notebook is knowledge <strong>locked away</strong>: trapped on your machine, written in a dialect — pandas, VADER, LDA — that the people your analysis is <em>about</em> cannot read.</p></section><section class="slide"><h2 class="cont">The notebook is not the destination</h2><p>The commenters whose words you counted will never see what you found.</p>
 <p>The point of hearing the human at scale was never to file the hearing away.</p>
 <h3>It was to say something back.</h3></section><section class="slide"><h2>What a public argument is</h2><p>A public argument takes a scholarly or cultural insight and makes it <strong>accessible, engaging, and actionable</strong> for people beyond this seminar.</p>

@@ -24,6 +24,11 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
   put **Slides** first and **Full text** second. The deck's corner nav says "Full text" instead of "Reading".
 - **Images:** `.reading figure img` is capped at `min(60vh, 520px)` tall and centered. ML0's 1120×1400 portraits went from
   ~790×985 to 417×518. Square art in ML4/6/7/9 gets the same cap.
+- **Then: portrait/square art sits beside the text.** `build_lectures.py` reads each local image's size (Pillow) and
+  tags any image whose height is at least 95% of its width as `figure.upright`. The reading page floats these right at
+  `min(42%, 340px)`, with the following prose to their left. Headings, rules, code blocks and the footer clear the float,
+  because the ML0 count example was clipped when squeezed. Below 700px it stacks. This applies to ML0 (3 images), ML4 (2),
+  ML6 (3), ML7 (1) and ML9 (1). Landscape images and the decks are unchanged.
 - **Live D2L shell:** the week modules' lecture pages still list "Read the lecture" first. That's cosmetic, and the
   re-import is pending (NEXT_SESSION).
 
