@@ -243,6 +243,9 @@ def discussion_body(code, title, prompt, ev):
             f'<p><strong>Initial post</strong> by the start of class {post["label"]} &middot; '
             f'<strong>two substantive replies</strong> to classmates by the start of class '
             f'{replies["label"]}. (Opens {opens["label"]}.)</p>'
+            f'<p>Start from something you made, ran, or lived &mdash; not a summary of the lecture. '
+            f'<em>Substantive</em> means one reply <strong>tests or applies</strong> a classmate\'s post '
+            f'and the other <strong>complicates</strong> it.</p>'
             f'</div>')
 
 

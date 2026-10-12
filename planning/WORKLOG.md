@@ -14,6 +14,21 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
+## Latest session — 2026-10-12 — Discussion prompts: evidence first, replies that act
+
+- **Problem (instructor):** D1–D3 were the lectures' own theses ("So: code is not neutral" is an ml1 heading;
+  "whose data" is in ml4; "flatten" runs through ml0/3/7/9), so a post could restate the lecture and meet
+  expectations. D2 also bundled two unrelated questions. "Substantive replies" was undefined.
+- **Decided:** keep the four titles (already imported into D2L) and rewrite each prompt around an artifact. D1: a
+  category system that sorted *you*. D2: one comment from `tc_youtube_comments.txt` its author might not want
+  analyzed, plus your capstone data rule. The AI-code half leaves D2 for the Day 8 lab. D3: one VADER miss,
+  diagnosed word by word, and whether it is systematic. D4: add the number and the public sentence. Each prompt
+  names a reply task, and the lead-in defines *substantive* (one reply tests/applies, one complicates). The D2L
+  topic body carries that definition too (`discussion_body`).
+- **Timing checked against the schedule:** D1 posts are due Wed 10/21 and replies at the start of Fri 10/23, both
+  before ml3, so D1 does **not** cite the 649 loan example. D3's post comes after VADER (Day 13).
+- Word syllabus + live D2L topics: hand edits pending (NEXT_SESSION).
+
 ## Latest session — 2026-10-07 — Lecture decks: 40363-style touches in the 20833 theme
 
 - **ml0:** the Pudding's "Largest Vocabulary in Hip-Hop" replaces Ben Schmidt's teacher-reviews example

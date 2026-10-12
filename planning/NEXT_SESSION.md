@@ -34,6 +34,10 @@
 > Day 9 label changes; (2) the two 2026-09-30 Code Guide paragraphs now in `SYLLABUS_2026.md` (after the
 > reflections list, and at the end of the AI Use Policy); (3) the 2026-10-07 Code Guide URL + "access code is posted in TCU Online" sentence at the start of the Code Guide paragraph. Then **re-upload the syllabus PDF to D2L**
 > (`d2l/WIRING_CHECKLIST.md` → *Updating a live shell*).
+> 💬 **2026-10-12: discussion prompts D1–D4 rewritten** (they had invited parroting the lecture). Each now starts
+> from student evidence, with a reply task. **Hand edits:** (4) the Word syllabus's discussion block; (5) the four
+> topic texts in the **live D2L shell** — paste from the rebuilt `d2l/WRIT20833_Fall2026_D2L/discussions/*.xml`, do
+> not re-import. **D1 opens Mon 10/19.**
 
 ---
 

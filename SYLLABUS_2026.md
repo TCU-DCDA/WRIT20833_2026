@@ -168,17 +168,28 @@ It's optional, like the tutor itself. Attaching one shares that conversation wit
 any other work you submit.
 
 **The four threaded discussions** (open Monday of their week; **initial post by Wednesday, two
-substantive replies by Friday**):
-1. **D1 (Wk 1) — Is code neutral?** When a program sorts people or words into categories, whose judgment
-   is built in?
-2. **D2 (Wk 3) — Whose data?** The ethics of collecting public text, and what it means to read (and fix)
-   code an AI wrote for you.
-3. **D3 (Wk 5) — Close vs. distant reading.** What does counting/sentiment let you see that reading by
-   hand can't — and what does it flatten?
-4. **D4 (Wk 7) — What computation reveals and hides.** Share your capstone finding and one thing your
-   methods get wrong — including, if you caught one, a moment you trusted a result mainly because it
-   *sounded* right. *(The course is designed for 4 discussions; D4 may be dropped to a 3-discussion
-   minimum if end-of-term capstone load is heavy.)*
+substantive replies by Friday**). Each post starts from something you made, ran, or lived — not from a
+summary of the lecture. *Substantive* means one reply **tests or applies** a classmate's post and the
+other **complicates** it; "great point, I agree" is neither.
+1. **D1 (Wk 1) — Is code neutral?** Describe a category system that has sorted *you* — a form, a
+   dropdown, a census box. Give its exact options. Where didn't you fit cleanly, or who lands just on the
+   wrong side of its line? Who drew that line? *Replies:* who lands just on the wrong side of your
+   classmate's line? Redesign their box, then name what your redesign now flattens.
+2. **D2 (Wk 3) — Whose data?** Find one comment in the course YouTube corpus whose author you think
+   would not want it analyzed in a college class — or argue that none exist. Quote it and say why. Then
+   state the rule you'll follow for the data in your own capstone. *Replies:* apply your rule to a
+   classmate's capstone dataset idea. Does it pass?
+3. **D3 (Wk 5) — Close vs. distant reading.** Post one comment where VADER's score disagrees with your
+   own reading: the text, its compound score, your reading, and the word(s) driving the score (score
+   single words with `polarity_scores` to find them). Is the miss random, or would it hit some kinds of
+   speakers more than others? *Replies:* change one word in a classmate's comment and re-score it. Does
+   their explanation of the miss hold up?
+4. **D4 (Wk 7) — What computation reveals and hides.** Share your capstone finding — the number behind
+   it and the one sentence you would say about it in public — and one thing your methods get wrong,
+   including, if you caught one, a moment you trusted a result mainly because it *sounded* right.
+   *Replies:* rewrite a classmate's public sentence so it is honest about what their method flattened.
+   *(The course is designed for 4 discussions; D4 may be dropped to a 3-discussion minimum if
+   end-of-term capstone load is heavy.)*
 
 ### Grading Philosophy (ungrading)
 This course uses **ungrading**. Through the term your work is **not** scored with points; each piece is
