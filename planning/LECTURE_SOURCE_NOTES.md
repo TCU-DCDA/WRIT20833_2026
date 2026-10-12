@@ -150,8 +150,8 @@ Registered in both build scripts; dashboard card links it.
   threshold ("the loop is how that one cutoff hits a million people").
 - **Counting = surveillance** (slide 5) — "the power to count is the power to decide what matters" + the
   who-counts/who-sees/what-about-the-uncounted questions (ties ML1 missing voices).
-- **Historical echoes** (slide 6) — kept the **Bellevue Almshouse + Anelise Shrout quote** verbatim (the
-  moral heart) and the "list of dicts = the same reduction" parallel.
+- **Historical echoes** (slide 6) — kept the **Bellevue Almshouse + Anelise Shrout quote** (the
+  moral heart; restored to the essay's wording 2026-10-12, with "[whom]" marked and the essay cited) and the "list of dicts = the same reduction" parallel.
 - **Readings** (Connerton *How Societies Remember*, Mayer-Schönberger *Delete*, van Dijck *Mediated
   Memories*) — kept as the optional "going deeper" line; the forgetting-as-virtue angle is distinctive.
 - Dropped F25's Colab tutorial link + the "tools for social justice" agency slide's lighter bullets

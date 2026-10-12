@@ -142,7 +142,7 @@ print("Canonical labels:", clean_df["stance"].unique())'''),
     md('''# Step 4: Handle the Missing Value
 
 One comment has no `likes` count. You have choices, and **none are neutral**:
-- **Drop** the row (`.dropna()`) — but you lose a real comment.
+- **Drop** the row (`.dropna()`) — but you lose a comment (in real data, someone's voice).
 - **Fill** it (`.fillna()`) with an estimate — but you're inventing data.
 
 Here we fill with the **median** (the middle value, less skewed by that 410-like outlier than the

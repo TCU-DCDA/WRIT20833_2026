@@ -113,8 +113,8 @@ the score too.'''),
     # ---- apply to the dataset ----
     md('''# Part 2 — Scoring a Whole Dataset
 
-Here's the cleaned comments table from last week — the Texas Ten Commandments comments, with the
-`stance` you'd label by hand (support / oppose / neutral). Let's have VADER score the **tone** of every
+Here's the cleaned comments table from last week — the constructed Texas Ten Commandments examples
+(written for the lesson, not collected), with the `stance` you'd label by hand (support / oppose / neutral). Let's have VADER score the **tone** of every
 comment at once.'''),
     code('''import pandas as pd
 

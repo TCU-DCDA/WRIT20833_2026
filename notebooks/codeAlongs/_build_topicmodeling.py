@@ -110,7 +110,8 @@ print(preprocess_for_topics("The PAINTINGS were absolutely amazing!!! I loved th
     md('''# Part 1 — A Clear Example First
 
 Topic modeling only makes sense if you can watch it work on text whose themes you *already* know. Here
-are fifteen short online comments pulled from three very different corners of the internet. **Predict:**
+are fifteen short comments, constructed for this lesson to sound like three very different corners of
+the internet, each with its own deliberately distinct vocabulary. **Predict:**
 how many topics are here, and what are they?'''),
     code('''docs = [
     # one corner of the internet
@@ -156,7 +157,7 @@ for i in range(3):
     print(f"Topic {i}: {', '.join(words)}")'''),
     md('''### Your turn: name the topics
 Read each word list above. What theme does each one point to? (You'll almost certainly recognize the
-three corners these comments came from.)'''),
+three corners these comments imitate.)'''),
     code('''# your turn — write your label for each topic as a comment
 # Topic 0 =>
 # Topic 1 =>

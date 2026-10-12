@@ -162,8 +162,8 @@ so **borrow the tool freely** — understand it, judge it, move on. But your ref
 posts, and your capstone essay *are* your voice, and a voice is forged only in the friction of finding your
 own words. Let an AI write your *code* and you've saved time; let it write your *prose* and you've handed
 away the one thing this course exists to grow. **Borrow the tool; never outsource the voice — and know
-which is which.** (Ted Chiang calls a language model "a blurry JPEG of the web" — a lossy average of
-everything ever written. A voice worth having is the opposite of an average.)
+which is which.** (Ted Chiang calls ChatGPT "a blurry JPEG of the web": a lossy copy of the text it
+learned from. A voice worth having is the opposite of a blur.)
 
 ## Eloquence is not evidence
 
@@ -181,7 +181,7 @@ when the claim is true and when it is invented.
 Our instincts haven't updated: a well-made paragraph still *feels* vetted
 before any judgment has convened.
 
-Colbert coined a word for that feeling — **truthiness**, when something
+Colbert popularized a word for that feeling — **truthiness**, when something
 feels true from the gut before the evidence arrives.
 
 ### An AI is a machine for making anything feel gut-true.
@@ -244,7 +244,7 @@ polished prose was **expensive**: producing it meant someone had actually done t
 writing by its polish was a fair proxy for judging the mind behind it. Language models broke that
 correlation. Fluency is now free — and it reads *exactly the same* when the claim is true and when it is
 invented. Our instincts haven't updated: a well-made paragraph still *feels* vetted before any judgment
-has convened. Stephen Colbert coined a word for that feeling — **truthiness**, when something feels true
+has convened. Stephen Colbert popularized a word for that feeling — **truthiness**, when something feels true
 from the gut before the evidence arrives. An AI is a machine for making anything feel gut-true.
 
 Philosophy has a blunter word. Harry Frankfurt distinguished the **liar** — who knows the truth and

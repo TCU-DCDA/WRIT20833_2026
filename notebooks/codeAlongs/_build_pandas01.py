@@ -189,8 +189,10 @@ data-handling panda. By convention we import it as `pd`.'''),
     code('''import pandas as pd
 import matplotlib.pyplot as plt'''),
     md('''A real CSV you'd load with `pd.read_csv("yourfile.csv")`. To keep this notebook self-contained,
-here's a small **sample** of the kind of data Instant Data Scraper produces — real-shaped YouTube
-comments on the Texas Ten Commandments law, the conversation this course keeps returning to.'''),
+here's a small **constructed sample** in the shape Instant Data Scraper produces: YouTube-style comments
+on the Texas Ten Commandments law, the conversation this course keeps returning to. The wording, likes,
+replies, and stance labels were written for this lesson, so any pattern you find here is practice, not
+evidence about the real debate.'''),
     code(DATA + """
 
 comments_df = pd.DataFrame(data)
@@ -318,7 +320,7 @@ count? Answer in a `#comment` below.'''),
     md('''# Sneak Preview: Where This Is Going
 
 Real scraped data is never this tidy — it shows up with blank cells, stray whitespace, duplicate rows,
-and numbers stored as text. **Next class (Pandas 02)** is all about *cleaning* a messy real dataset so
+and numbers stored as text. **Next class (Pandas 02)** is all about *cleaning* a messy dataset so
 it's ready to analyze.
 
 And this `comments_df` is exactly the shape your later work runs on: in **HW3** you'll score each

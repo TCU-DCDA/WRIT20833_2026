@@ -205,7 +205,7 @@ handed you. Make the choice visible, and say why you made it.
 ## When real data fights back
 
 <!-- slide:
-A toy corpus — fifteen comments from sports, music, and food forums —
+A toy corpus — fifteen constructed comments in the style of sports, music, and food forums —
 topic-models beautifully: three obvious subjects, three clean word-lists
 you can name in a second.
 
@@ -239,7 +239,7 @@ the same result twice.*
 <!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): A person trying to sort one single tangled ball of yarn into three separate baskets, but every strand runs into all three baskets at once — the sorting refuses to come apart cleanly. Warm lamplight, scattered index cards. -->
 <!-- ![Hands trying to sort one tangled ball of yarn into three baskets, every strand crossing all three](materials/lectures/images/ml7_tangle.jpg) -->
 
-A toy corpus — fifteen comments pulled from sports, music, and food forums — topic-models beautifully: three
+A toy corpus — fifteen constructed comments written in the style of sports, music, and food forums — topic-models beautifully: three
 obvious subjects, three clean word-lists you can name in a second. That clarity is a setup. Now point the same
 machine at our **Texas Ten Commandments comments**, where every voice is arguing about *one law*, in
 overlapping vocabulary.

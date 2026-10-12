@@ -14,7 +14,27 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-10-12 — Corpus is 93 comments stored as 123 rows (attribution audit F01)
+## Latest session — 2026-10-12 — Attribution audit: wording batch (F02–F04, F07, F09, F11–F13)
+
+- **Constructed data now says so.** F02: Pandas 01 calls its table a "constructed sample", with wording, likes, replies and
+  stances written for the lesson ("practice, not evidence about the real debate"). VADER Part 2 calls it "the constructed
+  Texas Ten Commandments examples". Pandas 02's dropped row loses "a comment (in real data, someone's voice)". F03: the
+  Topic Modeling notebook and ML7 call the 15 docs "constructed… to sound like" three corners of the internet, no longer
+  "pulled from" forums. F04: Term Frequency Part 4 labels `official_text` a constructed paraphrase of the Constitution and
+  later amendments, and points to HW2 for the real 1787 text.
+- **Attributions.** F07: ML0's Open Syllabus entry no longer claims Plato is "assigned more than any other author on earth";
+  it now describes citations across mostly English-language syllabi. F09: ML5's Shrout quotation is restored to the essay's
+  opening ("Nineteenth-century immigration data…"), checked against the live page 2026-10-12. The original reads "to who
+  they belonged", so the lecture marks "[whom]" in brackets. The reading view carries the full citation and link, the deck
+  a short one; LECTURE_SOURCE_NOTES no longer says "verbatim". F11: ML4's Chiang gloss is now "a lossy copy of the text it
+  learned from" (no "everything ever written"). F12: ML0's Trucks-and-Beer alt text says each dot is an artist (checked
+  against the image) and credits John W. Miller. F13: Colbert "popularized" truthiness (both views).
+- **Verified:** five code-along builders and the lecture/site generators rebuilt. Every code cell is unchanged in the six
+  regenerated notebooks, so only prose differs. Accessibility asserts pass.
+- **Still open:** F05/F06/F08/F10 (instructor framing calls) and the "Additional prose and citation issues" list.
+  Also: crediting Walsh's Bellevue lesson as the route to Shrout is the instructor's call.
+
+## Earlier session — 2026-10-12 — Corpus is 93 comments stored as 123 rows (attribution audit F01)
 
 - **Source:** the local `planning/SOURCE_ATTRIBUTION_AUDIT_2026-10-12.md` (untracked), finding F01. It was re-verified here
   against the Fall-2025 CSV (`../archived/WRIT20833_2025/datasets/TenCommandmentsTX/20833_CBS1_youtube_F25.csv`, also

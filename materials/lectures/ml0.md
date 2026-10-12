@@ -125,10 +125,10 @@ suddenly *see*. Start with two that count words much the way you soon will:
 
 <!-- layout: gallery -->
 
-- ["Trucks and Beer"](https://www.johnwmillr.com/trucks-and-beer/) — counts what country songs *actually* sing about (turns out, not just trucks and beer).
+- [John W. Miller, "Trucks and Beer"](https://www.johnwmillr.com/trucks-and-beer/) — counts what country songs *actually* sing about (turns out, not just trucks and beer).
 - [The Pudding, "The Largest Vocabulary in Hip-Hop"](https://pudding.cool/2017/02/vocabulary/) — ranks rappers by how many unique words they use in their first 35,000 lyrics.
 
-[![Scatter plot — mentions of "girl" vs. "love" across popular country songs, colored by artist gender (the "Trucks and Beer" analysis)](materials/lectures/images/proj_country_love.png)](https://www.johnwmillr.com/trucks-and-beer/)
+[![Scatter plot — each dot is a country artist; axes show the percentage of their songs mentioning "girl" and "love"; color shows the artist's gender, and the two drift apart (John W. Miller, "Trucks and Beer")](materials/lectures/images/proj_country_love.png)](https://www.johnwmillr.com/trucks-and-beer/)
 
 [![Number line — unique words used by each Wu-Tang Clan member within their first 3,500 lyrics, from Method Man near 1,050 to U-God near 1,370 (Matt Daniels, The Pudding, "The Largest Vocabulary in Hip-Hop")](materials/lectures/images/proj_hiphop_vocab.png)](https://pudding.cool/2017/02/vocabulary/)
 
@@ -137,8 +137,8 @@ suddenly *see*. Start with two that count words much the way you soon will:
 <!-- slide:
 - **[Every Noise at Once](https://everynoise.com/)** — a navigable map of 6,000+ music genres,
   drawn from audio analysis
-- **[Open Syllabus](https://opensyllabus.org/)** — millions of college syllabi; Plato is assigned
-  more than any other author on earth
+- **[Open Syllabus](https://opensyllabus.org/)** — millions of collected syllabi,
+  showing which texts get assigned most often
 
 *Notice the move every one of them makes: a question about **people**
 comes first, then the counting. The tool serves the question.*
@@ -147,7 +147,7 @@ comes first, then the counting. The tool serves the question.*
 No screenshots — these are worth visiting live:
 
 - [Every Noise at Once](https://everynoise.com/) — a navigable map of 6,000+ music genres, drawn from audio analysis.
-- [Open Syllabus](https://opensyllabus.org/) — maps millions of college syllabi; Plato is assigned more than any other author on earth.
+- [Open Syllabus](https://opensyllabus.org/) — maps citations across millions of collected (mostly English-language) syllabi, showing which texts get assigned most often.
 
 Notice the move every one of them makes: a question about *people* comes first, then the counting. The
 tool serves the question — never the other way around.

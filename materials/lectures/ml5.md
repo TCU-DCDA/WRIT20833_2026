@@ -183,12 +183,12 @@ describes what those records were *for*:
 -->
 
 <!-- slide:
-> This data was produced with the express purpose of reducing people
-> to bodies; bodies to easily quantifiable aspects; and assigning value
-> to those aspects which proved that the marginalized people to whom
-> they belonged were worth less than their elite counterparts.
+> Nineteenth-century immigration data was produced with the express purpose
+> of reducing people to bodies; bodies to easily quantifiable aspects; and
+> assigning value to those aspects which proved that the marginalized people
+> to [whom] they belonged were worth less than their elite counterparts.
 
-— Anelise Shrout
+— Anelise Hanson Shrout, "(Re)Humanizing Data" (2018)
 -->
 
 <!-- slide:
@@ -211,9 +211,11 @@ None of this is new. Only the machinery is.
 In the 1840s, the Bellevue Almshouse in New York kept meticulous records of the poor, the sick, and the
 newly arrived. The historian Anelise Shrout describes what those records were *for*:
 
-> This data was produced with the express purpose of reducing people to bodies; bodies to easily
-> quantifiable aspects; and assigning value to those aspects which proved that the marginalized people to
-> whom they belonged were worth less than their elite counterparts.
+> Nineteenth-century immigration data was produced with the express purpose of reducing people to
+> bodies; bodies to easily quantifiable aspects; and assigning value to those aspects which proved that the
+> marginalized people to [whom] they belonged were worth less than their elite counterparts.
+>
+> — Anelise Hanson Shrout, ["(Re)Humanizing Data: Digitally Navigating the Bellevue Almshouse"](https://crdh.rrchnm.org/essays/v01-10-re-humanizing-data/), *Current Research in Digital History* 1 (2018)
 
 Now picture that same ledger as a Python list of dictionaries — `{"name": "Mary", "status": "emigrant",
 "condition": "destitution"}` — processed by a loop, ranked by a `Counter`. **The technology changes; the

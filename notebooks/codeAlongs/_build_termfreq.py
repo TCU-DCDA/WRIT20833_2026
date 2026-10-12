@@ -169,8 +169,10 @@ print(top_meaningful_words(my_text, 5))
     # ---- Part 4: the contrast ----
     md('''# Part 4 — Whose Words Win?
 
-Term frequency gets *interesting* when you **compare two texts**. Here's a second one: a passage in the
-flat, official voice of a founding legal document — the kind of thing those commenters keep invoking.
+Term frequency gets *interesting* when you **compare two texts**. Here's a second one, in the flat,
+official voice of a founding legal document — the kind of thing those commenters keep invoking. It is a
+**constructed paraphrase**: lines from the Constitution and its later amendments, shortened and reworded
+for this exercise, so don't quote it as the Constitution itself. (HW2 uses the real 1787 text.)
 Run the same function on both and watch two completely different vocabularies appear.'''),
     code('''official_text = """
 Congress shall pass no law respecting an establishment of religion.

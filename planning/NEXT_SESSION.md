@@ -37,7 +37,8 @@
 > 🔎 **2026-10-12: source/attribution audit** (local, untracked `planning/SOURCE_ATTRIBUTION_AUDIT_2026-10-12.md`;
 > its links are absolute local paths, so fix them before committing it). **F01 done:** the corpus is described as
 > **93 comments stored as 123 rows** everywhere (WORKLOG). Open: the private Code Guide prompt likely still says "~123
-> comments"; F02–F04 + F07/F09/F11–F13 are wording fixes for one batch; F05/F06/F08/F10 need instructor framing calls.
+> comments". **Wording batch F02–F04, F07, F09, F11–F13 also done.** Remaining: F05/F06/F08/F10 need instructor
+> framing calls, plus the audit's "Additional prose and citation issues" list.
 > 💬 **2026-10-12: discussion prompts D1–D4 rewritten** (they had invited parroting the lecture). Each now starts
 > from student evidence, with a reply task. ✅ **Live D2L topics updated by hand 2026-10-12.** Still pending: (4) the
 > Word syllabus's discussion block. For future prompt changes, paste from `d2l/WRIT20833_Fall2026_D2L-discussions.html`
