@@ -230,8 +230,8 @@ and now you're one of the people holding the pen.
 -->
 
 <!-- slide:
-Our 123 comments are themselves a frozen memory: 123 people caught
-mid-argument on one summer day, who will never get to take it back,
+Our 93 comments are themselves a frozen memory: strangers caught
+mid-argument, who will never get to take it back,
 soften it, or grow past it.
 
 As you count and sort them this term, keep the live question open:
@@ -242,7 +242,7 @@ As you count and sort them this term, keep the live question open:
 So lists and loops were never just technical skills. They're how a culture decides **what it remembers and
 what it's allowed to forget** — and now you're one of the people holding the pen.
 
-Our 123 comments are themselves a frozen memory: 123 people caught mid-argument on one summer day, who will
+Our 93 comments are themselves a frozen memory: strangers caught mid-argument, who will
 never get to take it back, soften it, or grow past it. As you count and sort them this term, keep the live
 question open: *am I remembering these people, or just reducing them?* And the one the whole course keeps
 asking — **make the choice visible.** What you keep, what you drop, and what you let stay forgotten is an

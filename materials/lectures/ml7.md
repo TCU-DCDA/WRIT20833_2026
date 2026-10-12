@@ -211,7 +211,7 @@ you can name in a second.
 
 **That clarity is a setup.**
 
-Now point the same machine at our 123 Texas Ten Commandments comments,
+Now point the same machine at our Texas Ten Commandments comments,
 where every voice is arguing about *one law*, in overlapping vocabulary.
 -->
 
@@ -241,7 +241,7 @@ the same result twice.*
 
 A toy corpus — fifteen comments pulled from sports, music, and food forums — topic-models beautifully: three
 obvious subjects, three clean word-lists you can name in a second. That clarity is a setup. Now point the same
-machine at our **123 Texas Ten Commandments comments**, where every voice is arguing about *one law*, in
+machine at our **Texas Ten Commandments comments**, where every voice is arguing about *one law*, in
 overlapping vocabulary.
 
 The topics come back **muddy.** LDA still hands you three tidy word-lists — it always will — but here each one

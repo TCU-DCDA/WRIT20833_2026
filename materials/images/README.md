@@ -30,8 +30,8 @@ Every arrow already has a home in the 2026 materials:
 | Transition | The choice that enters | Where the course already shows it |
 |---|---|---|
 | Noumena → Phenomena | What is even *noticed* as worth studying | Choosing *this* law / *these* commenters at all; ML0 "the mess" |
-| Phenomena → Raw data | Collection: what's captured vs. excluded | Day 8 Data Archaeology + scraping ethics; the wrap-fragments ("Of Texas") are capture artifacts; dedup/source choices |
-| Raw → Structured data | Cleaning, tokenizing, what counts as a "row" | HW2 stopwords (authored deletion), `\W+` split; HW3 "clean *but keep* punctuation"; the 123-vs-93 decision |
+| Phenomena → Raw data | Collection: what's captured vs. excluded | Day 8 Data Archaeology + scraping ethics; the scraper broke some comments into pieces ("Of Texas"); the export has no author or date fields; dedup/source choices |
+| Raw → Structured data | Cleaning, tokenizing, what counts as a "row" | HW2 stopwords (authored deletion), `\W+` split; HW3 "clean *but keep* punctuation"; the 123-vs-93 decision (multi-line comments split at their line breaks into extra rows) |
 | Structured → Analyzed data | Method + parameters | HW3 VADER lexicon + the 0.05 cutoff; HW4 `num_topics`, `random_state` |
 | Analyzed → Insight | What we read into the output | HW4 A5 "*human* names the topics"; the sarcasm misread; B3/B4 |
 | Insight → Knowledge | Generalizing; confirmation bias | HW4 B4 "name where the tools mislead"; "being wrong as learning" (Day 17) |

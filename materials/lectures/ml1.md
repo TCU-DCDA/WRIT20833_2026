@@ -11,7 +11,7 @@
 Every arrow from a lived human fact to an "insight" is a human choice.
 Today we turn that on the very first thing you'll touch — **a plain number.**
 
-> In 123 comments on the Texas Ten Commandments law, the word
+> In 93 comments on the Texas Ten Commandments law, the word
 > **"commandments"** appears **25** times. **"Constitution"** appears **8**.
 
 Flat, true, countable. *And already leaning* — already telling you
@@ -22,15 +22,20 @@ The opening lecture left us with a claim: every arrow in the pipeline from a liv
 choice. This lecture turns that claim on the very first thing you'll touch — a plain number — and shows
 that even *it* arrives already leaning.
 
-Here is a fact about the corpus we'll work with all term: 123 YouTube comments on a Texas law that puts
+Here is a fact about the corpus we'll work with all term: 93 YouTube comments on a Texas law that puts
 the Ten Commandments in public-school classrooms. (A **corpus** is simply a collection of texts gathered
 for analysis.) The comments were copied in fall 2025 from under one TV-news video on YouTube, using a
-browser scraping tool. The tool caught top-level comments but not the replies under them, and duplicates
-were removed. They are not a sample of Texans, or even of YouTube:
+browser scraping tool. The tool caught top-level comments but not the replies under them, and blank and
+duplicate entries were removed. The scraper also broke at least one comment in two ("…The" and "Of
+Texas" arrived as separate entries), so even 93 slightly overcounts. And one more choice shapes everything
+you'll compute: a few long comments ran over several lines, and the cleaning split them at their line
+breaks. So the file you'll load has **123 rows**, not 93, and some rows are only pieces of a comment. The
+export kept no names or dates, either, so we don't know how many people wrote these comments, or exactly
+when. They are not a sample of Texans, or even of YouTube:
 they're whoever chose to comment on that one video, and whatever the tool caught. We'll come back to who
 that leaves out.
 
-> In those 123 comments, the word **"commandments"** appears 25 times. **"Constitution"** appears 8.
+> In those 93 comments, the word **"commandments"** appears 25 times. **"Constitution"** appears 8.
 
 A flat, true, countable fact. And already it leans — already it's *telling* you something about whose
 ground the argument is being fought on. Before we run a single line of code, ask the humanist's question:
@@ -214,7 +219,7 @@ this, why, and what story do they need it to tell?**
 <!-- slide:
 The loudest thing about a dataset is often **what isn't in it.**
 
-Our 123 comments are not "the public." They're the slice of the public
+Our 93 comments are not "the public." They're the slice of the public
 that *posted* — people online, fired up enough to type,
 willing to be seen arguing.
 -->
@@ -236,7 +241,7 @@ the ones the counting never reaches.*
 
 The loudest thing about a dataset is often what isn't in it.
 
-Our 123 comments are not "the public." They're the slice of the public that *posted* — people online,
+Our 93 comments are not "the public." They're the slice of the public that *posted* — people online,
 fired up enough to type, willing to be seen arguing. The woman from the opening lecture — who felt something complete and
 entirely her own and then said nothing — is not in the file at all. Neither is anyone without the wifi,
 the time, or the nerve.

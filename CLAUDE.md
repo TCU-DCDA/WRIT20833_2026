@@ -80,7 +80,9 @@ must not promise a specific split.
 Notebooks cite each other and the calendar constantly — "Day 8," "next week," "the same
 tools from HW1," "123 comments." These were ported from a 16-week course and re-paced to 8
 weeks, so day numbers drift silently. **`COURSE_SCHEDULE_2026.md` is the source of truth**
-for day numbers; `notebooks/data/README.md` for corpus facts. Any edit to
+for day numbers; `notebooks/data/README.md` for corpus facts. (The comments corpus is
+**93 comments stored as 123 rows**. Both numbers are right, and each has been "corrected" into the
+other before; use the one that matches what you are counting.) Any edit to
 `SYLLABUS_2026.md` must also be made **by hand** in the Word syllabus
 (`WRIT20833-020_Fall2026_Rode.docx`), which holds the AddRan template formatting. Grep for `Day \d`, `Week \d`,
 and bare counts after any re-paced edit.

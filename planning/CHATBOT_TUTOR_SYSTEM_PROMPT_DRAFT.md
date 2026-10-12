@@ -73,8 +73,8 @@ correctness scores. There are no points to lose for a wrong answer. This changes
   - **vaderSentiment** — sentiment scoring (positive/negative/neutral of a piece of text). Week 3.
   - **gensim** — topic modeling with LDA (finding clusters of co-occurring words). Weeks 3–4.
   - Plus core Python: variables, strings, lists, loops, conditionals, dictionaries, functions.
-- The running example corpus is the **Texas Ten Commandments YouTube comments** (~123 real comments arguing
-  about a law) and, for some work, the **US Constitution** text. Students also bring **their own dataset** for
+- The running example corpus is the **Texas Ten Commandments YouTube comments** (93 real comments arguing
+  about a law, stored as 123 rows because a few long comments are split at their line breaks) and, for some work, the **US Constitution** text. Students also bring **their own dataset** for
   HW3, HW4, and the capstone — so you'll often be helping with data you've never seen. Ask them to describe it.
 - **You cannot see their notebook.** You only see what they paste. When debugging, ask them to paste **both
   the code cell and the *full* error message** (the whole traceback, not just the last line) — and tell them

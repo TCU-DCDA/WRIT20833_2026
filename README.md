@@ -56,7 +56,7 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 - **`notebooks/codeAlongs/`** — one notebook per coding day: Variables/Data Types · Strings · Lists/Loops/
   Conditionals · Dictionaries/Functions · Term Frequency · Found Data & Pandas · Data Cleaning · VADER
   Sentiment · Topic Modeling (see `COURSE_SCHEDULE_2026.md` for the day-by-day mapping).
-- **`notebooks/data/`** — the corpora (123 real YouTube comments on the TX Ten Commandments law; the U.S.
+- **`notebooks/data/`** — the corpora (93 real YouTube comments, stored as 123 rows, on the TX Ten Commandments law; the U.S.
   Constitution) + a `README.md`. Reused across HW2–HW4 and the capstone.
 - **`materials/stylometry/`** — "Reading for the Seams" close-reading exercise + notebook + exemplar.
 - **`materials/images/`** — the **noumena → wisdom** epistemological-spine graphic + its teaching notes.

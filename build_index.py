@@ -67,7 +67,7 @@ LECTURES = [
 RESOURCES = [
     ("Tools", "Google Colab", "https://colab.research.google.com/", "runs every notebook — no install"),
     ("Tools", "Course GitHub repo", GH, "all notebooks, data, and docs"),
-    ("Data", "Course corpus", f"{GH}/tree/main/notebooks/data", "123 YouTube comments · the U.S. Constitution"),
+    ("Data", "Course corpus", f"{GH}/tree/main/notebooks/data", "93 YouTube comments (123 rows) · the U.S. Constitution"),
     ("Reference", "Python docs", "https://docs.python.org/3/", "the language reference"),
     ("Reference", "pandas", "https://pandas.pydata.org/docs/", "DataFrames & data wrangling"),
     ("Reference", "VADER sentiment", "https://github.com/cjhutto/vaderSentiment", "the sentiment lexicon we use"),

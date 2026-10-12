@@ -36,8 +36,8 @@ a midden of bones. From those *traces* they reconstruct how people lived.
 -->
 
 <!-- slide:
-You're making the same move. Our 123 comments are a **dig site** —
-traces a community left while arguing about a law one summer.
+You're making the same move. Our 93 comments are a **dig site** —
+traces a community left while arguing about a law.
 
 You'll excavate patterns from them, but like any archaeologist
 you have to remember you're holding **shards, not the meal**:
@@ -49,8 +49,8 @@ a pottery shard, a posthole, a midden of bones. From those *traces* they reconst
 
 > Pottery shards → ancient dining habits.   Dataset rows → cultural patterns.
 
-You're making the same move. Our 123 comments are a dig site — traces a community left while arguing about
-a law one summer. You'll excavate patterns from them, but like any archaeologist you have to remember
+You're making the same move. Our 93 comments are a dig site — traces a community left while arguing about
+a law. You'll excavate patterns from them, but like any archaeologist you have to remember
 you're holding **shards, not the meal**: a partial record of something larger you'll never fully recover.
 (That's the noumena pipeline again — what reaches you is already several steps downstream of the lived thing.)
 
@@ -94,8 +94,8 @@ It never did.
 
 By the time a comment reaches your notebook, someone chose **which**
 platform to pull from, **when**, **which** field counted, and **what**
-got dropped — remember the wrap-fragments in our own corpus,
-sentences chopped in half by the export.
+got dropped — remember the fragments in our own corpus,
+comments broken apart by the scraper, and by our own cleaning.
 -->
 
 <!-- slide:
@@ -116,8 +116,9 @@ leave no row at all.
 
 We say "raw data" as if it arrived straight from nature, untouched. It never did. By the time a comment
 reaches your notebook, someone chose **which** platform to pull from, **when**, **which** field counted,
-and **what** got dropped — remember the wrap-fragments in our own corpus, sentences chopped in half by the
-export. Every dataset is the *survivors* of a collection process, and the ones who didn't survive — the
+and **what** got dropped — remember the fragments in our own corpus: the scraper broke at least one comment
+in two, so "Of Texas" arrived on its own, and our cleaning cut long comments apart at their line breaks.
+Every dataset is the *survivors* of a collection process, and the ones who didn't survive — the
 people who never posted, the comment that was deleted, the language the scraper couldn't parse — leave no
 row at all. **The empty seats aren't in the file.** Treat "raw" as a warning label, not a fact.
 

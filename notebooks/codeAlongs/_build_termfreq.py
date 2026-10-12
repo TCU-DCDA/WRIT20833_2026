@@ -223,7 +223,7 @@ print("B ->", top_meaningful_words(text_b, 5))
     # ---- Sneak preview ----
     md('''# Sneak Preview: Where This Is Going
 
-**HW2 ("Whose Words Win?")** is this exact move at full scale: you'll run term frequency on **123 real
+**HW2 ("Whose Words Win?")** is this exact move at full scale: you'll run term frequency on **93 real
 YouTube comments** about the Texas law and on the **U.S. Constitution as signed in 1787**, and read what the
 contrast reveals about a public's voice versus the document it keeps invoking.
 

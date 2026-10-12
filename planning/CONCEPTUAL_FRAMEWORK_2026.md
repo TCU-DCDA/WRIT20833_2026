@@ -45,8 +45,8 @@ Every arrow already has a home in the built materials:
 | Transition | The choice that enters | Where the course shows it |
 |---|---|---|
 | Noumena → Phenomena | What is even *noticed* worth studying | Choosing *this* law / *these* commenters; ML0 "the mess" |
-| Phenomena → Raw data | Collection: captured vs. excluded | Day 8 Data Archaeology + scraping ethics; the wrap-fragments are capture artifacts |
-| Raw → Structured | Cleaning, tokenizing, what is a "row" | HW2 stopwords (authored deletion); HW3 "clean *but keep* punctuation"; the 123-vs-93 decision |
+| Phenomena → Raw data | Collection: captured vs. excluded | Day 8 Data Archaeology + scraping ethics; the scraper broke some comments into pieces ("Of Texas"); the export has no author or date fields |
+| Raw → Structured | Cleaning, tokenizing, what is a "row" | HW2 stopwords (authored deletion); HW3 "clean *but keep* punctuation"; the 123-vs-93 decision (multi-line comments split at their line breaks into extra rows) |
 | Structured → Analyzed | Method + parameters | HW3 VADER lexicon + the 0.05 cutoff; HW4 `num_topics`, `random_state` |
 | Analyzed → Insight | What we read into the output | HW4 "the *human* names the topics"; the sarcasm misread; B3/B4 |
 | Insight → Knowledge | Generalizing; confirmation bias | HW4 "name where the tools mislead"; "being wrong as learning" (Day 17) |

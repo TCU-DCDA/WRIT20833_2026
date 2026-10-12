@@ -7,7 +7,7 @@ each — **trim to the submission form's field limits**). Source context: `plann
 §7; outcome wording verified against `reference/TCU-Core-Curriculum-outcomes-1.pdf`.
 
 **The running case** the examples draw on: a contested 2025 public-policy debate — a Texas law placing the
-Ten Commandments in public-school classrooms — studied through a corpus of **123 real public comments**
+Ten Commandments in public-school classrooms — studied through a corpus of **93 real public comments**
 alongside the **U.S. Constitution** the commenters keep invoking. Methods build across the term (term
 frequency → sentiment → topic modeling → integration) into a **capstone** (data-driven-opinion notebook +
 essay). Evaluation is **ungrading**: a 3-point engagement scale (3 exceeds / 2 meets / 1 not-yet) on

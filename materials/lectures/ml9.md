@@ -9,7 +9,7 @@
 
 <!-- slide:
 You have counted the words, scored the feeling, and modeled the themes
-of 123 comments about a contested law. You can say, with evidence,
+of 93 comments about a contested law. You can say, with evidence,
 what that crowd was arguing about and how it felt.
 
 Here is the question this whole course has been walking toward:
@@ -19,7 +19,7 @@ Here is the question this whole course has been walking toward:
 *An analysis that never leaves your laptop changes exactly nothing.*
 -->
 
-You have counted the words, scored the feeling, and modeled the themes of 123 comments about a contested
+You have counted the words, scored the feeling, and modeled the themes of 93 comments about a contested
 law. You can say, with evidence, what that crowd was arguing about and how it felt. Here is the question
 this whole course has been walking toward: **so what — and who is it for?** An analysis that never leaves
 your laptop changes exactly nothing. Today is about the last move, the one that turns a finding into an
@@ -230,7 +230,7 @@ the crowd appears to speak; the speaker chose the words.*
 <!-- slide:
 So here is the drafting test for your capstone:
 
-### Never write a sentence about your 123 that you'd roll your eyes at from a politician.
+### Never write a sentence about your 93 that you'd roll your eyes at from a politician.
 
 *"The commenters feel…" is the same move in miniature —
 and your own numbers know better.*
@@ -259,7 +259,7 @@ people feel…"* Six words that flatten a split crowd into one voice, dress a po
 and often there's no poll at all, just the speaker's own position wearing the crowd as a costume. That's
 the ventriloquism the AI Agency lecture warned about, run in reverse and at national scale: the crowd
 appears to speak; the speaker chose the words. So here is the drafting test for your capstone: **never
-write a sentence about your 123 that you'd roll your eyes at from a politician.** "The commenters feel…"
+write a sentence about your 93 that you'd roll your eyes at from a politician.** "The commenters feel…"
 is the same move in miniature — and your own numbers know better.
 
 > The reflection that becomes your capstone: *what did your analysis find that someone outside this room needs to see — who are they, and what should they do once they have seen it?*

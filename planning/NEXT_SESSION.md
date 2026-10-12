@@ -34,6 +34,10 @@
 > Day 9 label changes; (2) the two 2026-09-30 Code Guide paragraphs now in `SYLLABUS_2026.md` (after the
 > reflections list, and at the end of the AI Use Policy); (3) the 2026-10-07 Code Guide URL + "access code is posted in TCU Online" sentence at the start of the Code Guide paragraph. Then **re-upload the syllabus PDF to D2L**
 > (`d2l/WIRING_CHECKLIST.md` → *Updating a live shell*).
+> 🔎 **2026-10-12: source/attribution audit** (local, untracked `planning/SOURCE_ATTRIBUTION_AUDIT_2026-10-12.md`;
+> its links are absolute local paths, so fix them before committing it). **F01 done:** the corpus is described as
+> **93 comments stored as 123 rows** everywhere (WORKLOG). Open: the private Code Guide prompt likely still says "~123
+> comments"; F02–F04 + F07/F09/F11–F13 are wording fixes for one batch; F05/F06/F08/F10 need instructor framing calls.
 > 💬 **2026-10-12: discussion prompts D1–D4 rewritten** (they had invited parroting the lecture). Each now starts
 > from student evidence, with a reply task. ✅ **Live D2L topics updated by hand 2026-10-12.** Still pending: (4) the
 > Word syllabus's discussion block. For future prompt changes, paste from `d2l/WRIT20833_Fall2026_D2L-discussions.html`

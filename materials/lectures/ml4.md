@@ -226,7 +226,7 @@ them got outsourced.*
 Two things to carry out of that word.
 
 **First, it points at us, never at them.** Not a diagnosis you hand
-to the 123 commenters — it's the temptation *you* face every time
+to the commenters in our data — it's the temptation *you* face every time
 an eloquent answer arrives faster than your judgment.
 
 **Second, the fix is not an attitude.** Attitudes don't beat gut-level
@@ -265,7 +265,7 @@ is the shadow at its bottom-right corner: knowledge that never becomes wisdom, b
 them — the friction where understanding actually happens — got outsourced.
 
 Two things to carry out of that word. First, **it points at us, never at them.** Amathia is not a
-diagnosis you hand to the 123 commenters in our data or to anyone across a political argument; it's the
+diagnosis you hand to the commenters in our data or to anyone across a political argument; it's the
 temptation *you* face every time an eloquent answer arrives faster than your judgment. Second, the fix is
 not an attitude ("trust AI less") — attitudes don't beat gut-level habits. The fix is **procedural
 friction**: run the code, check the citation, find the source, read the seams. Which is exactly where

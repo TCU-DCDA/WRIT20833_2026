@@ -6,15 +6,35 @@ can be loaded with `open()` (no pandas required) in the pre-pandas weeks.
 ## Files
 
 ### `tc_youtube_comments.txt` — the public's voice
-**123 comments, one per line** (2,235 words), reacting to the 2025 **Texas Ten
-Commandments-in-schools** law. Cleaned from the Fall-2025 `TenCommandmentsTX/20833_CBS1_youtube_F25.csv`
-(Instant Data Scraper export): the comment-text column only, de-duplicated.
+**93 YouTube comments, stored as 123 rows** (2,235 words), reacting to the 2025 **Texas Ten
+Commandments-in-schools** law. Source: the Fall-2025
+[`TenCommandmentsTX/20833_CBS1_youtube_F25.csv`](https://github.com/TCU-DCDA/WRIT20833_2025/blob/main/datasets/TenCommandmentsTX/20833_CBS1_youtube_F25.csv),
+an Instant Data Scraper export of the comments under one TV-news video on YouTube.
 Vernacular, contemporary, real social media.
 
+**How 143 scraped records became 123 rows** (reproducible from the CSV):
+1. Keep the `comments` text column. Of 143 records, 22 are blank and 28 repeat a comment already
+   kept, which leaves **93 distinct comment texts**. ("93 comments" is the usual shorthand, and a
+   slight overcount: the scraper broke at least one comment in two. One record ends "…already
+   ubiquitous. The" and the next is "Of Texas". The standalone "The" is probably another such piece.)
+2. Split each comment at its line breaks and strip whitespace. 82 comments are one line; the other
+   11 ran over 2–10 lines and became 41 rows. That gives **123 rows**, in the original order.
+
+**What a row is.** A row is one line of comment text: usually a whole comment, but 41 rows are
+pieces of a longer one. A single long comment therefore counts as several rows when you score or
+topic-model rows. The 93 comments and the 123 rows contain exactly the same words, so word counts
+(HW2, the ML0/ML1 "commandments" figures) are unaffected. The export has **no author or date
+fields**: how many people wrote these comments, and when they posted, are unknown. Don't write
+"123 people" or "123 commenters."
+
+> Both numbers are right, about different things: **93 comments, 123 rows**. The count has been
+> "corrected" from one to the other twice before without checking the source. Use whichever
+> matches what you are counting.
+
 *Two data-quality warts, both deliberate and both load-bearing:* the file is **132 physical lines** —
-123 comments plus 9 stray blank lines (every notebook loader filters with `if line.strip()`, so all
-four homeworks see 123 rows); and a few lines are short CSV→txt wrap-fragments, e.g. "Of Texas",
-"The". Harmless for HW2's whole-file word count. In **HW4** two rows (`"The"` and
+123 rows plus 9 stray blank lines (every notebook loader filters with `if line.strip()`, so all
+four homeworks see 123 rows); there are short fragment rows, some broken off by the scraper ("Of
+Texas", "The") and some made by the line-break split ("But i do and or have."). Harmless for HW2's whole-file word count. In **HW4** two rows (`"The"` and
 `"But i do and or have."`) reduce to **zero tokens** after stopword removal and are filed under topic
 `-1` — that is exactly the case HW4 **A3** asks students to predict and **B2** asks them to spot in the
 chart, so **do not "clean" these away** without rewriting those exercises.

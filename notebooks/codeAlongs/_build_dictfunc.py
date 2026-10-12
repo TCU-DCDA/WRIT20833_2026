@@ -203,7 +203,7 @@ print(count_words(my_words))'''),
     # ---- Sneak preview ----
     md('''# Sneak Preview: Where This Is Going
 
-Next week we leave practice data behind for **real** text — 123 actual YouTube comments about a Texas
+Next week we leave practice data behind for **real** text — 93 actual YouTube comments about a Texas
 law. Your `count_words` function is the seed of **term frequency**: finding what a text is *really*
 about by counting its words. Python even ships with a tool, `Counter`, that does what you just wrote:'''),
     code('''from collections import Counter

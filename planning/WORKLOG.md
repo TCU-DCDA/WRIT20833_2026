@@ -14,7 +14,36 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-10-12 — Lectures open as slide decks; reading-page images capped
+## Latest session — 2026-10-12 — Corpus is 93 comments stored as 123 rows (attribution audit F01)
+
+- **Source:** the local `planning/SOURCE_ATTRIBUTION_AUDIT_2026-10-12.md` (untracked), finding F01. It was re-verified here
+  against the Fall-2025 CSV (`../archived/WRIT20833_2025/datasets/TenCommandmentsTX/20833_CBS1_youtube_F25.csv`, also
+  public in `TCU-DCDA/WRIT20833_2025`). The CSV has 143 records. Removing 22 blanks and 28 repeats leaves **93 distinct
+  comment texts**. 82 are one line; the other 11 run to 2–10 lines and were split at line breaks into 41 rows, giving
+  **123 rows**. That reproduces the committed file exactly, in order, with no line lost. The word counts quoted in the
+  lectures (13/25/27 "commandments," 8 "constitution," 2,235 words) are identical over comments and rows.
+- **History:** HW2 said 93 before, and the 2026-06 and 2026-09-05 entries below "corrected" it to 123 without checking the CSV.
+  Both numbers are right, about different things. The data README and `CLAUDE.md` §4 now say so.
+- **Found while verifying (beyond the audit):** "Of Texas" and "The" are **not** line-break pieces. They are separate entries
+  in the CSV, where the scraper broke at least one comment in two ("…already ubiquitous. The" / "Of Texas"). So 93 slightly
+  overcounts whole comments. ML1, ML6 and the data README name both kinds of fragment: scraper breaks, and our own
+  line-break split (e.g. "But i do and or have.").
+- **Changed (wording only; data and exercises untouched):** "93 comments" where a sentence means the voices, "123 rows" where
+  it means the loaded file. ML0, ML1 (new paragraph on scraper breaks, the line-break split and no author/date fields), ML4
+  ("the commenters in our data"), ML5 ("123 people… one summer day" → "strangers caught mid-argument"), ML6 (no "one summer";
+  fragments blamed on the scraper *and* our cleaning, not "the export"), ML7, ML9. Also the Dictionaries/Functions and Term
+  Frequency sneak previews; HW2 (93 comments); HW3/HW4 ("one line of comment text per row"; A1 says some long comments span
+  rows, "count rows with len(df)"); HW3/HW4 key teaching notes; the data README (source link, derivation recipe, what a row
+  is, unknown authors/dates); the `build_index.py` card; README; the framework/image-README pipeline tables; the CSV-HUM
+  examples; and the chatbot prompt *draft*.
+- **Verified:** keys builders and both code-along builders matched committed output before editing. All three HW answer keys
+  execute top-to-bottom on the course corpus (HW3 `(123, 1)`). Rebuilds are idempotent. `docs/` regenerated (accessibility
+  asserts pass). D2L only links out, so no re-import is needed.
+- **Not changed:** the live Code Guide prompt in the private `WRIT20833-chatbot` repo probably still says "~123 comments".
+  ML1's "the tool caught top-level comments but not the replies" can't be confirmed from the CSV. Historical planning notes
+  keep their old counts. The rest of the audit (F02–F14) is open.
+
+## Earlier session — 2026-10-12 — Lectures open as slide decks; reading-page images capped
 
 - **Asked (instructor):** link the decks rather than the full text, and fix ML0's oversized images.
   All 8 decks were already complete (every `##` section has a `<!-- slide: -->` condensation).

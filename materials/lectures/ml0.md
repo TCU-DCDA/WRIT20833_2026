@@ -263,7 +263,7 @@ comments_text.lower().count("commandments")   # 25
 comments_text.lower().count("commandment")    # 27
 ```
 
-Same 123 comments. Ignore capital letters, or don't. Count the singular too, or don't.
+Same 93 comments. Ignore capital letters, or don't. Count the singular too, or don't.
 **Each choice is defensible, and each one gives a different number.**
 -->
 
@@ -291,7 +291,7 @@ dirtied on the way down. But look again: there *is* no clean signal up top. The 
 already an interpretation. **Bias isn't what sneaks into the data — bias is the material the data is made
 of.**
 
-Here is how small a choice can be. Each of these lines counts the word "commandments" in our 123 comments:
+Here is how small a choice can be. Each of these lines counts the word "commandments" in our 93 comments:
 
 ```
 comments_text.count("commandments")           # 13
