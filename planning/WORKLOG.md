@@ -14,7 +14,7 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-10-15 — Code-alongs: how much room is left to type? (pilot: Variables)
+## Latest session — 2026-10-15 — Code-alongs: room to type (Weeks 1–2 rebuilt: Variables, Lists & Loops, Dictionaries & Functions)
 
 - **Audit.** Seven of the nine code-alongs were fully worked: every concept cell pre-filled, the only blanks
   the end-of-section "your turn" and Playground cells. Filled/blank code cells per notebook — Variables 24/1,
@@ -31,9 +31,23 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 - **Verified:** both copies executed top-to-bottom; the only error in each is the intentional TypeError.
   No complete cell depends on a blank (Check Data Types now types `happiest_students`, not `name`), so a
   student who skips a type-along is not stranded. The schedule/site/D2L link (student filename) is unchanged.
-- **Next:** same treatment in calendar order — Lists & Loops (Days 3–4, needs a builder), Dictionaries &
-  Functions (Day 5), Term Frequency (Day 7), then Pandas 02, VADER, Topic Modeling. Decide when students get
-  the `_complete` copies (none are linked yet).
+- **Then Weeks 1–2 in full (same session).** New `_build_lists.py` (the notebook had no builder) and
+  `_build_dictfunc.py` converted to the pair style; both write a student copy + `*_complete.ipynb`.
+  - *Lists, Loops & Conditionals* (Days 3–4): 32 code cells → 10 type-along, 4 your-turn, 3 predict-first,
+    14 pre-filled. Blanks: `and`/`or`, `in` inside an `if` (the bio/favorite data moved to its own complete
+    cell), `follower_counts`, `len()`, list slicing, `.extend()`, `.remove()`, the sales-tax loop, the
+    generations loop, the `clean_authors` filter. The podcast-hosts "your turn" now gives data + a hint
+    instead of its 15-line solution. Content, order, and the "Day 3 stops here" marker unchanged.
+  - *Dictionaries & Functions* (Day 5): 17 code cells → 5 type-along, 4 your-turn, 1 predict-first,
+    6 pre-filled. Blanks: `.keys()`/`.values()`, add/change a key, the archive loop, the `birth_years`
+    loop, `with_tax`. `is_long` no longer prints its answer in a comment. `classify_year` and `count_words`
+    stay complete because later cells call them.
+  - All six copies execute top-to-bottom with no errors (Variables: only the intentional TypeError).
+    Student copies were executed with every blank *empty* to prove no complete cell depends on one.
+  - CLAUDE.md §1 updated: every code-along has a builder; five emit pairs; the blank rule is written down.
+- **Next:** Term Frequency (Day 7), then Pandas 02, VADER, Topic Modeling. Decide when students get the
+  `_complete` copies (none are linked yet). Push when ready — the site's Colab links still open the old
+  fully worked notebooks until then.
 
 
 ## Earlier session — 2026-10-15 — Site nav: sticky top bar replaces the left sidebar

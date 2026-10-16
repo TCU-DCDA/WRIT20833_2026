@@ -39,11 +39,12 @@
 > **93 comments stored as 123 rows** everywhere (WORKLOG). Open: the private Code Guide prompt likely still says "~123
 > comments". **Wording batch F02–F04, F07, F09, F11–F13 also done.** Remaining: F05/F06/F08/F10 need instructor
 > framing calls, plus the audit's "Additional prose and citation issues" list.
-> ✏️ **2026-10-15: code-along room-to-type audit.** 7 of 9 code-alongs were fully pre-filled (WORKLOG). The
-> Day 1 **Variables** notebook now has a builder (`_build_variables.py`) and a student/complete pair with 11 blanks.
-> **Remaining, in calendar order:** Lists & Loops (Days 3–4, no builder yet; its podcast "your turn" is pre-solved),
-> Dictionaries & Functions (Day 5; `is_long` hint gives the answer), Term Frequency (Day 7), Pandas 02, VADER,
-> Topic Modeling. Keep setup/data cells complete; blank the *second* example of each idea, not the first.
+> ✏️ **2026-10-15: code-along room-to-type audit.** 7 of 9 code-alongs were fully pre-filled (WORKLOG). **Weeks 1–2
+> are rebuilt:** Variables (`_build_variables.py`, new), Lists & Loops (`_build_lists.py`, new), Dictionaries &
+> Functions (`_build_dictfunc.py`, now a pair) each emit a student copy with type-along blanks + a `*_complete.ipynb`.
+> String Methods already had blanks. **Not yet pushed.** **Remaining, in calendar order:** Term Frequency (Day 7),
+> Pandas 02 (Day 11), VADER (Days 13–14), Topic Modeling (Days 16–17). Rule: keep setup/data cells complete; blank
+> the *second* example of each idea, not the first; no complete cell may depend on a blank (CLAUDE.md §1).
 > 📌 **Do first next session: credit Melanie Walsh in ML5** (instructor decision 2026-10-12). Her Bellevue lesson
 > (https://melaniewalsh.github.io/Intro-Cultural-Analytics/02-Python/10-Lists-Loops-Part2.html) is how the course met
 > the Shrout essay and dataset. Add the credit near the Shrout citation in the reading view, and on the slide if it fits.
