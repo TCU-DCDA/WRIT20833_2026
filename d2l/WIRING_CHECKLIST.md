@@ -102,22 +102,24 @@ topic's text.
 
 ## 4. Grade book
 
-The syllabus (*Course Assignments & Final Grade*) says each piece gets a 3-point mark, the
-marks show in **Grades**, and the final letter comes from the *pattern* of marks plus
-Reflection 3's argument, not from a points total. So:
+The syllabus (*Course Assignments & Final Grade*) says each piece gets a plain-language mark with
+**no numbers** (Exceeds / Meets / Does not yet meet expectations), the marks show in **Grades**,
+and the final letter comes from the student's Reflection 3 case and the body of work as a whole,
+not from a points total or a tally. Students must never see a number. So:
 
-**Grade scheme:** Grades → Schemes → New. Name it *Ungrading (3-point)*:
+**Grade scheme:** Grades → Schemes → New. Name it *Ungrading*:
 
 | Symbol | Start % | Meaning |
 |---|---|---|
-| 1 — Not yet | 0 | Does not yet meet |
-| 2 — Meets | 50 | Meets expectations (the expected standard) |
-| 3 — Exceeds | 84 | Exceeds expectations |
+| Does not yet meet expectations | 0 | Missing, incomplete, or minimal |
+| Meets expectations | 50 | The expected standard |
+| Exceeds expectations | 84 | Goes beyond the ask |
 
-(Out of 3, a 1 is 33%, a 2 is 67% and a 3 is 100%, so each lands in its own band.)
+(The percentages exist only because D2L needs them to order the levels. Students never see them.)
 
-**Grade items (12):** Numeric, max 3, the scheme above, displayed as the **scheme symbol**,
-not points. Put them in categories that match the syllabus's body of work:
+**Grade items (12):** type **Selectbox** (you pick a level from a drop-down), using the scheme
+above. On each item, display **only the scheme symbol**: turn off points, percentage, and weight in
+the student view. Put them in categories that match the syllabus's body of work:
 
 - Homework: HW1, HW2, HW3, HW4 (Weekly Experiments are part of each HW's mark)
 - Discussions: D1, D2, D3, D4
@@ -131,8 +133,8 @@ points-based total should be visible, because none exists.
 **Final grade:** release a manually entered **Final Adjusted Grade** only at term end, set by
 the self-evaluation procedure in the syllabus (student proposes in R3; we talk if we differ).
 
-Check the student view (View as Student → Grades) once. It should show symbols like "2 —
-Meets" and no percentage or points total. 40363 found that "not in the final grade" and
+Check the student view (View as Student → Grades) once. It should show words like "Meets
+expectations" and no number, percentage, or points total anywhere. 40363 found that "not in the final grade" and
 "the student sees the mark" are separate settings; confirm the second is on.
 
 ## 5. Syllabus file

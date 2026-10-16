@@ -78,7 +78,7 @@ Legend: ✅ done (written + filled) · 🟦 written, pending registrar/instructo
 | Late Work — *see Student Absences* | ✅ | 🟦 confirm TCU Official-Absence language |
 | Participation, Engagement & Attendance — *tied to grade* | ✅ | |
 | Medical-documentation NOTE — *faculty won't seek; Dean of Students* | ✅ | stated in Late Work + University Policies |
-| **Course Assignments & Final Grade — table of components** | ✅ | added as an ungrading-mapped table (no points; 3-point scale + role) |
+| **Course Assignments & Final Grade — table of components** | ✅ | added as an ungrading-mapped table (no points; word-only marks + role) |
 | Grading Scale(s) — *undergraduate plus/minus* | ✅ | exact TCU undergrad +/- scale (A 94–100 … F < 60) |
 
 ## Course Policies
@@ -101,7 +101,7 @@ AddRan template; D2L access is noted in *Course Materials*).
 
 ## The one design note for the committee
 This course is graded by **ungrading** (no per-assignment points). The checklist's points/percentage
-table is intentionally replaced by the **3-point engagement scale** + a transparent **pattern → letter
-floor → final-self-evaluation** mechanism, using TCU's required undergraduate letter scale. If the
+table is intentionally replaced by the **word-only engagement marks** (Exceeds / Meets / Does not yet meet) + a transparent **student-proposed grade (Reflection 3) → conversation
+if we differ** mechanism, with an A-range guarantee when every piece is in and engaged,, using TCU's required undergraduate letter scale. If the
 reviewing committee requires a conventional points table, that's the one place a faculty decision is
 still needed (the ungrading model itself is complete and written).

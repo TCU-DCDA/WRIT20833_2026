@@ -183,15 +183,15 @@ other **complicates** it; "great point, I agree" is neither.
 
 ### Grading Philosophy (ungrading)
 This course uses **ungrading**. Through the term your work is **not** scored with points; each piece is
-marked on a simple **3-point scale**, and my feedback focuses on your engagement, reflection, and growth
+given one of three plain-language marks (no numbers), and my feedback focuses on your engagement, reflection, and growth
 — not on whether your code or analysis was "right." *(Documenting a failure and what you learned counts
 as meeting expectations.)* The goal is **earned insight over clean code.**
 
 **Per-piece marks:**
-- **3 — Exceeds expectations:** goes beyond the ask — depth, insight, intellectual risk-taking.
-- **2 — Meets expectations:** does the work with genuine, honest engagement. *This is success and the
+- **Exceeds expectations:** goes beyond the ask — depth, insight, intellectual risk-taking.
+- **Meets expectations:** does the work with genuine, honest engagement. *This is success and the
   expected standard.*
-- **1 — Does not yet meet:** missing, incomplete, or minimal. The "not yet" is an invitation to revise
+- **Does not yet meet expectations:** missing, incomplete, or minimal. The "not yet" is an invitation to revise
   where time allows.
 
 ### Late Work
@@ -219,22 +219,22 @@ Documentation Form** through the **Dean of Students Office**.
 
 ### Course Assignments & Final Grade
 Because this course uses **ungrading**, individual assignments carry **no point values** — the column a
-conventional syllabus fills with points is replaced here by a 3-point feedback scale, and the final
+conventional syllabus fills with points is replaced here by plain-language feedback marks, and the final
 letter comes from what your body of work shows as a whole (below), not from a points total or a tally of
 marks.
 
 | Component | How many | How it's evaluated | Role in the final grade |
 |---|---|---|---|
-| **Homework notebooks (HW1–HW4)** | 4 | 3-point scale — engagement + reflection | Evidence of your practice and growth |
-| **Weekly Experiments** (within each HW) | 2–3 per HW | 3-point, as part of each homework | Evidence of your curiosity and risk-taking |
-| **Threaded discussions (D1–D4)** | 4 | 3-point — initial post + two replies | Evidence of your thinking with others |
-| **Self-reflections (R1–R3)** | 3 | 3-point; **R3** is the final self-evaluation | R3 is where you propose your grade |
-| **Capstone** (final evaluative exercise) | 1 | 3-point; presented Fri 12/18 | The fullest evidence of what you can do |
+| **Homework notebooks (HW1–HW4)** | 4 | Exceeds / Meets / Not yet — engagement + reflection | Evidence of your practice and growth |
+| **Weekly Experiments** (within each HW) | 2–3 per HW | Part of each homework's mark | Evidence of your curiosity and risk-taking |
+| **Threaded discussions (D1–D4)** | 4 | Exceeds / Meets / Not yet — initial post + two replies | Evidence of your thinking with others |
+| **Self-reflections (R1–R3)** | 3 | Exceeds / Meets / Not yet; **R3** is the final self-evaluation | R3 is where you propose your grade |
+| **Capstone** (final evaluative exercise) | 1 | Exceeds / Meets / Not yet; presented Fri 12/18 | The fullest evidence of what you can do |
 
 *(The capstone is the course's Final Evaluative Exercise — there is no separate final exam.)*
 
 TCU requires a final letter grade. There is no formula behind it: I don't add up marks, and no number of
-2s or 3s converts into a letter. The marks on individual pieces are feedback along the way. The letter
+"Meets" or "Exceeds" marks converts into a letter. The marks on individual pieces are feedback along the way. The letter
 answers one question about the term as a whole: **what does your body of work show about your
 engagement and growth?** Your body of work is the four homeworks (with their Weekly Experiments), the
 three reflections, the four discussions, and the capstone.

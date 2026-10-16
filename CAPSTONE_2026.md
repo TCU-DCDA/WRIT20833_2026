@@ -154,17 +154,17 @@ can point you somewhere useful before the work sessions.
 
 ## How it's evaluated (ungrading)
 
-Like everything in this course, the capstone is marked on the **3-point scale** — for **engagement,
+Like everything in this course, the capstone gets one of three plain-language marks — for **engagement,
 reflection, and growth**, not for whether your code or analysis came out "right." A finding that didn't
 hold up, paired with a clear account of what you tried and learned, **meets expectations.** This is the
 course's most heavily weighted single piece in the final holistic judgment (see the syllabus), so it's
 worth your real effort — but "effort" here means honest thinking made visible, not polish.
 
-- **3 — Exceeds:** integrates the lenses into a genuine argument; returns to individual voices; names its
+- **Exceeds expectations:** integrates the lenses into a genuine argument; returns to individual voices; names its
   own limits with insight; takes an intellectual risk.
-- **2 — Meets** *(the expected standard, and a success)*: does the analysis with honest engagement, draws
+- **Meets expectations** *(the expected standard, and a success)*: does the analysis with honest engagement, draws
   a grounded claim, and is candid about at least one thing the tools got wrong.
-- **1 — Not yet:** missing, minimal, or a summary with no argument and no reckoning with limits.
+- **Does not yet meet expectations:** missing, minimal, or a summary with no argument and no reckoning with limits.
 
 **TCU Core (CSV).** The capstone is the central piece of evidence for this course's **Citizenship &
 Social Values** credit: forming, arguing, and reflecting on an **evidence-based opinion about a real

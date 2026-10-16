@@ -190,7 +190,7 @@ See the new root `CLAUDE.md` §1.
 2. **Widget:** created and active on a copied homepage; default D2L banner still above it (remove via its ⋯
    menu, or keep). "New here?" line not yet a Quicklink (and any Quicklink breaks if Start Here is re-imported).
 3. **Still unconfirmed:** discussion topics landed in Discussions (checklist §1); Nov 1 date spot-check (§2).
-4. **Then checklist §3–5:** discussion dates, 3-point grade scheme + 12 grade items, syllabus PDF.
+4. **Then checklist §3–5:** discussion dates, word-only grade scheme (Exceeds / Meets / Does not yet meet; no numbers) + 12 Selectbox grade items, syllabus PDF.
 `d2l/build_d2l_package.py` (cartridge: Start Here, Weeks 1–8, Homework and Capstone, the 4 discussion
 topics) and `d2l/build_assignments.py` (9 folders: HW1–4, R1–3, capstone proposal, capstone) are
 adapted from WRIT 40363's `d2l/` and read every date and prompt from the schedule and syllabus. Next:
