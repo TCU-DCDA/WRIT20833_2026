@@ -1,16 +1,6 @@
 # WRIT 20833 — Intro to Coding in the Humanities
 ## "When Coding Meets Culture: Developing Data-Driven Opinions" — Fall 2026
 
-> **DRAFT for instructor review — aligned to the AddRan Simplified Syllabus Template (section order and
-> all) and the F25 WRIT 20833 syllabus.** Official University-policy text (Title IX, Disability/Access,
-> Religious Observations, Academic Conduct, Emergency Response, Recording) is **not pasted** — per
-> AddRan, it lives behind the **Student Resources & Policy Information** QR/link below; the syllabus
-> carries only course-specific policies. Instructor/registrar fields are filled (section 020, meeting time,
-> room, contact, etc.). **For AddRan submission:** the
-> maintained Word copy is `WRIT20833-020_Fall2026_Rode.docx` (edited directly in Word — it holds the QR image + template
-> formatting; mirror any later edits here into it). Tables/images must meet TCU accessibility guidelines
-> (https://cte.tcu.edu/resources/accessibility/).
-
 ---
 
 ## Course Information
@@ -24,10 +14,10 @@
 | **Class Meeting Days & Times** | **Monday / Wednesday / Friday, 10:00–11:50 AM (Central), October 19 – December 18, 2026** — **in person** (24 sessions; attendance is expected). No class the week of Thanksgiving (Nov 23–27). |
 | **Class Location** | Schar Hall, Room 2003 |
 | **Prerequisites** | None — **no prior coding experience assumed** |
-| **Final Evaluative Exercise** | The **capstone** (data-driven-opinion notebook + short essay), presented and due on the final day, **Fri December 18**. There is no separate final exam. |
+| **Final Evaluative Exercise** | The **capstone** (data-driven-opinion notebook + short essay), presented and due on the final day, **Fri December 18, 10:00–11:50 AM, in our classroom (Schar 2003)**. There is no separate final exam. |
 | **Other Important Dates** | **Thanksgiving break (no class):** Nov 23–27 (classes recess after Fri Nov 20, resume Mon Nov 30). **Final drop deadline:** Thu Nov 19. Any other deviations announced on TCU Online. |
 
-**Instructor:** Dr. Curt Rode · **Office Location:** Schar 2006 · **Office Hours:** By appointment — https://calendly.com/c-rode/appointments
+**Instructor:** Dr. Curt Rode · **Office Location:** Schar 2006 · **Office Hours:** By appointment (30 minutes), **in person** in Schar 2006 **or virtually on Zoom** — choose either when you book at https://calendly.com/c-rode/appointments; Zoom meetings get their link in the confirmation email
 **Telephone:** 817-257-6983 · **Email:** c.rode@tcu.edu · **Preferred Contact:** Email
 **Response Time:** within 24 hours on weekdays (longer on weekends and holidays)
 **Course site & submissions:** **TCU Online** (D2L) — d2l.tcu.edu. **Code runs in:** Google Colab (free; needs a Google account).
@@ -36,7 +26,7 @@
 expectations of the course. Turn to it for details on assignments and policies.
 
 ### Student Resources & Policy Information
-[![Student Resources & Policy Information — scan for TCU student resources and university policies](https://cte.tcu.edu/wp-content/uploads/TCU-Syllabus-Policies-Resources.png)](https://cte.tcu.edu/wp-content/uploads/TCU-Syllabus-Policies-Resources.png)
+[![Student Resources & Policy Information — scan for TCU student resources and university policies](https://cte.tcu.edu/wp-content/uploads/TCU-Syllabus-Policies-Resources.png)](https://cte.tcu.edu/tcu-syllabus-policies/)
 
 **Click or scan the QR code** for resources to support you as a TCU student. Please note especially the
 sections on **Student Access and Accommodation**, **Academic Conduct & Course Materials Policies**, and
@@ -141,7 +131,7 @@ By the end of the course you will be able to:
 
 ### Assignments
 Each assignment is described below and connects to the learning outcomes; you submit and view feedback
-through **TCU Online**: submit homework notebooks and reflections in the **Assignments** area and post to the weekly **Discussions**; your marks and my feedback appear in **Grades**.
+through **TCU Online**: submit homework notebooks and reflections in the **Assignments** area and post to the weekly **Discussions**; your marks and my feedback appear in **Grades**. **Expect a mark and written feedback within one week of each due date** (for discussions, one week after the Friday reply deadline). Work due on the final day is marked by the University's final-grade deadline.
 
 | Work | How many | What it is | Course outcomes | Core (CSV · HUM) |
 |---|---|---|---|---|
@@ -244,23 +234,35 @@ letter is set from the *pattern* of those marks (below), not from a points total
 
 TCU requires a final letter grade. Here is exactly how it is set — no mystery:
 
-**1. Your pattern of marks sets a whole-letter floor.** The "body of work" = the four homeworks (with
-Weekly Experiments), the three reflections, the four discussions, and the capstone.
+**1. Your pattern of marks sets a whole-letter floor.** The "body of work" is **12 pieces**: the four
+homeworks (with Weekly Experiments), the three reflections, the four discussions, and the capstone. Count
+how many are marked **1**. A **capstone marked 1 counts as two**, because it is weighted most heavily. If
+you revise a piece marked 1 and it now meets expectations, the new mark replaces the 1.
 
-| Marks across the body of work | Grade floor |
+| Pieces marked 1 | Grade floor |
 |---|---|
-| All **2s and 3s** (everything meets; several exceed) | **A** band |
-| Mostly **2s**, a few **1s** | **B** band |
-| Several **1s** (multiple pieces not yet meeting) | **C** band |
-| Many **1s** / large portions missing | **D / F** range |
+| **None** (every piece is a 2 or a 3; all 2s qualifies) | **A** band |
+| **1–2** | **B** band |
+| **3–4** | **C** band |
+| **5–6** | **D** band |
+| **7 or more** | **F** |
 
 "Engaged" means real effort and honest documentation of your process — *not* polish. Something that
 doesn't fully work, paired with a clear account of what you tried and learned, **meets expectations.**
 
-**2. Your final self-evaluation (Reflection 3) sets the plus/minus.** You make an evidence-based case for
-the precise grade you've earned: consistent **3s** argue toward the top of your band (A, B+, C+);
-**mostly 2s** sit at the mid-to-minus (A‑, B/B‑, C/C‑). The floor is a guarantee you can count on; the
-self-evaluation is where you make your case for more. I confirm or adjust.
+**2. Your 3s set the starting plus/minus, and your final self-evaluation (Reflection 3) can move it.**
+Within your band, the number of pieces marked **3** sets a default:
+
+| Pieces marked 3 | A band | B band | C band | D band |
+|---|---|---|---|---|
+| **4 or more** | A | B+ | C+ | D+ |
+| **1–3** | A‑ | B | C | D |
+| **None** | A‑ | B‑ | C‑ | D‑ |
+
+So **all 2s with no 3s earns an A‑.** In Reflection 3 you make an evidence-based case for the precise
+grade you've earned, and it can move you up within your band. I confirm or adjust, but your grade never
+falls below the default the table gives you. *(If D4 is dropped, the body of work is 11 pieces and the
+same counts apply.)*
 
 ### Grading Scale
 **Grading Scale (TCU undergraduate, plus/minus):** A 94–100 · A‑ 90–93.99 · B+ 87–89.99 · B 84–86.99 ·

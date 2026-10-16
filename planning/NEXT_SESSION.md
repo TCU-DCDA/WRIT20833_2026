@@ -32,7 +32,7 @@
 > + DST dates, then hand-wire the shell per `d2l/WIRING_CHECKLIST.md` §3–6, plus the checks outside this repo.
 > ✍️ **Hand edits pending (Word syllabus `WRIT20833-020_Fall2026_Rode.docx`):** (1) the 2026-09-28 Day 6 and
 > Day 9 label changes; (2) the two 2026-09-30 Code Guide paragraphs now in `SYLLABUS_2026.md` (after the
-> reflections list, and at the end of the AI Use Policy); (3) the 2026-10-07 Code Guide URL + "access code is posted in TCU Online" sentence at the start of the Code Guide paragraph. Then **re-upload the syllabus PDF to D2L**
+> reflections list, and at the end of the AI Use Policy); (3) the 2026-10-07 Code Guide URL + "access code is posted in TCU Online" sentence at the start of the Code Guide paragraph. (4) the 2026-10-15 template-conformance fixes: QR links to cte.tcu.edu/tcu-syllabus-policies/; office hours in person (Schar 2006) or Zoom; final exercise time 10:00–11:50 AM, Schar 2003; one-week feedback turnaround under Assignments; the new count-based grade-floor and plus/minus tables; delete the draft note. Then **re-upload the syllabus PDF to D2L**
 > (`d2l/WIRING_CHECKLIST.md` → *Updating a live shell*).
 > 🔎 **2026-10-12: source/attribution audit** (local, untracked `planning/SOURCE_ATTRIBUTION_AUDIT_2026-10-12.md`;
 > its links are absolute local paths, so fix them before committing it). **F01 done:** the corpus is described as

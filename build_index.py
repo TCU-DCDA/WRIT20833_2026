@@ -132,7 +132,7 @@ def render():
         card("Schedule", "Course Schedule", "Day-by-day: lecture, coding, and what's due.",
              "24 sessions", "schedule.html"),
         card("Syllabus", "Syllabus", "Outcomes, the ungrading policy, AI-use policy, and dates.",
-             "draft", GH_BLOB + "SYLLABUS_2026.md"),
+             "Fall 2026", GH_BLOB + "SYLLABUS_2026.md"),
     ]
     if CHAT_API_URL:
         start_cards.append(card("Tutor", "Code Guide", "An after-hours tutor for your homework and capstone.",
