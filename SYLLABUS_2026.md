@@ -219,55 +219,51 @@ Documentation Form** through the **Dean of Students Office**.
 
 ### Course Assignments & Final Grade
 Because this course uses **ungrading**, individual assignments carry **no point values** — the column a
-conventional syllabus fills with points is replaced here by the 3-point engagement scale, and the final
-letter is set from the *pattern* of those marks (below), not from a points total.
+conventional syllabus fills with points is replaced here by a 3-point feedback scale, and the final
+letter comes from what your body of work shows as a whole (below), not from a points total or a tally of
+marks.
 
 | Component | How many | How it's evaluated | Role in the final grade |
 |---|---|---|---|
-| **Homework notebooks (HW1–HW4)** | 4 | 3-point scale — engagement + reflection | Core of the body-of-work floor |
-| **Weekly Experiments** (within each HW) | 2–3 per HW | 3-point, as part of each homework | The heart of the ungrading |
-| **Threaded discussions (D1–D4)** | 4 | 3-point — initial post + two replies | Part of the floor |
-| **Self-reflections (R1–R3)** | 3 | 3-point; **R3** is the final self-evaluation | R3 sets the plus/minus |
-| **Capstone** (final evaluative exercise) | 1 | 3-point; presented Fri 12/18 | Weighted most heavily in the holistic judgment |
+| **Homework notebooks (HW1–HW4)** | 4 | 3-point scale — engagement + reflection | Evidence of your practice and growth |
+| **Weekly Experiments** (within each HW) | 2–3 per HW | 3-point, as part of each homework | Evidence of your curiosity and risk-taking |
+| **Threaded discussions (D1–D4)** | 4 | 3-point — initial post + two replies | Evidence of your thinking with others |
+| **Self-reflections (R1–R3)** | 3 | 3-point; **R3** is the final self-evaluation | R3 is where you propose your grade |
+| **Capstone** (final evaluative exercise) | 1 | 3-point; presented Fri 12/18 | The fullest evidence of what you can do |
 
 *(The capstone is the course's Final Evaluative Exercise — there is no separate final exam.)*
 
-TCU requires a final letter grade. Here is exactly how it is set — no mystery:
+TCU requires a final letter grade. There is no formula behind it: I don't add up marks, and no number of
+2s or 3s converts into a letter. The marks on individual pieces are feedback along the way. The letter
+answers one question about the term as a whole: **what does your body of work show about your
+engagement and growth?** Your body of work is the four homeworks (with their Weekly Experiments), the
+three reflections, the four discussions, and the capstone.
 
-**1. Your pattern of marks sets a whole-letter floor.** The "body of work" is **12 pieces**: the four
-homeworks (with Weekly Experiments), the three reflections, the four discussions, and the capstone. Count
-how many are marked **1**. A **capstone marked 1 counts as two**, because it is weighted most heavily. If
-you revise a piece marked 1 and it now meets expectations, the new mark replaces the 1.
+**You propose your grade.** In Reflection 3 you look back across that body of work and make an
+evidence-based case for the grade you've earned, pointing to specific pieces. I read your case alongside
+the work. If I see it the same way, that's your grade. If I see it differently, we talk before grades are
+submitted; a different letter is never handed down without that conversation.
 
-| Pieces marked 1 | Grade floor |
-|---|---|
-| **None** (every piece is a 2 or a 3; all 2s qualifies) | **A** band |
-| **1–2** | **B** band |
-| **3–4** | **C** band |
-| **5–6** | **D** band |
-| **7 or more** | **F** |
+**One thing is guaranteed.** If every piece is in and each one shows genuine engagement — nothing is
+still at "not yet" — your grade is in the **A range**. You do not need to "exceed" anything to earn an A.
+Whether it is an A or an A‑ is what your self-evaluation makes the case for.
+
+**What each letter looks like.** These describe the body of work as a whole, not a count:
+- **A range:** All the work is done with honest engagement. Your notebooks and reflections show your
+  thinking, including what didn't work. Your capstone argues from your data and names its limits.
+- **B range:** Real engagement, with real gaps. Some work is missing or thin and wasn't returned to, or
+  the capstone's argument or its account of its limits is underdeveloped.
+- **C range:** Substantial portions of the work are missing or minimal, but the capstone is complete.
+- **D / F:** Most of the work is missing, or there is no capstone.
 
 "Engaged" means real effort and honest documentation of your process — *not* polish. Something that
 doesn't fully work, paired with a clear account of what you tried and learned, **meets expectations.**
-
-**2. Your 3s set the starting plus/minus, and your final self-evaluation (Reflection 3) can move it.**
-Within your band, the number of pieces marked **3** sets a default:
-
-| Pieces marked 3 | A band | B band | C band | D band |
-|---|---|---|---|---|
-| **4 or more** | A | B+ | C+ | D+ |
-| **1–3** | A‑ | B | C | D |
-| **None** | A‑ | B‑ | C‑ | D‑ |
-
-So **all 2s with no 3s earns an A‑.** In Reflection 3 you make an evidence-based case for the precise
-grade you've earned, and it can move you up within your band. I confirm or adjust, but your grade never
-falls below the default the table gives you. *(If D4 is dropped, the body of work is 11 pieces and the
-same counts apply.)*
+A piece marked "not yet" can be revised while time allows, and the revision is what counts.
 
 ### Grading Scale
 **Grading Scale (TCU undergraduate, plus/minus):** A 94–100 · A‑ 90–93.99 · B+ 87–89.99 · B 84–86.99 ·
 B‑ 80–83.99 · C+ 77–79.99 · C 74–76.99 · C‑ 70–73.99 · D+ 67–69.99 · D 64–66.99 · D‑ 60–63.99 · F below 60.
-*(No individual piece carries points; these percentages describe only the final letter, set as above.)*
+*(No individual piece carries points; these percentages are TCU's scale for the final letter, which is set as described above.)*
 
 **Grading Concerns.** Because the course is ungraded, there's nothing to "dispute" point-by-point — but my
 feedback is always open to conversation. If a comment doesn't sit right, email me at

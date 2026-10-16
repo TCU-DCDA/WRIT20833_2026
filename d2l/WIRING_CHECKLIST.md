@@ -129,7 +129,7 @@ Then link each assignment folder and discussion topic to its grade item (Edit �
 points-based total should be visible, because none exists.
 
 **Final grade:** release a manually entered **Final Adjusted Grade** only at term end, set by
-the floor-plus-R3 procedure in the syllabus.
+the self-evaluation procedure in the syllabus (student proposes in R3; we talk if we differ).
 
 Check the student view (View as Student → Grades) once. It should show symbols like "2 —
 Meets" and no percentage or points total. 40363 found that "not in the final grade" and
