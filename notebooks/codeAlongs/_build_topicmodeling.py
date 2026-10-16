@@ -18,6 +18,13 @@ Design choices vs F25:
 - LDA is STOCHASTIC + version-sensitive: random_state=42 pins within-environment, but NO topic words
   are hardcoded in prose — everything is printed and described qualitatively, exactly as HW4's key does.
 
+Two outputs from one cell list (2026-10-15, same approach as the other pair builders): the STUDENT
+copy (type-along blanks: the num_topics loop in Part 2 and the whole second pipeline on the real
+comments in Part 3 — the student's by-hand rerun of what Part 1 showed; a guess line on the Part 1
+corpus) and WRIT20833_Topic_Modeling_Gensim_2026_complete.ipynb with every blank filled. Part 1's
+first pipeline and Putting It All Together stay complete. No complete cell depends on a name only a
+blank defines.
+
 Run from repo root:  python3 notebooks/codeAlongs/_build_topicmodeling.py
 """
 import json, os
@@ -43,6 +50,21 @@ def _lines(text):
     return [l + "\n" for l in lines[:-1]] + [lines[-1]]
 
 
+def pair(student, complete):
+    """A cell that differs between the student copy and the complete copy."""
+    return {"student": student, "complete": complete}
+
+
+STUDENT_NB = "WRIT20833_Topic_Modeling_Gensim_2026.ipynb"
+COMPLETE_NB = "WRIT20833_Topic_Modeling_Gensim_2026_complete.ipynb"
+
+
+def badge(name):
+    return md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/'
+              'notebooks/codeAlongs/' + name + '" target="_parent"><img src="https://colab.research.'
+              'google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>')
+
+
 def notebook(cells):
     return {"cells": cells, "metadata": {
         "colab": {"provenance": []},
@@ -53,13 +75,23 @@ def notebook(cells):
 STOPWORDS_SRC = "stopwords = " + json.dumps(STOPWORDS)
 
 cells = [
-    md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>'),
+    pair(badge(STUDENT_NB), badge(COMPLETE_NB)),
 
     md('''# WRIT 20833 — Topic Modeling with Gensim
 
 **When Coding Meets Culture: Developing Data-Driven Opinions**
 
 Make an editable copy of this worksheet by going to **File > Save a copy in Drive**'''),
+
+    pair(md('''**How this notebook works.** Some code cells are blank on purpose:
+- **type along** — a comment says what to write; type it with me, then run it.
+- **predict first** — write your guess in the comment *before* you run the cell.
+- **your turn** — try it on your own.
+
+If a cell gives you an error, read the message — errors are part of the work here, not something to
+hide.'''),
+         md('''**Complete copy.** Every blank in the class worksheet is filled in here, so you can check your
+work after class. The "predict first" guesses are left for you.''')),
 
     md('''Your text-analysis journey, in three questions:
 - **Term frequency** asked *what words appear most?*
@@ -113,7 +145,8 @@ Topic modeling only makes sense if you can watch it work on text whose themes yo
 are fifteen short comments, constructed for this lesson to sound like three very different corners of
 the internet, each with its own deliberately distinct vocabulary. **Predict:**
 how many topics are here, and what are they?'''),
-    code('''docs = [
+    code('''# my guess: how many topics?    what are they?
+docs = [
     # one corner of the internet
     "The team won the game and the coach thanked the players and the fans.",
     "Fans filled the stadium to watch the team win the game for the coach.",
@@ -184,12 +217,15 @@ see between this tidy example and real data.'''),
 There is **no correct number of topics**. `num_topics` is a dial *you* set, and it changes what the
 model finds. Too few and unrelated themes get mashed together; too many and one real theme splinters.
 Watch what happens when we ask the same fifteen comments for 2 topics, then 4.'''),
-    code('''for k in (2, 4):
+    pair(code('''# type along — for k in (2, 4): train an LdaModel on the same corpus with num_topics=k (random_state=42, passes=10),
+#              then print each topic's top 6 words, the way the training cell above did
+'''),
+         code('''for k in (2, 4):
     print(f"\\n=== {k} topics ===")
     model = LdaModel(corpus=corpus, id2word=dictionary, num_topics=k, random_state=42, passes=10)
     for i in range(k):
         words = [w for w, prob in model.show_topic(i, 6)]
-        print(f"  Topic {i}: {', '.join(words)}")'''),
+        print(f"  Topic {i}: {', '.join(words)}")''')),
     md('''Neither is "wrong." Choosing the number of topics is a **research decision** you justify by how
 interpretable the result is — not a truth the algorithm reveals.'''),
 
@@ -199,7 +235,23 @@ interpretable the result is — not a truth the algorithm reveals.'''),
 That toy corpus was easy on purpose — three obviously different subjects. Now point the same machine
 at our actual course data: the Texas Ten Commandments comments. They're all arguing about **one issue**,
 in overlapping vocabulary. Watch the topics get muddy.'''),
-    code('''comments = [
+    pair(code('''# type along — run the whole Part 1 pipeline on `comments`: tokenize each one (c_tokens), build a Dictionary (c_dict) and
+#              bag-of-words corpus (c_corpus), train a 3-topic LdaModel (c_lda, random_state=42, passes=10), print each topic's top 6 words
+comments = [
+    "The Ten Commandments belong in every classroom, period.",
+    "This is a clear violation of church and state. Keep it out.",
+    "Morals matter and kids today need them more than ever.",
+    "Whose religion gets to decide? Not the government's job.",
+    "Honestly I have no strong opinion either way.",
+    "God and country, that's what built this nation.",
+    "Public schools serve everyone, not just one faith.",
+    "Put the Constitution in classrooms, not commandments.",
+    "Finally some common sense values in our schools.",
+    "Freedom of religion means freedom from it too.",
+    "My kids should learn this at home, not at school.",
+]
+'''),
+         code('''comments = [
     "The Ten Commandments belong in every classroom, period.",
     "This is a clear violation of church and state. Keep it out.",
     "Morals matter and kids today need them more than ever.",
@@ -220,7 +272,7 @@ c_corpus = [c_dict.doc2bow(t) for t in c_tokens]
 c_lda = LdaModel(corpus=c_corpus, id2word=c_dict, num_topics=3, random_state=42, passes=10)
 for i in range(3):
     words = [w for w, prob in c_lda.show_topic(i, 6)]
-    print(f"Topic {i}: {', '.join(words)}")'''),
+    print(f"Topic {i}: {', '.join(words)}")''')),
     md('''Compare these to the toy corpus. There, each topic was a *different subject* you could name in a
 word — sports, music, food. Here, every "topic" is just **more of the same argument**: LDA still hands
 back three tidy word-lists, but they're slices of one debate about one law, not three distinct themes.
@@ -264,8 +316,10 @@ That integrated, evidence-backed reading of a real cultural conversation is exac
 ]
 
 
-out = os.path.join(HERE, "WRIT20833_Topic_Modeling_Gensim_2026.ipynb")
-with open(out, "w", encoding="utf-8") as f:
-    json.dump(notebook(cells), f, indent=1, ensure_ascii=False)
-    f.write("\n")
-print("wrote", out, "(%d cells)" % len(cells))
+for name, version in ((STUDENT_NB, "student"), (COMPLETE_NB, "complete")):
+    picked = [c[version] if "student" in c else c for c in cells]
+    out = os.path.join(HERE, name)
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(notebook(picked), f, indent=1, ensure_ascii=False)
+        f.write("\n")
+    print("wrote", out, "(%d cells)" % len(picked))

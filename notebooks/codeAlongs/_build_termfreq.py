@@ -17,6 +17,12 @@ Design:
   borrowed code" note (Counter does what we hand-built).
 - All outputs computed, not asserted in prose; qualitative claims (which words surface) verified.
 
+Two outputs from one cell list (2026-10-15, same approach as _build_variables.py and the other pair
+builders): the STUDENT copy (type-along blanks: the Day-4 long-way loop, the stopword filter, the
+two-text contrast; a predict-first on the raw top word) and WRIT20833_Term_Frequency_2026_complete.ipynb
+with every blank filled. `top_meaningful_words` stays complete because Part 4 calls it. No complete
+cell depends on a name only a blank defines.
+
 Run from repo root:  python3 notebooks/codeAlongs/_build_termfreq.py
 """
 import json, os
@@ -42,6 +48,21 @@ def _lines(text):
     return [l + "\n" for l in lines[:-1]] + [lines[-1]]
 
 
+def pair(student, complete):
+    """A cell that differs between the student copy and the complete copy."""
+    return {"student": student, "complete": complete}
+
+
+STUDENT_NB = "WRIT20833_Term_Frequency_2026.ipynb"
+COMPLETE_NB = "WRIT20833_Term_Frequency_2026_complete.ipynb"
+
+
+def badge(name):
+    return md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/'
+              'notebooks/codeAlongs/' + name + '" target="_parent"><img src="https://colab.research.'
+              'google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>')
+
+
 def notebook(cells):
     return {"cells": cells, "metadata": {
         "colab": {"provenance": []},
@@ -52,13 +73,23 @@ def notebook(cells):
 STOPWORDS_SRC = "stopwords = " + json.dumps(STOPWORDS)
 
 cells = [
-    md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>'),
+    pair(badge(STUDENT_NB), badge(COMPLETE_NB)),
 
     md('''# WRIT 20833 — Term Frequency
 
 **When Coding Meets Culture: Developing Data-Driven Opinions**
 
 Make an editable copy of this worksheet by going to **File > Save a copy in Drive**'''),
+
+    pair(md('''**How today works.** Some code cells are blank on purpose:
+- **type along** — a comment says what to write; type it with me, then run it.
+- **predict first** — write your guess in the comment *before* you run the cell.
+- **your turn** — try it on your own.
+
+If a cell gives you an error, read the message — errors are part of the work here, not something to
+hide.'''),
+         md('''**Complete copy.** Every blank in the class worksheet is filled in here, so you can check your
+work after class. The "predict first" guesses are left for you.''')),
 
     md('''Last week you learned to *handle* text. This week we start to *analyze* it — and the very first
 move in cultural analytics is the simplest one imaginable: **count the words**. The idea is that if a
@@ -90,8 +121,11 @@ print("Ready. The stopwords skip-list has", len(stopwords), "words in it.")'''),
 
 Here's a small pile of real-sounding comments about the Texas law that puts the Ten Commandments in
 classrooms. Let's count what's in it. First, split it into words, then let `Counter` tally them and
-hand back the **10 most common**.'''),
-    code('''comments_text = """
+hand back the **10 most common**.
+
+**Predict first.** Which single word will come out on top? Write your guess in the comment, then run.'''),
+    code('''# my guess: the most common word will be
+comments_text = """
 The Ten Commandments belong in every classroom in this country, and our kids need them.
 Morals matter, and our schools are where our kids learn about right and wrong.
 God and country are what built this nation, and the schools should teach that.
@@ -116,7 +150,13 @@ one-line shorthand for a pattern you already know from Day 4 ("Building new list
 start with an empty list, loop, and `.append()` whatever passes a test. The two versions below build
 the exact same list. You'll see the one-line form a lot, in our notebooks and in AI-written code, so
 it's worth being able to read it back into the long form.'''),
-    code('''# the long way (Day 4)
+    pair(code('''# type along — build `words_long` the Day 4 way: empty list, loop over split_into_words(comments_text), append each non-empty word
+#              then print whether it equals words_short
+
+# the list comprehension -- same thing, one line
+words_short = [w for w in split_into_words(comments_text) if w]
+'''),
+         code('''# the long way (Day 4)
 words_long = []
 for w in split_into_words(comments_text):
     if w:
@@ -125,7 +165,7 @@ for w in split_into_words(comments_text):
 # the list comprehension -- same thing, one line
 words_short = [w for w in split_into_words(comments_text) if w]
 
-print(words_long == words_short)'''),
+print(words_long == words_short)''')),
 
     # ---- Part 2: meaningful words ----
     md('''# Part 2 — Keep Only the Meaningful Words
@@ -133,10 +173,13 @@ print(words_long == words_short)'''),
 Those tiny words have a name — **stopwords** — and we already have a list of them. If we keep only the
 words that are **not** stopwords (and not empty), the noise drops away and the *content* words rise to
 the top.'''),
-    code('''meaningful = [w for w in split_into_words(comments_text) if w and w not in stopwords]
+    pair(code('''# type along — a comprehension that keeps each word only if it is non-empty AND not in stopwords; save it as `meaningful`
+#              then print how many words were kept and the 10 most common
+'''),
+         code('''meaningful = [w for w in split_into_words(comments_text) if w and w not in stopwords]
 
 print("Meaningful words kept:", len(meaningful))
-print(Counter(meaningful).most_common(10))'''),
+print(Counter(meaningful).most_common(10))''')),
     md('''*That's* term frequency. Now the top words — **schools, religion, country, kids, god** —
 actually tell you what this pile of comments is about. Same text, same counting; we just stopped
 counting the noise.'''),
@@ -174,7 +217,16 @@ official voice of a founding legal document — the kind of thing those commente
 **constructed paraphrase**: lines from the Constitution and its later amendments, shortened and reworded
 for this exercise, so don't quote it as the Constitution itself. (HW2 uses the real 1787 text.)
 Run the same function on both and watch two completely different vocabularies appear.'''),
-    code('''official_text = """
+    pair(code('''# type along — run top_meaningful_words on BOTH texts (top 5 each) and print them side by side, labeled
+official_text = """
+Congress shall pass no law respecting an establishment of religion.
+The powers not delegated to the United States by the Constitution are reserved to the States.
+All legislative powers shall be vested in a Congress of the United States.
+No State shall make any law which shall abridge the privileges of citizens.
+The Congress shall have power to make all laws necessary and proper.
+"""
+'''),
+         code('''official_text = """
 Congress shall pass no law respecting an establishment of religion.
 The powers not delegated to the United States by the Constitution are reserved to the States.
 All legislative powers shall be vested in a Congress of the United States.
@@ -183,7 +235,7 @@ The Congress shall have power to make all laws necessary and proper.
 """
 
 print("Comments:", top_meaningful_words(comments_text, 5))
-print("Official: ", top_meaningful_words(official_text, 5))'''),
+print("Official: ", top_meaningful_words(official_text, 5))''')),
     md('''Same method, two different *aboutnesses*. The official text runs on **shall, congress, states,
 law**; the comments on **schools, religion, country, kids**. Neither list is the "right" one —
 together they show two voices talking about the same issue in completely different words. That gap *is*
@@ -241,8 +293,10 @@ Next week, **pandas** lets us run this same lens over thousands of rows at once.
 ]
 
 
-out = os.path.join(HERE, "WRIT20833_Term_Frequency_2026.ipynb")
-with open(out, "w", encoding="utf-8") as f:
-    json.dump(notebook(cells), f, indent=1, ensure_ascii=False)
-    f.write("\n")
-print("wrote", out, "(%d cells)" % len(cells))
+for name, version in ((STUDENT_NB, "student"), (COMPLETE_NB, "complete")):
+    picked = [c[version] if "student" in c else c for c in cells]
+    out = os.path.join(HERE, name)
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(notebook(picked), f, indent=1, ensure_ascii=False)
+        f.write("\n")
+    print("wrote", out, "(%d cells)" % len(picked))

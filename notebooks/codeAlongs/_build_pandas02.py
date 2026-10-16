@@ -19,6 +19,13 @@ Design choices vs F25:
 
 All values are computed, not asserted in prose, so nothing drifts. Validated with pandas.
 
+Two outputs from one cell list (2026-10-15, same approach as _build_pandas01.py and the other pair
+builders): the STUDENT copy (type-along blanks: .unique(), .duplicated().sum(), the stance
+casing fix, the median fill; a predict-first on what's missing) and
+WRIT20833_Pandas_02_Cleaning_2026_complete.ipynb with every blank filled. The messy table, the copy,
+the first .str chain, the synonym map, drop_duplicates and the payoff stay complete. A skipped blank
+changes what later cells print but never raises.
+
 Run from repo root:  python3 notebooks/codeAlongs/_build_pandas02.py
 """
 import json, os
@@ -41,6 +48,21 @@ def _lines(text):
     return [l + "\n" for l in lines[:-1]] + [lines[-1]]
 
 
+def pair(student, complete):
+    """A cell that differs between the student copy and the complete copy."""
+    return {"student": student, "complete": complete}
+
+
+STUDENT_NB = "WRIT20833_Pandas_02_Cleaning_2026.ipynb"
+COMPLETE_NB = "WRIT20833_Pandas_02_Cleaning_2026_complete.ipynb"
+
+
+def badge(name):
+    return md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/'
+              'notebooks/codeAlongs/' + name + '" target="_parent"><img src="https://colab.research.'
+              'google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>')
+
+
 def notebook(cells):
     return {"cells": cells, "metadata": {
         "colab": {"provenance": []},
@@ -49,13 +71,23 @@ def notebook(cells):
 
 
 cells = [
-    md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>'),
+    pair(badge(STUDENT_NB), badge(COMPLETE_NB)),
 
     md('''# WRIT 20833 — Data Cleaning with Pandas
 
 **When Coding Meets Culture: Developing Data-Driven Opinions**
 
 Make an editable copy of this worksheet by going to **File > Save a copy in Drive**'''),
+
+    pair(md('''**How today works.** Some code cells are blank on purpose:
+- **type along** — a comment says what to write; type it with me, then run it.
+- **predict first** — write your guess in the comment *before* you run the cell.
+- **your turn** — try it on your own.
+
+If a cell gives you an error, read the message — errors are part of the work here, not something to
+hide.'''),
+         md('''**Complete copy.** Every blank in the class worksheet is filled in here, so you can check your
+work after class. The "predict first" guesses are left for you.''')),
 
     md('''Last class the data was *tidy*. Real found data almost never is. Scraped comments show up with
 stray spaces, line breaks in the middle of text, the same category spelled five different ways, blank
@@ -99,15 +131,21 @@ messy_df'''),
     md('''# Step 1: Diagnose Before You Touch Anything
 
 Good cleaning starts with *looking*. Three quick questions tell you most of what's wrong:
-**What's missing? What's inconsistent? What's duplicated?**'''),
-    code('''# what's missing?
+**What's missing? What's inconsistent? What's duplicated?**
+
+**Predict first.** Look back at the table: which column has a missing value, and how many? Write your guess, then run.'''),
+    code('''# my guess: column =    missing =
 print("Missing values per column:")
 print(messy_df.isnull().sum())'''),
-    code('''# what's inconsistent? .unique() shows every distinct value in a column
+    pair(code('''# type along — what's inconsistent? print every distinct value in the stance column with .unique()
+'''),
+         code('''# what's inconsistent? .unique() shows every distinct value in a column
 print("Stance labels as found:")
-print(messy_df["stance"].unique())'''),
-    code('''# what's duplicated? (a whole row repeated)
-print("Duplicate rows:", messy_df.duplicated().sum())'''),
+print(messy_df["stance"].unique())''')),
+    pair(code('''# type along — what's duplicated? count whole rows that repeat with .duplicated().sum()
+'''),
+         code('''# what's duplicated? (a whole row repeated)
+print("Duplicate rows:", messy_df.duplicated().sum())''')),
     md('''So: one missing `likes` value, a `stance` column that means three things but is spelled ten
 ways, and one repeated comment. Let's fix them one at a time on a **copy** (never destroy your raw
 data — you may need to go back).'''),
@@ -127,9 +165,11 @@ clean_df["comment"].tolist()'''),
 
 `stance` is the worst offender. First flatten the casing and spacing, then **map** the synonyms
 ("for" → support, "against" → oppose) onto a clean set of three labels.'''),
-    code('''# lowercase + trim so "OPPOSE", "Oppose", "oppose " all become "oppose"
+    pair(code('''# type along — strip and lowercase the stance column (the same .str chain as the comment column), assign it back, then print .unique()
+'''),
+         code('''# lowercase + trim so "OPPOSE", "Oppose", "oppose " all become "oppose"
 clean_df["stance"] = clean_df["stance"].str.strip().str.lower()
-print("After casing fix:", clean_df["stance"].unique())'''),
+print("After casing fix:", clean_df["stance"].unique())''')),
     code('''# map the synonyms onto canonical labels
 clean_df["stance"] = clean_df["stance"].replace({"for": "support", "against": "oppose"})
 print("Canonical labels:", clean_df["stance"].unique())'''),
@@ -147,11 +187,13 @@ One comment has no `likes` count. You have choices, and **none are neutral**:
 
 Here we fill with the **median** (the middle value, less skewed by that 410-like outlier than the
 mean). Whatever you choose, *say so* in your writeup — it's part of your method.'''),
-    code('''median_likes = clean_df["likes"].median()
+    pair(code('''# type along — save the median of the likes column as `median_likes`; fill the missing value with .fillna(); print the median and how many are still missing
+'''),
+         code('''median_likes = clean_df["likes"].median()
 clean_df["likes"] = clean_df["likes"].fillna(median_likes)
 
 print("Filled the missing likes with the median:", median_likes)
-print("Any missing left?", clean_df["likes"].isnull().sum())'''),
+print("Any missing left?", clean_df["likes"].isnull().sum())''')),
 
     # ---- duplicates ----
     md('''# Step 5: Drop the Duplicate
@@ -201,8 +243,10 @@ clean_df[["comment", "stance"]].head()'''),
 ]
 
 
-out = os.path.join(HERE, "WRIT20833_Pandas_02_Cleaning_2026.ipynb")
-with open(out, "w", encoding="utf-8") as f:
-    json.dump(notebook(cells), f, indent=1, ensure_ascii=False)
-    f.write("\n")
-print("wrote", out, "(%d cells)" % len(cells))
+for name, version in ((STUDENT_NB, "student"), (COMPLETE_NB, "complete")):
+    picked = [c[version] if "student" in c else c for c in cells]
+    out = os.path.join(HERE, name)
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(notebook(picked), f, indent=1, ensure_ascii=False)
+        f.write("\n")
+    print("wrote", out, "(%d cells)" % len(picked))

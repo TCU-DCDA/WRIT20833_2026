@@ -43,11 +43,10 @@
 > schedule links to a notebook stay plain text until its schedule day (HW: its "assigned" day); `?all=1` previews all.
 > If a date moves, edit the schedule and rebuild `docs/`. **To do by hand in D2L:** release conditions on the notebook
 > links (`d2l/WIRING_CHECKLIST.md` §7). Not yet pushed.
-> ✏️ **2026-10-15: code-along room-to-type audit.** 7 of 9 code-alongs were fully pre-filled (WORKLOG). **Weeks 1–2
-> are rebuilt:** Variables (`_build_variables.py`, new), Lists & Loops (`_build_lists.py`, new), Dictionaries &
-> Functions (`_build_dictfunc.py`, now a pair) each emit a student copy with type-along blanks + a `*_complete.ipynb`.
-> String Methods already had blanks. **Not yet pushed.** **Remaining, in calendar order:** Term Frequency (Day 7),
-> Pandas 02 (Day 11), VADER (Days 13–14), Topic Modeling (Days 16–17). Rule: keep setup/data cells complete; blank
+> ✏️ **2026-10-15: code-along room-to-type audit — DONE for all nine.** Every code-along builder now emits a student
+> copy with type-along blanks + a `*_complete.ipynb` (WORKLOG, two entries). Weeks 1–2 pushed; the last four
+> (Term Frequency, Pandas 02, VADER, Topic Modeling) are **committed, not pushed**. Open question: when do students
+> get the `_complete` copies? None are linked anywhere. Rule for future edits: keep setup/data cells complete; blank
 > the *second* example of each idea, not the first; no complete cell may depend on a blank (CLAUDE.md §1).
 > 📌 **Do first next session: credit Melanie Walsh in ML5** (instructor decision 2026-10-12). Her Bellevue lesson
 > (https://melaniewalsh.github.io/Intro-Cultural-Analytics/02-Python/10-Lists-Loops-Part2.html) is how the course met

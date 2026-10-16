@@ -14,7 +14,32 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-10-15 — Site: notebook links stay unlinked until their class day
+## Latest session — 2026-10-15 — Code-alongs: room to type, remaining four (Term Frequency, Pandas 02, VADER, Topic Modeling)
+
+- All nine code-alongs now ship as a student/complete pair. The four remaining builders were converted
+  in place (same `pair()` helpers, "How this notebook works" note, two-file writer). Content and order
+  unchanged; blanks follow the house rule (first example complete, next one blank; data lines kept):
+  - *Term Frequency* (Day 7): type-along the Day-4 long-way loop, the stopword comprehension, the
+    comments-vs-official contrast; predict-first on the raw top word. `top_meaningful_words` stays complete
+    (Part 4 calls it). 12 code cells → 3 / 3 your-turn / 1 predict / 4 complete.
+  - *Pandas 02* (Day 11): type-along `.unique()`, `.duplicated().sum()`, the stance casing chain, the
+    median fill; predict-first on what's missing. 16 → 4 / 2 / 1 / 8. A skipped blank changes what later
+    cells print but never raises.
+  - *VADER* (Days 13–14): type-along scoring one row, mean + idxmax/idxmin extremes, groupby-by-stance;
+    guess lines added to both predict cells. `tone`/`tone_label`/`.apply` stay complete. 16 → 3 / 2 / 2 / 8.
+  - *Topic Modeling* (Days 16–17): type-along the `num_topics` loop and the whole second pipeline on the
+    real comments (the by-hand rerun of Part 1); guess line on the toy corpus. 13 → 2 / 2 / 1 / 7.
+    API-heavy, so fewer blanks by design; the LDA code is untouched, so the 2026-09-28 seed tuning stands.
+- **Verified:** all 18 notebooks (9 student + 9 complete) execute top-to-bottom; the only error anywhere
+  is the intentional TypeError in Variables. Student copies run with blanks empty. All nine builders
+  reproduce the committed notebooks byte-identically (scratch rebuild + cmp).
+- **Environment note:** on this machine the homebrew `python3` has no pandas/gensim/VADER;
+  `/opt/anaconda3/bin/python3` has them (pandas 2.1.4, gensim 4.3.0). CLAUDE.md §3 now says to check
+  rather than assume. The review page (claude.ai artifact) now shows all nine notebooks.
+- **Not pushed.** The site gate means nothing unlocks early either way.
+
+
+## Earlier session — 2026-10-15 — Site: notebook links stay unlinked until their class day
 
 - **Ask:** notebooks should not be clickable on the site until the day they are assigned.
 - **How:** new `release_dates.py` reads `COURSE_SCHEDULE_2026.md` (the source of truth for dates): a

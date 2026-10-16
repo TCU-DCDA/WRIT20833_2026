@@ -17,6 +17,12 @@ Design choices vs F25:
 - VADER is deterministic (fixed lexicon), but scores are NOT hardcoded in prose — all printed at
   runtime — so nothing drifts across vader versions. Validated with vaderSentiment + pandas.
 
+Two outputs from one cell list (2026-10-15, same approach as the other pair builders): the STUDENT
+copy (type-along blanks: scoring one row, the mean + extremes, the groupby by stance; guess lines on
+the two predict-first cells) and WRIT20833_VADER_Sentiment_2026_complete.ipynb with every blank filled.
+`tone`, `tone_label` and the `.apply` cell stay complete because later cells call them. No complete
+cell depends on a name only a blank defines.
+
 Run from repo root:  python3 notebooks/codeAlongs/_build_vader.py
 """
 import json, os
@@ -39,6 +45,21 @@ def _lines(text):
     return [l + "\n" for l in lines[:-1]] + [lines[-1]]
 
 
+def pair(student, complete):
+    """A cell that differs between the student copy and the complete copy."""
+    return {"student": student, "complete": complete}
+
+
+STUDENT_NB = "WRIT20833_VADER_Sentiment_2026.ipynb"
+COMPLETE_NB = "WRIT20833_VADER_Sentiment_2026_complete.ipynb"
+
+
+def badge(name):
+    return md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/'
+              'notebooks/codeAlongs/' + name + '" target="_parent"><img src="https://colab.research.'
+              'google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>')
+
+
 def notebook(cells):
     return {"cells": cells, "metadata": {
         "colab": {"provenance": []},
@@ -47,13 +68,23 @@ def notebook(cells):
 
 
 cells = [
-    md('<a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>'),
+    pair(badge(STUDENT_NB), badge(COMPLETE_NB)),
 
     md('''# WRIT 20833 — Sentiment Analysis with VADER
 
 **When Coding Meets Culture: Developing Data-Driven Opinions**
 
 Make an editable copy of this worksheet by going to **File > Save a copy in Drive**'''),
+
+    pair(md('''**How this notebook works.** Some code cells are blank on purpose:
+- **type along** — a comment says what to write; type it with me, then run it.
+- **predict first** — write your guess in the comment *before* you run the cell.
+- **your turn** — try it on your own.
+
+If a cell gives you an error, read the message — errors are part of the work here, not something to
+hide.'''),
+         md('''**Complete copy.** Every blank in the class worksheet is filled in here, so you can check your
+work after class. The "predict first" guesses are left for you.''')),
 
     md('''In Week 3 you *counted* words — what a text is about. Now we ask a different question: how does
 it **feel**? **Sentiment analysis** scores the emotional tone of a text, from negative to positive.
@@ -83,7 +114,8 @@ print(scores)
 print("compound:", scores["compound"])'''),
     md('''**Predict first.** Before running the next cell, guess: which line is most positive? Most
 negative? Which is mixed? Then check yourself.'''),
-    code('''samples = [
+    code('''# my guess — most positive:    most negative:    mixed:
+samples = [
     "worst law ever, complete waste of everyone's time",
     "The idea is okay, nothing special but not terrible either",
     "I love love LOVE this, so good for our kids ❤️",
@@ -135,9 +167,11 @@ comments = [
 comments_df = pd.DataFrame(comments, columns=["comment", "stance"])
 comments_df'''),
     md('''Score one first, to see the move on a single row:'''),
-    code('''first = comments_df["comment"].iloc[0]
+    pair(code('''# type along — grab the first comment with .iloc[0], print it, then print its compound score
+'''),
+         code('''first = comments_df["comment"].iloc[0]
 print(first)
-print("compound:", analyzer.polarity_scores(first)["compound"])'''),
+print("compound:", analyzer.polarity_scores(first)["compound"])''')),
     md('''Now scale up. `.apply()` runs a function on every row of a column — the same one-line-to-whole-
 column move you used with pandas. We add the result as a new `sentiment` column.'''),
     code('''def tone(text):
@@ -154,12 +188,14 @@ found none of their words in its lexicon, so it has nothing to add up. **Zero me
     md('''# Part 3 — Reading the Results
 
 With a score per comment, you can ask quantitative questions of the whole crowd.'''),
-    code('''print("Average tone across all comments:", round(comments_df["sentiment"].mean(), 3))
+    pair(code('''# type along — print the average sentiment (round to 3); then use .idxmax() / .idxmin() with .loc to pull the most positive and most negative rows and print each score with its comment
+'''),
+         code('''print("Average tone across all comments:", round(comments_df["sentiment"].mean(), 3))
 
 happiest = comments_df.loc[comments_df["sentiment"].idxmax()]
 angriest = comments_df.loc[comments_df["sentiment"].idxmin()]
 print("\\nMost positive tone:", f'{happiest["sentiment"]:+.3f}  "{happiest["comment"]}"')
-print("Most negative tone:", f'{angriest["sentiment"]:+.3f}  "{angriest["comment"]}"')'''),
+print("Most negative tone:", f'{angriest["sentiment"]:+.3f}  "{angriest["comment"]}"')''')),
     md('### Your turn'),
     code('''# your turn — sort the DataFrame by sentiment and look at the order
 # comments_df.sort_values("sentiment")
@@ -185,8 +221,10 @@ are *different axes*. Someone can **oppose** the law in warm, calm language, or 
 sounding furious. A word like "God" or "freedom" reads positive to the lexicon no matter which side is
 saying it. Distant reading (VADER's number) and close reading (your judgment) measure different things —
 which is exactly why you need both.'''),
-    code('''# the average TONE within each STANCE camp — do supporters "sound" more positive than opponents?
-comments_df.groupby("stance")["sentiment"].mean().round(3)'''),
+    pair(code('''# type along — the average TONE within each STANCE camp: group by stance, take the mean of sentiment, round to 3
+'''),
+         code('''# the average TONE within each STANCE camp — do supporters "sound" more positive than opponents?
+comments_df.groupby("stance")["sentiment"].mean().round(3)''')),
     code('''import matplotlib.pyplot as plt
 
 comments_df.groupby("stance")["sentiment"].mean().plot(kind="bar", title="Average tone by stance")
@@ -200,7 +238,8 @@ plt.show()'''),
 
 VADER reads a lexicon, not a mind. It has no idea about sarcasm, irony, or context. **Predict the tone
 of each line below, then run it** — and watch it miss.'''),
-    code('''tricky = [
+    code('''# my guess (positive / negative / neutral, one per line):
+tricky = [
     "Oh GREAT, more religion forced on our kids.",   # sarcasm: sounds positive, isn't
     "Sure, because schools have NO other problems.",  # sarcasm
     "Honestly? Not a bad idea at all.",               # double negative = positive
@@ -250,8 +289,10 @@ different ways to hear a crowd.'''),
 ]
 
 
-out = os.path.join(HERE, "WRIT20833_VADER_Sentiment_2026.ipynb")
-with open(out, "w", encoding="utf-8") as f:
-    json.dump(notebook(cells), f, indent=1, ensure_ascii=False)
-    f.write("\n")
-print("wrote", out, "(%d cells)" % len(cells))
+for name, version in ((STUDENT_NB, "student"), (COMPLETE_NB, "complete")):
+    picked = [c[version] if "student" in c else c for c in cells]
+    out = os.path.join(HERE, name)
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(notebook(picked), f, indent=1, ensure_ascii=False)
+        f.write("\n")
+    print("wrote", out, "(%d cells)" % len(picked))

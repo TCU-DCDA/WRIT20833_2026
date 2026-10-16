@@ -27,9 +27,8 @@ Check the table below *before* you open a notebook.
 | **When a notebook link goes live** on the site | nothing extra — `release_dates.py` reads the day's date from `COURSE_SCHEDULE_2026.md` (HW: its "assigned" row). Links carry `data-opens`; `GATE_JS` in `site_theme.PAGE` unlinks future ones on the viewer's clock. `?all=1` shows everything | rebuild `docs/` after any schedule date change. Soft gate: the repo is public, so this paces the site, it does not hide files. D2L links need their own release conditions, set by hand |
 | The **Code Guide chat page** (`docs/chatbot.html`, `docs/chatbot.js`, `docs/render.js`) | `chatbot/chatbot.js` + `chatbot/render.js` + `build_chatbot.py` (set `CHAT_API_URL` there; the home-page card appears only once it's set). The tutor's prompt and Worker are in the private `TCU-DCDA/WRIT20833-chatbot` — never copy them here | `python3 build_chatbot.py && python3 build_index.py`; tests: `node --test chatbot/render.test.js`, and `chatbot/browser-check.mjs` (Playwright; see its header) |
 
-Every code-along now has a builder. Five of them (`_build_variables.py`, `_build_strings.py`,
-`_build_lists.py`, `_build_dictfunc.py`, `_build_pandas01.py`) emit a **pair**: the student notebook
-with type-along blanks, plus a `*_complete.ipynb` with every blank filled. Only the student copy is
+Every code-along has a builder, and every builder emits a **pair**: the student notebook with
+type-along blanks, plus a `*_complete.ipynb` with every blank filled. Only the student copy is
 linked from the schedule, site, and D2L. House rule for blanks: the *first* worked example of an idea
 stays complete, the *next* one is the blank; data lines stay in the student cell; no complete cell may
 depend on a name that only a blank defines (verify by executing the student copy with blanks empty).
@@ -60,9 +59,11 @@ public.
 
 ## 3. Validating notebooks
 
-Use plain `python3` on this machine (`/opt/anaconda3/bin/python`, cited in older WORKLOG
-entries, does not exist here). The full stack is present: pandas 2.3.3 · numpy 2.0.2 ·
-gensim 4.4.0 · vaderSentiment · matplotlib 3.9.4.
+Which interpreter has the stack depends on the machine. Check before trusting a run:
+`python3 -c "import pandas, vaderSentiment, gensim, matplotlib"`. On 2026-10-15 the homebrew
+`python3` here had none of them and `/opt/anaconda3/bin/python3` had all four (pandas 2.1.4 ·
+gensim 4.3.0); an earlier machine was the reverse (plain `python3` with pandas 2.3.3 · gensim 4.4.0).
+The builders themselves need only the standard library.
 
 Executing a notebook top-to-bottom is not enough on its own — homework cells are mostly
 `TODO` stubs, so they pass while teaching nothing. When you touch homework logic, **simulate
