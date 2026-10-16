@@ -1,6 +1,6 @@
 /**
  * Code Guide reply rendering: text in, HTML out. No DOM, so it can be unit-tested in Node
- * (render.test.js). SOURCE file: build_chatbot.py copies it to docs/. The page loads it before chatbot.js.
+ * (render.test.js). SOURCE file: build/build_chatbot.py copies it to docs/. The page loads it before chatbot.js.
  *
  * The rule that matters: CODE IS NEVER REFORMATTED. Fenced blocks and inline code are set aside first
  * and restored last, so `2 ** 3`, `a*b*c`, indentation, and blank lines inside a block reach the student

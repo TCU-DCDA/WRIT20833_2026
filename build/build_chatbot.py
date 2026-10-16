@@ -11,6 +11,8 @@ link it, so students can't land on a chat window with nothing behind it.
 
 Run from repo root:  python3 build_chatbot.py
 """
+import os as _os
+_os.chdir(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))  # repo root: paths below are repo-relative
 import html
 import os
 from site_theme import PAGE, site_header, site_footer, write_stylesheet, assert_accessible

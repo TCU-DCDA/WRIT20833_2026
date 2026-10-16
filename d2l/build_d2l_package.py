@@ -9,7 +9,7 @@ a git commit and the LMS cannot go stale.
 
 Sources, all read rather than retyped:
   COURSE_SCHEDULE_2026.md  weeks, days, what is linked and due (via build_schedule_html.parse)
-  build_index.py           the site's card titles, blurbs and lecture thumbnails
+  build/build_index.py           the site's card titles, blurbs and lecture thumbnails
   SYLLABUS_2026.md         the four discussion prompts
   the notebooks            each notebook's own title
 

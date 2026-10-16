@@ -1,7 +1,7 @@
 # Lecture source notes — what to harvest from F25 for the 2026 mini-lectures
 
 A running ledger of **reusable content mined from the F25 lecture decks** (`WRIT20833_2025/docs/lectures/`),
-so the scale-out of ML1–ML7 doesn't re-discover the same material. Pairs with the `build_lectures.py`
+so the scale-out of ML1–ML7 doesn't re-discover the same material. Pairs with the `build/build_lectures.py`
 registry and the WORKLOG "Lecture pages" section. When a later ML is authored, move the relevant rows here
 into that lecture and check them off.
 
@@ -65,7 +65,7 @@ survey deck. Triage below.
 ## F25 `mini-lectures/lecture-1-connotations/` ("Data Has Connotations") — harvested 2026-06-13 → ML1
 
 Authored **ML1 "Connotations & Code"** (`materials/lectures/ml1.md`, 7 slides) in ML0's voice, ported from
-F25's 8-slide deck. Title page links live (`build_lectures.py` registry + `build_index.py` card).
+F25's 8-slide deck. Title page links live (`build/build_lectures.py` registry + `build/build_index.py` card).
 
 ### ✅ Folded into ML1
 - **Denotation vs. connotation** (the deck's core) — reframed as "the humanities' oldest tool, and it
@@ -269,7 +269,7 @@ tangled-yarn-into-three-baskets = the muddy single-issue corpus) is **prepped in
 
 ## F25 `lecture-9-public-arguments` ("Going Public") — harvested 2026-06-18 → ML9
 Authored **ML9 "Going Public"** (`materials/lectures/ml9.md`, 6 body slides + title) homed at **Day 17**
-(Tue 7/28, the capstone-framing work session). Registered in `build_lectures.py` + `build_index.py` (card
+(Tue 7/28, the capstone-framing work session). Registered in `build/build_lectures.py` + `build/build_index.py` (card
 flipped from `link=None`/"(under review)" → live); Day-17 lecture cell set to "Going Public" in
 `COURSE_SCHEDULE_2026.md` + `SYLLABUS_2026.md`. Title art `ml9_title.jpg` (already generated) now active.
 **Spine:** *your analysis isn't finished until it argues* — analysis → public argument → the capstone.

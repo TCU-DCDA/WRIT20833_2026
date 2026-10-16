@@ -39,7 +39,7 @@
 > **93 comments stored as 123 rows** everywhere (WORKLOG). Open: the private Code Guide prompt likely still says "~123
 > comments". **Wording batch F02–F04, F07, F09, F11–F13 also done.** Remaining: F05/F06/F08/F10 need instructor
 > framing calls, plus the audit's "Additional prose and citation issues" list.
-> 🔒 **2026-10-15: notebook links are date-gated on the site.** `release_dates.py` + `GATE_JS` (WORKLOG). Cards and
+> 🔒 **2026-10-15: notebook links are date-gated on the site.** `build/release_dates.py` + `GATE_JS` (WORKLOG). Cards and
 > schedule links to a notebook stay plain text until its schedule day (HW: its "assigned" day); `?all=1` previews all.
 > If a date moves, edit the schedule and rebuild `docs/`. **To do by hand in D2L:** release conditions on the notebook
 > links (`d2l/WIRING_CHECKLIST.md` §7). Not yet pushed.
@@ -98,7 +98,7 @@ names four sessions that have **no built material** — they are verbal framings
 | 14 | Wed 11/18 | Close vs. distant reading |
 | 15 | Fri 11/20 | Predictions on the record |
 | 18 | Fri 12/4 | Integration (close → distant → close) |
-Options: (a) author short reading pages via `build_lectures.py` like ml0–ml9; (b) write instructor-only
+Options: (a) author short reading pages via `build/build_lectures.py` like ml0–ml9; (b) write instructor-only
 speaking notes into `materials/lectures/`; (c) mark them **"(verbal)"** in the schedule so the column stops
 reading as a promise of eight+ decks (the 2026-07-01 audit's §5.1 suggestion — cheapest of the three).
 Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these four are not.
@@ -119,7 +119,7 @@ Day 7 "Data as evidence" is already documented as a ~5-min verbal framing; these
 - **Chatbot tutor ("Code Guide")** — ✅ **DEPLOYED 2026-10-07** (`writ20833-codeguide` Worker) and **linked** from the
   home page (`CHAT_API_URL` set, `6c576dc`). Real deadline: HW1 is assigned Fri 10/30. Worker, prompt, and assignment blocks: private `TCU-DCDA/WRIT20833-chatbot` (its
   `CLAUDE.md` + `DEPLOY.md` are current). Chat page: this repo (`chatbot/chatbot.js` + `chatbot/render.js` +
-  `build_chatbot.py` → `docs/chatbot.html`), live and linked.
+  `build/build_chatbot.py` → `docs/chatbot.html`), live and linked.
   - **2026-09-30:** two independent reviews (`COURSE_CONTEXT_REVIEW_*` / `COURSE_REVIEW_EXPANDED_*` in the
     chatbot repo, with replies recording Dr. Rode's six decisions). Work order done: permitted-help prompt
     revision (explain supplied + AI-written code; homework-writing feedback; concepts; no due dates; Track B
@@ -222,7 +222,7 @@ Re-verified by execution on **2026-09-02**:
   2.0.2 / gensim 4.4.0 / vaderSentiment. **The Day 16–17 gensim LDA notebook ran clean** (the standing
   risk item). ⚠️ **Toolchain note:** `/opt/anaconda3/bin/python` (the path this WORKLOG cites) does **not
   exist on the `/Users/crode/...` machine** — plain `python3` there has the full stack.
-- **Site is in sync** — re-running `build_index.py`, `build_schedule_html.py`, `build_lectures.py`
+- **Site is in sync** — re-running `build/build_index.py`, `build/build_schedule_html.py`, `build/build_lectures.py`
   reproduces the committed `docs/` **byte-identically**. Don't hand-edit `docs/`.
 - **Syllabus complete** — zero `[...]` placeholders; section 020 · MWF 10:00–11:50 AM · Schar Hall 2003;
   all D1–D4 + R1–R3 prompts written; dates agree across syllabus, schedule, and capstone sheet.

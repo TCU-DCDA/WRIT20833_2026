@@ -14,6 +14,8 @@ raw.githubusercontent URLs the published site can reach (resolves once the repo 
 
 Run from repo root:  python3 build_lectures.py
 """
+import os as _os
+_os.chdir(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))  # repo root: paths below are repo-relative
 import re, html, os
 from PIL import Image
 from site_theme import PAGE, site_header, site_footer, write_stylesheet, assert_accessible

@@ -10,7 +10,7 @@ Plain language; no prior philosophy assumed. ~600 words.*
 > §4 the moral floor + Auden). This passage is one drafted *student-facing* realization of §1.
 >
 > **Published (2026-06-12):** the noumena framing is now woven into the **ML0 reading page**,
-> [`lectures/ml0.md`](lectures/ml0.md) → `docs/lectures/ml0.html` (built by `build_lectures.py`), which
+> [`lectures/ml0.md`](lectures/ml0.md) → `docs/lectures/ml0.html` (built by `build/build_lectures.py`), which
 > mixes it with F25's "studying the mess" humanities opener. This doc stays the planning/teaching-notes
 > home for the framing; edit ML0's *student-facing* copy in `lectures/ml0.md`.
 

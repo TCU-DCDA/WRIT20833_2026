@@ -1,4 +1,4 @@
-// Configuration. SOURCE file: build_chatbot.py copies this to docs/chatbot.js and fills in
+// Configuration. SOURCE file: build/build_chatbot.py copies this to docs/chatbot.js and fills in
 // https://writ20833-codeguide.0expatriate0.workers.dev/api/chat from its CHAT_API_URL setting. Edit here, never in docs/.
 const API_URL = 'https://writ20833-codeguide.0expatriate0.workers.dev/api/chat';
 
@@ -196,7 +196,7 @@ chatForm.addEventListener('submit', async (e) => {
     const message = userInput.value.trim();
     if (!message) return;
 
-    // Built without a Worker URL (build_chatbot.py's CHAT_API_URL is empty): say so plainly.
+    // Built without a Worker URL (build/build_chatbot.py's CHAT_API_URL is empty): say so plainly.
     if (!API_URL) {
         appendMessage('error', "The Code Guide isn't open yet. Check back soon, or ask Dr. Rode in class.");
         return;

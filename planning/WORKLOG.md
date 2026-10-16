@@ -14,6 +14,17 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
+## 2026-10-15 — Repo tidy: site generators moved to `build/`
+
+- `build_index.py`, `build_schedule_html.py`, `build_lectures.py`, `build_chatbot.py`, `site_theme.py`,
+  `release_dates.py` → `build/`. Each now `chdir`s to the repo root on start, so `python3 build/<name>.py`
+  works from anywhere; `d2l/d2l_common.py` imports from `build/`. Verified: `docs/` rebuilds byte-identical
+  (only three JS comments naming the path changed), `release_dates.py` output identical, both D2L packages
+  identical file-for-file, render tests 9/9. Current docs (CLAUDE.md, README, WIRING_CHECKLIST,
+  NEXT_SESSION, lecture notes) point at the new paths; older WORKLOG entries keep the old names.
+- Still at root, awaiting instructor OK to delete: five TCU template/Core files byte-identical to
+  `reference/`, and the stale `SYLLABUS_2026.docx` (Aug 27; old grading text and draft note).
+
 ## Latest session — 2026-10-15 — Code-alongs: room to type, remaining four (Term Frequency, Pandas 02, VADER, Topic Modeling)
 
 - All nine code-alongs now ship as a student/complete pair. The four remaining builders were converted

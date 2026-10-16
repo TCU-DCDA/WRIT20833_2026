@@ -2,7 +2,7 @@
  * Browser checks for the Code Guide page's conversation state, against a fake Worker.
  * Needs Playwright, which this repo deliberately doesn't install. Run it from a scratch folder that has it:
  *
- *   python3 build_chatbot.py                                   # (in this repo) build docs/ first
+ *   python3 build/build_chatbot.py                                   # (in this repo) build docs/ first
  *   mkdir /tmp/cg && cd /tmp/cg && npm i playwright@1.58 && npx playwright install chromium
  *   cp <this repo>/chatbot/browser-check.mjs . && DOCS=<this repo>/docs node browser-check.mjs
  *

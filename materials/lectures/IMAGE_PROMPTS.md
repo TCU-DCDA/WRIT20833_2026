@@ -11,7 +11,7 @@ for the existing paintings** (`messy_humanities`, the brass valves, `humanities_
    reference and say "match this painting's look" — this is the single biggest lever for consistency.
 3. Generate **one at a time**, in order; save each with the **exact `FILE` name** given.
 4. Hand the files back and they get wired in: downsize → JPEG → `materials/lectures/images/` →
-   uncomment the deck slots + add the dashboard tuples in `build_index.py` → rebuild → push.
+   uncomment the deck slots + add the dashboard tuples in `build/build_index.py` → rebuild → push.
 
 ## What each image fills
 | File | Dashboard card | Deck slide |

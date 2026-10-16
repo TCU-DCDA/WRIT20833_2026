@@ -7,6 +7,8 @@ resolve when the HTML sits at repo root.
 
 Run from repo root:  python3 build_schedule_html.py
 """
+import os as _os
+_os.chdir(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))  # repo root: paths below are repo-relative
 import re, html, os
 from site_theme import PAGE, site_header, site_footer, write_stylesheet
 from build_chatbot import CHAT_API_URL  # the Code Guide pill appears only once its Worker is deployed

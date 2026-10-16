@@ -25,7 +25,7 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 > Day 3/4 notebook order. The **syllabus markdown** is fully filled (no `[...]`
 > placeholders left) and aligned to the AddRan template; a **course website** (`docs/`) is live and public;
 > and the **capstone sheet** (`CAPSTONE_2026.md`) is drafted. **Lecture pages** — all eight scheduled
-> mini-lecture reading pages + slide decks are live (`build_lectures.py`): Humanities & Coding, Connotations
+> mini-lecture reading pages + slide decks are live (`build/build_lectures.py`): Humanities & Coding, Connotations
 > & Code, Classification Logic, Collective Memory, AI Agency, Data Archaeology, NLP & Topic Modeling, and
 > Going Public (Day 19). The back-half audit is closed: "Code as Rhetoric" was harvested into Connotations
 > & Code + Going Public (no standalone deck); "Sacred Boundaries" and the web-dev lectures are cut.
@@ -37,7 +37,7 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 ## Start here
 | Document | What it is |
 |---|---|
-| **`docs/index.html`** | The **course website** — a left-nav dashboard that launches the schedule, code-alongs (→ Colab), homework, capstone, lectures, and resources. Built by `build_index.py` + `site_theme.py`; publishes via GitHub Pages (`main` / `docs`). |
+| **`docs/index.html`** | The **course website** — a left-nav dashboard that launches the schedule, code-alongs (→ Colab), homework, capstone, lectures, and resources. Built by `build/build_index.py` + `build/site_theme.py`; publishes via GitHub Pages (`main` / `docs`). |
 | **`SYLLABUS_2026.md`** | The course as students meet it — outcomes, ungrading policy, schedule, AI-use policy, the 3 reflections + 4 discussions. *(Markdown fully filled — no `[...]` placeholders; aligned to the AddRan template. The `.docx` is the instructor-maintained Word submission copy.)* |
 | **`COURSE_SCHEDULE_2026.md`** | Day-at-a-glance grid: **Date · Lecture · Coding · Due** across the 24 sessions (rendered as `docs/schedule.html`). |
 | **`CAPSTONE_2026.md`** | The **capstone assignment sheet** — the Final Evaluative Exercise (notebook + data-driven-opinion essay + presentation), with both tracks (cultural dataset · stylometry), the timeline, and the ungrading rubric. *(DRAFT.)* |
@@ -60,7 +60,7 @@ inquiry into human expression, close and distant, across space and time). (Vetti
   Constitution) + a `README.md`. Reused across HW2–HW4 and the capstone.
 - **`materials/stylometry/`** — "Reading for the Seams" close-reading exercise + notebook + exemplar.
 - **`materials/images/`** — the **noumena → wisdom** epistemological-spine graphic + its teaching notes.
-- **`materials/lectures/`** — mini-lecture **reading pages** (markdown source; all eight scheduled lectures authored through Going Public on Day 19); rendered to `docs/lectures/` by `build_lectures.py`.
+- **`materials/lectures/`** — mini-lecture **reading pages** (markdown source; all eight scheduled lectures authored through Going Public on Day 19); rendered to `docs/lectures/` by `build/build_lectures.py`.
 - **`materials/Day1_Framing_Noumena_to_Wisdom.md`** — the Day-1 framing passage (now published as the opening Humanities & Coding reading page).
 
 ## Repository layout
@@ -69,7 +69,9 @@ inquiry into human expression, close and distant, across space and time). (Vetti
 - **`materials/`** — the stylometry exercise, images, the lecture reading pages, and the Day-1 framing passage.
 - **`reference/`** — TCU/AddRan syllabus templates + core-curriculum vetting (source documents, not course content).
 - **`planning/`** — instructor process docs (WORKLOG, conceptual framework, port assessment, syllabus crosswalk…).
-- **Root** — this README, `CLAUDE.md` (authoring/agent working rules), `SYLLABUS_2026.md`, `COURSE_SCHEDULE_2026.md`, `CAPSTONE_2026.md`, and the site generators (`site_theme.py`, `build_index.py`, `build_schedule_html.py`, `build_lectures.py`).
+- **`build/`** — the site generators (`build_index.py`, `build_schedule_html.py`, `build_lectures.py`, `build_chatbot.py`) plus `site_theme.py` and `release_dates.py`. Run them from anywhere, e.g. `python3 build/build_index.py`; each switches to the repo root itself.
+- **`chatbot/`** and **`d2l/`** — Code Guide page source, and the TCU Online package builders + wiring checklist.
+- **Root** — this README, `CLAUDE.md` (authoring/agent working rules), and the three course documents: `SYLLABUS_2026.md`, `COURSE_SCHEDULE_2026.md`, `CAPSTONE_2026.md`.
 - *Answer keys + the solution-bearing `_build_hw*.py` generators live in the **private** `TCU-DCDA/WRIT20833_2026_keys`.*
 
 ## The idea in one paragraph

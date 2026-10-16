@@ -19,7 +19,7 @@ Two generators, two packages, one widget:
 
 Every item is a small landing page (a title, the site's one-line blurb, a button out to Colab,
 the course site, or GitHub), not a copy of the content. Dates, titles and prompts are read
-from `COURSE_SCHEDULE_2026.md`, `SYLLABUS_2026.md`, `CAPSTONE_2026.md`, `build_index.py`
+from `COURSE_SCHEDULE_2026.md`, `SYLLABUS_2026.md`, `CAPSTONE_2026.md`, `build/build_index.py`
 and the notebooks themselves, so a source edit plus a rebuild keeps D2L in agreement. The
 packages are gitignored build products; the generators and this file are what's tracked.
 
@@ -204,7 +204,7 @@ Delete first, then import, or you get the duplicates you were avoiding.
 
 ## 7. Notebook release dates (by hand)
 
-The course site unlinks each notebook until its class day (`release_dates.py`; `python3 release_dates.py`
+The course site unlinks each notebook until its class day (`build/release_dates.py`; `python3 build/release_dates.py`
 prints the table). D2L does not read that. For each Weeks/Homework link to a notebook, set a **release
 condition** (or start date) on the matching day: code-alongs on their schedule day, HW1 Fri 10/30, HW2
 Mon 11/2, HW3 Mon 11/16, HW4 Wed 12/2, the stylometry notebook Fri 12/4. No end dates (same late-work

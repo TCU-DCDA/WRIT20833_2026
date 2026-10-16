@@ -17,6 +17,8 @@ it does not hide the files. ``?all=1`` on any site page shows everything (for th
 
     python3 release_dates.py        # prints the table
 """
+import os as _os
+_os.chdir(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))  # repo root: paths below are repo-relative
 import re
 from datetime import date
 

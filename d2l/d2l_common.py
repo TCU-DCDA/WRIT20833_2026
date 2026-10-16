@@ -2,7 +2,7 @@
 
 Nothing here restates course content. Dates come from COURSE_SCHEDULE_2026.md (through
 build_schedule_html.parse, the same parser the site uses); discussion and reflection prompts
-come from SYLLABUS_2026.md; card blurbs and lecture thumbnails come from build_index.py. A
+come from SYLLABUS_2026.md; card blurbs and lecture thumbnails come from build/build_index.py. A
 schedule or syllabus edit plus a rebuild keeps D2L in agreement with the site.
 
 Adapted from WRIT 40363's d2l/ generators, with one deliberate difference: every local time
@@ -19,9 +19,9 @@ from zoneinfo import ZoneInfo
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# The site generators use repo-relative paths, so import them from the repo root.
+# The site generators (in build/) use repo-relative paths, so run from the repo root and import from build/.
 os.chdir(REPO_ROOT)
-sys.path.insert(0, REPO_ROOT)
+sys.path.insert(0, os.path.join(REPO_ROOT, "build"))
 import build_schedule_html as sched  # noqa: E402
 import build_index as index  # noqa: E402
 

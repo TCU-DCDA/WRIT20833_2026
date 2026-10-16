@@ -17,6 +17,8 @@ Design direction — *coding meets culture*, an editorial "reading room":
 
 `PAGE` wraps a body fragment into a full document; pass extra CSS via `extra_css`.
 """
+import os as _os
+_os.chdir(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))  # repo root: paths below are repo-relative
 import os
 import re
 
