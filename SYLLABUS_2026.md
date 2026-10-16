@@ -313,10 +313,19 @@ borrowing:
 
 **The Code Guide (optional AI tutor).** An after-hours tutor for the homework and the capstone lives at
 [tcu-dcda.github.io/WRIT20833_2026/chatbot.html](https://tcu-dcda.github.io/WRIT20833_2026/chatbot.html)
-(also linked from the course site). The class access code is posted in TCU Online. Using it is up to you. It explains concepts and code (including code an AI wrote for you),
-helps you read errors, and gives feedback on your written interpretations, but it won't complete an
-exercise, supply your stance labels or topic names, or write your prose. If it contradicts a notebook,
-the notebook wins. **Where your words go:** chats are saved only in your browser, and the course doesn't
+(also linked from the course site); the class access code is posted in TCU Online. **Using it is entirely
+your choice.** Nothing in this course requires it, and choosing not to use it costs you nothing. Class, the
+notebooks, your classmates, and office hours remain the way this course is meant to be worked. It explains
+concepts and code (including code an AI wrote for you), helps you read errors, and gives feedback on your
+written interpretations, but it won't complete an exercise, supply your stance labels or topic names, or
+write your prose.
+
+**It's new, and it will sometimes be wrong.** If it contradicts a notebook, the notebook wins. When it
+gets something wrong, or you notice two course materials contradicting each other, press **Export Chat**
+and email me the file. The exact transcript is what makes a problem fixable, and nothing leaves your
+browser unless you send it.
+
+**Where your words go:** chats are saved only in your browser, and the course doesn't
 keep what you write. To answer you, your messages pass through Cloudflare to Anthropic, the company that
 makes the Claude model behind the tutor. To prevent misuse, the course's server keeps a counter for your
 network address that disappears about a day after your last message, and it counts which assignments and
