@@ -83,7 +83,8 @@ strong capstone notebook does roughly this:
 scratch; you *use* them through their interface. Borrowing a tool, a Stack Overflow snippet, or AI-written
 code is normal practice in this course. The rule is **understanding, not avoidance**: you should be able
 to explain any code you submit, and you should **note in a `#comment` where you used AI and what you
-changed.** (See the syllabus AI policy.)
+changed**, e.g. `# AI-assisted: asked for a groupby by topic; I renamed the columns`. (See the syllabus AI
+policy.)
 
 ---
 
@@ -180,7 +181,7 @@ Before you turn in your notebook + essay (TCU Online → **Assignments** → **C
 - [ ] I **returned to individual texts** by hand (close → distant → close) — not just the aggregate.
 - [ ] I named **at least one limit** — a place my tools mislead — and showed how I'd check it.
 - [ ] I used **`#comments` frequently and meaningfully** — wherever a choice or question came up (not
-      every line, but throughout) — and noted **where I used AI** and what I changed.
+      every line, but throughout) — and noted **where I used AI** and what I changed (`# AI-assisted: …`).
 - [ ] I **ran every cell.** Where something still breaks, I left a `#comment` about what I tried and what
       I learned — **errors are part of the work here, not something to hide or delete.**
 - [ ] My essay (~800–1,200 words) makes **one argument**, grounded in specifics from the notebook,
