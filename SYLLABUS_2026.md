@@ -305,7 +305,9 @@ improve AI-written code. The rule is **understanding, not avoidance**, and it di
 borrowing:
 - **Code — borrowing is expected.** Using a library, Stack Overflow, or an AI to help write code is
   normal practice. You must be able to **explain any code you submit**, and you should **note in your
-  `#comments` where you used AI** and what you changed. Passing off code you can't explain is not allowed.
+  `#comments` where you used AI** and what you changed, with a comment like
+  `# AI-assisted: asked for a loop that counts words; I changed the stopword list`. Passing off code you
+  can't explain is not allowed.
 - **Writing — develop your own voice.** Your reflections, discussion posts, `#comments`, and the capstone
   essay are where you *become a writer.* A unique voice is forged through the difficulty of finding your
   own words; letting AI generate your writing forfeits that. **Use AI for feedback if you like, but the
