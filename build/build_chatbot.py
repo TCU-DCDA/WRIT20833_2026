@@ -4,12 +4,12 @@ Only the chat WINDOW lives here, in the public course repo. The tutor's instruct
 context, and the Cloudflare Worker that calls the model live in the private `TCU-DCDA/WRIT20833-chatbot`
 repo: publishing the rules would publish the recipe for talking the tutor out of them.
 
-Sources: `chatbot/chatbot.js` (the page script), `chatbot/render.js` (reply rendering; unit tests in
-`chatbot/render.test.js`) + this file (markup and page CSS, in the site theme).
+Sources: `build/chatbot/chatbot.js` (the page script), `build/chatbot/render.js` (reply rendering; unit tests in
+`build/chatbot/render.test.js`) + this file (markup and page CSS, in the site theme).
 Set CHAT_API_URL once the Worker is deployed; until then the page builds but build_index.py does not
 link it, so students can't land on a chat window with nothing behind it.
 
-Run from repo root:  python3 build_chatbot.py
+Run from repo root:  python3 build/build_chatbot.py
 """
 import os as _os
 _os.chdir(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))  # repo root: paths below are repo-relative
@@ -18,9 +18,9 @@ import os
 from site_theme import PAGE, site_header, site_footer, write_stylesheet, assert_accessible
 
 OUT = "docs/chatbot.html"
-JS_SRC = "chatbot/chatbot.js"
+JS_SRC = "build/chatbot/chatbot.js"
 JS_OUT = "docs/chatbot.js"
-RENDER_SRC = "chatbot/render.js"   # reply rendering, no DOM: unit-tested with `node --test chatbot/render.test.js`
+RENDER_SRC = "build/chatbot/render.js"   # reply rendering, no DOM: unit-tested with `node --test build/chatbot/render.test.js`
 RENDER_OUT = "docs/render.js"
 
 # The deployed Worker's chat endpoint, e.g. "https://writ20833-codeguide.<subdomain>.workers.dev/api/chat".

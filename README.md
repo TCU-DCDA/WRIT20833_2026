@@ -16,4 +16,4 @@ Submissions and discussions happen in **TCU Online** (D2L).
 | [`notebooks/data/`](notebooks/data/) | The course corpora (see its README) |
 | [`materials/`](materials/) | Lecture readings and the stylometry exercise |
 
-`docs/`, `build/`, and `chatbot/` are the plumbing that publishes the course site. You can ignore them.
+`docs/` and `build/` are the plumbing that publishes the course site. You can ignore them.

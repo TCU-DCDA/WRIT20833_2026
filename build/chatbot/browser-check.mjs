@@ -4,7 +4,7 @@
  *
  *   python3 build/build_chatbot.py                                   # (in this repo) build docs/ first
  *   mkdir /tmp/cg && cd /tmp/cg && npm i playwright@1.58 && npx playwright install chromium
- *   cp <this repo>/chatbot/browser-check.mjs . && DOCS=<this repo>/docs node browser-check.mjs
+ *   cp <this repo>/build/chatbot/browser-check.mjs . && DOCS=<this repo>/docs node browser-check.mjs
  *
  * Covers the 2026-09-30 review's defects: code shown verbatim (#9), a reply can't land in another
  * assignment's conversation (#8), and every failed turn rolls back cleanly with the draft restored (#10).
@@ -16,7 +16,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 // A copy of the built site whose API_URL points at a fake Worker.
-const docs = process.env.DOCS ?? join(dirname(fileURLToPath(import.meta.url)), '..', 'docs');
+const docs = process.env.DOCS ?? join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'docs');
 const site = mkdtempSync(join(tmpdir(), 'codeguide-'));
 cpSync(docs, site, { recursive: true });
 const MOCK = 'https://mock.test/api/chat';

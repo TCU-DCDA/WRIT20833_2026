@@ -1,4 +1,4 @@
-// Unit tests for render.js. Run from the repo root:  node --test chatbot/render.test.js
+// Unit tests for render.js. Run from the repo root:  node --test build/chatbot/render.test.js
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const { renderMarkdown, escapeHtml } = require('./render.js');
