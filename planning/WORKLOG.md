@@ -14,7 +14,24 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-10-12 — Attribution audit: wording batch (F02–F04, F07, F09, F11–F13)
+## Latest session — 2026-10-15 — Site nav: sticky top bar replaces the left sidebar
+
+- **Why:** the 240px left sidebar on the dashboard, schedule and Code Guide pages read as an app shell;
+  the 40363 site's sticky top bar (brand left, pill links right, ☰ under 860px) is lighter and the same
+  on every page. Rebuilt in 20833's own tokens: green bar, paper pills, the active pill in clay.
+- **`site_theme.py`:** `sidebar()`/`shell()` and the `.app/.sidebar` CSS are gone, as is the dead
+  `.topnav` block; `site_header(active, prefix, chat)` and `site_footer(text)` replace them, and
+  `PAGE(..., header=, footer=)` emits both outside the `.wrap` column plus the 4-line menu-toggle script.
+  The menu is one list (`NAV_ITEMS`: Schedule · Lectures · Code-alongs · Homework · Capstone, then
+  Code Guide when `CHAT_API_URL` is set, then Syllabus ↗). GitHub / Colab moved from the sidebar to the footer.
+- **Pages:** dashboard (no active pill; brand → home), schedule (the sidebar's Week 1–8 links became an
+  in-page "Jump to" row under the legend), Code Guide, and now the **lecture reading pages** too (prefix
+  `../`; their backlink row is "← All lectures · Slides ▸"). Decks untouched except for the inlined CSS.
+- Verified with headless Chrome at 1280 / 800 / 600 px (menu open) — note desktop Chrome won't go
+  below ~500 px, so the phone layout was checked at 600. `assert_accessible()` passes; `render.test.js` passes.
+
+
+## Earlier session — 2026-10-12 — Attribution audit: wording batch (F02–F04, F07, F09, F11–F13)
 
 - **Constructed data now says so.** F02: Pandas 01 calls its table a "constructed sample", with wording, likes, replies and
   stances written for the lesson ("practice, not evidence about the real debate"). VADER Part 2 calls it "the constructed
@@ -96,7 +113,7 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
   before ml3, so D1 does **not** cite the 649 loan example. D3's post comes after VADER (Day 13).
 - Word syllabus + live D2L topics: hand edits pending (NEXT_SESSION).
 
-## Latest session — 2026-10-07 — Lecture decks: 40363-style touches in the 20833 theme
+## Earlier session — 2026-10-07 — Lecture decks: 40363-style touches in the 20833 theme
 
 - **ml0:** the Pudding's "Largest Vocabulary in Hip-Hop" replaces Ben Schmidt's teacher-reviews example
   (benschmidt.org/profGender/ timed out); project thumbnails link to their projects. `build_lectures.py`

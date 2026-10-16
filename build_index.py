@@ -9,7 +9,7 @@ Run from repo root:  python3 build_index.py
 """
 import html
 import os
-from site_theme import PAGE, sidebar, shell, write_stylesheet
+from site_theme import PAGE, site_header, site_footer, write_stylesheet
 from build_chatbot import CHAT_API_URL  # the Code Guide card appears only once its Worker is deployed
 
 OUT = "docs/index.html"
@@ -111,18 +111,6 @@ def section(anchor, n, title, lede, body):
 
 
 def render():
-    side = sidebar(
-        "WRIT 20833 · Fall 2026",
-        "When Coding Meets Culture",
-        [("#start", "Start here", "00"),
-         ("#lectures", "Lectures", "01"),
-         ("#codealongs", "Code-alongs", "02"),
-         ("#homework", "Homework", "03"),
-         ("#capstone", "Capstone", "04"),
-         ("#resources", "Resources", "05")],
-        [(GH, "GitHub ↗"), ("https://colab.research.google.com/", "Colab ↗")],
-    )
-
     masthead = (
         '<header class="masthead">'
         f'<figure class="mast-banner"><img src="{HERO}" alt="A warm painting of the humanities — a bust, '
@@ -200,10 +188,11 @@ def render():
                  f'<p class="lede">Tools, the course data, and references for going further.</p>'
                  f'<ul class="reslist">{res_items}</ul></section>')
 
-    main = (masthead + start + lectures + codealongs + homework + capstone + resources +
-            '<footer>WRIT 20833 · Fall 2026 · “hear the human at scale” · '
-            'a working draft, adjusted to the class’s pace</footer>')
-    return PAGE("WRIT 20833 — When Coding Meets Culture", shell(side, main), wrap=False)
+    main = masthead + start + lectures + codealongs + homework + capstone + resources
+    return PAGE("WRIT 20833 — When Coding Meets Culture", main,
+                header=site_header(chat=bool(CHAT_API_URL)),
+                footer=site_footer("WRIT 20833 · Fall 2026 · “hear the human at scale” · "
+                                   "a working draft, adjusted to the class’s pace"))
 
 
 if __name__ == "__main__":

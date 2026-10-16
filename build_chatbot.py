@@ -13,7 +13,7 @@ Run from repo root:  python3 build_chatbot.py
 """
 import html
 import os
-from site_theme import PAGE, sidebar, shell, write_stylesheet, assert_accessible
+from site_theme import PAGE, site_header, site_footer, write_stylesheet, assert_accessible
 
 OUT = "docs/chatbot.html"
 JS_SRC = "chatbot/chatbot.js"
@@ -25,7 +25,6 @@ RENDER_OUT = "docs/render.js"
 # Empty = not deployed yet: the page is built but not linked from the home page.
 CHAT_API_URL = "https://writ20833-codeguide.0expatriate0.workers.dev/api/chat"
 
-GH = "https://github.com/TCU-DCDA/WRIT20833_2026"
 
 ASSIGNMENTS = [
     ("hw1", "Homework 1 — Comparisons, Conditionals, Lists & Loops"),
@@ -88,15 +87,6 @@ CHAT_CSS = """
 
 
 def render():
-    side = sidebar(
-        "WRIT 20833 · Fall 2026",
-        "When Coding Meets Culture",
-        [("index.html#start", "Start here", "00"),
-         ("index.html#homework", "Homework", "03"),
-         ("index.html#capstone", "Capstone", "04"),
-         ("chatbot.html", "Code Guide", None)],
-        [(GH, "GitHub ↗"), ("https://colab.research.google.com/", "Colab ↗")],
-    )
     options = "".join(f'<option value="{v}">{html.escape(t)}</option>' for v, t in ASSIGNMENTS)
     main = (
         '<header class="masthead">'
@@ -139,7 +129,9 @@ def render():
         '<script src="render.js"></script>'
         '<script src="chatbot.js"></script>'
     )
-    return PAGE("Code Guide — WRIT 20833", shell(side, main), extra_css=CHAT_CSS, wrap=False)
+    return PAGE("Code Guide — WRIT 20833", main, extra_css=CHAT_CSS,
+                header=site_header(active="Code Guide", chat=bool(CHAT_API_URL)),
+                footer=site_footer("WRIT 20833 · Code Guide · an optional after-hours tutor"))
 
 
 def write_js():

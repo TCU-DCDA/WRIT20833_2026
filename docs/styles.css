@@ -84,14 +84,43 @@ footer{font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-al
 @media print{body{background:#fff;border-top-color:#000;} .week{break-inside:avoid;}}
 
 /* ---- site components (landing dashboard) ---- */
-/* top nav — an anchor launchpad */
-.topnav{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;
-  background:var(--paper);border-bottom:1px solid var(--rule);padding:11px 0;margin-bottom:6px;
-  font:600 12.5px/1 var(--sans);}
-.topnav a{color:var(--green);border:none;}
-.topnav a:hover{color:var(--clay);}
-.topnav .spacer{flex:1;}
-.topnav .ext{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+/* site chrome — the same sticky top bar + footer on every page (the 40363 model, in these tokens) */
+.site-header{position:sticky;top:0;z-index:20;background:var(--green);
+  border-bottom:1px solid color-mix(in srgb,var(--paper) 16%,transparent);}
+.site-header .bar{max-width:1060px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:11px 20px;}
+.site-header .brand{display:flex;flex-direction:column;gap:4px;border:none;color:var(--paper);white-space:nowrap;}
+.site-header .brand .k{font:600 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--clay-bg);}
+.site-header .brand .name{font:600 16px/1.1 var(--serif);}
+.site-nav{margin-left:auto;display:flex;flex-wrap:wrap;gap:5px;}
+.nav-pill{padding:7px 12px;border-radius:999px;border:1px solid color-mix(in srgb,var(--paper) 22%,transparent);
+  font:600 13px/1 var(--sans);color:var(--paper);white-space:nowrap;}
+.nav-pill:hover{background:color-mix(in srgb,var(--paper) 12%,transparent);
+  border-color:color-mix(in srgb,var(--paper) 45%,transparent);}
+.nav-pill.active{background:var(--clay-bg);border-color:transparent;color:var(--clay-ink);}
+.nav-pill.active:hover{background:var(--clay-bg);}
+.nav-toggle{display:none;margin-left:auto;align-items:center;justify-content:center;width:42px;height:38px;
+  border-radius:8px;border:1px solid color-mix(in srgb,var(--paper) 32%,transparent);background:transparent;
+  color:var(--paper);font-size:19px;line-height:1;cursor:pointer;}
+.nav-toggle:hover{background:color-mix(in srgb,var(--paper) 12%,transparent);}
+.site-footer{border-top:1px solid var(--rule);margin-top:24px;}
+.site-footer .bar{max-width:1060px;margin:0 auto;padding:20px;display:flex;flex-wrap:wrap;gap:8px 22px;
+  font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);}
+.site-footer .spacer{flex:1;}
+.site-footer a{color:var(--muted);border:none;white-space:nowrap;} .site-footer a:hover{color:var(--clay);}
+/* in-page jump row (the schedule's weeks) */
+.jump{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:16px;}
+.jump .lbl{font:600 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-right:4px;}
+.jump a{font:600 12px/1 var(--mono);padding:6px 9px;border:1px solid var(--rule);border-radius:4px;
+  background:var(--surface);color:var(--green);}
+.jump a:hover{border-color:var(--green-mid);color:var(--clay);}
+@media (max-width:860px){
+  .site-header .bar{flex-wrap:wrap;}
+  .nav-toggle{display:inline-flex;}
+  .site-nav{display:none;margin-left:0;width:100%;flex-basis:100%;flex-direction:column;gap:6px;padding-top:10px;}
+  .site-nav.open{display:flex;}
+  .site-nav .nav-pill{text-align:left;}
+}
+@media (max-width:560px){.site-header .brand .name{display:none;}}
 
 /* sections */
 .sec{margin:38px 0 0;}
@@ -136,30 +165,6 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
   color:var(--faint);margin-bottom:3px;}
 .muted{color:var(--muted);}
 
-/* ---- two-column app layout (left sidebar) ---- */
-.app{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh;}
-.sidebar{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;
-  background:color-mix(in srgb,var(--green) 5%,var(--paper));border-right:1px solid var(--rule);
-  padding:26px 20px;}
-.sidebar .brand{font:600 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;
-  color:var(--clay);margin-bottom:6px;}
-.sidebar .brandname{display:block;font-family:var(--serif);font-size:18px;line-height:1.18;
-  color:var(--green);margin-bottom:24px;}
-.sidenav{display:flex;flex-direction:column;gap:2px;}
-.sidenav a{display:flex;align-items:baseline;gap:9px;padding:8px 11px;border-radius:6px;border:none;
-  color:var(--ink);font:600 13.5px/1.2 var(--sans);}
-.sidenav a .n{font:600 12px/1 var(--mono);color:var(--faint);min-width:16px;}
-.sidenav a:hover{background:color-mix(in srgb,var(--green) 9%,transparent);color:var(--green);}
-.sidenav a.active{background:var(--green);color:var(--paper);}
-.sidenav a.active .n{color:color-mix(in srgb,var(--paper) 65%,transparent);}
-.side-ext{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);
-  display:flex;flex-direction:column;gap:9px;}
-.side-ext a{border:none;font:600 12px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;
-  color:var(--muted);}
-.side-ext a:hover{color:var(--clay);}
-.main{min-width:0;padding:34px 34px 64px;}
-.main>*{max-width:960px;}
-
 /* week sub-groups (e.g. code-alongs split by week) */
 .wkgroup{margin-top:20px;}
 .wkgroup>h3{display:flex;align-items:baseline;gap:9px;margin:0 0 2px;font-family:var(--sans);
@@ -167,17 +172,6 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
 .wkgroup>h3 .wkn{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
   color:var(--clay);}
 
-@media (max-width:860px){
-  .app{grid-template-columns:1fr;}
-  .sidebar{position:static;height:auto;overflow:visible;border-right:none;
-    border-bottom:1px solid var(--rule);padding:14px 18px;}
-  .sidebar .brandname{display:none;} .sidebar .brand{margin-bottom:10px;}
-  .sidenav{flex-direction:row;flex-wrap:wrap;gap:4px 6px;}
-  .sidenav a{padding:5px 9px;font-size:12.5px;}
-  .sidenav a .n{display:none;}
-  .side-ext{flex-direction:row;gap:14px;margin-top:12px;padding-top:12px;}
-  .main{padding:22px 18px 48px;}
-}
 
 /* ---- lecture / reading pages ---- */
 .reading{max-width:50rem;margin:0 auto;}
@@ -209,4 +203,3 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 @media (max-width:700px){.reading figure.upright{float:none;width:auto;margin:24px 0;}
   .reading figure.upright img{width:auto;max-height:min(60vh,520px);}}
 .reading hr{border:none;border-top:1px solid var(--rule);margin:30px 0;}
-.reading footer{text-align:left;border-top:1px solid var(--rule);padding-top:14px;margin-top:34px;}

@@ -16,7 +16,8 @@ Run from repo root:  python3 build_lectures.py
 """
 import re, html, os
 from PIL import Image
-from site_theme import PAGE, write_stylesheet, assert_accessible
+from site_theme import PAGE, site_header, site_footer, write_stylesheet, assert_accessible
+from build_chatbot import CHAT_API_URL  # the Code Guide pill appears only once its Worker is deployed
 
 REPO = "TCU-DCDA/WRIT20833_2026"
 RAW = f"https://raw.githubusercontent.com/{REPO}/main/"
@@ -161,8 +162,7 @@ def render_body(lines, lead=False):
 def build_reading(slug, title, subtitle, kicker, body):
     body = strip_slide_blocks(body)
     masthead = (
-        '<div class="backlink"><a href="../index.html">← Dashboard</a>'
-        '<span class="sep">·</span><a href="../index.html#lectures">Lectures</a>'
+        '<div class="backlink"><a href="../index.html#lectures">← All lectures</a>'
         f'<span class="sep">·</span><a href="{slug}.deck.html">Slides ▸</a></div>'
         '<header class="masthead">'
         f'<div class="kicker">{html.escape(kicker)}</div>'
@@ -170,9 +170,10 @@ def build_reading(slug, title, subtitle, kicker, body):
         + (f'<p class="sub">{md_inline(subtitle)}</p>' if subtitle else "")
         + "</header>"
     )
-    footer = "<footer>WRIT 20833 · When Coding Meets Culture · mini-lecture</footer>"
-    inner = f'<div class="reading">{masthead}{render_body(body, lead=True)}{footer}</div>'
-    page = PAGE(html.escape(f"{title} — WRIT 20833"), inner, wrap=True, css_href="../styles.css")
+    inner = f'<div class="reading">{masthead}{render_body(body, lead=True)}</div>'
+    page = PAGE(html.escape(f"{title} — WRIT 20833"), inner, wrap=True, css_href="../styles.css",
+                header=site_header(active="Lectures", prefix="../", chat=bool(CHAT_API_URL)),
+                footer=site_footer("WRIT 20833 · When Coding Meets Culture · mini-lecture"))
     out = os.path.join(OUT_DIR, f"{slug}.html")
     open(out, "w", encoding="utf-8").write(page)
     return out

@@ -8,7 +8,8 @@ resolve when the HTML sits at repo root.
 Run from repo root:  python3 build_schedule_html.py
 """
 import re, html, os
-from site_theme import PAGE, sidebar, shell, write_stylesheet
+from site_theme import PAGE, site_header, site_footer, write_stylesheet
+from build_chatbot import CHAT_API_URL  # the Code Guide pill appears only once its Worker is deployed
 
 SRC = "COURSE_SCHEDULE_2026.md"
 OUT = "docs/schedule.html"
@@ -146,14 +147,9 @@ def render():
         )
     notes_html = "".join(f"<p>{md_inline(n)}</p>" for n in notes)
 
-    nav_items = ([("index.html", "← Dashboard", None)]
-                 + [(f"#week-{i+1}", f"Week {i+1}", f"0{i+1}") for i in range(len(weeks))]
-                 + [(GH_BLOB + "SYLLABUS_2026.md", "Syllabus", None)])
-    side = sidebar(
-        "WRIT 20833 · Fall 2026", "Course Schedule",
-        nav_items,
-        [(f"https://github.com/{REPO}", "GitHub ↗"), ("https://colab.research.google.com/", "Colab ↗")],
-    )
+    jump = ('<nav class="jump" aria-label="Jump to week"><span class="lbl">Jump to</span>'
+            + "".join(f'<a href="#week-{i+1}">Week {i+1}</a>' for i in range(len(weeks)))
+            + '</nav>')
 
     main = (
         '<header class="masthead">'
@@ -164,12 +160,14 @@ def render():
         '(full assignment descriptions, the ungrading policy, and the reflection / discussion prompts '
         'live there). Generated from <code>COURSE_SCHEDULE_2026.md</code>.</p>'
         f'<div class="legend"><span class="lbl">Coding modes</span>{legend}</div>'
+        f'{jump}'
         '</header>'
         + "".join(week_html)
         + f'<div class="notes">{notes_html}</div>'
-        + '<footer>WRIT 20833 · Fall 2026 · a working plan, adjusted to the class’s pace</footer>'
     )
-    return PAGE(html.escape(title), shell(side, main), wrap=False)
+    return PAGE(html.escape(title), main,
+                header=site_header(active="Schedule", chat=bool(CHAT_API_URL)),
+                footer=site_footer("WRIT 20833 · Fall 2026 · a working plan, adjusted to the class’s pace"))
 
 
 if __name__ == "__main__":
