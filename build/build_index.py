@@ -167,7 +167,7 @@ def render():
         "The final evaluative exercise integrates all three methods on data you choose; the stylometry "
         "track is an alternative path.",
         grid([
-            card("Capstone", "Data-Driven Opinion", "Notebook analysis + short essay, presented Fri 12/18.",
+            card("Capstone", "Data-Driven Opinion", "Notebook analysis + short essay, presented Wed 12/16 or Fri 12/18.",
                  "Week 8", GH_BLOB + "CAPSTONE_2026.md"),
             card("Exercise", "Reading for the Seams", "Stylometry close-reading: hearing a human (or AI) voice.",
                  "Day 8 · Week 8", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),

@@ -14,7 +14,7 @@
 | **Class Meeting Days & Times** | **Monday / Wednesday / Friday, 10:00–11:50 AM (Central), October 19 – December 18, 2026** — **in person** (24 sessions; attendance is expected). No class the week of Thanksgiving (Nov 23–27). |
 | **Class Location** | Schar Hall, Room 2003 |
 | **Prerequisites** | None — **no prior coding experience assumed** |
-| **Final Evaluative Exercise** | The **capstone** (data-driven-opinion notebook + short essay), presented and due on the final day, **Fri December 18, 10:00–11:50 AM, in our classroom (Schar 2003)**. There is no separate final exam. |
+| **Final Evaluative Exercise** | The **capstone** (data-driven-opinion notebook + short essay), due on the final day, **Fri December 18, 10:00–11:50 AM, in our classroom (Schar 2003)**. Presentations run over the last two class meetings, Wed December 16 and Fri December 18. There is no separate final exam. |
 | **Other Important Dates** | **Thanksgiving break (no class):** Nov 23–27 (classes recess after Fri Nov 20, resume Mon Nov 30). **Final drop deadline:** Thu Nov 19. Any other deviations announced on TCU Online. |
 
 **Instructor:** Dr. Curt Rode · **Office Location:** Schar 2006 · **Office Hours:** By appointment (30 minutes), **in person** in Schar 2006 **or virtually on Zoom** — choose either when you book at https://calendly.com/c-rode/appointments; Zoom meetings get their link in the confirmation email
@@ -139,7 +139,7 @@ through **TCU Online**: submit homework notebooks and reflections in the **Assig
 | **Weekly Experiments** | within each HW | 2–3 small original explorations of your own — *the heart of the ungrading*. | 1–5 | HUM |
 | **Self-reflections** | 3 | Where you're starting · the halfway check · the final self-evaluation. | 6 | CSV |
 | **Threaded discussions (TCU Online)** | 4 | One every other week (Weeks 1, 3, 5, 7), on a culture question — a post + replies to peers. | 4–5 | CSV |
-| **Capstone (final evaluative exercise)** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay, presented on the last day (full sheet: `CAPSTONE_2026.md`). Replaces a final exam. | 2–6 | CSV · HUM |
+| **Capstone (final evaluative exercise)** | 1 | A notebook analysis of your own cultural dataset (or a stylometry corpus) + a short data-driven-opinion essay, presented in the last two classes (full assignment sheet on the course site). Replaces a final exam. | 2–6 | CSV · HUM |
 
 *(Outcome mapping per AddRan: every learning outcome is exercised by an assignment above. The **CSV** core
 outcome is met by the discussions, reflections, and capstone; the **HUM** core outcome by the homework
@@ -229,7 +229,7 @@ marks.
 | **Weekly Experiments** (within each HW) | 2–3 per HW | Part of each homework's mark | Evidence of your curiosity and risk-taking |
 | **Threaded discussions (D1–D4)** | 4 | Exceeds / Meets / Not yet — initial post + two replies | Evidence of your thinking with others |
 | **Self-reflections (R1–R3)** | 3 | Exceeds / Meets / Not yet; **R3** is the final self-evaluation | R3 is where you propose your grade |
-| **Capstone** (final evaluative exercise) | 1 | Exceeds / Meets / Not yet; presented Fri 12/18 | The fullest evidence of what you can do |
+| **Capstone** (final evaluative exercise) | 1 | Exceeds / Meets / Not yet; presented Wed 12/16 or Fri 12/18 | The fullest evidence of what you can do |
 
 *(The capstone is the course's Final Evaluative Exercise — there is no separate final exam.)*
 
@@ -337,8 +337,8 @@ sources, including AI.
 ## Course Schedule (24 sessions)
 *Each row is one class day. "Due" items are due by the start of class that day unless noted; discussion
 threads open Monday of their week. **No class the week of Thanksgiving (Nov 23–27).** The schedule may be
-adjusted to the class's pace; changes are announced on TCU Online. A standalone version is in
-`COURSE_SCHEDULE_2026.md`.*
+adjusted to the class's pace; changes are announced on TCU Online. The course site has a linked version, with each day's notebook
+and reading.*
 
 ### Python skills map — what's taught when
 *Each skill is introduced in a class code-along, then practiced in the linked homework. Nothing is
@@ -412,13 +412,11 @@ assessed before it's taught.*
 ### Week 8 (Dec 14–18) — Capstone
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 12/14** (22) | — | Capstone work session 3 + peer review | — |
-| **Wed 12/16** (23) | — | Capstone polish + presentation dry-run | — |
-| **Fri 12/18** (24) | — (wrap) | **Capstone presentations + wrap** | **Capstone due** · **R3 (final self-evaluation) due** |
+| **Mon 12/14** (22) | — | Capstone work session 3 + peer review + presentation run-through | — |
+| **Wed 12/16** (23) | — | **Capstone presentations (day 1)** | — |
+| **Fri 12/18** (24) | — (wrap) | **Capstone presentations (day 2) + wrap** | **Capstone due** · **R3 (final self-evaluation) due** |
 
-*Lecture "—" = recap / workshop / work-session days (Day 2 included — "Sacred Boundaries" was cut, its
-material folded into the Day-10 and Day-1 lectures). "Going Public" anchors Day 19 (analysis → public
-argument → the capstone); "Code as Rhetoric" was folded into the Day-1 and Day-19 lectures.*
+*Lecture "—" = days with no mini-lecture: recap, workshop, work-session, and presentation days.*
 
 ---
 

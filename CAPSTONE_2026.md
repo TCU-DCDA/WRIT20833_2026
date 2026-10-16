@@ -2,10 +2,6 @@
 
 **WRIT 20833 — Intro to Coding in the Humanities · "When Coding Meets Culture" · Fall 2026**
 
-> **DRAFT for instructor review.** Authored in the 2026 house style and ungrading voice; cross-checked
-> against `SYLLABUS_2026.md` and `COURSE_SCHEDULE_2026.md`.
-> A few `[...]` spots are instructor/submission specifics (where to upload, presentation length).
-
 ---
 
 ## What this is
@@ -19,12 +15,13 @@ You hand in three things, all about the **same** dataset:
 
 1. **A notebook** — your analysis, with `#comments` that show your thinking.
 2. **A short essay** (~800–1,200 words) — your **data-driven opinion**, argued from the notebook.
-3. **A short presentation** (~`[3–5]` min) on the last day — one finding and one thing your tools got wrong.
+3. **A short presentation** (about 6 minutes) in one of the last two classes — one finding and one thing
+   your tools got wrong.
 
 This is **HW4's B4/C2 grown up.** In HW4 you wrote "your capstone in miniature"; this is the full size.
 
-**Due dates** (see the schedule): **proposal — Fri 12/4** · **notebook + essay — Fri 12/18** (presented in
-class that day). The final self-evaluation (**Reflection 3**) is also due Fri 12/18 — the capstone is the
+**Due dates** (see the schedule): **proposal — Fri 12/4** · **presentations — Wed 12/16 and Fri 12/18** ·
+**notebook + essay — Fri 12/18**. The final self-evaluation (**Reflection 3**) is also due Fri 12/18 — the capstone is the
 biggest piece of evidence you'll cite in it.
 
 ---
@@ -119,11 +116,14 @@ forfeits the one thing the tools can't give back.
 
 ---
 
-## The presentation *(last day, Fri 12/18)*
+## The presentation *(last two classes, Wed 12/16 and Fri 12/18)*
 
-A short, low-stakes share (~`[3–5]` minutes): your dataset and question, **one finding**, and **one thing
-your method got wrong.** No slides required — walk us through a cell or two of your notebook. This mirrors
-the Week-4 discussion (D4): what computation reveals *and* hides.
+A short, low-stakes share (about 6 minutes, plus a question or two): your dataset and question, **one
+finding**, and **one thing your method got wrong.** No slides required — walk us through a cell or two of
+your notebook. This mirrors the last discussion (D4): what computation reveals *and* hides.
+
+Half the class presents Wednesday and half on Friday: volunteers first, then a sign-up. Either way, your
+notebook and essay are due Friday. You'll run through your talk with your peer-review partner on Mon 12/14.
 
 ---
 
@@ -135,9 +135,9 @@ the Week-4 discussion (D4): what computation reveals *and* hides.
 | **Mon 12/7** (Day 19) | "Being wrong as learning" · capstone framing; validation | HW4 due |
 | **Wed 12/9** (Day 20) | Capstone work session 1 (with support) | — |
 | **Fri 12/11** (Day 21) | Capstone work session 2 | — |
-| **Mon 12/14** (Day 22) | Capstone work session 3 + **peer review** | — |
-| **Wed 12/16** (Day 23) | Capstone polish + presentation dry-run | — |
-| **Fri 12/18** (Day 24) | **Capstone presentations** + course wrap | **Capstone due** · **R3 due** |
+| **Mon 12/14** (Day 22) | Capstone work session 3 + **peer review** + presentation run-through | — |
+| **Wed 12/16** (Day 23) | **Capstone presentations, day 1** | — |
+| **Fri 12/18** (Day 24) | **Capstone presentations, day 2** + course wrap | **Capstone due** · **R3 due** |
 
 ### The proposal (due Fri 12/4)
 One short paragraph. (You'll look back at it in **HW4 C2**, due the next Monday, once you've run all three
@@ -174,7 +174,7 @@ public debate**, while representing the values and voices of a community in disa
 
 ## Submit checklist
 
-Before you turn in your notebook + essay `[to: upload location / TCU Online]`:
+Before you turn in your notebook + essay (TCU Online → **Assignments** → **Capstone**):
 
 - [ ] My notebook loads my data, runs **at least two** of the three lenses, and **brings them together**.
 - [ ] I **returned to individual texts** by hand (close → distant → close) — not just the aggregate.
@@ -186,7 +186,7 @@ Before you turn in your notebook + essay `[to: upload location / TCU Online]`:
 - [ ] My essay (~800–1,200 words) makes **one argument**, grounded in specifics from the notebook,
       **preserves any disagreement** in my data, and is honest about what my method flattens.
 - [ ] The **writing is my own voice** (AI for code and feedback is fine; the prose is mine).
-- [ ] I'm ready to share **one finding and one thing my tools got wrong** in class on Fri 12/18.
+- [ ] I'm ready to share **one finding and one thing my tools got wrong** in class on my presentation day (Wed 12/16 or Fri 12/18).
 
 ---
 

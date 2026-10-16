@@ -12,12 +12,11 @@ handout/demo · **Workshop** = students build with their own data · **Work sess
 homework/capstone time with support · **Presentations** = student showcase.
 
 *Key:* **HW** = homework · **R** = self-reflection · **D** = TCU Online threaded discussion · ML = mini-lecture.
-Notebook links are relative paths into this repo (`notebooks/codeAlongs/`, `notebooks/homework/`,
-`materials/stylometry/`).
 
 *This is an 8-week course (second 8-week session, TCU "8W2"): 8 instructional weeks × 3 days × 2 hrs ≈ 24
-sessions / 48 contact hours. No class the week of Thanksgiving (Nov 23–27). The capstone presentation on
-the final day (Fri Dec 18) is the course's Final Evaluative Exercise — there is no separate final exam.*
+sessions / 48 contact hours. No class the week of Thanksgiving (Nov 23–27). The capstone (presented
+Wed Dec 16 and Fri Dec 18, due Fri Dec 18) is the course's Final Evaluative Exercise — there is no separate
+final exam.*
 
 ---
 
@@ -38,7 +37,7 @@ the final day (Fri Dec 18) is the course's Final Evaluative Exercise — there i
 ### Week 3 (Nov 2–6) — From text to data: term frequency & AI
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 11/2** (7) | Data as evidence *(brief framing — no deck)* | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
+| **Mon 11/2** (7) | Data as evidence *(brief framing)* | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
 | **Wed 11/4** (8) | AI Agency | **Lab** → Reading & improving AI code + stylometry seed: [Reading for the Seams](materials/stylometry/Reading_for_the_Seams.md) (close reading) | D2 post |
 | **Fri 11/6** (9) | — | **Work session** → HW2 (+ optional C2: term frequency on text of your own) | D2 replies |
 
@@ -73,9 +72,9 @@ the final day (Fri Dec 18) is the course's Final Evaluative Exercise — there i
 ### Week 8 (Dec 14–18) — Capstone
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 12/14** (22) | — | **Work session** → Capstone work session 3 + peer review | — |
-| **Wed 12/16** (23) | — | **Work session** → Capstone polish + presentation dry-run | — |
-| **Fri 12/18** (24) | — (wrap) | **Presentations** → Capstone presentations + wrap | **[Capstone](CAPSTONE_2026.md) due** · **R3 due (final self-evaluation)** |
+| **Mon 12/14** (22) | — | **Work session** → Capstone work session 3 + peer review + presentation run-through | — |
+| **Wed 12/16** (23) | — | **Presentations** → Capstone presentations, day 1 | — |
+| **Fri 12/18** (24) | — (wrap) | **Presentations** → Capstone presentations, day 2 + wrap | **[Capstone](CAPSTONE_2026.md) due** · **R3 due (final self-evaluation)** |
 
 ---
 
@@ -83,18 +82,13 @@ the final day (Fri Dec 18) is the course's Final Evaluative Exercise — there i
 [Lists, Loops & Conditionals](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) notebook
 covers **Days 3–4**, the [VADER](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) notebook spans
 **Days 13–14**, and the [Topic Modeling](notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb)
-notebook spans **Days 16–17**. Every coding day links a real notebook — the term-frequency code-along
-(Day 7) was authored fresh (no F25 source existed) and leads directly into HW2.
+notebook spans **Days 16–17**.
 
-**Day 7 "Data as evidence" is a brief (~5-min) verbal framing**, not a built deck — the Week 2 → Week 3
-pivot (Python foundations → treating text as data), delivered live to open the Term-Frequency code-along.
+**Day 7 "Data as evidence"** is a short spoken opener (about 5 minutes) to the term-frequency code-along:
+the turn from Python foundations to treating text as data.
 
-*Notes on lectures:* "—" in **Lecture** marks recap / workshop / work-session days with no formal
-mini-lecture. **"Sacred Boundaries" was cut**: its privacy/collection-ethics core lives in the Data
-Archaeology lecture (Day 10), and its noumena-limit point in the Day-1 opener. The **"Going Public"**
-lecture anchors **Day 19** (analysis → public argument → the capstone); **"Code as Rhetoric"** was
-harvested into the Connotations & Code (Day 1) and Going Public lectures rather than built as its own deck
-(its HTML/CSS half belongs to the cut web-dev arc).
+*Notes on lectures:* "—" in **Lecture** marks days with no mini-lecture: recap, workshop, work-session, and
+presentation days.
 
 *Calendar notes:* this is the TCU **8W2** (second 8-week) session — Mon Oct 19 → Fri Dec 18, MWF. **No
 class the week of Thanksgiving** (Nov 23–27; classes recess after Fri Nov 20 and resume Mon Nov 30).
