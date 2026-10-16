@@ -140,7 +140,7 @@ expectations" and no number, percentage, or points total anywhere. 40363 found t
 ## 5. Syllabus file
 
 Start Here links to `SYLLABUS_2026.md` rendered on GitHub, which is always current. The
-AddRan Word syllabus (`SYLLABUS_2026.docx`) is a separate Lane D task: sync it to the
+AddRan Word syllabus (`WRIT20833-020_Fall2026_Rode.docx`, kept outside this repo) is a separate Lane D task: sync it to the
 markdown, export a PDF, and upload the PDF to Start Here by hand. A rebuild never touches
 an uploaded file, so re-upload after any syllabus edit.
 

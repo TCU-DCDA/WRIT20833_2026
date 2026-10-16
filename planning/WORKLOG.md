@@ -22,8 +22,9 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
   (only three JS comments naming the path changed), `release_dates.py` output identical, both D2L packages
   identical file-for-file, render tests 9/9. Current docs (CLAUDE.md, README, WIRING_CHECKLIST,
   NEXT_SESSION, lecture notes) point at the new paths; older WORKLOG entries keep the old names.
-- Still at root, awaiting instructor OK to delete: five TCU template/Core files byte-identical to
-  `reference/`, and the stale `SYLLABUS_2026.docx` (Aug 27; old grading text and draft note).
+- Deleted from root (instructor OK): five TCU template/Core files byte-identical to `reference/`, and
+  the stale `SYLLABUS_2026.docx` (Aug 27; old grading text and draft note). The maintained Word copy is
+  `WRIT20833-020_Fall2026_Rode.docx`, kept outside the repo.
 
 ## Latest session — 2026-10-15 — Code-alongs: room to type, remaining four (Term Frequency, Pandas 02, VADER, Topic Modeling)
 

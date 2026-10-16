@@ -198,7 +198,7 @@ hand-wire the grade scheme, 12 grade items, discussion dates,
 syllabus PDF and homepage widget per **`d2l/WIRING_CHECKLIST.md`**. ⚠️ The CC discussion topics are
 **unverified** on TCU's instance (checklist §1 has the fallback). Two calls to confirm there: discussion
 deadlines = start of class, and the extra capstone-proposal folder. Remaining Lane D items: the
-AddRan Word syllabus (`SYLLABUS_2026.docx`, added 2026-08-27) synced to `SYLLABUS_2026.md`; the 🟦
+AddRan Word syllabus (`WRIT20833-020_Fall2026_Rode.docx`, kept outside the repo; the old tracked `SYLLABUS_2026.docx` was deleted 2026-10-15) synced to `SYLLABUS_2026.md`; the 🟦
 registrar wording double-checks in `planning/SYLLABUS_COMPLIANCE.md`; one 60-sec live Colab click on the
 Day-16 gensim install cell. **Not a task:** the CSV/HUM vetting-form trim — the course already carries
 both designations and nothing is pending (closed 2026-06-26; WORKLOG item #10). `CSV_HUM_WORK_EXAMPLES.md`
