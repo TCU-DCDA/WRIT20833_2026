@@ -14,7 +14,28 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-10-15 — Code-alongs: room to type (Weeks 1–2 rebuilt: Variables, Lists & Loops, Dictionaries & Functions)
+## Latest session — 2026-10-15 — Site: notebook links stay unlinked until their class day
+
+- **Ask:** notebooks should not be clickable on the site until the day they are assigned.
+- **How:** new `release_dates.py` reads `COURSE_SCHEDULE_2026.md` (the source of truth for dates): a
+  code-along opens on the first table row that links it; a homework notebook opens on its
+  "**HWn assigned**" row (HW1 Fri 10/30, HW2 Mon 11/2, HW3 Mon 11/16, HW4 Wed 12/2); the stylometry
+  notebook on Day 18. `build_index.py` and `build_schedule_html.py` stamp every `.ipynb` link with
+  `data-opens="YYYY-MM-DD" data-opens-label="Fri 10/23"`. `GATE_JS` (now emitted by `site_theme.PAGE` on
+  every page) swaps a not-yet link for plain text — cards go dashed with "· opens Fri 10/23" in the
+  `.when` line; schedule links become muted text "(opens Fri 10/23)". The site is static and rebuilt only
+  on commits, so the client's clock is what lets links open on the right morning without a daily rebuild.
+  `?all=1` on any page bypasses the gate (instructor preview). No JS → links stay live.
+- **Verified** with headless Chrome on 2026-10-15: index 14/14 cards locked, 0 live; `?all=1` 0 locked,
+  14 live; schedule 17/17 links locked, `?all=1` 17 live. `assert_accessible()` passes (the `.opens`
+  label is 12px `--muted`). `python3 release_dates.py` prints the table.
+- **Limits, stated in the code and CLAUDE.md:** the repo is public, so a student who browses GitHub (or
+  the in-notebook Colab badge of a released notebook) can still find everything — this paces the site,
+  it does not hide files. D2L's own notebook links need release conditions set by hand
+  (`d2l/WIRING_CHECKLIST.md` §7). All `docs/` pages rebuilt (lectures and Code Guide only gained the script).
+
+
+## Earlier session — 2026-10-15 — Code-alongs: room to type (Weeks 1–2 rebuilt: Variables, Lists & Loops, Dictionaries & Functions)
 
 - **Audit.** Seven of the nine code-alongs were fully worked: every concept cell pre-filled, the only blanks
   the end-of-section "your turn" and Playground cells. Filled/blank code cells per notebook — Variables 24/1,

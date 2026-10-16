@@ -199,3 +199,11 @@ combine: `--modules 3,4`.
 In D2L, delete that module first, choosing **permanent** deletion (not "remove from
 Content", or the old topics linger in Manage Files), then import the small package.
 Delete first, then import, or you get the duplicates you were avoiding.
+
+## 7. Notebook release dates (by hand)
+
+The course site unlinks each notebook until its class day (`release_dates.py`; `python3 release_dates.py`
+prints the table). D2L does not read that. For each Weeks/Homework link to a notebook, set a **release
+condition** (or start date) on the matching day: code-alongs on their schedule day, HW1 Fri 10/30, HW2
+Mon 11/2, HW3 Mon 11/16, HW4 Wed 12/2, the stylometry notebook Fri 12/4. No end dates (same late-work
+reasoning as §2).

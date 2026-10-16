@@ -39,6 +39,10 @@
 > **93 comments stored as 123 rows** everywhere (WORKLOG). Open: the private Code Guide prompt likely still says "~123
 > comments". **Wording batch F02–F04, F07, F09, F11–F13 also done.** Remaining: F05/F06/F08/F10 need instructor
 > framing calls, plus the audit's "Additional prose and citation issues" list.
+> 🔒 **2026-10-15: notebook links are date-gated on the site.** `release_dates.py` + `GATE_JS` (WORKLOG). Cards and
+> schedule links to a notebook stay plain text until its schedule day (HW: its "assigned" day); `?all=1` previews all.
+> If a date moves, edit the schedule and rebuild `docs/`. **To do by hand in D2L:** release conditions on the notebook
+> links (`d2l/WIRING_CHECKLIST.md` §7). Not yet pushed.
 > ✏️ **2026-10-15: code-along room-to-type audit.** 7 of 9 code-alongs were fully pre-filled (WORKLOG). **Weeks 1–2
 > are rebuilt:** Variables (`_build_variables.py`, new), Lists & Loops (`_build_lists.py`, new), Dictionaries &
 > Functions (`_build_dictfunc.py`, now a pair) each emit a student copy with type-along blanks + a `*_complete.ipynb`.

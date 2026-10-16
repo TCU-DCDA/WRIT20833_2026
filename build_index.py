@@ -11,6 +11,7 @@ import html
 import os
 from site_theme import PAGE, site_header, site_footer, write_stylesheet
 from build_chatbot import CHAT_API_URL  # the Code Guide card appears only once its Worker is deployed
+from release_dates import gate_attrs  # notebook cards unlink themselves until their schedule day
 
 OUT = "docs/index.html"
 REPO = "TCU-DCDA/WRIT20833_2026"
@@ -76,7 +77,7 @@ RESOURCES = [
 ]
 
 
-def card(label, title, desc, when, href, soon=False, img=None, thumb=False, alt=None):
+def card(label, title, desc, when, href, soon=False, img=None, thumb=False, alt=None, opens=""):
     """alt=(label, href) adds a second link; the card is then a <div> whose title link stretches
     over the whole card (links can't nest), so clicking anywhere still opens `href`."""
     cls = "card soon" if soon else "card"
@@ -96,7 +97,7 @@ def card(label, title, desc, when, href, soon=False, img=None, thumb=False, alt=
     else:
         inner = body
     if href and not alt:
-        return f'<a class="{cls}" href="{href}">{inner}</a>'
+        return f'<a class="{cls}" href="{href}"{opens}>{inner}</a>'
     return f'<div class="{cls}">{inner}</div>'
 
 
@@ -144,20 +145,20 @@ def render():
     ca_body = "".join(
         '<div class="wkgroup"><h3><span class="wkn">' + html.escape(wk) + '</span>'
         + html.escape(theme) + '</h3>'
-        + grid([card("Code-along", t, d, w, COLAB + p) for (t, d, w, p) in items])
+        + grid([card("Code-along", t, d, w, COLAB + p, opens=gate_attrs(p)) for (t, d, w, p) in items])
         + '</div>'
         for (wk, theme, items) in CODEALONGS_BY_WEEK)
     codealongs = section(
         "codealongs", "02", "Code-alongs",
         "Instructor-led notebooks we build together in class — one per coding day, grouped by week. "
-        "Each opens in Colab.",
+        "Each opens in Colab on the morning of its class day.",
         ca_body)
 
     homework = section(
         "homework", "03", "Homework",
         "Four notebooks where you apply the skills to a cultural dataset — ideally one you choose. "
-        "(Due dates are confirmed in the syllabus.)",
-        grid([card("Homework", t, d, w, COLAB + p) for (t, d, w, p) in HOMEWORK]))
+        "Each opens on the day it is assigned. (Due dates are confirmed in the syllabus.)",
+        grid([card("Homework", t, d, w, COLAB + p, opens=gate_attrs(p)) for (t, d, w, p) in HOMEWORK]))
 
     capstone = section(
         "capstone", "04", "Capstone & stylometry",
@@ -169,7 +170,8 @@ def render():
             card("Exercise", "Reading for the Seams", "Stylometry close-reading: hearing a human (or AI) voice.",
                  "Day 8 · Week 8", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
             card("Notebook", "Stylometry (computational)", "The computational half of the stylometry exercise.",
-                 "Week 8", COLAB + "materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb"),
+                 "Week 8", COLAB + "materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb",
+                 opens=gate_attrs("materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb")),
         ]))
 
     lectures = section(

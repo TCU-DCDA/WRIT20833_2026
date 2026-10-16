@@ -242,6 +242,11 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 @media (max-width:700px){.reading figure.upright{float:none;width:auto;margin:24px 0;}
   .reading figure.upright img{width:auto;max-height:min(60vh,520px);}}
 .reading hr{border:none;border-top:1px solid var(--rule);margin:30px 0;}
+/* release gate — a notebook link whose data-opens date is still ahead (see release_dates.py) */
+.card.locked{border-left-style:dashed;background:var(--paper);cursor:default;}
+.card.locked h3{color:var(--muted);}
+.opens{font:600 12px/1 var(--mono);color:var(--muted);letter-spacing:.03em;white-space:nowrap;}
+.nb-locked{color:var(--muted);border-bottom:1px dashed var(--rule);}
 """
 
 
@@ -261,7 +266,7 @@ def PAGE(title, body, extra_css="", wrap=True, css_href=STYLESHEET_NAME, header=
     """
     body = _external_blank(body)
     inner = f'<div class="wrap">{body}</div>' if wrap else body
-    inner = _external_blank(header) + inner + _external_blank(footer) + (NAV_JS if header else "")
+    inner = _external_blank(header) + inner + _external_blank(footer) + (NAV_JS if header else "") + GATE_JS
     if css_href is None:
         head_css = f"<style>{THEME_CSS}{extra_css}</style>"
     else:
@@ -310,6 +315,20 @@ NAV_JS = ('<script>(function(){var t=document.querySelector(".nav-toggle"),n=doc
           't.setAttribute("aria-expanded",o?"true":"false");});'
           'n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){'
           'n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();</script>')
+
+
+# release gate: links stamped data-opens="YYYY-MM-DD" (release_dates.py) become plain text until
+# that date on the viewer's clock. ``?all=1`` shows everything. No-JS fallback: links stay live.
+GATE_JS = ('<script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;'
+           'var d=new Date(),p=function(n){return(n<10?"0":"")+n},'
+           't=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());'
+           'document.querySelectorAll("a[data-opens]").forEach(function(a){'
+           'var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;'
+           'var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");'
+           's.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;'
+           'var w=c?s.querySelector(".when"):null,tag=\'<span class="opens">\'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";'
+           'if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}'
+           'a.replaceWith(s);});})();</script>')
 
 
 def site_header(active=None, prefix="", chat=False):

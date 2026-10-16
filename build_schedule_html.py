@@ -10,6 +10,7 @@ Run from repo root:  python3 build_schedule_html.py
 import re, html, os
 from site_theme import PAGE, site_header, site_footer, write_stylesheet
 from build_chatbot import CHAT_API_URL  # the Code Guide pill appears only once its Worker is deployed
+from release_dates import gate_attrs  # notebook links unlink themselves until their schedule day
 
 SRC = "COURSE_SCHEDULE_2026.md"
 OUT = "docs/schedule.html"
@@ -45,7 +46,7 @@ def md_inline(t):
     """Minimal markdown inline -> HTML (escape, then links/bold/italic/code)."""
     t = html.escape(t, quote=False)
     t = re.sub(r'\[([^\]]+)\]\(([^)]+)\)',
-               lambda m: f'<a href="{_abs(m.group(2))}">{m.group(1)}</a>', t)
+               lambda m: f'<a href="{_abs(m.group(2))}"{gate_attrs(m.group(2))}>{m.group(1)}</a>', t)
     t = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', t)
     t = re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)', r'<em>\1</em>', t)
     t = re.sub(r'`([^`]+)`', r'<code>\1</code>', t)

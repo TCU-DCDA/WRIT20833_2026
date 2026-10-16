@@ -208,6 +208,11 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 @media (max-width:700px){.reading figure.upright{float:none;width:auto;margin:24px 0;}
   .reading figure.upright img{width:auto;max-height:min(60vh,520px);}}
 .reading hr{border:none;border-top:1px solid var(--rule);margin:30px 0;}
+/* release gate — a notebook link whose data-opens date is still ahead (see release_dates.py) */
+.card.locked{border-left-style:dashed;background:var(--paper);cursor:default;}
+.card.locked h3{color:var(--muted);}
+.opens{font:600 12px/1 var(--mono);color:var(--muted);letter-spacing:.03em;white-space:nowrap;}
+.nb-locked{color:var(--muted);border-bottom:1px dashed var(--rule);}
 
 .deck{position:fixed;inset:0;background:var(--paper);overflow:hidden;}
 .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:flex-start;
@@ -371,4 +376,4 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
   var h=parseInt((location.hash||'').slice(1),10); show(h?h-1:0);
 })();
 </script>
-</body></html>
+<script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;var d=new Date(),p=function(n){return(n<10?"0":"")+n},t=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());document.querySelectorAll("a[data-opens]").forEach(function(a){var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");s.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;var w=c?s.querySelector(".when"):null,tag='<span class="opens">'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}a.replaceWith(s);});})();</script></body></html>
