@@ -14,7 +14,29 @@ https://tcu-dcda.github.io/WRIT20833_2026/. `main` is the only ref. · **Last up
 
 ---
 
-## Latest session — 2026-10-15 — Site nav: sticky top bar replaces the left sidebar
+## Latest session — 2026-10-15 — Code-alongs: how much room is left to type? (pilot: Variables)
+
+- **Audit.** Seven of the nine code-alongs were fully worked: every concept cell pre-filled, the only blanks
+  the end-of-section "your turn" and Playground cells. Filled/blank code cells per notebook — Variables 24/1,
+  Lists & Loops 28/3, Dictionaries & Functions 16/1, Term Frequency 10/2, Pandas 02 13/3, VADER 13/3,
+  Topic Modeling 9/4. Pandas 01 (10/11) and String Methods (14/7), reworked 2026-10-06, were the model.
+  Two "your turn" cells were pre-solved: Lists cell "analyze where these podcasts are hosted" ships the whole
+  15-line solution, and Dictionaries `is_long` says "replace pass with: return len(word) > 6" in the comment.
+- **Pilot on Day 1.** New `notebooks/codeAlongs/_build_variables.py` (the notebook had no builder) emits the
+  student copy + `WRIT20833_Variables_DataTypes_2026_complete.ipynb` in the pair style. Content and order
+  are unchanged; the first worked example of each idea stays complete and the *next* move is a blank:
+  8 type-along cells (name, reassign, int, slice, lower/compare, count, modulo, the TypeError fix), 2 new
+  "your turn" cells (a True comparison, an f-string), 2 "predict first" guesses (`type("40")`, `beyonce[14]`).
+  Now 13 filled / 11 blank. The "How today works" note is at the top, as in Pandas 01 / String Methods.
+- **Verified:** both copies executed top-to-bottom; the only error in each is the intentional TypeError.
+  No complete cell depends on a blank (Check Data Types now types `happiest_students`, not `name`), so a
+  student who skips a type-along is not stranded. The schedule/site/D2L link (student filename) is unchanged.
+- **Next:** same treatment in calendar order — Lists & Loops (Days 3–4, needs a builder), Dictionaries &
+  Functions (Day 5), Term Frequency (Day 7), then Pandas 02, VADER, Topic Modeling. Decide when students get
+  the `_complete` copies (none are linked yet).
+
+
+## Earlier session — 2026-10-15 — Site nav: sticky top bar replaces the left sidebar
 
 - **Why:** the 240px left sidebar on the dashboard, schedule and Code Guide pages read as an app shell;
   the 40363 site's sticky top bar (brand left, pill links right, ☰ under 860px) is lighter and the same
