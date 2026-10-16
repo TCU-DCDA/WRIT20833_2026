@@ -1,5 +1,16 @@
 # Next-session handoff prompt
 
+> 🗓️ **2026-10-15 (syllabus + repo tidy, pushed):** syllabus closes the AddRan template gaps (QR → policy page,
+> office hours in person/Zoom, final time + room, one-week feedback window); final grade is now **student-proposed
+> in R3, no tally**, A range guaranteed when every piece is in and engaged; marks are **words only** (Exceeds /
+> Meets / Does not yet meet). Site generators moved to `build/` (outputs verified identical); root duplicates and
+> the stale `SYLLABUS_2026.docx` deleted. **Open, instructor:** (1) confirm with the registrar that the 8W2 final
+> exercise runs on the last class meeting, Fri 12/18 10:00–11:50 (the finals grid only lists full-term slots);
+> (2) TCU Online grade scheme/items → word labels, Selectbox, symbol-only (WIRING_CHECKLIST §4); (3) Word
+> syllabus hand edits, item (4) below, plus the word-only marks; (4) decide whether the tutor-prompt draft
+> (`planning/CHATBOT_TUTOR_SYSTEM_PROMPT_DRAFT.md`) moves to the private chatbot repo, and whether the
+> `*_complete.ipynb` code-along copies (and their builders) stay public.
+
 > **Course starts Mon Oct 19, 2026.** Updated **2026-10-07**: the **Code Guide is deployed and linked** from the
 > home page (2026-10-06/07; the chatbot repo's `CLAUDE.md` has the details), and the lecture decks got a visual pass
 > (WORKLOG 2026-10-07: title bar + slide numbers, takeaway callouts, title-slide images restored, ml0 Pudding swap,
