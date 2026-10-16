@@ -17,10 +17,17 @@
 | **Final Evaluative Exercise** | The **capstone** (data-driven-opinion notebook + short essay), due on the final day, **Fri December 18, 10:00–11:50 AM, in our classroom (Schar 2003)**. Presentations run over the last two class meetings, Wed December 16 and Fri December 18. There is no separate final exam. |
 | **Other Important Dates** | **Thanksgiving break (no class):** Nov 23–27 (classes recess after Fri Nov 20, resume Mon Nov 30). **Final drop deadline:** Thu Nov 19. Any other deviations announced on TCU Online. |
 
-**Instructor:** Dr. Curt Rode · **Office Location:** Schar 2006 · **Office Hours:** By appointment (30 minutes), **in person** in Schar 2006 **or virtually on Zoom** — choose either when you book at https://calendly.com/c-rode/appointments; Zoom meetings get their link in the confirmation email
-**Telephone:** 817-257-6983 · **Email:** c.rode@tcu.edu · **Preferred Contact:** Email
+**Instructor:** Dr. Curt Rode · 
+**Office Location:** Schar 2006 · 
+**Office Hours:** By appointment (30 minutes), 
+**in person** in Schar 2006 
+**or virtually on Zoom** — choose either when you book at https://calendly.com/c-rode/appointments; Zoom meetings get their link in the confirmation email
+**Telephone:** 817-257-6983 · 
+**Email:** c.rode@tcu.edu · 
+**Preferred Contact:** Email
 **Response Time:** within 24 hours on weekdays (longer on weekends and holidays)
-**Course site & submissions:** **TCU Online** (D2L) — d2l.tcu.edu. **Code runs in:** Google Colab (free; needs a Google account).
+**Course site & submissions:** **TCU Online** (D2L) — d2l.tcu.edu. 
+**Code runs in:** Google Colab (free; needs a Google account).
 
 *Note for students:* The syllabus is your first course reading — it orients you to the flow and
 expectations of the course. Turn to it for details on assignments and policies.
