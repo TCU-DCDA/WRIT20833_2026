@@ -192,33 +192,33 @@ difference between *using* the tools that sort our culture and being able to *qu
 ![The noumena-to-wisdom pipeline: noumena, phenomena, raw data, structured data, analyzed data, insight, knowledge, wisdom](materials/images/noumena_to_wisdom_pipeline.png)
 
 Look at this diagram. We'll come back to it every week.
+
+It begins much further from "the truth" than you'd guess. Let's follow one woman down it.
 -->
 
 <!-- slide:
 ![The noumena-to-wisdom pipeline: noumena, phenomena, raw data, structured data, analyzed data, insight, knowledge, wisdom](materials/images/noumena_to_wisdom_pipeline.png)
 
-It begins much further from "the truth" than you'd guess.
+- **Noumena** — the thing *as it actually is* (Kant's word). A woman in Texas reads that her child's
+  classroom will display the Ten Commandments, and feels something complete and entirely her own.
+- **Phenomena** — she finds words for *some* of it and decides to post under a news video: public,
+  partial, written for strangers.
+- **Raw data** — a free browser tool **scrapes** it for us. Her name and the date are lost; a line
+  break can split her comment in two.
+- **Structured data** — we **clean** it into rows of a table, choosing what counts as a "word."
 
-At the top sits the ***noumenon*** — Kant's word for a thing
-**as it actually is**, the whole lived human fact. A woman in Texas reads
-that her child's classroom will display the Ten Commandments, and feels
-something complete and entirely her own.
-
-### We will never have that feeling.
-
-What we *can* have is what she typed — already a lossy, public projection
-of an inner state.
+*We will never have that feeling. We have what she typed, and what we did to it.*
 -->
 
 <!-- slide:
 ![The noumena-to-wisdom pipeline: noumena, phenomena, raw data, structured data, analyzed data, insight, knowledge, wisdom](materials/images/noumena_to_wisdom_pipeline.png)
 
-Then we **scrape** it — and some comments are missed.
-We **clean** it — we choose what counts as a "word."
-We **model** it — a tool decides what "great" means.
+Then we make something of her, down the right column.
 
-And only *then* do we reach for **insight, knowledge,**
-and — maybe, by the end — **wisdom.**
+- **Analyzed data** — we **model** it: a tool decides what "great" means and gives her words a score.
+- **Insight** — beside the other scores, hers says something. Maybe: "the crowd is split."
+- **Knowledge** — a claim we'd defend, once we've checked it against what she actually wrote.
+- **Wisdom** — maybe, by the end: knowing how to speak about this law in public without flattening her.
 
 *Eight steps from the woman to the number. Every one of them ours.*
 -->
