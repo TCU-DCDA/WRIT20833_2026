@@ -418,8 +418,7 @@ assessed before it's taught.*
 
 *Lecture "—" = recap / workshop / work-session days (Day 2 included — "Sacred Boundaries" was cut, its
 material folded into the Day-10 and Day-1 lectures). "Going Public" anchors Day 19 (analysis → public
-argument → the capstone); "Code as Rhetoric" was folded into the Day-1 and Day-19 lectures. See
-`planning/CONCEPTUAL_FRAMEWORK_2026.md`.*
+argument → the capstone); "Code as Rhetoric" was folded into the Day-1 and Day-19 lectures.*
 
 ---
 

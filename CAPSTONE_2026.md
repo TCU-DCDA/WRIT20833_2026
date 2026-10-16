@@ -3,7 +3,7 @@
 **WRIT 20833 — Intro to Coding in the Humanities · "When Coding Meets Culture" · Fall 2026**
 
 > **DRAFT for instructor review.** Authored in the 2026 house style and ungrading voice; cross-checked
-> against `SYLLABUS_2026.md`, `COURSE_SCHEDULE_2026.md`, and `planning/CONCEPTUAL_FRAMEWORK_2026.md`.
+> against `SYLLABUS_2026.md` and `COURSE_SCHEDULE_2026.md`.
 > A few `[...]` spots are instructor/submission specifics (where to upload, presentation length).
 
 ---

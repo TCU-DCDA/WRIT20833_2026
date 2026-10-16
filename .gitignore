@@ -31,10 +31,20 @@ env/
 *.log
 .cache/
 
-# Instructor-only — answer keys + the solution-bearing homework builders live in the
-# PRIVATE companion repo TCU-DCDA/WRIT20833_2026_keys, never in this student-facing repo.
+# Instructor-only — everything that isn't student-facing lives in the PRIVATE companion repo
+# TCU-DCDA/WRIT20833_2026_instructor (cloned beside this one): answer keys, every notebook builder,
+# the code-along *_complete copies, planning/, reference/, the D2L generators, and the working rules
+# (CLAUDE.md — loaded here through a per-machine CLAUDE.local.md stub). The guard workflow enforces it.
 *_ANSWER_KEY.ipynb
+*_complete.ipynb
 notebooks/homework/_build_hw*.py
+notebooks/codeAlongs/_build_*.py
+planning/
+reference/
+d2l/
+CLAUDE.md
+CLAUDE.local.md
+.claude/
 
 # Generated AddRan Word export of the syllabus — a working draft edited in Word
 # (pandoc'd from SYLLABUS_2026.md, which stays the source of truth). The glob matches
@@ -44,17 +54,9 @@ WRIT20833-*_Summer2026_Rode.docx
 # Throwaway local site previews (image paths rewritten to local files)
 *.preview.html
 
-# TCU Online (D2L) build products — the generators in d2l/ and WIRING_CHECKLIST.md are what's
-# tracked; the packages are reproducible. Raw D2L exports carry the course's org-unit id and
-# must never land in this public repo (the guard workflow checks for them).
-d2l/WRIT20833_Fall2026_*/
-d2l/WRIT20833_Fall2026_*.imscc
-d2l/WRIT20833_Fall2026_*.zip
-d2l/WRIT20833_Fall2026_*-homepage-widget.html
-d2l/WRIT20833_Fall2026_*-discussions.html
+# TCU Online (D2L) packages and raw exports — the latter carry the course's org-unit id.
 *.imscc
 D2LExport_*/
-d2l/__pycache__/
 
-# Local Codex review output (not for the public repo)
+# Local Codex review output (kept in the instructor repo)
 codex_review/

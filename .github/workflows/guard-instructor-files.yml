@@ -1,9 +1,9 @@
-# Guard against the answer keys / solution-bearing HW builders ever being tracked in this
-# PUBLIC student-facing repo again. They live ONLY in the private TCU-DCDA/WRIT20833_2026_keys
-# repo (see .gitignore + planning/WORKLOG.md "Working across two machines" — a pull after a
-# history rewrite reintroduced them once, 2026-06; this check makes a recurrence fail loudly).
-# Also guards raw TCU Online (D2L) exports and built cartridges — build products of d2l/,
-# never tracked here.
+# Guard against instructor-only material ever being tracked in this PUBLIC student-facing repo.
+# It lives ONLY in the private TCU-DCDA/WRIT20833_2026_instructor repo: answer keys, every notebook
+# builder, the code-along *_complete copies, planning/ (including the Code Guide tutor-prompt
+# drafts), reference/, the D2L generators, CLAUDE.md. Also raw TCU Online (D2L) exports and built
+# cartridges, which carry the course's org-unit id. A pull after a history rewrite reintroduced
+# keys once (2026-06); this check makes a recurrence fail loudly.
 name: Guard instructor-only files
 
 on: [push, pull_request]
@@ -13,14 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Fail if answer keys, HW builders, or D2L exports are tracked
+      - name: Fail if instructor-only files are tracked
         run: |
-          hits=$(git ls-files -- '*_ANSWER_KEY.ipynb' 'notebooks/homework/_build_hw*.py' \
-                   'D2LExport_*' '*.imscc' 'd2l/WRIT20833_Fall2026_*')
+          hits=$(git ls-files -- '*_ANSWER_KEY.ipynb' '*_complete.ipynb' '*_build_*.py' \
+                   'planning/*' 'reference/*' 'd2l/*' 'CLAUDE.md' '*CHATBOT_TUTOR*' \
+                   'D2LExport_*' '*.imscc')
           if [ -n "$hits" ]; then
             echo "::error::Instructor-only files are tracked in this public repo:"
             echo "$hits"
-            echo "Remove them (git rm) — keys belong only in the private keys repo; D2L packages are rebuilt from d2l/."
+            echo "Remove them (git rm) — they belong only in the private instructor repo."
             exit 1
           fi
           echo "OK — no instructor-only files tracked."
