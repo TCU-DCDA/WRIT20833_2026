@@ -25,7 +25,7 @@
 | **Telephone** | 817-257-6983 |
 | **Email** | c.rode@tcu.edu |
 | **Preferred Contact** | Email |
-| **Response Time** | Within 24 hours on weekdays (longer on weekends and holidays) |
+| **Response Time** | Within 24 hours on weekdays; within 48 hours on weekends (longer over holidays) |
 | **Course Site & Submissions** | **TCU Online** (D2L) — d2l.tcu.edu |
 | **Code Runs In** | Google Colab (free; needs a Google account) |
 
@@ -100,10 +100,10 @@ outside book.
 ---
 
 ## Teaching Philosophy & Methodology
-Each 2-hour in-class session follows the same rhythm:
-- **~25 min — concept / mini-lecture:** the idea and the culture question behind it.
-- **~70 min — live code-along:** we build it together; you type as we go.
-- **~25 min — application + share:** you apply it to real text and we compare notes.
+Most class sessions combine three kinds of work:
+- **Concept / mini-lecture:** the idea and the culture question behind it.
+- **Live code-along:** we build it together; you type as we go.
+- **Application + share:** you apply it to real text and we compare notes.
 
 Four threads run through the course: (1) our notebooks serve as the "textbook"; (2) a critical frame
 each day (code is not neutral; classification logic; AI agency; collective memory; what counting hides);
@@ -185,8 +185,6 @@ other **complicates** it; "great point, I agree" is neither.
    it and the one sentence you would say about it in public — and one thing your methods get wrong,
    including, if you caught one, a moment you trusted a result mainly because it *sounded* right.
    *Replies:* rewrite a classmate's public sentence so it is honest about what their method flattened.
-   *(The course is designed for 4 discussions; D4 may be dropped to a 3-discussion minimum if
-   end-of-term capstone load is heavy.)*
 
 ### Grading Philosophy (ungrading)
 This course uses **ungrading**. Through the term your work is **not** scored with points; each piece is
@@ -214,7 +212,7 @@ Some deadlines are **firm** because classmates depend on them: **discussion post
 conversation only works while it's happening, so a post or reply made after its deadline can't be made
 up, and that discussion stays at "not yet") and **preparation for in-class work sessions** (group work
 needs everyone current). Other work, meaning homework notebooks, reflections, and revisions, is
-**flexible if you contact me before the due date**; we'll agree on a new date. Work that's late without
+**flexible if you contact me before the due date**, and we can usually agree on a new date. Work that's late without
 an arrangement stays at "not yet" until it's in. All work must be submitted by **Fri Dec 18**.
 
 **Self-granted extensions.** Work submitted after the deadline without an arrangement made beforehand can
@@ -234,7 +232,8 @@ This is a fast-moving course that meets three days a week and builds session to 
 active engagement in class are expected, and your engagement is reflected throughout your marks (there is
 no separate points-based participation grade). In this course, "engaged" means showing up to class, coding
 along, posting and replying in discussions on time, and documenting your thinking in your `#comments`
-and reflections. If you must miss a session, let me know in advance and we'll arrange a catch-up.
+and reflections. If you must miss a session, let me know in advance; you're responsible for catching up
+on what you missed (each day's notebook is on the course site).
 
 **Official University Absences** are those described in the Official University Absence Policy and
 include Title IX–related issues, military leave, holy days, and university-related absences. Students
@@ -343,8 +342,9 @@ file.
 
 ### Technology & Recording
 - **Technology.** Bring a laptop that can run a web browser — all code runs in **Google Colab**, so
-  there's nothing to install. If your device fails in class, let me know and pair with a classmate; you
-  can also reach me on TCU Online to catch up on anything you miss.
+  there's nothing to install. If your device fails in class, pair with a classmate for the session. If
+  you're having technology problems that affect your work, let me know so we can make a plan for making
+  up anything you've missed.
 - **Recording of class sessions.** This is an in-person course and class sessions are not routinely
   recorded. The University's official **Recording of Class Sessions** policy is in *Student Resources &
   Policy Information* above; if you have an accommodation to make your own recordings, see *Student Access
@@ -365,8 +365,7 @@ adjusted to the class's pace; changes are announced on TCU Online. The course si
 and reading.*
 
 ### Python skills map — what's taught when
-*Each skill is introduced in a class code-along, then practiced in the linked homework. Nothing is
-assessed before it's taught.*
+*Each skill is introduced in a class code-along before the homework that uses it.*
 
 | Skill | First taught | Practiced in |
 |---|---|---|
