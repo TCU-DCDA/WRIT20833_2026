@@ -135,7 +135,7 @@ def render():
         '<script src="chatbot.js"></script>'
     )
     return PAGE("Code Guide — WRIT 20833", main, extra_css=CHAT_CSS,
-                header=site_header(active="Code Guide", chat=bool(CHAT_API_URL)),
+                header=site_header(active="Resources", chat=bool(CHAT_API_URL)),
                 footer=site_footer("WRIT 20833 · Code Guide · an optional after-hours tutor"))
 
 

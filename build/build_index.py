@@ -157,17 +157,10 @@ def render():
         "Each opens in Colab on the morning of its class day.",
         ca_body)
 
-    homework = section(
-        "homework", "03", "Homework",
-        "Four notebooks where you apply the skills to a cultural dataset — ideally one you choose. "
-        "Each opens on the day it is assigned. (Due dates are confirmed in the syllabus.)",
-        grid([card("Homework", t, d, w, COLAB + p, opens=gate_attrs(p)) for (t, d, w, p) in HOMEWORK]))
-
-    capstone = section(
-        "capstone", "04", "Capstone & stylometry",
-        "The final evaluative exercise integrates all three methods on data you choose; the stylometry "
-        "track is an alternative path.",
-        grid([
+    # Homework and the capstone share one section (the "Assignments" pill); the old #homework and
+    # #capstone anchors survive on the two groups.
+    homework = grid([card("Homework", t, d, w, COLAB + p, opens=gate_attrs(p)) for (t, d, w, p) in HOMEWORK])
+    capstone = grid([
             card("Capstone", "Data-Driven Opinion", "Notebook analysis + short essay, presented Wed 12/16 or Fri 12/18.",
                  "Week 8", GH_BLOB + "CAPSTONE_2026.md"),
             card("Worksheet", "Checking the Machine", "A one-page routine for testing a result by hand: HW3, HW4, and the capstone.",
@@ -177,7 +170,19 @@ def render():
             card("Notebook", "Stylometry (computational)", "The computational half of the stylometry exercise.",
                  "Day 18 · Week 6", COLAB + "materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb",
                  opens=gate_attrs("materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb")),
-        ]))
+        ])
+    assignments = section(
+        "assignments", "03", "Assignments",
+        "The four homework notebooks and the capstone, the course's final evaluative exercise. Turn in "
+        "everything through <strong>TCU Online → Assignments</strong>.",
+        '<div class="wkgroup" id="homework"><h3>Homework</h3>'
+        '<p class="lede">Four notebooks where you apply the skills to a cultural dataset — ideally one you '
+        'choose. Each opens on the day it is assigned. (Due dates are confirmed in the syllabus.)</p>'
+        + homework + '</div>'
+        '<div class="wkgroup" id="capstone"><h3>Capstone &amp; stylometry</h3>'
+        '<p class="lede">The final evaluative exercise integrates all three methods on data you choose; '
+        'the stylometry track is an alternative path.</p>'
+        + capstone + '</div>')
 
     lectures = section(
         "lectures", "01", "Lectures",
@@ -192,11 +197,19 @@ def render():
         f'<li><span class="k">{html.escape(k)}</span>'
         f'<a href="{href}">{html.escape(name)}</a> — <span class="muted">{html.escape(note)}</span></li>'
         for (k, name, href, note) in RESOURCES)
-    resources = (f'<section class="sec" id="resources"><h2><span class="n">05</span>Resources</h2>'
-                 f'<p class="lede">Tools, the course data, and references for going further.</p>'
-                 f'<ul class="reslist">{res_items}</ul></section>')
+    res_cards = []
+    if CHAT_API_URL:
+        res_cards.append(card("Tutor", "Code Guide", "An after-hours tutor for your homework and capstone.",
+                              "optional", "chatbot.html"))
+    res_cards.append(card("Policy", "Syllabus", "Outcomes, the ungrading policy, AI-use policy, and dates.",
+                          "Fall 2026", GH_BLOB + "SYLLABUS_2026.md"))
+    resources = (f'<section class="sec" id="resources"><h2><span class="n">04</span>Resources</h2>'
+                 f'<p class="lede">The tutor, the syllabus, and tools and references for going further.</p>'
+                 f'{grid(res_cards)}'
+                 f'<div class="wkgroup"><h3>Tools &amp; references</h3>'
+                 f'<ul class="reslist">{res_items}</ul></div></section>')
 
-    main = masthead + start + lectures + codealongs + homework + capstone + resources
+    main = masthead + start + lectures + codealongs + assignments + resources
     return PAGE("WRIT 20833 — When Coding Meets Culture", main,
                 header=site_header(chat=bool(CHAT_API_URL)),
                 footer=site_footer("WRIT 20833 · Fall 2026 · “hear the human at scale” · "

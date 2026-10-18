@@ -302,15 +302,15 @@ COLAB_URL = "https://colab.research.google.com/"
 SYLLABUS_URL = f"{GH_URL}/blob/main/SYLLABUS_2026.md"
 
 # The site-wide menu, in order. (href, label); relative hrefs get the page's ``prefix``.
+# Homework + capstone share the home page's Assignments section; the Code Guide and the syllabus
+# are cards in its Resources section, so neither needs its own pill.
 NAV_ITEMS = [
     ("schedule.html", "Schedule"),
     ("index.html#lectures", "Lectures"),
     ("index.html#codealongs", "Code-alongs"),
-    ("index.html#homework", "Homework"),
-    ("index.html#capstone", "Capstone"),
+    ("index.html#assignments", "Assignments"),
+    ("index.html#resources", "Resources"),
 ]
-CHAT_ITEM = ("chatbot.html", "Code Guide")       # appended only once the Worker is deployed
-SYLLABUS_ITEM = (SYLLABUS_URL, "Syllabus ↗")     # leaves the site, so it goes last
 
 NAV_JS = ('<script>(function(){var t=document.querySelector(".nav-toggle"),n=document.getElementById("site-nav");'
           'if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");'
@@ -342,11 +342,10 @@ def site_header(active=None, prefix="", chat=False):
 
     active: the label of the pill for the current page (None on the dashboard).
     prefix: path back to the site root for pages in a subfolder (``"../"`` for lectures).
-    chat:   include the Code Guide pill (callers pass ``bool(CHAT_API_URL)``).
+    chat:   unused since the Code Guide moved under Resources; kept so callers needn't change.
     """
-    items = NAV_ITEMS + ([CHAT_ITEM] if chat else []) + [SYLLABUS_ITEM]
     pills = []
-    for href, label in items:
+    for href, label in NAV_ITEMS:
         if not href.startswith("http"):
             href = prefix + href
         cls = "nav-pill active" if label == active else "nav-pill"
