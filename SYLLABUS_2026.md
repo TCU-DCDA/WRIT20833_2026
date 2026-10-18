@@ -168,11 +168,7 @@ any other work you submit.
 substantive replies by Friday**). Each post starts from something you made, ran, or lived — not from a
 summary of the lecture. *Substantive* means each reply does real work, such as **applying or
 redesigning** a classmate's idea or **complicating** it. Each prompt names the approaches; "great point,
-I agree" is neither. Each full prompt is posted in TCU Online when its discussion opens:
-- D1 (Wk 1) — Is code neutral?
-- D2 (Wk 3) — Whose data?
-- D3 (Wk 5) — Close vs. distant reading
-- D4 (Wk 7) — What computation reveals and hides
+I agree" is neither. Each full prompt is posted in TCU Online when its discussion opens.
 
 ### Grading Philosophy (ungrading)
 This course uses **ungrading**. Through the term your work is **not** scored with points; each piece is
