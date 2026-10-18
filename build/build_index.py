@@ -197,14 +197,19 @@ def render():
         f'<li><span class="k">{html.escape(k)}</span>'
         f'<a href="{href}">{html.escape(name)}</a> — <span class="muted">{html.escape(note)}</span></li>'
         for (k, name, href, note) in RESOURCES)
-    res_cards = []
+    res_cards = [
+        card("Guide", "Working in Colab", "Set up, save your copy, come back to it, and submit homework.",
+             "start here · Day 1", "guides/working-in-colab.html"),
+        card("Guide", "YouTube API Key", "One-time setup for the YouTube Comment Collector.",
+             "Day 10 · by Fri 11/13", "guides/youtube-api-key.html"),
+    ]
     if CHAT_API_URL:
         res_cards.append(card("Tutor", "Code Guide", "An after-hours tutor for your homework and capstone.",
                               "optional", "chatbot.html"))
     res_cards.append(card("Policy", "Syllabus", "Outcomes, the ungrading policy, AI-use policy, and dates.",
                           "Fall 2026", GH_BLOB + "SYLLABUS_2026.md"))
     resources = (f'<section class="sec" id="resources"><h2><span class="n">04</span>Resources</h2>'
-                 f'<p class="lede">The tutor, the syllabus, and tools and references for going further.</p>'
+                 f'<p class="lede">How-to guides, the tutor, the syllabus, and tools and references for going further.</p>'
                  f'{grid(res_cards)}'
                  f'<div class="wkgroup"><h3>Tools &amp; references</h3>'
                  f'<ul class="reslist">{res_items}</ul></div></section>')
