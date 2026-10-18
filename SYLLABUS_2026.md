@@ -152,11 +152,12 @@ through **TCU Online**: submit homework notebooks and reflections in the **Assig
 outcome is met by the discussions, reflections, and capstone; the **HUM** core outcome by the homework
 analyses and the capstone — the forms of evidence each core submission cites.)*
 
-**The three self-reflections** (≈300–500 words each, submitted to TCU Online — central to ungrading):
-1. **Reflection 1 — "Where I'm starting" (due Fri 10/23).** Prior experience (likely none — fine), what
-   excites or worries you, and a prediction: what can and can't computers tell us about culture?
-2. **Reflection 2 — "Halfway" (due Mon 11/16).** What's clicking and what's hard? Revisit your early
-   prediction. What will you do differently in the second half?
+**The three self-reflections** (≈300–500 words each, submitted to TCU Online — central to ungrading).
+Each full prompt is posted on the
+[Self-Reflections page](https://tcu-dcda.github.io/WRIT20833_2026/guides/reflections.html) when it opens:
+1. **Reflection 1 — "Where I'm starting" (due Fri 10/23).** Where you're coming from, what draws you in
+   and worries you, and a prediction you can check later.
+2. **Reflection 2 — "Halfway" (due Mon 11/16).** A look back at your starting point and your prediction.
 3. **Reflection 3 — "Final self-evaluation" (due Fri 12/18).** Review your own body of work and make an
    evidence-based case for the final grade you've earned (see *Grading Scale*).
 

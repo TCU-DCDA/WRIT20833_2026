@@ -179,6 +179,9 @@ def render():
         '<p class="lede">Four notebooks where you apply the skills to a cultural dataset — ideally one you '
         'choose. Each opens on the day it is assigned. (Due dates are confirmed in the syllabus.)</p>'
         + homework + '</div>'
+        '<div class="wkgroup" id="reflections"><h3>Self-reflections</h3>'
+        + grid([card("Reflections", "Self-Reflections", "Three short reflections that build your case for your final grade.",
+                     "R1 due Fri 10/23", "guides/reflections.html")]) + '</div>'
         '<div class="wkgroup" id="capstone"><h3>Capstone &amp; stylometry</h3>'
         '<p class="lede">The final evaluative exercise integrates all three methods on data you choose; '
         'the stylometry track is an alternative path.</p>'
