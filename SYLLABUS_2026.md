@@ -166,9 +166,9 @@ any other work you submit.
 
 **The four threaded discussions** (open Monday of their week; **initial post by Wednesday, two
 substantive replies by Friday**). Each post starts from something you made, ran, or lived — not from a
-summary of the lecture. *Substantive* means one reply **tests or applies** a classmate's post and the
-other **complicates** it; "great point, I agree" is neither. Each full prompt is posted in TCU Online
-when its discussion opens:
+summary of the lecture. *Substantive* means each reply does real work, such as **applying or
+redesigning** a classmate's idea or **complicating** it. Each prompt names the approaches; "great point,
+I agree" is neither. Each full prompt is posted in TCU Online when its discussion opens:
 - D1 (Wk 1) — Is code neutral?
 - D2 (Wk 3) — Whose data?
 - D3 (Wk 5) — Close vs. distant reading
