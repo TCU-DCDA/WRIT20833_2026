@@ -138,7 +138,7 @@ By the end of the course you will be able to:
 
 ### Assignments
 Each assignment is described below and connects to the learning outcomes; you submit and view feedback
-through **TCU Online**: submit homework notebooks and reflections in the **Assignments** area and post to the weekly **Discussions**; your marks and my feedback appear in **Grades**. **Expect a mark and written feedback within one week of each due date** (for discussions, one week after the Friday reply deadline). Work due on the final day is marked by the University's final-grade deadline.
+through **TCU Online**: submit homework notebooks and reflections in the **Assignments** area and post to the weekly **Discussions**; your marks and my feedback appear in **Grades**. I aim to return marks and written feedback within about a week of each due date (see *Late Work* for the feedback window on late submissions).
 
 | Work | How many | What it is | Course outcomes | Core (CSV · HUM) |
 |---|---|---|---|---|
@@ -201,11 +201,33 @@ as meeting expectations.)* The goal is **earned insight over clean code.**
 - **Does not yet meet expectations:** missing, incomplete, or minimal. The "not yet" is an invitation to revise
   where time allows.
 
+**What "meets expectations" looks like.** Across the term, meeting expectations means:
+- attending class regularly and **prepared**, meaning up to speed with the skills and concepts taught to
+  date, so you can take part in discussion and group activities;
+- meeting firm deadlines, and arranging any extension on other work before it's due (see *Late Work*);
+- writing your reflections, discussion posts, and `#comments` yourself; when properly documented, AI may
+  give feedback, but the words are yours (see *AI Use Policy*);
+- documenting your process honestly, including what didn't work.
+
 ### Late Work
-Because sessions build on each other, keep up — but ungrading is about the whole
-arc, not single due dates. If life happens, **talk to me**; honest communication beats a missed
-deadline, and we'll find a reasonable way for you to complete the work. **Official University Absences**
-are always accommodated (see *Attendance & Engagement*, next).
+Some deadlines are **firm** because classmates depend on them: **discussion posts and replies** (a
+conversation only works while it's happening, so a post or reply made after its deadline can't be made
+up, and that discussion stays at "not yet") and **preparation for in-class work sessions** (group work
+needs everyone current). Other work, meaning homework notebooks, reflections, and revisions, is
+**flexible if you contact me before the due date**; we'll agree on a new date. Work that's late without
+an arrangement stays at "not yet" until it's in. All work must be submitted by **Fri Dec 18**.
+
+**Self-granted extensions.** Work submitted after the deadline without an arrangement made beforehand can
+earn **Meets expectations** but not **Exceeds**; extra time you've given yourself is time your classmates
+didn't have.
+
+**Feedback window.** Feedback is most useful while we're still working with the material, so I give
+written feedback on work submitted within one week of its due date. Work submitted later than that,
+unless you've arranged it with me beforehand, still receives an Exceeds / Meets / Not yet mark and still
+counts as part of your body of work, but it may come back without written comments.
+
+None of these limits apply to **Official University Absences** or **approved accommodations**; if one
+affects a firm deadline, we'll arrange an alternative (see *Attendance & Engagement*, next).
 
 ### Attendance & Engagement
 This is a fast-moving course that meets three days a week and builds session to session; attendance and
@@ -225,60 +247,43 @@ legitimate reason for an absence and want to provide verification, please use th
 Documentation Form** through the **Dean of Students Office**.
 
 ### Course Assignments & Final Grade
-Because this course uses **ungrading**, individual assignments carry **no point values** — the column a
-conventional syllabus fills with points is replaced here by plain-language feedback marks, and the final
-letter comes from what your body of work shows as a whole (below), not from a points total or a tally of
-marks.
+Because this course uses **ungrading**, individual assignments carry **no point values**. In place of
+points, each piece receives a plain-language feedback mark, and the final letter reflects your body of
+work as a whole rather than a points total.
 
 | Component | How many | How it's evaluated | Role in the final grade |
 |---|---|---|---|
 | **Homework notebooks (HW1–HW4)** | 4 | Exceeds / Meets / Not yet — engagement + reflection | Evidence of your practice and growth |
 | **Weekly Experiments** (within each HW) | 2–3 per HW | Part of each homework's mark | Evidence of your curiosity and risk-taking |
 | **Threaded discussions (D1–D4)** | 4 | Exceeds / Meets / Not yet — initial post + two replies | Evidence of your thinking with others |
-| **Self-reflections (R1–R3)** | 3 | Exceeds / Meets / Not yet; **R3** is the final self-evaluation | R3 is where you propose your grade |
+| **Self-reflections (R1–R3)** | 3 | Exceeds / Meets / Not yet; **R3** is the final self-evaluation | R3 is your case for your grade |
 | **Capstone** (final evaluative exercise) | 1 | Exceeds / Meets / Not yet; presented Wed 12/16 or Fri 12/18 | The fullest evidence of what you can do |
 
 *(The capstone is the course's Final Evaluative Exercise — there is no separate final exam.)*
 
-TCU requires a final letter grade. There is no formula behind it: I don't add up marks, and no number of
-"Meets" or "Exceeds" marks converts into a letter. The marks on individual pieces are feedback along the way. The letter
-answers one question about the term as a whole: **what does your body of work show about your
-engagement and growth?** Your body of work is the four homeworks (with their Weekly Experiments), the
-three reflections, the four discussions, and the capstone.
+**How the final grade is set.** TCU requires a final letter grade. It is not calculated from the marks
+on individual pieces; those marks are feedback along the way. The letter reflects my overall judgment of
+what your body of work shows about your engagement and growth across the term. Your body of work is the
+four homeworks (with their Weekly Experiments), the four discussions, the three reflections, and the
+capstone.
 
-**You propose your grade.** In Reflection 3 you look back across that body of work and make an
-evidence-based case for the grade you've earned, pointing to specific pieces. I read your case alongside
-the work. If I see it the same way, that's your grade. If I see it differently, we talk before grades are
-submitted; a different letter is never handed down without that conversation.
-
-**One thing is guaranteed.** If every piece is in and each one shows genuine engagement — nothing is
-still at "not yet" — your grade is in the **A range**. You do not need to "exceed" anything to earn an A.
-Whether it is an A or an A‑ is what your self-evaluation makes the case for.
-
-**What each letter looks like.** These describe the body of work as a whole, not a count:
-- **A range:** All the work is done with honest engagement. Your notebooks and reflections show your
-  thinking, including what didn't work. Your capstone argues from your data and names its limits.
-- **B range:** Real engagement, with real gaps. Some work is missing or thin and wasn't returned to, or
-  the capstone's argument or its account of its limits is underdeveloped.
-- **C range:** Substantial portions of the work are missing or minimal, but the capstone is complete.
-- **D / F:** Most of the work is missing, or there is no capstone.
+**Your self-evaluation.** In Reflection 3 you review that body of work and make an evidence-based case
+for the grade you believe you've earned, pointing to specific pieces. I weigh your case alongside the
+work itself when I assign the final grade.
 
 "Engaged" means real effort and honest documentation of your process — *not* polish. Something that
 doesn't fully work, paired with a clear account of what you tried and learned, **meets expectations.**
-A piece marked "not yet" can be revised while time allows, and the revision is what counts.
 
 ### Grading Scale
 **Grading Scale (TCU undergraduate, plus/minus):** A 94–100 · A‑ 90–93.99 · B+ 87–89.99 · B 84–86.99 ·
 B‑ 80–83.99 · C+ 77–79.99 · C 74–76.99 · C‑ 70–73.99 · D+ 67–69.99 · D 64–66.99 · D‑ 60–63.99 · F below 60.
 *(No individual piece carries points; these percentages are TCU's scale for the final letter, which is set as described above.)*
 
-**Grading Concerns.** Because the course is ungraded, there's nothing to "dispute" point-by-point — but my
-feedback is always open to conversation. If a comment doesn't sit right, email me at
-c.rode@tcu.edu and we'll talk it through: since each piece is evaluated on engagement and reflection rather than a
-right answer, the conversation is about what the work shows and how to strengthen it moving forward. The
-final letter grade isn't handed down unilaterally — you make an evidence-based case for it in your final
-self-evaluation (Reflection 3), and I confirm or adjust. For the University's formal grade-appeal
-procedure, see the **Student Resources & Policy Information** link above.
+**Grading Concerns.** My feedback is always open to conversation. If a mark or comment doesn't sit right,
+email me at c.rode@tcu.edu and we'll talk it through; since each piece is evaluated on engagement and
+reflection rather than a right answer, that conversation is about what the work shows and how to
+strengthen it. For the University's formal grade-appeal procedure, see the **Student Resources & Policy
+Information** link above.
 
 ---
 
@@ -311,7 +316,8 @@ borrowing:
 - **Writing — develop your own voice.** Your reflections, discussion posts, `#comments`, and the capstone
   essay are where you *become a writer.* A unique voice is forged through the difficulty of finding your
   own words; letting AI generate your writing forfeits that. **Use AI for feedback if you like, but the
-  writing itself must be yours.** When in doubt, ask.
+  writing itself must be yours**, and note it at the end of the piece, e.g. *AI feedback: asked Claude
+  whether my argument was clear; I reorganized my second paragraph.* When in doubt, ask.
 
 **The Code Guide (optional AI tutor).** An after-hours tutor for the homework and the capstone lives at
 [tcu-dcda.github.io/WRIT20833_2026/chatbot.html](https://tcu-dcda.github.io/WRIT20833_2026/chatbot.html)
