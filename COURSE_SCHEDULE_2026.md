@@ -3,7 +3,8 @@
 **Mon Oct 19 – Fri Dec 18, 2026 · Monday / Wednesday / Friday · 2 hours/day · in person**
 
 A day-at-a-glance schedule derived from `SYLLABUS_2026.md` (see the syllabus for full assignment
-descriptions, the ungrading policy, and the three reflection / four discussion prompts). Each day:
+descriptions, the ungrading policy, and the three reflection prompts; discussion prompts are posted in
+TCU Online). Each day:
 **Lecture** = the ~25-min concept / critical frame · **Coding** = the ~70-min hands-on block, labeled by
 mode and linked to its notebook where one exists.
 
