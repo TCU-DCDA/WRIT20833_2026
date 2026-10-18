@@ -86,8 +86,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--green);letter-spac
 .m-worksession{background:#8d6539;} .m-present{background:#825764;} .m-other{background:#6f7463;}
 
 /* week sections */
-.week{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--wk);
-  border-radius:3px;margin:22px 0;overflow:hidden;}
+.week{background:var(--surface);border:1px solid var(--rule);
+  border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin:22px 0;overflow:hidden;}
 .week h2{margin:0;padding:13px 20px;font-size:17px;color:var(--wk);
   background:color-mix(in srgb,var(--wk) 7%,var(--surface));border-bottom:1px solid var(--rule);}
 
@@ -172,22 +172,23 @@ footer{font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-al
 
 /* card grid */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:14px;margin-top:16px;}
-.card{display:block;border:1px solid var(--rule);border-left:3px solid var(--green-mid);
-  border-radius:3px;background:var(--surface);padding:14px 16px;color:inherit;}
+.card{display:block;border:1px solid var(--rule);
+  border-radius:3px;background:var(--surface);padding:14px 16px;color:inherit;
+  box-shadow:0 1px 3px rgba(0,0,0,.06);transition:box-shadow .15s;}
 a.card{text-decoration:none;border-bottom:none;}
-a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--green) 3%,var(--surface));}
+a.card:hover{box-shadow:0 4px 12px rgba(0,0,0,.10);}
 .card .lbl{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
 .card h3{margin:6px 0 5px;font-size:16px;line-height:1.22;}
 .card p{margin:0;font-size:13px;color:var(--muted);line-height:1.5;}
 .card .when{display:inline-block;font:600 12px/1 var(--mono);color:var(--clay);margin-top:9px;letter-spacing:.03em;}
 .card.linked{position:relative;}
-.card.linked:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--green) 3%,var(--surface));}
+.card.linked:hover{box-shadow:0 4px 12px rgba(0,0,0,.10);}
 .card a.stretch{color:inherit;border:none;text-decoration:none;}
 .card a.stretch::after{content:"";position:absolute;inset:0;}
 .card a.alt{position:relative;z-index:1;margin-left:12px;font:600 12px/1 var(--mono);letter-spacing:.03em;
   color:var(--green-mid);border-bottom:1px solid currentColor;text-decoration:none;}
 .card a.alt:hover{color:var(--clay);}
-.card.soon{opacity:.62;} .card.soon:hover{border-left-color:var(--green-mid);background:var(--surface);}
+.card.soon{opacity:.62;} .card.soon:hover{box-shadow:0 1px 3px rgba(0,0,0,.06);}
 /* thumbnail cards — image (or proportion-matched placeholder) above the text */
 .card.has-thumb{padding:0;overflow:hidden;}
 .card .thumb{display:block;aspect-ratio:3/2;border-bottom:1px solid var(--rule);
@@ -228,7 +229,7 @@ a.card:hover{border-left-color:var(--clay);background:color-mix(in srgb,var(--gr
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .reading blockquote p{margin:0 0 8px;font-size:17.5px;line-height:1.5;} .reading blockquote p:last-child{margin-bottom:0;}
 pre.codeblock{margin:6px 0 18px;padding:12px 16px;background:color-mix(in srgb,var(--green) 6%,var(--surface));
-  border:1px solid var(--rule);border-left:3px solid var(--green-mid);border-radius:6px;overflow-x:auto;
+  border:1px solid var(--rule);border-radius:6px;overflow-x:auto;
   font:14.5px/1.55 var(--mono);color:var(--ink);}
 pre.codeblock code{font:inherit;background:none;padding:0;color:inherit;}
 figure a{border-bottom:none;}   /* a linked image needs no underline */
@@ -245,7 +246,7 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
   .reading figure.upright img{width:auto;max-height:min(60vh,520px);}}
 .reading hr{border:none;border-top:1px solid var(--rule);margin:30px 0;}
 /* release gate — a notebook link whose data-opens date is still ahead (see release_dates.py) */
-.card.locked{border-left-style:dashed;background:var(--paper);cursor:default;}
+.card.locked{border-style:dashed;box-shadow:none;background:var(--paper);cursor:default;}
 .card.locked h3{color:var(--muted);}
 .opens{font:600 12px/1 var(--mono);color:var(--muted);letter-spacing:.03em;white-space:nowrap;}
 .nb-locked{color:var(--muted);border-bottom:1px dashed var(--rule);}
