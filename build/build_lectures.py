@@ -130,7 +130,15 @@ def render_blocks(lines, lead=False):
             block = []
             while i < n and lines[i].strip().startswith(">"):
                 block.append(lines[i].strip().lstrip(">").strip()); i += 1
-            out.append(("text", "<blockquote>" + "".join(f"<p>{md_inline(b)}</p>" for b in block if b) + "</blockquote>"))
+            # A real quotation (an attribution line follows, or it opens on a quote mark) keeps the
+            # quote rule; anything else set off with ">" — a claim, a stat, a code line — is a panel.
+            j = i
+            while j < n and not lines[j].strip():
+                j += 1
+            quoted = (j < n and lines[j].strip().startswith(("—", "--"))) or \
+                     block[0].lstrip("*_").startswith(('"', "“"))
+            cls = "" if quoted else ' class="panel"'
+            out.append(("text", f"<blockquote{cls}>" + "".join(f"<p>{md_inline(b)}</p>" for b in block if b) + "</blockquote>"))
             continue
         if s.startswith("- "):                                 # unordered list (items may wrap)
             items = []
@@ -226,6 +234,13 @@ DECK_CSS = r"""
 .slide blockquote{margin:10px 0 18px;padding:6px 0 6px 22px;border-left:4px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .slide blockquote p{font-size:clamp(19px,2.9vw,31px);line-height:1.38;margin:0;}
+/* not a quotation — set off as a theme card: even 1px border + drop shadow, no left rule */
+.slide blockquote.panel{padding:2.2vh 2vw;background:var(--surface);border:1px solid var(--rule);
+  border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,.06);font-style:normal;color:var(--ink);}
+/* a "### " line on a slide is a punchline, not a sub-label */
+.slide h3{font-family:var(--serif);color:var(--green);font-size:clamp(22px,3.1vw,34px);
+  line-height:1.22;margin:6px 0 18px;}
+.slide.fitted h3{font-size:calc(clamp(22px,3.1vw,34px)*var(--fit,1));}
 .slide figure{margin:6px 0;text-align:center;min-height:0;flex:0 1 auto;}
 
 .slide figure img{max-height:62vh;width:auto;max-width:100%;border:1px solid var(--rule);
