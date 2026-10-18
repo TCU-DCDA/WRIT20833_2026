@@ -266,6 +266,6 @@ is the same move in miniature — and your own numbers know better.
 
 You already have the insight. The last skill is the courage and the craft to hand it to the people it's for.
 
-Going deeper (optional): Sheila Brennan, "Public, First" (*Debates in the Digital Humanities*); Catherine
+Going deeper (optional): Sheila A. Brennan, ["Public, First"](https://dhdebates.gc.cuny.edu/read/untitled/section/11b9805a-a8e0-42e3-9a1c-fad46e4b78e5) (*Debates in the Digital Humanities 2016*); Catherine
 D'Ignazio & Lauren Klein, *Data Feminism* (on whose knowledge reaches whom); the *Mapping Police Violence*
 project (mappingpoliceviolence.org) as a worked example of analysis-as-public-intervention.

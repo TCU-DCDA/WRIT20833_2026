@@ -40,8 +40,8 @@ and they don't tidy it up. They explore it.
 -->
 
 <!-- slide:
-The sciences reduce complexity to principles — one elegant law
-that explains every case.
+The sciences often reduce complexity to principles — a law
+that explains many cases at once.
 
 The humanities do something else: they **map the contours
 of the complexity itself.** Where other fields see noise to filter out,
@@ -64,7 +64,7 @@ The humanities study the **mess** of the human condition — and they don't tidy
 - **Ambiguity** — a text means more than one thing. Is Hamlet mad, or pretending?
 - **Subjectivity** — experience shapes interpretation; beauty and justice look different from different lives.
 
-The sciences reduce complexity to principles — one elegant law that explains every case. The humanities
+The sciences often reduce complexity to principles — a law that explains many cases at once. The humanities
 do something else: they **map the contours of the complexity itself.** Where other fields see noise to
 filter out, we often see the signal. The poet John Keats called the needed temperament *negative
 capability* — being "in uncertainties, mysteries, doubts, without any irritable reaching after fact and
@@ -158,11 +158,11 @@ tool serves the question — never the other way around.
 > The underlying capability of the computer era is actually programming —
 > which almost none of us know how to do. We simply use the programs that
 > have been made for us, and enter our text in the appropriate box…
-> This means we have access to the capabilities given to us by others,
+> This means [we] have access to the capabilities given to [us] by others,
 > but not the power to determine the value-creating capabilities
-> of these technologies for ourselves.
+> of these technologies for [ourselves].
 
-— Douglas Rushkoff, *Program or Be Programmed*
+— Douglas Rushkoff, *Program or Be Programmed* (qtd. in Nick Montfort, *Exploratory Programming for the Arts and Humanities*, 327–28)
 -->
 
 <!-- slide:
@@ -199,7 +199,7 @@ It begins much further from "the truth" than you'd guess. Let's follow one woman
 <!-- slide:
 ![The noumena-to-wisdom pipeline: noumena, phenomena, raw data, structured data, analyzed data, insight, knowledge, wisdom](materials/images/noumena_to_wisdom_pipeline.png)
 
-- **Noumena** — the thing *as it actually is* (Kant's word). A woman in Texas reads that her child's
+- **Noumena** — the thing *as it actually is* (Kant's word, borrowed loosely). A woman in Texas reads that her child's
   classroom will display the Ten Commandments, and feels something complete and entirely her own.
 - **Phenomena** — she finds words for *some* of it and decides to post under a news video: public,
   partial, written for strangers.
@@ -236,6 +236,11 @@ and entirely her own. We will never have that feeling. What we *can* have is wha
 public projection of an inner state. Then we **scrape** it (and some comments are missed), **clean** it
 (we choose what counts as a "word"), **model** it (a tool decides what "great" means), and only *then* do
 we reach for **insight, knowledge,** and — maybe, by the end — **wisdom.**
+
+*(A note on the diagram. It is this course's own teaching diagram: it extends the familiar
+data → information → knowledge → wisdom ladder upward, to the experience the data came from. Kant's
+term is borrowed as an analogy. For Kant the noumenon is unknowable by anyone; here it stands for the
+lived experience behind a comment, which only its writer had.)*
 
 In plainer terms, the stages run: lived experience (*noumena*) → what people express in public (*phenomena*)
 → what we collect (*raw data*) → what we organize into rows and columns (*structured data*) → what a method

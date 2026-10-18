@@ -74,6 +74,27 @@ def release(path):
     return (hit[0].isoformat(), hit[1]) if hit else None
 
 
+def day_table(src=SRC):
+    """{day_number: (date, 'Fri 10/23')} for every dated row of the schedule."""
+    lines = open(src, encoding="utf-8").read().splitlines()
+    year = _year(lines)
+    out = {}
+    for l in lines:
+        m = _ROW_DATE.match(l)
+        if m:
+            wd, mo, dd, day = m.group(1), int(m.group(2)), int(m.group(3)), int(m.group(4))
+            out.setdefault(day, (date(year, mo, dd), f"{wd} {mo}/{dd}"))
+    return out
+
+
+def day_gate_attrs(day):
+    """data- attributes that open a link on schedule day `day` (an int, or a "Day 8" string)."""
+    if isinstance(day, str):
+        day = int(re.search(r'\d+', day).group(0))
+    d, label = day_table()[day]
+    return f' data-opens="{d.isoformat()}" data-opens-label="{label}"'
+
+
 def gate_attrs(path):
     """The two data- attributes a notebook link carries (empty string if the path isn't gated)."""
     r = release(path)

@@ -171,9 +171,9 @@ learned from. A voice worth having is the opposite of a blur.)
 One more property of the machine's writing: it is **fluent** —
 confident, structured, grammatically flawless — *whether it is right or wrong.*
 
-For all of human history, polished prose was **expensive**: producing it
-meant someone had actually done the thinking. Language models broke
-that correlation. Fluency is now free, and it reads *exactly the same*
+For a long time, polished prose was **expensive**: producing it
+usually meant someone had done real work. Language models broke
+that rough correlation. Fluency is now free, and it reads *exactly the same*
 when the claim is true and when it is invented.
 -->
 
@@ -201,19 +201,19 @@ strict sense, even when it happens to be right.*
 -->
 
 <!-- slide:
-None of this is new; only the machinery is. Plato watched the sophists
-sell exactly this in Athens — Gorgias boasted a skilled speaker would beat
+None of this is new; only the machinery is. In Plato's dialogue *Gorgias*,
+the rhetorician Gorgias boasts that a skilled speaker would beat
 the physician in a debate about medicine, before an audience
-that knew no medicine.
+that knew no medicine. *(Gorgias 456b–c, 459a–b)*
 
 *Because eloquence feels like expertise from the inside.*
 -->
 
 <!-- slide:
-The Greeks named what settles into a person who gets their beliefs
+Greek had a word for what settles into a person who gets their beliefs
 that way: **amathia.**
 
-Not ignorance — *agnoia*, which more information fixes — but **un-wisdom**:
+In this course's reading of it: not ignorance — *agnoia*, which more information fixes — but **un-wisdom**:
 the condition of the well-informed, well-assisted person
 whom nothing any longer teaches.
 
@@ -239,10 +239,9 @@ find the source, read the seams.
 There's one more property of the machine's writing you have to reckon with: it is **fluent** —
 confident, structured, grammatically flawless — *whether it is right or wrong.*
 
-That matters because of a shortcut your gut has been using your whole life. For all of human history,
-polished prose was **expensive**: producing it meant someone had actually done the thinking, so judging
-writing by its polish was a fair proxy for judging the mind behind it. Language models broke that
-correlation. Fluency is now free — and it reads *exactly the same* when the claim is true and when it is
+That matters because of a shortcut your gut has been using your whole life. For a long time, polished
+prose was **expensive**: producing it usually meant someone had done real work, so polish was a rough
+(never perfect) proxy for the mind behind it. Language models broke that correlation. Fluency is now free — and it reads *exactly the same* when the claim is true and when it is
 invented. Our instincts haven't updated: a well-made paragraph still *feels* vetted before any judgment
 has convened. Stephen Colbert popularized a word for that feeling — **truthiness**, when something feels true
 from the gut before the evidence arrives. An AI is a machine for making anything feel gut-true.
@@ -255,11 +254,14 @@ plausible next words, and when they're true, that's incidental. On their argumen
 Slater, 2024), an LLM is a bullshit engine in Frankfurt's strict sense, even when it happens to be right.
 You don't have to accept the label to take the practical point: fluency can't count as evidence.
 
-None of this is new; only the machinery is. Plato watched the sophists sell exactly this in Athens —
-Gorgias boasted that a skilled speaker would beat the physician in a debate about medicine, before an
-audience that knew no medicine — because eloquence feels like expertise from the inside. And the Greeks
-had a name for what settles into a person (or a city) that gets its beliefs that way: **amathia**. Not
-ignorance — *agnoia*, which more information fixes — but **un-wisdom**: the condition of the
+None of this is new; only the machinery is. In Plato's dialogue *Gorgias*, the rhetorician Gorgias
+boasts that a skilled speaker would beat the physician in a debate about medicine, before an audience
+that knew no medicine (*Gorgias* 456b–c; Socrates presses the "before the ignorant" point at 459a–b) —
+because eloquence feels like expertise from the inside. And Greek had a word for what settles into a
+person (or a city) that gets its beliefs that way: **amathia**. Plato uses it for a deeper kind of
+ignorance (see *Laws* 689a–b). The sharp contrast that follows is this course's interpretation, extended
+to the AI era, not a fixed Greek definition: not ignorance — *agnoia*, which more information fixes — but
+**un-wisdom**: the condition of the
 well-informed, well-assisted person whom nothing any longer teaches. Remember the Day-1 diagram? Amathia
 is the shadow at its bottom-right corner: knowledge that never becomes wisdom, because the labor between
 them — the friction where understanding actually happens — got outsourced.

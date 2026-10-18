@@ -50,7 +50,7 @@ smoothness. See the [stylometry handout](materials/stylometry/Reading_for_the_Se
 [notebook](materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb).
 
 The question that drives Track B: **what does a writer's style measurably reveal — and why must any
-claim about "this is AI" stay a probability, never a verdict?** *(AI-detection is unreliable and biased,
+claim about "this is AI" stay a hypothesis, never a verdict?** *(AI-detection is unreliable and biased,
 notably against non-native English writers. The point is insight about voice and standardization, not
 catching anyone.)*
 
@@ -78,6 +78,8 @@ strong capstone notebook does roughly this:
    make sure the many are still people.*
 5. **One honest limit, shown in code.** Find a place the tools mislead — a vague topic, a sentiment score
    you distrust (sarcasm?), an empty/fragment document — and show how you'd check it by hand.
+   The one-page routine [Checking the Machine](materials/Checking_the_Machine.md) walks through steps 4 and 5:
+   sample, judge first, compare, then keep, narrow, or decline your claim.
 
 **On borrowed code (it's expected).** VADER, Gensim, `Counter`, pandas — almost nobody writes these from
 scratch; you *use* them through their interface. Borrowing a tool, a Stack Overflow snippet, or AI-written

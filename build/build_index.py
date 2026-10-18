@@ -13,7 +13,7 @@ import html
 import os
 from site_theme import PAGE, site_header, site_footer, write_stylesheet
 from build_chatbot import CHAT_API_URL  # the Code Guide card appears only once its Worker is deployed
-from release_dates import gate_attrs  # notebook cards unlink themselves until their schedule day
+from release_dates import gate_attrs, day_gate_attrs  # cards unlink themselves until their schedule day
 
 OUT = "docs/index.html"
 REPO = "TCU-DCDA/WRIT20833_2026"
@@ -101,7 +101,7 @@ def card(label, title, desc, when, href, soon=False, img=None, thumb=False, alt=
         inner = body
     if href and not alt:
         return f'<a class="{cls}" href="{href}"{opens}>{inner}</a>'
-    return f'<div class="{cls}">{inner}</div>'
+    return f'<div class="{cls}"{opens}>{inner}</div>'
 
 
 def grid(cards):
@@ -170,19 +170,22 @@ def render():
         grid([
             card("Capstone", "Data-Driven Opinion", "Notebook analysis + short essay, presented Wed 12/16 or Fri 12/18.",
                  "Week 8", GH_BLOB + "CAPSTONE_2026.md"),
+            card("Worksheet", "Checking the Machine", "A one-page routine for testing a result by hand: HW3, HW4, and the capstone.",
+                 "Day 19 · Week 7", GH_BLOB + "materials/Checking_the_Machine.md"),
             card("Exercise", "Reading for the Seams", "Stylometry close-reading: hearing a human (or AI) voice.",
-                 "Day 8 · Week 8", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
+                 "Day 8 · Week 3", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
             card("Notebook", "Stylometry (computational)", "The computational half of the stylometry exercise.",
-                 "Week 8", COLAB + "materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb",
+                 "Day 18 · Week 6", COLAB + "materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb",
                  opens=gate_attrs("materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb")),
         ]))
 
     lectures = section(
         "lectures", "01", "Lectures",
         "The short conceptual frames that open each day — the “code is not neutral” throughline, "
-        "from Humanities &amp; Coding on Day 1 to Going Public on Day 19. Each opens as a slide deck; the full text is linked on every card.",
+        "from Humanities &amp; Coding on Day 1 to Going Public on Day 19. Each opens as a slide deck on the day it is taught; the full text is linked on every card.",
         grid([card("Mini-lecture", t, d, w, p and p.replace(".html", ".deck.html"), soon=(p is None),
-                   img=(RAW + im if im else None), thumb=True, alt=p and ("Full text", p))
+                   img=(RAW + im if im else None), thumb=True, alt=p and ("Full text", p),
+                   opens=day_gate_attrs(w) if p else "")
               for (t, d, w, p, im) in LECTURES]))
 
     res_items = "".join(

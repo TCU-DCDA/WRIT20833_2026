@@ -188,7 +188,7 @@ describes what those records were *for*:
 > assigning value to those aspects which proved that the marginalized people
 > to [whom] they belonged were worth less than their elite counterparts.
 
-— Anelise Hanson Shrout, "(Re)Humanizing Data" (2018)
+— Anelise Hanson Shrout, ["(Re)Humanizing Data"](https://crdh.rrchnm.org/essays/v01-10-re-humanizing-data/), *Current Research in Digital History* 1 (2018)
 -->
 
 <!-- slide:

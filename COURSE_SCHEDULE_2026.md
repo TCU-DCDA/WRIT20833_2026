@@ -65,7 +65,7 @@ final exam.*
 ### Week 7 (Dec 7–11) — Going public & capstone development
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 12/7** (19) | Going Public | **Work session** → Validation · "being wrong as learning" · capstone framing | **HW4 due** · D4 opens |
+| **Mon 12/7** (19) | Going Public | **Work session** → Validation ([Checking the Machine](materials/Checking_the_Machine.md)) · "being wrong as learning" · capstone framing | **HW4 due** · D4 opens |
 | **Wed 12/9** (20) | — | **Work session** → Capstone work session 1 (cultural dataset **or** stylometry) | D4 post |
 | **Fri 12/11** (21) | — | **Work session** → Capstone work session 2 | D4 replies |
 

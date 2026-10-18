@@ -202,7 +202,7 @@ interpretable and useful the result is, not by a truth the model uncovered. It's
 lesson wearing new clothes: a knob you turned is doing work that's easy to mistake for a fact the data
 handed you. Make the choice visible, and say why you made it.
 
-## When real data fights back
+## When one debate fights back
 
 <!-- slide:
 A toy corpus — fifteen constructed comments in the style of sports, music, and food forums —
@@ -211,8 +211,9 @@ you can name in a second.
 
 **That clarity is a setup.**
 
-Now point the same machine at our Texas Ten Commandments comments,
-where every voice is arguing about *one law*, in overlapping vocabulary.
+Now point the same machine at eleven short comments written to sound like
+our Texas Ten Commandments debate, where every voice argues about *one law*,
+in overlapping vocabulary. *(Also constructed; the real corpus comes in HW4.)*
 -->
 
 <!-- slide:
@@ -241,12 +242,14 @@ the same result twice.*
 
 A toy corpus — fifteen constructed comments written in the style of sports, music, and food forums — topic-models beautifully: three
 obvious subjects, three clean word-lists you can name in a second. That clarity is a setup. Now point the same
-machine at our **Texas Ten Commandments comments**, where every voice is arguing about *one law*, in
+machine at eleven short comments written to sound like our **Texas Ten Commandments debate** (also
+constructed; you meet the real 123-row corpus in HW4), where every voice is arguing about *one law*, in
 overlapping vocabulary.
 
 The topics come back **muddy.** LDA still hands you three tidy word-lists — it always will — but here each one
 is just *more of the same argument*, not three distinct themes. There weren't separate subjects to find, so the
-model imposed structure anyway. **That's the warning:** the algorithm produces clusters whether or not real
+model imposed structure anyway. (With only eleven documents, size is part of the problem too; HW4 lets you
+see whether the real corpus does any better.) **That's the warning:** the algorithm produces clusters whether or not real
 themes exist, so part of your job is judging whether the output means anything at all. (And because LDA is
 **stochastic**, rerun it or run it on another machine and the groupings shift — which is why we pin
 `random_state` just to talk about the *same* result twice.)
@@ -291,7 +294,7 @@ LDA assumes topics are stable categories. Culture is fluid and contextual. So us
 genuinely good at — a map of a pile too big to read — and never confuse the map for the territory. The
 machine finds the pattern; **you** decide whether the pattern is a finding or just order imposed on noise.
 
-Going deeper (optional): David M. Blei, "Topic Modeling and Digital Humanities" (*Journal of Digital
-Humanities*); Ted Underwood, "Topic Modeling Made Just Simple Enough"; Benjamin Schmidt, "Words Alone: 
-Dismantling Topic Models in the Humanities" (the skeptic's case); Catherine D'Ignazio & Lauren Klein,
+Going deeper (optional): David M. Blei, ["Topic Modeling and Digital Humanities"](https://journalofdigitalhumanities.org/2-1/topic-modeling-and-digital-humanities-by-david-m-blei/) (*Journal of Digital
+Humanities* 2.1, 2012); Ted Underwood, "Topic Modeling Made Just Simple Enough"; Benjamin M. Schmidt, ["Words Alone:
+Dismantling Topic Models in the Humanities"](https://journalofdigitalhumanities.org/2-1/words-alone-by-benjamin-m-schmidt/) (*Journal of Digital Humanities* 2.1, 2012; the skeptic's case); Catherine D'Ignazio & Lauren Klein,
 *Data Feminism* (whose data, whose categories).

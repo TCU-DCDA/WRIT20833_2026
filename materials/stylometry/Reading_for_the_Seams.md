@@ -1,11 +1,10 @@
 # Reading for the Seams — Stylometry of Human, AI, and Hybrid Writing
 
-> **Status: DRAFT exercise for instructor review.** New content extrapolated this session
-> from the `ai_voice_claude_analysis.pdf` artifact. Extends Tutorial 3 (AI Agency) from
+> Built from the `ai_voice_claude_analysis.pdf` artifact. Extends the Day 8 AI Agency lab from
 > analyzing AI *code* to analyzing AI *prose*.
 
-**Course:** WRIT 20833 · **Theme tie-ins:** Mini-Lecture 4 (AI Agency), Mini-Lecture 8
-(Code as Rhetoric) · **Method tie-in:** close vs. distant reading (taught in the VADER unit)
+**Course:** WRIT 20833 · **Theme tie-in:** Mini-Lecture 4 (AI Agency) · **Method tie-in:** close
+vs. distant reading (Day 14, the VADER unit)
 
 ---
 
@@ -33,7 +32,7 @@ says *avoid overclaiming*.
 
 ## Two-part, split placement
 
-### Part B — Close reading (Day 7, with AI Agency). No code.
+### Part B — Close reading (Day 8, with the AI Agency lab). No code.
 Students read a short hybrid passage and, using the PDF as a model, build their own
 **attribution map**:
 
@@ -42,9 +41,9 @@ Students read a short hybrid passage and, using the PDF as a model, build their 
 
 They identify **scaffolding** vs. **texture**, then write a short paragraph applying the PDF's
 practical heuristic. This produces a **prediction**: *which parts are AI, and what gave it away?*
-(Requires no programming — it rides the Day-7 AI Agency theme.)
+(Requires no programming — it rides the Day 8 AI Agency theme.)
 
-### Part A + C — Distant reading + synthesis (Week 4 capstone). The notebook.
+### Part A + C — Distant reading + synthesis (demo on Day 18; Track B capstone work, Weeks 7–8). The notebook.
 See `WRIT20833_Stylometry_Reading_Seams_2026.ipynb`. Using the term-frequency tools students
 already know, they **measure** style signatures across human / AI / hybrid texts:
 - **Function-word share** — the elegant inversion of the term-frequency unit: there, stopwords were *noise to
@@ -53,7 +52,7 @@ already know, they **measure** style signatures across human / AI / hybrid texts
 - **Average sentence length** (and how varied it is)
 - **Hedging / softening phrase counts** ("perhaps", "a quick example or two", "whatever feels")
 
-Then **Part C — synthesis**: do the numbers confirm or upend the Day-7 close read? This is the
+Then **Part C — synthesis**: do the numbers confirm or upend the Day 8 close read? This is the
 course's "being wrong as learning" engine and its close → distant → close validation loop.
 
 ---
@@ -67,7 +66,7 @@ data-driven-opinion essay around what the signatures + close reading reveal abou
 - Define stylometry; distinguish close vs. distant reading of style.
 - Reuse term-frequency / function-word methods to quantify a stylistic signature.
 - Read critically for AI scaffolding vs. human texture; build an attribution map.
-- Practice epistemic humility — articulate why AI-detection claims must stay probabilistic.
+- Practice epistemic humility — articulate why AI-detection claims must stay hypotheses, never verdicts.
 - Connect computational measures to the course's critical themes (agency, classification, voice).
 
 ## Materials needed
@@ -80,7 +79,8 @@ data-driven-opinion essay around what the signatures + close reading reveal abou
 Notebook (Part A code + brief interpretation) + written attribution map and reflection
 (Parts B/C) — fits the capstone "notebook + essay" format.
 
-## Open decisions
-- Provide a fixed sample corpus, or have students generate their own?
-- Essay weight/length relative to the cultural-dataset capstone track.
-- How heavily to foreground the AI-detection-bias ethics (recommended: prominently).
+## Settled in the capstone sheet
+- **Corpus:** either the instructor-provided samples or your own (write one, prompt an LLM for one,
+  edit an AI draft for the third). See [Track B](../../CAPSTONE_2026.md).
+- **Essay:** same notebook + essay format and length as Track A.
+- **Ethics:** AI-detection bias is foregrounded throughout; the point is voice, not catching anyone.
