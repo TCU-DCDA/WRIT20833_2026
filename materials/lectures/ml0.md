@@ -228,6 +228,8 @@ It begins much further from "the truth" than you'd guess. Let's follow one woman
 - **Structured data** — we **clean** it: fix and standardize what was copied,
   put it in rows, decide what counts as a "word."
 
+A real comment from our file, for instance:
+
 > `"If having the 10 commandments on the wall actually worked…"`
 > → `['if', 'having', 'the', '10', 'commandments', …]`
 -->
