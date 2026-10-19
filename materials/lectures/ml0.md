@@ -81,7 +81,7 @@ A real comment from the file you'll analyze:
 
 > *"If having the 10 commandments on the wall actually worked, we would need to post it in every room in the white house."*
 
-**Is that positive, negative, or neutral? Guess — we'll see what the machine says.**
+**Is that positive, negative, or neutral?**
 -->
 
 <!-- slide:
