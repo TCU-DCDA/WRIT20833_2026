@@ -84,11 +84,13 @@ def card(label, title, desc, when, href, soon=False, img=None, thumb=False, alt=
     """alt=(label, href) adds a second link; the card is then a <div> whose title link stretches
     over the whole card (links can't nest), so clicking anywhere still opens `href`."""
     cls = "card soon" if soon else "card"
+    # Slide decks open in a new tab, so the course page stays put behind a full-screen deck.
+    tgt = ' target="_blank" rel="noopener"' if href and href.endswith(".deck.html") else ""
     when_html = f'<span class="when">{html.escape(when)}</span>' if when else ""
     if alt and href:
         cls += " linked"
         when_html += f'<a class="alt" href="{alt[1]}">{html.escape(alt[0])}</a>'
-        title = f'<a class="stretch" href="{href}">{title}</a>'
+        title = f'<a class="stretch" href="{href}"{tgt}>{title}</a>'
     body = (f'<span class="lbl">{html.escape(label)}</span>'
             f'<h3>{title}</h3><p>{html.escape(desc)}</p>{when_html}')
     if thumb:
@@ -100,7 +102,7 @@ def card(label, title, desc, when, href, soon=False, img=None, thumb=False, alt=
     else:
         inner = body
     if href and not alt:
-        return f'<a class="{cls}" href="{href}"{opens}>{inner}</a>'
+        return f'<a class="{cls}" href="{href}"{tgt}{opens}>{inner}</a>'
     return f'<div class="{cls}"{opens}>{inner}</div>'
 
 
