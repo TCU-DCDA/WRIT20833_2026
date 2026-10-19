@@ -5,12 +5,14 @@ approach as the WRIT 40363 site. The index is *not* written here: `.githooks/bui
 builds it from the finished pages in docs/ (the pre-commit hook runs it whenever a commit stages a
 docs/ page). Every header carries a search box that GETs search.html?q=… (site_theme.site_search).
 
-What is searched: the home page, the schedule, every lecture reading page and guide. Kept out with
-``PAGE(searchable=False)``: this page, the slide decks (the same text as their reading pages), and
-the Code Guide chat page. The notebooks live on GitHub/Colab and are not searched.
+What is searched: the home page, the schedule, every lecture reading page and guide, and the text of
+every student notebook. Notebooks are .ipynb files that open in Colab, so build_notebook_text.py writes
+an unlinked text page for each into docs/notebook-text/; a notebook result links to Colab (its ``colab``
+meta) and is labelled by its ``kind`` meta. Kept out with ``PAGE(searchable=False)``: this page, the
+slide decks (the same text as their reading pages), and the Code Guide chat page.
 
-The release gate carries over. A lecture reading page carries ``data-pagefind-meta="opens:YYYY-MM-DD"``
-(build_lectures.py); results whose date is still ahead on the viewer's clock are dropped, and
+The release gate carries over. Lecture reading pages and notebook text pages carry
+``data-pagefind-meta="opens:YYYY-MM-DD"`` (build_lectures.py, build_notebook_text.py); results whose date is still ahead on the viewer's clock are dropped, and
 ``?all=1`` shows everything, as on every other page.
 
 This page draws its own results with Pagefind's JS API rather than the stock Pagefind UI, so the
@@ -41,7 +43,8 @@ SEARCH_CSS = r"""
 .results mark{background:var(--clay-bg);color:var(--clay-ink);padding:0 2px;border-radius:2px;}
 .results .subs{list-style:none;padding:0;margin:10px 0 0 18px;}
 .results .subs li{margin:8px 0 0;}
-.results .subs a{font:600 14px/1.3 var(--sans);}
+.results .subs a,.results .subs .sub-h{font:600 14px/1.3 var(--sans);}
+.results .subs .sub-h{color:var(--green-mid);}
 .results .subs p{margin-top:3px;font-size:13.5px;color:var(--muted);}
 .search-more{margin:18px 0 0;font:600 12px/1 var(--mono);padding:9px 12px;border:1px solid var(--rule);
   border-radius:4px;background:var(--surface);color:var(--green);cursor:pointer;}
@@ -74,11 +77,18 @@ SEARCH_JS = r"""<script>
   function item(r) {
     // Pagefind's first sub-result is usually the page top; list only the ones under a heading.
     var subs = (r.sub_results || []).filter(function (s) { return s.url !== r.url && s.url.indexOf('#') > -1; }).slice(0, 3);
-    return '<li><a class="r-title" href="' + r.url + '">' + esc(r.meta.title || path(r.url)) + '</a>' +
-      '<span class="r-path">' + esc(path(r.url).replace(/\.html$/, '')) + '</span>' +
+    // A notebook's text page is only there to be searched: send the reader to Colab, and name the
+    // section as plain text, since Colab can't jump to a heading.
+    var nb = r.meta.colab;
+    var link = nb ? '<a class="r-title" href="' + esc(nb) + '" target="_blank" rel="noopener">'
+                  : '<a class="r-title" href="' + r.url + '">';
+    var where = nb ? (r.meta.kind || 'Notebook') + ' · opens in Colab ↗' : path(r.url).replace(/\.html$/, '');
+    return '<li>' + link + esc(r.meta.title || path(r.url)) + '</a>' +
+      '<span class="r-path">' + esc(where) + '</span>' +
       '<p>' + r.excerpt + '</p>' +
       (subs.length ? '<ul class="subs">' + subs.map(function (s) {
-        return '<li><a href="' + s.url + '">' + esc(s.title) + '</a><p>' + s.excerpt + '</p></li>';
+        var h = nb ? '<span class="sub-h">' + esc(s.title) + '</span>' : '<a href="' + s.url + '">' + esc(s.title) + '</a>';
+        return '<li>' + h + '<p>' + s.excerpt + '</p></li>';
       }).join('') + '</ul>' : '') + '</li>';
   }
   function showMore() {
@@ -126,9 +136,9 @@ def render():
         '<header class="masthead">'
         '<div class="kicker">Search</div>'
         '<h1>Search the course site</h1>'
-        '<p class="meta">Searches the home page, the schedule, every mini-lecture, and the course guides. '
-        'The notebooks open in Colab and are not searched here; find them under '
-        '<a href="index.html#codealongs">Code-alongs</a> and <a href="index.html#assignments">Assignments</a>.</p>'
+        '<p class="meta">Searches the home page, the schedule, every mini-lecture, the course guides, and the '
+        'text of every code-along and homework notebook. A notebook result opens the notebook in Colab. '
+        'Lectures and notebooks show up here once they open on the site.</p>'
         '</header>'
     )
     main = (
@@ -136,7 +146,7 @@ def render():
         + '<form id="search-form" class="search-box" role="search" action="search.html" method="get">'
           '<label class="visually-hidden" for="search-q">Search the course site</label>'
           f'{SEARCH_ICON.replace("16", "18")}'
-          '<input type="search" id="search-q" name="q" placeholder="Search lectures, guides, the schedule" autocomplete="off">'
+          '<input type="search" id="search-q" name="q" placeholder="Search lectures, notebooks, guides" autocomplete="off">'
           '</form>'
           '<div id="search-status" class="search-status" role="status" aria-live="polite"></div>'
           '<ul id="results" class="results"></ul>'

@@ -18,13 +18,14 @@
 .results mark{background:var(--clay-bg);color:var(--clay-ink);padding:0 2px;border-radius:2px;}
 .results .subs{list-style:none;padding:0;margin:10px 0 0 18px;}
 .results .subs li{margin:8px 0 0;}
-.results .subs a{font:600 14px/1.3 var(--sans);}
+.results .subs a,.results .subs .sub-h{font:600 14px/1.3 var(--sans);}
+.results .subs .sub-h{color:var(--green-mid);}
 .results .subs p{margin-top:3px;font-size:13.5px;color:var(--muted);}
 .search-more{margin:18px 0 0;font:600 12px/1 var(--mono);padding:9px 12px;border:1px solid var(--rule);
   border-radius:4px;background:var(--surface);color:var(--green);cursor:pointer;}
 .search-more:hover{border-color:var(--green-mid);color:var(--clay);}
 </style></head>
-<body data-pagefind-ignore="all"><header class="site-header" data-pagefind-ignore="all"><div class="bar"><a href="index.html" class="brand"><span class="k">WRIT 20833 · Fall 2026</span><span class="name">When Coding Meets Culture</span></a><button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">☰</button><nav class="site-nav" id="site-nav" aria-label="Primary"><a href="schedule.html" class="nav-pill">Schedule</a><a href="index.html#lectures" class="nav-pill">Lectures</a><a href="index.html#codealongs" class="nav-pill">Code-alongs</a><a href="index.html#assignments" class="nav-pill">Assignments</a><a href="index.html#resources" class="nav-pill">Resources</a></nav></div></header><div class="wrap"><header class="masthead"><div class="kicker">Search</div><h1>Search the course site</h1><p class="meta">Searches the home page, the schedule, every mini-lecture, and the course guides. The notebooks open in Colab and are not searched here; find them under <a href="index.html#codealongs">Code-alongs</a> and <a href="index.html#assignments">Assignments</a>.</p></header><form id="search-form" class="search-box" role="search" action="search.html" method="get"><label class="visually-hidden" for="search-q">Search the course site</label><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" id="search-q" name="q" placeholder="Search lectures, guides, the schedule" autocomplete="off"></form><div id="search-status" class="search-status" role="status" aria-live="polite"></div><ul id="results" class="results"></ul><button id="search-more" class="search-more" type="button" hidden>More results</button><noscript><p class="muted">Search needs JavaScript. Every page is also reachable from the <a href="index.html">home page</a> and the <a href="schedule.html">schedule</a>.</p></noscript><script>
+<body data-pagefind-ignore="all"><header class="site-header" data-pagefind-ignore="all"><div class="bar"><a href="index.html" class="brand"><span class="k">WRIT 20833 · Fall 2026</span><span class="name">When Coding Meets Culture</span></a><button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">☰</button><nav class="site-nav" id="site-nav" aria-label="Primary"><a href="schedule.html" class="nav-pill">Schedule</a><a href="index.html#lectures" class="nav-pill">Lectures</a><a href="index.html#codealongs" class="nav-pill">Code-alongs</a><a href="index.html#assignments" class="nav-pill">Assignments</a><a href="index.html#resources" class="nav-pill">Resources</a></nav></div></header><div class="wrap"><header class="masthead"><div class="kicker">Search</div><h1>Search the course site</h1><p class="meta">Searches the home page, the schedule, every mini-lecture, the course guides, and the text of every code-along and homework notebook. A notebook result opens the notebook in Colab. Lectures and notebooks show up here once they open on the site.</p></header><form id="search-form" class="search-box" role="search" action="search.html" method="get"><label class="visually-hidden" for="search-q">Search the course site</label><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" id="search-q" name="q" placeholder="Search lectures, notebooks, guides" autocomplete="off"></form><div id="search-status" class="search-status" role="status" aria-live="polite"></div><ul id="results" class="results"></ul><button id="search-more" class="search-more" type="button" hidden>More results</button><noscript><p class="muted">Search needs JavaScript. Every page is also reachable from the <a href="index.html">home page</a> and the <a href="schedule.html">schedule</a>.</p></noscript><script>
 (function () {
   var base = new URL('.', location.href).pathname;
   var showAll = /[?&]all(=|&|$)/.test(location.search);
@@ -48,11 +49,18 @@
   function item(r) {
     // Pagefind's first sub-result is usually the page top; list only the ones under a heading.
     var subs = (r.sub_results || []).filter(function (s) { return s.url !== r.url && s.url.indexOf('#') > -1; }).slice(0, 3);
-    return '<li><a class="r-title" href="' + r.url + '">' + esc(r.meta.title || path(r.url)) + '</a>' +
-      '<span class="r-path">' + esc(path(r.url).replace(/\.html$/, '')) + '</span>' +
+    // A notebook's text page is only there to be searched: send the reader to Colab, and name the
+    // section as plain text, since Colab can't jump to a heading.
+    var nb = r.meta.colab;
+    var link = nb ? '<a class="r-title" href="' + esc(nb) + '" target="_blank" rel="noopener">'
+                  : '<a class="r-title" href="' + r.url + '">';
+    var where = nb ? (r.meta.kind || 'Notebook') + ' · opens in Colab ↗' : path(r.url).replace(/\.html$/, '');
+    return '<li>' + link + esc(r.meta.title || path(r.url)) + '</a>' +
+      '<span class="r-path">' + esc(where) + '</span>' +
       '<p>' + r.excerpt + '</p>' +
       (subs.length ? '<ul class="subs">' + subs.map(function (s) {
-        return '<li><a href="' + s.url + '">' + esc(s.title) + '</a><p>' + s.excerpt + '</p></li>';
+        var h = nb ? '<span class="sub-h">' + esc(s.title) + '</span>' : '<a href="' + s.url + '">' + esc(s.title) + '</a>';
+        return '<li>' + h + '<p>' + s.excerpt + '</p></li>';
       }).join('') + '</ul>' : '') + '</li>';
   }
   function showMore() {

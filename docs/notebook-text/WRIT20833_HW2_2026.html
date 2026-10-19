@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>HW2 · Term Frequency — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Homework · due Day 10"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/homework/WRIT20833_HW2_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-11-02"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/homework/WRIT20833_HW2_2026.ipynb">Open it in Colab ↗</a></p><h1>HW2 · Term Frequency</h1>
+<h2 id="homework-2-term-frequency-whose-words-win">Homework 2 — Term Frequency: Whose Words Win?</h2>
+<p data-pagefind-weight="0.5">WRIT 20833 — Intro to Coding in the Humanities Student Name: Replace with your name Upload as: LASTNAMEHW2.ipynb New to Colab, or submitting? See Working in Colab. ---</p>
+<h3 id="what-you-re-doing">What you&#x27;re doing</h3>
+<p data-pagefind-weight="0.5">Last week (HW1 C2) you turned many comments into one big word list. This week you&#x27;ll count those words to find what a text is really about — its term frequency — and use it to stage a debate between two real texts: - commentstext — 93 real YouTube comments on the 2025 Texas law putting the Ten Commandments in classrooms (the public&#x27;s voice). - constitutiontext — the U.S. Constitution as signed in 1787: the original text, before the Bill of Rights and the later amendments. It&#x27;s the document those commenters keep invoking. Everything you need is loaded by the setup cell — no pandas, no outside textbook.</p>
+<h3 id="prepare">Prepare</h3>
+<p data-pagefind-weight="0.5">Review our own materials before you start: - The Term Frequency code-along (Day 7) — this homework&#x27;s engine: splitintowords, the long stopwords list, Counter, and topmeaningfulwords. - The Dictionaries &amp; Functions code-along (Day 5) — def, your hand-built countwords, and the first look at Counter. A5 asks you to write a function like the ones there. - HW1 B3/C2 — building one word list from many texts (this is where we left off). - The Strings &amp; String Methods code-along (.lower(), .split()). - HW1 A6 — membership testing with a (five-word) stopwords list.</p>
+<h3 id="expected-frequent-meaningful-comments">Expected: frequent, meaningful #comments</h3>
+<p data-pagefind-weight="0.5">Comment as you work — not every line, but often, and wherever you make a choice or hit a question: say what you are trying to do and what you learned (or what surprised you). Frequent, relevant #comments are expected — they&#x27;re where your thinking shows. For example: python</p>
+<h2 id="i-wanted-to-see-the-most-common-word-before-filtering">I wanted to see the most common word before filtering.</h2>
+<h2 id="i-learned-that-the-wins-every-time-raw-counts-are-dominated-by-function-words">I learned that &quot;the&quot; wins every time -- raw counts are dominated by function words.</h2>
+<p data-pagefind-weight="0.5">Counter(splitintowords(constitutiontext)).mostcommon(1)</p>
+<h3 id="about-the-setup-cell-read-this-then-just-run-it">About the setup cell (read this, then just run it)</h3>
+<p data-pagefind-weight="0.5">The next cell is plumbing: it loads the two texts and defines two helper tools. Run it, but don&#x27;t worry about reading every line — it uses a couple of things we haven&#x27;t covered yet (a pattern-matcher for splitting on punctuation, and code that downloads a file if it&#x27;s missing). You&#x27;ll meet those later. This is a normal part of coding: you use a tool through its interface long before you could build its insides — just like you drive a car without knowing the engine. For this whole homework, you only need these things the setup cell hands you: - commentstext and constitutiontext — the two texts, as one big string each - splitintowords(text) — turns a text into a list of lowercase words (like .split() from HW1, but it also drops punctuation) - stopwords — the long skip-list of tiny words from the Term Frequency code-along (HW1 A6 previewed five of them) - Counter(list) and .mostcommon(n) — count how often each item appears, then take the top n If you can use those, you can do every exercise below — no pattern-matching or downloading required.</p>
+<pre data-pagefind-weight="0.5"># SETUP — run this cell first. (You&#x27;re not expected to read every line yet — that&#x27;s fine.)
+import re
+from collections import Counter
+import os, urllib.request
+
+def split_into_words(any_chunk_of_text):
+    lowercase_text = any_chunk_of_text.lower()
+    # Split on any run of non-letter/number characters (spaces, punctuation, newlines).
+    return re.split(r&quot;\W+&quot;, lowercase_text)
+
+# The long stopwords list from the Term Frequency code-along (HW1 A6 previewed five of them):
+# tiny function words that carry little meaning on their own. We filter these out to find the &quot;meaningful&quot; words.
+stopwords = [&quot;i&quot;, &quot;me&quot;, &quot;my&quot;, &quot;myself&quot;, &quot;we&quot;, &quot;our&quot;, &quot;ours&quot;, &quot;ourselves&quot;, &quot;you&quot;, &quot;your&quot;, &quot;yours&quot;, &quot;yourself&quot;, &quot;yourselves&quot;, &quot;he&quot;, &quot;him&quot;, &quot;his&quot;, &quot;himself&quot;, &quot;she&quot;, &quot;her&quot;, &quot;hers&quot;, &quot;herself&quot;, &quot;it&quot;, &quot;its&quot;, &quot;itself&quot;, &quot;they&quot;, &quot;them&quot;, &quot;their&quot;, &quot;theirs&quot;, &quot;themselves&quot;, &quot;what&quot;, &quot;which&quot;, &quot;who&quot;, &quot;whom&quot;, &quot;this&quot;, &quot;that&quot;, &quot;these&quot;, &quot;those&quot;, &quot;am&quot;, &quot;is&quot;, &quot;are&quot;, &quot;was&quot;, &quot;were&quot;, &quot;be&quot;, &quot;been&quot;, &quot;being&quot;, &quot;have&quot;, &quot;has&quot;, &quot;had&quot;, &quot;having&quot;, &quot;do&quot;, &quot;does&quot;, &quot;did&quot;, &quot;doing&quot;, &quot;a&quot;, &quot;an&quot;, &quot;the&quot;, &quot;and&quot;, &quot;but&quot;, &quot;if&quot;, &quot;or&quot;, &quot;because&quot;, &quot;as&quot;, &quot;until&quot;, &quot;while&quot;, &quot;of&quot;, &quot;at&quot;, &quot;by&quot;, &quot;for&quot;, &quot;with&quot;, &quot;about&quot;, &quot;against&quot;, &quot;between&quot;, &quot;into&quot;, &quot;through&quot;, &quot;during&quot;, &quot;before&quot;, &quot;after&quot;, &quot;above&quot;, &quot;below&quot;, &quot;to&quot;, &quot;from&quot;, &quot;up&quot;, &quot;down&quot;, &quot;in&quot;, &quot;out&quot;, &quot;on&quot;, &quot;off&quot;, &quot;over&quot;, &quot;under&quot;, &quot;again&quot;, &quot;further&quot;, &quot;then&quot;, &quot;once&quot;, &quot;here&quot;, &quot;there&quot;, &quot;when&quot;, &quot;where&quot;, &quot;why&quot;, &quot;how&quot;, &quot;all&quot;, &quot;any&quot;, &quot;both&quot;, &quot;each&quot;, &quot;few&quot;, &quot;more&quot;, &quot;most&quot;, &quot;other&quot;, &quot;some&quot;, &quot;such&quot;, &quot;no&quot;, &quot;nor&quot;, &quot;not&quot;, &quot;only&quot;, &quot;own&quot;, &quot;same&quot;, &quot;so&quot;, &quot;than&quot;, &quot;too&quot;, &quot;very&quot;, &quot;s&quot;, &quot;t&quot;, &quot;can&quot;, &quot;will&quot;, &quot;just&quot;, &quot;don&quot;, &quot;should&quot;, &quot;now&quot;, &quot;ve&quot;, &quot;ll&quot;, &quot;amp&quot;]
+
+def load_text(filename):
+    &quot;&quot;&quot;Load a corpus. Checks this folder and notebooks/data/, then falls back to
+    downloading from the course repo (works in Colab, and locally after merge).&quot;&quot;&quot;
+    for path in (filename, os.path.join(&quot;notebooks&quot;, &quot;data&quot;, filename),
+                 os.path.join(&quot;data&quot;, filename), os.path.join(&quot;..&quot;, &quot;data&quot;, filename)):
+        if os.path.exists(path):
+            return open(path, encoding=&quot;utf-8&quot;).read()
+    url = &quot;https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/notebooks/data/&quot; + filename
+    return urllib.request.urlopen(url).read().decode(&quot;utf-8&quot;)
+
+# Two real corpora about the 2025 Texas Ten Commandments-in-schools law:
+comments_text = load_text(&quot;tc_youtube_comments.txt&quot;)    # the public&#x27;s voice (93 YouTube comments, 123 lines)
+constitution_text = load_text(&quot;us_constitution.txt&quot;)    # the document the public keeps invoking
+print(&quot;Setup complete. Both corpora loaded.&quot;)</pre>
+<h3 id="part-a-from-words-to-counts-5-exercises">Part A — From words to counts (5 exercises)</h3>
+<p data-pagefind-weight="0.5">A1 — How big is each corpus? (Recall HW1 C2: total vs. distinct words.)</p>
+<pre data-pagefind-weight="0.5"># A1
+# TODO: split BOTH texts into word lists with split_into_words(...)
+# TODO: for EACH corpus, print the TOTAL number of words and the number of DISTINCT words
+#       (hint: len(...) for total; len(set(...)) for distinct)
+
+# #comments:
+# Which text has more words? Which has more DISTINCT words?
+# What might a bigger vocabulary tell you about a text?</pre>
+<p data-pagefind-weight="0.5">A2 — The raw count problem. Count words without filtering first.</p>
+<pre data-pagefind-weight="0.5"># A2
+# TODO: build a Counter of ALL the words in constitution_text (no filtering yet)
+# TODO: print the 10 most common with .most_common(10)
+
+# #comments:
+# What kinds of words win? Are they meaningful?
+# Why do almost ALL texts share the same top words?</pre>
+<p data-pagefind-weight="0.5">A3 — Keeping only the meaningful words. (Recall HW1 A6: skip stopwords.)</p>
+<pre data-pagefind-weight="0.5"># A3
+# TODO: split constitution_text into words
+# TODO: build `meaningful` = every word that is NOT empty AND NOT in stopwords
+#       (hint: a list comprehension, or a for-loop with an if)
+# TODO: print the 10 most common meaningful words
+
+# #comments:
+# Now what rises to the top? Does it match what the Constitution is &quot;about&quot;?
+# A stopword list is an editorial choice -- who decides which words don&#x27;t count?</pre>
+<p data-pagefind-weight="0.5">A4 — An edge case: predict, then run.</p>
+<pre data-pagefind-weight="0.5"># A4 — predict, then run
+# We have a Counter of the comments&#x27; meaningful words below.
+# FIRST predict, in a comment, what `.most_common(0)` returns. THEN run the cell.
+comment_words = [w for w in split_into_words(comments_text) if w and w not in stopwords]
+comment_counts = Counter(comment_words)
+print(comment_counts.most_common(0))
+
+# #comments:
+# My prediction was:
+# An empty result is not an error -- when might &quot;zero results&quot; still be a real answer?</pre>
+<p data-pagefind-weight="0.5">A5 — Wrap it in a reusable function. (Recall Day 5: build the tool once with def, reuse it.)</p>
+<pre data-pagefind-weight="0.5"># A5
+# TODO: finish this function so it returns the n most common meaningful words of ANY text.
+def top_meaningful_words(text, n):
+    # TODO: split `text` into words
+    # TODO: keep only non-empty words that are NOT in stopwords
+    # TODO: return Counter(...).most_common(n)
+    pass
+
+# TODO: test it -- print top_meaningful_words(constitution_text, 5)
+
+# #comments:
+# Why is a function better than copy-pasting the same 3 lines for each text?</pre>
+<h4 id="a-note-you-just-rebuilt-something-coders-almost-never-write-from-scratch">A note: you just rebuilt something coders almost never write from scratch</h4>
+<p data-pagefind-weight="0.5">Counting word frequency is one of the most common things people do with text — so common that almost no working coder writes it from zero. Long before AI, they&#x27;d copy a tested version from a resource like Stack Overflow, a blog, or a library; today they might ask an AI to write it. Borrowing code is normal and expected — not cheating. So why build it by hand here? Because borrowed code only helps if you can read it and judge whether it does what you need: which words stopwords throws away, how splitintowords decides where one word ends, what actually gets counted. We build it once, slowly, so that when you reuse a prefab version later — and you will — you know exactly what you&#x27;re looking at and where it might be wrong. (We pick this thread up on Day 8, reading and improving AI-written code.)</p>
+<h3 id="part-b-whose-words-win-4-exercises">Part B — Whose words win? (4 exercises)</h3>
+<p data-pagefind-weight="0.5">B1 — Top 20 of each corpus, side by side.</p>
+<pre data-pagefind-weight="0.5"># B1
+# TODO: use your A5 function to print the top 20 meaningful words of EACH corpus
+print(&quot;CONSTITUTION:&quot;)
+# TODO ...
+print(&quot;COMMENTS:&quot;)
+# TODO ...
+
+# #comments:
+# In one sentence each: what is the Constitution about? What are the comments about?</pre>
+<p data-pagefind-weight="0.5">B2 — A direct lookup: does the public speak the Constitution&#x27;s language?</p>
+<pre data-pagefind-weight="0.5"># B2
+# `comment_counts` was built in A4. You can look up ONE word&#x27;s count directly:
+# TODO: print comment_counts[&quot;constitution&quot;]   (how often the commenters say &quot;constitution&quot;)
+# TODO: print comment_counts[&quot;commandments&quot;]   (compare it)
+
+# #comments:
+# The commenters invoke the Constitution -- but how often, vs. their own keyword?
+# This is &quot;close reading&quot; (one exact word) meeting &quot;distant reading&quot; (the whole count).</pre>
+<p data-pagefind-weight="0.5">B3 — Distinctive words: what one text says that the other never does.</p>
+<pre data-pagefind-weight="0.5"># B3
+# TODO: build a SET of the constitution&#x27;s meaningful words
+# TODO: build a SET of the comments&#x27; meaningful words
+# TODO: print the comments&#x27; top-20 words that DO NOT appear in the Constitution at all
+#       (hint: loop your comments top-20; keep each word that is `not in` the constitution set)
+
+# #comments:
+# What does the public argue about that the founding document is simply silent on?
+# Careful: this is the 1787 text. &quot;Religion&quot; enters the Constitution with the First Amendment
+# (1791). Does knowing that change what &quot;silent&quot; means here?</pre>
+<p data-pagefind-weight="0.5">B4 — Interpretation (write 4–6 sentences below). Using your numbers from B1–B3, answer: whose words &quot;win,&quot; and what does term frequency let you say that reading every comment by hand would not? Name at least two specific words and their counts. Then name one thing the counts get wrong or hide — a place where counting flattens what a person actually meant. (Recall Collective Memory: scale vs. nuance.)</p>
+<p data-pagefind-weight="0.5">Replace this cell with your interpretation.</p>
+<h3 id="part-c-going-further-2-exercises">Part C — Going further (2 exercises)</h3>
+<p data-pagefind-weight="0.5">C1 — Tuning your stopwords. Real corpora need custom filtering.</p>
+<pre data-pagefind-weight="0.5"># C1
+# Numbers and filler words (like &quot;10&quot; or &quot;would&quot;) can clutter the comments.
+# TODO: make custom_stopwords = stopwords + a few of your own (e.g. &quot;10&quot;, &quot;ten&quot;, &quot;would&quot;)
+# TODO: re-rank the comments&#x27; top 10 meaningful words using custom_stopwords
+#       (tip: copy your A5 logic but swap in custom_stopwords)
+
+# #comments:
+# Each word you remove is a judgment call. Did filtering &quot;10&quot;/&quot;ten&quot; clarify the
+# meaning -- or quietly erase that people kept naming &quot;the TEN commandments&quot;?</pre>
+<p data-pagefind-weight="0.5">C2 — Bring your own text (optional, recommended). Paste your own short corpus between the triple quotes — a batch of social-media comments, song lyrics, a speech — and run term frequency on it. (We don&#x27;t scrape automatically until Day 10; for now, copy/paste by hand.)</p>
+<pre data-pagefind-weight="0.5"># C2 (optional)
+my_text = &quot;&quot;&quot;
+PASTE your own text here -- a dozen comments, some lyrics, a short speech.
+One per line is fine.
+&quot;&quot;&quot;
+# TODO: print top_meaningful_words(my_text, 10)
+
+# #comments:
+# What did you expect the top words to be? Did the count agree with your gut?</pre>
+<h3 id="weekly-experiments-your-own-work">Weekly Experiments (your own work!)</h3>
+<p data-pagefind-weight="0.5">After the required exercises, create 2–3 small experiments of your own with this week&#x27;s skills. Make them original. Ideas: - Change n and watch the &quot;long tail&quot; appear (mostcommon(50) — where does meaning fade?). - Compare a word&#x27;s rank in BOTH corpora. - Test an edge case: an empty string &quot;&quot;, a text of pure stopwords, ALL CAPS text. It&#x27;s fine if an experiment doesn&#x27;t work at first — documenting what went wrong and what you learned is worth just as much as working code.</p>
+<pre data-pagefind-weight="0.5"># Experiment 1
+
+
+# #comments:
+# What were you trying? What happened? What did you learn?</pre>
+<pre data-pagefind-weight="0.5"># Experiment 2
+
+
+# #comments:
+# What were you trying? What happened? What did you learn?</pre>
+<pre data-pagefind-weight="0.5"># Experiment 3
+
+
+# #comments:
+# What were you trying? What happened? What did you learn?</pre>
+<h3 id="submit">Submit</h3>
+<p data-pagefind-weight="0.5">- [ ] My name is at the top. - [ ] I completed Part A (5), Part B (4, including the B4 write-up), Part C (C1; C2 optional), and 2–3 experiments. - [ ] I used #comments frequently and meaningfully — showing my thinking wherever I made a choice or hit a question (not every line, but throughout). - [ ] I ran every cell. Where something still breaks, I left a #comment about what I tried and what I learned — errors are part of the work here, not something to hide or delete. - [ ] Saved as LASTNAMEHW2.ipynb and uploaded to its folder in TCU Online → Assignments. Time estimate: ~1.5–2 hrs for the exercises, ~1 hr for your experiments.</p></div></div></body></html>

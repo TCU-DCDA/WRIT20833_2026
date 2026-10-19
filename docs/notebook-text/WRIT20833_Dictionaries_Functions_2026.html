@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dictionaries &amp; Functions — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Day 5"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-10-28"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb">Open it in Colab ↗</a></p><h1>Dictionaries &amp; Functions</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<p data-pagefind-weight="0.5">How today works. Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
+<h2 id="dictionaries">Dictionaries</h2>
+<p data-pagefind-weight="0.5">Last time, lists stored items in order. But a lot of cultural data isn&#x27;t just a sequence — it&#x27;s labeled. A song has a title, an artist, a year. A dictionary stores key–value pairs: each value gets a name (its key) that you look it up by. - Created with curly braces {} - Each entry is key: value, entries separated by commas - Look a value up by its key with dictionary[&quot;key&quot;]</p>
+<pre data-pagefind-weight="0.5">album = {
+    &quot;title&quot;: &quot;Renaissance&quot;,
+    &quot;artist&quot;: &quot;Beyoncé&quot;,
+    &quot;year&quot;: 2022,
+    &quot;tracks&quot;: 16
+}
+
+print(album[&quot;title&quot;])
+print(album[&quot;artist&quot;], &quot;—&quot;, album[&quot;year&quot;])</pre>
+<h4 id="keys-and-values">Keys and values</h4>
+<p data-pagefind-weight="0.5">You can ask a dictionary for all of its keys or all of its values.</p>
+<pre data-pagefind-weight="0.5"># type along — print the album&#x27;s .keys(), then its .values()</pre>
+<h4 id="adding-and-changing-entries">Adding and changing entries</h4>
+<p data-pagefind-weight="0.5">Dictionaries are editable. Assign to a key to add it (if it&#x27;s new) or change it (if it already exists).</p>
+<pre data-pagefind-weight="0.5"># type along — add a &quot;genre&quot; key set to &quot;dance-pop&quot;; change &quot;tracks&quot; to 17; then print the whole dictionary</pre>
+<h4 id="your-turn">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — build a dictionary for a movie, video game, or creator you know
+my_thing = {
+    &quot;title&quot;: &quot;&quot;,
+    &quot;creator&quot;: &quot;&quot;,
+    &quot;year&quot;: 0,
+}
+
+print(my_thing)</pre>
+<h2 id="a-small-cultural-archive">A Small Cultural Archive</h2>
+<p data-pagefind-weight="0.5">Real datasets are usually many records that share the same fields — a list of dictionaries. Here&#x27;s a tiny archive of artists. Predict first. artists[1] is one record. Which artist is it? Write your guess, then run.</p>
+<pre data-pagefind-weight="0.5">artists = [
+    {&quot;name&quot;: &quot;Kendrick Lamar&quot;, &quot;city&quot;: &quot;Compton&quot;, &quot;grammys&quot;: 17},
+    {&quot;name&quot;: &quot;Beyoncé&quot;, &quot;city&quot;: &quot;Houston&quot;, &quot;grammys&quot;: 32},
+    {&quot;name&quot;: &quot;Bad Bunny&quot;, &quot;city&quot;: &quot;San Juan&quot;, &quot;grammys&quot;: 3},
+]
+
+# my guess: artists[1] is
+print(artists[1][&quot;name&quot;], &quot;is from&quot;, artists[1][&quot;city&quot;])</pre>
+<p data-pagefind-weight="0.5">Loop through the whole archive — the same for loop from last lesson, now over dictionaries:</p>
+<pre data-pagefind-weight="0.5"># type along — loop through `artists` and print each name with its Grammy count</pre>
+<h2 id="counting-with-a-dictionary">Counting with a Dictionary</h2>
+<p data-pagefind-weight="0.5">Here&#x27;s the move that powers most text analysis: use a dictionary to count things. The key is the thing; the value is how many times you&#x27;ve seen it. This is exactly how we&#x27;ll count words in real comments next week.</p>
+<pre data-pagefind-weight="0.5"># count how often each word appears
+words = [&quot;god&quot;, &quot;law&quot;, &quot;god&quot;, &quot;freedom&quot;, &quot;god&quot;, &quot;law&quot;]
+
+counts = {}                 # start with an empty dictionary
+for word in words:
+    if word in counts:
+        counts[word] = counts[word] + 1   # seen before — add one
+    else:
+        counts[word] = 1                  # first time — start at one
+
+print(counts)</pre>
+<h4 id="your-turn-2">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — count the platforms in this list using the same pattern
+posts = [&quot;TikTok&quot;, &quot;YouTube&quot;, &quot;TikTok&quot;, &quot;Instagram&quot;, &quot;YouTube&quot;, &quot;TikTok&quot;]
+
+counts = {}
+# loop through `posts` and count each platform here
+
+
+print(counts)</pre>
+<h2 id="functions">Functions</h2>
+<p data-pagefind-weight="0.5">A function packages code into a reusable tool. You define it once with def, give it inputs (parameters), and it can hand back a result with return. python def functionname(input): do something return result</p>
+<pre data-pagefind-weight="0.5">def greet(name):
+    return f&quot;Welcome, {name}!&quot;
+
+print(greet(&quot;Frog fan&quot;))
+print(greet(&quot;Dr. Rode&quot;))</pre>
+<h4 id="why-functions-write-the-recipe-once">Why functions? Write the recipe once.</h4>
+<p data-pagefind-weight="0.5">Without a function you&#x27;d copy-paste the same lines every time you needed them. With one, you write the logic once and reuse it — and if you fix it, you fix it everywhere at once.</p>
+<pre data-pagefind-weight="0.5">def classify_year(year):
+    if year &lt;= 1964:
+        return &quot;Boomer&quot;
+    elif year &lt;= 1980:
+        return &quot;Gen X&quot;
+    elif year &lt;= 1996:
+        return &quot;Millennial&quot;
+    else:
+        return &quot;Gen Z&quot;
+
+print(classify_year(1990))
+print(classify_year(2005))</pre>
+<p data-pagefind-weight="0.5">The payoff: call your function inside a loop to process a whole list.</p>
+<pre data-pagefind-weight="0.5"># type along — loop over `birth_years` and print each year with its generation, using classify_year
+birth_years = [1962, 1985, 1997, 2004]</pre>
+<h4 id="more-than-one-input">More than one input</h4>
+<p data-pagefind-weight="0.5">Functions can take several parameters.</p>
+<pre data-pagefind-weight="0.5"># type along — define with_tax(price, rate) that returns price * (1 + rate); then call it with 9.99 and 0.0825</pre>
+<h4 id="your-turn-3">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — finish this function so it returns True when a word is &quot;long&quot; (more than 6 letters)
+def is_long(word):
+    pass   # replace this line with a return statement
+
+print(is_long(&quot;god&quot;))      # want: False
+print(is_long(&quot;freedom&quot;))  # want: True</pre>
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+<p data-pagefind-weight="0.5">Now combine functions and dictionaries into one reusable tool: a function that takes a list of words and returns a dictionary of how often each appears. This is a first draft of the term-frequency counter you&#x27;ll use on real data next week.</p>
+<pre data-pagefind-weight="0.5">def count_words(word_list):
+    counts = {}
+    for word in word_list:
+        if word in counts:
+            counts[word] = counts[word] + 1
+        else:
+            counts[word] = 1
+    return counts
+
+sample = [&quot;god&quot;, &quot;law&quot;, &quot;freedom&quot;, &quot;god&quot;, &quot;school&quot;, &quot;god&quot;, &quot;law&quot;]
+print(count_words(sample))</pre>
+<pre data-pagefind-weight="0.5"># your turn — run count_words on your own list of words
+my_words = [&quot;frogs&quot;, &quot;purple&quot;, &quot;frogs&quot;, &quot;tcu&quot;, &quot;purple&quot;, &quot;frogs&quot;]
+
+print(count_words(my_words))</pre>
+<h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
+<p data-pagefind-weight="0.5">Next week we leave practice data behind for real text — 93 actual YouTube comments about a Texas law. Your countwords function is the seed of term frequency: finding what a text is really about by counting its words. Python even ships with a tool, Counter, that does what you just wrote:</p>
+<pre data-pagefind-weight="0.5">from collections import Counter
+
+comment = &quot;god god law freedom god school law god&quot;
+words = comment.split()
+
+print(Counter(words).most_common(3))   # the 3 most frequent words</pre>
+<p data-pagefind-weight="0.5">That little count is already a tiny act of interpretation: we chose to split on spaces, we decided every word counts equally. Next week we&#x27;ll ask what choices like these reveal — and what they flatten.</p>
+<h2 id="playground">Playground</h2>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div></body></html>

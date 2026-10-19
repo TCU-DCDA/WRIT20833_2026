@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Topic Modeling (Gensim) — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Days 16–17"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-11-30"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb">Open it in Colab ↗</a></p><h1>Topic Modeling (Gensim)</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<p data-pagefind-weight="0.5">How this notebook works. Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
+<p data-pagefind-weight="0.5">Your text-analysis journey, in three questions: - Term frequency asked what words appear most? - Sentiment asked how does it feel? - Topic modeling asks the biggest one yet: what is this whole pile of text even about? Given hundreds of documents, topic modeling discovers the recurring themes running through them — clusters of words that tend to show up together. It&#x27;s the deepest &quot;distant reading&quot; move in the course: the computer surfaces patterns no one could find by reading one comment at a time. But — as always — it hands you statistics, and you decide whether they&#x27;re meaningful.</p>
+<h4 id="what-lda-actually-does">What LDA actually does</h4>
+<p data-pagefind-weight="0.5">We&#x27;ll use LDA (Latent Dirichlet Allocation) from the Gensim library. Its two assumptions: 1. Each document is a mixture of topics. 2. Each topic is a cluster of words that co-occur. LDA works backward from the text to guess what those topics must be. It returns lists of words — never names. Naming &quot;money, dream, decay, green, light&quot; as the American Dream is the human&#x27;s job.</p>
+<h2 id="setup">Setup</h2>
+<p data-pagefind-weight="0.5">One new library, gensim, plus the same word-splitter and stopwords you&#x27;ve used since HW2 — topic modeling reuses your own tools.</p>
+<pre data-pagefind-weight="0.5">!pip install -q gensim</pre>
+<pre data-pagefind-weight="0.5">import re
+from gensim import corpora
+from gensim.models import LdaModel
+
+# the exact split_into_words + stopwords from HW2/HW3/HW4
+def split_into_words(any_chunk_of_text):
+    return re.split(r&quot;\W+&quot;, str(any_chunk_of_text).lower())
+
+stopwords = [&quot;i&quot;, &quot;me&quot;, &quot;my&quot;, &quot;myself&quot;, &quot;we&quot;, &quot;our&quot;, &quot;ours&quot;, &quot;ourselves&quot;, &quot;you&quot;, &quot;your&quot;, &quot;yours&quot;, &quot;yourself&quot;, &quot;yourselves&quot;, &quot;he&quot;, &quot;him&quot;, &quot;his&quot;, &quot;himself&quot;, &quot;she&quot;, &quot;her&quot;, &quot;hers&quot;, &quot;herself&quot;, &quot;it&quot;, &quot;its&quot;, &quot;itself&quot;, &quot;they&quot;, &quot;them&quot;, &quot;their&quot;, &quot;theirs&quot;, &quot;themselves&quot;, &quot;what&quot;, &quot;which&quot;, &quot;who&quot;, &quot;whom&quot;, &quot;this&quot;, &quot;that&quot;, &quot;these&quot;, &quot;those&quot;, &quot;am&quot;, &quot;is&quot;, &quot;are&quot;, &quot;was&quot;, &quot;were&quot;, &quot;be&quot;, &quot;been&quot;, &quot;being&quot;, &quot;have&quot;, &quot;has&quot;, &quot;had&quot;, &quot;having&quot;, &quot;do&quot;, &quot;does&quot;, &quot;did&quot;, &quot;doing&quot;, &quot;a&quot;, &quot;an&quot;, &quot;the&quot;, &quot;and&quot;, &quot;but&quot;, &quot;if&quot;, &quot;or&quot;, &quot;because&quot;, &quot;as&quot;, &quot;until&quot;, &quot;while&quot;, &quot;of&quot;, &quot;at&quot;, &quot;by&quot;, &quot;for&quot;, &quot;with&quot;, &quot;about&quot;, &quot;against&quot;, &quot;between&quot;, &quot;into&quot;, &quot;through&quot;, &quot;during&quot;, &quot;before&quot;, &quot;after&quot;, &quot;above&quot;, &quot;below&quot;, &quot;to&quot;, &quot;from&quot;, &quot;up&quot;, &quot;down&quot;, &quot;in&quot;, &quot;out&quot;, &quot;on&quot;, &quot;off&quot;, &quot;over&quot;, &quot;under&quot;, &quot;again&quot;, &quot;further&quot;, &quot;then&quot;, &quot;once&quot;, &quot;here&quot;, &quot;there&quot;, &quot;when&quot;, &quot;where&quot;, &quot;why&quot;, &quot;how&quot;, &quot;all&quot;, &quot;any&quot;, &quot;both&quot;, &quot;each&quot;, &quot;few&quot;, &quot;more&quot;, &quot;most&quot;, &quot;other&quot;, &quot;some&quot;, &quot;such&quot;, &quot;no&quot;, &quot;nor&quot;, &quot;not&quot;, &quot;only&quot;, &quot;own&quot;, &quot;same&quot;, &quot;so&quot;, &quot;than&quot;, &quot;too&quot;, &quot;very&quot;, &quot;s&quot;, &quot;t&quot;, &quot;can&quot;, &quot;will&quot;, &quot;just&quot;, &quot;don&quot;, &quot;should&quot;, &quot;now&quot;, &quot;ve&quot;, &quot;ll&quot;, &quot;amp&quot;]
+
+print(&quot;Gensim ready. Stopwords loaded:&quot;, len(stopwords))</pre>
+<h4 id="preprocessing-for-topics-is-more-aggressive-than-for-sentiment">Preprocessing for topics is more aggressive than for sentiment</h4>
+<p data-pagefind-weight="0.5">Remember VADER wanted punctuation and CAPS left in — emotional intensity mattered. Topic modeling is the opposite: it cares about which content words co-occur, so we strip everything down to lowercase meaning-words and drop the stopwords (the, and, is...) that appear everywhere and signal nothing.</p>
+<pre data-pagefind-weight="0.5">def preprocess_for_topics(text):
+    return [w for w in split_into_words(text) if w and w not in stopwords]
+
+print(preprocess_for_topics(&quot;The PAINTINGS were absolutely amazing!!! I loved the colors.&quot;))</pre>
+<h2 id="part-1-a-clear-example-first">Part 1 — A Clear Example First</h2>
+<p data-pagefind-weight="0.5">Topic modeling only makes sense if you can watch it work on text whose themes you already know. Here are fifteen short comments, constructed for this lesson to sound like three very different corners of the internet, each with its own deliberately distinct vocabulary. Predict: how many topics are here, and what are they?</p>
+<pre data-pagefind-weight="0.5"># my guess: how many topics?    what are they?
+docs = [
+    # one corner of the internet
+    &quot;The team won the game and the coach thanked the players and the fans.&quot;,
+    &quot;Fans filled the stadium to watch the team win the game for the coach.&quot;,
+    &quot;The coach said the players gave the fans their best game of the season.&quot;,
+    &quot;Our team lost the game, but the coach and the players will win next season.&quot;,
+    &quot;The stadium fans cheered when the players scored and the team won the game.&quot;,
+    # another corner
+    &quot;The band recorded a new album and the singer wrote every song on guitar.&quot;,
+    &quot;At the concert the band played every song from the album on guitar.&quot;,
+    &quot;The singer and the band recorded the album, and each song features guitar.&quot;,
+    &quot;The singer sang every song from the album while the band played the concert.&quot;,
+    &quot;The singer played guitar, the band played drums, and the concert ended with a song from the album.&quot;,
+    # a third corner
+    &quot;We cooked dinner from a recipe with pasta, tomato sauce, garlic, and cheese.&quot;,
+    &quot;The kitchen smelled of garlic and bread while the pasta sauce cooked for dinner.&quot;,
+    &quot;I cooked pasta for dinner and added garlic, cheese, and tomato sauce from the recipe.&quot;,
+    &quot;The recipe calls for garlic, cheese, and tomato; we baked bread in the kitchen for dinner.&quot;,
+    &quot;Dinner was pasta with garlic sauce, cheese, and warm bread from the kitchen.&quot;,
+]
+
+tokens = [preprocess_for_topics(d) for d in docs]
+print(&quot;Example tokenized doc:&quot;, tokens[0])</pre>
+<h4 id="build-the-dictionary-and-corpus">Build the dictionary and corpus</h4>
+<p data-pagefind-weight="0.5">Gensim needs the text in its own format. The dictionary gives every unique word an id number; the corpus rewrites each document as a bag of (wordid, count) pairs — a &quot;bag of words.&quot;</p>
+<pre data-pagefind-weight="0.5">dictionary = corpora.Dictionary(tokens)
+corpus = [dictionary.doc2bow(doc) for doc in tokens]
+
+print(&quot;Unique words:&quot;, len(dictionary))
+print(&quot;First doc as bag-of-words:&quot;, corpus[0])
+print(&quot;Readable:&quot;, [(dictionary[i], c) for i, c in corpus[0]])</pre>
+<h4 id="train-the-model">Train the model</h4>
+<p data-pagefind-weight="0.5">We ask for 3 topics (we suspect three). randomstate=42 pins the randomness so the result is repeatable on this machine; passes is how many times LDA reads the corpus while it learns.</p>
+<pre data-pagefind-weight="0.5">lda = LdaModel(corpus=corpus, id2word=dictionary, num_topics=3, random_state=42, passes=10)
+
+for i in range(3):
+    words = [w for w, prob in lda.show_topic(i, 6)]
+    print(f&quot;Topic {i}: {&#x27;, &#x27;.join(words)}&quot;)</pre>
+<h4 id="your-turn-name-the-topics">Your turn: name the topics</h4>
+<p data-pagefind-weight="0.5">Read each word list above. What theme does each one point to? (You&#x27;ll almost certainly recognize the three corners these comments imitate.)</p>
+<pre data-pagefind-weight="0.5"># your turn — write your label for each topic as a comment
+# Topic 0 =&gt;
+# Topic 1 =&gt;
+# Topic 2 =&gt;</pre>
+<h4 id="which-topic-does-each-comment-belong-to">Which topic does each comment belong to?</h4>
+<p data-pagefind-weight="0.5">LDA never files a document under one topic — it gives every document a mixture (e.g. &quot;70% topic 1, 30% topic 2&quot;). We can still ask for its dominant topic, the biggest slice of the mix.</p>
+<pre data-pagefind-weight="0.5">for i, doc_bow in enumerate(corpus):
+    dist = lda.get_document_topics(doc_bow)
+    dominant = max(dist, key=lambda pair: pair[1])[0]
+    print(f&quot;Topic {dominant}  |  {docs[i][:55]}...&quot;)</pre>
+<p data-pagefind-weight="0.5">Each comment should land with its own corner of the internet. But that result is less sturdy than it looks. Change randomstate=42 to another number and rerun: sometimes a comment or two gets filed under a neighbor, even though no word here is shared between corners. LDA starts from a random guess and improves it, and fifteen comments of a few words each give it very little evidence to improve on. The fix is more, longer text per document, which is exactly the difference you&#x27;re about to see between this tidy example and real data.</p>
+<h2 id="part-2-how-many-topics-an-authored-choice">Part 2 — How Many Topics? (an authored choice)</h2>
+<p data-pagefind-weight="0.5">There is no correct number of topics. numtopics is a dial you set, and it changes what the model finds. Too few and unrelated themes get mashed together; too many and one real theme splinters. Watch what happens when we ask the same fifteen comments for 2 topics, then 4.</p>
+<pre data-pagefind-weight="0.5"># type along — for k in (2, 4): train an LdaModel on the same corpus with num_topics=k (random_state=42, passes=10),
+#              then print each topic&#x27;s top 6 words, the way the training cell above did</pre>
+<p data-pagefind-weight="0.5">Neither is &quot;wrong.&quot; Choosing the number of topics is a research decision you justify by how interpretable the result is — not a truth the algorithm reveals.</p>
+<h2 id="part-3-the-limits-one-debate-not-three-subjects">Part 3 — The Limits: One Debate, Not Three Subjects</h2>
+<p data-pagefind-weight="0.5">That toy corpus was easy on purpose — three obviously different subjects. Now point the same machine at something shaped like our course debate: eleven short comments we wrote to sound like the Texas Ten Commandments discussion (they are constructed examples, not the real scraped corpus; you saw several of them in the pandas and VADER code-alongs). They&#x27;re all arguing about one issue, in overlapping vocabulary. Watch the topics get muddy.</p>
+<pre data-pagefind-weight="0.5"># type along — run the whole Part 1 pipeline on `comments`: tokenize each one (c_tokens), build a Dictionary (c_dict) and
+#              bag-of-words corpus (c_corpus), train a 3-topic LdaModel (c_lda, random_state=42, passes=10), print each topic&#x27;s top 6 words
+comments = [
+    &quot;The Ten Commandments belong in every classroom, period.&quot;,
+    &quot;This is a clear violation of church and state. Keep it out.&quot;,
+    &quot;Morals matter and kids today need them more than ever.&quot;,
+    &quot;Whose religion gets to decide? Not the government&#x27;s job.&quot;,
+    &quot;Honestly I have no strong opinion either way.&quot;,
+    &quot;God and country, that&#x27;s what built this nation.&quot;,
+    &quot;Public schools serve everyone, not just one faith.&quot;,
+    &quot;Put the Constitution in classrooms, not commandments.&quot;,
+    &quot;Finally some common sense values in our schools.&quot;,
+    &quot;Freedom of religion means freedom from it too.&quot;,
+    &quot;My kids should learn this at home, not at school.&quot;,
+]</pre>
+<p data-pagefind-weight="0.5">Compare these to the toy corpus. There, each topic was a different subject you could name in a word — sports, music, food. Here, every &quot;topic&quot; is just more of the same argument: LDA still hands back three tidy word-lists, but they&#x27;re slices of one debate about one law, not three distinct themes. The model grouped words by raw co-occurrence — that&#x27;s all it ever does — and with eleven short documents on a single issue there simply aren&#x27;t separate subjects to find. Two things are working against it at once: the feed is tiny, and it&#x27;s one argument. Which one matters more? You can&#x27;t tell from this demo alone. HW4 runs the same pipeline on the real 123-row corpus (or your own data), and that is where you get to make claims about real comments. (Rerun it, or run it on a different machine, and the groupings shift — LDA is stochastic and version-sensitive, which is why randomstate only pins it here.) This isn&#x27;t a bug. Topic modeling shines on a large, thematically diverse collection; knowing when a method has little to say is as important as knowing how to run it — and it&#x27;s why HW4 wants a richer dataset of your own.</p>
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+<p data-pagefind-weight="0.5">The whole pipeline, start to finish — the moves you&#x27;ll run in HW4:</p>
+<pre data-pagefind-weight="0.5"># 1. preprocess  -&gt;  2. dictionary + corpus  -&gt;  3. train  -&gt;  4. read topics  -&gt;  5. YOU interpret
+tokens = [preprocess_for_topics(d) for d in docs]
+dictionary = corpora.Dictionary(tokens)
+corpus = [dictionary.doc2bow(t) for t in tokens]
+lda = LdaModel(corpus=corpus, id2word=dictionary, num_topics=3, random_state=42, passes=10)
+
+print(&quot;Discovered topics (your job: name them):&quot;)
+for i in range(3):
+    print(f&quot;  Topic {i}: {&#x27;, &#x27;.join(w for w, p in lda.show_topic(i, 6))}&quot;)</pre>
+<pre data-pagefind-weight="0.5"># your turn — change num_topics above to 2 or 5, rerun, and see how the story changes</pre>
+<h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
+<p data-pagefind-weight="0.5">HW4 is the capstone of the techniques. You&#x27;ll run topic modeling on a dataset you collected — and then integrate all three analyses: term frequency (what words), sentiment (what feeling), and topics (what themes), on the same texts. One line ties them together — average sentiment per topic — and suddenly you can say not just &quot;the crowd is split,&quot; but &quot;this theme has the lowest average VADER score and that one the highest.&quot; (Then the honest part: check how many comments sit behind each average, and read some of them. Negative words are not the same as anger, and an average can hide a split.) That integrated, evidence-backed reading of a real cultural conversation is exactly what your final capstone asks for. You now have every tool it needs.</p>
+<h2 id="playground">Playground</h2>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div></body></html>

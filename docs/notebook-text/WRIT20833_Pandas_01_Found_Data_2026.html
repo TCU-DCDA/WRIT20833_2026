@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Found Data &amp; Pandas — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Day 10"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-11-09"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb">Open it in Colab ↗</a></p><h1>Found Data &amp; Pandas</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<p data-pagefind-weight="0.5">So far we&#x27;ve handled text one string at a time. But cultural arguments live in lots of text at once — hundreds of comments, reviews, posts. Today is the turn from a text to a dataset: where that data comes from, how to collect it ethically, and how to open it up with pandas, the tool the rest of this course runs on.</p>
+<p data-pagefind-weight="0.5">How today works. Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
+<h2 id="part-1-found-data-collecting-it-ethically">Part 1 — Found Data &amp; Collecting It Ethically</h2>
+<p data-pagefind-weight="0.5"></p>
+<h3 id="found-data-culture-already-in-data-form">Found data: culture already in data form</h3>
+<p data-pagefind-weight="0.5">You won&#x27;t usually run a survey to get cultural data — it already exists, found out in the world: comment sections, product reviews, library catalogs, song archives, public records. &quot;Found data&quot; just means a dataset that&#x27;s already there, waiting to be discovered and read at scale. That convenience comes with responsibility. When you collect text people wrote, you&#x27;re handling other people&#x27;s words. Three pillars keep that honest:</p>
+<h4 id="the-three-pillars-of-ethical-collection">The three pillars of ethical collection</h4>
+<p data-pagefind-weight="0.5">1. 🤖 robots.txt — most sites publish a file saying what automated tools may and may not touch. Check it first. (Add /robots.txt to a site&#x27;s address, e.g. example.com/robots.txt.) 2. ⚖️ Fair use &amp; scale — collect only what your question needs, at a human pace. Don&#x27;t hammer a server or vacuum up a whole site because you can. 3. 📚 Attribution &amp; transparency — record where the data came from and how you got it, and say so in your work. &quot;I scraped 200 YouTube comments on July 8&quot; is part of your method. The golden rule: collect data the way you&#x27;d want someone collecting from your posts — respectfully, in the open.</p>
+<h4 id="reading-robots-txt-what-the-response-means">Reading robots.txt: what the response means</h4>
+<p data-pagefind-weight="0.5">When you (or a tool) request a page, the server answers with a status code. A few you&#x27;ll meet when checking permissions:</p>
+<pre data-pagefind-weight="0.5"># A tiny helper so the codes aren&#x27;t a mystery — no internet needed to learn what they mean.
+status_meanings = {
+    200: &quot;OK — it loaded; read what robots.txt says and follow it&quot;,
+    403: &quot;Forbidden — the site is telling you not to access this. Respect it.&quot;,
+    404: &quot;Not Found — no robots.txt here (common). Fall back to terms of service + judgment.&quot;,
+}
+
+def interpret(code):
+    return status_meanings.get(code, &quot;Unfamiliar code — look it up before collecting anything&quot;)
+
+for code in (200, 403, 404):
+    print(code, &quot;→&quot;, interpret(code))</pre>
+<p data-pagefind-weight="0.5">In class you can check a real site live. (Run this in Colab — it needs internet, so it&#x27;s left commented here.) python</p>
+<h2 id="import-requests">import requests</h2>
+<h2 id="r-requests-get-https-archive-org-robots-txt-timeout-5">r = requests.get(&quot;https://archive.org/robots.txt&quot;, timeout=5)</h2>
+<h2 id="print-r-statuscode-interpret-r-statuscode">print(r.statuscode, &quot;→&quot;, interpret(r.statuscode))</h2>
+<h4 id="your-turn-read-a-real-robots-txt">Your turn: read a real robots.txt</h4>
+<p data-pagefind-weight="0.5">Pick a site you might actually want to collect from — a review site, a fan wiki, a news comment section. Open its robots.txt in a new browser tab (add /robots.txt to the end of its address) and read it. It&#x27;s plain text, written for machines, but you can read it.</p>
+<pre data-pagefind-weight="0.5"># your turn — in a sentence or two: what does this site allow, what does it block,
+# and does anything about it surprise you?
+#
+# site:
+# what it says:</pre>
+<h3 id="instant-data-scraper-collecting-without-code">Instant Data Scraper: collecting without code</h3>
+<p data-pagefind-weight="0.5">You don&#x27;t need to write a scraper to gather cultural data. Instant Data Scraper is a free browser extension (Chrome/Firefox) that turns a web page&#x27;s table or list into a downloadable CSV — point, preview, download. We use it because it&#x27;s: - Visible — you see exactly what you&#x27;re collecting, - Human-paced — it won&#x27;t flood a server, and - Honest about scale — good for the hundreds-of-rows datasets this course needs, not millions. Before you scrape anything, ask: Does robots.txt allow it? Do I need this much? Will I credit the source? If you can&#x27;t answer all three, don&#x27;t collect it.</p>
+<h2 id="part-2-opening-found-data-with-pandas">Part 2 — Opening Found Data with Pandas</h2>
+<p data-pagefind-weight="0.5">Once collected, found data arrives as a table — rows and columns, like a spreadsheet (a .csv file). pandas is Python&#x27;s tool for tables. The name is from &quot;panel data,&quot; but picture a friendly data-handling panda. By convention we import it as pd.</p>
+<pre data-pagefind-weight="0.5">import pandas as pd
+import matplotlib.pyplot as plt</pre>
+<p data-pagefind-weight="0.5">A real CSV you&#x27;d load with pd.readcsv(&quot;yourfile.csv&quot;). To keep this notebook self-contained, here&#x27;s a small constructed sample in the shape Instant Data Scraper produces: YouTube-style comments on the Texas Ten Commandments law, the conversation this course keeps returning to. The wording, likes, replies, and stance labels were written for this lesson, so any pattern you find here is practice, not evidence about the real debate.</p>
+<pre data-pagefind-weight="0.5">data = {
+    &quot;comment&quot;: [
+        &quot;The Ten Commandments belong in every classroom, period.&quot;,
+        &quot;This is a clear violation of church and state. Keep it out.&quot;,
+        &quot;Morals matter and kids today need them more than ever.&quot;,
+        &quot;Whose religion gets to decide? Not the government&#x27;s job.&quot;,
+        &quot;Honestly I have no strong opinion either way.&quot;,
+        &quot;God and country, that&#x27;s what built this nation.&quot;,
+        &quot;Public schools serve everyone, not just one faith.&quot;,
+        &quot;Put the Constitution in classrooms, not commandments.&quot;,
+        &quot;Finally some common sense values in our schools.&quot;,
+        &quot;Freedom of religion means freedom from it too.&quot;,
+        &quot;My kids should learn this at home, not at school.&quot;,
+    ],
+    &quot;stance&quot;: [&quot;support&quot;, &quot;oppose&quot;, &quot;support&quot;, &quot;oppose&quot;, &quot;neutral&quot;, &quot;support&quot;,
+               &quot;oppose&quot;, &quot;oppose&quot;, &quot;support&quot;, &quot;oppose&quot;, &quot;neutral&quot;],
+    &quot;likes&quot;: [240, 312, 88, 150, 12, 205, 176, 410, 64, 198, 33],
+    &quot;replies&quot;: [15, 42, 6, 22, 1, 18, 19, 51, 4, 27, 2],
+}
+
+comments_df = pd.DataFrame(data)
+comments_df</pre>
+<h3 id="always-explore-first">Always explore first</h3>
+<p data-pagefind-weight="0.5">Before analyzing found data, get to know it. What&#x27;s its shape? What are the columns? What does a row look like?</p>
+<pre data-pagefind-weight="0.5"># type along — show the first few rows with .head()</pre>
+<p data-pagefind-weight="0.5">Predict first. Count from the table above: how many rows? How many columns? Write your guess in the comment, then run the cell.</p>
+<pre data-pagefind-weight="0.5"># my guess:    rows,    columns
+print(&quot;Shape:&quot;, comments_df.shape)
+print(f&quot;{comments_df.shape[0]} rows (comments) and {comments_df.shape[1]} columns (fields)&quot;)</pre>
+<pre data-pagefind-weight="0.5">comments_df.info()        # column names, types, and how many values are present</pre>
+<h3 id="selecting-columns">Selecting columns</h3>
+<p data-pagefind-weight="0.5">Grab one column with df[&quot;name&quot;] (a Series — a single labeled column). Grab several with a list of names inside the brackets (a smaller DataFrame).</p>
+<pre data-pagefind-weight="0.5"># type along — grab the &quot;stance&quot; column, save it as `stances`, then print its type and the column</pre>
+<pre data-pagefind-weight="0.5">comments_df[[&quot;comment&quot;, &quot;likes&quot;]]    # two columns -&gt; a DataFrame</pre>
+<h4 id="your-turn">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — select just the &quot;comment&quot; and &quot;stance&quot; columns
+# comments_df[[ ... ]]</pre>
+<h3 id="filtering-rows-boolean-indexing">Filtering rows (boolean indexing)</h3>
+<p data-pagefind-weight="0.5">This is where analysis starts. Put a condition inside the brackets and pandas keeps only the rows where it&#x27;s true. Read it as &quot;give me the rows where...&quot; Predict first. Scan the likes column: how many comments have more than 150 likes?</p>
+<pre data-pagefind-weight="0.5"># my guess:
+# comments that struck a nerve — more than 150 likes
+popular = comments_df[comments_df[&quot;likes&quot;] &gt; 150]
+print(f&quot;{len(popular)} comments with &gt;150 likes&quot;)
+popular[[&quot;comment&quot;, &quot;stance&quot;, &quot;likes&quot;]]</pre>
+<pre data-pagefind-weight="0.5"># type along — keep only the rows where stance is &quot;oppose&quot; and save them as `opposed`;
+# print how many there are, then show their comment and likes columns</pre>
+<h4 id="your-turn-2">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — keep only the comments with fewer than 50 likes.
+# How many are there, and which stance do they come from?</pre>
+<h3 id="counting-patterns">Counting patterns</h3>
+<p data-pagefind-weight="0.5">.valuecounts() tallies how often each value appears in a column — the fastest way to see the shape of an opinion. Predict first. Count the stances by hand from the table: how many support, oppose, neutral?</p>
+<pre data-pagefind-weight="0.5"># my guess: support    oppose    neutral
+# type along — tally the &quot;stance&quot; column with .value_counts()</pre>
+<p data-pagefind-weight="0.5">And numeric columns answer quantitative questions directly:</p>
+<pre data-pagefind-weight="0.5">print(&quot;Average likes:&quot;, round(comments_df[&quot;likes&quot;].mean(), 1))
+
+# type along — following the line above, print the most likes any comment got (.max())
+# and the total number of replies across all comments (.sum())</pre>
+<h3 id="one-quick-picture">One quick picture</h3>
+<p data-pagefind-weight="0.5">A chart is just another way to see a count. pandas can plot a Series directly — valuecounts() straight into a bar chart, one line.</p>
+<pre data-pagefind-weight="0.5">comments_df[&quot;stance&quot;].value_counts().plot(kind=&quot;bar&quot;, title=&quot;Comments by stance&quot;)
+plt.xlabel(&quot;stance&quot;)
+plt.ylabel(&quot;number of comments&quot;)
+plt.tight_layout()
+plt.show()</pre>
+<h2 id="putting-it-all-together-read-a-found-dataset">Putting It All Together: Read a Found Dataset</h2>
+<p data-pagefind-weight="0.5">The whole Part-2 workflow in one pass: explore → filter → count → surface a row. Here we zero in on the opposing camp and pull out the comment that landed hardest. Predict first. The two camps are close in size — 5 opposing comments, 4 supporting. Which camp do you think averages more likes? Write your guess, then run the next two cells.</p>
+<pre data-pagefind-weight="0.5"># my guess:
+opposed = comments_df[comments_df[&quot;stance&quot;] == &quot;oppose&quot;]      # filter
+print(&quot;Opposing comments:&quot;, len(opposed))                     # count
+print(&quot;Their average likes:&quot;, round(opposed[&quot;likes&quot;].mean(), 1))
+
+# the single most-liked opposing comment
+top = opposed.sort_values(&quot;likes&quot;, ascending=False).iloc[0]   # surface one row
+print(&quot;\nLoudest opposing voice:&quot;)
+print(f&#x27;  &quot;{top[&quot;comment&quot;]}&quot;  ({top[&quot;likes&quot;]} likes)&#x27;)</pre>
+<pre data-pagefind-weight="0.5"># your turn — do the same for the &quot;support&quot; camp: filter, count, find its most-liked comment</pre>
+<p data-pagefind-weight="0.5">Was your guess right? Now the harder question: what is a like count actually measuring — how many people agree, or how loud and visible a comment got? Who decided that likes were the thing to count? Answer in a #comment below.</p>
+<pre data-pagefind-weight="0.5"># what do likes measure?</pre>
+<h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
+<p data-pagefind-weight="0.5">Real scraped data is never this tidy — it shows up with blank cells, stray whitespace, duplicate rows, and numbers stored as text. Next class (Pandas 02) is all about cleaning a messy dataset so it&#x27;s ready to analyze. And this commentsdf is exactly the shape your later work runs on: in HW3 you&#x27;ll score each comment&#x27;s sentiment and add it as a new column; in HW4 you&#x27;ll discover the topics the crowd is really arguing about. Today you learned to open the table — soon you&#x27;ll make it talk.</p>
+<pre data-pagefind-weight="0.5"># a glimpse of what&#x27;s coming: counts split by stance, the start of every comparison you&#x27;ll make
+comments_df.groupby(&quot;stance&quot;)[&quot;likes&quot;].mean()</pre>
+<h2 id="playground">Playground</h2>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div></body></html>

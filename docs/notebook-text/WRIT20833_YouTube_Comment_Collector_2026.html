@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>YouTube Comment Collector — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Days 10–12"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_YouTube_Comment_Collector_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-11-09"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_YouTube_Comment_Collector_2026.ipynb">Open it in Colab ↗</a></p><h1>YouTube Comment Collector</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this notebook by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<p data-pagefind-weight="0.5">This notebook collects public comments from a YouTube video you choose and turns them into a clean table you can save as a CSV file. You&#x27;ll bring that file to HW3 (sentiment) and HW4 (topics), and maybe to your capstone. How this notebook works. You change exactly one cell, the ✏️ settings cell in Step 2. After that, you run every cell from top to bottom. The code cells come in two kinds: - 📖 Read this one. It uses things you already know: variables, lists, loops, functions, dictionaries, pandas. Read it and make sure you could explain it. - 🔧 Plumbing. It talks to YouTube&#x27;s servers or handles errors. Run it; you don&#x27;t need to read every line yet. It&#x27;s borrowed infrastructure, like the libraries you install, not a concept you&#x27;re expected to master today. If a cell gives you an error, read the message: most of them say exactly what to fix. Errors are part of the work here, not something to hide.</p>
+<h2 id="public-comments-are-still-human-expression">Public Comments Are Still Human Expression</h2>
+<p data-pagefind-weight="0.5">Before collecting anything, think about what you&#x27;re about to collect. Each comment is a person saying something, usually quickly, usually to the other people watching that video, never to you. - Public isn&#x27;t the same as fair game. Anyone can read these comments, but that doesn&#x27;t erase your obligations to the people who wrote them. They didn&#x27;t agree to be part of a class project. - Comments aren&#x27;t public opinion. The people who comment are a small, self-selected slice of the people who watched, and the people who watched are a slice of everyone who cares about the topic. A news channel&#x27;s audience, a comedian&#x27;s audience, and an activist&#x27;s audience will argue about the same law in different ways. - The sort order chooses for you. &quot;Most relevant&quot; is YouTube&#x27;s ranking: it favors comments with lots of likes and replies, and the formula is secret. &quot;Most recent&quot; favors whoever posted last. Neither one is a random sample, and neither one is representative. Name the one you used in your writeup, because it shapes what you find. - Computers miss context. Sarcasm, irony, in-jokes, quotes from the video, and cultural references are easy for a person to catch and hard for VADER or a topic model to catch. - The archive has already been edited. Commenters delete comments, channels moderate them, and YouTube filters spam. What you collect is what survived, on the day you collected it. What this notebook does about it. It keeps no usernames and no channel IDs. It collects only what your analysis needs. When you write about your data, prefer patterns and paraphrase over long verbatim quotes: a quoted comment can be pasted into a search engine and traced back to its author, even without a username. Quote only when the exact words matter to your argument. This is the course&#x27;s standing question in a new place: what does this flatten, who chose it, and can you trust it?</p>
+<h2 id="step-1-get-a-youtube-api-key-one-time-only">Step 1: Get a YouTube API Key (one time only)</h2>
+<p data-pagefind-weight="0.5">An API (application programming interface) is a door a company builds so programs can ask for data in an orderly way, instead of scraping web pages. YouTube&#x27;s door requires a key, a long password-like string that identifies you. It&#x27;s free; you do this once and reuse the key all semester. 1–3. Create the key. Follow the course guide Getting a YouTube API Key, steps 1–3: create a Google Cloud project, turn on the YouTube Data API v3, and create the key. It takes about 10 minutes, needs no credit card, and you can do it before class. 4. Store the key in Colab Secrets (guide step 4). In this notebook, click the 🔑 key icon in the left sidebar → Add new secret. Set Name to exactly YOUTUBEAPIKEY, paste your key as the Value, and switch Notebook access on. Keep your key private. Treat it like a password: don&#x27;t paste it into a code cell, a discussion post, a screenshot, or a chat. Secrets belong to your Google account, not to the notebook, so sharing this notebook with someone else doesn&#x27;t share your key. If a key ever leaks, delete it on the Credentials page and make a new one. The guide also explains how much you can collect each day (plenty for this course).</p>
+<h2 id="step-2-your-settings">Step 2: Your Settings ✏️</h2>
+<p data-pagefind-weight="0.5">This is the only cell you need to change. In Colab, these lines also appear as a small form to the right of the code, so you can type in boxes instead of editing the code. - VIDEOURL: the link to your video. Any of these forms works: youtube.com/watch?v=…, youtu.be/…, youtube.com/shorts/…. - NUMBEROFCOMMENTS: how many to collect (default 500). If the video has fewer, you get what&#x27;s there. If you include replies, they count toward this number too. - INCLUDEREPLIES: False collects only top-level comments (replies to the video). True also collects replies to those comments, which are conversations between commenters and read differently. - SORTORDER: &quot;Most relevant&quot; (YouTube&#x27;s ranking) or &quot;Most recent&quot; (newest first).</p>
+<pre data-pagefind-weight="0.5"># ✏️ YOUR SETTINGS: the only cell you need to edit
+
+VIDEO_URL = &quot;&quot;  # @param {type:&quot;string&quot;}
+NUMBER_OF_COMMENTS = 500  # @param {type:&quot;integer&quot;}
+INCLUDE_REPLIES = False  # @param {type:&quot;boolean&quot;}
+SORT_ORDER = &quot;Most relevant&quot;  # @param [&quot;Most relevant&quot;, &quot;Most recent&quot;]</pre>
+<h2 id="step-3-set-up">Step 3: Set Up</h2>
+<p data-pagefind-weight="0.5">Two plumbing cells: load the tools, then load your key from Colab Secrets. The key goes into a variable called APIKEY, and nothing in this notebook ever prints it.</p>
+<pre data-pagefind-weight="0.5"># 🔧 PLUMBING: load the tools this notebook uses
+import json
+from collections import Counter
+from datetime import datetime, timezone
+
+import pandas as pd
+import requests
+
+API_URL = &quot;https://www.googleapis.com/youtube/v3/&quot;
+
+# Translate the settings-cell choices into the codes YouTube&#x27;s API expects
+SORT_CODES = {&quot;Most relevant&quot;: &quot;relevance&quot;, &quot;Most recent&quot;: &quot;time&quot;}
+
+# The columns of our finished table, in order
+COLUMNS = [&quot;comment_id&quot;, &quot;video_id&quot;, &quot;video_title&quot;, &quot;comment_text&quot;, &quot;published_at&quot;,
+           &quot;like_count&quot;, &quot;reply_count&quot;, &quot;is_reply&quot;, &quot;parent_id&quot;]
+
+# Count requests as we go, so we know how much of the daily quota we used
+api_usage = {&quot;requests&quot;: 0}
+
+print(&quot;✅ Tools loaded.&quot;)</pre>
+<pre data-pagefind-weight="0.5"># 🔧 PLUMBING: read your API key from Colab Secrets (the 🔑 icon in the left sidebar)
+# (&quot;raise ... from None&quot; keeps each error message short and to the point)
+try:
+    from google.colab import userdata
+except ImportError:
+    raise RuntimeError(&quot;This notebook reads your key from Colab Secrets, &quot;
+                       &quot;so it needs to run in Google Colab.&quot;) from None
+
+try:
+    API_KEY = userdata.get(&quot;YOUTUBE_API_KEY&quot;)
+except userdata.SecretNotFoundError:
+    raise RuntimeError(
+        &quot;No secret named YOUTUBE_API_KEY. Open the 🔑 Secrets panel on the left, add a secret &quot;
+        &quot;with exactly that name, paste your key as its value, and run this cell again.&quot;) from None
+except userdata.NotebookAccessError:
+    raise RuntimeError(
+        &quot;Your YOUTUBE_API_KEY secret exists, but this notebook isn&#x27;t allowed to read it. In the &quot;
+        &quot;🔑 Secrets panel, switch on &#x27;Notebook access&#x27; next to it, then run this cell again.&quot;) from None
+
+if API_KEY is None or API_KEY.strip() == &quot;&quot;:
+    raise RuntimeError(&quot;Your YOUTUBE_API_KEY secret is empty. &quot;
+                       &quot;Paste your key as its value in the 🔑 Secrets panel.&quot;)
+
+API_KEY = API_KEY.strip()
+print(&quot;✅ API key loaded (not shown, on purpose).&quot;)</pre>
+<h2 id="step-4-from-a-link-to-a-video-id">Step 4: From a Link to a Video ID</h2>
+<p data-pagefind-weight="0.5">YouTube identifies every video by an ID of 11 characters, the part after v= in a normal link. The API wants the ID, not the whole link. Links come in several shapes, so this function uses string methods you already know (in, .split(), len()) to find the ID in any of them.</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: pull the 11-character video ID out of a YouTube link
+def get_video_id(url):
+    url = url.strip()
+
+    if &quot;youtu.be/&quot; in url:                  # short links: youtu.be/ID
+        video_id = url.split(&quot;youtu.be/&quot;)[1]
+    elif &quot;/shorts/&quot; in url:                 # Shorts: youtube.com/shorts/ID
+        video_id = url.split(&quot;/shorts/&quot;)[1]
+    elif &quot;/live/&quot; in url:                   # livestreams: youtube.com/live/ID
+        video_id = url.split(&quot;/live/&quot;)[1]
+    elif &quot;/embed/&quot; in url:                  # embedded players: youtube.com/embed/ID
+        video_id = url.split(&quot;/embed/&quot;)[1]
+    elif &quot;v=&quot; in url:                       # normal links: youtube.com/watch?v=ID
+        video_id = url.split(&quot;v=&quot;)[1]
+    else:                                   # maybe it&#x27;s already just the ID
+        video_id = url
+
+    # Links often carry extras after the ID (&quot;&amp;t=30s&quot;, &quot;?si=abc&quot;); cut them off
+    for separator in [&quot;&amp;&quot;, &quot;?&quot;, &quot;#&quot;, &quot;/&quot;]:
+        video_id = video_id.split(separator)[0]
+
+    if len(video_id) != 11:
+        raise ValueError(f&quot;Couldn&#x27;t find a video ID in {url!r}. Paste the full link from your &quot;
+                         &quot;browser&#x27;s address bar (or the Share button) into VIDEO_URL in Step 2.&quot;)
+    return video_id
+
+
+# Try it on three link shapes (made-up ID, just to test the function)
+examples = [&quot;https://www.youtube.com/watch?v=abcDEF12345&amp;t=30s&quot;,
+            &quot;https://youtu.be/abcDEF12345?si=xyz&quot;,
+            &quot;https://www.youtube.com/shorts/abcDEF12345&quot;]
+for example in examples:
+    print(get_video_id(example), &quot;&lt;-&quot;, example)</pre>
+<pre data-pagefind-weight="0.5"># 🔧 PLUMBING: check the settings, then find YOUR video&#x27;s ID
+if VIDEO_URL.strip() == &quot;&quot;:
+    raise ValueError(&quot;VIDEO_URL is empty. Paste a YouTube link into the settings cell in Step 2, &quot;
+                     &quot;run that cell, then run this one again.&quot;)
+if type(NUMBER_OF_COMMENTS) != int or NUMBER_OF_COMMENTS &lt; 1:
+    raise ValueError(&quot;NUMBER_OF_COMMENTS should be a whole number, 1 or more (like 500).&quot;)
+if SORT_ORDER not in SORT_CODES:
+    raise ValueError(f&#x27;SORT_ORDER should be &quot;Most relevant&quot; or &quot;Most recent&quot;, not {SORT_ORDER!r}.&#x27;)
+
+VIDEO_ID = get_video_id(VIDEO_URL)
+print(&quot;Video ID:&quot;, VIDEO_ID)</pre>
+<h2 id="step-5-asking-youtube-for-data">Step 5: Asking YouTube for Data</h2>
+<p data-pagefind-weight="0.5">Every request to the API is a web address plus some parameters: which video, how many results, what order. That makes a parameter set a dictionary. YouTube answers with a dictionary too, often with lists and dictionaries nested inside it. The function below sends one request and hands back the answer. Most of its lines handle things going wrong (no internet, a bad key, comments turned off, the daily quota used up) and turn YouTube&#x27;s technical error codes into plain-English messages.</p>
+<pre data-pagefind-weight="0.5"># 🔧 PLUMBING: send one request to the YouTube Data API and return the answer as a dictionary
+
+# YouTube names each problem with a short &quot;reason&quot; code; these are the ones you&#x27;re likely to meet
+FRIENDLY_ERRORS = {
+    &quot;commentsDisabled&quot;: &quot;Comments are turned off for this video, so there&#x27;s nothing to collect. &quot;
+                        &quot;Try a different video.&quot;,
+    &quot;videoNotFound&quot;: &quot;YouTube can&#x27;t find that video. It may be private or deleted, &quot;
+                     &quot;or the link may be mistyped.&quot;,
+    &quot;forbidden&quot;: &quot;YouTube refused this request. For comments, that usually means the channel has turned &quot;
+                 &quot;comments off or limited who can see them, so try a different video. If it happens on &quot;
+                 &quot;every video, check your key&#x27;s restrictions in Google Cloud (APIs &amp; Services &gt; Credentials).&quot;,
+    &quot;quotaExceeded&quot;: &quot;Your key has used up today&#x27;s free quota. It resets at midnight Pacific time. &quot;
+                     &quot;Try again tomorrow, or collect fewer comments or turn replies off.&quot;,
+    &quot;dailyLimitExceeded&quot;: &quot;Your key has used up today&#x27;s free quota. It resets at midnight Pacific time.&quot;,
+    &quot;rateLimitExceeded&quot;: &quot;Too many requests too quickly. Wait a minute, then run the cell again.&quot;,
+    &quot;userRateLimitExceeded&quot;: &quot;Too many requests too quickly. Wait a minute, then run the cell again.&quot;,
+    &quot;keyInvalid&quot;: &quot;YouTube rejected your API key. Copy it again from Google Cloud &quot;
+                  &quot;(APIs &amp; Services &gt; Credentials) and update your YOUTUBE_API_KEY secret.&quot;,
+    &quot;API_KEY_INVALID&quot;: &quot;YouTube rejected your API key. Copy it again from Google Cloud &quot;
+                       &quot;(APIs &amp; Services &gt; Credentials) and update your YOUTUBE_API_KEY secret.&quot;,
+    &quot;accessNotConfigured&quot;: &quot;The YouTube Data API v3 isn&#x27;t turned on for your Google Cloud project. &quot;
+                           &quot;Enable it (step 2 of the course guide, Getting a YouTube API Key), wait a minute, and try again.&quot;,
+    &quot;SERVICE_DISABLED&quot;: &quot;The YouTube Data API v3 isn&#x27;t turned on for your Google Cloud project. &quot;
+                        &quot;Enable it (step 2 of the course guide, Getting a YouTube API Key), wait a minute, and try again.&quot;,
+    &quot;API_KEY_SERVICE_BLOCKED&quot;: &quot;Your key isn&#x27;t allowed to use the YouTube Data API. In Google Cloud, &quot;
+                               &quot;edit the key&#x27;s API restrictions to include YouTube Data API v3.&quot;,
+    &quot;API_KEY_HTTP_REFERRER_BLOCKED&quot;: &quot;Your key is restricted to certain websites, and Colab isn&#x27;t one of &quot;
+                                     &quot;them. In Google Cloud, edit the key and set Application &quot;
+                                     &quot;restrictions to None (keep the API restriction).&quot;,
+    &quot;API_KEY_IP_ADDRESS_BLOCKED&quot;: &quot;Your key is restricted to certain IP addresses, and Colab&#x27;s aren&#x27;t &quot;
+                                  &quot;among them. In Google Cloud, edit the key and set Application &quot;
+                                  &quot;restrictions to None (keep the API restriction).&quot;,
+}
+
+
+def ask_youtube(endpoint, params):
+    params = dict(params)            # a copy, so the key is never added to the caller&#x27;s dictionary
+    params[&quot;key&quot;] = API_KEY
+    api_usage[&quot;requests&quot;] += 1
+
+    try:
+        response = requests.get(API_URL + endpoint, params=params, timeout=30)
+    except requests.RequestException:
+        # Don&#x27;t show the original error: its text includes the request&#x27;s web address, which holds your key
+        raise RuntimeError(&quot;Couldn&#x27;t reach YouTube. Check your internet connection &quot;
+                           &quot;and run the cell again.&quot;) from None
+
+    if response.status_code == 200:
+        return response.json()
+
+    # Something went wrong: find YouTube&#x27;s reason code(s) and translate them.
+    # &quot;details&quot; holds the more specific codes, so check those first.
+    try:
+        error = response.json()[&quot;error&quot;]
+    except (ValueError, KeyError):
+        error = {}
+    reasons = []
+    for item in error.get(&quot;details&quot;, []) + error.get(&quot;errors&quot;, []):
+        reasons.append(item.get(&quot;reason&quot;, &quot;&quot;))
+
+    explanation = f&quot;YouTube returned an error (HTTP {response.status_code}).&quot;
+    for reason in reasons:
+        if reason in FRIENDLY_ERRORS:
+            explanation = FRIENDLY_ERRORS[reason]
+            break
+    # Always add YouTube&#x27;s own words and which request failed: they help you (or your instructor) diagnose it
+    raise RuntimeError(f&quot;{explanation}\n\nYouTube&#x27;s own words: {error.get(&#x27;message&#x27;, &#x27;no details given&#x27;)}&quot;
+                       f&quot;\n(request: {endpoint}; reason code: {&#x27;, &#x27;.join(reasons) or &#x27;none&#x27;})&quot;)</pre>
+<p data-pagefind-weight="0.5">First request: ask about the video itself. This confirms the video exists and is public, and gets its title for your records.</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: look up the video&#x27;s title and channel
+video_answer = ask_youtube(&quot;videos&quot;, {&quot;part&quot;: &quot;snippet,statistics&quot;, &quot;id&quot;: VIDEO_ID})
+
+if len(video_answer.get(&quot;items&quot;, [])) == 0:
+    raise RuntimeError(&quot;YouTube found no public video with that ID. The video may be private or &quot;
+                       &quot;deleted, or the link may be mistyped. Check VIDEO_URL in Step 2.&quot;)
+
+video = video_answer[&quot;items&quot;][0]                 # the answer holds a list with one video in it
+VIDEO_TITLE = video[&quot;snippet&quot;][&quot;title&quot;]
+CHANNEL_TITLE = video[&quot;snippet&quot;][&quot;channelTitle&quot;]
+reported_count = video[&quot;statistics&quot;].get(&quot;commentCount&quot;)   # missing when comments are off
+
+print(&quot;Title:  &quot;, VIDEO_TITLE)
+print(&quot;Channel:&quot;, CHANNEL_TITLE)
+print(&quot;Posted: &quot;, video[&quot;snippet&quot;][&quot;publishedAt&quot;][:10])
+if reported_count is None:
+    print(&quot;⚠️ YouTube shows no comment count for this video, so comments are probably turned off.&quot;)
+else:
+    reported_count = int(reported_count)
+    print(&quot;Comments YouTube reports:&quot;, reported_count, &quot;(including replies)&quot;)</pre>
+<h2 id="step-6-collect-the-comments">Step 6: Collect the Comments</h2>
+<p data-pagefind-weight="0.5">YouTube hands out comments in pages of up to 100. Each answer includes a nextPageToken, a bookmark you send back to get the next page. When an answer has no bookmark, you&#x27;ve reached the end. Here&#x27;s the shape of one comment thread in YouTube&#x27;s answer, trimmed down. These are placeholders, not a real comment: {&quot;id&quot;: &quot;Ugx…&quot;, &quot;snippet&quot;: {&quot;totalReplyCount&quot;: 3, &quot;topLevelComment&quot;: {&quot;id&quot;: &quot;Ugx…&quot;, &quot;snippet&quot;: {&quot;textOriginal&quot;: &quot;(the comment&#x27;s words)&quot;, &quot;publishedAt&quot;: &quot;2025-07-08T14:02:11Z&quot;, &quot;likeCount&quot;: 12, &quot;authorDisplayName&quot;: &quot;(the commenter&#x27;s name)&quot;, …}}}, &quot;replies&quot;: {&quot;comments&quot;: [ …up to 5 replies… ]}} The answer includes the commenter&#x27;s name. We deliberately don&#x27;t copy it, as the next cell shows.</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: turn one comment from YouTube&#x27;s answer into one row for our table
+def make_row(comment, is_reply, reply_count):
+    snippet = comment[&quot;snippet&quot;]
+    text = snippet.get(&quot;textOriginal&quot;) or snippet.get(&quot;textDisplay&quot;) or &quot;&quot;
+    return {
+        &quot;comment_id&quot;: comment[&quot;id&quot;],
+        &quot;video_id&quot;: VIDEO_ID,
+        &quot;video_title&quot;: VIDEO_TITLE,
+        &quot;comment_text&quot;: text,
+        &quot;published_at&quot;: snippet.get(&quot;publishedAt&quot;, &quot;&quot;),
+        &quot;like_count&quot;: snippet.get(&quot;likeCount&quot;, 0),
+        &quot;reply_count&quot;: reply_count,
+        &quot;is_reply&quot;: is_reply,
+        &quot;parent_id&quot;: snippet.get(&quot;parentId&quot;),   # only replies have a parent; None otherwise
+        # No author name, channel, or profile picture: we don&#x27;t need them, so we don&#x27;t keep them.
+    }
+
+
+# A dictionary can&#x27;t hold the same key twice, so storing rows by comment_id prevents duplicates
+collected = {}
+
+
+def add_row(row):
+    &quot;&quot;&quot;Add a row unless we already have that comment. Returns True if it was new.&quot;&quot;&quot;
+    if row[&quot;comment_id&quot;] in collected:
+        return False
+    collected[row[&quot;comment_id&quot;]] = row
+    return True</pre>
+<pre data-pagefind-weight="0.5"># 🔧 PLUMBING: fetch ALL of one thread&#x27;s replies (a thread&#x27;s answer includes at most 5)
+def get_all_replies(parent_id, still_needed):
+    replies = []
+    page_token = None
+    while len(replies) &lt; still_needed:
+        params = {&quot;part&quot;: &quot;snippet&quot;, &quot;parentId&quot;: parent_id,
+                  &quot;maxResults&quot;: 100, &quot;textFormat&quot;: &quot;plainText&quot;}
+        if page_token:
+            params[&quot;pageToken&quot;] = page_token
+        answer = ask_youtube(&quot;comments&quot;, params)
+        for reply in answer.get(&quot;items&quot;, []):
+            replies.append(reply)
+        page_token = answer.get(&quot;nextPageToken&quot;)
+        if not page_token:
+            break
+    return replies</pre>
+<p data-pagefind-weight="0.5">The main loop. Read it slowly: it&#x27;s a while loop around a for loop, plus a few ifs. 1. Ask for a page of comment threads. 2. For each thread, add the top-level comment. If you asked for replies, add those too. 3. Stop when you have enough comments, or when YouTube has no more pages.</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: the collection loop
+collected.clear()          # start fresh if you run this cell twice
+duplicates_skipped = 0
+page_token = None
+page_number = 0
+
+if INCLUDE_REPLIES:
+    parts = &quot;snippet,replies&quot;
+else:
+    parts = &quot;snippet&quot;
+
+while len(collected) &lt; NUMBER_OF_COMMENTS:
+    params = {&quot;part&quot;: parts, &quot;videoId&quot;: VIDEO_ID, &quot;maxResults&quot;: 100,
+              &quot;order&quot;: SORT_CODES[SORT_ORDER], &quot;textFormat&quot;: &quot;plainText&quot;}
+    if page_token:
+        params[&quot;pageToken&quot;] = page_token
+    answer = ask_youtube(&quot;commentThreads&quot;, params)
+    page_number = page_number + 1
+    new_on_this_page = 0
+
+    for thread in answer.get(&quot;items&quot;, []):
+        if len(collected) &gt;= NUMBER_OF_COMMENTS:
+            break
+        top_comment = thread[&quot;snippet&quot;][&quot;topLevelComment&quot;]
+        total_replies = thread[&quot;snippet&quot;].get(&quot;totalReplyCount&quot;, 0)
+
+        if not add_row(make_row(top_comment, False, total_replies)):
+            duplicates_skipped = duplicates_skipped + 1
+            continue                       # already have this thread (and its replies)
+        new_on_this_page = new_on_this_page + 1
+
+        if INCLUDE_REPLIES and total_replies &gt; 0:
+            replies = thread.get(&quot;replies&quot;, {}).get(&quot;comments&quot;, [])
+            if len(replies) &lt; total_replies:          # the thread came back short: fetch the rest
+                replies = get_all_replies(top_comment[&quot;id&quot;], NUMBER_OF_COMMENTS - len(collected))
+            for reply in replies:
+                if len(collected) &gt;= NUMBER_OF_COMMENTS:
+                    break
+                if not add_row(make_row(reply, True, 0)):
+                    duplicates_skipped = duplicates_skipped + 1
+
+    print(f&quot;Page {page_number}: {len(collected)} comments so far&quot;)
+
+    page_token = answer.get(&quot;nextPageToken&quot;)
+    if not page_token:
+        print(&quot;Reached the end of the comments YouTube will share for this video.&quot;)
+        break
+    if new_on_this_page == 0:
+        print(&quot;That page held only comments we already had, so we stopped.&quot;)
+        break
+
+print()
+print(f&quot;Collected {len(collected)} comments using {api_usage[&#x27;requests&#x27;]} API requests.&quot;)
+if len(collected) &lt; NUMBER_OF_COMMENTS:
+    print(f&quot;(You asked for {NUMBER_OF_COMMENTS}; this is everything that was available.)&quot;)
+if duplicates_skipped &gt; 0:
+    print(f&quot;Skipped {duplicates_skipped} duplicates that YouTube sent more than once.&quot;)</pre>
+<h2 id="step-7-make-the-table">Step 7: Make the Table</h2>
+<p data-pagefind-weight="0.5">collected is a dictionary of rows, and each row is itself a dictionary. pandas turns a list of dictionaries straight into a table, with one row per dictionary and one column per key.</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: from a dictionary of rows to a DataFrame
+comments_df = pd.DataFrame(list(collected.values()), columns=COLUMNS)
+
+if len(comments_df) == 0:
+    print(&quot;⚠️ No comments came back, so there&#x27;s nothing to clean or save. Try another video.&quot;)
+
+comments_df.head()</pre>
+<p data-pagefind-weight="0.5">Also keep a record of how you collected the data: when, how many you asked for, and how you sorted. This record is part of your method, and it goes in your writeup. &quot;I collected 500 &#x27;most relevant&#x27; comments on November 13&quot; tells a reader what your sample can and can&#x27;t show. It&#x27;s stored separately from the comments, as a dictionary you can save as a small JSON file in Step 10.</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: a record of how this dataset was made
+collection_info = {
+    &quot;collected_at_utc&quot;: datetime.now(timezone.utc).isoformat(timespec=&quot;seconds&quot;),
+    &quot;video_id&quot;: VIDEO_ID,
+    &quot;video_url&quot;: &quot;https://www.youtube.com/watch?v=&quot; + VIDEO_ID,
+    &quot;video_title&quot;: VIDEO_TITLE,
+    &quot;channel_title&quot;: CHANNEL_TITLE,
+    &quot;comment_count_reported_by_youtube&quot;: reported_count,
+    &quot;requested_sample_size&quot;: NUMBER_OF_COMMENTS,
+    &quot;comments_collected&quot;: len(comments_df),
+    &quot;sort_order&quot;: SORT_ORDER,
+    &quot;replies_included&quot;: INCLUDE_REPLIES,
+    &quot;duplicates_skipped&quot;: duplicates_skipped,
+    &quot;api_requests_used&quot;: api_usage[&quot;requests&quot;],
+    &quot;source&quot;: &quot;YouTube Data API v3 (videos.list, commentThreads.list, comments.list)&quot;,
+}
+collection_info</pre>
+<h2 id="step-8-clean-gently">Step 8: Clean, Gently</h2>
+<p data-pagefind-weight="0.5">In Pandas 02 you cleaned a messy table. YouTube&#x27;s comments come back tidier than a scraper&#x27;s, but not perfect: some comments are only whitespace, and many have line breaks in the middle. What we fix: - Make a new column, commentclean, where runs of spaces, tabs, and line breaks become a single space. commenttext keeps the original exactly as it was posted. - Drop comments that are empty once the whitespace is gone. - Check for repeated comment IDs. There shouldn&#x27;t be any, but checking is cheap. What we deliberately don&#x27;t fix: capital letters, punctuation, emoji, &quot;not,&quot; &quot;lol,&quot; &quot;/s.&quot; Compare: | original | &quot;aggressively cleaned&quot; | |---|---| | This is NOT okay!!! 😡 | okay | | Oh great, ANOTHER law. Just what we needed /s | oh great another law needed | (Two invented examples, not real comments.) Lowercasing, stripping punctuation and emoji, and dropping stopwords like &quot;not&quot; turned an angry comment into a mild one and sarcasm into praise. VADER reads capitals, &quot;!!!&quot;, emoji, and &quot;not&quot; as signals, so it needs them. HW4&#x27;s topic modeling does its own heavier cleaning inside that notebook, on a copy, which leaves your saved file untouched.</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: collapse whitespace into a new column; the original stays as it was
+def normalize_whitespace(text):
+    # .split() with no argument splits on ANY run of spaces, tabs, or line breaks;
+    # &quot; &quot;.join() glues the pieces back together with single spaces
+    return &quot; &quot;.join(str(text).split())
+
+
+clean_df = comments_df.copy()             # never change your raw data in place
+clean_df[&quot;comment_clean&quot;] = clean_df[&quot;comment_text&quot;].apply(normalize_whitespace)
+
+# Put comment_clean right after comment_text, so they sit side by side
+clean_df = clean_df[COLUMNS[:4] + [&quot;comment_clean&quot;] + COLUMNS[4:]]
+
+before = len(clean_df)
+clean_df = clean_df[clean_df[&quot;comment_clean&quot;] != &quot;&quot;]                   # drop empty comments
+empty_removed = before - len(clean_df)
+
+before = len(clean_df)
+clean_df = clean_df.drop_duplicates(subset=&quot;comment_id&quot;).reset_index(drop=True)
+duplicate_ids_removed = before - len(clean_df)
+
+print(&quot;Empty comments removed:      &quot;, empty_removed)
+print(&quot;Duplicate comment IDs removed:&quot;, duplicate_ids_removed)
+print(&quot;Rows in the clean table:     &quot;, len(clean_df))
+
+collection_info[&quot;empty_comments_removed&quot;] = empty_removed
+collection_info[&quot;rows_after_cleaning&quot;] = len(clean_df)</pre>
+<p data-pagefind-weight="0.5">Same words, different people? Many commenters post the identical short text (&quot;First!&quot;, &quot;❤️&quot;, &quot;This.&quot;). Those are separate comments by separate people, so we keep them. Spam-bot repeats are also identical, though, and those you might drop. That&#x27;s a judgment call about your data, not an automatic step, so the next cell only shows you the repeats.</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: which exact texts appear more than once? (shown, not removed)
+repeated_texts = clean_df[&quot;comment_clean&quot;].value_counts()
+repeated_texts = repeated_texts[repeated_texts &gt; 1]
+print(len(repeated_texts), &quot;texts appear more than once&quot;)
+repeated_texts.head(10)</pre>
+<h2 id="step-9-a-first-look">Step 9: A First Look</h2>
+<p data-pagefind-weight="0.5">A few quick numbers, to check that what you collected matches what you meant to collect. This isn&#x27;t analysis yet; HW3 and HW4 are where that happens.</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: the basic shape of your dataset
+word_counts = clean_df[&quot;comment_clean&quot;].str.split().str.len()
+dates = pd.to_datetime(clean_df[&quot;published_at&quot;])
+
+print(&quot;Total comments:      &quot;, len(clean_df))
+print(&quot;Top-level comments:  &quot;, (clean_df[&quot;is_reply&quot;] == False).sum())
+print(&quot;Replies:             &quot;, (clean_df[&quot;is_reply&quot;] == True).sum())
+if len(clean_df) &gt; 0:
+    print(&quot;Average length:      &quot;, round(word_counts.mean(), 1), &quot;words /&quot;,
+          round(clean_df[&quot;comment_clean&quot;].str.len().mean(), 1), &quot;characters&quot;)
+    print(&quot;Shortest / longest:  &quot;, word_counts.min(), &quot;/&quot;, word_counts.max(), &quot;words&quot;)
+    print(&quot;Posted between:      &quot;, dates.min().date(), &quot;and&quot;, dates.max().date())</pre>
+<p data-pagefind-weight="0.5">Five comments at random. .head() would show the first five, which are the top of YouTube&#x27;s sort order, so .sample() gives a fairer glimpse. (Change randomstate to see five others.)</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: five comments chosen at random
+sample = clean_df.sample(min(5, len(clean_df)), random_state=1)
+for text in sample[&quot;comment_clean&quot;]:
+    print(&quot;•&quot;, text[:300])
+    print()</pre>
+<p data-pagefind-weight="0.5">The ten most frequent words, with common function words (&quot;the,&quot; &quot;and,&quot; &quot;is&quot;) filtered out, as in HW2. The lowercasing and punctuation-stripping here happen only for this count; the table itself isn&#x27;t changed.</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: the ten most frequent words (a quick look, not your final analysis)
+STOPWORDS = {&quot;the&quot;, &quot;a&quot;, &quot;an&quot;, &quot;and&quot;, &quot;or&quot;, &quot;but&quot;, &quot;of&quot;, &quot;to&quot;, &quot;in&quot;, &quot;on&quot;, &quot;for&quot;, &quot;with&quot;, &quot;at&quot;, &quot;by&quot;,
+             &quot;from&quot;, &quot;is&quot;, &quot;are&quot;, &quot;was&quot;, &quot;were&quot;, &quot;be&quot;, &quot;been&quot;, &quot;it&quot;, &quot;its&quot;, &quot;it&#x27;s&quot;, &quot;this&quot;, &quot;that&quot;,
+             &quot;i&quot;, &quot;you&quot;, &quot;he&quot;, &quot;she&quot;, &quot;we&quot;, &quot;they&quot;, &quot;me&quot;, &quot;my&quot;, &quot;your&quot;, &quot;our&quot;, &quot;their&quot;, &quot;his&quot;, &quot;her&quot;,
+             &quot;them&quot;, &quot;so&quot;, &quot;as&quot;, &quot;if&quot;, &quot;not&quot;, &quot;no&quot;, &quot;do&quot;, &quot;does&quot;, &quot;did&quot;, &quot;have&quot;, &quot;has&quot;, &quot;had&quot;, &quot;just&quot;,
+             &quot;what&quot;, &quot;who&quot;, &quot;all&quot;, &quot;can&quot;, &quot;will&quot;, &quot;would&quot;, &quot;about&quot;, &quot;there&quot;, &quot;than&quot;, &quot;then&quot;, &quot;out&quot;,
+             &quot;up&quot;, &quot;how&quot;, &quot;when&quot;, &quot;more&quot;, &quot;i&#x27;m&quot;, &quot;don&#x27;t&quot;, &quot;like&quot;, &quot;get&quot;, &quot;one&quot;, &quot;us&quot;}
+
+word_counter = Counter()
+for text in clean_df[&quot;comment_clean&quot;]:
+    for word in text.lower().split():
+        word = word.strip(&quot;.,!?;:\&quot;&#x27;()[]{}…“”‘’*-_&quot;)
+        if word != &quot;&quot; and word not in STOPWORDS:
+            word_counter[word] += 1
+
+word_counter.most_common(10)</pre>
+<p data-pagefind-weight="0.5">Notice: &quot;not&quot; is in that stopword list, which is fine for counting topics but would be a disaster for sentiment. The same word can be noise for one method and signal for another.</p>
+<h2 id="step-10-save-your-dataset">Step 10: Save Your Dataset</h2>
+<p data-pagefind-weight="0.5">This saves cleandf as a CSV named after the video&#x27;s ID and downloads it to your computer. Both commenttext (original) and commentclean are in the file. UTF-8 encoding keeps emoji and accented letters intact. Colab forgets files when your session ends, so download the CSV (or copy it to your Google Drive) before you close the tab. If you open the CSV in Excel and see clutter like ‚ÄúSo kids‚Äù where curly quotes should be, Excel has guessed the wrong encoding. The file is fine, and Python and Google Sheets read it correctly. This notebook saves with &quot;utf-8-sig&quot;, which adds an invisible marker telling Excel &quot;this is UTF-8.&quot; If you still see clutter, import the file through Excel&#x27;s Data → From Text/CSV and choose UTF-8.</p>
+<pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: save the CSV, then reload it to check that nothing got lost
+csv_filename = f&quot;youtube_comments_{VIDEO_ID}.csv&quot;
+# &quot;utf-8-sig&quot; is UTF-8 plus an invisible marker at the start, so Excel reads emoji and curly quotes correctly
+clean_df.to_csv(csv_filename, index=False, encoding=&quot;utf-8-sig&quot;)
+
+# keep_default_na=False stops pandas from turning a comment that says &quot;NA&quot; or &quot;None&quot; into a blank
+check = pd.read_csv(csv_filename, encoding=&quot;utf-8&quot;, keep_default_na=False)
+same_rows = len(check) == len(clean_df)
+same_text = list(check[&quot;comment_text&quot;].astype(str)) == list(clean_df[&quot;comment_text&quot;].astype(str))
+print(&quot;Saved&quot;, csv_filename)
+print(&quot;Reloads with the same rows:&quot;, same_rows, &quot;| same text, emoji included:&quot;, same_text)</pre>
+<pre data-pagefind-weight="0.5"># 🔧 PLUMBING: download the CSV to your computer
+from google.colab import files
+files.download(csv_filename)</pre>
+<p data-pagefind-weight="0.5">Optional: download the collection record from Step 7 as a JSON file too. Keep it beside your CSV; it&#x27;s the source of the details your methods paragraph needs.</p>
+<pre data-pagefind-weight="0.5"># 🔧 PLUMBING (optional): save and download the collection record
+info_filename = f&quot;youtube_comments_{VIDEO_ID}_info.json&quot;
+with open(info_filename, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+    json.dump(collection_info, f, indent=2, ensure_ascii=False)
+files.download(info_filename)</pre>
+<h2 id="where-this-goes-next">Where This Goes Next</h2>
+<p data-pagefind-weight="0.5">In HW3 (sentiment) and HW4 (topics), upload your CSV to Colab (📁 Files panel → upload) and fill in the two &quot;Choose your data&quot; lines in the setup cell: python MYCSV = &quot;youtubecommentsYOURVIDEOID.csv&quot; MYTEXTCOLUMN = &quot;commentclean&quot; The setup cell reads it with keepdefaultna=False (so a comment that says &quot;NA&quot; stays text) and prints a DATA SOURCE: line. Check that line names your file before you go on. One row = one whole comment. The course corpus split long comments into several rows; yours doesn&#x27;t. So in HW3 each score is one person&#x27;s whole comment, which makes your counts easier to interpret. For your writeup, record: the video and channel, the date you collected, how many comments you asked for and got, the sort order, and whether replies were included. All of it is in collectioninfo. And keep asking the question from the top of this notebook: whose voices did this sample let in, and whose did it leave out?</p>
+<h2 id="playground">Playground</h2>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div></body></html>

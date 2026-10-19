@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Stylometry (computational) — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Notebook · Day 18"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-12-04"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb">Open it in Colab ↗</a></p><h1>Stylometry (computational)</h1>
+<h2 id="reading-for-the-seams-measuring-style-part-a-c">Reading for the Seams — Measuring Style (Part A + C)</h2>
+<p data-pagefind-weight="0.5">WRIT 20833 — stylometry notebook (demo on Day 18; Track B capstone) · pairs with the Day 8 close-reading handout (ReadingfortheSeams.md) and aivoiceclaudeanalysis.pdf. On Day 8 you close-read a hybrid passage and predicted which parts were AI. Now you&#x27;ll measure style with the same term-frequency tools you already know, then compare the numbers to your earlier read. Important: these measures are clues, not verdicts. Automated AI-detection is unreliable and biased (especially against non-native English writers). We&#x27;re studying voice and averaging, not catching anyone.</p>
+<h3 id="the-corpus">The corpus</h3>
+<p data-pagefind-weight="0.5">Three short texts: one we wrote to sound human, one typical AI-assistant prose, and the human-edited AI email from the PDF. Later, swap in your own samples (Part C).</p>
+<pre data-pagefind-weight="0.5"># Our small corpus (edit these later with your own texts)
+human = (
+    &quot;I keep a cracked mug on my desk. It leaks a little. I keep it anyway because my &quot;
+    &quot;sister made it in a class she hated and finished anyway. That stubbornness is the point.&quot;
+)
+
+ai = (
+    &quot;That is a great question! There are several factors to consider. First, it is important &quot;
+    &quot;to weigh the pros and cons. Additionally, you may want to explore a few options. &quot;
+    &quot;Ultimately, the best choice depends on your specific needs and goals.&quot;
+)
+
+hybrid = (
+    &quot;Your line about AI writing being standardized and averaged is one of the stronger &quot;
+    &quot;moments in the piece, but my editor flagged that readers may want a concrete picture &quot;
+    &quot;of what that actually looks like on the page. Could you share a quick example or two? &quot;
+    &quot;Anything that comes to mind: a turn of phrase AI keeps reaching for, a structural tic, &quot;
+    &quot;a passage you have encountered in student work that gave it away.&quot;
+)
+
+texts = {&quot;human&quot;: human, &quot;ai&quot;: ai, &quot;hybrid&quot;: hybrid}
+for name, t in texts.items():
+    print(name, &quot;-&gt;&quot;, len(t.split()), &quot;words&quot;)
+</pre>
+<h3 id="feature-1-function-word-share-the-term-frequency-inversion">Feature 1 — Function-word share (the term-frequency inversion)</h3>
+<p data-pagefind-weight="0.5">In the term-frequency unit, stopwords were noise to remove. In stylometry they are the signal: how often a writer leans on tiny connective words is a fingerprint of style.</p>
+<pre data-pagefind-weight="0.5"># Function words = the little connective words. (Same list the term-frequency unit threw away.)
+function_words = [&quot;the&quot;,&quot;a&quot;,&quot;an&quot;,&quot;and&quot;,&quot;but&quot;,&quot;or&quot;,&quot;of&quot;,&quot;to&quot;,&quot;in&quot;,&quot;on&quot;,&quot;for&quot;,&quot;with&quot;,
+                  &quot;is&quot;,&quot;are&quot;,&quot;was&quot;,&quot;it&quot;,&quot;that&quot;,&quot;this&quot;,&quot;you&quot;,&quot;your&quot;,&quot;may&quot;,&quot;might&quot;,
+                  &quot;several&quot;,&quot;additionally&quot;,&quot;ultimately&quot;,&quot;first&quot;,&quot;also&quot;,&quot;whatever&quot;]
+
+def function_word_share(text):
+    words = text.lower().split()
+    hits = [w.strip(&quot;.,!?;:&quot;) for w in words]
+    n_func = sum(1 for w in hits if w in function_words)
+    return round(n_func / len(words), 3)
+
+for name, t in texts.items():
+    print(name, &quot;function-word share:&quot;, function_word_share(t))
+</pre>
+<h3 id="feature-2-type-token-ratio-lexical-diversity">Feature 2 — Type-token ratio (lexical diversity)</h3>
+<p data-pagefind-weight="0.5">Distinct words ÷ total words. Lower can mean more repetition / more &#x27;averaged&#x27; phrasing.</p>
+<pre data-pagefind-weight="0.5">def type_token_ratio(text):
+    words = [w.strip(&quot;.,!?;:&quot;).lower() for w in text.split()]
+    return round(len(set(words)) / len(words), 3)
+
+for name, t in texts.items():
+    print(name, &quot;type-token ratio:&quot;, type_token_ratio(t))
+</pre>
+<h3 id="feature-3-average-sentence-length">Feature 3 — Average sentence length</h3>
+<p data-pagefind-weight="0.5">Split on sentence-ending punctuation and average the word counts. Very even, mid-length sentences are a common AI tell.</p>
+<pre data-pagefind-weight="0.5">def avg_sentence_length(text):
+    import re
+    sentences = [s for s in re.split(r&quot;[.!?]&quot;, text) if s.strip()]
+    lengths = [len(s.split()) for s in sentences]
+    return round(sum(lengths) / len(lengths), 1)
+
+for name, t in texts.items():
+    print(name, &quot;avg words/sentence:&quot;, avg_sentence_length(t))
+</pre>
+<h3 id="feature-4-hedging-softening-phrases">Feature 4 — Hedging / softening phrases</h3>
+<p data-pagefind-weight="0.5">The &#x27;burden-reducing&#x27; language the PDF flagged: count how often each text reaches for it.</p>
+<pre data-pagefind-weight="0.5">hedges = [&quot;a great question&quot;,&quot;several factors&quot;,&quot;it is important&quot;,&quot;you may want&quot;,
+          &quot;ultimately&quot;,&quot;a quick example&quot;,&quot;anything that comes to mind&quot;,&quot;whatever feels&quot;,
+          &quot;perhaps&quot;,&quot;might want&quot;]
+
+def hedging_count(text):
+    t = text.lower()
+    return sum(t.count(h) for h in hedges)
+
+for name, t in texts.items():
+    print(name, &quot;hedging hits:&quot;, hedging_count(t))
+</pre>
+<h3 id="put-the-signature-together">Put the signature together</h3>
+<pre data-pagefind-weight="0.5">header = &quot;text&quot;.ljust(8) + &quot;func&quot;.rjust(7) + &quot;ttr&quot;.rjust(7) + &quot;sent&quot;.rjust(7) + &quot;hedge&quot;.rjust(7)
+print(header)
+for name, t in texts.items():
+    row = (name.ljust(8) + str(function_word_share(t)).rjust(7)
+           + str(type_token_ratio(t)).rjust(7) + str(avg_sentence_length(t)).rjust(7)
+           + str(hedging_count(t)).rjust(7))
+    print(row)
+</pre>
+<h4 id="optional-a-quick-bar-chart">Optional: a quick bar chart</h4>
+<p data-pagefind-weight="0.5">You met matplotlib earlier this term. Compare one feature across the three texts.</p>
+<pre data-pagefind-weight="0.5">import matplotlib.pyplot as plt
+names = list(texts)
+values = [hedging_count(texts[n]) for n in names]
+plt.bar(names, values)
+plt.title(&quot;Hedging / softening hits by text&quot;)
+plt.ylabel(&quot;count&quot;)
+plt.show()
+</pre>
+<p data-pagefind-weight="0.5">---</p>
+<h3 id="part-c-synthesis-write-this-up">Part C — Synthesis (write this up)</h3>
+<p data-pagefind-weight="0.5">1. Numbers vs. your Day 8 read. Where did the measured signatures agree with the AI-likely / human-likely calls you made by hand? Where did they disagree? 2. Being wrong as learning. Did any number surprise you? What did the surprise teach you about your assumptions? 3. The limits. Name two reasons these features could mislead you (think: a careful human who writes smoothly; an AI prompted to sound rough; very short texts). Why must any claim about authorship stay a hypothesis, never a verdict? 4. Stakes. AI-detectors are known to flag non-native English writers unfairly. What does that tell you about deploying tools like this to &#x27;catch&#x27; anyone?</p>
+<h4 id="your-turn-run-it-on-your-own-corpus">Your turn — run it on your own corpus</h4>
+<p data-pagefind-weight="0.5">Replace human, ai, and hybrid at the top with your own three samples (write one, prompt an LLM for one, edit an AI draft for the third), re-run all cells, and base your essay on what you find.</p>
+<pre data-pagefind-weight="0.5"># TODO: paste your own three texts above and re-run. Jot first impressions here.
+# #comments:
+</pre></div></div></body></html>

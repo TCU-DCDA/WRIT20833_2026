@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Strings &amp; String Methods — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Day 2"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-10-21"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb">Open it in Colab ↗</a></p><h1>Strings &amp; String Methods</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<p data-pagefind-weight="0.5">Yesterday you met the string — Python&#x27;s data type for text. Almost all the cultural data we&#x27;ll analyze in this course is text: comments, lyrics, headlines, speeches. So before we can study it, we need to get comfortable handling it. A string isn&#x27;t just one blob — it&#x27;s an ordered sequence of characters, and Python gives us a toolbox of string methods for reaching into it, measuring it, and reshaping it.</p>
+<p data-pagefind-weight="0.5">How today works. Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
+<h2 id="a-text-to-work-with">A Text to Work With</h2>
+<p data-pagefind-weight="0.5">Let&#x27;s start with a single real-sounding comment — the kind of thing people actually post about a public-policy debate. We&#x27;ll spend this lesson taking it apart.</p>
+<pre data-pagefind-weight="0.5">comment = &quot;Honestly the Ten Commandments belong in our schools. They taught morals for thousands of years and God made this country great.&quot;
+
+print(comment)
+print(&quot;Characters:&quot;, len(comment))</pre>
+<p data-pagefind-weight="0.5">len() counts every character, including spaces and punctuation — not words. We&#x27;ll get to words soon.</p>
+<h2 id="index-one-character-at-a-time">Index: One Character at a Time</h2>
+<p data-pagefind-weight="0.5">Every character has a position, or index, starting at 0. Square brackets pull out the character at a position. Negative numbers count from the end. Predict first. Count along the comment above: which character sits at index 0? At index 7?</p>
+<pre data-pagefind-weight="0.5"># my guess: index 0 =    index 7 =
+print(comment[0])    # the very first character
+print(comment[7])    # the eighth character
+print(comment[-1])   # the last character (the period)</pre>
+<h2 id="slice-a-range-of-characters">Slice: A Range of Characters</h2>
+<p data-pagefind-weight="0.5">A slice grabs a span. The syntax is text[start : stop] — it starts at start and stops just before stop. Leave a side blank to mean &quot;the beginning&quot; or &quot;the end.&quot;</p>
+<pre data-pagefind-weight="0.5">print(comment[:9])     # from the start, up to (not including) index 9
+print(comment[10:25])  # a middle chunk
+print(comment[-13:])   # the last 13 characters</pre>
+<p data-pagefind-weight="0.5">You can save a slice to a variable, just like any other value:</p>
+<pre data-pagefind-weight="0.5"># type along — save the first 9 characters as `opening`, then print it followed by &quot;...&quot;</pre>
+<h4 id="your-turn">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — slice out the first 25 characters of this lyric
+lyric = &quot;I&#x27;m beginning to feel like a Rap God, Rap God&quot;
+
+# print(lyric[ ... ])</pre>
+<h2 id="uppercase-lowercase">Uppercase &amp; Lowercase</h2>
+<p data-pagefind-weight="0.5">.upper() and .lower() return a new string in that case. This is not just cosmetic. When a computer compares text, &quot;God&quot; and &quot;god&quot; are different strings. Lowercasing everything first is how we make them count as the same word — a move you&#x27;ll rely on the moment you start counting words.</p>
+<pre data-pagefind-weight="0.5"># type along — print the comment in ALL CAPS with .upper(), then all lowercase with .lower()</pre>
+<p data-pagefind-weight="0.5">Predict first. Will each line below print True or False?</p>
+<pre data-pagefind-weight="0.5"># my guess: line 1 =    line 2 =
+# &quot;God&quot; and &quot;god&quot; are not equal — until you lowercase
+print(&quot;God&quot; == &quot;god&quot;)
+print(&quot;God&quot;.lower() == &quot;god&quot;.lower())</pre>
+<h2 id="replace-swap-one-substring-for-another">Replace: Swap One Substring for Another</h2>
+<p data-pagefind-weight="0.5">.replace(old, new) hands back a copy with every match swapped. The original string is unchanged — string methods never edit in place; they return a new string. Have a little fun with it first:</p>
+<pre data-pagefind-weight="0.5">print(comment.replace(&quot;schools&quot;, &quot;group chats&quot;))
+print(comment.replace(&quot; &quot;, &quot; 🐸 &quot;))</pre>
+<p data-pagefind-weight="0.5">The serious use is cleaning. Real text is full of stray newline characters (\n) and junk you want gone before analysis. Replace turns messy text into tidy text.</p>
+<pre data-pagefind-weight="0.5">messy = &quot;God\nand\ncountry&quot;
+print(messy)                       # the \n&#x27;s break it across lines
+print(&quot;---&quot;)
+print(messy.replace(&quot;\n&quot;, &quot; &quot;))   # one clean line</pre>
+<h4 id="your-turn-2">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — replace &quot;great&quot; with a word of your choosing, then print it
+# remember: replace returns a NEW string, so print the result (or save it to a variable)</pre>
+<h2 id="strip-trim-the-edges">Strip: Trim the Edges</h2>
+<p data-pagefind-weight="0.5">Text copied from the web often arrives wrapped in extra spaces or newlines. .strip() removes whitespace from both ends (not the middle) — small but essential cleaning.</p>
+<pre data-pagefind-weight="0.5">raw = &quot;   too much space here   &quot;
+print(&quot;[&quot; + raw + &quot;]&quot;)
+# type along — print raw.strip() between brackets the same way, and compare the two lines</pre>
+<h2 id="count-membership-asking-questions-of-the-text">Count &amp; Membership: Asking Questions of the Text</h2>
+<p data-pagefind-weight="0.5">Two quick ways to interrogate a string. .count() tells you how many times something appears; the in keyword answers yes or no — is this substring present? Predict first. Reread the comment: how many times does &quot;god&quot; appear? Is &quot;freedom&quot; in it?</p>
+<pre data-pagefind-weight="0.5"># my guess: &quot;god&quot; appears    times; &quot;freedom&quot; in text -&gt;
+text = comment.lower()                 # lowercase first, so case can&#x27;t fool us
+print(text.count(&quot;o&quot;))                 # how many letter o&#x27;s
+print(text.count(&quot;god&quot;))               # how many times the letters &quot;god&quot; appear
+print(&quot;commandments&quot; in text)          # is it mentioned at all? -&gt; True / False
+print(&quot;freedom&quot; in text)</pre>
+<p data-pagefind-weight="0.5">Heads up: .count() matches characters, not whole words — count(&quot;god&quot;) would also catch the &quot;god&quot; hidden inside &quot;goddess&quot; or &quot;godless.&quot; (Counting real words needs .split(), coming up next.) And notice we lowercased once at the top and reused it — a habit worth keeping: clean the text, then ask your questions of the clean version.</p>
+<h2 id="split-from-one-string-to-a-list-of-words">Split: From One String to a List of Words</h2>
+<p data-pagefind-weight="0.5">This is the most important method in the course. .split() breaks a string into a list of pieces. With no argument it splits on whitespace — turning a sentence into its words.</p>
+<pre data-pagefind-weight="0.5"># type along — split the comment into a list called `words`; print the list, then its length</pre>
+<p data-pagefind-weight="0.5">Now len() counts words, not characters, because words is a list. Splitting is the hinge between &quot;a text&quot; and &quot;data you can count&quot; — it&#x27;s where cultural analytics begins. You can also split on a specific delimiter by passing it in:</p>
+<pre data-pagefind-weight="0.5">csv_row = &quot;god,country,schools,morals&quot;
+print(csv_row.split(&quot;,&quot;))   # split on commas instead of spaces</pre>
+<h4 id="your-turn-3">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — split this comment into words and print how many there are
+your_comment = &quot;Keep religion out of public schools please&quot;</pre>
+<h2 id="join-from-a-list-back-to-a-string">Join: From a List Back to a String</h2>
+<p data-pagefind-weight="0.5">.join() is split&#x27;s mirror image: it glues a list of strings back together with a separator of your choice. The string you call it on is the glue.</p>
+<pre data-pagefind-weight="0.5">words = [&quot;God&quot;, &quot;and&quot;, &quot;country&quot;]
+print(&quot; &quot;.join(words))     # glue with spaces
+# type along — now glue the same words with hyphens</pre>
+<h2 id="startswith-endswith">Startswith &amp; Endswith</h2>
+<p data-pagefind-weight="0.5">Two handy yes/no checks — useful later for filtering (e.g. keep only comments that start with a hashtag, or files that end in .txt).</p>
+<pre data-pagefind-weight="0.5"># predict first — True or False for each?  my guess:
+print(comment.startswith(&quot;Honestly&quot;))
+print(comment.endswith(&quot;?&quot;))</pre>
+<h2 id="putting-it-all-together-clean-then-inspect">Putting It All Together: Clean, Then Inspect</h2>
+<p data-pagefind-weight="0.5">Here&#x27;s the real workflow. Take a messy comment, clean it (lowercase, drop newlines, trim), then inspect it (split into words, count them, check for a keyword). Every method below you just learned — chained into one small routine.</p>
+<pre data-pagefind-weight="0.5">raw_comment = &quot;  The Ten Commandments\nDON&#x27;T belong in schools.  &quot;
+
+clean = raw_comment.lower().replace(&quot;\n&quot;, &quot; &quot;).strip()
+words = clean.split()
+
+print(&quot;Cleaned:&quot;, clean)
+print(&quot;Words:&quot;, words)
+print(&quot;Word count:&quot;, len(words))
+print(&quot;Mentions schools?&quot;, &quot;schools&quot; in clean)</pre>
+<p data-pagefind-weight="0.5">Read that middle line again: rawcomment.lower().replace(&quot;\n&quot;, &quot; &quot;).strip(). We chained three methods — each returns a new string, which the next one acts on, left to right. That one line is a preview of how you&#x27;ll prep real data all term.</p>
+<pre data-pagefind-weight="0.5"># your turn — clean and inspect this one the same way
+mine = &quot;   GOD bless\nthis great nation   &quot;</pre>
+<h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
+<p data-pagefind-weight="0.5">.split() just handed you a list of words. Tomorrow we learn to loop over lists — visiting every word, one at a time — and to ask conditional questions about each (is this an interesting word, or just &quot;the&quot; and &quot;and&quot;?). Put those together and you can do this:</p>
+<pre data-pagefind-weight="0.5">comment = &quot;god god country schools god morals freedom god&quot;
+words = comment.split()
+
+counts = {}
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+
+print(counts)</pre>
+<p data-pagefind-weight="0.5">Don&#x27;t worry about every line yet — that&#x27;s the next two lessons. But notice the shape of it: split a text into words, then count them. That single idea, scaled up to thousands of real comments, is term frequency — the first real analysis you&#x27;ll run in Week 3, and the start of hearing what a crowd is actually saying.</p>
+<h2 id="playground">Playground</h2>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div></body></html>

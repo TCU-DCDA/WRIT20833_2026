@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Sentiment with VADER — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Days 13–14"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-11-16"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb">Open it in Colab ↗</a></p><h1>Sentiment with VADER</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<p data-pagefind-weight="0.5">How this notebook works. Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
+<p data-pagefind-weight="0.5">In Week 3 you counted words — what a text is about. Now we ask a different question: how does it feel? Sentiment analysis scores the emotional tone of a text, from negative to positive. We&#x27;ll use VADER, a tool built for exactly the kind of informal, punctuation-and-caps-heavy language people use online. And true to this course, we won&#x27;t just trust its number — we&#x27;ll check it against our own reading.</p>
+<h2 id="setup">Setup</h2>
+<p data-pagefind-weight="0.5">VADER lives in a small library we install once. (The !pip install line is a one-time setup command, not Python — run it and move on.)</p>
+<pre data-pagefind-weight="0.5">!pip install -q vaderSentiment</pre>
+<pre data-pagefind-weight="0.5">from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+analyzer = SentimentIntensityAnalyzer()
+print(&quot;VADER ready.&quot;)</pre>
+<h2 id="part-1-how-vader-scores-a-text">Part 1 — How VADER Scores a Text</h2>
+<p data-pagefind-weight="0.5">Hand VADER a string and it returns four numbers. The one you&#x27;ll use most is compound: a single score from -1 (very negative) to +1 (very positive), with 0 around neutral. The other three (pos, neu, neg) show the mix it found.</p>
+<pre data-pagefind-weight="0.5">scores = analyzer.polarity_scores(&quot;This museum exhibition was absolutely AMAZING!!!&quot;)
+print(scores)
+print(&quot;compound:&quot;, scores[&quot;compound&quot;])</pre>
+<p data-pagefind-weight="0.5">Predict first. Before running the next cell, guess: which line is most positive? Most negative? Which is mixed? Then check yourself.</p>
+<pre data-pagefind-weight="0.5"># my guess — most positive:    most negative:    mixed:
+samples = [
+    &quot;worst law ever, complete waste of everyone&#x27;s time&quot;,
+    &quot;The idea is okay, nothing special but not terrible either&quot;,
+    &quot;I love love LOVE this, so good for our kids ❤️&quot;,
+    &quot;It was good but honestly kind of pointless&quot;,
+]
+
+for text in samples:
+    c = analyzer.polarity_scores(text)[&quot;compound&quot;]
+    print(f&quot;{c:+.3f}   {text}&quot;)</pre>
+<p data-pagefind-weight="0.5">Check your predictions. Did the mixed line come out mixed? &quot;It was good but honestly kind of pointless&quot; scores well above zero, higher even than the lukewarm &quot;okay, nothing special&quot; line. Two reasons, and both are about the word list VADER relies on: pointless isn&#x27;t in its list at all, so it counts for nothing, and honestly is in the list, rated as a positive word. A lexicon can only hear the words it was given.</p>
+<h4 id="sentiment-quantifying-connotation">Sentiment = quantifying connotation</h4>
+<p data-pagefind-weight="0.5">Notice what just happened: VADER turned feeling into a number. That&#x27;s quantifying connotation — the emotional coloring of words, beyond their dictionary meaning. &quot;Determined&quot; and &quot;stubborn&quot; can describe the same behavior but feel different, and VADER scores that difference. It can because it leans on a lexicon — a fixed list of ~7,500 words each pre-rated for sentiment. Caps, !!!, and emoji nudge the score too. The lexicon is just a dictionary, so you can look words up yourself. Not every pair you&#x27;d expect made the list.</p>
+<pre data-pagefind-weight="0.5"># VADER&#x27;s lexicon is a dictionary: word -&gt; rating. None means &quot;not in the list&quot; (it counts for nothing)
+for word in [&quot;determined&quot;, &quot;stubborn&quot;, &quot;cheap&quot;, &quot;inexpensive&quot;]:
+    print(word, analyzer.lexicon.get(word))</pre>
+<p data-pagefind-weight="0.5">&gt; About borrowed code. Nobody writes a sentiment analyzer from scratch — VADER is a &gt; well-known tool you pip install, the way you&#x27;d grab one off Stack Overflow (or from an AI today). &gt; Borrowing it is expected, not cheating. We run it here so you can do the part that matters and that &gt; no library can do for you: judge whether its scores are any good on real cultural text.</p>
+<h2 id="part-2-scoring-a-whole-dataset">Part 2 — Scoring a Whole Dataset</h2>
+<p data-pagefind-weight="0.5">Here&#x27;s the cleaned comments table from last week — the constructed Texas Ten Commandments examples (written for the lesson, not collected), with the stance you&#x27;d label by hand (support / oppose / neutral). Let&#x27;s have VADER score the tone of every comment at once.</p>
+<pre data-pagefind-weight="0.5">import pandas as pd
+
+comments = [
+    (&quot;The Ten Commandments belong in every classroom, period.&quot;, &quot;support&quot;),
+    (&quot;This is a clear violation of church and state. Keep it out.&quot;, &quot;oppose&quot;),
+    (&quot;Morals matter and kids today need them more than ever.&quot;, &quot;support&quot;),
+    (&quot;Whose religion gets to decide? Not the government&#x27;s job.&quot;, &quot;oppose&quot;),
+    (&quot;Honestly I have no strong opinion either way.&quot;, &quot;neutral&quot;),
+    (&quot;God and country, that&#x27;s what built this nation.&quot;, &quot;support&quot;),
+    (&quot;Public schools serve everyone, not just one faith.&quot;, &quot;oppose&quot;),
+    (&quot;Put the Constitution in classrooms, not commandments.&quot;, &quot;oppose&quot;),
+    (&quot;Finally some common sense values in our schools.&quot;, &quot;support&quot;),
+    (&quot;Freedom of religion means freedom from it too.&quot;, &quot;oppose&quot;),
+    (&quot;My kids should learn this at home, not at school.&quot;, &quot;neutral&quot;),
+]
+
+comments_df = pd.DataFrame(comments, columns=[&quot;comment&quot;, &quot;stance&quot;])
+comments_df</pre>
+<p data-pagefind-weight="0.5">Score one first, to see the move on a single row:</p>
+<pre data-pagefind-weight="0.5"># type along — grab the first comment with .iloc[0], print it, then print its compound score</pre>
+<p data-pagefind-weight="0.5">Now scale up. .apply() runs a function on every row of a column — the same one-line-to-whole- column move you used with pandas. We add the result as a new sentiment column.</p>
+<pre data-pagefind-weight="0.5">def tone(text):
+    return analyzer.polarity_scores(text)[&quot;compound&quot;]
+
+comments_df[&quot;sentiment&quot;] = comments_df[&quot;comment&quot;].apply(tone)
+comments_df</pre>
+<p data-pagefind-weight="0.5">Notice the 0.000s. Several comments score exactly zero, including &quot;The Ten Commandments belong in every classroom, period.&quot;, a firm position if there ever was one. VADER isn&#x27;t calling them neutral. It found none of their words in its lexicon, so it has nothing to add up. Here, zero means &quot;no evidence,&quot; not &quot;no opinion.&quot; (Zero can also happen another way: positive and negative words that cancel out. You&#x27;ll meet one in Part 5. So when you see a zero, check which kind it is.)</p>
+<h2 id="part-3-reading-the-results">Part 3 — Reading the Results</h2>
+<p data-pagefind-weight="0.5">With a score per comment, you can ask quantitative questions of the whole crowd.</p>
+<pre data-pagefind-weight="0.5"># type along — print the average sentiment (round to 3); then use .idxmax() / .idxmin() with .loc to pull the most positive and most negative rows and print each score with its comment</pre>
+<h4 id="your-turn">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — sort the DataFrame by sentiment and look at the order
+# comments_df.sort_values(&quot;sentiment&quot;)</pre>
+<h2 id="part-4-tone-is-not-the-same-as-stance">Part 4 — Tone Is Not the Same as Stance</h2>
+<p data-pagefind-weight="0.5">Here&#x27;s the critical move. We have two judgments of each comment: the stance you labeled (a position — for or against the law) and the tone VADER scored (an emotion). It&#x27;s tempting to expect them to line up. Let&#x27;s turn VADER&#x27;s score into a label and put them side by side.</p>
+<pre data-pagefind-weight="0.5">def tone_label(score):
+    if score &gt;= 0.05:
+        return &quot;positive&quot;
+    elif score &lt;= -0.05:
+        return &quot;negative&quot;
+    return &quot;neutral&quot;
+
+comments_df[&quot;vader_tone&quot;] = comments_df[&quot;sentiment&quot;].apply(tone_label)
+comments_df[[&quot;comment&quot;, &quot;stance&quot;, &quot;vader_tone&quot;]]</pre>
+<p data-pagefind-weight="0.5">Look for the mismatches — and notice they&#x27;re not VADER &quot;getting it wrong.&quot; Stance and tone are different axes. Someone can oppose the law in warm, calm language, or support it while sounding furious. A word like &quot;God&quot; or &quot;freedom&quot; reads positive to the lexicon no matter which side is saying it. Distant reading (VADER&#x27;s number) and close reading (your judgment) measure different things — which is exactly why you need both.</p>
+<pre data-pagefind-weight="0.5"># type along — the average TONE within each STANCE camp: group by stance, take the mean of sentiment, round to 3</pre>
+<pre data-pagefind-weight="0.5">import matplotlib.pyplot as plt
+
+comments_df.groupby(&quot;stance&quot;)[&quot;sentiment&quot;].mean().plot(kind=&quot;bar&quot;, title=&quot;Average tone by stance&quot;)
+plt.ylabel(&quot;mean compound sentiment&quot;)
+plt.axhline(0, color=&quot;gray&quot;, linewidth=0.8)
+plt.tight_layout()
+plt.show()</pre>
+<h2 id="part-5-where-vader-breaks">Part 5 — Where VADER Breaks</h2>
+<p data-pagefind-weight="0.5">VADER reads a lexicon, not a mind. It has no idea about sarcasm, irony, or context. Predict the tone of each line below, then run it — and watch it miss.</p>
+<pre data-pagefind-weight="0.5"># my guess (positive / negative / neutral, one per line):
+tricky = [
+    &quot;Oh GREAT, more religion forced on our kids.&quot;,   # sarcasm: sounds positive, isn&#x27;t
+    &quot;Sure, because schools have NO other problems.&quot;,  # sarcasm
+    &quot;Honestly? Not a bad idea at all.&quot;,               # double negative = positive
+    &quot;This is beautifully, tragically un-American.&quot;,   # mixed signals
+]
+
+for text in tricky:
+    c = analyzer.polarity_scores(text)[&quot;compound&quot;]
+    print(f&quot;{c:+.3f}   {text}&quot;)</pre>
+<pre data-pagefind-weight="0.5"># the &quot;un-American&quot; line scored 0.000 -- but not because VADER found nothing. Look at the parts:
+print(analyzer.polarity_scores(&quot;This is beautifully, tragically un-American.&quot;))</pre>
+<p data-pagefind-weight="0.5">That zero is a cancellation: pos and neg are equal, so they sum to nothing. Compare the &quot;no evidence&quot; zeros back in Part 2, where neu was 1.0. Same number, different meaning. Where did VADER&#x27;s number disagree with your reading? Those gaps are the most interesting findings you&#x27;ll report — not failures of the tool, but the boundary where counting stops and interpretation has to take over.</p>
+<h2 id="putting-it-all-together-score-compare-question">Putting It All Together: Score, Compare, Question</h2>
+<p data-pagefind-weight="0.5">The full workflow in one place — exactly what you&#x27;ll run on your own data in HW3: score every comment, find the extremes, and check the machine&#x27;s tone against a human&#x27;s stance.</p>
+<pre data-pagefind-weight="0.5">comments_df[&quot;sentiment&quot;] = comments_df[&quot;comment&quot;].apply(tone)          # score
+comments_df[&quot;vader_tone&quot;] = comments_df[&quot;sentiment&quot;].apply(tone_label)  # label
+
+print(&quot;Overall average tone:&quot;, round(comments_df[&quot;sentiment&quot;].mean(), 3))
+print(&quot;\nWhere tone and stance disagree:&quot;)
+mismatch = comments_df[
+    ((comments_df[&quot;stance&quot;] == &quot;oppose&quot;) &amp; (comments_df[&quot;vader_tone&quot;] == &quot;positive&quot;)) |
+    ((comments_df[&quot;stance&quot;] == &quot;support&quot;) &amp; (comments_df[&quot;vader_tone&quot;] == &quot;negative&quot;))
+]
+print(mismatch[[&quot;comment&quot;, &quot;stance&quot;, &quot;vader_tone&quot;]].to_string(index=False))</pre>
+<pre data-pagefind-weight="0.5"># your turn — paste a comment of your own below and score it; does VADER agree with your read?
+my_text = &quot;Type any comment here&quot;
+print(analyzer.polarity_scores(my_text)[&quot;compound&quot;])</pre>
+<h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
+<p data-pagefind-weight="0.5">In HW3 you&#x27;ll do all of this on a dataset you collected: score it, visualize the spread, and write up where VADER tracked your reading and where it broke. The mismatches are the point. After Thanksgiving break (Days 16–17) comes the last technique: topic modeling. Sentiment asked what feeling?; topic modeling asks what is this whole pile of text even about? — letting the computer surface the recurring themes across hundreds of comments at once. Counting, feeling, themes: three different ways to hear a crowd.</p>
+<h2 id="playground">Playground</h2>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div></body></html>

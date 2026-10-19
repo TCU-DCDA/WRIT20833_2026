@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>HW3 · Sentiment — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Homework · due Day 16"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/homework/WRIT20833_HW3_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-11-16"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/homework/WRIT20833_HW3_2026.ipynb">Open it in Colab ↗</a></p><h1>HW3 · Sentiment</h1>
+<h2 id="homework-3-sentiment-analysis-tone-stance-and-what-counting-missed">Homework 3 — Sentiment Analysis: Tone, Stance, and What Counting Missed</h2>
+<p data-pagefind-weight="0.5">WRIT 20833 — Intro to Coding in the Humanities Student Name: Replace with your name Upload as: LASTNAMEHW3.ipynb New to Colab, or submitting? See Working in Colab. ---</p>
+<h3 id="what-you-re-doing">What you&#x27;re doing</h3>
+<p data-pagefind-weight="0.5">In HW2 you found which words dominate a debate — but a raw count can&#x27;t tell a cheer from a complaint. The word commandments &quot;won,&quot; yet some of those mentions were people for the Texas law and some against it, and they looked identical. This week you add sentiment analysis: a tool (VADER) that scores each comment from very negative to very positive. You&#x27;ll work in pandas now — a table where each row is one line of comment text — and use sentiment to hear the tone that counting alone missed. Then comes the harder question, from Part 4 of the VADER code-along: tone is not stance. A comment can oppose the law in warm language, or support it in a fury. Your data has no stance column, so in B3 you&#x27;ll supply one by hand for a few comments and see whether VADER&#x27;s tone could have told you who was for and against.</p>
+<h3 id="prepare">Prepare</h3>
+<p data-pagefind-weight="0.5">Review our own materials first: - HW2 — term frequency (splitintowords, stopwords, Counter); we reuse all of it. - Pandas 01 / Pandas 02 code-alongs — DataFrames, df[...], .apply(), df.plot(). - The VADER Sentiment code-along (this week) — analyzer.polarityscores() and the chart.</p>
+<h3 id="expected-frequent-meaningful-comments">Expected: frequent, meaningful #comments</h3>
+<p data-pagefind-weight="0.5">Comment as you work — not every line, but often, and wherever you make a choice or hit a question: say what you tried and what you learned (or what surprised you). Frequent, relevant #comments are expected. Under this course&#x27;s ungrading approach, your thinking in these comments and reflections matters more than getting a &quot;right&quot; number.</p>
+<h3 id="about-the-setup-cell-read-this-then-just-run-it">About the setup cell (read this, then just run it)</h3>
+<p data-pagefind-weight="0.5">The next cell is plumbing: it imports pandas, installs the VADER sentiment tool, and loads your data into a table. Run it, but don&#x27;t worry about reading every line — installing a library and downloading a file are things you&#x27;ll meet later. You use a tool through its interface long before you build its insides. After it runs, you have: a DataFrame df (one line of comment text per row), the name of its text column textcolumn, the analyzer (VADER), and your HW2 splitintowords + stopwords. Bringing your own data? Upload your cleaned CSV from the Day 12 workshop, then set the two lines near the bottom of the cell: MYCSV (the file name) and MYTEXTCOLUMN (the column holding the text). Leave MYCSV = &quot;&quot; and it loads the course corpus, so everything runs out of the box. Check the DATA SOURCE: line it prints before you go on. If it doesn&#x27;t name the data you meant to use, nothing after it is about your data.</p>
+<pre data-pagefind-weight="0.5"># SETUP — run this cell first. (You&#x27;re not expected to read every line yet — that&#x27;s fine.)
+import re, os, urllib.request
+from collections import Counter
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# VADER is a ready-made sentiment tool. It is not built into Python, so we install it,
+# then make one analyzer we reuse. (More on &quot;borrowing&quot; tools in the note after A5.)
+!pip install -q vaderSentiment
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+analyzer = SentimentIntensityAnalyzer()
+
+# Same word-splitter + stopwords you used in HW2 (we reuse our own tools).
+def split_into_words(any_chunk_of_text):
+    return re.split(r&quot;\W+&quot;, str(any_chunk_of_text).lower())
+stopwords = [&quot;i&quot;, &quot;me&quot;, &quot;my&quot;, &quot;myself&quot;, &quot;we&quot;, &quot;our&quot;, &quot;ours&quot;, &quot;ourselves&quot;, &quot;you&quot;, &quot;your&quot;, &quot;yours&quot;, &quot;yourself&quot;, &quot;yourselves&quot;, &quot;he&quot;, &quot;him&quot;, &quot;his&quot;, &quot;himself&quot;, &quot;she&quot;, &quot;her&quot;, &quot;hers&quot;, &quot;herself&quot;, &quot;it&quot;, &quot;its&quot;, &quot;itself&quot;, &quot;they&quot;, &quot;them&quot;, &quot;their&quot;, &quot;theirs&quot;, &quot;themselves&quot;, &quot;what&quot;, &quot;which&quot;, &quot;who&quot;, &quot;whom&quot;, &quot;this&quot;, &quot;that&quot;, &quot;these&quot;, &quot;those&quot;, &quot;am&quot;, &quot;is&quot;, &quot;are&quot;, &quot;was&quot;, &quot;were&quot;, &quot;be&quot;, &quot;been&quot;, &quot;being&quot;, &quot;have&quot;, &quot;has&quot;, &quot;had&quot;, &quot;having&quot;, &quot;do&quot;, &quot;does&quot;, &quot;did&quot;, &quot;doing&quot;, &quot;a&quot;, &quot;an&quot;, &quot;the&quot;, &quot;and&quot;, &quot;but&quot;, &quot;if&quot;, &quot;or&quot;, &quot;because&quot;, &quot;as&quot;, &quot;until&quot;, &quot;while&quot;, &quot;of&quot;, &quot;at&quot;, &quot;by&quot;, &quot;for&quot;, &quot;with&quot;, &quot;about&quot;, &quot;against&quot;, &quot;between&quot;, &quot;into&quot;, &quot;through&quot;, &quot;during&quot;, &quot;before&quot;, &quot;after&quot;, &quot;above&quot;, &quot;below&quot;, &quot;to&quot;, &quot;from&quot;, &quot;up&quot;, &quot;down&quot;, &quot;in&quot;, &quot;out&quot;, &quot;on&quot;, &quot;off&quot;, &quot;over&quot;, &quot;under&quot;, &quot;again&quot;, &quot;further&quot;, &quot;then&quot;, &quot;once&quot;, &quot;here&quot;, &quot;there&quot;, &quot;when&quot;, &quot;where&quot;, &quot;why&quot;, &quot;how&quot;, &quot;all&quot;, &quot;any&quot;, &quot;both&quot;, &quot;each&quot;, &quot;few&quot;, &quot;more&quot;, &quot;most&quot;, &quot;other&quot;, &quot;some&quot;, &quot;such&quot;, &quot;no&quot;, &quot;nor&quot;, &quot;not&quot;, &quot;only&quot;, &quot;own&quot;, &quot;same&quot;, &quot;so&quot;, &quot;than&quot;, &quot;too&quot;, &quot;very&quot;, &quot;s&quot;, &quot;t&quot;, &quot;can&quot;, &quot;will&quot;, &quot;just&quot;, &quot;don&quot;, &quot;should&quot;, &quot;now&quot;, &quot;ve&quot;, &quot;ll&quot;, &quot;amp&quot;]
+
+def load_course_comments():
+    &quot;&quot;&quot;Load the course YouTube-comments corpus into a DataFrame, one line of comment text per row.&quot;&quot;&quot;
+    filename = &quot;tc_youtube_comments.txt&quot;
+    text = None
+    for path in (filename, os.path.join(&quot;notebooks&quot;, &quot;data&quot;, filename),
+                 os.path.join(&quot;data&quot;, filename), os.path.join(&quot;..&quot;, &quot;data&quot;, filename)):
+        if os.path.exists(path):
+            text = open(path, encoding=&quot;utf-8&quot;).read(); break
+    if text is None:
+        url = &quot;https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/notebooks/data/&quot; + filename
+        text = urllib.request.urlopen(url).read().decode(&quot;utf-8&quot;)
+    rows = [line.strip() for line in text.split(&quot;\n&quot;) if line.strip()]
+    return pd.DataFrame({&quot;comment&quot;: rows})
+
+# ----- Choose your data -----------------------------------------------------------
+# Using your own CSV? Upload it (Files panel -&gt; upload), then fill in BOTH lines below.
+# Leave MY_CSV = &quot;&quot; to use the course corpus instead.
+MY_CSV = &quot;&quot;              # e.g. &quot;youtube_comments_YOURVIDEOID.csv&quot;
+MY_TEXT_COLUMN = &quot;&quot;      # e.g. &quot;comment_clean&quot; (from the collector)
+# ---------------------------------------------------------------------------------
+
+if MY_CSV:
+    # keep_default_na=False keeps blank cells as &quot;&quot; instead of turning them into NaN / &quot;nan&quot;
+    df = pd.read_csv(MY_CSV, keep_default_na=False)
+    text_column = MY_TEXT_COLUMN
+    if text_column not in df.columns:
+        raise KeyError(f&quot;No column named &#x27;{text_column}&#x27;. Your columns are: {list(df.columns)}&quot;)
+    df[text_column] = df[text_column].astype(str)
+    blank = df[text_column].str.strip() == &quot;&quot;
+    df = df[~blank].reset_index(drop=True)
+    source = f&quot;{MY_CSV} ({blank.sum()} blank rows dropped)&quot;
+else:
+    df = load_course_comments()
+    text_column = &quot;comment&quot;
+    source = &quot;course corpus, tc_youtube_comments.txt (93 comments stored as 123 rows)&quot;
+
+print(&quot;DATA SOURCE:&quot;, source)
+print(f&quot;{len(df)} rows. Text column: &#x27;{text_column}&#x27;.&quot;)
+print(&quot;First text:&quot;, df[text_column].iloc[0][:120])
+df.head()</pre>
+<h3 id="part-a-from-text-to-a-sentiment-score-5-exercises">Part A — From text to a sentiment score (5 exercises)</h3>
+<p data-pagefind-weight="0.5">A1 — Meet your data as a table. (HW2 was one big blob; now each row is one line of comment text. Most rows are a whole comment, but a few long comments are split across several rows.)</p>
+<pre data-pagefind-weight="0.5"># A1
+# TODO: print df.shape (rows, columns)
+# TODO: print how many rows there are with len(df)
+# TODO: show the first few rows with df.head()
+
+# #comments:
+# Each ROW is now one line of comment text. How is a DataFrame different from HW2&#x27;s flat word list?</pre>
+<p data-pagefind-weight="0.5">A2 — Clean text, but keep the feeling. HW2 dropped punctuation and capitals — sentiment tools need them.</p>
+<pre data-pagefind-weight="0.5"># A2
+sample = df[text_column].iloc[0]      # the first comment
+print(&quot;Original:   &quot;, sample)
+# TODO: print sample.lower() and notice what intensity would be LOST (CAPS, &quot;!&quot;) if we
+#       cleaned it the HW2 way.
+
+# #comments:
+# Why does lowercasing + stripping &quot;!&quot; HELP a word count (HW2) but HURT a sentiment score?</pre>
+<p data-pagefind-weight="0.5">A3 — Score a single comment with VADER.</p>
+<pre data-pagefind-weight="0.5"># A3
+text = &quot;This is a great day for religious freedom!&quot;
+scores = analyzer.polarity_scores(text)
+print(scores)
+
+# TODO: print just the &#x27;compound&#x27; score (one number, -1 = most negative ... +1 = most positive)
+# TODO: change `text` to something you might write, and re-run
+
+# #comments:
+# What do &#x27;pos&#x27;, &#x27;neu&#x27;, &#x27;neg&#x27;, and &#x27;compound&#x27; each seem to measure?</pre>
+<p data-pagefind-weight="0.5">A4 — An edge case: predict, then run.</p>
+<pre data-pagefind-weight="0.5"># A4 — predict, then run
+# FIRST predict, in a comment: will VADER score this sarcastic line positive or negative?
+# THEN run the cell.
+sarcasm = &quot;Oh great, another set of commandments to follow.&quot;
+print(analyzer.polarity_scores(sarcasm)[&quot;compound&quot;])
+
+# #comments:
+# My prediction was:
+# VADER sees &quot;great&quot; and scores this POSITIVE -- but a human hears sarcasm.
+# What does that warn you about trusting an automated score on its own?</pre>
+<p data-pagefind-weight="0.5">A5 — Score every comment at once. (This is what pandas is for.)</p>
+<pre data-pagefind-weight="0.5"># A5
+def get_sentiment(text):
+    return analyzer.polarity_scores(text)[&quot;compound&quot;]
+
+# TODO: make a new column df[&quot;sentiment&quot;] by applying get_sentiment to df[text_column]
+#       (hint: df[text_column].apply(get_sentiment))
+# TODO: print df[&quot;sentiment&quot;].mean(), .min(), .max()
+# TODO: df.head() to see the new column
+
+# #comments:
+# In HW2 you looped by hand; here .apply() runs your function on every row.
+# What just happened to all the comments in one line?</pre>
+<h4 id="a-note-you-didn-t-build-vader-and-that-s-normal">A note: you didn&#x27;t build VADER — and that&#x27;s normal</h4>
+<p data-pagefind-weight="0.5">VADER is a sentiment lexicon: thousands of words hand-scored for feeling, plus rules for &quot;!&quot;, ALL CAPS, and negation, compiled and tuned by researchers. Almost nobody writes one from scratch — you pip install it. (Long before AI, you&#x27;d still have reached for a library like this; today you might ask an AI to help use it.) Borrowing it is expected, not cheating. But A4 showed the catch: a borrowed tool carries someone else&#x27;s assumptions and can be confidently wrong (it missed the sarcasm). So the real skill isn&#x27;t building VADER — it&#x27;s judging whether to trust it on your text. That&#x27;s exactly what the human-vs-VADER check in B3 is for. (This is the thread from Day 8, reading and improving AI-written code.)</p>
+<h3 id="part-b-tone-stance-and-what-counting-missed-4-exercises">Part B — Tone, stance, and what counting missed (4 exercises)</h3>
+<p data-pagefind-weight="0.5">B1 — Turn scores into labels. A number becomes a category. (Recall Classification Logic.)</p>
+<pre data-pagefind-weight="0.5"># B1
+def label_sentiment(score):
+    # Standard VADER cutoffs: &gt;= 0.05 is positive, &lt;= -0.05 is negative, otherwise neutral.
+    # TODO: return &quot;positive&quot;, &quot;negative&quot;, or &quot;neutral&quot; based on score
+    pass
+
+# TODO: make df[&quot;label&quot;] by applying label_sentiment to df[&quot;sentiment&quot;]
+# TODO: print df[&quot;label&quot;].value_counts()
+
+# #comments:
+# WHO chose the 0.05 cutoff? How would moving it change how many comments count as &quot;positive&quot;?</pre>
+<p data-pagefind-weight="0.5">B2 — Picture the split. One line of pandas makes a chart. (You saw df.plot() in the code-alongs.)</p>
+<pre data-pagefind-weight="0.5"># B2
+# TODO: make a bar chart of the label counts:
+#       df[&quot;label&quot;].value_counts().plot(kind=&quot;bar&quot;, title=&quot;Sentiment of the comments&quot;)
+
+# #comments:
+# Does the chart show a clear majority, or a divided crowd?</pre>
+<p data-pagefind-weight="0.5">B3 — Read the extremes, and label their stance yourself. (The human-vs-machine check.) In the code-along, every comment came with a stance someone labeled by hand. Your data doesn&#x27;t have one, so you are the labeler. Read the 5 warmest and 5 coldest comments, and for each one decide: does the writer support the law, oppose it, or is it unclear? Using your own data? Stance means the writer&#x27;s position on whatever your texts are arguing about. Name the two sides in a #comment first, and use &quot;unclear&quot; when a text isn&#x27;t taking a side. Want a fuller check? Checking the Machine is a one-page routine for this kind of human-vs-tool comparison. You&#x27;ll reuse it in HW4 and the capstone.</p>
+<pre data-pagefind-weight="0.5"># B3 — part 1: read the extremes
+extremes = pd.concat([df.nlargest(5, &quot;sentiment&quot;), df.nsmallest(5, &quot;sentiment&quot;)])
+for row_number, row in extremes.iterrows():
+    print(f&quot;[{row_number}]  tone {row[&#x27;sentiment&#x27;]:+.3f}  ({row[&#x27;label&#x27;]})&quot;)
+    print(&quot;    &quot;, row[text_column])
+    print()</pre>
+<pre data-pagefind-weight="0.5"># B3 — part 2: your stance labels
+# TODO: for each [row number] above, write &quot;support&quot;, &quot;oppose&quot;, or &quot;unclear&quot;.
+#       The row numbers on your screen are the keys. (Two are filled in as a pattern -- replace them.)
+my_stance = {
+    0: &quot;support&quot;,
+    1: &quot;oppose&quot;,
+}
+
+extremes[&quot;stance&quot;] = extremes.index.map(my_stance)
+extremes[[&quot;sentiment&quot;, &quot;label&quot;, &quot;stance&quot;]]
+
+# #comments:
+# Among the 5 WARMEST comments, how many did you label &quot;support&quot;? Among the 5 COLDEST?
+# If positive tone meant support, what would you expect -- and what did you find?
+# Which labels were hard to decide, and why? (That difficulty is data too.)</pre>
+<p data-pagefind-weight="0.5">B4 — Interpretation (write 4–6 sentences below). Using B1–B2: what is this crowd&#x27;s tone — mostly warm, mostly hostile, or split? Then use your B3 labels to answer the harder question: could you have read stance off tone? How many of the warmest comments supported the law? Finally: what did sentiment let you see that HW2&#x27;s word-counting could not — and what can&#x27;t it see? Cite at least two numbers from this notebook (a label count, a sentiment score, a count from your B3 labels). (Recall HW2 B4: a tally can&#x27;t tell a cheer from a complaint. Can a tone score?) One drafting rule before you write. Politicians of every party love the sentence &quot;The American people feel…&quot; — one average pretending a split crowd agreed. Your B1 counts and your B2 chart are sitting right there. If your write-up starts &quot;the commenters feel…&quot;, stop and check whether your own numbers contradict you — and if the crowd is split, say split.</p>
+<p data-pagefind-weight="0.5">Replace this cell with your interpretation.</p>
+<h3 id="part-c-going-deeper-2-exercises">Part C — Going deeper (2 exercises)</h3>
+<p data-pagefind-weight="0.5">C1 — Whose words are whose? Frequency inside each camp. (HW2&#x27;s tool, now split by tone.)</p>
+<pre data-pagefind-weight="0.5"># C1
+def top_words(text_series, n=8):
+    words = []
+    for t in text_series:
+        words.extend(w for w in split_into_words(t) if w and w not in stopwords)
+    return Counter(words).most_common(n)
+
+positive_comments = df[df[&quot;label&quot;] == &quot;positive&quot;][text_column]
+negative_comments = df[df[&quot;label&quot;] == &quot;negative&quot;][text_column]
+
+# TODO: print top_words(positive_comments) and top_words(negative_comments)
+
+# #comments:
+# Which words appear in BOTH lists? In HW2 those words &quot;won&quot; overall -- here they show up in
+# warm AND hostile comments. Does a warm comment that says &quot;commandments&quot; mean the writer
+# SUPPORTS the law? (Check your B3 labels before you answer.)</pre>
+<p data-pagefind-weight="0.5">C2 — On your own data, or push this one further. - If you loaded your own dataset in setup: this whole notebook already ran on it. Write 3–4 sentences on what the sentiment split showed about your corpus, and one place you doubt VADER. - If you used the course corpus: try ONE of — change the 0.05 cutoff in B1 and see what moves; or compare the sentiment of comments that mention &quot;constitution&quot; vs. those that don&#x27;t.</p>
+<pre data-pagefind-weight="0.5"># C2
+# TODO: do ONE of the options above. Show your code and the result.
+
+# #comments:
+# What did you expect, and did the data agree?</pre>
+<h3 id="weekly-experiments-your-own-work">Weekly Experiments (your own work!)</h3>
+<p data-pagefind-weight="0.5">After the required exercises, create 2–3 small experiments of your own with this week&#x27;s skills. Make them original. Ideas: - Write five comments yourself and see if VADER scores them the way you meant. - Find a comment where VADER is most wrong and explain why. - Filter df to a subset (e.g. comments mentioning &quot;school&quot;) and compare its average sentiment. It&#x27;s fine if an experiment doesn&#x27;t work at first — documenting what went wrong and what you learned is worth just as much as working code.</p>
+<pre data-pagefind-weight="0.5"># Experiment 1
+
+
+# #comments:
+# What were you trying? What happened? What did you learn?</pre>
+<pre data-pagefind-weight="0.5"># Experiment 2
+
+
+# #comments:
+# What were you trying? What happened? What did you learn?</pre>
+<pre data-pagefind-weight="0.5"># Experiment 3
+
+
+# #comments:
+# What were you trying? What happened? What did you learn?</pre>
+<h3 id="submit">Submit</h3>
+<p data-pagefind-weight="0.5">- [ ] My name is at the top. - [ ] I loaded a dataset (my own from the workshop, or the course corpus) and its DATA SOURCE: line names the data I meant to use. I ran every cell. Where something still breaks, I left a #comment about what I tried and what I learned — errors are part of the work here, not something to hide or delete. - [ ] I completed Part A (5), Part B (4, incl. the B4 write-up), Part C (2), and 2–3 experiments. - [ ] I used #comments frequently and meaningfully — showing my thinking wherever I made a choice or hit a question (not every line, but throughout). - [ ] I wrote honestly about where I agree and disagree with VADER (engagement matters more than &quot;right&quot; labels). - [ ] Saved as LASTNAMEHW3.ipynb and uploaded to its folder in TCU Online → Assignments. Time estimate: ~2 hrs for the exercises, ~1 hr for your experiments.</p></div></div></body></html>

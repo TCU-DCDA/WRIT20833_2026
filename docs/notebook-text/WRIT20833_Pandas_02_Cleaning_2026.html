@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Data Cleaning — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Day 11"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-11-11"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb">Open it in Colab ↗</a></p><h1>Data Cleaning</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<p data-pagefind-weight="0.5">How today works. Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
+<p data-pagefind-weight="0.5">Last class the data was tidy. Real found data almost never is. Scraped comments show up with stray spaces, line breaks in the middle of text, the same category spelled five different ways, blank cells, and duplicate rows. Before you can analyze anything, you have to clean it. Today you&#x27;ll take a messy version of the same comments table from last class and turn it back into something trustworthy — and notice that every cleaning choice is also an interpretive choice.</p>
+<h2 id="a-realistically-messy-dataset">A Realistically Messy Dataset</h2>
+<p data-pagefind-weight="0.5">Here&#x27;s what those tidy YouTube comments might actually look like fresh out of a scraper. Same columns as last time — comment, stance, likes, replies — but full of real-world junk.</p>
+<pre data-pagefind-weight="0.5">import pandas as pd
+import numpy as np
+
+data = {
+    &quot;comment&quot;: [
+        &quot;  The Ten Commandments belong in every classroom, period.  &quot;,
+        &quot;This is a clear violation of church and state.\nKeep it out.&quot;,
+        &quot;Morals matter and kids today need them more than ever.&quot;,
+        &quot;Whose religion gets to decide? Not the government&#x27;s job.&quot;,
+        &quot;Honestly I have no strong opinion either way.&quot;,
+        &quot;God and country, that&#x27;s what built this nation.&quot;,
+        &quot;Public schools serve everyone, not just one faith.  &quot;,
+        &quot;Put the Constitution in classrooms, not commandments.&quot;,
+        &quot;Finally some common sense values in our schools.&quot;,
+        &quot;Freedom of religion means freedom from it too.&quot;,
+        &quot;My kids should learn this at home, not at school.&quot;,
+        &quot;  The Ten Commandments belong in every classroom, period.  &quot;,
+    ],
+    &quot;stance&quot;: [&quot;support&quot;, &quot;Oppose&quot;, &quot;SUPPORT&quot;, &quot;against&quot;, &quot;Neutral&quot;, &quot;for&quot;,
+               &quot;oppose &quot;, &quot;OPPOSE&quot;, &quot;support&quot;, &quot;Against&quot;, &quot;neutral&quot;, &quot;support&quot;],
+    &quot;likes&quot;: [240, 312, 88, 150, np.nan, 205, 176, 410, 64, 198, 33, 240],
+    &quot;replies&quot;: [15, 42, 6, 22, 1, 18, 19, 51, 4, 27, 2, 15],
+}
+
+messy_df = pd.DataFrame(data)
+messy_df</pre>
+<h2 id="step-1-diagnose-before-you-touch-anything">Step 1: Diagnose Before You Touch Anything</h2>
+<p data-pagefind-weight="0.5">Good cleaning starts with looking. Three quick questions tell you most of what&#x27;s wrong: What&#x27;s missing? What&#x27;s inconsistent? What&#x27;s duplicated? Predict first. Look back at the table: which column has a missing value, and how many? Write your guess, then run.</p>
+<pre data-pagefind-weight="0.5"># my guess: column =    missing =
+print(&quot;Missing values per column:&quot;)
+print(messy_df.isnull().sum())</pre>
+<pre data-pagefind-weight="0.5"># type along — what&#x27;s inconsistent? print every distinct value in the stance column with .unique()</pre>
+<pre data-pagefind-weight="0.5"># type along — what&#x27;s duplicated? count whole rows that repeat with .duplicated().sum()</pre>
+<p data-pagefind-weight="0.5">So: one missing likes value, a stance column that means three things but is spelled ten ways, and one repeated comment. Let&#x27;s fix them one at a time on a copy (never destroy your raw data — you may need to go back).</p>
+<pre data-pagefind-weight="0.5">clean_df = messy_df.copy()</pre>
+<h2 id="step-2-clean-the-text-fields">Step 2: Clean the Text Fields</h2>
+<p data-pagefind-weight="0.5">Pandas applies a string method to a whole column at once through the .str accessor — it&#x27;s the column-wide version of the string methods you already know. Strip the whitespace, drop the stray newline.</p>
+<pre data-pagefind-weight="0.5">clean_df[&quot;comment&quot;] = clean_df[&quot;comment&quot;].str.strip().str.replace(&quot;\n&quot;, &quot; &quot;, regex=False)
+clean_df[&quot;comment&quot;].tolist()</pre>
+<h2 id="step-3-standardize-the-categories">Step 3: Standardize the Categories</h2>
+<p data-pagefind-weight="0.5">stance is the worst offender. First flatten the casing and spacing, then map the synonyms (&quot;for&quot; → support, &quot;against&quot; → oppose) onto a clean set of three labels.</p>
+<pre data-pagefind-weight="0.5"># type along — strip and lowercase the stance column (the same .str chain as the comment column), assign it back, then print .unique()</pre>
+<pre data-pagefind-weight="0.5"># map the synonyms onto canonical labels
+clean_df[&quot;stance&quot;] = clean_df[&quot;stance&quot;].replace({&quot;for&quot;: &quot;support&quot;, &quot;against&quot;: &quot;oppose&quot;})
+print(&quot;Canonical labels:&quot;, clean_df[&quot;stance&quot;].unique())</pre>
+<h4 id="your-turn">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — run .value_counts() on the cleaned stance column to see the three-way split
+# clean_df[&quot;stance&quot;].value_counts()</pre>
+<h2 id="step-4-handle-the-missing-value">Step 4: Handle the Missing Value</h2>
+<p data-pagefind-weight="0.5">One comment has no likes count. You have choices, and none are neutral: - Drop the row (.dropna()) — but you lose a comment (in real data, someone&#x27;s voice). - Fill it (.fillna()) with an estimate — but you&#x27;re inventing data. Here we fill with the median (the middle value, less skewed by that 410-like outlier than the mean). Whatever you choose, say so in your writeup — it&#x27;s part of your method.</p>
+<pre data-pagefind-weight="0.5"># type along — save the median of the likes column as `median_likes`; fill the missing value with .fillna(); print the median and how many are still missing</pre>
+<h2 id="step-5-drop-the-duplicate">Step 5: Drop the Duplicate</h2>
+<p data-pagefind-weight="0.5">Now that the text is trimmed, the repeated comment is an exact duplicate. .dropduplicates() keeps the first and removes the rest.</p>
+<pre data-pagefind-weight="0.5">before = len(clean_df)
+clean_df = clean_df.drop_duplicates().reset_index(drop=True)
+print(f&quot;Rows: {before} -&gt; {len(clean_df)}&quot;)
+clean_df</pre>
+<h2 id="putting-it-all-together-clean-data-tells-a-truer-story">Putting It All Together: Clean Data Tells a Truer Story</h2>
+<p data-pagefind-weight="0.5">The whole point of cleaning is that the analysis you couldn&#x27;t trust before, you can trust now. With the labels standardized and the duplicate gone, the counts finally mean something.</p>
+<pre data-pagefind-weight="0.5">print(&quot;Stance breakdown (clean):&quot;)
+print(clean_df[&quot;stance&quot;].value_counts())
+
+print(&quot;\nAverage likes by stance:&quot;)
+print(clean_df.groupby(&quot;stance&quot;)[&quot;likes&quot;].mean().round(1))</pre>
+<p data-pagefind-weight="0.5">Before cleaning, .valuecounts() on stance would have shown ten fake categories and a double-counted comment — a garbage picture. Same data, cleaned, and the crowd&#x27;s split comes through. You can also now reliably search the text — the .str accessor again, this time to filter:</p>
+<pre data-pagefind-weight="0.5"># which comments invoke &quot;religion&quot; directly?
+religion = clean_df[clean_df[&quot;comment&quot;].str.lower().str.contains(&quot;religion&quot;)]
+religion[[&quot;comment&quot;, &quot;stance&quot;]]</pre>
+<pre data-pagefind-weight="0.5"># your turn — filter to comments mentioning &quot;schools&quot; (or another word) and see who&#x27;s on which side</pre>
+<h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
+<p data-pagefind-weight="0.5">This Friday&#x27;s workshop is you doing exactly this — to a dataset you collected. Diagnose it, standardize it, drop the junk, until it&#x27;s analysis-ready. Cleaning is unglamorous, but it&#x27;s where honest analysis begins: every choice you make here (what to fill, what to drop, how to label) quietly shapes the conclusions you&#x27;ll draw later. And next week the payoff arrives: with a clean comment column, VADER will score each comment&#x27;s tone: how positive or negative its words are. That is a second, separate measure. It does not replace the &quot;support / oppose / neutral&quot; stance you labeled by hand; a comment can oppose the law in cheerful words or support it angrily. Keep both columns side by side, because the places where they disagree are some of the most interesting findings you&#x27;ll make. Clean data in, real analysis out.</p>
+<pre data-pagefind-weight="0.5"># a peek at next week: clean text is what sentiment scoring needs
+clean_df[[&quot;comment&quot;, &quot;stance&quot;]].head()</pre>
+<h2 id="playground">Playground</h2>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div></body></html>

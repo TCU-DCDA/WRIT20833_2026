@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lists, Loops &amp; Conditionals — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Days 3–4"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-10-23"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb">Open it in Colab ↗</a></p><h1>Lists, Loops &amp; Conditionals</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<p data-pagefind-weight="0.5">How this notebook works. It covers two class days (Friday and Monday). Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
+<h2 id="comparisons-conditionals">Comparisons &amp; Conditionals</h2>
+<p data-pagefind-weight="0.5">Before we start storing whole collections of data, we need a way to make decisions. Conditionals let the computer ask yes/no questions about data.</p>
+<h4 id="comparison-operators">Comparison operators</h4>
+<p data-pagefind-weight="0.5">| Operator | Meaning | |----------|---------| | == | equal to | | != | not equal to | | &gt; | greater than | | = | greater than or equal to | | &lt;= | less than or equal to | | in | is this inside a string? (on Monday: a list) | Predict first. Each line below prints True or False. Write your three guesses in the comment, then run it.</p>
+<pre data-pagefind-weight="0.5"># my guess:
+print(10 &gt; 5)
+print(&quot;TCU&quot; == &quot;tcu&quot;)       # case matters!
+print(&quot;Frogs&quot; in &quot;TCU Horned Frogs&quot;)   # `in` from Day 2, now as a yes/no question</pre>
+<h4 id="if-elif-else">if / elif / else</h4>
+<p data-pagefind-weight="0.5">An if statement runs code only when a condition is True. Add elif (else if) for additional checks, and else as a catch-all. Notice the pattern: condition ends with a colon :, and the code underneath is indented.</p>
+<pre data-pagefind-weight="0.5">tcu_score = 34
+smu_score = 31
+
+if tcu_score &gt; smu_score:
+    print(&quot;TCU wins!&quot;)
+elif tcu_score == smu_score:
+    print(&quot;Headed to overtime&quot;)
+else:
+    print(&quot;Better luck next year&quot;)</pre>
+<p data-pagefind-weight="0.5">Two conditions can be joined with and (both must be true) or or (either one will do).</p>
+<pre data-pagefind-weight="0.5"># type along — print &quot;You can vote!&quot; only if age &gt;= 18 AND has_id is True; otherwise &quot;Not yet eligible&quot;
+age = 20
+has_id = True</pre>
+<p data-pagefind-weight="0.5">in works inside a condition too. Here is a bio and a platform to look for:</p>
+<pre data-pagefind-weight="0.5">bio = &quot;Film student. Coffee addict. Posting mostly on TikTok and Letterboxd.&quot;
+favorite = &quot;YouTube&quot;</pre>
+<pre data-pagefind-weight="0.5"># type along — if `favorite` is in `bio`, print that it is; otherwise print that it isn&#x27;t (use an f-string)</pre>
+<h4 id="your-turn">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — write an if / elif / else that sorts something into categories
+# (a score, a year, a word in a caption — your choice)</pre>
+<p data-pagefind-weight="0.5">---</p>
+<h4 id="day-3-stops-here">🛑 Day 3 stops here</h4>
+<p data-pagefind-weight="0.5">On Monday we pick up with lists — and in will work on them exactly the way it works on strings. Then we&#x27;ll combine lists with the conditionals you just wrote to build loops that sort whole collections at once.</p>
+<h2 id="lists">Lists</h2>
+<p data-pagefind-weight="0.5">A list is an ordered collection of items — like a column in a spreadsheet. So far we&#x27;ve stored single values in variables. But real data comes in groups: a playlist of songs, a set of hashtags, a roster of names. Lists let us work with all of them at once. - Created with square brackets [] - Items separated by commas - Can hold any data type (strings, numbers, booleans) - Order is preserved — first item stays first</p>
+<pre data-pagefind-weight="0.5"># a list of strings
+platforms = [&quot;TikTok&quot;, &quot;Instagram&quot;, &quot;YouTube&quot;, &quot;Threads&quot;, &quot;X&quot;]
+
+print(platforms)</pre>
+<pre data-pagefind-weight="0.5"># type along — make a list of five numbers called `follower_counts`, then print it</pre>
+<pre data-pagefind-weight="0.5"># type along — how many platforms are in the list? len() works on lists just like strings</pre>
+<pre data-pagefind-weight="0.5"># your turn — create a list of your favorite shows, artists, or podcasts
+my_favorites = []  # replace with your own items
+
+print(my_favorites)</pre>
+<h2 id="indexing">Indexing</h2>
+<p data-pagefind-weight="0.5">Each item in a list has a position number called an index. Python starts counting at 0, not 1. Think of it like floors in a building where the ground floor is 0. | Index | 0 | 1 | 2 | 3 | 4 | |-------|---|---|---|---|---| | Item | TikTok | Instagram | YouTube | Threads | X | Predict first. Which platform prints on each line? Write your guesses, then run.</p>
+<pre data-pagefind-weight="0.5"># my guess: [0] =    [2] =    [-1] =
+print(platforms[0])   # first item
+print(platforms[2])   # third item
+print(platforms[-1])  # last item (negative counts from the end)</pre>
+<pre data-pagefind-weight="0.5"># what happens when you try an index that doesn&#x27;t exist?
+# uncomment the line below and run it — read the error message
+
+# platforms[10]</pre>
+<h2 id="slicing">Slicing</h2>
+<p data-pagefind-weight="0.5">Slicing pulls out a portion of a list. The syntax is list[start:stop] — it includes the start position but stops before the stop position. Think of it as &quot;from here, up to but not including there.&quot; You did this with strings on Days 1 and 2; lists slice the same way.</p>
+<pre data-pagefind-weight="0.5"># type along — print the first three platforms; then from index 2 to the end; then the last two</pre>
+<h2 id="list-methods">List Methods</h2>
+<p data-pagefind-weight="0.5">Methods are actions you can perform on a list. They use dot notation: list.method()</p>
+<h4 id="adding-items-append-and-extend">Adding items — .append() and .extend()</h4>
+<pre data-pagefind-weight="0.5"># .append() adds one item to the end
+artists = [&quot;Beyoncé&quot;, &quot;Bad Bunny&quot;, &quot;Tyler the Creator&quot;]
+artists.append(&quot;SZA&quot;)
+
+print(artists)</pre>
+<pre data-pagefind-weight="0.5"># type along — make new_artists = [&quot;Kendrick Lamar&quot;, &quot;Olivia Rodrigo&quot;], add them all at once with .extend(), print</pre>
+<h4 id="removing-items-remove">Removing items — .remove()</h4>
+<pre data-pagefind-weight="0.5"># type along — remove &quot;Bad Bunny&quot; from `artists` with .remove(), then print the list</pre>
+<h4 id="organizing-sort-and-reverse">Organizing — .sort() and .reverse()</h4>
+<pre data-pagefind-weight="0.5">artists.sort()
+print(&quot;Sorted:&quot;, artists)
+
+artists.reverse()
+print(&quot;Reversed:&quot;, artists)</pre>
+<h4 id="counting-and-finding-count-and-index">Counting and finding — .count() and .index()</h4>
+<p data-pagefind-weight="0.5">Predict first. How many times does #TCU appear? What index is #FortWorth at?</p>
+<pre data-pagefind-weight="0.5"># my guess: count =    index =
+tags = [&quot;#TCU&quot;, &quot;#GoFrogs&quot;, &quot;#TCU&quot;, &quot;#FortWorth&quot;, &quot;#TCU&quot;]
+
+print(tags.count(&quot;#TCU&quot;))       # how many times does #TCU appear?
+print(tags.index(&quot;#FortWorth&quot;))  # what position is #FortWorth at?</pre>
+<pre data-pagefind-weight="0.5"># your turn — build a list, then try .append(), .sort(), and .count()
+my_list = []
+
+# add some items
+
+# sort it
+
+# count something
+
+print(my_list)</pre>
+<h2 id="for-loops">For Loops</h2>
+<p data-pagefind-weight="0.5">A for loop repeats an action for every item in a list. This is where coding gets powerful — instead of writing the same code over and over, you write it once and the loop handles the rest. The structure: python for item in mylist: do something with item - item is a temporary variable that takes on each value in the list, one at a time - The indented code runs once per item - You can name item whatever makes sense (name, tag, year, etc.)</p>
+<pre data-pagefind-weight="0.5"># loop through our platforms list
+for platform in platforms:
+    print(f&quot;Checking: {platform}&quot;)</pre>
+<pre data-pagefind-weight="0.5"># type along — loop over `prices`; for each one, multiply by 1.0825 (Texas sales tax) and print both numbers
+prices = [9.99, 14.99, 4.99, 19.99]</pre>
+<h4 id="loops-conditionals">Loops + Conditionals</h4>
+<p data-pagefind-weight="0.5">The real power shows up when you combine loops with if statements — now you can process a list and make decisions about each item.</p>
+<pre data-pagefind-weight="0.5"># filter: which platforms have short names?
+for platform in platforms:
+    if len(platform) &lt;= 5:
+        print(f&quot;{platform} — short name ({len(platform)} chars)&quot;)
+    else:
+        print(f&quot;{platform} — longer name ({len(platform)} chars)&quot;)</pre>
+<pre data-pagefind-weight="0.5"># type along — for each year print its generation: &lt;= 1964 Boomer, &lt;= 1980 Gen X, &lt;= 1996 Millennial, else Gen Z
+years = [1966, 1985, 1997, 2003, 1961, 1995]</pre>
+<h4 id="counting-with-loops">Counting with loops</h4>
+<p data-pagefind-weight="0.5">A common pattern: start a counter at 0, then add to it inside a loop.</p>
+<pre data-pagefind-weight="0.5"># count how many hashtags mention TCU
+tags = [&quot;#TCU&quot;, &quot;#GoFrogs&quot;, &quot;#FortWorth&quot;, &quot;#TCU&quot;, &quot;#BigXII&quot;, &quot;#TCU&quot;]
+
+tcu_count = 0
+
+for tag in tags:
+    if tag == &quot;#TCU&quot;:
+        tcu_count = tcu_count + 1
+
+print(f&quot;TCU was mentioned {tcu_count} times out of {len(tags)} total tags&quot;)</pre>
+<h4 id="building-new-lists-from-old-ones">Building new lists from old ones</h4>
+<p data-pagefind-weight="0.5">Another essential pattern: start with an empty list, loop through a source list, and .append() items that meet your criteria. This is like going through a library catalog and pulling only the books that match your research topic.</p>
+<pre data-pagefind-weight="0.5"># pull out only the short platform names
+short_names = []
+
+for platform in platforms:
+    if len(platform) &lt;= 5:
+        short_names.append(platform)
+
+print(&quot;Short platform names:&quot;, short_names)</pre>
+<pre data-pagefind-weight="0.5"># type along — build `clean_authors`: only the names that do NOT contain &quot;(?)&quot;; then print raw and clean
+raw_authors = [&quot;Toni Morrison&quot;, &quot;Unknown (?)&quot;, &quot;James Baldwin&quot;, &quot;N.K. Jemisin&quot;, &quot;Anonymous (?)&quot;]</pre>
+<h4 id="using-enumerate-tracking-position">Using enumerate() — tracking position</h4>
+<p data-pagefind-weight="0.5">Sometimes you need to know both the item and its position. enumerate() gives you both.</p>
+<pre data-pagefind-weight="0.5"># create a numbered playlist
+playlist = [&quot;Not Like Us&quot;, &quot;Espresso&quot;, &quot;Birds of a Feather&quot;, &quot;APT.&quot;, &quot;Die With a Smile&quot;]
+
+for position, song in enumerate(playlist, 1):  # start counting at 1
+    print(f&quot;{position}. {song}&quot;)</pre>
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+<p data-pagefind-weight="0.5">Let&#x27;s combine everything — lists, methods, loops, and conditionals — to do something that actually looks like digital humanities work.</p>
+<pre data-pagefind-weight="0.5"># analyze hashtag frequency from a mock social media dataset
+social_tags = [&quot;#climate&quot;, &quot;#action&quot;, &quot;#justice&quot;, &quot;#climate&quot;, &quot;#equality&quot;,
+               &quot;#justice&quot;, &quot;#climate&quot;, &quot;#activism&quot;, &quot;#equality&quot;, &quot;#climate&quot;]
+
+# find unique tags and count each one
+analyzed = []
+
+print(&quot;Hashtag Frequency Analysis&quot;)
+print(&quot;-&quot; * 30)
+
+for tag in social_tags:
+    if tag not in analyzed:
+        count = social_tags.count(tag)
+        print(f&quot;{tag}: {count} times&quot;)
+        analyzed.append(tag)
+
+print(f&quot;\nTotal tags: {len(social_tags)}&quot;)
+print(f&quot;Unique tags: {len(analyzed)}&quot;)</pre>
+<h4 id="your-turn-2">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — how many podcasts are hosted on each platform?
+# Use the counting pattern: start a counter at 0 for each platform, loop, add one when it matches.
+# Then print each count. Bonus: print each one as a percentage of the total.
+podcast_hosts = [&quot;Spotify&quot;, &quot;Apple&quot;, &quot;Spotify&quot;, &quot;YouTube&quot;, &quot;Spotify&quot;, &quot;Apple&quot;, &quot;YouTube&quot;, &quot;Spotify&quot;]</pre>
+<h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
+<p data-pagefind-weight="0.5">Now that you can work with lists and loops, you&#x27;re ready for the next level. Dictionaries let you pair keys with values — like a contact list where each name has a phone number. Functions let you package your code into reusable tools. Here&#x27;s a taste of what&#x27;s coming:</p>
+<pre data-pagefind-weight="0.5"># dictionaries — pair keys with values (next lesson)
+album = {
+    &quot;title&quot;: &quot;Renaissance&quot;,
+    &quot;artist&quot;: &quot;Beyoncé&quot;,
+    &quot;year&quot;: 2022,
+    &quot;tracks&quot;: 16
+}
+
+print(f&quot;{album[&#x27;title&#x27;]} by {album[&#x27;artist&#x27;]} ({album[&#x27;year&#x27;]})&quot;)
+print(f&quot;{album[&#x27;tracks&#x27;]} tracks&quot;)</pre>
+<pre data-pagefind-weight="0.5"># functions — reusable code blocks (next lesson)
+def classify_year(year):
+    if year &lt;= 1964:
+        return &quot;Boomer&quot;
+    elif year &lt;= 1980:
+        return &quot;Gen X&quot;
+    elif year &lt;= 1996:
+        return &quot;Millennial&quot;
+    else:
+        return &quot;Gen Z&quot;
+
+# now we can use it in a loop
+family = [1962, 1985, 1997, 2004]
+
+for year in family:
+    generation = classify_year(year)
+    print(f&quot;{year} → {generation}&quot;)</pre>
+<h2 id="playground">Playground</h2>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div></body></html>

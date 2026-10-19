@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Variables &amp; Data Types — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Day 1"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-10-19"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb">Open it in Colab ↗</a></p><h1>Variables &amp; Data Types</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<p data-pagefind-weight="0.5">How today works. Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide. (One cell today is supposed to error. You&#x27;ll know it when you see it.) Today&#x27;s core: save your copy, variables, data types, and the type error near the end. Sections marked Reference / if time are a preview of Wednesday; we&#x27;ll do them in class if there&#x27;s time, and if not, they&#x27;re here to read and run on your own.</p>
+<h2 id="variables">Variables</h2>
+<p data-pagefind-weight="0.5">A variable is a label we apply to a stored data point. - The data exists at a specific memory location with its own address - The variable is just a human-friendly name that points to that location - The data and the variable name are separate things</p>
+<h2 id="variable-names">Variable Names</h2>
+<p data-pagefind-weight="0.5"></p>
+<h4 id="good-variable-names">Good variable names</h4>
+<p data-pagefind-weight="0.5">- Descriptive: songtitle is better than x - snakecase: words separated by underscores (commentcount, not commentCount) - Lowercase: capital letters are reserved for special things in Python</p>
+<h4 id="off-limits-names">Off-limits names</h4>
+<p data-pagefind-weight="0.5">Python has reserved words you can&#x27;t use as variable names. If you accidentally use one, things break quietly: - type, print, list, str, int — these are built-in functions - for, if, while, class, return — these are language keywords</p>
+<pre data-pagefind-weight="0.5"># type along — store a first name in a variable called `name`, then print it</pre>
+<h2 id="re-assigning-variables">Re-Assigning Variables</h2>
+<p data-pagefind-weight="0.5">A variable only ever points at one value. Assign something new and the old value is simply gone.</p>
+<pre data-pagefind-weight="0.5"># type along — assign a different name to `name`, then print it again. Where did the first one go?</pre>
+<h2 id="data-types">Data Types</h2>
+<p data-pagefind-weight="0.5">Four to know today: Strings — text, in quotes Integers — whole numbers Floats — numbers with a decimal point Booleans — True or False</p>
+<pre data-pagefind-weight="0.5"># Strings — anything in quotes is text, even if it looks like a number
+
+happiest_students = &quot;TCU&quot;
+happiest_number_of_students = &quot;40&quot;
+
+print(happiest_students)
+print(happiest_number_of_students)</pre>
+<p data-pagefind-weight="0.5">Predict first. type() tells you what kind of value a variable holds. Is &quot;40&quot; a number here? Write your guess in the comment, then run the cell.</p>
+<pre data-pagefind-weight="0.5"># my guess:
+type(happiest_number_of_students)</pre>
+<pre data-pagefind-weight="0.5"># type along — assign the number 40 (no quotes) to `happiest_number_of_students`, then check its type</pre>
+<pre data-pagefind-weight="0.5"># Floats — the decimal point is what makes it a float
+
+pi = 3.14
+
+type(pi)</pre>
+<pre data-pagefind-weight="0.5"># Booleans — a comparison with == asks a yes/no question and answers True or False
+
+old_friend = &quot;Brad&quot;
+new_friend = &quot;Selina&quot;
+
+&quot;Selina&quot; == old_friend</pre>
+<h4 id="your-turn">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — write a comparison of your own that comes out True</pre>
+<h2 id="check-data-types">Check Data Types</h2>
+<p data-pagefind-weight="0.5">Four variables, four types. type() on each one:</p>
+<pre data-pagefind-weight="0.5"># Check the type of each variable we&#x27;ve created
+
+print(type(happiest_students))
+print(type(happiest_number_of_students))
+print(type(pi))
+print(type(old_friend == new_friend))</pre>
+<h2 id="strings-and-string-methods">Strings and String Methods</h2>
+<p data-pagefind-weight="0.5">&gt; Reference / if time. Not part of today&#x27;s core. Wednesday&#x27;s session covers this properly. A quick first pass — Wednesday&#x27;s whole session is strings, so today is just a taste.</p>
+<pre data-pagefind-weight="0.5"># len — how many characters? Spaces count too
+
+beyonce = &quot;a famous and very rich artist&quot;
+
+len(beyonce)</pre>
+<p data-pagefind-weight="0.5">Every character also has a position number, its index. Python starts counting at 0, not 1: | Index | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | |-------|---|---|---|---|---|---|---|---|---|---| | Character | a | (space) | f | a | m | o | u | s | (space) | a | So 29 characters means the last index is 28. Predict first. Keep counting along the string: which character is at position 14?</p>
+<pre data-pagefind-weight="0.5"># my guess:
+beyonce[14]</pre>
+<pre data-pagefind-weight="0.5"># type along — slice from index 14 up to (but not including) index 20</pre>
+<pre data-pagefind-weight="0.5"># add (concatenate) — + glues two strings together
+
+name = &quot;TJ&quot;
+action = &quot; is sitting&quot;
+
+print(name + action)</pre>
+<pre data-pagefind-weight="0.5"># type along — set `name` to &quot;Curt&quot; and `moniker` to &quot;curt&quot;; lowercase `name` with .lower(), then compare the two with ==</pre>
+<pre data-pagefind-weight="0.5"># type along — count how many times the letter &quot;a&quot; appears in `beyonce` with .count()</pre>
+<pre data-pagefind-weight="0.5"># split — break a string into a list of words
+
+words = beyonce.split()
+
+print(words)
+print(len(words))</pre>
+<pre data-pagefind-weight="0.5"># f-string — embed variables directly inside a string
+
+artist = &quot;Beyoncé&quot;
+album_count = 8
+
+print(f&quot;{artist} has released {album_count} studio albums.&quot;)
+print(f&quot;That&#x27;s roughly one album every {30 // album_count} years.&quot;)</pre>
+<h4 id="your-turn-2">Your turn</h4>
+<pre data-pagefind-weight="0.5"># your turn — write an f-string about an artist, show, or team you follow, using at least one variable</pre>
+<h2 id="integers-floats-and-operations">Integers &amp; Floats and Operations</h2>
+<p data-pagefind-weight="0.5">&gt; Reference / if time. Not part of today&#x27;s core. Read and run these on your own if we skip them. When we&#x27;re dealing with actual numbers (whole numbers and decimal points), we can use basic mathematical operations that should be pretty familiar: x + y x - y x y x / y -x xy (x to the y power) Some operations that are helpful but less obvious would be: x // y (floored quotient of x and y) x % y (remainder of x/y)</p>
+<pre data-pagefind-weight="0.5"># x**y — exponentiation
+
+followers = 1000
+annual_growth = 2
+
+# if followers doubled every year for 5 years
+followers * annual_growth**5</pre>
+<pre data-pagefind-weight="0.5"># type along — 23 songs, 2 per side of a record: how many are left over? use % (modulo)</pre>
+<h2 id="type-errors">Type Errors</h2>
+<p data-pagefind-weight="0.5">Back to the core. If we skipped the last two sections, start again here. Python will not quietly guess what you meant when you mix types. It stops and tells you.</p>
+<pre data-pagefind-weight="0.5"># What happens when you mix types?
+
+greeting = &quot;hello&quot;
+number = 5
+
+# this will cause a TypeError — read the error message carefully
+greeting + number</pre>
+<p data-pagefind-weight="0.5">Read the last line of that message. It names the two types that didn&#x27;t fit together. There are two ways to fix it, depending on what you want:</p>
+<pre data-pagefind-weight="0.5"># type along — fix it two ways: (1) turn `number` into a string with str() and use +; (2) use an f-string</pre>
+<h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
+<p data-pagefind-weight="0.5">Everything we just learned — variables, strings, .split(), f-strings — is the foundation for analyzing real cultural data. Here&#x27;s a taste of what we&#x27;ll be doing in a few weeks.</p>
+<pre data-pagefind-weight="0.5"># A real headline about the Ten Commandments in public schools
+headline = &quot;Louisiana law requiring Ten Commandments in classrooms blocked by federal judge&quot;
+
+# Use .split() to count words
+word_count = len(headline.split())
+
+# Use `in` to check for a keyword
+mentions_law = &quot;law&quot; in headline
+
+# Use an f-string to report what we found
+print(f&quot;Headline: {headline}&quot;)
+print(f&quot;Word count: {word_count}&quot;)
+print(f&quot;Mentions &#x27;law&#x27;: {mentions_law}&quot;)</pre>
+<h2 id="playground">Playground</h2>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div></body></html>

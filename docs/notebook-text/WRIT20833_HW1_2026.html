@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>HW1 · Foundations — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"></head>
+<body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Homework · due Day 7"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/homework/WRIT20833_HW1_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-10-30"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/homework/WRIT20833_HW1_2026.ipynb">Open it in Colab ↗</a></p><h1>HW1 · Foundations</h1>
+<h2 id="homework-1-comparisons-conditionals-lists-and-loops">Homework 1 — Comparisons, Conditionals, Lists, and Loops</h2>
+<p data-pagefind-weight="0.5">WRIT 20833 — Intro to Coding in the Humanities Student Name: Replace with your name Upload as: LASTNAMEHW1.ipynb New to Colab, or submitting? See Working in Colab. ---</p>
+<h3 id="what-you-re-doing">What you&#x27;re doing</h3>
+<p data-pagefind-weight="0.5">This week you&#x27;ll practice comparisons, conditionals, lists, and loops — the tools that let code make decisions and process many items at once. Every exercise is self-contained: the data you need is already in the cell, so you don&#x27;t need any outside textbook. If you want a refresher, review our own materials below.</p>
+<h3 id="prepare">Prepare</h3>
+<p data-pagefind-weight="0.5">Before you start, review this week&#x27;s course materials: - Day 3 — Classification Logic (comparisons, booleans, if/elif/else) - Day 4 — Collective Memory (lists, for loops, systematic processing) - The Strings &amp; String Methods and Lists, Loops &amp; Conditionals code-alongs</p>
+<h3 id="expected-frequent-meaningful-comments">Expected: frequent, meaningful #comments</h3>
+<p data-pagefind-weight="0.5">Comment your code as you work — not every single line, but often, and wherever you make a choice or hit a question: say what you&#x27;re trying to do and what you learned (or what confused you). These #comments are where your thinking shows, so they&#x27;re a real part of the work — writing them frequently is expected. For example: python</p>
+<h2 id="i-wanted-to-see-what-happens-if-i-compare-a-word-to-a-number">I wanted to see what happens if I compare a word to a number.</h2>
+<h2 id="i-learned-that-python-raises-a-typeerror-you-can-only-compare-numbers-to-numbers">I learned that Python raises a TypeError — you can only compare numbers to numbers.</h2>
+<p data-pagefind-weight="0.5">&quot;apple&quot; &gt; 5</p>
+<h3 id="part-a-comparisons-conditionals-6-exercises">Part A — Comparisons &amp; Conditionals (6 exercises)</h3>
+<p data-pagefind-weight="0.5">A1 — Comparing engagement. You have like-counts for one comment on two different days.</p>
+<pre data-pagefind-weight="0.5"># A1
+likes_day1 = 47
+likes_day2 = 52
+
+# TODO: print whether day2 had MORE likes than day1 (a True/False comparison)
+# TODO: print whether the two counts are EQUAL
+
+# #comments:
+# What did you try?
+# What did you learn about comparison operators?
+</pre>
+<p data-pagefind-weight="0.5">A2 — A case-insensitive moderation check.</p>
+<pre data-pagefind-weight="0.5"># A2
+comment = &quot;This take is GARBAGE and you know it&quot;
+
+# TODO: print &quot;flagged&quot; if the comment contains &quot;garbage&quot; in ANY capitalization, else print &quot;ok&quot;.
+# Hint: .lower() lowercases text; the `in` operator checks if one string is inside another.
+
+# #comments:
+# Who decides which words count as &quot;flagged&quot;?
+# What might a rule like this get wrong?
+</pre>
+<p data-pagefind-weight="0.5">A3 — Classifying a person by age. (Recall Day 3: Classification Logic.)</p>
+<pre data-pagefind-weight="0.5"># A3
+age = 28
+
+# TODO: write if / elif / else that prints:
+#   &quot;youth&quot;        if age is under 18
+#   &quot;working age&quot;  if age is 18 to 59
+#   &quot;elder&quot;        if age is 60 or older
+
+# #comments:
+# What assumptions does this 3-category system bake in?
+# (Recall the Bellevue Almshouse example from Collective Memory: how does a
+# simple comparison become a social category?)
+</pre>
+<p data-pagefind-weight="0.5">A4 — An edge case: predict, then run.</p>
+<pre data-pagefind-weight="0.5"># A4 — predict, then run
+# First PREDICT, in a comment, what `&quot;apple&quot; &gt; 5` will do. THEN run this cell.
+# (The try/except just lets us SEE the error without stopping the notebook --
+#  you do not need to understand that syntax yet.)
+try:
+    print(&quot;apple&quot; &gt; 5)
+except Exception as error:
+    print(&quot;Python raised an error:&quot;, error)
+
+# #comments:
+# My prediction was:
+# What does the error message teach you about comparing a string to a number?
+</pre>
+<p data-pagefind-weight="0.5">A5 — Combining conditions with and / or / not.</p>
+<pre data-pagefind-weight="0.5"># A5
+is_registered = True
+is_banned = False
+
+# TODO: make a variable `can_post` that is True ONLY if the user IS registered AND is NOT banned. Print it.
+# TODO: change the values above and re-run to test a banned user.
+
+# #comments:
+# How do `and` / `or` / `not` change the outcome?
+</pre>
+<p data-pagefind-weight="0.5">A6 — Membership testing (a preview of next week).</p>
+<pre data-pagefind-weight="0.5"># A6
+stopwords = [&quot;the&quot;, &quot;a&quot;, &quot;is&quot;, &quot;and&quot;, &quot;of&quot;]
+word = &quot;and&quot;
+
+# TODO: print whether `word` is in `stopwords` (True/False)
+# TODO: write if/else that prints &quot;skip this word&quot; if it is a stopword, else &quot;keep this word&quot;
+
+# #comments:
+# Why might we skip common words like these when analyzing text?
+</pre>
+<h3 id="part-b-lists-loops-part-1-4-exercises">Part B — Lists &amp; Loops, Part 1 (4 exercises)</h3>
+<p data-pagefind-weight="0.5">B1 — A small corpus of comments.</p>
+<pre data-pagefind-weight="0.5"># B1
+comments = [&quot;Love this&quot;, &quot;Not sure about this&quot;, &quot;This is wrong&quot;, &quot;Great point&quot;]
+
+# TODO: print how many comments are in the list
+# TODO: print the FIRST comment and the LAST comment (use indexing)
+
+# #comments:
+</pre>
+<p data-pagefind-weight="0.5">B2 — Processing every comment with a loop. (Recall Day 4: Collective Memory.)</p>
+<pre data-pagefind-weight="0.5"># B2
+comments = [&quot;Love this&quot;, &quot;Not sure about this&quot;, &quot;This is wrong&quot;, &quot;Great point&quot;]
+
+# TODO: use a for-loop to print each comment AND its word count
+#       (hint: a_string.split() returns a list of words)
+# TODO: count how many comments have FEWER than 3 words, and print that total
+
+# #comments:
+# A loop applies the SAME rule to every item. Where could that be a problem
+# when the &quot;items&quot; are people&#x27;s words?
+</pre>
+<p data-pagefind-weight="0.5">B3 — Building a new list with .append().</p>
+<pre data-pagefind-weight="0.5"># B3
+comments = [&quot;Love this&quot;, &quot;Not sure about this&quot;, &quot;This is wrong&quot;, &quot;Great point&quot;]
+
+# TODO: create an empty list called `lengths`
+# TODO: loop through `comments` and append each comment&#x27;s word count to `lengths`
+# TODO: print `lengths`
+
+# #comments:
+</pre>
+<p data-pagefind-weight="0.5">B4 — Finding the longest comment.</p>
+<pre data-pagefind-weight="0.5"># B4
+comments = [&quot;Love this&quot;, &quot;Not sure about this&quot;, &quot;This is wrong&quot;, &quot;Great point&quot;]
+
+# TODO: loop through the comments and find the one with the MOST words.
+#       Keep track of the longest so far in a variable as you go.
+# TODO: print the longest comment.
+
+# #comments:
+# Describe your strategy for &quot;remembering&quot; the longest one while looping.
+</pre>
+<h3 id="part-c-lists-loops-part-2-2-exercises">Part C — Lists &amp; Loops, Part 2 (2 exercises)</h3>
+<p data-pagefind-weight="0.5">C1 — Combining lists, loops, and conditionals. (This previews next week&#x27;s term-frequency homework.)</p>
+<pre data-pagefind-weight="0.5"># C1
+flagged_words = [&quot;garbage&quot;, &quot;wrong&quot;, &quot;stupid&quot;]
+comments = [&quot;Love this&quot;, &quot;This is wrong&quot;, &quot;GARBAGE take&quot;, &quot;Great point&quot;, &quot;stupid idea&quot;]
+
+# TODO: create an empty list called `flagged`
+# TODO: loop through `comments`; if a comment (lowercased) contains ANY flagged word, append it to `flagged`
+# TODO: print `flagged` and how many comments were caught
+
+# #comments:
+# What does this automated filter MISS?
+# (Recall Collective Memory: what happens to context and nuance at scale?)
+</pre>
+<p data-pagefind-weight="0.5">C2 — From many comments to one word list. (The heart of next week&#x27;s term-frequency homework.)</p>
+<pre data-pagefind-weight="0.5"># C2
+comments = [&quot;Love this&quot;, &quot;This is wrong&quot;, &quot;I really love this&quot;, &quot;Great great point&quot;]
+
+# TODO: create an empty list called `all_words`
+# TODO: loop through each comment, split it into lowercase words, and add those words to `all_words`
+# TODO: print the TOTAL number of words, and the number of DISTINCT words
+#       (hint: set(all_words) keeps only unique items)
+
+# #comments:
+# Next week we will COUNT these words. Which word do you expect to be most common, and why?
+</pre>
+<h3 id="weekly-experiments-your-own-work">Weekly Experiments (your own work!)</h3>
+<p data-pagefind-weight="0.5">After the required exercises, create 2–3 small experiments of your own using this week&#x27;s skills. Make them original — not copies of the exercises above. Ideas: - Combine a loop and a conditional in one example. - Test an edge case (a very large number, an empty list [], a comment with no spaces). - Make something playful or artistic with loops and conditionals. It&#x27;s fine if an experiment doesn&#x27;t work at first — documenting what went wrong and what you learned is worth just as much as working code.</p>
+<pre data-pagefind-weight="0.5"># Experiment 1
+
+
+# #comments:
+# What were you trying? What happened? What did you learn?
+</pre>
+<pre data-pagefind-weight="0.5"># Experiment 2
+
+
+# #comments:
+# What were you trying? What happened? What did you learn?
+</pre>
+<pre data-pagefind-weight="0.5"># Experiment 3
+
+
+# #comments:
+# What were you trying? What happened? What did you learn?
+</pre>
+<h3 id="submit">Submit</h3>
+<p data-pagefind-weight="0.5">- [ ] My name is at the top. - [ ] I completed Part A (6), Part B (4), Part C (2), and 2–3 experiments. - [ ] I used #comments frequently and meaningfully — showing my thinking wherever I made a choice or hit a question (not every line, but throughout). - [ ] I ran every cell. Where something still breaks, I left a #comment about what I tried and what I learned — errors are part of the work here, not something to hide or delete. - [ ] Saved as LASTNAMEHW1.ipynb and uploaded to its folder in TCU Online → Assignments. Time estimate: ~1.5–2 hrs for the exercises, ~1 hr for your experiments.</p></div></div></body></html>
