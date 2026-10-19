@@ -20,6 +20,7 @@ import re, html, os
 from PIL import Image
 from site_theme import PAGE, site_header, site_footer, write_stylesheet, assert_accessible
 from build_chatbot import CHAT_API_URL  # the Code Guide pill appears only once its Worker is deployed
+from release_dates import day_table  # a lecture's opening date, stamped for the site search
 
 REPO = "TCU-DCDA/WRIT20833_2026"
 RAW = f"https://raw.githubusercontent.com/{REPO}/main/"
@@ -169,10 +170,10 @@ def render_body(lines, lead=False):
 
 # ---------- reading page ----------
 
-def build_reading(slug, title, subtitle, kicker, body):
+def build_reading(slug, title, subtitle, kicker, body, day=None):
     body = strip_slide_blocks(body)
     masthead = (
-        '<div class="backlink"><a href="../index.html#lectures">← All lectures</a>'
+        '<div class="backlink" data-pagefind-ignore="all"><a href="../index.html#lectures">← All lectures</a>'
         f'<span class="sep">·</span><a href="{slug}.deck.html">Slides ▸</a></div>'
         '<header class="masthead">'
         f'<div class="kicker">{html.escape(kicker)}</div>'
@@ -180,7 +181,10 @@ def build_reading(slug, title, subtitle, kicker, body):
         + (f'<p class="sub">{md_inline(subtitle)}</p>' if subtitle else "")
         + "</header>"
     )
-    inner = f'<div class="reading">{masthead}{render_body(body, lead=True)}</div>'
+    # The home page's card for this lecture opens on its schedule day; the site search reads the same
+    # date from this meta and hides the page from results until then (see build_search.py).
+    opens = f' data-pagefind-meta="opens:{day_table()[int(day.split()[-1])][0].isoformat()}"' if day else ""
+    inner = f'<div class="reading"{opens}>{masthead}{render_body(body, lead=True)}</div>'
     page = PAGE(html.escape(f"{title} — WRIT 20833"), inner, wrap=True, css_href="../styles.css",
                 header=site_header(active="Lectures", prefix="../", chat=bool(CHAT_API_URL)),
                 footer=site_footer("WRIT 20833 · When Coding Meets Culture · mini-lecture"))
@@ -508,7 +512,8 @@ def build_deck(slug, title, subtitle, kicker, body):
            '<div class="deck-hint">← → navigate · click to advance</div>')
     body_html = f'<div class="deck">{title_slide}{content}</div>{nav}{DECK_SCRIPT}'
     page = PAGE(html.escape(f"{title} (slides) — WRIT 20833"), body_html,
-                extra_css=DECK_CSS, wrap=False, css_href=None)
+                extra_css=DECK_CSS, wrap=False, css_href=None,
+                searchable=False)  # same text as the reading page, which search finds instead
     out = os.path.join(OUT_DIR, f"{slug}.deck.html")
     open(out, "w", encoding="utf-8").write(page)
     return out
@@ -521,6 +526,6 @@ if __name__ == "__main__":
     for slug, src, ml, day in LECTURES:
         title, subtitle, meta, body = parse_head(open(src, encoding="utf-8").read().splitlines())
         kicker = meta or f"{ml} · {day}"
-        r = build_reading(slug, title, subtitle, kicker, body)
+        r = build_reading(slug, title, subtitle, kicker, body, day)
         d = build_deck(slug, title, subtitle, kicker, body)
         print(f"wrote {r} ({os.path.getsize(r)} b) + {d} ({os.path.getsize(d)} b)")

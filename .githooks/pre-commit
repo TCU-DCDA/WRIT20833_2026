@@ -1,0 +1,8 @@
+#!/bin/sh
+# If this commit touches a published page, rebuild the search index and add it
+# to the same commit, so search never lags behind the site.
+# Install once per clone:  git config core.hooksPath .githooks
+if git diff --cached --name-only | grep -E '^docs/.*\.html$' | grep -qv '^docs/pagefind/'; then
+  sh .githooks/build-search-index.sh || exit 1
+  git add -A docs/pagefind
+fi

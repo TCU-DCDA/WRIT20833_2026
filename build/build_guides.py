@@ -46,7 +46,7 @@ def build_guide(slug, src, kicker, section):
     title, subtitle, _, body = parse_head(lines)
     body, ids = with_anchors(body)
     masthead = (
-        f'<div class="backlink"><a href="../index.html#{section.lower()}">← {section}</a></div>'
+        f'<div class="backlink" data-pagefind-ignore="all"><a href="../index.html#{section.lower()}">← {section}</a></div>'
         '<header class="masthead">'
         f'<div class="kicker">{html.escape(kicker)}</div>'
         f"<h1>{md_inline(title)}</h1>"

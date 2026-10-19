@@ -143,6 +143,21 @@ footer{font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-al
   border-radius:8px;border:1px solid color-mix(in srgb,var(--paper) 32%,transparent);background:transparent;
   color:var(--paper);font-size:19px;line-height:1;cursor:pointer;}
 .nav-toggle:hover{background:color-mix(in srgb,var(--paper) 12%,transparent);}
+/* header search — a GET form to search.html?q= on wide screens, an icon link once the bar is crowded */
+.site-search{display:flex;align-items:center;}
+.site-search-form{position:relative;display:flex;align-items:center;}
+.site-search-form svg{position:absolute;left:11px;color:color-mix(in srgb,var(--paper) 72%,transparent);pointer-events:none;}
+.site-search-form input{width:150px;padding:7px 12px 7px 31px;border-radius:999px;font:13px/1.2 var(--sans);
+  color:var(--paper);background:color-mix(in srgb,var(--paper) 9%,transparent);
+  border:1px solid color-mix(in srgb,var(--paper) 22%,transparent);}
+.site-search-form input::placeholder{color:color-mix(in srgb,var(--paper) 78%,transparent);}
+.site-search-form input:focus{outline:2px solid var(--clay-bg);outline-offset:1px;
+  background:color-mix(in srgb,var(--paper) 15%,transparent);}
+.site-search-link{display:none;align-items:center;justify-content:center;width:42px;height:38px;border-radius:8px;
+  border:1px solid color-mix(in srgb,var(--paper) 32%,transparent);color:var(--paper);}
+.site-search-link:hover{background:color-mix(in srgb,var(--paper) 12%,transparent);border-color:color-mix(in srgb,var(--paper) 45%,transparent);}
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+@media (max-width:1000px){.site-search-form{display:none;} .site-search-link{display:inline-flex;}}
 .site-footer{border-top:1px solid var(--rule);margin-top:24px;}
 .site-footer .bar{max-width:1060px;margin:0 auto;padding:20px;display:flex;flex-wrap:wrap;gap:8px 22px;
   font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);}
@@ -156,7 +171,9 @@ footer{font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-al
 .jump a:hover{border-color:var(--green-mid);color:var(--clay);}
 @media (max-width:860px){
   .site-header .bar{flex-wrap:wrap;}
-  .nav-toggle{display:inline-flex;}
+  .site-search{order:1;margin-left:auto;}   /* row: brand · search · toggle; the open menu drops below */
+  .nav-toggle{display:inline-flex;order:2;margin-left:0;}
+  .site-nav{order:3;}
   .site-nav{display:none;margin-left:0;width:100%;flex-basis:100%;flex-direction:column;gap:6px;padding-top:10px;}
   .site-nav.open{display:flex;}
   .site-nav .nav-pill{text-align:left;}
@@ -253,11 +270,15 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 """
 
 
-def PAGE(title, body, extra_css="", wrap=True, css_href=STYLESHEET_NAME, header="", footer=""):
+def PAGE(title, body, extra_css="", wrap=True, css_href=STYLESHEET_NAME, header="", footer="",
+         searchable=True, head_extra=""):
     """Wrap an HTML body fragment in a full document with the course theme.
 
     ``header`` / ``footer`` (from ``site_header()`` / ``site_footer()``) are emitted full-width
     outside the ``.wrap`` column, and a header brings the small menu-toggle script with it.
+
+    ``searchable=False`` keeps the page out of the site search index (``data-pagefind-ignore="all"``
+    on ``<body>``; see build_search.py). ``head_extra`` is raw markup appended to ``<head>``.
 
     By default the theme loads from the external stylesheet ``css_href`` (written by
     ``write_stylesheet``), so the shared CSS lives in one cached file. Pass ``css_href=None``
@@ -276,11 +297,12 @@ def PAGE(title, body, extra_css="", wrap=True, css_href=STYLESHEET_NAME, header=
         head_css = f'<link rel="stylesheet" href="{css_href}">'
         if extra_css:
             head_css += f"<style>{extra_css}</style>"
+    body_attrs = "" if searchable else ' data-pagefind-ignore="all"'
     return (
         '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        f"<title>{title}</title>\n{head_css}</head>\n"
-        f"<body>{inner}</body></html>\n"
+        f"<title>{title}</title>\n{head_css}{head_extra}</head>\n"
+        f"<body{body_attrs}>{inner}</body></html>\n"
     )
 
 
@@ -338,12 +360,33 @@ GATE_JS = ('<script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return
            'a.replaceWith(s);});})();</script>')
 
 
-def site_header(active=None, prefix="", chat=False):
-    """The sticky top bar every site page shares: brand (→ home) + the menu as pills.
+SEARCH_ICON = ('<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">'
+               '<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>'
+               '<line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" '
+               'stroke-linecap="round"/></svg>')
+
+
+def site_search(prefix=""):
+    """The header search: a plain GET form to search.html?q= (works with no script on the page),
+    which CSS swaps for an icon link to search.html once the bar runs out of room."""
+    return (
+        '<div class="site-search">'
+        f'<form class="site-search-form" role="search" action="{prefix}search.html" method="get">'
+        '<label class="visually-hidden" for="site-search-q">Search the course site</label>'
+        f'{SEARCH_ICON}<input type="search" name="q" id="site-search-q" placeholder="Search" autocomplete="off">'
+        '</form>'
+        f'<a class="site-search-link" href="{prefix}search.html" aria-label="Search the course site">{SEARCH_ICON}</a>'
+        '</div>'
+    )
+
+
+def site_header(active=None, prefix="", chat=False, search=True):
+    """The sticky top bar every site page shares: brand (→ home) + the menu as pills + search.
 
     active: the label of the pill for the current page (None on the dashboard).
     prefix: path back to the site root for pages in a subfolder (``"../"`` for lectures).
     chat:   unused since the Code Guide moved under Resources; kept so callers needn't change.
+    search: False drops the header search box (the search page has its own).
     """
     pills = []
     for href, label in NAV_ITEMS:
@@ -353,13 +396,14 @@ def site_header(active=None, prefix="", chat=False):
         cur = ' aria-current="page"' if label == active else ""
         pills.append(f'<a href="{href}" class="{cls}"{cur}>{label}</a>')
     return (
-        '<header class="site-header"><div class="bar">'
+        '<header class="site-header" data-pagefind-ignore="all"><div class="bar">'
         f'<a href="{prefix}index.html" class="brand"><span class="k">WRIT 20833 · Fall 2026</span>'
         '<span class="name">When Coding Meets Culture</span></a>'
         '<button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" '
         'aria-controls="site-nav">☰</button>'
         f'<nav class="site-nav" id="site-nav" aria-label="Primary">{"".join(pills)}</nav>'
-        '</div></header>'
+        + (site_search(prefix) if search else "")
+        + '</div></header>'
     )
 
 

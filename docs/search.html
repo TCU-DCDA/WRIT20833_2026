@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search — WRIT 20833</title>
+<link rel="stylesheet" href="styles.css"><style>
+.search-box{position:relative;display:flex;align-items:center;max-width:44rem;margin:0 0 8px;}
+.search-box svg{position:absolute;left:14px;color:var(--muted);pointer-events:none;}
+.search-box input{width:100%;padding:12px 14px 12px 40px;font:17px/1.3 var(--sans);color:var(--ink);
+  background:var(--surface);border:1px solid var(--rule);border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.search-box input:focus{outline:2px solid var(--green-mid);outline-offset:1px;}
+.search-status{min-height:1.6em;margin:6px 0 4px;font:13px/1.5 var(--mono);color:var(--muted);letter-spacing:.02em;}
+.results{list-style:none;padding:0;margin:0;max-width:50rem;}
+.results>li{padding:16px 0 15px;border-bottom:1px solid var(--rule);}
+.results .r-title{font:600 18px/1.3 var(--serif);color:var(--green);border:none;}
+.results .r-title:hover{color:var(--clay);}
+.results .r-path{display:block;margin-top:4px;font:12px/1.4 var(--mono);color:var(--faint);letter-spacing:.02em;}
+.results p{margin:7px 0 0;font-size:14.5px;line-height:1.55;color:#3c4133;}
+.results mark{background:var(--clay-bg);color:var(--clay-ink);padding:0 2px;border-radius:2px;}
+.results .subs{list-style:none;padding:0;margin:10px 0 0 18px;}
+.results .subs li{margin:8px 0 0;}
+.results .subs a{font:600 14px/1.3 var(--sans);}
+.results .subs p{margin-top:3px;font-size:13.5px;color:var(--muted);}
+.search-more{margin:18px 0 0;font:600 12px/1 var(--mono);padding:9px 12px;border:1px solid var(--rule);
+  border-radius:4px;background:var(--surface);color:var(--green);cursor:pointer;}
+.search-more:hover{border-color:var(--green-mid);color:var(--clay);}
+</style></head>
+<body data-pagefind-ignore="all"><header class="site-header" data-pagefind-ignore="all"><div class="bar"><a href="index.html" class="brand"><span class="k">WRIT 20833 · Fall 2026</span><span class="name">When Coding Meets Culture</span></a><button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">☰</button><nav class="site-nav" id="site-nav" aria-label="Primary"><a href="schedule.html" class="nav-pill">Schedule</a><a href="index.html#lectures" class="nav-pill">Lectures</a><a href="index.html#codealongs" class="nav-pill">Code-alongs</a><a href="index.html#assignments" class="nav-pill">Assignments</a><a href="index.html#resources" class="nav-pill">Resources</a></nav></div></header><div class="wrap"><header class="masthead"><div class="kicker">Search</div><h1>Search the course site</h1><p class="meta">Searches the home page, the schedule, every mini-lecture, and the course guides. The notebooks open in Colab and are not searched here; find them under <a href="index.html#codealongs">Code-alongs</a> and <a href="index.html#assignments">Assignments</a>.</p></header><form id="search-form" class="search-box" role="search" action="search.html" method="get"><label class="visually-hidden" for="search-q">Search the course site</label><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" id="search-q" name="q" placeholder="Search lectures, guides, the schedule" autocomplete="off"></form><div id="search-status" class="search-status" role="status" aria-live="polite"></div><ul id="results" class="results"></ul><button id="search-more" class="search-more" type="button" hidden>More results</button><noscript><p class="muted">Search needs JavaScript. Every page is also reachable from the <a href="index.html">home page</a> and the <a href="schedule.html">schedule</a>.</p></noscript><script>
+(function () {
+  var base = new URL('.', location.href).pathname;
+  var showAll = /[?&]all(=|&|$)/.test(location.search);
+  var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; };
+  var today = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  var form = document.getElementById('search-form'), input = document.getElementById('search-q');
+  var status = document.getElementById('search-status'), list = document.getElementById('results');
+  var more = document.getElementById('search-more');
+  var STEP = 8, found = [], shown = 0, run = 0, timer = null, pagefind = null;
+
+  function load() {
+    if (!pagefind) pagefind = import(base + 'pagefind/pagefind.js').then(function (pf) {
+      return Promise.resolve(pf.options({ baseUrl: base })).then(function () { return pf; });
+    });
+    return pagefind;
+  }
+  function esc(s) { var e = document.createElement('span'); e.textContent = s; return e.innerHTML; }
+  function path(url) { return url.indexOf(base) === 0 ? url.slice(base.length) || 'index' : url; }
+  function open(r) { return showAll || !r.meta || !r.meta.opens || r.meta.opens <= today; }
+
+  function item(r) {
+    // Pagefind's first sub-result is usually the page top; list only the ones under a heading.
+    var subs = (r.sub_results || []).filter(function (s) { return s.url !== r.url && s.url.indexOf('#') > -1; }).slice(0, 3);
+    return '<li><a class="r-title" href="' + r.url + '">' + esc(r.meta.title || path(r.url)) + '</a>' +
+      '<span class="r-path">' + esc(path(r.url).replace(/\.html$/, '')) + '</span>' +
+      '<p>' + r.excerpt + '</p>' +
+      (subs.length ? '<ul class="subs">' + subs.map(function (s) {
+        return '<li><a href="' + s.url + '">' + esc(s.title) + '</a><p>' + s.excerpt + '</p></li>';
+      }).join('') + '</ul>' : '') + '</li>';
+  }
+  function showMore() {
+    list.insertAdjacentHTML('beforeend', found.slice(shown, shown + STEP).map(item).join(''));
+    shown = Math.min(found.length, shown + STEP);
+    more.hidden = shown >= found.length;
+  }
+  function remember(q) {
+    var u = new URL(location.href);
+    if (q) u.searchParams.set('q', q); else u.searchParams.delete('q');
+    history.replaceState(null, '', u);
+  }
+
+  function search(q) {
+    var mine = ++run;
+    q = q.trim(); remember(q);
+    if (!q) { list.innerHTML = ''; status.textContent = ''; more.hidden = true; return; }
+    status.textContent = 'Searching…';
+    load().then(function (pf) { return pf.search(q); }).then(function (res) {
+      // The site is small, so load every hit's data and apply the release gate before showing any.
+      return Promise.all(res.results.map(function (r) { return r.data(); }));
+    }).then(function (data) {
+      if (mine !== run) return;
+      found = data.filter(open); shown = 0; list.innerHTML = '';
+      status.textContent = found.length ? found.length + (found.length === 1 ? ' page' : ' pages') + ' mention “' + q + '”'
+                                        : 'Nothing on the site matches “' + q + '”. Try a shorter or different word.';
+      showMore();
+    }).catch(function () {
+      if (mine !== run) return;
+      status.textContent = 'Search could not load. Open this page from the course site (not straight from a file).';
+    });
+  }
+
+  form.addEventListener('submit', function (e) { e.preventDefault(); clearTimeout(timer); search(input.value); });
+  input.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(function () { search(input.value); }, 250); });
+  more.addEventListener('click', showMore);
+  var q = new URLSearchParams(location.search).get('q');   // search.html?q=vader opens with that search run
+  if (q) { input.value = q; search(q); } else { input.focus(); }
+})();
+</script></div><footer class="site-footer"><div class="bar"><span>WRIT 20833 · When Coding Meets Culture · site search</span><span class="spacer"></span><a target="_blank" rel="noopener noreferrer" href="https://github.com/TCU-DCDA/WRIT20833_2026">GitHub ↗</a><a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/">Colab ↗</a></div></footer><script>(function(){var t=document.querySelector(".nav-toggle"),n=document.getElementById("site-nav");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();</script><script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;var d=new Date(),p=function(n){return(n<10?"0":"")+n},t=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());document.querySelectorAll("a[data-opens],div.card[data-opens]").forEach(function(a){var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;if(a.tagName==="DIV"){a.querySelectorAll("a.alt").forEach(function(x){x.remove();});a.querySelectorAll("a").forEach(function(x){var y=document.createElement("span");y.innerHTML=x.innerHTML;x.replaceWith(y);});a.classList.remove("linked");a.classList.add("locked");a.title="Opens "+l;var v=a.querySelector(".when");if(v)v.insertAdjacentHTML("beforeend",' <span class="opens">· opens '+l+"</span>");return;}var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");s.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;var w=c?s.querySelector(".when"):null,tag='<span class="opens">'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}a.replaceWith(s);});})();</script></body></html>

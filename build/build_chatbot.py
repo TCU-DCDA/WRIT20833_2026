@@ -138,7 +138,8 @@ def render():
     )
     return PAGE("Code Guide — WRIT 20833", main, extra_css=CHAT_CSS,
                 header=site_header(active="Resources", chat=bool(CHAT_API_URL)),
-                footer=site_footer("WRIT 20833 · Code Guide · an optional after-hours tutor"))
+                footer=site_footer("WRIT 20833 · Code Guide · an optional after-hours tutor"),
+                searchable=False)  # a chat window: nothing to find, and it may not be linked yet
 
 
 def write_js():
