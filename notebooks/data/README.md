@@ -64,5 +64,6 @@ and is a capstone option.
 downloading from `raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/notebooks/data/`. The path
 includes the folder for a collection, e.g. `load_text("ten_commandments/tc_youtube_comments.txt")`;
 `us_constitution.txt` sits at the top level. (HW3 and HW4 load the comments the same way, by path.)
-**Verified live on `main` (2026-09-05):** both corpora and both notebook paths return HTTP 200
-anonymously, so the Colab badge path works out of the box for students.
+**Verified live on `main` (2026-10-19, after the move to `ten_commandments/`):** both corpora return
+HTTP 200 anonymously at their raw-GitHub addresses, and HW2, HW3, and HW4's setup cells load all 123 rows
+by download alone (no local copy), so the Colab badge path works out of the box for students.
