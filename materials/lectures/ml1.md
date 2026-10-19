@@ -21,10 +21,11 @@ what it can, and can't, tell us on its own.
 
 Here is a fact about the corpus we'll work with all term: 93 YouTube comments on a Texas law that puts
 the Ten Commandments in public-school classrooms. (A **corpus** is simply a collection of texts gathered
-for analysis.) The comments were copied in fall 2025 from under one TV-news video on YouTube, using a
-browser scraping tool. The tool caught top-level comments but not the replies under them, and blank and
-duplicate entries were removed. The scraper also broke at least one comment in two ("…The" and "Of
-Texas" arrived as separate entries), so even 93 slightly overcounts. And one more choice shapes everything
+for analysis.) The comments sit under one CBS News video from August 20, 2025, reporting that a federal judge
+had blocked the law in some school districts, and they were copied within the following month using a
+browser scraping tool. So many of them are reacting to the judge as much as to the law. The tool caught
+top-level comments but not the replies under them, and blank and duplicate entries were removed. Some
+comments are tiny: one reads, in full, "Of Texas." And one more choice shapes everything
 you'll compute: a few long comments ran over several lines, and the cleaning split them at their line
 breaks. So the file you'll load has **123 rows**, not 93, and some rows are only pieces of a comment. The
 export kept no names or dates, either, so we don't know how many people wrote these comments, or exactly
@@ -39,7 +40,7 @@ that leaves out.
 ![Bar chart: in 93 comments, with capitals ignored, "commandments" appears 25 times and "constitution" 8](materials/lectures/images/ml1_count_chart.png)
 
 <!-- slide:
-**Our corpus:** 93 YouTube comments posted under one TV-news video about Texas's law putting the Ten Commandments in public-school classrooms — copied in fall 2025 with a free browser scraper.
+**Our corpus:** 93 YouTube comments under one CBS News video (Aug 20, 2025) about the federal ruling that blocked Texas's law putting the Ten Commandments in public-school classrooms — copied soon after with a free browser scraper.
 
 > Capitals ignored, **"commandments"** appears **25** times. **"Constitution"** appears **8**.
 
