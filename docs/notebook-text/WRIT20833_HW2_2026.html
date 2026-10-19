@@ -43,7 +43,7 @@ def load_text(filename):
     return urllib.request.urlopen(url).read().decode(&quot;utf-8&quot;)
 
 # Two real corpora about the 2025 Texas Ten Commandments-in-schools law:
-comments_text = load_text(&quot;tc_youtube_comments.txt&quot;)    # the public&#x27;s voice (93 YouTube comments, 123 lines)
+comments_text = load_text(&quot;ten_commandments/tc_youtube_comments.txt&quot;)    # the public&#x27;s voice (93 YouTube comments, 123 lines)
 constitution_text = load_text(&quot;us_constitution.txt&quot;)    # the document the public keeps invoking
 print(&quot;Setup complete. Both corpora loaded.&quot;)</pre>
 <h3 id="part-a-from-words-to-counts-5-exercises">Part A — From words to counts (5 exercises)</h3>

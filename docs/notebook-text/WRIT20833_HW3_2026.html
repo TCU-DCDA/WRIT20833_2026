@@ -34,7 +34,7 @@ stopwords = [&quot;i&quot;, &quot;me&quot;, &quot;my&quot;, &quot;myself&quot;, 
 
 def load_course_comments():
     &quot;&quot;&quot;Load the course YouTube-comments corpus into a DataFrame, one line of comment text per row.&quot;&quot;&quot;
-    filename = &quot;tc_youtube_comments.txt&quot;
+    filename = &quot;ten_commandments/tc_youtube_comments.txt&quot;
     text = None
     for path in (filename, os.path.join(&quot;notebooks&quot;, &quot;data&quot;, filename),
                  os.path.join(&quot;data&quot;, filename), os.path.join(&quot;..&quot;, &quot;data&quot;, filename)):

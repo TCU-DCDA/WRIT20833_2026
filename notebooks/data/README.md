@@ -1,11 +1,12 @@
 # Course data — WRIT 20833 (2026)
 
 Small, ready-to-run corpora for the homework notebooks. Each is plain UTF-8 text so it
-can be loaded with `open()` (no pandas required) in the pre-pandas weeks.
+can be loaded with `open()` (no pandas required) in the pre-pandas weeks. Each comment collection
+has its own folder (`ten_commandments/` for now); more may be added later in the term.
 
 ## Files
 
-### `tc_youtube_comments.txt` — the public's voice
+### `ten_commandments/tc_youtube_comments.txt` — the public's voice
 **93 YouTube comments, stored as 123 rows** (2,235 words), reacting to the 2025 **Texas Ten
 Commandments-in-schools** law. Source: the Fall-2025
 [`TenCommandmentsTX/20833_CBS1_youtube_F25.csv`](https://github.com/TCU-DCDA/WRIT20833_2025/blob/main/datasets/TenCommandmentsTX/20833_CBS1_youtube_F25.csv),
@@ -59,7 +60,9 @@ timeless vs. current. The same comment corpus is reused for HW3 (sentiment) and 
 and is a capstone option.
 
 ## How the notebooks load these
-`load_text("<filename>")` checks the local dir and `notebooks/data/`, then falls back to
-downloading from `raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/notebooks/data/`.
+`load_text("<path>")` checks the local dir and `notebooks/data/`, then falls back to
+downloading from `raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/notebooks/data/`. The path
+includes the folder for a collection, e.g. `load_text("ten_commandments/tc_youtube_comments.txt")`;
+`us_constitution.txt` sits at the top level. (HW3 and HW4 load the comments the same way, by path.)
 **Verified live on `main` (2026-09-05):** both corpora and both notebook paths return HTTP 200
 anonymously, so the Colab badge path works out of the box for students.
