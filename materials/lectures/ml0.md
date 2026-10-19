@@ -119,7 +119,8 @@ answer — is the whole course.
 
 <!-- slide:
 Before the cautions, the payoff — real projects that turn a pile of culture
-into a pattern you can suddenly *see.* Two that count words much as you soon will:
+into a pattern you can suddenly *see.* Both of these work by counting words, the same thing
+you'll learn to do in a few weeks:
 
 - **"Trucks and Beer"** — what country songs *actually* sing about
 - **The Pudding, "The Largest Vocabulary in Hip-Hop"** — rappers ranked
@@ -127,7 +128,7 @@ into a pattern you can suddenly *see.* Two that count words much as you soon wil
 -->
 
 Before the cautions, the payoff — real projects that turn a pile of culture into a pattern you can
-suddenly *see*. Start with two that count words much the way you soon will:
+suddenly *see*. Both of these work by counting words, the same thing you'll learn to do in a few weeks:
 
 <!-- layout: gallery -->
 
