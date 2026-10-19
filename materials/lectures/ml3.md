@@ -186,10 +186,14 @@ comes back as a **Boolean**, `True` or `False`. `and` means both comparisons mus
 so the answer is "review." The 650 is a **threshold**: a cutoff that turns a continuous number into a
 category.
 
+![A number line from 646 to 654 with a dashed line between 650 and 651: 646 through 650 are marked "review," 651 through 654 "approve"; a note says 650 itself is turned away because the code uses > rather than >=](materials/lectures/images/ml3_threshold_line.png)
+
 Now ask the humanist's questions. **Who chose 650?** Is the person at 649 truly different from the person at
 651, or did a round number just decide their year? And what about the person at exactly 650? The code says
 `>`, so they're sent to review; `>=` would have approved them. Someone chose that symbol, too. Why income
 *and* credit, and not rent history, or the reason the score dipped in the first place?
+
+![Two bars of the same 123 rows: with VADER's standard cutoffs of plus or minus 0.05, 34 negative, 38 neutral, 51 positive; with stricter cutoffs of plus or minus 0.5, 17 negative, 76 neutral, 30 positive](materials/lectures/images/ml3_cutoffs.png)
 
 A threshold is the most ordinary line in programming and one of the most consequential: an act of judgment
 that looks like arithmetic. You'll meet your own soon. On Day 13 you'll use VADER, a tool that gives each
@@ -243,6 +247,8 @@ they never posted —
 
 Code needs clean categories, and people don't come clean. So the system forces the fit — and whatever
 won't fit the schema simply disappears.
+
+![A schematic of two form fields: one with only Female and Male radio buttons, stored as 0 or 1; one with a free-text box reading "In your own words"](materials/lectures/images/ml3_field.png)
 
 Until 2014, Facebook asked every new user to choose one of two genders, male or female; that year it added
 dozens of custom options. A two-option field is, in effect, **a single bit**: `0` or `1`. It is cheap to

@@ -199,6 +199,8 @@ someone else:
 - **Systemic story** — School B is under-resourced and underfunded. *(It's the system.)*
 - **Cultural story** — the SAT measures one particular kind of knowledge. *(It's the test.)*
 
+![The same two SAT averages, 1240 and 980, drawn twice: with the axis starting at 0 the bars look close; starting at 900, School B looks like it is collapsing](materials/lectures/images/ml1_sat_axes.png)
+
 Nothing *in* the numbers tells you which story is true. They show a *difference*, not its *cause*; to
 argue about causes, you'd need more evidence than the two scores. Even the difference can be staged: draw
 the same two bars with the axis starting at 900 instead of 0, and School B seems to collapse. The numbers
@@ -272,6 +274,8 @@ the wifi, the time, or the nerve.
 
 The loudest thing about a dataset is often what isn't in it.
 
+![A schematic funnel: everyone the law affects, people who saw this one video, people who chose to comment, 93 comments the scraper caught, 123 rows in your file](materials/lectures/images/ml1_funnel.png)
+
 Our 93 comments are not "the public." They're the slice of the public that *posted* — people online,
 fired up enough to type, willing to be seen arguing. The woman from the opening lecture posted. Her
 neighbor, who felt just as strongly and never typed a word, is not in the file at all. Neither is anyone
@@ -333,6 +337,8 @@ In code, those decisions are concrete operations. You'll **split** text into wor
 **delete** the ones on a *stopword* list (common words like *the* and *of* that an analyst chooses to skip),
 **score** each comment and set a *threshold* (a cutoff that turns a continuous score into a category like
 "positive"), and **group** comments that use similar words. Every one of those verbs hides a choice.
+
+![Two bars: the rule "drop every word used fewer than 5 times" keeps 98 different words and drops 651 (87%); by word uses it drops 42%. Kept: the, to, of, and, is, commandments, religion, god. Dropped: slavery, adultery, empathy, Muslim, Jewish, atheist, separation](materials/lectures/images/ml1_filter_chart.png)
 
 And those choices don't merely *encode* a value — they *argue* one. Which number you make the headline,
 which chart you reach for, what you put first and what you bury: every one is a claim about what matters,
