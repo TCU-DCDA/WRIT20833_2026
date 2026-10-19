@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="../styles.css"></head>
 <body><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Days 3–4"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-10-23"></span><p class="muted" data-pagefind-ignore="all">This page holds a notebook's text for the site search. <a href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb">Open it in Colab ↗</a></p><h1>Lists, Loops &amp; Conditionals</h1>
 <p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<h3 id="why-we-re-doing-this-friday">Why we&#x27;re doing this (Friday)</h3>
+<p data-pagefind-weight="0.5">- From today&#x27;s lecture. Classification Logic argued that to classify is to judge, and that a threshold is &quot;an act of judgment that looks like arithmetic.&quot; Every if you write today draws a line, and someone has to decide where it goes, even down to &gt; versus &gt;=. - Where you&#x27;ll use it. HW1 Part A has you sort people and comments with if / elif / else. In HW3 you&#x27;ll turn sentiment scores into &quot;positive,&quot; &quot;neutral,&quot; and &quot;negative&quot; with cutoffs, and your capstone will rest on lines like these. - The question to keep asking. Who chose this line, and what happens to the case sitting right on it? Make the cut visible: leave a #comment that says where you drew the line, and why.</p>
 <p data-pagefind-weight="0.5">How this notebook works. It covers two class days (Friday and Monday). Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
 <h2 id="comparisons-conditionals">Comparisons &amp; Conditionals</h2>
 <p data-pagefind-weight="0.5">Before we start storing whole collections of data, we need a way to make decisions. Conditionals let the computer ask yes/no questions about data.</p>
@@ -30,6 +32,7 @@ else:
 <pre data-pagefind-weight="0.5"># type along — print &quot;You can vote!&quot; only if age &gt;= 18 AND has_id is True; otherwise &quot;Not yet eligible&quot;
 age = 20
 has_id = True</pre>
+<p data-pagefind-weight="0.5">You&#x27;ll use this. age &gt;= 18 is a threshold, and the law chose it, not Python. HW1 Part A asks you to sort ages into &quot;youth,&quot; &quot;working age,&quot; and &quot;elder,&quot; and then to say what assumptions that three-box system bakes in. Watch the edges as you write it: does someone who is exactly 60 land where you meant them to?</p>
 <p data-pagefind-weight="0.5">in works inside a condition too. Here is a bio and a platform to look for:</p>
 <pre data-pagefind-weight="0.5">bio = &quot;Film student. Coffee addict. Posting mostly on TikTok and Letterboxd.&quot;
 favorite = &quot;YouTube&quot;</pre>
@@ -40,6 +43,8 @@ favorite = &quot;YouTube&quot;</pre>
 <p data-pagefind-weight="0.5">---</p>
 <h4 id="day-3-stops-here">🛑 Day 3 stops here</h4>
 <p data-pagefind-weight="0.5">On Monday we pick up with lists — and in will work on them exactly the way it works on strings. Then we&#x27;ll combine lists with the conditionals you just wrote to build loops that sort whole collections at once.</p>
+<h3 id="why-we-re-doing-this-monday">Why we&#x27;re doing this (Monday)</h3>
+<p data-pagefind-weight="0.5">- From today&#x27;s lecture. Collective Memory called a list &quot;a population&quot;: the exact point where the individual becomes the demographic. A loop is &quot;a verdict, repeated,&quot; pressing one rule onto every item with no room for the exception. That&#x27;s how you&#x27;ll hear a thousand voices at once, and it&#x27;s how a thousand people become one number. - Where you&#x27;ll use it. HW1 Parts B and C loop through comments, measure them, and build new lists from old ones. Every count in HW2&#x27;s term frequency is a loop like these. Your capstone asks you to go from the many back to the one: the loop gives you the crowd, and then you read individual comments again by hand. - The question to keep asking. Am I remembering these people, or just reducing them?</p>
 <h2 id="lists">Lists</h2>
 <p data-pagefind-weight="0.5">A list is an ordered collection of items — like a column in a spreadsheet. So far we&#x27;ve stored single values in variables. But real data comes in groups: a playlist of songs, a set of hashtags, a roster of names. Lists let us work with all of them at once. - Created with square brackets [] - Items separated by commas - Can hold any data type (strings, numbers, booleans) - Order is preserved — first item stays first</p>
 <pre data-pagefind-weight="0.5"># a list of strings
@@ -116,6 +121,7 @@ for platform in platforms:
         print(f&quot;{platform} — longer name ({len(platform)} chars)&quot;)</pre>
 <pre data-pagefind-weight="0.5"># type along — for each year print its generation: &lt;= 1964 Boomer, &lt;= 1980 Gen X, &lt;= 1996 Millennial, else Gen Z
 years = [1966, 1985, 1997, 2003, 1961, 1995]</pre>
+<p data-pagefind-weight="0.5">You&#x27;ll use this. This is Friday&#x27;s threshold inside Monday&#x27;s loop: one set of cutoffs, applied to everyone. Look at 1995 and 1997: two years apart, two different generations. Where the lines fall is itself a choice, and different sources draw them in different places. In HW3 a loop like this will put a sentiment label on every comment, and the comments that sit right at a cutoff are the ones to read yourself.</p>
 <h4 id="counting-with-loops">Counting with loops</h4>
 <p data-pagefind-weight="0.5">A common pattern: start a counter at 0, then add to it inside a loop.</p>
 <pre data-pagefind-weight="0.5"># count how many hashtags mention TCU
@@ -140,6 +146,7 @@ for platform in platforms:
 print(&quot;Short platform names:&quot;, short_names)</pre>
 <pre data-pagefind-weight="0.5"># type along — build `clean_authors`: only the names that do NOT contain &quot;(?)&quot;; then print raw and clean
 raw_authors = [&quot;Toni Morrison&quot;, &quot;Unknown (?)&quot;, &quot;James Baldwin&quot;, &quot;N.K. Jemisin&quot;, &quot;Anonymous (?)&quot;]</pre>
+<p data-pagefind-weight="0.5">You&#x27;ll use this. Starting an empty list and .append()-ing inside a loop is HW1 Part B. But notice what this particular loop did: it &quot;cleaned&quot; the list by dropping the anonymous authors. The data now looks tidier, and it has forgotten that anonymous writers were ever there. When you clean real data, your capstone asks you to say what you dropped.</p>
 <h4 id="using-enumerate-tracking-position">Using enumerate() — tracking position</h4>
 <p data-pagefind-weight="0.5">Sometimes you need to know both the item and its position. enumerate() gives you both.</p>
 <pre data-pagefind-weight="0.5"># create a numbered playlist
@@ -201,5 +208,7 @@ family = [1962, 1985, 1997, 2004]
 for year in family:
     generation = classify_year(year)
     print(f&quot;{year} → {generation}&quot;)</pre>
+<p data-pagefind-weight="0.5">Look at the shapes you already have. The hashtag counter in Putting It All Together is term frequency in miniature: in Week 3 (HW2) you&#x27;ll run the same idea on 93 real YouTube comments. classifyyear is the shape of sentiment labeling in HW3: one function draws the lines, and a loop applies them to every comment. By your capstone, these loops will hand you a whole crowd at once. The course&#x27;s last move is the one loops can&#x27;t do for you: going back to a few individual voices and checking that the numbers still sound like people.</p>
 <h2 id="playground">Playground</h2>
+<p data-pagefind-weight="0.5">Try one of these, or anything else you&#x27;re curious about: - Move the line. Copy the generation classifier and change one cutoff, say Millennials ending at 1994 instead of 1996. Who gets reclassified? In a #comment, say who should get to decide. - A loop with mercy. A loop can&#x27;t see the exception, but you can make it flag one. Loop over scores = [0.04, 0.6, -0.05, 0.05, -0.3, 0.06], label each one &quot;positive&quot; if it&#x27;s &gt;= 0.05 and &quot;not positive&quot; otherwise, and print &quot;(read this one yourself)&quot; beside any score within 0.02 of that line. - What the list forgot. Redo the rawauthors cleanup so that nothing disappears silently: build a kept list and a dropped list, and print both. If something breaks, leave a #comment about what you tried. These are practice for the Weekly Experiments in HW1.</p>
 <pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div></body></html>
