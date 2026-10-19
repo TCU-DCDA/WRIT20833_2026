@@ -107,6 +107,21 @@ footer{font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-al
   border-radius:8px;border:1px solid color-mix(in srgb,var(--paper) 32%,transparent);background:transparent;
   color:var(--paper);font-size:19px;line-height:1;cursor:pointer;}
 .nav-toggle:hover{background:color-mix(in srgb,var(--paper) 12%,transparent);}
+/* header search — a GET form to search.html?q= on wide screens, an icon link once the bar is crowded */
+.site-search{display:flex;align-items:center;}
+.site-search-form{position:relative;display:flex;align-items:center;}
+.site-search-form svg{position:absolute;left:11px;color:color-mix(in srgb,var(--paper) 72%,transparent);pointer-events:none;}
+.site-search-form input{width:150px;padding:7px 12px 7px 31px;border-radius:999px;font:13px/1.2 var(--sans);
+  color:var(--paper);background:color-mix(in srgb,var(--paper) 9%,transparent);
+  border:1px solid color-mix(in srgb,var(--paper) 22%,transparent);}
+.site-search-form input::placeholder{color:color-mix(in srgb,var(--paper) 78%,transparent);}
+.site-search-form input:focus{outline:2px solid var(--clay-bg);outline-offset:1px;
+  background:color-mix(in srgb,var(--paper) 15%,transparent);}
+.site-search-link{display:none;align-items:center;justify-content:center;width:42px;height:38px;border-radius:8px;
+  border:1px solid color-mix(in srgb,var(--paper) 32%,transparent);color:var(--paper);}
+.site-search-link:hover{background:color-mix(in srgb,var(--paper) 12%,transparent);border-color:color-mix(in srgb,var(--paper) 45%,transparent);}
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+@media (max-width:1000px){.site-search-form{display:none;} .site-search-link{display:inline-flex;}}
 .site-footer{border-top:1px solid var(--rule);margin-top:24px;}
 .site-footer .bar{max-width:1060px;margin:0 auto;padding:20px;display:flex;flex-wrap:wrap;gap:8px 22px;
   font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);}
@@ -120,7 +135,9 @@ footer{font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-al
 .jump a:hover{border-color:var(--green-mid);color:var(--clay);}
 @media (max-width:860px){
   .site-header .bar{flex-wrap:wrap;}
-  .nav-toggle{display:inline-flex;}
+  .site-search{order:1;margin-left:auto;}   /* row: brand · search · toggle; the open menu drops below */
+  .nav-toggle{display:inline-flex;order:2;margin-left:0;}
+  .site-nav{order:3;}
   .site-nav{display:none;margin-left:0;width:100%;flex-basis:100%;flex-direction:column;gap:6px;padding-top:10px;}
   .site-nav.open{display:flex;}
   .site-nav .nav-pill{text-align:left;}
@@ -257,6 +274,13 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 .slide blockquote{margin:10px 0 18px;padding:6px 0 6px 22px;border-left:4px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .slide blockquote p{font-size:clamp(19px,2.9vw,31px);line-height:1.38;margin:0;}
+/* not a quotation — set off as a theme card: even 1px border + drop shadow, no left rule */
+.slide blockquote.panel{padding:2.2vh 2vw;background:var(--surface);border:1px solid var(--rule);
+  border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,.06);font-style:normal;color:var(--ink);}
+/* a "### " line on a slide is a punchline, not a sub-label */
+.slide h3{font-family:var(--serif);color:var(--green);font-size:clamp(22px,3.1vw,34px);
+  line-height:1.22;margin:6px 0 18px;}
+.slide.fitted h3{font-size:calc(clamp(22px,3.1vw,34px)*var(--fit,1));}
 .slide figure{margin:6px 0;text-align:center;min-height:0;flex:0 1 auto;}
 
 .slide figure img{max-height:62vh;width:auto;max-width:100%;border:1px solid var(--rule);
@@ -295,24 +319,24 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
   .deck-progress,.deck-hint,.deck-home{display:none;}}
 </style></head>
 <body data-pagefind-ignore="all"><div class="deck"><section class="slide title split"><div class="split-grid"><div class="col-text"><div class="kicker">Day 4 · the through-line</div><h1>Collective Memory</h1><p class="sub">What a culture keeps, and what it lets go</p><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p class="lead">Today: <strong>lists</strong> and <strong>loops</strong> — how to hold many things at once, and how to do the same thing to every one of them.</p>
-<p>That's the technical skill. The human story underneath it is <strong>memory</strong>: who gets remembered, who gets to be forgotten, and what changes when the thing doing the remembering is a machine that never forgets.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml5_title.jpg" alt="A wall of wooden card-catalog drawers, a few open and spilling letters and photographs into the light"></figure></div></div></section><section class="slide"><h2>Two kinds of memory</h2><blockquote><p><code>violations = []</code></p><p><code>for person in community:</code></p><p><code>    if person.broke_a_rule: violations.append(person)</code></p></blockquote>
+<p>That's the technical skill. The human story underneath it is <strong>memory</strong>: who gets remembered, who gets to be forgotten, and what changes when the thing doing the remembering is a machine that never forgets.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml5_title.jpg" alt="A wall of wooden card-catalog drawers, a few open and spilling letters and photographs into the light"></figure></div></div></section><section class="slide"><h2>Two kinds of memory</h2><blockquote class="panel"><p><code>violations = []</code><br><code>for person in community:</code><br><code>    if person.broke_a_rule: violations.append(person)</code></p></blockquote>
 <p>Three lines. A list, a loop, a condition — and a community that now keeps a permanent record of everyone's worst day.</p></section><section class="slide"><h2 class="cont">Two kinds of memory</h2><p>For most of human history a community's memory was a <strong>human</strong> thing — and being human, it forgot.</p>
 <ul><li><strong>Human memory is selective, contextual, forgiving.</strong> Things fade. Stories soften with each retelling. Time heals; the village lets it go.</li><li><strong>Digital memory is total, fixed, unforgiving.</strong> Everything is recorded. A data point doesn't mellow with age; your past quietly decides your future access.</li></ul></section><section class="slide"><h2 class="cont">Two kinds of memory</h2><p>That shift — from a memory that mercifully forgets to one that structurally <strong>can't</strong> — is the whole lecture.</p>
-<h3>Forgetting, it turns out, was never just failure. It was also grace.</h3></section><section class="slide split"><h2>A list is a population</h2><div class="split-grid"><div class="col-text"><blockquote><p><code>community = ["Mary", "John", "Kate", "Ahmed", "Rosa", ...]</code></p></blockquote>
+<h3>Forgetting, it turns out, was never just failure. It was also grace.</h3></section><section class="slide split"><h2>A list is a population</h2><div class="split-grid"><div class="col-text"><blockquote class="panel"><p><code>community = ["Mary", "John", "Kate", "Ahmed", "Rosa", ...]</code></p></blockquote>
 <p>Notice what just happened. A moment ago these were <strong>people.</strong> Now they're a <strong>population</strong> — a thing you can sort, filter, slice, and count all at once.</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml5_population.jpg" alt="Distinct individuals being threaded onto one long ledger-line like beads, separate faces becoming rows in a register"></figure></div></div></section><section class="slide"><h2 class="cont">A list is a population</h2><p>The list is the exact point where <strong>the individual becomes the demographic.</strong></p>
 <p>That move is enormously powerful — it's how you'll hear a thousand voices at once.</p>
 <p>And it is quietly dangerous — it's how a thousand people become a single number someone can act on.</p></section><section class="slide"><h2>A loop is a verdict, repeated</h2><p>A village elder judged <strong>case by case</strong> — knowing the person, weighing the circumstances, leaving room for the exception, the mercy, the second look.</p>
-<blockquote><p><code>for person in population: apply_the_same_rule(person)</code></p></blockquote>
+<blockquote class="panel"><p><code>for person in population: apply_the_same_rule(person)</code></p></blockquote>
 <p>A loop doesn't. It presses one rule onto every single person — no context, no exceptions, thousands in a blink.</p></section><section class="slide"><h2 class="cont">A loop is a verdict, repeated</h2><p>"The same rule for everyone" <em>sounds</em> like the definition of fairness.</p>
 <h3>It is also the end of mercy.</h3>
 <p>The loop cannot see the one case that deserved an exception, because seeing exceptions is exactly what it was built to stop doing.</p>
 <p class="callout">Remember the threshold from last time? The loop is how one cutoff reaches a million people before lunch.</p></section><section class="slide"><h2>The power to count</h2><p>Counting feels neutral — you're just tallying what's there.</p>
 <p>But <strong>the power to count is the power to decide what matters</strong>, because first someone has to choose the categories, and choosing categories is choosing what's worth seeing.</p>
-<blockquote><p><code>Counter(violations).most_common()</code></p></blockquote>
+<blockquote class="panel"><p><code>Counter(violations).most_common()</code></p></blockquote>
 <p class="callout">One line, and a messy human record becomes a ranked list of "what's wrong here."</p></section><section class="slide"><h2 class="cont">The power to count</h2><p>So ask: who decided what counted as a violation? Who gets to see the tally? How does a count become a <strong>justification</strong> — for a policy, a denial, a crackdown?</p>
 <p>And the question that never goes away:</p>
 <p class="callout">what happened to the people who didn't fit any category, and so were never counted at all?</p></section><section class="slide split"><h2>Historical echoes</h2><div class="split-grid"><div class="col-text"><p>None of this is new. Only the machinery is.</p>
-<p>In the 1840s the <strong>Bellevue Almshouse</strong> in New York kept meticulous records of the poor, the sick, and the newly arrived. The historian Anelise Shrout describes what those records were <em>for</em>:</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml5_echoes.jpg" alt="A 19th-century almshouse records office, clerks reducing waiting people to ledger entries that dissolve into modern data-rows"></figure></div></div></section><section class="slide"><h2 class="cont">Historical echoes</h2><blockquote><p>Nineteenth-century immigration data was produced with the express purpose</p><p>of reducing people to bodies; bodies to easily quantifiable aspects; and</p><p>assigning value to those aspects which proved that the marginalized people</p><p>to [whom] they belonged were worth less than their elite counterparts.</p></blockquote>
+<p>In the 1840s the <strong>Bellevue Almshouse</strong> in New York kept meticulous records of the poor, the sick, and the newly arrived. The historian Anelise Shrout describes what those records were <em>for</em>:</p></div><div class="col-img"><figure><img src="https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/materials/lectures/images/ml5_echoes.jpg" alt="A 19th-century almshouse records office, clerks reducing waiting people to ledger entries that dissolve into modern data-rows"></figure></div></div></section><section class="slide"><h2 class="cont">Historical echoes</h2><blockquote><p>Nineteenth-century immigration data was produced with the express purpose<br>of reducing people to bodies; bodies to easily quantifiable aspects; and<br>assigning value to those aspects which proved that the marginalized people<br>to [whom] they belonged were worth less than their elite counterparts.</p></blockquote>
 <p>— Anelise Hanson Shrout, <a target="_blank" rel="noopener noreferrer" href="https://crdh.rrchnm.org/essays/v01-10-re-humanizing-data/">"(Re)Humanizing Data"</a>, <em>Current Research in Digital History</em> 1 (2018)</p></section><section class="slide"><h2 class="cont">Historical echoes</h2><p>Now picture that same ledger as a Python list of dictionaries — <code>{"name": "Mary", "status": "emigrant", "condition": "destitution"}</code> — processed by a loop, ranked by a <code>Counter</code>.</p>
 <h3>The technology changes; the power to reduce, classify, and exclude is the constant.</h3>
 <p class="callout">When you write your own loops this week, you're picking up a very old instrument.</p></section><section class="slide"><h2>What we choose to keep</h2><p>Lists and loops were never just technical skills. They're how a culture decides <strong>what it remembers and what it's allowed to forget</strong> —</p>

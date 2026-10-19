@@ -107,6 +107,21 @@ footer{font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-al
   border-radius:8px;border:1px solid color-mix(in srgb,var(--paper) 32%,transparent);background:transparent;
   color:var(--paper);font-size:19px;line-height:1;cursor:pointer;}
 .nav-toggle:hover{background:color-mix(in srgb,var(--paper) 12%,transparent);}
+/* header search — a GET form to search.html?q= on wide screens, an icon link once the bar is crowded */
+.site-search{display:flex;align-items:center;}
+.site-search-form{position:relative;display:flex;align-items:center;}
+.site-search-form svg{position:absolute;left:11px;color:color-mix(in srgb,var(--paper) 72%,transparent);pointer-events:none;}
+.site-search-form input{width:150px;padding:7px 12px 7px 31px;border-radius:999px;font:13px/1.2 var(--sans);
+  color:var(--paper);background:color-mix(in srgb,var(--paper) 9%,transparent);
+  border:1px solid color-mix(in srgb,var(--paper) 22%,transparent);}
+.site-search-form input::placeholder{color:color-mix(in srgb,var(--paper) 78%,transparent);}
+.site-search-form input:focus{outline:2px solid var(--clay-bg);outline-offset:1px;
+  background:color-mix(in srgb,var(--paper) 15%,transparent);}
+.site-search-link{display:none;align-items:center;justify-content:center;width:42px;height:38px;border-radius:8px;
+  border:1px solid color-mix(in srgb,var(--paper) 32%,transparent);color:var(--paper);}
+.site-search-link:hover{background:color-mix(in srgb,var(--paper) 12%,transparent);border-color:color-mix(in srgb,var(--paper) 45%,transparent);}
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+@media (max-width:1000px){.site-search-form{display:none;} .site-search-link{display:inline-flex;}}
 .site-footer{border-top:1px solid var(--rule);margin-top:24px;}
 .site-footer .bar{max-width:1060px;margin:0 auto;padding:20px;display:flex;flex-wrap:wrap;gap:8px 22px;
   font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);}
@@ -120,7 +135,9 @@ footer{font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--faint);text-al
 .jump a:hover{border-color:var(--green-mid);color:var(--clay);}
 @media (max-width:860px){
   .site-header .bar{flex-wrap:wrap;}
-  .nav-toggle{display:inline-flex;}
+  .site-search{order:1;margin-left:auto;}   /* row: brand · search · toggle; the open menu drops below */
+  .nav-toggle{display:inline-flex;order:2;margin-left:0;}
+  .site-nav{order:3;}
   .site-nav{display:none;margin-left:0;width:100%;flex-basis:100%;flex-direction:column;gap:6px;padding-top:10px;}
   .site-nav.open{display:flex;}
   .site-nav .nav-pill{text-align:left;}
@@ -257,6 +274,13 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 .slide blockquote{margin:10px 0 18px;padding:6px 0 6px 22px;border-left:4px solid var(--clay);
   font-family:var(--serif);font-style:italic;color:#474c3d;}
 .slide blockquote p{font-size:clamp(19px,2.9vw,31px);line-height:1.38;margin:0;}
+/* not a quotation — set off as a theme card: even 1px border + drop shadow, no left rule */
+.slide blockquote.panel{padding:2.2vh 2vw;background:var(--surface);border:1px solid var(--rule);
+  border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,.06);font-style:normal;color:var(--ink);}
+/* a "### " line on a slide is a punchline, not a sub-label */
+.slide h3{font-family:var(--serif);color:var(--green);font-size:clamp(22px,3.1vw,34px);
+  line-height:1.22;margin:6px 0 18px;}
+.slide.fitted h3{font-size:calc(clamp(22px,3.1vw,34px)*var(--fit,1));}
 .slide figure{margin:6px 0;text-align:center;min-height:0;flex:0 1 auto;}
 
 .slide figure img{max-height:62vh;width:auto;max-width:100%;border:1px solid var(--rule);
@@ -302,7 +326,7 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 <p>The point of hearing the human at scale was never to file the hearing away.</p>
 <h3>It was to say something back.</h3></section><section class="slide"><h2>What a public argument is</h2><p>A public argument takes a scholarly or cultural insight and makes it <strong>accessible, engaging, and actionable</strong> for people beyond this seminar.</p>
 <p><strong>Not dumbed down — translated.</strong></p>
-<p>The difference is plain arithmetic: a result you keep reaches the handful already in the room; a result you frame for an audience can reach everyone who needs it.</p></section><section class="slide"><h2 class="cont">What a public argument is</h2><blockquote><p>A finding in a journal nobody outside the field reads has eight readers.</p><p>The same finding, argued for a public, can have eight thousand.</p><p>The analysis is identical. What changed is that you decided</p><p>to be <em>understood.</em></p></blockquote>
+<p>The difference is plain arithmetic: a result you keep reaches the handful already in the room; a result you frame for an audience can reach everyone who needs it.</p></section><section class="slide"><h2 class="cont">What a public argument is</h2><blockquote class="panel"><p>A finding in a journal nobody outside the field reads has eight readers.<br>The same finding, argued for a public, can have eight thousand.<br>The analysis is identical. What changed is that you decided<br>to be <em>understood.</em></p></blockquote>
 <p class="callout">In this course your public artifact isn't a website — it's your capstone: a data-driven-opinion essay and a short presentation. Same move, humbler medium.</p></section><section class="slide"><h2>Your skills are already a public intervention</h2><p>This isn't theory. Consider <em><strong>Mapping Police Violence</strong></em> — a project built on exactly the skills you have been learning: collect public records, analyze them for pattern over time and geography, visualize the result, and put a clear public face on it.</p>
 <p><strong>The technical work is ordinary</strong> — scraping, a DataFrame, a chart.</p></section><section class="slide"><h2 class="cont">Your skills are already a public intervention</h2><p>What makes it <strong>matter</strong> is that it made an invisible pattern visible to journalists, families, and policymakers — and got cited in debates that move real lives.</p>
 <h3>The same analysis skills you practiced this term + a public face = a cultural intervention.</h3>
@@ -322,7 +346,7 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 <p>Six words that flatten a split crowd into one voice, and dress a poll number up as a feeling — often with no poll at all, just the speaker's own position wearing the crowd as a costume.</p>
 <p class="callout">That's ventriloquism run in reverse, at national scale: the crowd appears to speak; the speaker chose the words.</p></section><section class="slide"><h2 class="cont">What you do with what you found</h2><p>So here is the drafting test for your capstone:</p>
 <h3>Never write a sentence about your 93 that you'd roll your eyes at from a politician.</h3>
-<p class="callout">"The commenters feel…" is the same move in miniature — and your own numbers know better.</p></section><section class="slide"><h2 class="cont">What you do with what you found</h2><blockquote><p>The reflection that becomes your capstone: what did your analysis find</p><p>that someone outside this room needs to see — who are they,</p><p>and what should they do once they have seen it?</p></blockquote>
+<p class="callout">"The commenters feel…" is the same move in miniature — and your own numbers know better.</p></section><section class="slide"><h2 class="cont">What you do with what you found</h2><blockquote class="panel"><p>The reflection that becomes your capstone: what did your analysis find<br>that someone outside this room needs to see — who are they,<br>and what should they do once they have seen it?</p></blockquote>
 <p class="callout">You already have the insight. The last skill is the courage and the craft to hand it to the people it's for.</p></section></div><div class="deck-home"><a href="../index.html#lectures">↤ Lectures</a><span class="sep">·</span><a href="ml9.html">Full text</a></div><div class="deck-progress"></div><div class="deck-hint">← → navigate · click to advance</div>
 <script>
 (function(){

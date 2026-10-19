@@ -139,7 +139,16 @@ def render_blocks(lines, lead=False):
             quoted = (j < n and lines[j].strip().startswith(("—", "--"))) or \
                      block[0].lstrip("*_").startswith(('"', "“"))
             cls = "" if quoted else ' class="panel"'
-            out.append(("text", f"<blockquote{cls}>" + "".join(f"<p>{md_inline(b)}</p>" for b in block if b) + "</blockquote>"))
+            # Lines run together into one paragraph (a bare ">" starts the next) before inline markup,
+            # so **bold** or *italic* that wraps a line still pairs up; the author's breaks stay as <br>.
+            paras, cur = [], []
+            for b in block + [""]:
+                if b:
+                    cur.append(b)
+                elif cur:
+                    paras.append(cur); cur = []
+            body = "".join(f"<p>{md_inline(chr(10).join(p)).replace(chr(10), '<br>')}</p>" for p in paras)
+            out.append(("text", f"<blockquote{cls}>{body}</blockquote>"))
             continue
         if s.startswith("- "):                                 # unordered list (items may wrap)
             items = []
