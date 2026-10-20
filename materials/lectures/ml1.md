@@ -59,7 +59,7 @@ Before you read meaning into it, list what else could explain it.
 - **The topic.** The video is *about* the Ten Commandments. Of course the word dominates.
 - **The counting.** To a computer, *Constitution* and *constitution* are two different words —
   4 of each. Ignore capitals and they merge into 8; keep them and each counts only 4.
-  Someone chose which, before the number existed.
+  How you clean and prepare the data can literally change the result.
 - **The crowd.** Who chose to comment at all — and who didn't?
 
 *A number shows a difference. What the difference means is your argument, not the number's.*
@@ -71,7 +71,8 @@ A flat, true, countable fact. It's tempting to read it at once — *the crowd ca
 law.* But list what else could explain it. The video is *about* the Ten Commandments, so the word was always
 going to dominate. The count itself rests on a choice: to a computer, *Constitution* and *constitution* are
 two different words, and our file has four of each. Ignore capitals and they merge into 8; keep them and
-each counts only 4. Someone decided which before the number existed. And the comments come only from people
+each counts only 4. Someone decided which before the number existed, and that is the general lesson: the
+methods used to clean and prepare data can literally change the outcome. And the comments come only from people
 who chose to post. Before we run a single line of code, ask the humanist's question: what could this number
 mean, what else could explain it, and who decided what got counted?
 
