@@ -276,10 +276,11 @@ on the strength of whoever showed up.
 <!-- slide:
 ![A schematic funnel: everyone the law affects, people who saw this one video, people who chose to comment, 93 comments the scraper caught, 123 rows in your file](materials/lectures/images/ml1_funnel.png)
 
-The woman from the opening lecture posted.
-Her neighbor — who felt just as strongly and never typed a word —
-**is not in the file at all.** Neither is anyone without
-the wifi, the time, or the nerve.
+The woman from the opening lecture made the choice
+to post her thoughts about the debate.
+Her neighbor felt just as strongly — but never typed a word,
+and **is not captured by the dataset.** Neither is anyone
+without the wifi, the time, or the nerve.
 
 ### Absence from the data is not absence from reality.
 -->
@@ -293,9 +294,9 @@ The loudest thing about a dataset is often what isn't in it.
 ![A schematic funnel: everyone the law affects, people who saw this one video, people who chose to comment, 93 comments the scraper caught, 123 rows in your file](materials/lectures/images/ml1_funnel.png)
 
 Our 93 comments are not "the public." They're the slice of the public that *posted* — people online,
-fired up enough to type, willing to be seen arguing. The woman from the opening lecture posted. Her
-neighbor, who felt just as strongly and never typed a word, is not in the file at all. Neither is anyone
-without the wifi, the time, or the nerve.
+fired up enough to type, willing to be seen arguing. The woman from the opening lecture made the
+choice to post her thoughts about the debate. Her neighbor felt just as strongly but never typed a word,
+and is not captured by the dataset at all. Neither is anyone without the wifi, the time, or the nerve.
 
 You've heard this move before. Politicians of every stripe make it: *"The American people want…"* or
 *"The good people of Texas feel…"* Each claims to speak for everyone on the strength of whoever wrote in,
