@@ -314,8 +314,12 @@ silence at its edges.
 <!-- slide:
 ![A hand at a keyboard whose keys are tiny brass levers, each keypress sending golden light down a branching track](materials/lectures/images/ml1_code_sq.jpg)
 
-Code inherits every connotation above — and adds its own,
-because **code runs on definitions, and a definition is a decision.**
+Code inherits every connotation above. Then it does two things more:
+
+- **It amplifies them.** A program applies the same rule to every row,
+  thousands of times, never pausing to ask whether this case is different.
+- **It adds its own.** Code runs on logical patterns someone programmed —
+  *if this, then that.* **Writing each pattern is a decision.**
 
 Over the next weeks *you* decide. What counts as a "word" when you split
 a comment? Which words are "stopwords" worth deleting? What score makes
@@ -383,8 +387,11 @@ Leave the `#comment` that says what you chose, and why.
 <!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent; echoes ml0's brass-valves "every arrow is a choice"): a hand over a keyboard whose keys are tiny brass levers and valves; each keypress releases a thread of golden light down a branching track — code as a chain of human choices behind a neutral-looking surface. -->
 ![A hand at a keyboard whose keys are tiny brass levers, each keypress sending golden light down a branching track](materials/lectures/images/ml1_code.jpg)
 
-Code inherits every connotation above — and then adds its own, because code runs on definitions, and a
-definition is a decision.
+Code inherits every connotation above, and then does two things more. First, it **amplifies** them. A
+human reader might pause over an odd comment and ask whether this case is different; a program applies the
+same rule to every row, thousands of times, without hesitating. Whatever assumption the rule carries gets
+carried out at scale. Second, code **adds its own** connotations, because code runs on logical patterns that
+someone programmed — *if this, then that* — and writing each pattern is a decision.
 
 Over the next eight weeks *you* will be the one deciding. What counts as a "word" when you split a comment?
 Which words are "stopwords" worth deleting? What score makes a comment "positive"? Where do you cut one
