@@ -103,7 +103,7 @@ a whole contested story about blame and worth — and which story you hear
 depends on who's speaking.
 
 *The denotation is the surface. The connotation is where the culture lives —
-and where the argument is.*
+and what we build the argument from.*
 -->
 
 <!-- layout: split -->
@@ -121,7 +121,7 @@ You already own the tool this lecture needs — you've used it on words your who
 Now the move that makes you a data humanist: **numbers have connotation too.** "Single-mother household"
 denotes a category on a form; it *connotes* a whole contested story about blame and worth, and which story
 you hear depends on who's speaking. The denotation is the surface. The connotation is where the culture
-lives — and where the argument is.
+lives — and what we build the argument from.
 
 ## The myth of neutral data
 
