@@ -85,8 +85,8 @@ You already own the tool this lecture needs.
 
 - A word's **denotation** is what it literally points to.
   *House, home,* and *residence* denote the same thing: a building people live in.
-- Its **connotation** is everything it carries on top — warmth, money,
-  bureaucracy, belonging.
+- Its **connotation** is what it *implies* — the emotional resonance and
+  point of view it brings along: warmth, money, bureaucracy, belonging.
 
 *Home* and *residence* denote alike and connote worlds apart.
 -->
@@ -114,7 +114,8 @@ You already own the tool this lecture needs — you've used it on words your who
 
 - A word's **denotation** is what it literally points to. *House*, *home*, and *residence* denote the same
   thing: a building people live in.
-- Its **connotation** is everything it carries on top of that — warmth, money, bureaucracy, belonging.
+- Its **connotation** is what it implies beyond that: the emotional resonance and the particular point of
+  view it brings along — warmth, money, bureaucracy, belonging.
   *Home* and *residence* denote alike and connote worlds apart.
 
 Now the move that makes you a data humanist: **numbers have connotation too.** "Single-mother household"
