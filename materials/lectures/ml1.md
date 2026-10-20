@@ -11,12 +11,16 @@
 <!-- slide:
 ![A printed numeral on parchment casting a shadow shaped like a crowd of arguing figures](materials/lectures/images/ml1_title_43.jpg)
 
-Every arrow from a lived human fact to an "insight" is a human choice.
+Data doesn't arrive on its own. Getting from people's lives to an "insight"
+about them takes many steps — what to record, how to count it, what to call it —
+and **someone decides each one.**
+
 Today we turn that on the very first thing you'll touch — **a plain number.**
 -->
 
-The opening lecture left us with a claim: every arrow in the pipeline from a lived human fact to an "insight" is a human
-choice. This lecture turns that claim on the very first thing you'll touch — a plain number — and asks
+The opening lecture left us with a claim: data doesn't arrive on its own. Getting from what happens in
+people's lives to an "insight" about them takes many steps — deciding what to record, how to count it, and
+what to call it — and someone makes every one of those decisions. This lecture turns that claim on the very first thing you'll touch — a plain number — and asks
 what it can, and can't, tell us on its own.
 
 Here is a fact about the corpus we'll work with all term: 93 YouTube comments on a Texas law that puts
@@ -299,15 +303,48 @@ a comment "positive"? Where do you cut one topic from the next?
 -->
 
 <!-- slide:
+Each choice is a small act of interpretation that looks like a neutral function. Take one:
+
+### Drop every word used fewer than five times.
+
+Why would anyone do that? For reasons that sound sensible:
+
+- **Noise.** Rare words are often typos and scraps — *chruch, obay, govmt.*
+- **No pattern.** A word used once can't rise, fall, or keep company.
+  Counting methods need repetition.
+- **Size.** Most words are rare: in our file, **457 of 749** appear exactly once.
+  In a big corpus they slow the computer and crowd every chart,
+  so many tools and tutorials make the cut a default step.
+
+*Reasonable motives. Now look at what the rule costs.*
+-->
+
+<!-- slide:
 ![Two bars: the rule "drop every word used fewer than 5 times" keeps 98 different words and drops 651 (87%); by word uses it drops 42%. Kept: the, to, of, and, is, commandments, religion, god. Dropped: slavery, adultery, empathy, Muslim, Jewish, atheist, separation](materials/lectures/images/ml1_filter_chart.png)
 
-Each choice is a small act of interpretation that looks like a neutral function.
+In our file, that one rule deletes **651 of 749** different words.
 
-And those choices don't merely *encode* a value — they **argue** one.
+- **Gone:** *slavery, adultery, empathy, Muslim, Jewish, atheist.*
+- **Kept:** *the, to, of.*
 
-Drop every word used fewer than five times, and your code has *claimed*
-that rare words matter less. In our file, that one rule deletes
-**651 of 749** different words.
+Even *separation* — as in church and state — goes. It appears 4 times,
+plus once as "seperation." **One typo decides whether it survives.**
+
+*You'll make a cousin of this cut yourself, every time you ask for the `most_common(10)` words.*
+-->
+
+<!-- slide:
+So the cut doesn't merely *encode* a value. It **argues** one.
+
+### Rhetoric: the art of persuasion
+
+**Rhetoric** is how a speaker or writer shapes a message to move
+a particular audience — what to say, in what order, and *what to leave out.*
+Aristotle called it seeing "the available means of persuasion."
+
+Hand a reader the surviving words and they'll conclude this conversation
+was about *commandments, religion, God* — never learning anyone raised
+slavery or empathy at all. Persuasion, with no speaker in sight.
 
 *Code isn't only structure. It's rhetoric.*
 -->
@@ -340,13 +377,28 @@ In code, those decisions are concrete operations. You'll **split** text into wor
 
 ![Two bars: the rule "drop every word used fewer than 5 times" keeps 98 different words and drops 651 (87%); by word uses it drops 42%. Kept: the, to, of, and, is, commandments, religion, god. Dropped: slavery, adultery, empathy, Muslim, Jewish, atheist, separation](materials/lectures/images/ml1_filter_chart.png)
 
-And those choices don't merely *encode* a value — they *argue* one. Which number you make the headline,
-which chart you reach for, what you put first and what you bury: every one is a claim about what matters,
-aimed at whoever reads your result. If your code drops every word that appears fewer than five times, it
-has made a claim: that rare words are less useful, or less meaningful. In our file, that rule deletes 651 of
-the 749 different words — *slavery*, *adultery*, *empathy*, *Muslim*, and *Jewish* among them — while
-keeping *the*, *to*, and *of*. Code isn't only structure; it's rhetoric. You'll feel that fully when
-you go public with an analysis at the end of the term — but it starts here, in the smallest function.
+Take one rule you'll find in countless tutorials: drop every word used fewer than five times. Why would
+anyone do that? The motives are sensible. Rare words are often noise — typos and scraps like *chruch*,
+*obay*, and *govmt*. A word that appears once can't show a pattern; it can't rise or fall over time or turn
+up beside other words, and counting methods run on repetition. And rare words are most of any vocabulary:
+in our file, 457 of the 749 different words appear exactly once. In a corpus of millions of words they slow
+later methods like topic modeling and crowd every chart, so many tools make the cut a default step.
+
+But look at what it costs. In our file, that rule deletes 651 of the 749 different words — *slavery*,
+*adultery*, *empathy*, *Muslim*, and *Jewish* among them — while keeping *the*, *to*, and *of*. Even
+*separation*, as in church and state, falls below the line: it appears four times, plus once spelled
+"seperation," so a single typo decides whether it survives. And you'll make a cousin of this cut yourself,
+every time you ask for the `most_common(10)` words.
+
+So those choices don't merely *encode* a value — they *argue* one. That makes them **rhetoric**: the art of
+persuasion, or how a speaker or writer shapes a message to move a particular audience — what to say, in
+what order, and what to leave out. Aristotle defined it as the ability to see, in any given case, "the
+available means of persuasion." A frequency cut does some of that leaving-out on your behalf. Hand a reader
+the surviving words and they'll conclude the conversation was about *commandments*, *religion*, and *God*,
+never learning that anyone raised slavery or empathy at all. Which number you make the headline, which chart
+you reach for, what you put first and what you bury: every one is a claim about what matters, aimed at
+whoever reads your result. Code isn't only structure; it's rhetoric. You'll feel that fully when you go
+public with an analysis at the end of the term — but it starts here, in the smallest function.
 
 That's the trap and the responsibility at once: a machine looks objective *precisely because* it hides the
 choices inside it. Your job as a humanist who codes is the double move from the opening lecture — **read data like a text,
