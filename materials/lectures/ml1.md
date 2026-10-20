@@ -279,8 +279,9 @@ on the strength of whoever showed up.
 The woman from the opening lecture made the choice
 to post her thoughts about the debate.
 Her neighbor felt just as strongly — but never typed a word,
-and **is not captured by the dataset.** Neither is anyone
-without the wifi, the time, or the nerve.
+and **is not captured by the dataset.**
+Both women had the wifi and the time. Plenty of people don't,
+and they never had a chance to be counted.
 
 ### Absence from the data is not absence from reality.
 -->
@@ -296,7 +297,8 @@ The loudest thing about a dataset is often what isn't in it.
 Our 93 comments are not "the public." They're the slice of the public that *posted* — people online,
 fired up enough to type, willing to be seen arguing. The woman from the opening lecture made the
 choice to post her thoughts about the debate. Her neighbor felt just as strongly but never typed a word,
-and is not captured by the dataset at all. Neither is anyone without the wifi, the time, or the nerve.
+and is not captured by the dataset at all. Both women had the wifi and the time; plenty of people don't,
+and they never had a chance to be counted.
 
 You've heard this move before. Politicians of every stripe make it: *"The American people want…"* or
 *"The good people of Texas feel…"* Each claims to speak for everyone on the strength of whoever wrote in,
