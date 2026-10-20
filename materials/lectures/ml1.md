@@ -265,6 +265,12 @@ The loudest thing about a dataset is often **what isn't in it.**
 Our 93 comments are not "the public." They're the slice of the public
 that *posted* — people online, fired up enough to type,
 willing to be seen arguing.
+
+Politicians make this move all the time: *"The American people want…"
+"The good people of Texas feel…"* Each claims everyone's voice
+on the strength of whoever showed up.
+
+*Write "Texans think…" from these 93 comments, and you've made the same move.*
 -->
 
 <!-- slide:
@@ -290,6 +296,11 @@ Our 93 comments are not "the public." They're the slice of the public that *post
 fired up enough to type, willing to be seen arguing. The woman from the opening lecture posted. Her
 neighbor, who felt just as strongly and never typed a word, is not in the file at all. Neither is anyone
 without the wifi, the time, or the nerve.
+
+You've heard this move before. Politicians of every stripe make it: *"The American people want…"* or
+*"The good people of Texas feel…"* Each claims to speak for everyone on the strength of whoever wrote in,
+called, or showed up. Write "Texans think…" from these 93 comments, and you've made the same move. What
+the data supports is narrower and more honest: *these commenters wrote…*
 
 **Absence from the data is not absence from reality.** Some of the most important voices in any cultural
 question are exactly the ones the counting never reaches. A good distant reading stays honest about the
