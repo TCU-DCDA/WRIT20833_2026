@@ -294,6 +294,11 @@ figure a{border-bottom:none;}   /* a linked image needs no underline */
 .slide.split .col-img figure{margin:0;}
 .slide.split .col-img figure img{max-height:72vh;}
 @media (max-width:760px){.slide.split>.split-grid{grid-template-columns:1fr;gap:20px;}}
+/* two text columns ('::: col' in a slide block): a lineated statement | the takeaways */
+.slide .cols{display:grid;grid-template-columns:1fr 1fr;gap:5%;align-items:start;max-width:76rem;width:100%;}
+.slide .cols .col-b>*:first-child{margin-top:0;}
+.slide p.lineated{font-family:var(--serif);font-size:clamp(20px,3vw,34px);line-height:1.4;}
+@media (max-width:760px){.slide .cols{grid-template-columns:1fr;gap:20px;}}
 /* gallery slide — text on top, figures in a row underneath */
 .slide.gallery .fig-row{display:grid;gap:4%;align-items:start;max-width:74rem;width:100%;margin-top:6px;}
 .slide.gallery .fig-row.cols-2{grid-template-columns:1fr 1fr;}

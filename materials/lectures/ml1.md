@@ -37,6 +37,31 @@ when. They are not a sample of Texans, or even of YouTube:
 they're whoever chose to comment on that one video, and whatever the tool caught. We'll come back to who
 that leaves out.
 
+## Close reading, distant reading
+
+<!-- layout: split -->
+
+<!-- slide:
+![A scale running from one sentence to one comment to potentially thousands of comments, with close reading at one end and distant reading at the other](materials/lectures/images/ml1_zoom.png)
+
+Monday we asked: *why bring code into a humanities class?* Here's one answer.
+
+- **Close reading** is what you do with one text: slow, careful attention to what it says and what it implies.
+- **Distant reading** uses code to look for patterns across more text than any one person could read.
+
+Code gives us distance. The humanities tell us what we're looking at.
+
+**Distant reading still needs a close reader.**
+-->
+
+![A scale running from one sentence to one comment to potentially thousands of comments, with close reading at one end and distant reading at the other](materials/lectures/images/ml1_zoom.png)
+
+Why bring code into a humanities class at all? Here's one answer. **Close reading** is what you already do
+with a single text: slow, careful attention to what it says and what it implies. **Distant reading** uses
+code to look for patterns across more text than any one person could read. Code gives us distance; the
+humanities tell us what we're looking at. Ninety-three comments is few enough to read closely, which makes
+this corpus a good place to practice both, and to see that distant reading still needs a close reader.
+
 ## What does the count say?
 
 <!-- layout: split -->
@@ -54,7 +79,7 @@ Flat, true, countable.
 -->
 
 <!-- slide:
-Before you read meaning into it, list what else could explain it.
+Before you decide what the number means, ask: **what else could have produced it?**
 
 - **The topic.** The video is *about* the Ten Commandments. Of course the word dominates.
 - **The counting.** To a computer, *Constitution* and *constitution* are two different words —
@@ -68,7 +93,7 @@ Before you read meaning into it, list what else could explain it.
 > In those 93 comments, ignoring capitals, the word **"commandments"** appears 25 times. **"Constitution"** appears 8.
 
 A flat, true, countable fact. It's tempting to read it at once — *the crowd cares more about scripture than
-law.* But list what else could explain it. The video is *about* the Ten Commandments, so the word was always
+law.* But ask what else could have produced it. The video is *about* the Ten Commandments, so the word was always
 going to dominate. The count itself rests on a choice: to a computer, *Constitution* and *constitution* are
 two different words, and our file has four of each. Ignore capitals and they merge into 8; keep them and
 each counts only 4. Someone decided which before the number existed, and that is the general lesson: the
@@ -89,6 +114,10 @@ You already own the tool this lecture needs.
   point of view it brings along: warmth, money, bureaucracy, belonging.
 
 *Home* and *residence* denote alike and connote worlds apart.
+
+By close reading, we can determine a text's tone, attitude, and mood — not just what it says, but what it implies.
+
+Later, we'll look at ways a computer can try to detect what's implied.
 -->
 
 <!-- slide:
@@ -117,6 +146,9 @@ You already own the tool this lecture needs — you've used it on words your who
 - Its **connotation** is what it implies beyond that: the emotional resonance and the particular point of
   view it brings along — warmth, money, bureaucracy, belonging.
   *Home* and *residence* denote alike and connote worlds apart.
+
+By close reading, we can determine a text's tone, attitude, and mood — not just what it says, but what it
+implies. Later in the term, we'll look at ways a computer can try to detect what's implied.
 
 Now the move that makes you a data humanist: **numbers have connotation too.** "Single-mother household"
 denotes a category on a form; it *connotes* a whole contested story about blame and worth, and which story
@@ -374,13 +406,19 @@ slavery or empathy at all. Persuasion, with no speaker in sight.
 -->
 
 <!-- slide:
-That's the trap and the responsibility at once: a machine looks objective
-**precisely because** it hides the choices inside it.
+That's the trap
+and the responsibility at once:
 
-### Read data like a text, and write code that shows its choices.
+data and software look objective
+**precisely because**
+they hide from the general user
+the choices that shaped them.
+::: col
+### Read data and code like a text, for denotation and connotation, and write code that shows your choices.
 
 Leave the `#comment` that says what you chose, and why.
-*That comment is not housekeeping. It's where the honesty shows.*
+
+*Your `#comments` are not housekeeping. They're where you take the opportunity to be honest and transparent about your choices.*
 -->
 
 <!-- layout: split -->
@@ -427,7 +465,91 @@ you reach for, what you put first and what you bury: every one is a claim about 
 whoever reads your result. Code isn't only structure; it's rhetoric. You'll feel that fully when you go
 public with an analysis at the end of the term — but it starts here, in the smallest function.
 
-That's the trap and the responsibility at once: a machine looks objective *precisely because* it hides the
-choices inside it. Your job as a humanist who codes is the double move from the opening lecture — **read data like a text,
-and write code that shows its choices.** Leave the `#comment` that says what you chose, and why. That comment
-is not housekeeping. It's where the honesty shows.
+That's the trap and the responsibility at once: data and software look objective *precisely because* they
+hide from the general user the choices that shaped them. Your job as a humanist who codes is a double move:
+**read data and code like a text, for denotation and connotation, and write code that shows your choices.**
+Leave the `#comment` that says what you chose, and why. Your `#comments` are not housekeeping. They're where
+you take the opportunity to be honest and transparent about your choices.
+
+## Someone always cleans the text
+
+<!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent): a lamplit editor's desk; on one side a manuscript covered in red-pen corrections, on the other the finished, clean printed book. Alt: An editor's desk with a heavily marked-up manuscript beside its clean printed book. -->
+
+<!-- slide:
+The books you read for class didn't arrive that way. Before you saw a word, editors and publishers:
+
+- standardized spelling and punctuation
+- fixed typos
+- chose which version, which edition, which words to keep
+
+*You've been reading cleaned data your whole life. You just never saw the cleaning.*
+-->
+
+The books you read for class didn't arrive that way. Before you saw a word, editors and publishers
+standardized the spelling and punctuation, fixed the typos, and chose which version, which edition, and
+which words to keep. You've been reading cleaned data your whole life. You just never saw the cleaning.
+
+## You clean as you read
+
+<!-- layout: split -->
+
+<!-- slide:
+![A real comment, "Seperation of chruch and state.", beside the corrected version a reader automatically understands; to Python, seperation and separation are different words](materials/lectures/images/ml1_readers.png)
+
+Comments and posts written on the fly don't get an editor. So you become one, without noticing.
+
+You read *seperation* and *govmt* and silently fix them. You don't stop and wonder what "obay" means.
+
+A computer doesn't do that. To Python, *seperation* and *separation* are two different words.
+
+**Cleaning code makes your invisible reading habits visible.**
+-->
+
+![A real comment, "Seperation of chruch and state.", beside the corrected version a reader automatically understands; to Python, seperation and separation are different words](materials/lectures/images/ml1_readers.png)
+
+Comments and posts written on the fly don't get an editor, so you become one without noticing. One comment
+in our corpus begins "Seperation of chruch and state." You read *separation of church and state* and move
+on; you don't stop to wonder what *govmt* or *obay* means. A computer does none of that. To Python,
+*seperation* and *separation* are two different words, as different as *cat* and *dog*. That's why
+cleaning text in code is worth slowing down for: it makes your invisible reading habits visible.
+
+## You clean as you listen, too
+
+<!-- IMG PROMPT (warm "Reading Room" oil painting — parchment, muted greens, one clay accent): two people in conversation; the words leaving the speaker are tangled with "ums" and crossed-out slips, and the words reaching the listener arrive as one smooth, clean line. Alt: A speaker's halting words becoming a smooth sentence by the time they reach the listener. -->
+
+<!-- slide:
+Someone says *um* every third word, picks the wrong word, mispronounces a name. You hear what they meant.
+
+Speech-to-text has to make the same decisions: which *ums* to keep, which slips to fix.
+
+*Every transcript is a cleaned version of what was said.*
+-->
+
+You do the same thing when you listen. Someone says *um* every third word, picks the wrong word,
+mispronounces a name, and you hear what they meant. Speech-to-text software has to make those decisions
+explicitly: which *ums* to keep, which slips to fix. Every transcript is a cleaned version of what was said.
+
+## Today, you're the editor
+
+<!-- layout: split -->
+
+<!-- slide:
+![Two real comments, "Separation of church and state…" and "Seperation of chruch and state.", pass through lower, split, and count, each step labeled a choice; the result counts separation, church, and state twice each under different spellings](materials/lectures/images/ml1_handoff.png)
+
+In the code-along you'll try three string methods. Each one is a choice:
+
+- `.lower()` — should *Constitution* and *constitution* count as one word?
+- `.split()` — what counts as a "word"? What about *don't*, or *church-and-state*?
+- `.replace()` — do you fix *seperation*? Who decides what's a typo?
+
+**Every cleaning step is an edit. Comment why you made it.**
+-->
+
+![Two real comments, "Separation of church and state…" and "Seperation of chruch and state.", pass through lower, split, and count, each step labeled a choice; the result counts separation, church, and state twice each under different spellings](materials/lectures/images/ml1_handoff.png)
+
+In the code-along you'll try three string methods, and each one is a choice. `.lower()` decides whether
+*Constitution* and *constitution* count as one word. `.split()` decides what counts as a "word" at all —
+what about *don't*, or *church-and-state*, or *state.* with its period still attached? `.replace()` lets you
+fix *seperation*, which raises the question of who decides what's a typo. Run two real comments through
+lowercasing, splitting, and counting, and three ideas come out as six different words. Every cleaning step
+is an edit. Comment why you made it.

@@ -267,6 +267,11 @@ DECK_CSS = r"""
 .slide.split .col-img figure{margin:0;}
 .slide.split .col-img figure img{max-height:72vh;}
 @media (max-width:760px){.slide.split>.split-grid{grid-template-columns:1fr;gap:20px;}}
+/* two text columns ('::: col' in a slide block): a lineated statement | the takeaways */
+.slide .cols{display:grid;grid-template-columns:1fr 1fr;gap:5%;align-items:start;max-width:76rem;width:100%;}
+.slide .cols .col-b>*:first-child{margin-top:0;}
+.slide p.lineated{font-family:var(--serif);font-size:clamp(20px,3vw,34px);line-height:1.4;}
+@media (max-width:760px){.slide .cols{grid-template-columns:1fr;gap:20px;}}
 /* gallery slide — text on top, figures in a row underneath */
 .slide.gallery .fig-row{display:grid;gap:4%;align-items:start;max-width:74rem;width:100%;margin-top:6px;}
 .slide.gallery .fig-row.cols-2{grid-template-columns:1fr 1fr;}
@@ -440,6 +445,30 @@ def _render_one_slide(head, blocks, split, gallery, cont=False):
     return f'<section class="slide">{h2}{body_html}</section>'
 
 
+def _columns(lines):
+    """A slide block split by a '::: col' line -> two text columns, or None if there is no split.
+
+    The marker is not an HTML comment because it sits inside the slide comment, and its '-->' would close it.
+
+    The left column is lineated: each source line keeps its own line, set large in the serif;
+    a blank line between lines leaves a stanza break.
+    The right column renders as usual, and its closing all-italic line still becomes the callout.
+    """
+    cut = next((n for n, ln in enumerate(lines) if ln.strip() == "::: col"), None)
+    if cut is None:
+        return None
+    head = [ln.strip() for ln in lines[:cut]]
+    while head and not head[0]: head.pop(0)
+    while head and not head[-1]: head.pop()
+    left = "<br>".join(md_inline(ln) for ln in head)   # a blank line stays as a stanza break
+    right = render_blocks(lines[cut + 1:])
+    if right:
+        k, h = right[-1]
+        right[-1] = (k, _CALLOUT.sub(r'<p class="callout">\1</p>', h))
+    return [("text", f'<div class="cols"><div class="col-a"><p class="lineated">{left}</p></div>'
+                     f'<div class="col-b">{"".join(h for _, h in right)}</div></div>')]
+
+
 def _content_slide(head, lines):
     """One deck content slide.
 
@@ -454,7 +483,7 @@ def _content_slide(head, lines):
         # deck-only condensation supplies the text; figures still come from the section.
         # Several blocks -> several slides; the figures ride on the LAST one.
         figs_only = [h for k, h in render_blocks(prose_lines) if k == "figure"]
-        rendered = [render_blocks(sl) for sl in slide_blocks]
+        rendered = [_columns(sl) or render_blocks(sl) for sl in slide_blocks]
         # A block may carry its own image (repeat the ![]() inside it). If none does,
         # the section's figures ride on the FIRST slide — where the opening beat is.
         owns_fig = [any(k == "figure" for k, _ in r) for r in rendered]
