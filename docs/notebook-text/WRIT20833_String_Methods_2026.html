@@ -14,7 +14,7 @@
 <p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
 <p data-pagefind-weight="0.5">On Monday you met the string — Python&#x27;s data type for text. Almost all the cultural data we&#x27;ll analyze in this course is text: comments, lyrics, headlines, speeches. So before we can study it, we need to get comfortable handling it. A string isn&#x27;t just one blob — it&#x27;s an ordered sequence of characters, and Python gives us a toolbox of string methods for reaching into it, measuring it, and reshaping it.</p>
 <h3 id="why-we-re-doing-this">Why we&#x27;re doing this</h3>
-<p data-pagefind-weight="0.5">- From Monday&#x27;s lecture. Connotations &amp; Code ended on a charge: read data like a text, and write code that shows its choices. Today is where the choices start. Many of today&#x27;s methods are cleaning moves, and each one decides that some difference in the text doesn&#x27;t matter. Lowercase everything and &quot;God&quot; and &quot;god&quot; become one word. That&#x27;s useful, and it&#x27;s also a choice. - Where you&#x27;ll use it. HW1 uses .lower(), in, and .split() throughout. HW2 counts words that these methods prepared. Your capstone asks you to &quot;clean, and say what you changed.&quot; - The question to keep asking. Every cleaning step makes some differences disappear. Which ones did you just decide don&#x27;t matter, and would the people who wrote the text agree?</p>
+<p data-pagefind-weight="0.5">- From the lecture. Connotations &amp; Code ended on a charge: read data and code like a text, for denotation and connotation, and write code that shows your choices. Editors clean the books you read, and you clean every comment you read without noticing. Today you&#x27;re the editor, and the choices start here. Many of today&#x27;s methods are cleaning moves, and each one decides that some difference in the text doesn&#x27;t matter. Lowercase everything and &quot;God&quot; and &quot;god&quot; become one word. That&#x27;s useful, and it&#x27;s also a choice. - Where you&#x27;ll use it. HW1 uses .lower(), in, and .split() throughout. HW2 counts words that these methods prepared. Your capstone asks you to &quot;clean, and say what you changed.&quot; - The question to keep asking. Every cleaning step makes some differences disappear. Which ones did you just decide don&#x27;t matter, and would the people who wrote the text agree?</p>
 <p data-pagefind-weight="0.5">How today works. Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
 <h2 id="a-text-to-work-with">A Text to Work With</h2>
 <p data-pagefind-weight="0.5">Let&#x27;s start with a single real-sounding comment — the kind of thing people actually post about a public-policy debate. We&#x27;ll spend this lesson taking it apart.</p>
@@ -59,6 +59,15 @@ print(comment.replace(&quot; &quot;, &quot; 🐸 &quot;))</pre>
 print(messy)                       # the \n&#x27;s break it across lines
 print(&quot;---&quot;)
 print(messy.replace(&quot;\n&quot;, &quot; &quot;))   # one clean line</pre>
+<p data-pagefind-weight="0.5">Some cleaning is a judgment call. Here is a real comment from our corpus, exactly as it was posted. You read separation of church and state without a pause. Python doesn&#x27;t:</p>
+<pre data-pagefind-weight="0.5">real = &quot;Seperation of chruch and state.&quot;
+print(real == &quot;Separation of church and state.&quot;)   # False: to Python, a typo is a different word
+
+# fixed two misspellings so they count with the correctly spelled words
+fixed = real.replace(&quot;Seperation&quot;, &quot;Separation&quot;)
+fixed = fixed.replace(&quot;chruch&quot;, &quot;church&quot;)
+print(fixed)</pre>
+<p data-pagefind-weight="0.5">Seperation is clearly a typo. But who decides what counts as one, and what about slang, or a spelling someone chose on purpose? Every cleaning step is an edit. Leave a #comment that says what you changed and why, like the one above.</p>
 <h4 id="your-turn-2">Your turn</h4>
 <pre data-pagefind-weight="0.5"># your turn — replace &quot;great&quot; with a word of your choosing, then print it
 # remember: replace returns a NEW string, so print the result (or save it to a variable)</pre>
