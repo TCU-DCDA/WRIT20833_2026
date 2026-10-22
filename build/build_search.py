@@ -7,8 +7,8 @@ docs/ page). Every header carries a search box that GETs search.html?q=… (site
 
 What is searched: the home page, the schedule, every lecture reading page and guide, and the text of
 every student notebook. Notebooks are .ipynb files that open in Colab, so build_notebook_text.py writes
-an unlinked text page for each into docs/notebook-text/; a notebook result links to Colab (its ``colab``
-meta) and is labelled by its ``kind`` meta. Kept out with ``PAGE(searchable=False)``: this page, the
+a text page for each into docs/notebook-text/; a notebook result opens that page (a section result at
+its heading), with a second link to Colab (its ``colab`` meta), and is labelled by its ``kind`` meta. Kept out with ``PAGE(searchable=False)``: this page, the
 slide decks (the same text as their reading pages), and the Code Guide chat page.
 
 The release gate carries over. Lecture reading pages and notebook text pages carry
@@ -44,7 +44,8 @@ SEARCH_CSS = r"""
 .results .subs{list-style:none;padding:0;margin:10px 0 0 18px;}
 .results .subs li{margin:8px 0 0;}
 .results .subs a,.results .subs .sub-h{font:600 14px/1.3 var(--sans);}
-.results .subs .sub-h{color:var(--green-mid);}
+.results .r-path a.r-colab{color:var(--green-mid);border:none;}
+.results .r-path a.r-colab:hover{color:var(--clay);}
 .results .subs p{margin-top:3px;font-size:13.5px;color:var(--muted);}
 .search-more{margin:18px 0 0;font:600 12px/1 var(--mono);padding:9px 12px;border:1px solid var(--rule);
   border-radius:4px;background:var(--surface);color:var(--green);cursor:pointer;}
@@ -77,18 +78,17 @@ SEARCH_JS = r"""<script>
   function item(r) {
     // Pagefind's first sub-result is usually the page top; list only the ones under a heading.
     var subs = (r.sub_results || []).filter(function (s) { return s.url !== r.url && s.url.indexOf('#') > -1; }).slice(0, 3);
-    // A notebook's text page is only there to be searched: send the reader to Colab, and name the
-    // section as plain text, since Colab can't jump to a heading.
+    // A notebook result opens its text page (at the matching section, for a sub-result) to read;
+    // Colab can't jump to a heading, so running it is a second link.
     var nb = r.meta.colab;
-    var link = nb ? '<a class="r-title" href="' + esc(nb) + '" target="_blank" rel="noopener">'
-                  : '<a class="r-title" href="' + r.url + '">';
-    var where = nb ? (r.meta.kind || 'Notebook') + ' · opens in Colab ↗' : path(r.url).replace(/\.html$/, '');
-    return '<li>' + link + esc(r.meta.title || path(r.url)) + '</a>' +
-      '<span class="r-path">' + esc(where) + '</span>' +
+    var where = nb ? esc(r.meta.kind || 'Notebook') + ' · <a class="r-colab" href="' + esc(nb) +
+                     '" target="_blank" rel="noopener">open in Colab ↗</a>'
+                   : esc(path(r.url).replace(/\.html$/, ''));
+    return '<li><a class="r-title" href="' + r.url + '">' + esc(r.meta.title || path(r.url)) + '</a>' +
+      '<span class="r-path">' + where + '</span>' +
       '<p>' + r.excerpt + '</p>' +
       (subs.length ? '<ul class="subs">' + subs.map(function (s) {
-        var h = nb ? '<span class="sub-h">' + esc(s.title) + '</span>' : '<a href="' + s.url + '">' + esc(s.title) + '</a>';
-        return '<li>' + h + '<p>' + s.excerpt + '</p></li>';
+        return '<li><a href="' + s.url + '">' + esc(s.title) + '</a><p>' + s.excerpt + '</p></li>';
       }).join('') + '</ul>' : '') + '</li>';
   }
   function showMore() {
@@ -137,7 +137,8 @@ def render():
         '<div class="kicker">Search</div>'
         '<h1>Search the course site</h1>'
         '<p class="meta">Searches the home page, the schedule, every mini-lecture, the course guides, and the '
-        'text of every code-along and homework notebook. A notebook result opens the notebook in Colab. '
+        'text of every code-along and homework notebook. A notebook result opens its text at the matching '
+        'section; use its Colab link to run the code. '
         'Lectures and notebooks show up here once they open on the site.</p>'
         '</header>'
     )

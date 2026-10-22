@@ -2,9 +2,9 @@
 
 Pagefind indexes HTML, and the notebooks are .ipynb files that open in Colab, so each student notebook
 (every code-along and homework on the home page, plus the stylometry notebook) gets a plain page holding
-its markdown and code. Nothing on the site links to these pages. The search page sends a notebook result
-to Colab, using the ``colab`` meta stamped here, and shows the ``kind`` meta ("Code-along · Day 7") as its
-label. Headings get ids so a result can name the section where the match sits.
+its markdown and code. Only the search page links to these pages: a notebook result opens its text page at
+the matching section (headings get ids), with the ``colab`` meta stamped here as a second "Open in Colab"
+link, since Colab can't jump to a heading. The ``kind`` meta ("Code-along · Day 7") labels the result.
 
 The release gate carries over: each page carries the same ``opens`` date as the notebook's home-page card
 (release_dates.release), and the search page drops results that have not opened yet (``?all=1`` shows all).
@@ -20,6 +20,7 @@ _os.chdir(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))  # rep
 import html, json, os, re, shutil
 from build_index import CODEALONGS_BY_WEEK, HOMEWORK, COLAB
 from release_dates import release
+from site_theme import PAGE, site_header, site_footer, assert_accessible
 
 # Not under an underscore folder: GitHub Pages runs Jekyll, which would drop it.
 OUT_DIR = "docs/notebook-text"
@@ -33,6 +34,16 @@ NOTEBOOKS = (
 )
 
 _HEADING = re.compile(r"^(#{1,4})\s+(.*)$")
+
+# A search result lands on a heading's anchor: keep it clear of the sticky header, and mark it.
+TEXT_CSS = """
+.reading [id]{scroll-margin-top:84px;}
+.reading pre{overflow-x:auto;}
+.reading h2:target,.reading h3:target,.reading h4:target{background:var(--clay-bg);color:var(--clay-ink);
+  padding:2px 6px;margin-left:-6px;border-radius:3px;}
+.nb-note{font-size:14px;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:9px 12px;
+  margin:6px 0 18px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+"""
 
 
 def _plain(md):
@@ -81,23 +92,22 @@ def render(title, kind, path):
             parts.append(f'<p data-pagefind-weight="0.5">{html.escape(text)}</p>')
     r = release(path)
     opens = f'<span hidden data-pagefind-meta="opens:{r[0]}"></span>' if r else ""
-    return (
-        '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8">\n'
-        '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        '<meta name="robots" content="noindex">\n'
-        f"<title>{html.escape(title)} — notebook text — WRIT 20833</title>\n"
-        '<link rel="stylesheet" href="../styles.css"></head>\n'
-        '<body><div class="wrap"><div class="reading">'
+    body = (
+        '<div class="reading">'
         f'<span hidden data-pagefind-meta="kind:{html.escape(kind)}"></span>'
         f'<span hidden data-pagefind-meta="colab:{html.escape(colab)}"></span>{opens}'
-        f'<p class="muted" data-pagefind-ignore="all">This page holds a notebook\'s text for the site search. '
-        f'<a href="{html.escape(colab)}">Open it in Colab ↗</a></p>'
-        f"<h1>{html.escape(title)}</h1>\n" + "\n".join(parts) +
-        "</div></div></body></html>\n"
+        f'<p class="nb-note" data-pagefind-ignore="all">{html.escape(kind)} · the notebook\'s text, to read and review. '
+        f'To run the code, <a href="{html.escape(colab)}">open it in Colab ↗</a></p>'
+        f"<h1>{html.escape(title)}</h1>\n" + "\n".join(parts) + "</div>"
     )
+    return PAGE(f"{html.escape(title)} — notebook text — WRIT 20833", body, extra_css=TEXT_CSS,
+                css_href="../styles.css", header=site_header(prefix="../"),
+                footer=site_footer("WRIT 20833 · notebook text"),
+                head_extra='<meta name="robots" content="noindex">')
 
 
 if __name__ == "__main__":
+    assert_accessible(TEXT_CSS)
     shutil.rmtree(OUT_DIR, ignore_errors=True)   # a notebook dropped from the home page drops out of search
     os.makedirs(OUT_DIR)
     for title, kind, path in NOTEBOOKS:
