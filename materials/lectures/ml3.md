@@ -45,7 +45,8 @@ Drawing the box is an act of judgment before it is ever an act of code.
 <!-- slide:
 ### Sort these yourself.
 
-Positive, negative, or neutral? Hands up.
+These are YouTube comments on the ruling that blocked Texas's Ten Commandments law.
+Set aside whether you agree: is the **tone** of each comment positive, negative, or neutral? Hands up.
 
 > "the bill of right says freedom of religion, not freedom from religion"
 
@@ -74,8 +75,9 @@ of judgment before it is ever an act of code.
 - Mark a comment "positive" or "negative" and you've flattened a person's mixed, sarcastic, grieving,
   joking sentence into one of two boxes.
 
-Try it on three real comments from our file. Is *"the bill of right says freedom of religion, not freedom
-from religion"* positive, negative, or neutral? What about *"Anyone who thinks teaching kids about morality
+Try it on three real comments from our file: YouTube comments on the ruling that blocked Texas's Ten
+Commandments law. Set aside whether you agree with them and ask only about tone. Is *"the bill of right
+says freedom of religion, not freedom from religion"* positive, negative, or neutral? What about *"Anyone who thinks teaching kids about morality
 is a bad idea should have zero input on raising children!"* Where a room of careful readers disagrees, a category has to pick one answer anyway.
 
 There is no neutral box. Every classification system encodes **values** — about what matters, what counts,
@@ -139,17 +141,18 @@ Someone chose that symbol, too.*
 -->
 
 <!-- slide:
-![Two bars of the same 123 rows: with VADER's standard cutoffs of plus or minus 0.05, 34 negative, 38 neutral, 51 positive; with stricter cutoffs of plus or minus 0.5, 17 negative, 76 neutral, 30 positive](materials/lectures/images/ml3_cutoffs.png)
+![Two bars of the same 123 rows: with VADER's standard cutoffs of plus or minus 0.05, 34 negative, 38 neutral, 51 positive; with cutoffs ten times wider, plus or minus 0.5, 17 negative, 76 neutral, 30 positive](materials/lectures/images/ml3_cutoffs.png)
 
 A threshold is the most ordinary line in programming,
 and one of the most consequential.
 
 ### It is an act of judgment that looks like arithmetic.
 
-In HW3 you'll sort our comments with **two** cutoffs on VADER's score
-(−1 to +1): **≥ 0.05** is positive, **≤ −0.05** is negative, everything between is neutral.
+The loan rule had **one** line and two boxes. In HW3, VADER's score (−1 to +1)
+gets **two** lines, and the gap between them becomes a third box:
+**≥ 0.05** positive · **≤ −0.05** negative · in between, neutral.
 
-Move those lines to ±0.5 and "neutral" doubles — same rows, same scores.
+Move those lines **ten times wider**, to ±0.5, and "neutral" doubles — same rows, same scores.
 -->
 
 <!-- slide:
@@ -193,14 +196,15 @@ Now ask the humanist's questions. **Who chose 650?** Is the person at 649 truly 
 `>`, so they're sent to review; `>=` would have approved them. Someone chose that symbol, too. Why income
 *and* credit, and not rent history, or the reason the score dipped in the first place?
 
-![Two bars of the same 123 rows: with VADER's standard cutoffs of plus or minus 0.05, 34 negative, 38 neutral, 51 positive; with stricter cutoffs of plus or minus 0.5, 17 negative, 76 neutral, 30 positive](materials/lectures/images/ml3_cutoffs.png)
+![Two bars of the same 123 rows: with VADER's standard cutoffs of plus or minus 0.05, 34 negative, 38 neutral, 51 positive; with cutoffs ten times wider, plus or minus 0.5, 17 negative, 76 neutral, 30 positive](materials/lectures/images/ml3_cutoffs.png)
 
 A threshold is the most ordinary line in programming and one of the most consequential: an act of judgment
 that looks like arithmetic. You'll meet your own soon. On Day 13 you'll use VADER, a tool that gives each
-comment an overall `compound` score from −1 (most negative) to +1 (most positive). In HW3, **two** cutoffs
-sort every row: a score of at least 0.05 is positive, at most −0.05 is negative, and anything between is
-neutral. On our 123 rows, those lines give 51 positive, 34 negative, and 38 neutral. Move them to ±0.5 and
-neutral jumps to 76.
+comment an overall `compound` score from −1 (most negative) to +1 (most positive). The loan rule drew
+one line and made two boxes. HW3 draws **two** lines on VADER's scale, and the gap between them becomes a
+third box: a score of at least 0.05 is positive, at most −0.05 is negative, and anything between is
+neutral. On our 123 rows, those lines give 51 positive, 34 negative, and 38 neutral. Move them ten times
+wider, to ±0.5, and neutral jumps to 76.
 
 The rows nearest the line show what is at stake. *"Considering the behavior and moral (?) actions of some
 prominent politicians I suspect they really don't follow their own philosophy"* scores +0.03 and counts as
