@@ -11,7 +11,8 @@ const MAX_HISTORY_TO_API = 40;
 
 // Welcome message content (single source of truth)
 const WELCOME_MESSAGE = `<p>Welcome! I'm your after-hours tutor for WRIT 20833. Pick the assignment you're working on from the dropdown above, and tell me where you're stuck.</p>
-<p>Have your Google Colab notebook open — everything in this course runs in Colab. Paste your code and the full error message anytime, and we'll work through it together. I won't write your answers for you, but I'll help you get them yourself.</p>`;
+<p>Have your Google Colab notebook open — everything in this course runs in Colab. Paste your code and the full error message anytime, and we'll work through it together. I won't write your answers for you, but I'll help you get them yourself.</p>
+<p><strong>You'll need the course access code the first time.</strong> Dr. Rode has it. Enter it once and this browser remembers it.</p>`;
 
 // Conversation history (sent with each request so the AI has context)
 let conversationHistory = [];
@@ -22,6 +23,17 @@ let conversationHistory = [];
 // student to resend. This way local dev (no gate) never prompts.
 const ACCESS_CODE_KEY = 'writ-codeguide-access-code';
 function storedAccessCode() { return localStorage.getItem(ACCESS_CODE_KEY) || ''; }
+
+// --- "About this tutor" note ---
+// Open on a first visit so the privacy note is seen once; after that, keep whatever the student chose.
+const NOTE_KEY = 'writ-codeguide-note-open';
+const chatNote = document.getElementById('chat-note');
+try {
+    if (localStorage.getItem(NOTE_KEY) === 'false') chatNote.open = false;
+} catch (e) { /* storage blocked: leave it open */ }
+chatNote.addEventListener('toggle', () => {
+    try { localStorage.setItem(NOTE_KEY, String(chatNote.open)); } catch (e) { /* not remembered */ }
+});
 
 // DOM elements
 const messagesContainer = document.getElementById('messages');

@@ -85,8 +85,17 @@ CHAT_CSS = """
 #send-btn:disabled{opacity:.55;cursor:default;}
 .chat-note{margin:0 0 18px;padding:12px 16px;font-size:14px;color:var(--ink);background:var(--surface);
   border:1px solid var(--rule);border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,.06);max-width:78ch;}
+.chat-note summary{font-weight:600;cursor:pointer;}
+.chat-note[open] summary{margin-bottom:8px;}
 .chat-note p{margin:0 0 6px;}
 .chat-note p:last-child{margin:0;}
+.chat-shell{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start;}
+.side-note{margin:0 0 14px;padding:14px 16px;background:var(--surface);border:1px solid var(--rule);
+  border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.side-note h2{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);}
+.side-note p{margin:0 0 8px;font-size:13.5px;line-height:1.55;color:var(--ink);}
+.side-note p:last-child{margin:0;}
+@media (max-width:860px){.chat-shell{grid-template-columns:minmax(0,1fr);}}
 """
 
 
@@ -98,7 +107,8 @@ def render():
         '<h1>Code Guide</h1>'
         '<p class="sub">Help with your homework and capstone when class isn’t in session.</p>'
         '</header>'
-        '<div class="chat-note">'
+        '<details id="chat-note" class="chat-note" open>'  # chatbot.js remembers if a student closed it
+        '<summary>About this tutor: optional, and sometimes wrong</summary>'
         '<p><strong>Optional, and still new.</strong> Using it is entirely your choice. Nothing in this course '
         'requires it, and choosing not to use it costs you nothing. It guides you toward your own answers; it '
         'won’t write your code, your topic names, or your essay.</p>'
@@ -107,14 +117,8 @@ def render():
         'contradicting each other, press <strong>Export Chat</strong> and email the file to '
         '<a href="mailto:c.rode@tcu.edu">c.rode@tcu.edu</a>. The exact transcript is what makes a problem '
         'fixable, and nothing leaves your browser unless you send it.</p>'
-        '<p><strong>Where your words go.</strong> Chats are saved <strong>in this browser only</strong>; the '
-        'course doesn’t keep what you write, and there’s no login. To answer you, your messages pass through '
-        'Cloudflare to Anthropic, the company that makes the Claude model behind the tutor. To prevent misuse, '
-        'the course’s server keeps a counter for your network address that disappears about a day after your '
-        'last message, and it counts which assignments and kinds of errors come up, never what anyone wrote. '
-        'Please don’t paste personal information, passwords, or classmates’ work, and for your own dataset, '
-        'paste a few example lines rather than the whole file.</p>'
-        '</div>'
+        '</details>'
+        '<div class="chat-shell">'
         '<section class="chat" aria-label="Code Guide chat">'
         '<div class="chat-bar">'
         '<label for="lesson-select">Working on</label>'
@@ -133,6 +137,34 @@ def render():
         '<button type="submit" id="send-btn">Send</button>'
         '</form>'
         '</section>'
+        '<aside class="chat-side">'
+        '<div class="side-note">'
+        '<h2>What this is not</h2>'
+        '<p>It is <strong>not a substitute for class</strong>. If you missed a session, it won’t walk you '
+        'through the code-along from the top. Work through the notebook and the mini-lecture, then bring the '
+        'spot where you got stuck here.</p>'
+        '<p>For <strong>deadlines, extensions, or submitting your work</strong>, see Dr. Rode.</p>'
+        '</div>'
+        '<div class="side-note">'
+        '<h2>How to get a good answer</h2>'
+        '<p>Paste the cell and the <strong>full error message</strong>, first line to last. “It doesn’t work” '
+        'gives it nothing to go on; the cell plus the error gives it everything.</p>'
+        '<p>Say what you expected to happen. Half of debugging is finding the gap between what you meant and '
+        'what you wrote.</p>'
+        '<p>Working with your own data? Paste a few example lines, not the whole file.</p>'
+        '</div>'
+        '<div class="side-note">'
+        '<h2>Your conversations</h2>'
+        '<p>Chats are saved <strong>in this browser only</strong>; the course doesn’t keep what you write, and '
+        'there’s no login.</p>'
+        '<p>To answer you, your messages pass through Cloudflare to Anthropic, the company that makes the '
+        'Claude model behind the tutor. To prevent misuse, the course’s server keeps a counter for your network '
+        'address that disappears about a day after your last message, and it counts which assignments and '
+        'kinds of errors come up, never what anyone wrote.</p>'
+        '<p><strong>Don’t paste personal information, passwords, or classmates’ work.</strong></p>'
+        '</div>'
+        '</aside>'
+        '</div>'
         '<script src="render.js"></script>'
         '<script src="chatbot.js"></script>'
     )

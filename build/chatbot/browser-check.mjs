@@ -20,8 +20,11 @@ const docs = process.env.DOCS ?? join(dirname(fileURLToPath(import.meta.url)), '
 const site = mkdtempSync(join(tmpdir(), 'codeguide-'));
 cpSync(docs, site, { recursive: true });
 const MOCK = 'https://mock.test/api/chat';
-writeFileSync(join(site, 'chatbot.js'),
-    readFileSync(join(site, 'chatbot.js'), 'utf8').replace("const API_URL = '';", `const API_URL = '${MOCK}';`));
+// Swap whatever URL the build filled in (blank before deploy, the live Worker after) for the mock.
+const built = readFileSync(join(site, 'chatbot.js'), 'utf8');
+const API_LINE = /const API_URL = '[^']*';/;
+if (!API_LINE.test(built)) throw new Error('chatbot.js has no API_URL line to point at the mock');
+writeFileSync(join(site, 'chatbot.js'), built.replace(API_LINE, `const API_URL = '${MOCK}';`));
 const page_url = (q = '') => `file://${site}/chatbot.html${q}`;
 
 const sse = (...events) => events.map(e => `data: ${typeof e === 'string' ? e : JSON.stringify(e)}\n\n`).join('');
