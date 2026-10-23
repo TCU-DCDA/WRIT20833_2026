@@ -236,6 +236,8 @@ Cheap to store, easy to sort — and silent about everyone it doesn't fit.
 -->
 
 <!-- slide:
+![A grid of 100 dots, one per person with a stake: 70 gray for people who never posted, 10 clay for people who posted in Spanish, which VADER scores 0.0 and files as neutral, 20 green for people who posted in English and were read as written](materials/lectures/images/ml3_sample.png)
+
 Remember the missing voices from the last lecture:
 **absence from the data isn't absence from reality.**
 
