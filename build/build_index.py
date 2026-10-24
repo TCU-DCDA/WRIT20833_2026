@@ -29,7 +29,6 @@ CODEALONGS_BY_WEEK = [
         ("Variables & Data Types", "How Python stores text and numbers.", "Day 1", "notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb"),
         ("Strings & String Methods", "Slicing, cleaning, and splitting text.", "Day 2", "notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb"),
         ("Lists, Loops & Conditionals", "Collections, iteration, and decisions.", "Days 3–4", "notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb"),
-        ("Anatomy of a Script", "A preview: one whole script, run on our D1 posts.", "Day 4", "notebooks/codeAlongs/WRIT20833_Anatomy_of_a_Script_2026.ipynb"),
         ("Dictionaries & Functions", "Key–value data and reusable tools.", "Day 5", "notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb"),
     ]),
     ("Weeks 3–4", "From text to data", [
