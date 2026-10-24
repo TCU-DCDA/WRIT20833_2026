@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anatomy of a Script — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"><style>
+.reading [id]{scroll-margin-top:84px;}
+.reading pre{overflow-x:auto;}
+.reading h2:target,.reading h3:target,.reading h4:target{background:var(--clay-bg);color:var(--clay-ink);
+  padding:2px 6px;margin-left:-6px;border-radius:3px;}
+.nb-note{font-size:14px;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:9px 12px;
+  margin:6px 0 18px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+</style><meta name="robots" content="noindex"></head>
+<body><header class="site-header" data-pagefind-ignore="all"><div class="bar"><a href="../index.html" class="brand"><span class="k">WRIT 20833 · Fall 2026</span><span class="name">When Coding Meets Culture</span></a><button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">☰</button><nav class="site-nav" id="site-nav" aria-label="Primary"><a href="../schedule.html" class="nav-pill">Schedule</a><a href="../index.html#lectures" class="nav-pill">Lectures</a><a href="../index.html#codealongs" class="nav-pill">Code-alongs</a><a href="../index.html#assignments" class="nav-pill">Assignments</a><a href="../index.html#resources" class="nav-pill">Resources</a></nav><div class="site-search"><form class="site-search-form" role="search" action="../search.html" method="get"><label class="visually-hidden" for="site-search-q">Search the course site</label><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" name="q" id="site-search-q" placeholder="Search" autocomplete="off"></form><a class="site-search-link" href="../search.html" aria-label="Search the course site"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a></div></div></header><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Day 4"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Anatomy_of_a_Script_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-10-26"></span><p class="nb-note" data-pagefind-ignore="all">Code-along · Day 4 · the notebook's text, to read and review. To run the code, <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Anatomy_of_a_Script_2026.ipynb">open it in Colab ↗</a></p><h1>Anatomy of a Script</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<h2 id="your-words-counted">Your Words, Counted</h2>
+<p data-pagefind-weight="0.5">Last week you wrote about a time you were sorted into a category: a label, a box on a form, a position on a team. Today a computer sorts your words. Below is one complete Python script. It reads every post from our Discussion 1 board and lists the words we used most. You are not expected to understand every line yet. Run it, look at what it finds, and then use it as a map: you already know some of these parts, you learn others this week, and by Mon 11/2 you&#x27;ll be able to read every line. About the data: the posts were exported from TCU Online and every name was replaced with a label, Student A through Student R. No names, no dates.</p>
+<h2 id="the-whole-script">The Whole Script</h2>
+<p data-pagefind-weight="0.5">Run this cell. The comment lines in capitals (# ---- 1. TOOLS ---- and so on) divide it into six parts.</p>
+<pre data-pagefind-weight="0.5"># ---------- 1. TOOLS: bring in code someone else already wrote ----------
+import string            # includes a ready-made string of punctuation marks
+import urllib.request    # lets Python download a file from the web
+
+# ---------- 2. FUNCTIONS: name a routine once, reuse it anywhere ----------
+def split_into_words(text):
+    &quot;&quot;&quot;Lowercase the text, split it on spaces, and trim punctuation off each word.&quot;&quot;&quot;
+    words = []
+    for word in text.lower().split():
+        word = word.strip(string.punctuation + &quot;“”‘’&quot;)
+        if word != &quot;&quot;:
+            words.append(word)
+    return words
+
+def count_words(word_list):
+    &quot;&quot;&quot;Return a dictionary: each word -&gt; how many times it appears.&quot;&quot;&quot;
+    counts = {}
+    for word in word_list:
+        if word in counts:
+            counts[word] = counts[word] + 1
+        else:
+            counts[word] = 1
+    return counts
+
+# ---------- 3. SETTINGS: the choices we make before counting ----------
+URL = (&quot;https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/&quot;
+       &quot;notebooks/data/discussions/d1_discussion_posts.txt&quot;)
+HOW_MANY = 20            # how many top words to show
+STOPWORDS = [&quot;the&quot;, &quot;i&quot;, &quot;to&quot;, &quot;a&quot;, &quot;and&quot;, &quot;in&quot;, &quot;of&quot;, &quot;that&quot;, &quot;who&quot;, &quot;on&quot;, &quot;for&quot;, &quot;was&quot;,
+             &quot;it&quot;, &quot;or&quot;, &quot;as&quot;, &quot;is&quot;, &quot;my&quot;, &quot;be&quot;, &quot;me&quot;, &quot;this&quot;, &quot;with&quot;, &quot;but&quot;, &quot;not&quot;, &quot;what&quot;,
+             &quot;are&quot;, &quot;by&quot;, &quot;how&quot;, &quot;an&quot;, &quot;at&quot;, &quot;one&quot;, &quot;can&quot;, &quot;have&quot;, &quot;so&quot;, &quot;they&quot;, &quot;would&quot;,
+             &quot;because&quot;, &quot;you&quot;, &quot;your&quot;, &quot;from&quot;, &quot;people&quot;, &quot;more&quot;, &quot;like&quot;, &quot;also&quot;, &quot;just&quot;,
+             &quot;their&quot;, &quot;them&quot;, &quot;which&quot;, &quot;other&quot;, &quot;being&quot;, &quot;into&quot;, &quot;could&quot;, &quot;these&quot;, &quot;when&quot;,
+             &quot;were&quot;, &quot;out&quot;, &quot;there&quot;, &quot;has&quot;, &quot;had&quot;, &quot;do&quot;, &quot;all&quot;, &quot;some&quot;, &quot;about&quot;, &quot;if&quot;, &quot;we&quot;,
+             &quot;our&quot;, &quot;us&quot;, &quot;he&quot;, &quot;she&quot;, &quot;his&quot;, &quot;her&quot;, &quot;been&quot;, &quot;than&quot;, &quot;then&quot;, &quot;its&quot;, &quot;it&#x27;s&quot;,
+             &quot;i&#x27;m&quot;, &quot;don&#x27;t&quot;, &quot;very&quot;, &quot;even&quot;, &quot;only&quot;, &quot;way&quot;, &quot;much&quot;, &quot;many&quot;, &quot;think&quot;]
+
+# ---------- 4. READ: load the file ----------
+text = urllib.request.urlopen(URL).read().decode(&quot;utf-8&quot;)
+
+# ---------- 5. ANALYZE: split, filter, count, sort ----------
+all_words = split_into_words(text)
+
+kept_words = []
+for word in all_words:
+    if word not in STOPWORDS:
+        kept_words.append(word)
+
+counts = count_words(kept_words)
+top = sorted(counts.items(), key=lambda item: item[1], reverse=True)[:HOW_MANY]
+
+# ---------- 6. OUTPUT: show the results ----------
+print(len(all_words), &quot;words in all;&quot;, len(kept_words), &quot;left after removing stopwords\n&quot;)
+for word, n in top:
+    print(n, word)</pre>
+<h2 id="reading-the-map">Reading the Map</h2>
+<p data-pagefind-weight="0.5">Every script has the same few parts. Here is where you meet each one in this course: | Part of the script | What it is | You learn it… | |---|---|---| | text, URL, HOWMANY | variables: names for values | already (Day 1) | | .lower(), .split(), .strip() | string methods | already (Day 2) | | if word not in STOPWORDS: | a conditional: a yes/no decision | already (Day 3) | | keptwords = [], for word in ...: | a list and a loop | today (Day 4) | | def countwords(...), counts = {} | a function and a dictionary | Wed 10/28 (Day 5) | | import, reading a file, STOPWORDS, sorted(...) | tools, files, stopwords, sorting | Mon 11/2 (Day 7) | Find it. Before going on, answer these from the script alone: 1. Find the if in part 5. What question does it ask about each word? 2. Find the two def lines. What is each function for, judging only by its name and its &quot;&quot;&quot; note? 3. Which part would you change to count the 10 top words instead of 20? Change it, and run the cell again.</p>
+<h2 id="what-did-the-counting-do">What Did the Counting Do?</h2>
+<p data-pagefind-weight="0.5">Turn the stopwords off. In part 3, change the line to STOPWORDS = [] (keep the old list: you can undo with Ctrl/Cmd+Z), then run the script again. What are the top words now? Are they wrong, or just not interesting? Who decides which words count as interesting? Put the list back before going on. The top word is mostly not yours. Look at the first word on the list. Most of its count comes from how the posts were cleaned before anyone counted them, not from what you wrote. Which word is it, and how did it get there? (Hint: reread &quot;About the data&quot; above.)</p>
+<h2 id="your-turn">Your Turn</h2>
+<p data-pagefind-weight="0.5">This cell reuses the script&#x27;s two functions, splitintowords and countwords, with a stopword list of your own. Add the word you found inside the [ ] (in quotes), and any others you think are noise, then run it. There&#x27;s a catch: a few of you really did write that word (&quot;a student who takes almost...&quot;), and those uses vanish too. Is that trade worth it? There&#x27;s no single right answer, only a choice you can explain.</p>
+<pre data-pagefind-weight="0.5"># your turn — count again with your own stopwords, reusing the script&#x27;s two functions
+my_stopwords = STOPWORDS + []
+
+my_words = []
+for word in split_into_words(text):
+    if word not in my_stopwords:
+        my_words.append(word)
+
+my_counts = count_words(my_words)
+for word, n in sorted(my_counts.items(), key=lambda item: item[1], reverse=True)[:HOW_MANY]:
+    print(n, word)</pre>
+<p data-pagefind-weight="0.5">Now look at the words that rise to the top. They are a portrait of our class&#x27;s posts: what each of you wrote, flattened into one list. - What did this flatten? A post that says &quot;I never fit that category&quot; and a post that embraces one both add 1 to category. - Who chose it? Look at part 3. Someone picked those stopwords, and that someone was not you. - Can you trust it? Does the top-20 list match what you remember reading on the board?</p>
+<h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
+<p data-pagefind-weight="0.5">On Wednesday you&#x27;ll write countwords yourself, line by line. It is the heart of part 5. On Mon 11/2 we take the whole script apart in the term-frequency code-along, choose stopwords on purpose, and point it at 93 real YouTube comments about a Texas law instead of our own posts. Optional further reading: this notebook borrows its idea from Melanie Walsh&#x27;s &quot;Anatomy of a Python Script&quot;, which takes the same approach with Charlotte Perkins Gilman&#x27;s &quot;The Yellow Wallpaper.&quot;</p>
+<h2 id="playground">Playground</h2>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div><footer class="site-footer"><div class="bar"><span>WRIT 20833 · notebook text</span><span class="spacer"></span><a target="_blank" rel="noopener noreferrer" href="https://github.com/TCU-DCDA/WRIT20833_2026">GitHub ↗</a><a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/">Colab ↗</a></div></footer><script>(function(){var t=document.querySelector(".nav-toggle"),n=document.getElementById("site-nav");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();</script><script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;var d=new Date(),p=function(n){return(n<10?"0":"")+n},t=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());document.querySelectorAll("a[data-opens],div.card[data-opens]").forEach(function(a){var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;if(a.tagName==="DIV"){a.querySelectorAll("a.alt").forEach(function(x){x.remove();});a.querySelectorAll("a").forEach(function(x){var y=document.createElement("span");y.innerHTML=x.innerHTML;x.replaceWith(y);});a.classList.remove("linked");a.classList.add("locked");a.title="Opens "+l;var v=a.querySelector(".when");if(v)v.insertAdjacentHTML("beforeend",' <span class="opens">· opens '+l+"</span>");return;}var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");s.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;var w=c?s.querySelector(".when"):null,tag='<span class="opens">'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}a.replaceWith(s);});})();</script></body></html>

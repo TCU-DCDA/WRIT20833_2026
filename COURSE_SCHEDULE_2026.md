@@ -31,7 +31,7 @@ final exam.*
 ### Week 2 (Oct 26–30) — Python foundations: collections & reusable tools
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 10/26** (4) | Collective Memory | **Code-along** → [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) | — |
+| **Mon 10/26** (4) | Collective Memory | **Preview** → [Anatomy of a script: counting our D1 posts](notebooks/codeAlongs/WRIT20833_Anatomy_of_a_Script_2026.ipynb) · **Code-along** → [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) | — |
 | **Wed 10/28** (5) | — | **Code-along** → [Functions & dictionaries](notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb) | — |
 | **Fri 10/30** (6) | — (recap) | **Work session** → foundations recap + **start HW1 in class** | **HW1 assigned** |
 
