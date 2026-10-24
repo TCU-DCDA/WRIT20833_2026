@@ -2,7 +2,7 @@
 
 Small, ready-to-run corpora for the homework notebooks. Each is plain UTF-8 text so it
 can be loaded with `open()` (no pandas required) in the pre-pandas weeks. Each comment collection
-has its own folder (`ten_commandments/` for now); more may be added later in the term.
+has its own folder (`ten_commandments/`, `discussions/`); more may be added later in the term.
 
 ## Files
 
@@ -48,6 +48,15 @@ chart, so **do not "clean" these away** without rewriting those exercises.
 The U.S. Constitution **as signed in 1787** (Preamble through Article VII and the signatures), ~4,550 words: **no Bill of Rights or later amendments.** Its only mention of faith is Article VI's "no religious Test"; *religion* enters with the First Amendment (1791), so HW2 B3 lists it among the words the text never uses, and the HW2 prompt asks students to notice why. Public domain,
 sourced from Project Gutenberg eBook #5 with the Gutenberg/transcriber boilerplate stripped
 (text begins at "THE CONSTITUTION OF THE UNITED STATES OF AMERICA, 1787").
+
+### `discussions/d1_discussion_posts.txt` — our own voices
+The class's **Discussion 1** board from TCU Online (Fall 2026): **49 posts by 18 students**
+(about 7,100 words), first posts and replies in board order, on being sorted into a category.
+Exported from D2L and cleaned with the instructor's `clean_d2l.py`, which removes the board's
+headers (thread titles, "unread!", author-and-timestamp lines) and replaces every author's name
+with a label, **Student A** through **Student R**, the same label each time that student is
+named, so "Hi Student C!" is a reply to Student C. Students' own post titles stay in the text,
+with names swapped (e.g. "Student H Discussion 1 Response"). There are no author or date fields.
 
 ## Why this pairing (HW2 — term frequency)
 The **top comment is literally "how about putting the constitution in classrooms?"** — and
