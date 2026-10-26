@@ -64,8 +64,21 @@ For most of history, a community's memory was **human**, and it forgot.
 -->
 
 <!-- slide:
-That shift — from a memory that forgets to one that
-**can't** — is what this lecture is about.
+### But computers lose things too
+
+- **Corruption doesn't care what it hits.** Flip one byte in the wrong
+  place and the whole file won't open. Flip another and nothing changes.
+- **Platforms disappear.** In 2019, MySpace lost roughly twelve years
+  of uploaded music in a server migration, all at once.
+
+People forget the details and keep the gist. Machines keep every
+detail exactly, until they keep nothing.
+-->
+
+<!-- slide:
+That shift, from a memory that forgets **gradually** to one that
+keeps everything until it loses it all at once, is what this lecture
+is about. A machine can lose a record. It can't **forgive** one.
 
 ### Forgetting was never only a failure. It is also how people get a second chance.
 -->
@@ -79,8 +92,15 @@ For most of human history, a community's memory was a **human** thing — and be
 - **A database keeps the row exactly as it was written.** A record doesn't mellow with age. Ten years on it
   reads the same, and it can still turn up when you apply for a job, an apartment, or a loan.
 
-That shift — from a memory that forgets to one that can't — is what this lecture is about. Forgetting was
-never only a failure. It is also how people get a second chance.
+Computers do lose things, but not the way people do. When data is corrupted, the damage doesn't care what
+it hits: flip one byte in the wrong place and a whole file won't open; flip another and nothing visibly
+changes. Platforms disappear, too. In 2019 MySpace admitted that roughly twelve years of music its users had
+uploaded was lost in a server migration, all at once. People forget the details and keep the gist. Machines
+keep every detail exactly, until they keep nothing.
+
+That shift, from a memory that forgets gradually to one that keeps everything until it loses it all at once,
+is what this lecture is about. A machine can lose a record. It can't forgive one. Forgetting was never only a
+failure. It is also how people get a second chance.
 
 ## A list is a population
 
@@ -331,7 +351,9 @@ entries are **recent emigrant** (3,147) and **destitution** (1,616). Being poor,
 public aid, were entered under "disease." ("Recent emigrant" did not measure time in the city: the project
 read it as marking people bonded to shipping firms who were now relying on the city's aid; see the archived
 [Digital Almshouse Project](http://web.archive.org/web/20200218041124/http://www.nyuirish.net:80/almshouse/disease/).
-Its counts come from an earlier version of the data, so they differ from the ones here.)
+Its counts come from an earlier version of the data, so they differ from the ones here.) Notice where that
+link goes: we can read the project's website only because the Internet Archive saved a copy. The paper
+ledger has survived since 1847. The website built to study it is already gone.
 
 ![A bar chart of the Bellevue Almshouse ledger's "disease" column, Irish-born admissions 1845 to 1847, counted with Counter: sickness 4,284; recent emigrant 3,147; destitution 1,616; intemperance 450; sore limb 356; pregnant 335; insane 327; fever 225. "Recent emigrant" and "destitution" are highlighted: being poor and being newly arrived, filed as diseases.](materials/lectures/images/ml5_ledger.png)
 
