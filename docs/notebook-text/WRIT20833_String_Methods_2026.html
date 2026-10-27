@@ -99,6 +99,21 @@ your_comment = &quot;Keep religion out of public schools please&quot;</pre>
 <pre data-pagefind-weight="0.5">words = [&quot;God&quot;, &quot;and&quot;, &quot;country&quot;]
 print(&quot; &quot;.join(words))     # glue with spaces
 # type along — now glue the same words with hyphens</pre>
+<h2 id="f-strings-putting-values-into-text">f-strings: Putting Values Into Text</h2>
+<p data-pagefind-weight="0.5">So far we&#x27;ve been taking text apart. Just as often you need to build a sentence out of values you&#x27;ve worked out, like a character count or a keyword check, so you can report what you found. An f-string lets you drop variables straight into a string. The structure: python f&quot;some text {variable} more text&quot; - Put the letter f right before the opening quote - Anything inside curly braces {} is Python: its value gets placed into the text - Everything outside the braces is ordinary text - A number goes in as easily as a string, and so does a short expression like {len(comment)}</p>
+<pre data-pagefind-weight="0.5">topic = &quot;the Ten Commandments&quot;
+char_count = len(comment)
+
+print(f&quot;This comment about {topic} is {char_count} characters long.&quot;)</pre>
+<p data-pagefind-weight="0.5">Why not glue the pieces together with +? You can, but + only joins strings to strings, so a number has to be turned into a string first with str(). The f-string does that for you:</p>
+<pre data-pagefind-weight="0.5">print(&quot;This comment is &quot; + str(char_count) + &quot; characters long.&quot;)   # works, but fussy
+print(f&quot;This comment is {char_count} characters long.&quot;)             # same result</pre>
+<p data-pagefind-weight="0.5">Predict first. This line is missing one thing. What will it print?</p>
+<pre data-pagefind-weight="0.5"># my guess:
+print(&quot;This comment is {char_count} characters long.&quot;)</pre>
+<pre data-pagefind-weight="0.5"># type along — count how many times &quot;god&quot; appears in the lowercased comment, save it as `god_count`,
+# then print an f-string that reports it</pre>
+<p data-pagefind-weight="0.5">From Monday&#x27;s loops on, almost every result you print will be an f-string: the text says what the number means, and the braces say where it came from.</p>
 <h2 id="startswith-endswith">Startswith &amp; Endswith</h2>
 <p data-pagefind-weight="0.5">Two handy yes/no checks — useful later for filtering (e.g. keep only comments that start with a hashtag, or files that end in .txt).</p>
 <pre data-pagefind-weight="0.5"># predict first — True or False for each?  my guess:

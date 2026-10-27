@@ -14,7 +14,7 @@
 <p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
 <p data-pagefind-weight="0.5">How today works. Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
 <h2 id="dictionaries">Dictionaries</h2>
-<p data-pagefind-weight="0.5">Last time, lists stored items in order. But a lot of cultural data isn&#x27;t just a sequence — it&#x27;s labeled. A song has a title, an artist, a year. A dictionary stores key–value pairs: each value gets a name (its key) that you look it up by. - Created with curly braces {} - Each entry is key: value, entries separated by commas - Look a value up by its key with dictionary[&quot;key&quot;]</p>
+<p data-pagefind-weight="0.5">Last time, lists stored items in order. But a lot of cultural data isn&#x27;t just a sequence — it&#x27;s labeled. A song has a title, an artist, a year. A dictionary stores key–value pairs: each value gets a name (its key) that you look it up by. The structure: python mydict = { &quot;key1&quot;: value1, &quot;key2&quot;: value2, } mydict[&quot;key1&quot;] # look up a value by its key → value1 - Created with curly braces {} - Each entry is key: value, entries separated by commas - Keys are usually strings, in quotes; values can be any type (strings, numbers, even lists) - Each key appears only once in a dictionary - Look a value up with square brackets and the key: mydict[&quot;key&quot;]. A list uses a position (mylist[0]); a dictionary uses a name</p>
 <pre data-pagefind-weight="0.5">album = {
     &quot;title&quot;: &quot;Renaissance&quot;,
     &quot;artist&quot;: &quot;Beyoncé&quot;,
@@ -25,10 +25,10 @@
 print(album[&quot;title&quot;])
 print(album[&quot;artist&quot;], &quot;—&quot;, album[&quot;year&quot;])</pre>
 <h4 id="keys-and-values">Keys and values</h4>
-<p data-pagefind-weight="0.5">You can ask a dictionary for all of its keys or all of its values.</p>
+<p data-pagefind-weight="0.5">You can ask a dictionary for all of its keys or all of its values. The structure: python mydict.keys() # every key mydict.values() # every value - These are methods, like .split() on a string: a dot, the method name, then parentheses</p>
 <pre data-pagefind-weight="0.5"># type along — print the album&#x27;s .keys(), then its .values()</pre>
 <h4 id="adding-and-changing-entries">Adding and changing entries</h4>
-<p data-pagefind-weight="0.5">Dictionaries are editable. Assign to a key to add it (if it&#x27;s new) or change it (if it already exists).</p>
+<p data-pagefind-weight="0.5">Dictionaries are editable. Assign to a key to add it (if it&#x27;s new) or change it (if it already exists). The structure: python mydict[&quot;key&quot;] = value - Same = you use for variables, but the left side names a key inside the dictionary - If the key is new, Python adds it; if the key already exists, the new value replaces the old one - Python won&#x27;t warn you which one happened, so check your spelling of the key For example: python album[&quot;label&quot;] = &quot;Parkwood&quot; # new key → added album[&quot;artist&quot;] = &quot;Beyoncé Knowles-Carter&quot; # existing key → changed</p>
 <pre data-pagefind-weight="0.5"># type along — add a &quot;genre&quot; key set to &quot;dance-pop&quot;; change &quot;tracks&quot; to 17; then print the whole dictionary</pre>
 <h4 id="your-turn">Your turn</h4>
 <pre data-pagefind-weight="0.5"># your turn — build a dictionary for a movie, video game, or creator you know
@@ -40,7 +40,7 @@ my_thing = {
 
 print(my_thing)</pre>
 <h2 id="a-small-cultural-archive">A Small Cultural Archive</h2>
-<p data-pagefind-weight="0.5">Real datasets are usually many records that share the same fields — a list of dictionaries. Here&#x27;s a tiny archive of artists. Predict first. artists[1] is one record. Which artist is it? Write your guess, then run.</p>
+<p data-pagefind-weight="0.5">Real datasets are usually many records that share the same fields — a list of dictionaries. Here&#x27;s a tiny archive of artists. The structure: python records = [ {&quot;key1&quot;: value, &quot;key2&quot;: value}, {&quot;key1&quot;: value, &quot;key2&quot;: value}, ] records[0] # the first record (a whole dictionary) records[0][&quot;key1&quot;] # one value from the first record - Read the brackets left to right: [0] picks a record by its position in the list, then [&quot;key1&quot;] picks a value by its key inside that record - Every record uses the same keys, so the same lookup works on any of them Predict first. artists[1] is one record. Which artist is it? Write your guess, then run.</p>
 <pre data-pagefind-weight="0.5">artists = [
     {&quot;name&quot;: &quot;Kendrick Lamar&quot;, &quot;city&quot;: &quot;Compton&quot;, &quot;grammys&quot;: 17},
     {&quot;name&quot;: &quot;Beyoncé&quot;, &quot;city&quot;: &quot;Houston&quot;, &quot;grammys&quot;: 32},
@@ -49,10 +49,10 @@ print(my_thing)</pre>
 
 # my guess: artists[1] is
 print(artists[1][&quot;name&quot;], &quot;is from&quot;, artists[1][&quot;city&quot;])</pre>
-<p data-pagefind-weight="0.5">Loop through the whole archive — the same for loop from last lesson, now over dictionaries:</p>
+<p data-pagefind-weight="0.5">Loop through the whole archive — the same for loop from last lesson, now over dictionaries. The structure: python for record in records: record[&quot;key1&quot;] # one value from each record, in turn - Each time through the loop, record is one whole dictionary, so you look up its values by key</p>
 <pre data-pagefind-weight="0.5"># type along — loop through `artists` and print each name with its Grammy count</pre>
 <h2 id="counting-with-a-dictionary">Counting with a Dictionary</h2>
-<p data-pagefind-weight="0.5">Here&#x27;s the move that powers most text analysis: use a dictionary to count things. The key is the thing; the value is how many times you&#x27;ve seen it. This is exactly how we&#x27;ll count words in real comments next week.</p>
+<p data-pagefind-weight="0.5">Here&#x27;s the move that powers most text analysis: use a dictionary to count things. The key is the thing; the value is how many times you&#x27;ve seen it. This is exactly how we&#x27;ll count words in real comments next week. One new piece makes it work: python key in mydict # True if key is already one of the dictionary&#x27;s keys, otherwise False - in checks the keys, not the values - The counting pattern combines this check with adding and changing entries: if the thing is new, add it with a count of 1; if it&#x27;s already there, change its count to one more</p>
 <pre data-pagefind-weight="0.5"># count how often each word appears
 words = [&quot;god&quot;, &quot;law&quot;, &quot;god&quot;, &quot;freedom&quot;, &quot;god&quot;, &quot;law&quot;]
 
@@ -74,7 +74,7 @@ counts = {}
 
 print(counts)</pre>
 <h2 id="functions">Functions</h2>
-<p data-pagefind-weight="0.5">A function packages code into a reusable tool. You define it once with def, give it inputs (parameters), and it can hand back a result with return. python def functionname(input): do something return result</p>
+<p data-pagefind-weight="0.5">A function packages code into a reusable tool. You define it once with def, give it inputs (parameters), and it can hand back a result with return. The structure: python def functionname(parameter): do something with parameter return result functionname(value) # call it: value goes in as parameter, result comes back - def starts the definition; the name follows the same rules as variable names - The parameter is a placeholder variable for whatever input you give the function - The line ends with a colon, and the body is indented, as in loops and if statements - return hands a value back and ends the function - return is not the same as print. print only shows a value on the screen; return gives it back to the code that called the function, so you can print it, save it to a variable, or use it in a loop. That&#x27;s why the examples below wrap each call in print() - Defining a function doesn&#x27;t run it. It runs each time you call it by name with parentheses</p>
 <pre data-pagefind-weight="0.5">def greet(name):
     return f&quot;Welcome, {name}!&quot;
 
@@ -94,13 +94,14 @@ print(greet(&quot;Dr. Rode&quot;))</pre>
 
 print(classify_year(1990))
 print(classify_year(2005))</pre>
-<p data-pagefind-weight="0.5">The payoff: call your function inside a loop to process a whole list.</p>
+<p data-pagefind-weight="0.5">The payoff: call your function inside a loop to process a whole list. The structure: python for item in mylist: print(functionname(item)) # call the function once per item</p>
 <pre data-pagefind-weight="0.5"># type along — loop over `birth_years` and print each year with its generation, using classify_year
 birth_years = [1962, 1985, 1997, 2004]</pre>
 <h4 id="more-than-one-input">More than one input</h4>
-<p data-pagefind-weight="0.5">Functions can take several parameters.</p>
+<p data-pagefind-weight="0.5">Functions can take several parameters. The structure: python def functionname(parameter1, parameter2): return something using parameter1 and parameter2 functionname(value1, value2) - Separate parameters with commas, both when you define the function and when you call it - Values match parameters by position: the first value goes to the first parameter, and so on</p>
 <pre data-pagefind-weight="0.5"># type along — define with_tax(price, rate) that returns price * (1 + rate); then call it with 9.99 and 0.0825</pre>
 <h4 id="your-turn-3">Your turn</h4>
+<p data-pagefind-weight="0.5">Two things you&#x27;ll need below: - pass is a placeholder that does nothing. A function has to have at least one indented line, so pass holds the spot until you write the real one - A comparison is already True or False, so a function can return it directly: python def isrecent(year): return year &gt; 2000 # hands back True or False</p>
 <pre data-pagefind-weight="0.5"># your turn — finish this function so it returns True when a word is &quot;long&quot; (more than 6 letters)
 def is_long(word):
     pass   # replace this line with a return statement
@@ -125,7 +126,7 @@ my_words = [&quot;frogs&quot;, &quot;purple&quot;, &quot;frogs&quot;, &quot;tcu&
 
 print(count_words(my_words))</pre>
 <h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
-<p data-pagefind-weight="0.5">Next week we leave practice data behind for real text — 93 actual YouTube comments about a Texas law. Your countwords function is the seed of term frequency: finding what a text is really about by counting its words. Python even ships with a tool, Counter, that does what you just wrote:</p>
+<p data-pagefind-weight="0.5">Next week we leave practice data behind for real text — 93 actual YouTube comments about a Texas law. Your countwords function is the seed of term frequency: finding what a text is really about by counting its words. Python even ships with a tool, Counter, that does what you just wrote. The structure: python from collections import Counter # load a tool that comes with Python Counter(mylist) # counts each item, like countwords Counter(mylist).mostcommon(n) # the n most frequent items, as (item, count) pairs</p>
 <pre data-pagefind-weight="0.5">from collections import Counter
 
 comment = &quot;god god law freedom god school law god&quot;
