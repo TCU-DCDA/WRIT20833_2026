@@ -18,13 +18,13 @@
 <h2 id="comparisons-conditionals">Comparisons &amp; Conditionals</h2>
 <p data-pagefind-weight="0.5">Before we start storing whole collections of data, we need a way to make decisions. Conditionals let the computer ask yes/no questions about data.</p>
 <h4 id="comparison-operators">Comparison operators</h4>
-<p data-pagefind-weight="0.5">| Operator | Meaning | |----------|---------| | == | equal to | | != | not equal to | | &gt; | greater than | | = | greater than or equal to | | &lt;= | less than or equal to | | in | is this inside a string? (on Monday: a list) | Predict first. Each line below prints True or False. Write your three guesses in the comment, then run it.</p>
+<p data-pagefind-weight="0.5">| Operator | Meaning | |----------|---------| | == | equal to | | != | not equal to | | &gt; | greater than | | = | greater than or equal to | | &lt;= | less than or equal to | | in | is this inside a string? (on Monday: a list) | | not in | the opposite: is this not inside? | Predict first. Each line below prints True or False. Write your three guesses in the comment, then run it.</p>
 <pre data-pagefind-weight="0.5"># my guess:
 print(10 &gt; 5)
 print(&quot;TCU&quot; == &quot;tcu&quot;)       # case matters!
 print(&quot;Frogs&quot; in &quot;TCU Horned Frogs&quot;)   # `in` from Day 2, now as a yes/no question</pre>
 <h4 id="if-elif-else">if / elif / else</h4>
-<p data-pagefind-weight="0.5">An if statement runs code only when a condition is True. Add elif (else if) for additional checks, and else as a catch-all. Notice the pattern: condition ends with a colon :, and the code underneath is indented.</p>
+<p data-pagefind-weight="0.5">An if statement runs code only when a condition is True. Add elif (else if) for additional checks, and else as a catch-all. The structure: python if condition: do this elif anothercondition: do this instead else: do this if nothing above was True - Each condition line ends with a colon :, and the code underneath is indented - Python checks from the top and runs only the first block whose condition is True - elif and else are optional; you can have as many elifs as you need</p>
 <pre data-pagefind-weight="0.5">tcu_score = 34
 smu_score = 31
 
@@ -34,7 +34,7 @@ elif tcu_score == smu_score:
     print(&quot;Headed to overtime&quot;)
 else:
     print(&quot;Better luck next year&quot;)</pre>
-<p data-pagefind-weight="0.5">Two conditions can be joined with and (both must be true) or or (either one will do).</p>
+<p data-pagefind-weight="0.5">Two conditions can be joined with and (both must be true) or or (either one will do). The structure: python if condition1 and condition2: # True only if both are True if condition1 or condition2: # True if either one is True if not condition: # not flips it: True becomes False, False becomes True A condition is just a True/False value, so you can also store it in a variable and use the name later: python isadult = age &gt;= 18 # isadult now holds True or False if isadult and not isbanned: ...</p>
 <pre data-pagefind-weight="0.5"># type along — print &quot;You can vote!&quot; only if age &gt;= 18 AND has_id is True; otherwise &quot;Not yet eligible&quot;
 age = 20
 has_id = True</pre>
@@ -68,7 +68,7 @@ my_value = 2004  # replace with your own score, year, or caption</pre>
 <h3 id="why-we-re-doing-this-monday">Why we&#x27;re doing this (Monday)</h3>
 <p data-pagefind-weight="0.5">- From today&#x27;s lecture. Collective Memory called a list &quot;a population&quot;: the exact point where the individual becomes the demographic. A loop is &quot;a verdict, repeated,&quot; pressing one rule onto every item with no room for the exception. That&#x27;s how you&#x27;ll hear a thousand voices at once, and it&#x27;s how a thousand people become one number. - Where you&#x27;ll use it. HW1 Parts B and C loop through comments, measure them, and build new lists from old ones. Every count in HW2&#x27;s term frequency is a loop like these. Your capstone asks you to go from the many back to the one: the loop gives you the crowd, and then you read individual comments again by hand. - The question to keep asking. Am I remembering these people, or just reducing them?</p>
 <h2 id="lists">Lists</h2>
-<p data-pagefind-weight="0.5">A list is an ordered collection of items — like a column in a spreadsheet. So far we&#x27;ve stored single values in variables. But real data comes in groups: a playlist of songs, a set of hashtags, a roster of names. Lists let us work with all of them at once. - Created with square brackets [] - Items separated by commas - Can hold any data type (strings, numbers, booleans) - Order is preserved — first item stays first</p>
+<p data-pagefind-weight="0.5">A list is an ordered collection of items — like a column in a spreadsheet. So far we&#x27;ve stored single values in variables. But real data comes in groups: a playlist of songs, a set of hashtags, a roster of names. Lists let us work with all of them at once. - Created with square brackets [] - Items separated by commas - Can hold any data type (strings, numbers, booleans) - Order is preserved — first item stays first - in works on lists too: &quot;TikTok&quot; in platforms is True if that exact item is in the list. On a list, in matches whole items, so &quot;Tik&quot; in platforms is False</p>
 <pre data-pagefind-weight="0.5"># a list of strings
 platforms = [&quot;TikTok&quot;, &quot;Instagram&quot;, &quot;YouTube&quot;, &quot;Threads&quot;, &quot;X&quot;]
 
@@ -93,8 +93,9 @@ print(platforms[-1])  # last item (negative counts from the end)</pre>
 <p data-pagefind-weight="0.5">Slicing pulls out a portion of a list. The syntax is list[start:stop] — it includes the start position but stops before the stop position. Think of it as &quot;from here, up to but not including there.&quot; You did this with strings on Days 1 and 2; lists slice the same way.</p>
 <pre data-pagefind-weight="0.5"># type along — print the first three platforms; then from index 2 to the end; then the last two</pre>
 <h2 id="list-methods">List Methods</h2>
-<p data-pagefind-weight="0.5">Methods are actions you can perform on a list. They use dot notation: list.method()</p>
+<p data-pagefind-weight="0.5">Methods are actions you can perform on a list. They use dot notation: list.method() One big difference from string methods: string methods hand back a new string and leave the original alone. Most list methods change the list itself and hand back nothing. So write artists.sort() on its own line, not artists = artists.sort(), which would replace your list with None (Python&#x27;s word for &quot;nothing&quot;).</p>
 <h4 id="adding-items-append-and-extend">Adding items — .append() and .extend()</h4>
+<p data-pagefind-weight="0.5">python mylist.append(item) # adds ONE item to the end mylist.extend(otherlist) # adds EACH item from another list to the end - If you .append() a list, the whole list goes in as a single item, a list inside your list. To add its items one by one, use .extend()</p>
 <pre data-pagefind-weight="0.5"># .append() adds one item to the end
 artists = [&quot;Beyoncé&quot;, &quot;Bad Bunny&quot;, &quot;Tyler the Creator&quot;]
 artists.append(&quot;SZA&quot;)
@@ -134,7 +135,7 @@ for platform in platforms:
 <pre data-pagefind-weight="0.5"># type along — loop over `prices`; for each one, multiply by 1.0825 (Texas sales tax) and print both numbers
 prices = [9.99, 14.99, 4.99, 19.99]</pre>
 <h4 id="loops-conditionals">Loops + Conditionals</h4>
-<p data-pagefind-weight="0.5">The real power shows up when you combine loops with if statements — now you can process a list and make decisions about each item.</p>
+<p data-pagefind-weight="0.5">The real power shows up when you combine loops with if statements — now you can process a list and make decisions about each item. The structure: python for item in mylist: if condition about item: do this else: do this instead - Two levels of indentation: the if is inside the loop, and its code is inside the if - The whole if/else runs once for every item</p>
 <pre data-pagefind-weight="0.5"># filter: which platforms have short names?
 for platform in platforms:
     if len(platform) &lt;= 5:
@@ -145,7 +146,7 @@ for platform in platforms:
 years = [1966, 1985, 1997, 2003, 1961, 1995]</pre>
 <p data-pagefind-weight="0.5">You&#x27;ll use this. This is Friday&#x27;s threshold inside Monday&#x27;s loop: one set of cutoffs, applied to everyone. Look at 1995 and 1997: two years apart, two different generations. Where the lines fall is itself a choice, and different sources draw them in different places. In HW3 a loop like this will put a sentiment label on every comment, and the comments that sit right at a cutoff are the ones to read yourself.</p>
 <h4 id="counting-with-loops">Counting with loops</h4>
-<p data-pagefind-weight="0.5">A common pattern: start a counter at 0, then add to it inside a loop.</p>
+<p data-pagefind-weight="0.5">A common pattern: start a counter at 0, then add to it inside a loop. The structure: python count = 0 for item in mylist: if condition about item: count = count + 1 - The counter starts before the loop. Inside the loop it would reset to 0 on every item - count = count + 1 means &quot;take the current count, add one, store it back&quot;</p>
 <pre data-pagefind-weight="0.5"># count how many hashtags mention TCU
 tags = [&quot;#TCU&quot;, &quot;#GoFrogs&quot;, &quot;#FortWorth&quot;, &quot;#TCU&quot;, &quot;#BigXII&quot;, &quot;#TCU&quot;]
 
@@ -157,7 +158,7 @@ for tag in tags:
 
 print(f&quot;TCU was mentioned {tcu_count} times out of {len(tags)} total tags&quot;)</pre>
 <h4 id="building-new-lists-from-old-ones">Building new lists from old ones</h4>
-<p data-pagefind-weight="0.5">Another essential pattern: start with an empty list, loop through a source list, and .append() items that meet your criteria. This is like going through a library catalog and pulling only the books that match your research topic.</p>
+<p data-pagefind-weight="0.5">Another essential pattern: start with an empty list, loop through a source list, and .append() items that meet your criteria. This is like going through a library catalog and pulling only the books that match your research topic. The structure: python newlist = [] for item in mylist: if condition about item: newlist.append(item) - The empty list starts before the loop, like a counter - To keep the items that don&#x27;t match, test with not in: &quot;#&quot; not in tag is True for a tag with no #</p>
 <pre data-pagefind-weight="0.5"># pull out only the short platform names
 short_names = []
 
@@ -170,12 +171,28 @@ print(&quot;Short platform names:&quot;, short_names)</pre>
 raw_authors = [&quot;Toni Morrison&quot;, &quot;Unknown (?)&quot;, &quot;James Baldwin&quot;, &quot;N.K. Jemisin&quot;, &quot;Anonymous (?)&quot;]</pre>
 <p data-pagefind-weight="0.5">You&#x27;ll use this. Starting an empty list and .append()-ing inside a loop is HW1 Part B. But notice what this particular loop did: it &quot;cleaned&quot; the list by dropping the anonymous authors. The data now looks tidier, and it has forgotten that anonymous writers were ever there. When you clean real data, your capstone asks you to say what you dropped.</p>
 <h4 id="using-enumerate-tracking-position">Using enumerate() — tracking position</h4>
-<p data-pagefind-weight="0.5">Sometimes you need to know both the item and its position. enumerate() gives you both.</p>
+<p data-pagefind-weight="0.5">Sometimes you need to know both the item and its position. enumerate() gives you both. The structure: python for position, item in enumerate(mylist, 1): do something with position and item - enumerate() hands the loop a pair each time: a position number and an item - So the loop gets two variables, separated by a comma: the position first, then the item - The 1 says to start counting at 1. Leave it out and counting starts at 0</p>
 <pre data-pagefind-weight="0.5"># create a numbered playlist
 playlist = [&quot;Not Like Us&quot;, &quot;Espresso&quot;, &quot;Birds of a Feather&quot;, &quot;APT.&quot;, &quot;Die With a Smile&quot;]
 
 for position, song in enumerate(playlist, 1):  # start counting at 1
     print(f&quot;{position}. {song}&quot;)</pre>
+<h4 id="a-loop-inside-a-loop">A loop inside a loop</h4>
+<p data-pagefind-weight="0.5">Sometimes each item has to be checked against a whole list of things: does this caption mention any of several words? That takes a loop inside a loop. The structure: python newlist = [] for item in mylist: found = False for thing in otherlist: if thing in item: found = True if found: newlist.append(item) - The inner loop runs all the way through for each item of the outer loop - found is a True/False switch. It starts at False for every item and flips to True on any match - The .append() sits in the outer loop, after the inner loop has finished. Put it inside the inner loop and an item that matches two things gets added twice - Indentation tells Python which loop each line belongs to, so line it up carefully</p>
+<pre data-pagefind-weight="0.5"># which captions mention ANY of these words?
+team_words = [&quot;frogs&quot;, &quot;tcu&quot;, &quot;purple&quot;]
+captions = [&quot;Game day!&quot;, &quot;Purple everywhere&quot;, &quot;Go Frogs, go TCU&quot;, &quot;Studying all weekend&quot;]
+
+matches = []
+for caption in captions:
+    found = False                  # no match yet for this caption
+    for word in team_words:
+        if word in caption.lower():
+            found = True           # at least one word matched
+    if found:                      # back in the outer loop: add the caption once
+        matches.append(caption)
+
+print(matches)</pre>
 <h2 id="putting-it-all-together">Putting It All Together</h2>
 <p data-pagefind-weight="0.5">Let&#x27;s combine everything — lists, methods, loops, and conditionals — to do something that actually looks like digital humanities work.</p>
 <pre data-pagefind-weight="0.5"># analyze hashtag frequency from a mock social media dataset
@@ -186,7 +203,7 @@ social_tags = [&quot;#climate&quot;, &quot;#action&quot;, &quot;#justice&quot;, 
 analyzed = []
 
 print(&quot;Hashtag Frequency Analysis&quot;)
-print(&quot;-&quot; * 30)
+print(&quot;-&quot; * 30)   # * repeats a string: a line of 30 dashes
 
 for tag in social_tags:
     if tag not in analyzed:
@@ -195,7 +212,10 @@ for tag in social_tags:
         analyzed.append(tag)
 
 print(f&quot;\nTotal tags: {len(social_tags)}&quot;)
-print(f&quot;Unique tags: {len(analyzed)}&quot;)</pre>
+print(f&quot;Unique tags: {len(analyzed)}&quot;)
+
+# shortcut: set() keeps one copy of each item, so len(set(...)) counts the unique ones
+print(f&quot;Unique tags, using set(): {len(set(social_tags))}&quot;)</pre>
 <h4 id="your-turn-2">Your turn</h4>
 <pre data-pagefind-weight="0.5"># your turn — how many podcasts are hosted on each platform?
 # Use the counting pattern: start a counter at 0 for each platform, loop, add one when it matches.
