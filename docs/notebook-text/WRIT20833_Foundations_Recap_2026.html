@@ -13,10 +13,10 @@
 <body><header class="site-header" data-pagefind-ignore="all"><div class="bar"><a href="../index.html" class="brand"><span class="k">WRIT 20833 · Fall 2026</span><span class="name">When Coding Meets Culture</span></a><button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">☰</button><nav class="site-nav" id="site-nav" aria-label="Primary"><a href="../schedule.html" class="nav-pill">Schedule</a><a href="../index.html#lectures" class="nav-pill">Lectures</a><a href="../index.html#codealongs" class="nav-pill">Code-alongs</a><a href="../index.html#assignments" class="nav-pill">Assignments</a><a href="../index.html#resources" class="nav-pill">Resources</a></nav><div class="site-search"><form class="site-search-form" role="search" action="../search.html" method="get"><label class="visually-hidden" for="site-search-q">Search the course site</label><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" name="q" id="site-search-q" placeholder="Search" autocomplete="off"></form><a class="site-search-link" href="../search.html" aria-label="Search the course site"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a></div></div></header><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Day 6"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Foundations_Recap_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-10-30"></span><p class="nb-note" data-pagefind-ignore="all">Code-along · Day 6 · the notebook's text, to read and review. To run the code, <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Foundations_Recap_2026.ipynb">open it in Colab ↗</a></p><h1>Foundations Recap</h1>
 <p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
 <h3 id="why-we-re-doing-this">Why we&#x27;re doing this</h3>
-<p data-pagefind-weight="0.5">- From the last two weeks. You&#x27;ve learned the pieces one at a time: variables, strings, conditionals, lists, loops, dictionaries, functions. Today you use all of them on one small discussion, in one short pass, and fill one gap: checking each item against a list of words. - Where you&#x27;ll use it. Right after this, you start HW1 in class. HW1 Parts A–C use the same moves you rehearse here: test a condition, loop over a list, keep a count, build a new list. - The question to keep asking. When a post becomes a record, what did that flatten, who chose it, and can you trust it?</p>
-<p data-pagefind-weight="0.5">How this notebook works. It&#x27;s short on purpose, so most of the session stays HW1 time. Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
+<p data-pagefind-weight="0.5">Optional, on your own. We won&#x27;t go through this notebook in class. It&#x27;s here if you want one more pass over the basics before (or while) you work on HW1. - From the last two weeks. You&#x27;ve learned the pieces one at a time: variables, strings, conditionals, lists, loops, dictionaries, functions. Here you use all of them on one small discussion, in one short pass, and practice one pattern HW1 needs: checking each item against a list of words. - Where you&#x27;ll use it. HW1 Parts A–C use the same moves you rehearse here: test a condition, loop over a list, keep a count, build a new list. - The question to keep asking. When a post becomes a record, what did that flatten, who chose it, and can you trust it?</p>
+<p data-pagefind-weight="0.5">How this notebook works. It&#x27;s short on purpose. Run the cells from the top, in order. Some code cells are blank on purpose: - write it — a comment says what to write; write it yourself, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — the same, with a little less help. Each blank has a Check: line, so you can compare what you got. For a &quot;predict first&quot; cell, the check comes in the text just after it, so you can guess before you see it. If a cell gives you an error, read the message — errors are part of the work here, not something to hide. If you&#x27;re stuck, ask the Code Guide, or bring it to class.</p>
 <h2 id="the-posts">The Posts</h2>
-<p data-pagefind-weight="0.5">Here is a short online discussion. A university library plans to turn one of its quiet floors into a collaborative floor where talking is allowed, and people respond: six new posts and two replies. The discussion is invented, written for this notebook from the points of view of different library users: a commuter, a student-athlete, the overnight desk staff, and others. Each post is a dictionary with three fields: code (a short label, &quot;P1&quot; to &quot;P8&quot;), text, and replyto (the code of the post it answers, or &quot;&quot; for a new post). The whole collection is a list of those dictionaries, the same shape as Wednesday&#x27;s artists archive, just with longer text.</p>
+<p data-pagefind-weight="0.5">Here is a short online discussion. A university library plans to turn one of its quiet floors into a collaborative floor where talking is allowed, and people respond: six new posts and two replies. The discussion is invented, written for this notebook from the points of view of different library users: a commuter, a student-athlete, the overnight desk staff, and others. Each post is a dictionary with three fields: code (a short label, &quot;P1&quot; to &quot;P8&quot;), text, and replyto (the code of the post it answers, or &quot;&quot; for a new post). The whole collection is a list of those dictionaries, the same shape as the artists archive in the Dictionaries &amp; Functions code-along, just with longer text.</p>
 <pre data-pagefind-weight="0.5"># An invented discussion, written for this notebook: should a quiet library floor
 # become a collaborative one?
 POSTS = [
@@ -54,16 +54,18 @@ POSTS = [
 
 print(len(POSTS), &quot;posts loaded&quot;)</pre>
 <h2 id="1-retrieve-a-post">1. Retrieve a Post</h2>
-<p data-pagefind-weight="0.5">A list is indexed by position, a dictionary by key. To get a field from one post, you use both: first the position in the list, then the key in the dictionary, as with artists[1][&quot;name&quot;] on Wednesday.</p>
+<p data-pagefind-weight="0.5">A list is indexed by position, a dictionary by key. To get a field from one post, you use both: first the position in the list, then the key in the dictionary, as with artists[1][&quot;name&quot;] in the Dictionaries &amp; Functions code-along.</p>
 <pre data-pagefind-weight="0.5">first = POSTS[0]
 print(first[&quot;code&quot;])
 print(first[&quot;text&quot;])</pre>
-<pre data-pagefind-weight="0.5"># type along — print the code and the text of the LAST post (hint: a negative index)</pre>
+<pre data-pagefind-weight="0.5"># write it — print the code and the text of the LAST post (hint: a negative index)
+# Check: the code should be P8, and the text starts &quot;I&#x27;m there at midnight too.&quot;</pre>
 <h2 id="2-change-a-field">2. Change a Field</h2>
 <p data-pagefind-weight="0.5">A dictionary can take a new key at any time. Here we add a need field to P1&#x27;s post: our one-word summary of what this person says they need.</p>
 <pre data-pagefind-weight="0.5">POSTS[0][&quot;need&quot;] = &quot;quiet&quot;
 print(POSTS[0])</pre>
-<pre data-pagefind-weight="0.5"># type along — add a &quot;need&quot; field to P3&#x27;s post (POSTS[2]) in your own words, then print the post</pre>
+<pre data-pagefind-weight="0.5"># write it — add a &quot;need&quot; field to P3&#x27;s post (POSTS[2]) in your own words, then print the post
+# Check: the printout should show &quot;code&quot;: &quot;P3&quot; and, at the end, your &quot;need&quot; with your words.</pre>
 <p data-pagefind-weight="0.5">Look at the printout. &quot;need&quot;: &quot;quiet&quot; sits beside &quot;code&quot;: &quot;P1&quot; and looks just as factual. But the writer never wrote the word need; we did. Anyone who later loads this data can&#x27;t tell which fields came from the post and which came from a reader. When you add a field, you&#x27;re writing an interpretation into the data.</p>
 <h2 id="3-filter-the-records">3. Filter the Records</h2>
 <p data-pagefind-weight="0.5">Filtering is the same pattern you&#x27;ve used all week: start an empty list, loop, test each item with an if, and .append() the ones that pass. Here we keep only the replies. One small new piece: &quot;&quot; is an empty string, quotes with nothing between them. A new post has &quot;&quot; in its replyto field, so post[&quot;replyto&quot;] != &quot;&quot; (!= means &quot;not equal&quot;) is True only for a reply.</p>
@@ -78,18 +80,21 @@ for post in replies:
 # My guess:
 
 quiet_posts = []
-# type along — loop over POSTS; if &quot;quiet&quot; is in the post&#x27;s lowercased text, append the post.
-#              Then print how many there are, and each one&#x27;s code.</pre>
+# write it — loop over POSTS; if &quot;quiet&quot; is in the post&#x27;s lowercased text, append the post.
+#            Then print how many there are, and each one&#x27;s code.</pre>
+<p data-pagefind-weight="0.5">Check: 5 posts mention quiet: P1, P2, P3, P6 and P8. If you got a different number, look at where your .append() sits, and whether you lowercased the text before testing it.</p>
 <h2 id="4-write-a-small-function">4. Write a Small Function</h2>
-<p data-pagefind-weight="0.5">You just wrote a keyword test inside a loop. Wrapping it in a function gives it a name, mentions, so you can reuse it with any post and any word, as you did with islong on Wednesday. - It takes two parameters: the post to check, and the word to look for - Its return line hands back a comparison, so the answer is True or False, like isrecent on Wednesday</p>
+<p data-pagefind-weight="0.5">You just wrote a keyword test inside a loop. Wrapping it in a function gives it a name, mentions, so you can reuse it with any post and any word, as you did with islong in the Dictionaries &amp; Functions code-along. - It takes two parameters: the post to check, and the word to look for - Its return line hands back a comparison, so the answer is True or False, like isrecent in that code-along</p>
 <pre data-pagefind-weight="0.5">def mentions(post, word):
     # True if the post&#x27;s text contains `word`, in any capitalization
     return word.lower() in post[&quot;text&quot;].lower()
 
 print(mentions(POSTS[0], &quot;quiet&quot;))   # P1
 print(mentions(POSTS[3], &quot;quiet&quot;))   # P4</pre>
-<pre data-pagefind-weight="0.5"># type along — define is_reply(post) that returns True when post[&quot;reply_to&quot;] isn&#x27;t &quot;&quot;, then test it on POSTS[6]</pre>
-<pre data-pagefind-weight="0.5"># your turn — use mentions() in a loop to count how many posts mention &quot;midnight&quot;</pre>
+<pre data-pagefind-weight="0.5"># write it — define is_reply(post) that returns True when post[&quot;reply_to&quot;] isn&#x27;t &quot;&quot;, then test it on POSTS[6]
+# Check: is_reply(POSTS[6]) should print True (P7 is a reply). Try POSTS[0] too: it should print False.</pre>
+<pre data-pagefind-weight="0.5"># your turn — use mentions() in a loop to count how many posts mention &quot;midnight&quot;
+# Check: you should get 3.</pre>
 <h2 id="5-explain-one-questionable-result">5. Explain One Questionable Result</h2>
 <p data-pagefind-weight="0.5">Step 3 found the posts that mention quiet. It&#x27;s tempting to read that list as &quot;the people who need quiet.&quot; Check that against the posts themselves.</p>
 <pre data-pagefind-weight="0.5">for post in POSTS:
@@ -102,7 +107,7 @@ print(mentions(POSTS[3], &quot;quiet&quot;))   # P4</pre>
 # What the person actually said:
 # Change the rule, or read it myself? Why?</pre>
 <h2 id="6-fill-a-gap-any-word-from-a-list">6. Fill a Gap: Any Word From a List</h2>
-<p data-pagefind-weight="0.5">This one fills a gap: HW1 Part C needs it, and we haven&#x27;t done it together yet. Step 5 asked whether to change the rule. A common change is to check a list of words instead of one: does this post mention any of them? That takes a loop inside a loop. The outer loop visits each post, and the inner loop checks that post against each word.</p>
+<p data-pagefind-weight="0.5">HW1 Part C needs this pattern. It&#x27;s the same one as &quot;A loop inside a loop&quot; in the Lists &amp; Loops code-along, here on longer text. Step 5 asked whether to change the rule. A common change is to check a list of words instead of one: does this post mention any of them? That takes a loop inside a loop. The outer loop visits each post, and the inner loop checks that post against each word.</p>
 <pre data-pagefind-weight="0.5"># predict first — there are 8 posts. How many codes will sound_posts hold?
 # My guess:
 sound_words = [&quot;quiet&quot;, &quot;silence&quot;, &quot;noise&quot;, &quot;talk&quot;]
@@ -114,7 +119,7 @@ for post in POSTS:
             sound_posts.append(post[&quot;code&quot;])
 
 print(len(sound_posts), sound_posts)</pre>
-<p data-pagefind-weight="0.5">Eleven, from eight posts. P2 mentions both quiet and talk, so it went in twice, and so did P4, P5, and P6. The .append() runs once per matching word, and we wanted once per post. The fix is a True/False switch: a variable that remembers whether this post has matched anything yet. The structure: python newlist = [] for item in mylist: found = False for thing in otherlist: if thing in item: found = True if found: newlist.append(item) - found starts at False for every item, so it&#x27;s set inside the outer loop, before the inner one - The inner loop only flips the switch to True. It doesn&#x27;t append anything - The .append() sits in the outer loop, after the inner loop has finished, so each item is added once - Indentation tells Python which loop each line belongs to, so line it up carefully The same pattern is written up in &quot;A loop inside a loop&quot; in the Lists &amp; Loops code-along, if you want to come back to it.</p>
+<p data-pagefind-weight="0.5">Eleven, from eight posts. P2 mentions both quiet and talk, so it went in twice, and so did P4, P5, and P6. The .append() runs once per matching word, and we wanted once per post. The fix is a True/False switch: a variable that remembers whether this post has matched anything yet. The structure: python newlist = [] for item in mylist: found = False for thing in otherlist: if thing in item: found = True if found: newlist.append(item) - found starts at False for every item, so it&#x27;s set inside the outer loop, before the inner one - The inner loop only flips the switch to True. It doesn&#x27;t append anything - The .append() sits in the outer loop, after the inner loop has finished, so each item is added once - Indentation tells Python which loop each line belongs to, so line it up carefully</p>
 <pre data-pagefind-weight="0.5">sound_posts = []
 for post in POSTS:
     found = False                      # no match yet for this post
@@ -127,13 +132,14 @@ for post in POSTS:
 print(len(sound_posts), sound_posts)</pre>
 <pre data-pagefind-weight="0.5">group_words = [&quot;whiteboard&quot;, &quot;room&quot;]
 group_posts = []
-# type along — use the switch to collect the code of each post that mentions ANY of group_words,
-#              once per post. Then print how many there are, and the codes.</pre>
+# write it — use the switch to collect the code of each post that mentions ANY of group_words,
+#            once per post. Then print how many there are, and the codes.
+# Check: you should get 3 codes, each one only once. If a code appears twice, move your .append().</pre>
 <p data-pagefind-weight="0.5">Read those posts again. One of them isn&#x27;t asking for group space at all. Which one, and what did in find in its text?</p>
 <pre data-pagefind-weight="0.5"># #comments:
 # The post that doesn&#x27;t belong, and what `in` found:</pre>
 <h2 id="on-to-hw1">On to HW1</h2>
-<p data-pagefind-weight="0.5">You&#x27;ll use this. HW1 has no dictionaries or functions; it stays with Days 1–4. But the moves are the ones you just made: - Part A tests things with comparisons and if / elif / else, like if &quot;quiet&quot; in .... - Part B loops over a list, counts as it goes, and builds a new list with .append(), like replies and midnightcount. - Part C puts a loop and a conditional together, like quietposts, checks against a list of words with step 6&#x27;s switch, and asks what that kind of rule misses, like steps 5 and 6. HW1 expects frequent, meaningful #comments: not on every line, but wherever you make a choice or hit a question. Step 5&#x27;s comment is the kind it means. Open HW1 from the course site now and start Part A. Ask me, or the Code Guide, when you get stuck.</p>
+<p data-pagefind-weight="0.5">You&#x27;ll use this. HW1 has no dictionaries or functions; it stays with Days 1–4. But the moves are the ones you just made: - Part A tests things with comparisons and if / elif / else, like if &quot;quiet&quot; in .... - Part B loops over a list, counts as it goes, and builds a new list with .append(), like replies and midnightcount. - Part C puts a loop and a conditional together, like quietposts, checks against a list of words with step 6&#x27;s switch, and asks what that kind of rule misses, like steps 5 and 6. HW1 expects frequent, meaningful #comments: not on every line, but wherever you make a choice or hit a question. Step 5&#x27;s comment is the kind it means. When you&#x27;re ready, open HW1 from the course site. Ask the Code Guide when you get stuck, or bring your question to class.</p>
 <h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
 <p data-pagefind-weight="0.5">On Mon 11/2 you&#x27;ll count every word in a real text, not one keyword at a time, and decide which words to ignore. Step 5&#x27;s problem comes with you: a count tells you a word occurs, not what it meant. By the capstone you&#x27;ll be making claims about a whole dataset, and the habit you need is this one: when the code gives you a number, go back and read some of what it counted.</p>
 <h2 id="playground">Playground</h2>

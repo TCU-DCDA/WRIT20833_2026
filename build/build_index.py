@@ -30,7 +30,7 @@ CODEALONGS_BY_WEEK = [
         ("Strings & String Methods", "Slicing, cleaning, and splitting text.", "Day 2", "notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb"),
         ("Lists, Loops & Conditionals", "Collections, iteration, and decisions.", "Days 3–4", "notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb"),
         ("Dictionaries & Functions", "Key–value data and reusable tools.", "Day 5", "notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb"),
-        ("Foundations Recap", "One short pass over Weeks 1–2, then HW1.", "Day 6", "notebooks/codeAlongs/WRIT20833_Foundations_Recap_2026.ipynb"),
+        ("Foundations Recap", "Optional practice on your own before HW1.", "Day 6", "notebooks/codeAlongs/WRIT20833_Foundations_Recap_2026.ipynb"),
     ]),
     ("Weeks 3–4", "From text to data", [
         ("Term Frequency", "Counting words to hear what a text is about.", "Day 7", "notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb"),

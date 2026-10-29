@@ -32,8 +32,8 @@ final exam.*
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
 | **Mon 10/26** (4) | Collective Memory | **Code-along** → [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) | — |
-| **Wed 10/28** (5) | — | **Code-along** → [Functions & dictionaries](notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb) | — |
-| **Fri 10/30** (6) | — (recap) | **Work session** → [Foundations recap](notebooks/codeAlongs/WRIT20833_Foundations_Recap_2026.ipynb) + **start HW1 in class** | **HW1 assigned** |
+| **Wed 10/28** (5) | — | ***Class cancelled.*** The [Functions & dictionaries](notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb) code-along moves to Friday | — |
+| **Fri 10/30** (6) | — | **Code-along** → finish [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) (from "For Loops") · [Functions & dictionaries](notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb) · *optional, on your own:* [Foundations recap](notebooks/codeAlongs/WRIT20833_Foundations_Recap_2026.ipynb) | **HW1 assigned** |
 
 ### Week 3 (Nov 2–6) — From text to data: term frequency & AI
 | Date | Lecture | Coding | Due |
@@ -81,7 +81,7 @@ final exam.*
 
 *Notes on the notebooks:* one code-along can span two sessions — the
 [Lists, Loops & Conditionals](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) notebook
-covers **Days 3–4**, the [VADER](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) notebook spans
+covers **Days 3–4** (finished on Day 6, after the 10/28 cancellation), the [VADER](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) notebook spans
 **Days 13–14**, and the [Topic Modeling](notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb)
 notebook spans **Days 16–17**.
 
