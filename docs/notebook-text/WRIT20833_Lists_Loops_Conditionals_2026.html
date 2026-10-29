@@ -14,7 +14,7 @@
 <p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
 <h3 id="why-we-re-doing-this-friday">Why we&#x27;re doing this (Friday)</h3>
 <p data-pagefind-weight="0.5">- From today&#x27;s lecture. Classification Logic argued that to classify is to judge, and that a threshold is &quot;an act of judgment that looks like arithmetic.&quot; Every if you write today draws a line, and someone has to decide where it goes, even down to &gt; versus &gt;=. - Where you&#x27;ll use it. HW1 Part A has you sort people and comments with if / elif / else. In HW3 you&#x27;ll turn sentiment scores into &quot;positive,&quot; &quot;neutral,&quot; and &quot;negative&quot; with cutoffs, and your capstone will rest on lines like these. - The question to keep asking. Who chose this line, and what happens to the case sitting right on it? Make the cut visible: leave a #comment that says where you drew the line, and why.</p>
-<p data-pagefind-weight="0.5">How this notebook works. It covers two class days (Friday and Monday). Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
+<p data-pagefind-weight="0.5">How this notebook works. It covers more than one class day (Days 3, 4 and 6 on the schedule). Some code cells are blank on purpose: - type along — a comment says what to write; type it with me, then run it. - predict first — write your guess in the comment before you run the cell. - your turn — try it on your own. If a cell gives you an error, read the message — errors are part of the work here, not something to hide.</p>
 <h2 id="comparisons-conditionals">Comparisons &amp; Conditionals</h2>
 <p data-pagefind-weight="0.5">Before we start storing whole collections of data, we need a way to make decisions. Conditionals let the computer ask yes/no questions about data.</p>
 <h4 id="comparison-operators">Comparison operators</h4>
@@ -157,6 +157,11 @@ for tag in tags:
         tcu_count = tcu_count + 1
 
 print(f&quot;TCU was mentioned {tcu_count} times out of {len(tags)} total tags&quot;)</pre>
+<p data-pagefind-weight="0.5">You can keep more than one counter at once: one for each category, all started at 0 before the loop. Inside the loop, an if / elif / else decides which counter gets the + 1.</p>
+<pre data-pagefind-weight="0.5"># type along — sort the laundry: count the socks, the t-shirts, and everything else (pants)
+# Start three counters at 0 before the loop; use if / elif / else inside it; then print all three.
+fresh_laundry = [&quot;socks&quot;, &quot;tshirt&quot;, &quot;socks&quot;, &quot;tshirt&quot;, &quot;tshirt&quot;, &quot;shorts&quot;, &quot;jeans&quot;, &quot;jeans&quot;, &quot;khakis&quot;]</pre>
+<p data-pagefind-weight="0.5">Add &quot;hat&quot; to freshlaundry and run it again. Where did the hat go? The else is a catch-all: whatever isn&#x27;t socks or a t-shirt gets counted as pants. Every &quot;everything else&quot; category is a choice like this one, and it can hide things. (And three counters gets clumsy if there are twenty kinds of clothing. The Dictionaries &amp; Functions code-along has a better way to count by category.)</p>
 <h4 id="building-new-lists-from-old-ones">Building new lists from old ones</h4>
 <p data-pagefind-weight="0.5">Another essential pattern: start with an empty list, loop through a source list, and .append() items that meet your criteria. This is like going through a library catalog and pulling only the books that match your research topic. The structure: python newlist = [] for item in mylist: if condition about item: newlist.append(item) - The empty list starts before the loop, like a counter - To keep the items that don&#x27;t match, test with not in: &quot;#&quot; not in tag is True for a tag with no #</p>
 <pre data-pagefind-weight="0.5"># pull out only the short platform names
@@ -178,11 +183,20 @@ playlist = [&quot;Not Like Us&quot;, &quot;Espresso&quot;, &quot;Birds of a Feat
 for position, song in enumerate(playlist, 1):  # start counting at 1
     print(f&quot;{position}. {song}&quot;)</pre>
 <h4 id="a-loop-inside-a-loop">A loop inside a loop</h4>
-<p data-pagefind-weight="0.5">Sometimes each item has to be checked against a whole list of things: does this caption mention any of several words? That takes a loop inside a loop. The structure: python newlist = [] for item in mylist: found = False for thing in otherlist: if thing in item: found = True if found: newlist.append(item) - The inner loop runs all the way through for each item of the outer loop - found is a True/False switch. It starts at False for every item and flips to True on any match - The .append() sits in the outer loop, after the inner loop has finished. Put it inside the inner loop and an item that matches two things gets added twice - Indentation tells Python which loop each line belongs to, so line it up carefully</p>
-<pre data-pagefind-weight="0.5"># which captions mention ANY of these words?
+<p data-pagefind-weight="0.5">Sometimes each item has to be checked against a whole list of things: does this caption mention any of several words? That takes a loop inside a loop. The outer loop visits each caption, and the inner loop, indented under it, checks that caption against each word. The inner loop runs all the way through for each item of the outer loop. Predict first. Two of these four captions mention a team word. How many items will matches hold?</p>
+<pre data-pagefind-weight="0.5"># my guess:
 team_words = [&quot;frogs&quot;, &quot;tcu&quot;, &quot;purple&quot;]
 captions = [&quot;Game day!&quot;, &quot;Purple everywhere&quot;, &quot;Go Frogs, go TCU&quot;, &quot;Studying all weekend&quot;]
 
+matches = []
+for caption in captions:
+    for word in team_words:
+        if word in caption.lower():
+            matches.append(caption)
+
+print(len(matches), matches)</pre>
+<p data-pagefind-weight="0.5">Three items, from two captions. &quot;Go Frogs, go TCU&quot; mentions both frogs and tcu, so it went in twice. The .append() runs once per matching word, and we wanted once per caption. The fix is a True/False switch: a variable that remembers whether this caption has matched anything yet. The structure: python newlist = [] for item in mylist: found = False for thing in otherlist: if thing in item: found = True if found: newlist.append(item) - found starts at False for every item, so it&#x27;s set inside the outer loop, before the inner one - The inner loop only flips the switch to True. It doesn&#x27;t append anything - The .append() sits in the outer loop, after the inner loop has finished, so each item is added once, however many things it matched - Indentation tells Python which loop each line belongs to, so line it up carefully</p>
+<pre data-pagefind-weight="0.5"># the same captions, with the switch: each caption is added once
 matches = []
 for caption in captions:
     found = False                  # no match yet for this caption
@@ -192,7 +206,7 @@ for caption in captions:
     if found:                      # back in the outer loop: add the caption once
         matches.append(caption)
 
-print(matches)</pre>
+print(len(matches), matches)</pre>
 <h2 id="putting-it-all-together">Putting It All Together</h2>
 <p data-pagefind-weight="0.5">Let&#x27;s combine everything — lists, methods, loops, and conditionals — to do something that actually looks like digital humanities work.</p>
 <pre data-pagefind-weight="0.5"># analyze hashtag frequency from a mock social media dataset
