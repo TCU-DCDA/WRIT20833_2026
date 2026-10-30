@@ -33,7 +33,7 @@ LECTURES = [
     ("ml1", "materials/lectures/ml1.md", "ML1", "Day 1"),
     ("ml3", "materials/lectures/ml3.md", "ML3", "Day 3"),
     ("ml5", "materials/lectures/ml5.md", "ML5", "Day 4"),
-    ("ml4", "materials/lectures/ml4.md", "ML4", "Day 8"),
+    ("ml4", "materials/lectures/ml4.md", "ML4", "Day 9"),
     ("ml6", "materials/lectures/ml6.md", "ML6", "Day 10"),
     ("ml7", "materials/lectures/ml7.md", "ML7", "Day 16"),
     ("ml9", "materials/lectures/ml9.md", "ML9", "Day 19"),

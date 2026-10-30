@@ -33,20 +33,20 @@ final exam.*
 |---|---|---|---|
 | **Mon 10/26** (4) | Collective Memory | **Code-along** → [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) | — |
 | **Wed 10/28** (5) | — | ***Class cancelled.*** The [Functions & dictionaries](notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb) code-along moves to Friday | — |
-| **Fri 10/30** (6) | — | **Code-along** → finish [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) (from "For Loops") · [Functions & dictionaries](notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb) · *optional, on your own:* [Foundations recap](notebooks/codeAlongs/WRIT20833_Foundations_Recap_2026.ipynb) | **HW1 assigned** |
+| **Fri 10/30** (6) | — | ***Class cancelled.*** Finishing Lists & loops and the Functions & dictionaries code-along move to Monday · *optional, on your own:* [Foundations recap](notebooks/codeAlongs/WRIT20833_Foundations_Recap_2026.ipynb) | **HW1 assigned** |
 
 ### Week 3 (Nov 2–6) — From text to data: term frequency & AI
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 11/2** (7) | Data as evidence *(brief framing)* | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
-| **Wed 11/4** (8) | AI Agency | **Lab** → Reading & improving AI code + stylometry seed: [Reading for the Seams](materials/stylometry/Reading_for_the_Seams.md) (close reading) | D2 post |
-| **Fri 11/6** (9) | — | **Work session** → HW2 (+ optional C2: term frequency on text of your own) | D2 replies |
+| **Mon 11/2** (7) | — | **Code-along** → finish [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) (from "For Loops") · [Functions & dictionaries](notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb) | D2 opens |
+| **Wed 11/4** (8) | Data as evidence *(brief framing)* | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 post |
+| **Fri 11/6** (9) | AI Agency | **Lab** → Reading & improving AI code + stylometry seed: [Reading for the Seams](materials/stylometry/Reading_for_the_Seams.md) (close reading) | D2 replies |
 
 ### Week 4 (Nov 9–13) — Found data, ethics & pandas
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 11/9** (10) | Data Archaeology | **Code-along** → [Found data + collection ethics (pandas 01 + scraping)](notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb) · then get a YouTube API key → [YouTube Comment Collector](notebooks/codeAlongs/WRIT20833_YouTube_Comment_Collector_2026.ipynb), Step 1 (finish before Friday) | **HW2 due** |
-| **Wed 11/11** (11) | — | **Code-along** → [Data cleaning (pandas 02)](notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb) | — |
+| **Mon 11/9** (10) | Data Archaeology | **Code-along** → [Found data + collection ethics (pandas 01 + scraping)](notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb) · then get a YouTube API key → [YouTube Comment Collector](notebooks/codeAlongs/WRIT20833_YouTube_Comment_Collector_2026.ipynb), Step 1 (finish before Friday) | — |
+| **Wed 11/11** (11) | — | **Code-along** → [Data cleaning (pandas 02)](notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb) | **HW2 due** |
 | **Fri 11/13** (12) | — | **Workshop** → collect & clean **your** cultural dataset with the [YouTube Comment Collector](notebooks/codeAlongs/WRIT20833_YouTube_Comment_Collector_2026.ipynb) or Instant Data Scraper (apply Pandas 01–02) → sets up HW3 | — |
 
 ### Week 5 (Nov 16–20) — Computational text analysis: sentiment
@@ -81,11 +81,11 @@ final exam.*
 
 *Notes on the notebooks:* one code-along can span two sessions — the
 [Lists, Loops & Conditionals](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) notebook
-covers **Days 3–4** (finished on Day 6, after the 10/28 cancellation), the [VADER](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) notebook spans
+covers **Days 3–4** (finished on Day 7, after the 10/28 and 10/30 cancellations), the [VADER](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) notebook spans
 **Days 13–14**, and the [Topic Modeling](notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb)
 notebook spans **Days 16–17**.
 
-**Day 7 "Data as evidence"** is a short spoken opener (about 5 minutes) to the term-frequency code-along:
+**Day 8 "Data as evidence"** is a short spoken opener (about 5 minutes) to the term-frequency code-along:
 the turn from Python foundations to treating text as data.
 
 *Notes on lectures:* "—" in **Lecture** marks days with no mini-lecture: recap, workshop, work-session, and

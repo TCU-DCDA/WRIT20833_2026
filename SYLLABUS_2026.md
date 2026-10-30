@@ -357,9 +357,9 @@ and reading.*
 | Variables & data types | Day 1 (Mon 10/19) | HW1 · all later work |
 | Strings & string methods | Day 2 (Wed 10/21) | HW1, HW2 |
 | Comparisons & conditionals | Day 3 (Fri 10/23) | HW1 |
-| Lists & loops | Day 4 (Mon 10/26) | HW1, HW2 |
-| Functions & dictionaries | Day 5 (Wed 10/28) | HW2 · every HW after |
-| Counting & term frequency | Day 7 (Mon 11/2) | HW2 |
+| Lists & loops | Days 4, 7 (Mon 10/26, Mon 11/2) | HW1, HW2 |
+| Functions & dictionaries | Day 7 (Mon 11/2) | HW2 · every HW after |
+| Counting & term frequency | Day 8 (Wed 11/4) | HW2 |
 | pandas DataFrames | Day 10 (Mon 11/9) | HW3, HW4, capstone |
 | Cleaning & `.apply()` | Day 11 (Wed 11/11) | HW3, HW4 |
 | Sentiment (VADER) | Day 13 (Mon 11/16) | HW3 |
@@ -377,21 +377,21 @@ and reading.*
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
 | **Mon 10/26** (4) | Collective Memory | Lists & loops | — |
-| **Wed 10/28** (5) | — | Functions & dictionaries | — |
-| **Fri 10/30** (6) | — (recap) | Foundations recap + start HW1 in class | **HW1 assigned** |
+| **Wed 10/28** (5) | — | *Class cancelled* | — |
+| **Fri 10/30** (6) | — | *Class cancelled* · optional Foundations recap on your own | **HW1 assigned** |
 
 ### Week 3 (Nov 2–6) — From text to data: term frequency & AI
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 11/2** (7) | Data as evidence *(brief framing)* | Term frequency + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 opens |
-| **Wed 11/4** (8) | AI Agency | Reading & improving AI code + stylometry seed | D2 post |
-| **Fri 11/6** (9) | — | HW2 work session (+ optional C2: text of your own) | D2 replies |
+| **Mon 11/2** (7) | — | Finish lists & loops · Functions & dictionaries | D2 opens |
+| **Wed 11/4** (8) | Data as evidence *(brief framing)* | Term frequency + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 post |
+| **Fri 11/6** (9) | AI Agency | Reading & improving AI code + stylometry seed | D2 replies |
 
 ### Week 4 (Nov 9–13) — Found data, ethics & pandas
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 11/9** (10) | Data Archaeology | Found data + collection ethics (pandas 01 + scraping) | **HW2 due** |
-| **Wed 11/11** (11) | — | Data cleaning (pandas 02) | — |
+| **Mon 11/9** (10) | Data Archaeology | Found data + collection ethics (pandas 01 + scraping) | — |
+| **Wed 11/11** (11) | — | Data cleaning (pandas 02) | **HW2 due** |
 | **Fri 11/13** (12) | — (workshop) | Workshop: collect & clean **your** dataset | — |
 
 ### Week 5 (Nov 16–20) — Computational text analysis: sentiment

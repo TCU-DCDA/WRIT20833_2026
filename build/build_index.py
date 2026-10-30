@@ -28,12 +28,12 @@ CODEALONGS_BY_WEEK = [
     ("Weeks 1–2", "Python foundations", [
         ("Variables & Data Types", "How Python stores text and numbers.", "Day 1", "notebooks/codeAlongs/WRIT20833_Variables_DataTypes_2026.ipynb"),
         ("Strings & String Methods", "Slicing, cleaning, and splitting text.", "Day 2", "notebooks/codeAlongs/WRIT20833_String_Methods_2026.ipynb"),
-        ("Lists, Loops & Conditionals", "Collections, iteration, and decisions.", "Days 3–4", "notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb"),
-        ("Dictionaries & Functions", "Key–value data and reusable tools.", "Day 5", "notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb"),
+        ("Lists, Loops & Conditionals", "Collections, iteration, and decisions.", "Days 3–4, 7", "notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb"),
+        ("Dictionaries & Functions", "Key–value data and reusable tools.", "Day 7", "notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb"),
         ("Foundations Recap", "Optional practice on your own before HW1.", "Day 6", "notebooks/codeAlongs/WRIT20833_Foundations_Recap_2026.ipynb"),
     ]),
     ("Weeks 3–4", "From text to data", [
-        ("Term Frequency", "Counting words to hear what a text is about.", "Day 7", "notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb"),
+        ("Term Frequency", "Counting words to hear what a text is about.", "Day 8", "notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb"),
         ("Found Data & Pandas", "Collection ethics, then DataFrames.", "Day 10", "notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb"),
         ("Data Cleaning", "Turning messy scraped data tidy.", "Day 11", "notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb"),
         ("YouTube Comment Collector", "Collect comments from a video you choose.", "Days 10–12", "notebooks/codeAlongs/WRIT20833_YouTube_Comment_Collector_2026.ipynb"),
@@ -46,8 +46,8 @@ CODEALONGS_BY_WEEK = [
 
 # --- homework ---
 HOMEWORK = [
-    ("HW1 · Foundations", "Python basics on real text.", "due Day 7", "notebooks/homework/WRIT20833_HW1_2026.ipynb"),
-    ("HW2 · Term Frequency", "“Whose words win?” — comments vs. the Constitution.", "due Day 10", "notebooks/homework/WRIT20833_HW2_2026.ipynb"),
+    ("HW1 · Foundations", "Python basics on real text.", "due Day 8", "notebooks/homework/WRIT20833_HW1_2026.ipynb"),
+    ("HW2 · Term Frequency", "“Whose words win?” — comments vs. the Constitution.", "due Day 11", "notebooks/homework/WRIT20833_HW2_2026.ipynb"),
     ("HW3 · Sentiment", "Tone, stance, and what counting missed.", "due Day 16", "notebooks/homework/WRIT20833_HW3_2026.ipynb"),
     ("HW4 · Topic Modeling + Integration", "Themes, then all three lenses together.", "due Day 19", "notebooks/homework/WRIT20833_HW4_2026.ipynb"),
 ]
@@ -63,7 +63,7 @@ LECTURES = [
     ("Connotations & Code", "Code is not neutral.", "Day 1", "lectures/ml1.html", "materials/lectures/images/ml1_title.jpg"),
     ("Classification Logic", "Whose categories? Sorting as judgment.", "Day 3", "lectures/ml3.html", "materials/lectures/images/ml3_title.jpg"),
     ("Collective Memory", "What a culture keeps and forgets.", "Day 4", "lectures/ml5.html", "materials/lectures/images/ml5_title.jpg"),
-    ("AI Agency", "Reading & judging machine-written code.", "Day 8", "lectures/ml4.html", "materials/lectures/images/ml4_title.jpg"),
+    ("AI Agency", "Reading & judging machine-written code.", "Day 9", "lectures/ml4.html", "materials/lectures/images/ml4_title.jpg"),
     ("Data Archaeology", "Where found data comes from.", "Day 10", "lectures/ml6.html", "materials/lectures/images/ml6_title.jpg"),
     ("NLP & Topic Modeling", "Teaching machines to read culture.", "Day 16", "lectures/ml7.html", "materials/lectures/images/ml7_title.jpg"),
     ("Going Public", "Analysis → public argument.", "Day 19", "lectures/ml9.html", "materials/lectures/images/ml9_title.jpg"),
@@ -169,7 +169,7 @@ def render():
             card("Worksheet", "Checking the Machine", "A one-page routine for testing a result by hand: HW3, HW4, and the capstone.",
                  "Day 19 · Week 7", GH_BLOB + "materials/Checking_the_Machine.md"),
             card("Exercise", "Reading for the Seams", "Stylometry close-reading: hearing a human (or AI) voice.",
-                 "Day 8 · Week 3", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
+                 "Day 9 · Week 3", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
             card("Notebook", "Stylometry (computational)", "The computational half of the stylometry exercise.",
                  "Day 18 · Week 6", COLAB + "materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb",
                  opens=gate_attrs("materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb")),

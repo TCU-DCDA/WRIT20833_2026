@@ -1,6 +1,6 @@
 # Reading for the Seams — Stylometry of Human, AI, and Hybrid Writing
 
-> Built from the `ai_voice_claude_analysis.pdf` artifact. Extends the Day 8 AI Agency lab from
+> Built from the `ai_voice_claude_analysis.pdf` artifact. Extends the Day 9 AI Agency lab from
 > analyzing AI *code* to analyzing AI *prose*.
 
 **Course:** WRIT 20833 · **Theme tie-in:** Mini-Lecture 4 (AI Agency) · **Method tie-in:** close
@@ -32,7 +32,7 @@ says *avoid overclaiming*.
 
 ## Two-part, split placement
 
-### Part B — Close reading (Day 8, with the AI Agency lab). No code.
+### Part B — Close reading (Day 9, with the AI Agency lab). No code.
 Students read a short hybrid passage and, using the PDF as a model, build their own
 **attribution map**:
 
@@ -41,7 +41,7 @@ Students read a short hybrid passage and, using the PDF as a model, build their 
 
 They identify **scaffolding** vs. **texture**, then write a short paragraph applying the PDF's
 practical heuristic. This produces a **prediction**: *which parts are AI, and what gave it away?*
-(Requires no programming — it rides the Day 8 AI Agency theme.)
+(Requires no programming — it rides the Day 9 AI Agency theme.)
 
 ### Part A + C — Distant reading + synthesis (demo on Day 18; Track B capstone work, Weeks 7–8). The notebook.
 See `WRIT20833_Stylometry_Reading_Seams_2026.ipynb`. Using the term-frequency tools students
@@ -52,7 +52,7 @@ already know, they **measure** style signatures across human / AI / hybrid texts
 - **Average sentence length** (and how varied it is)
 - **Hedging / softening phrase counts** ("perhaps", "a quick example or two", "whatever feels")
 
-Then **Part C — synthesis**: do the numbers confirm or upend the Day 8 close read? This is the
+Then **Part C — synthesis**: do the numbers confirm or upend the Day 9 close read? This is the
 course's "being wrong as learning" engine and its close → distant → close validation loop.
 
 ---
