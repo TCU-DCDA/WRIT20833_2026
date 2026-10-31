@@ -10,7 +10,7 @@ has its own folder (`ten_commandments/` for now); more may be added later in the
 **93 YouTube comments, stored as 123 rows** (2,235 words), reacting to the 2025 **Texas Ten
 Commandments-in-schools** law. Source: the Fall-2025
 [`TenCommandmentsTX/20833_CBS1_youtube_F25.csv`](https://github.com/TCU-DCDA/WRIT20833_2025/blob/main/datasets/TenCommandmentsTX/20833_CBS1_youtube_F25.csv),
-an Instant Data Scraper export of the comments under one TV-news video on YouTube: CBS News,
+an Instant Data Scraper export (scraped by the instructor) of the comments under one TV-news video on YouTube: CBS News,
 ["Court blocks Texas law requiring public classrooms to display Ten Commandments"](https://www.youtube.com/watch?v=qr_rZWbGhzI)
 (Aug 20, 2025), on the federal ruling that blocked the law in some districts. Scraped between that
 date and 2025-09-19, when the CSV was committed; many comments react to the judge as much as the law.
