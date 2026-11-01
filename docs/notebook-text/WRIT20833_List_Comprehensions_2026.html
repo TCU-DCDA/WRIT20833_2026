@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>List Comprehensions (Stretch) — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"><style>
+.reading [id]{scroll-margin-top:84px;}
+.reading pre{overflow-x:auto;}
+.reading h2:target,.reading h3:target,.reading h4:target{background:var(--clay-bg);color:var(--clay-ink);
+  padding:2px 6px;margin-left:-6px;border-radius:3px;}
+.nb-note{font-size:14px;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:9px 12px;
+  margin:6px 0 18px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+</style><meta name="robots" content="noindex"></head>
+<body><header class="site-header" data-pagefind-ignore="all"><div class="bar"><a href="../index.html" class="brand"><span class="k">WRIT 20833 · Fall 2026</span><span class="name">When Coding Meets Culture</span></a><button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">☰</button><nav class="site-nav" id="site-nav" aria-label="Primary"><a href="../schedule.html" class="nav-pill">Schedule</a><a href="../index.html#lectures" class="nav-pill">Lectures</a><a href="../index.html#codealongs" class="nav-pill">Code-alongs</a><a href="../index.html#assignments" class="nav-pill">Assignments</a><a href="../index.html#resources" class="nav-pill">Resources</a></nav><div class="site-search"><form class="site-search-form" role="search" action="../search.html" method="get"><label class="visually-hidden" for="site-search-q">Search the course site</label><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" name="q" id="site-search-q" placeholder="Search" autocomplete="off"></form><a class="site-search-link" href="../search.html" aria-label="Search the course site"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a></div></div></header><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Optional"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_List_Comprehensions_2026.ipynb"></span><p class="nb-note" data-pagefind-ignore="all">Code-along · Optional · the notebook's text, to read and review. To run the code, <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_List_Comprehensions_2026.ipynb">open it in Colab ↗</a></p><h1>List Comprehensions (Stretch)</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<h3 id="why-we-re-doing-this">Why we&#x27;re doing this</h3>
+<p data-pagefind-weight="0.5">Optional, on your own. Nothing in this course requires it, and we won&#x27;t go through it in class. Everything you need for the homework, you can do with the loops you already know. - What it is. A list comprehension is a loop that builds a list, written on one line. It&#x27;s a shortcut for the loop-and-.append() pattern from Days 3–4. It does nothing new; it&#x27;s just more compact. - Why bother. You&#x27;ll see them: in some of our starter code, in the Topic Modeling notebook, and in code that AI tools write. This notebook lets you learn to read one by turning it back into a loop, and gives you practice writing a few. - A fair warning. Compact isn&#x27;t the same as clear. For many people, the loop is easier to read, to debug, and to explain. It is always fine to write the loop. Use a comprehension only when it feels clearer to you. Each exercise ends with a Check: line, the output you should see, so you can work on your own.</p>
+<h2 id="setup">Setup</h2>
+<p data-pagefind-weight="0.5">Run this cell. It loads eight short, invented comments, written in the voice of the Ten Commandments comments you&#x27;ve been working with. We&#x27;ll use them for everything below.</p>
+<pre data-pagefind-weight="0.5">comments = [
+    &quot;The Ten Commandments belong in every classroom&quot;,
+    &quot;Religion is for the home, not the schools&quot;,
+    &quot;Freedom of religion means freedom from religion&quot;,
+    &quot;Our kids need morals and values&quot;,
+    &quot;Whose religion are we talking about&quot;,
+    &quot;It is common sense&quot;,
+    &quot;The government should stay out of public schools&quot;,
+    &quot;God and country built this nation and our schools should teach that&quot;,
+]
+
+print(len(comments), &quot;comments loaded&quot;)</pre>
+<h2 id="step-1-the-loop-you-already-know">Step 1 — The loop you already know</h2>
+<p data-pagefind-weight="0.5">Say we want the number of words in each comment. Here is the Day 3–4 way: start with an empty list, loop, and .append() one result per item.</p>
+<pre data-pagefind-weight="0.5">word_counts = []
+for c in comments:
+    word_counts.append(len(c.split()))
+
+print(word_counts)</pre>
+<p data-pagefind-weight="0.5">Check: [7, 8, 7, 6, 6, 4, 8, 12] Now the same list, built in one line:</p>
+<pre data-pagefind-weight="0.5">word_counts_short = [len(c.split()) for c in comments]
+
+print(word_counts_short)
+print(word_counts == word_counts_short)</pre>
+<p data-pagefind-weight="0.5">Same list, and the last line prints True. Put the two side by side and the pieces line up: wordcounts = [] wordcountsshort = [ len(c.split()) for c in comments ] for c in comments: ^ WHAT to keep ^ the loop line wordcounts.append( len(c.split()) ) The pattern: [ WHAT-TO-KEEP for ITEM in LIST ] Read it out loud as a sentence: &quot;make a list of len(c.split()), for each c in comments.&quot;</p>
+<h2 id="step-2-your-turn-loop-to-one-line">Step 2 — Your turn: loop to one line</h2>
+<p data-pagefind-weight="0.5">Here is a loop that makes a list of every comment in lowercase. Rewrite it as a one-line comprehension.</p>
+<pre data-pagefind-weight="0.5">lowered = []
+for c in comments:
+    lowered.append(c.lower())
+
+# type along: the same list in one line, saved as `lowered_short`
+#             then print whether it equals `lowered`</pre>
+<p data-pagefind-weight="0.5">Check: True (If you got False, compare the two lists. Is the thing before for the same thing you .append()-ed in the loop?)</p>
+<h2 id="step-3-adding-a-filter">Step 3 — Adding a filter</h2>
+<p data-pagefind-weight="0.5">The loops you wrote in Term Frequency had an if inside: keep only the items that pass a test. A comprehension can do that too. Here is the loop version first: keep only the comments that mention religion.</p>
+<pre data-pagefind-weight="0.5">about_religion = []
+for c in comments:
+    if &quot;religion&quot; in c.lower():
+        about_religion.append(c)
+
+print(len(about_religion), &quot;comments&quot;)
+for c in about_religion:
+    print(&quot;-&quot;, c)</pre>
+<p data-pagefind-weight="0.5">Check: 3 comments, then the three comments that contain religion. In a comprehension, the if moves to the end: The pattern: [ WHAT-TO-KEEP for ITEM in LIST if TEST ]</p>
+<pre data-pagefind-weight="0.5"># type along: the same list in one line, saved as `about_religion_short`
+#             then print whether it equals `about_religion`</pre>
+<p data-pagefind-weight="0.5">Check: True Notice the order: the keep part comes first, the test comes last. In the loop, the test came first. That flip is the part that trips people up.</p>
+<h2 id="step-4-predict-first-read-one">Step 4 — Predict first: read one</h2>
+<p data-pagefind-weight="0.5">Don&#x27;t run this yet. Read the comprehension, and write your guess in the comment: what list will it print? (Hint: turn it into the loop in your head. Which words does it keep?)</p>
+<pre data-pagefind-weight="0.5"># my guess:
+
+words = &quot;the cat and the hat&quot;.split()
+kept = [w for w in words if w != &quot;the&quot;]
+print(kept)</pre>
+<p data-pagefind-weight="0.5">Run it. Check: [&#x27;cat&#x27;, &#x27;and&#x27;, &#x27;hat&#x27;] The loop it stands for: kept = [], then for w in words:, then if w != &quot;the&quot;:, then kept.append(w). Words that fail the test are skipped, so both thes disappear.</p>
+<h2 id="step-5-your-turn-one-line-back-to-a-loop">Step 5 — Your turn: one line back to a loop</h2>
+<p data-pagefind-weight="0.5">This is the skill you&#x27;ll use most: when you meet a comprehension, rewrite it as a loop so you can read it step by step. Here is one. Write the long version.</p>
+<pre data-pagefind-weight="0.5">words = &quot;god and country built this nation&quot;.split()
+long_lengths = [len(w) for w in words if len(w) &gt; 3]
+print(long_lengths)
+
+# type along: build `long_lengths_loop` with an empty list, a for loop, an if, and .append()
+#             then print whether it equals `long_lengths`</pre>
+<p data-pagefind-weight="0.5">Check: the first line prints [7, 5, 4, 6], and the last prints True. (Which two words did the test drop? Both have three letters.)</p>
+<h2 id="step-6-more-practice">Step 6 — More practice</h2>
+<p data-pagefind-weight="0.5">Each of these uses the comments list from the Setup cell. Write each one as a comprehension. If you get stuck, write the loop first, then squeeze it. Both are valid.</p>
+<pre data-pagefind-weight="0.5"># 6a. type along: a list of the FIRST word of each comment   (hint: c.split()[0])
+#                 save it as `first_words` and print it</pre>
+<p data-pagefind-weight="0.5">Check (6a): [&#x27;The&#x27;, &#x27;Religion&#x27;, &#x27;Freedom&#x27;, &#x27;Our&#x27;, &#x27;Whose&#x27;, &#x27;It&#x27;, &#x27;The&#x27;, &#x27;God&#x27;]</p>
+<pre data-pagefind-weight="0.5"># 6b. type along: only the comments with MORE than 7 words   (hint: len(c.split()) &gt; 7)
+#                 save it as `long_comments` and print how many there are</pre>
+<p data-pagefind-weight="0.5">Check (6b): 3</p>
+<pre data-pagefind-weight="0.5"># 6c. your turn: invent one of your own. Pick something to keep, and (if you like) a test.
+#     Write it first as a loop, then as a comprehension, and check that the two lists match.</pre>
+<h2 id="what-to-take-away">What to take away</h2>
+<p data-pagefind-weight="0.5">- A list comprehension is a loop that builds a list, on one line: [ WHAT-TO-KEEP for ITEM in LIST if TEST ] (the if TEST part is optional). - To read one, turn it into a loop: empty list, for, if, .append(). - To write one, you can always write the loop first. - Neither form is &quot;the right one.&quot; Choose the version you can explain to someone else. When you meet a [ ... for ... in ... ] in the Topic Modeling notebook, in homework starter code, or in something an AI wrote, you now know how to read it.</p>
+<h2 id="playground">Playground</h2>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div><footer class="site-footer"><div class="bar"><span>WRIT 20833 · notebook text</span><span class="spacer"></span><a target="_blank" rel="noopener noreferrer" href="https://github.com/TCU-DCDA/WRIT20833_2026">GitHub ↗</a><a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/">Colab ↗</a></div></footer><script>(function(){var t=document.querySelector(".nav-toggle"),n=document.getElementById("site-nav");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();</script><script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;var d=new Date(),p=function(n){return(n<10?"0":"")+n},t=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());document.querySelectorAll("a[data-opens],div.card[data-opens]").forEach(function(a){var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;if(a.tagName==="DIV"){a.querySelectorAll("a.alt").forEach(function(x){x.remove();});a.querySelectorAll("a").forEach(function(x){var y=document.createElement("span");y.innerHTML=x.innerHTML;x.replaceWith(y);});a.classList.remove("linked");a.classList.add("locked");a.title="Opens "+l;var v=a.querySelector(".when");if(v)v.insertAdjacentHTML("beforeend",' <span class="opens">· opens '+l+"</span>");return;}var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");s.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;var w=c?s.querySelector(".when"):null,tag='<span class="opens">'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}a.replaceWith(s);});})();</script></body></html>

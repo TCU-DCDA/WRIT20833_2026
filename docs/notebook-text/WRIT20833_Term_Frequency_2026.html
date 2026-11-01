@@ -41,20 +41,18 @@ Freedom of religion has to mean freedom from religion in our public schools too.
 The government should not be putting religion or god into the schools of this country.
 &quot;&quot;&quot;
 
-words = [w for w in split_into_words(comments_text) if w]   # `if w` drops empty strings
+words = []
+for w in split_into_words(comments_text):
+    if w:                      # an empty string is falsy, so this skips the empty pieces
+        words.append(w)
+
 print(&quot;Total words:&quot;, len(words))
 print(Counter(words).most_common(10))</pre>
 <p data-pagefind-weight="0.5">Look at the very top of that list: the and and — the little connective words that hold any English sentence together, carrying nothing about the topic. (A couple of content words like schools and religion are climbing up too, because they repeat a lot — but they&#x27;re elbow to elbow with noise.) The single most frequent words are meaningless, which makes the whole ranking untrustworthy. Let&#x27;s clear the noise out so the count actually means something.</p>
-<h4 id="a-new-shape-of-code-the-list-comprehension">A new shape of code: the list comprehension</h4>
-<p data-pagefind-weight="0.5">That line [w for w in splitintowords(commentstext) if w] is a list comprehension, Python&#x27;s one-line shorthand for a pattern you already know from Day 4 (&quot;Building new lists from old ones&quot;): start with an empty list, loop, and .append() whatever passes a test. The two versions below build the exact same list. You&#x27;ll see the one-line form a lot, in our notebooks and in AI-written code, so it&#x27;s worth being able to read it back into the long form.</p>
-<pre data-pagefind-weight="0.5"># type along — build `words_long` the Day 4 way: empty list, loop over split_into_words(comments_text), append each non-empty word
-#              then print whether it equals words_short
-
-# the list comprehension -- same thing, one line
-words_short = [w for w in split_into_words(comments_text) if w]</pre>
 <h2 id="part-2-keep-only-the-meaningful-words">Part 2 — Keep Only the Meaningful Words</h2>
 <p data-pagefind-weight="0.5">Those tiny words have a name — stopwords — and we already have a list of them. If we keep only the words that are not stopwords (and not empty), the noise drops away and the content words rise to the top.</p>
-<pre data-pagefind-weight="0.5"># type along — a comprehension that keeps each word only if it is non-empty AND not in stopwords; save it as `meaningful`
+<pre data-pagefind-weight="0.5"># type along — build `meaningful` the Day 4 way: empty list, loop over split_into_words(comments_text),
+#              append each word only if it is non-empty AND not in stopwords
 #              then print how many words were kept and the 10 most common</pre>
 <p data-pagefind-weight="0.5">That&#x27;s term frequency. Now the top words — schools, religion, country, kids, god — actually tell you what this pile of comments is about. Same text, same counting; we just stopped counting the noise.</p>
 <p data-pagefind-weight="0.5">&gt; About borrowed code. Counter is a tool you import — it does in one line what your &gt; Day-5 countwords function did by hand. Hand-building it once is why you can trust it now: you &gt; know exactly what &quot;count the words&quot; means, so when you borrow Counter (or get word-count code from &gt; an AI), you can read it and judge whether it&#x27;s doing the right thing.</p>
@@ -64,7 +62,10 @@ words_short = [w for w in split_into_words(comments_text) if w]</pre>
 <h2 id="part-3-make-it-reusable">Part 3 — Make It Reusable</h2>
 <p data-pagefind-weight="0.5">You&#x27;ll want to run this on text after text, so wrap it in a function (recall Day 5). Give it a text and a number n; get back the top n meaningful words. Write the recipe once, reuse it forever.</p>
 <pre data-pagefind-weight="0.5">def top_meaningful_words(text, n):
-    meaningful = [w for w in split_into_words(text) if w and w not in stopwords]
+    meaningful = []
+    for w in split_into_words(text):
+        if w and w not in stopwords:
+            meaningful.append(w)
     return Counter(meaningful).most_common(n)
 
 print(top_meaningful_words(comments_text, 5))</pre>
@@ -96,7 +97,10 @@ for word, count in top_meaningful_words(comments_text, 8):
 <h2 id="putting-it-all-together">Putting It All Together</h2>
 <p data-pagefind-weight="0.5">The whole term-frequency move, start to finish — split, drop the stopwords, count, take the top. This is the engine you&#x27;ll run on real data in HW2.</p>
 <pre data-pagefind-weight="0.5">def top_meaningful_words(text, n):
-    meaningful = [w for w in split_into_words(text) if w and w not in stopwords]
+    meaningful = []
+    for w in split_into_words(text):
+        if w and w not in stopwords:
+            meaningful.append(w)
     return Counter(meaningful).most_common(n)
 
 for label, text in [(&quot;Comments&quot;, comments_text), (&quot;Official&quot;, official_text)]:
