@@ -1,8 +1,9 @@
 # Course data — WRIT 20833 (2026)
 
-Small, ready-to-run corpora for the homework notebooks. Each is plain UTF-8 text so it
-can be loaded with `open()` (no pandas required) in the pre-pandas weeks. Each comment collection
-has its own folder (`ten_commandments/` for now); more may be added later in the term.
+Small, ready-to-run corpora for the homework notebooks. The homework corpora are plain UTF-8 text so
+they can be loaded with `open()` (no pandas required) in the pre-pandas weeks. Each comment collection
+has its own folder (`ten_commandments/`, and the larger `ten_commandments_kxan/` CSV for the pandas
+weeks and capstones); more may be added later in the term.
 
 ## Files
 
@@ -48,6 +49,29 @@ chart, so **do not "clean" these away** without rewriting those exercises.
 The U.S. Constitution **as signed in 1787** (Preamble through Article VII and the signatures), ~4,550 words: **no Bill of Rights or later amendments.** Its only mention of faith is Article VI's "no religious Test"; *religion* enters with the First Amendment (1791), so HW2 B3 lists it among the words the text never uses, and the HW2 prompt asks students to notice why. Public domain,
 sourced from Project Gutenberg eBook #5 with the Gutenberg/transcriber boilerplate stripped
 (text begins at "THE CONSTITUTION OF THE UNITED STATES OF AMERICA, 1787").
+
+### `ten_commandments_kxan/tc_kxan_youtube_comments.csv` — a second, larger Ten Commandments conversation
+**1,509 rows: 845 top-level comments and 664 replies**, from a different video on the same law: KXAN,
+["Ten Commandments bill exchange between Rep. Talarico and Rep. Noble"](https://www.youtube.com/watch?v=peqzHceiXGU)
+(a Texas House exchange over the bill). It is **not** the source of `tc_youtube_comments.txt` (that is
+CBS News, above). Collected 2026-10-16 by the instructor with the course's YouTube Comment Collector
+(YouTube Data API v3), sort order "Most relevant", replies included; YouTube reported 1,758 comments
+that day. Posting dates run 2025-05-25 to 2026-10-16.
+
+**A row is one whole comment** (top-level or reply), not a line, unlike the CBS file. Columns:
+`comment_text` (as posted), `comment_clean` (whitespace collapsed, nothing else changed), `published_at`,
+`like_count`, `reply_count` (on top-level rows; 0 on replies), `is_reply`. **What was dropped, and why:**
+the collector never keeps usernames, and for publication we also removed `comment_id`, `parent_id`,
+and `video_id`, because a comment ID leads straight back to the commenter's post on YouTube. The cost is
+that a reply can't be matched to the comment it answers. UTF-8 with a byte-order mark, so Excel shows
+emoji and curly quotes correctly.
+
+## Direct links (GitHub Pages)
+Every file here is also served as a plain file, with no page around it (`build/build_data.py` copies
+this folder to `docs/data/`; re-run it after any change here):
+- https://tcu-dcda.github.io/WRIT20833_2026/data/ten_commandments/tc_youtube_comments.txt
+- https://tcu-dcda.github.io/WRIT20833_2026/data/ten_commandments_kxan/tc_kxan_youtube_comments.csv
+- https://tcu-dcda.github.io/WRIT20833_2026/data/us_constitution.txt
 
 
 ## Why this pairing (HW2 — term frequency)
