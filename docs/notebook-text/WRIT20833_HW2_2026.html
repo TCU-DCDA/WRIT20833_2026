@@ -16,7 +16,7 @@
 <h3 id="what-you-re-doing">What you&#x27;re doing</h3>
 <p data-pagefind-weight="0.5">Last week (HW1 C2) you turned many comments into one big word list. This week you&#x27;ll count those words to find what a text is really about — its term frequency — and use it to stage a debate between two real texts: - commentstext — 93 real YouTube comments on the 2025 Texas law putting the Ten Commandments in classrooms (the public&#x27;s voice). - constitutiontext — the U.S. Constitution as signed in 1787: the original text, before the Bill of Rights and the later amendments. It&#x27;s the document those commenters keep invoking. Everything you need is loaded by the setup cell — no pandas, no outside textbook.</p>
 <h3 id="prepare">Prepare</h3>
-<p data-pagefind-weight="0.5">Review our own materials before you start: - The Term Frequency code-along (Day 8) — this homework&#x27;s engine: splitintowords, the long stopwords list, Counter, and topmeaningfulwords. - The Dictionaries &amp; Functions code-along (Day 7) — def, your hand-built countwords, and the first look at Counter. A5 asks you to write a function like the ones there. - HW1 B3/C2 — building one word list from many texts (this is where we left off). - The Strings &amp; String Methods code-along (.lower(), .split()). - HW1 A6 — membership testing with a (five-word) stopwords list.</p>
+<p data-pagefind-weight="0.5">Review our own materials before you start: - The Term Frequency code-along (Day 8) — this homework&#x27;s engine: splitintowords, the long stopwords list, Counter, and topmeaningfulwords. - The Dictionaries &amp; Functions code-along (Day 5) — def, your hand-built countwords, and the first look at Counter. A5 asks you to write a function like the ones there. - HW1 B3/C2 — building one word list from many texts (this is where we left off). - The Strings &amp; String Methods code-along (.lower(), .split()). - HW1 A6 — membership testing with a (five-word) stopwords list.</p>
 <h3 id="expected-frequent-meaningful-comments">Expected: frequent, meaningful #comments</h3>
 <p data-pagefind-weight="0.5">Comment as you work — not every line, but often, and wherever you make a choice or hit a question: say what you are trying to do and what you learned (or what surprised you). Frequent, relevant #comments are expected — they&#x27;re where your thinking shows. For example: python</p>
 <h2 id="i-wanted-to-see-the-most-common-word-before-filtering">I wanted to see the most common word before filtering.</h2>
@@ -73,7 +73,7 @@ print(&quot;Setup complete. Both corpora loaded.&quot;)</pre>
 <p data-pagefind-weight="0.5">A3 — Keeping only the meaningful words. (Recall HW1 A6: skip stopwords.)</p>
 <pre data-pagefind-weight="0.5"># A3
 # TODO: split constitution_text into words
-# TODO: build `meaningful_words` = every word that is NOT empty AND NOT in stopwords
+# TODO: build `meaningful` = every word that is NOT empty AND NOT in stopwords
 #       (hint: start with an empty list, loop over the words, and append each one that passes the test)
 # TODO: print the 10 most common meaningful words
 
@@ -85,16 +85,16 @@ print(&quot;Setup complete. Both corpora loaded.&quot;)</pre>
 # We have a Counter of the comments&#x27; meaningful words below.
 # FIRST predict, in a comment, what `.most_common(0)` returns. THEN run the cell.
 comment_words = []
-for word in split_into_words(comments_text):
-    if word != &quot;&quot; and word not in stopwords:
-        comment_words.append(word)
+for w in split_into_words(comments_text):
+    if w and w not in stopwords:
+        comment_words.append(w)
 comment_counts = Counter(comment_words)
 print(comment_counts.most_common(0))
 
 # #comments:
 # My prediction was:
 # An empty result is not an error -- when might &quot;zero results&quot; still be a real answer?</pre>
-<p data-pagefind-weight="0.5">A5 — Wrap it in a reusable function. (Recall the Dictionaries &amp; Functions code-along: build the tool once with def, reuse it.)</p>
+<p data-pagefind-weight="0.5">A5 — Wrap it in a reusable function. (Recall Day 5: build the tool once with def, reuse it.)</p>
 <pre data-pagefind-weight="0.5"># A5
 # TODO: finish this function so it returns the n most common meaningful words of ANY text.
 def top_meaningful_words(text, n):
