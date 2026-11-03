@@ -103,7 +103,18 @@ for word, count in top_meaningful_words(comments_text, 8):
         print(f&quot;shared       {word} ({count})&quot;)
     else:
         print(f&quot;distinctive  {word} ({count})&quot;)</pre>
-<p data-pagefind-weight="0.5">Almost everything the commenters care about — schools, kids, god, freedom — is a word the legal text never uses. The one word they share is religion. That is where the two voices actually meet, and it&#x27;s the word they are arguing over. You&#x27;ll use this. HW2 Part B makes this comparison between 93 real comments and the full 1787 Constitution, and asks you whose words win. Seen a loop squeezed onto one line? AI tools and other people&#x27;s code often write a list-building loop like the ones above as a single line in square brackets, called a list comprehension. You never need to write one in this course. If you&#x27;d like to learn to read them, the optional List Comprehensions (Stretch) notebook shows how.</p>
+<p data-pagefind-weight="0.5">Almost everything the commenters care about — schools, kids, god, freedom — is a word the legal text never uses. The one word they share is religion. That is where the two voices actually meet, and it&#x27;s the word they are arguing over.</p>
+<p data-pagefind-weight="0.5">set(...) turned a finished list into a set in one step. You can also build a set one item at a time, the way you&#x27;ve been building lists: start empty, loop, and add each item that passes your test. Two differences from a list: - An empty set is set(). (Empty curly braces {} make an empty dictionary, not a set.) - Sets use .add(), not .append(). Adding a word that&#x27;s already there changes nothing, so you never get duplicates.</p>
+<pre data-pagefind-weight="0.5">official_meaningful_words = set()   # start with an empty set
+
+for word in split_into_words(official_text):
+    if word != &quot;&quot; and word not in stopwords:
+        official_meaningful_words.add(word)   # a repeat is simply ignored
+
+print(len(official_meaningful_words), &quot;distinct meaningful words&quot;)
+print(&quot;religion&quot; in official_meaningful_words)
+print(&quot;schools&quot; in official_meaningful_words)</pre>
+<p data-pagefind-weight="0.5">You&#x27;ll use this. HW2 Part B makes this comparison between 93 real comments and the full 1787 Constitution, and asks you whose words win. Seen a loop squeezed onto one line? AI tools and other people&#x27;s code often write a list-building loop like the ones above as a single line in square brackets, called a list comprehension. You never need to write one in this course. If you&#x27;d like to learn to read them, the optional List Comprehensions (Stretch) notebook shows how.</p>
 <h2 id="putting-it-all-together">Putting It All Together</h2>
 <p data-pagefind-weight="0.5">The whole term-frequency move, start to finish — split, drop the stopwords, count, take the top. This is the engine you&#x27;ll run on real data in HW2.</p>
 <pre data-pagefind-weight="0.5">def top_meaningful_words(text, n):
