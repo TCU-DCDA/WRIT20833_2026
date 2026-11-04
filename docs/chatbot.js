@@ -208,6 +208,14 @@ chatForm.addEventListener('submit', async (e) => {
     const message = userInput.value.trim();
     if (!message) return;
 
+    // The panel starts below the intro, partly off screen: bring all of it into view once a chat begins
+    // (also if the student scrolled past its top, which then hides under the sticky site header).
+    const chatPanel = document.querySelector('.chat');
+    const panelBox = chatPanel.getBoundingClientRect();
+    if (panelBox.top < 57 || panelBox.bottom > window.innerHeight) {
+        chatPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     // Built without a Worker URL (build/build_chatbot.py's CHAT_API_URL is empty): say so plainly.
     if (!API_URL) {
         appendMessage('error', "The Code Guide isn't open yet. Check back soon, or ask Dr. Rode in class.");
@@ -297,7 +305,7 @@ chatForm.addEventListener('submit', async (e) => {
     } finally {
         requestInFlight = false;
         setInputEnabled(true);
-        userInput.focus();
+        userInput.focus({ preventScroll: true });  // don't yank the page away from the reply they're reading
     }
 });
 
