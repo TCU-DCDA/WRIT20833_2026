@@ -6,6 +6,8 @@
 .chat{display:flex;flex-direction:column;background:var(--surface);
   /* fill the screen below the sticky site header (~57px); scroll-margin lands it just under that header */
   height:max(480px,calc(100vh - 80px));height:max(480px,calc(100dvh - 80px));scroll-margin-top:68px;
+  /* drag the bottom-right corner to resize (height only: the side notes sit to its right); chatbot.js remembers it */
+  resize:vertical;overflow:hidden;min-height:360px;
   border:1px solid var(--rule);border-top:2.5px solid var(--green);}
 .chat-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 16px;
   border-bottom:1px solid var(--rule);}

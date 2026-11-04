@@ -179,11 +179,23 @@ lessonSelect.addEventListener('change', () => {
 resetToWelcome();
 restoreConversation();
 
-// Auto-resize textarea as user types
-userInput.addEventListener('input', () => {
+// The chat panel can be resized by dragging its corner (CSS resize). A drag sets an inline height; keep it
+// for the next visit. Window resizes don't touch the inline style, so they aren't saved.
+const PANEL_HEIGHT_KEY = 'codeguide-panel-height';
+const chatPanelEl = document.querySelector('.chat');
+const savedPanelHeight = localStorage.getItem(PANEL_HEIGHT_KEY);
+if (savedPanelHeight) chatPanelEl.style.height = savedPanelHeight;
+new ResizeObserver(() => {
+    if (chatPanelEl.style.height) localStorage.setItem(PANEL_HEIGHT_KEY, chatPanelEl.style.height);
+}).observe(chatPanelEl);
+
+// Auto-resize textarea as user types. Students paste a whole cell plus its error, so let the box grow to
+// 40% of the window (never less than 150px) before it scrolls.
+function fitInput() {
     userInput.style.height = 'auto';
-    userInput.style.height = Math.min(userInput.scrollHeight, 150) + 'px';
-});
+    userInput.style.height = Math.min(userInput.scrollHeight, Math.max(150, window.innerHeight * 0.4)) + 'px';
+}
+userInput.addEventListener('input', fitInput);
 
 // Handle Enter to send, Shift+Enter for new line
 userInput.addEventListener('keydown', (e) => {
@@ -245,8 +257,7 @@ chatForm.addEventListener('submit', async (e) => {
         if (last && last.role === 'user' && last.content === message) history.pop();
         if (!userInput.value) {
             userInput.value = message;
-            userInput.style.height = 'auto';
-            userInput.style.height = Math.min(userInput.scrollHeight, 150) + 'px';
+            fitInput();
         }
         appendMessage('error', `${notice} Your message is back in the box, ready to send again.`);
     };
