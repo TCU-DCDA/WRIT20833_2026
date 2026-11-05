@@ -325,8 +325,7 @@ are finally yours.
 *As always: make the choice visible. Cite the AI, and say what you changed.*
 -->
 
-That's exactly today's lab, [Reading AI Code](https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Reading_AI_Code_2026.ipynb).
-You'll take two pieces of **AI-written code, read them line by line, test them on our comments, and improve
+That's exactly today's lab. You'll take two pieces of **AI-written code, read them line by line, test them on our comments, and improve
 them** — practicing the judgment that turns borrowing into understanding. Both run without a single error.
 Both are wrong.
 
