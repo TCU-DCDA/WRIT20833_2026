@@ -40,7 +40,7 @@ final exam.*
 |---|---|---|---|
 | **Mon 11/2** (7) | — | **Code-along** → finish [Lists & loops](notebooks/codeAlongs/WRIT20833_Lists_Loops_Conditionals_2026.ipynb) (from "For Loops") · [Functions & dictionaries](notebooks/codeAlongs/WRIT20833_Dictionaries_Functions_2026.ipynb) | D2 opens |
 | **Wed 11/4** (8) | Data as evidence *(brief framing)* | **Code-along** → [Term frequency ("Meaningful Words")](notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb) + HW1 debrief | **HW1 due** · **HW2 assigned** · D2 post |
-| **Fri 11/6** (9) | AI Agency | **Lab** → Reading & improving AI code + stylometry seed: [Reading for the Seams](materials/stylometry/Reading_for_the_Seams.md) (close reading) | D2 replies |
+| **Fri 11/6** (9) | AI Agency | **Lab** → [Reading & improving AI code](notebooks/codeAlongs/WRIT20833_Reading_AI_Code_2026.ipynb) | D2 replies |
 
 ### Week 4 (Nov 9–13) — Found data, ethics & pandas
 | Date | Lecture | Coding | Due |

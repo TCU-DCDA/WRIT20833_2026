@@ -52,7 +52,7 @@ print(messy_df.isnull().sum())</pre>
 <p data-pagefind-weight="0.5">So: one missing likes value, a stance column that means three things but is spelled ten ways, and one repeated comment. Let&#x27;s fix them one at a time on a copy (never destroy your raw data — you may need to go back).</p>
 <pre data-pagefind-weight="0.5">clean_df = messy_df.copy()</pre>
 <h2 id="step-2-clean-the-text-fields">Step 2: Clean the Text Fields</h2>
-<p data-pagefind-weight="0.5">Pandas applies a string method to a whole column at once through the .str accessor — it&#x27;s the column-wide version of the string methods you already know. Strip the whitespace, drop the stray newline.</p>
+<p data-pagefind-weight="0.5">Pandas applies a string method to a whole column at once through the .str accessor — it&#x27;s the column-wide version of the string methods you already know. Strip the whitespace, drop the stray newline. One new piece: regex=False tells .str.replace to treat &quot;\n&quot; as plain text to find, character for character. Without it, pandas may read the pattern as a regular expression (regex), a mini-language where characters like . and ? mean &quot;any character&quot; or &quot;optional.&quot; You don&#x27;t need regex in this course; regex=False just says &quot;find exactly this.&quot;</p>
 <pre data-pagefind-weight="0.5">clean_df[&quot;comment&quot;] = clean_df[&quot;comment&quot;].str.strip().str.replace(&quot;\n&quot;, &quot; &quot;, regex=False)
 clean_df[&quot;comment&quot;].tolist()</pre>
 <h2 id="step-3-standardize-the-categories">Step 3: Standardize the Categories</h2>

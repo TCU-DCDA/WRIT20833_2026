@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading AI Code (Lab) — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"><style>
+.reading [id]{scroll-margin-top:84px;}
+.reading pre{overflow-x:auto;}
+.reading h2:target,.reading h3:target,.reading h4:target{background:var(--clay-bg);color:var(--clay-ink);
+  padding:2px 6px;margin-left:-6px;border-radius:3px;}
+.nb-note{font-size:14px;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:9px 12px;
+  margin:6px 0 18px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+</style><meta name="robots" content="noindex"></head>
+<body><header class="site-header" data-pagefind-ignore="all"><div class="bar"><a href="../index.html" class="brand"><span class="k">WRIT 20833 · Fall 2026</span><span class="name">When Coding Meets Culture</span></a><button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">☰</button><nav class="site-nav" id="site-nav" aria-label="Primary"><a href="../schedule.html" class="nav-pill">Schedule</a><a href="../index.html#lectures" class="nav-pill">Lectures</a><a href="../index.html#codealongs" class="nav-pill">Code-alongs</a><a href="../index.html#assignments" class="nav-pill">Assignments</a><a href="../index.html#resources" class="nav-pill">Resources</a></nav><div class="site-search"><form class="site-search-form" role="search" action="../search.html" method="get"><label class="visually-hidden" for="site-search-q">Search the course site</label><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" name="q" id="site-search-q" placeholder="Search" autocomplete="off"></form><a class="site-search-link" href="../search.html" aria-label="Search the course site"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a></div></div></header><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Day 9"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Reading_AI_Code_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-11-06"></span><p class="nb-note" data-pagefind-ignore="all">Code-along · Day 9 · the notebook's text, to read and review. To run the code, <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Reading_AI_Code_2026.ipynb">open it in Colab ↗</a></p><h1>Reading AI Code (Lab)</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this worksheet by going to File &gt; Save a copy in Drive New to Colab? See Working in Colab.</p>
+<p data-pagefind-weight="0.5">How today works. This is a lab, not a code-along: work with the person next to you, at your own pace. Every piece of code here is already written. Your job is to read it, predict what it will do, run it, and then change it. When a cell says predict first, write your guess in the comment before you run it. A wrong guess is the most useful thing that can happen today. There&#x27;s nothing to turn in. If a cell gives you an error, read the message: errors are part of the work here, not something to hide.</p>
+<p data-pagefind-weight="0.5">In AI Agency you saw the kind of code an AI hands you: short, tidy, and finished-looking. It ran. The lecture&#x27;s point was that eloquence is not evidence: code that looks finished isn&#x27;t code you can trust until you&#x27;ve read it. Today you&#x27;ll read two pieces of AI-style code, both about counting words, the thing you&#x27;ve been building by hand all week. Both run without a single error, and both are wrong in ways that only show up when you read them against real comments.</p>
+<h3 id="why-we-re-doing-this">Why we&#x27;re doing this</h3>
+<p data-pagefind-weight="0.5">- From the lecture. AI Agency drew the line between using AI as a scaffold and as a replacement. The difference is whether you can explain, test, and change what it gave you. Today you practise exactly that. - Where you&#x27;ll use it. The syllabus asks this of any code you borrow: be able to explain it, and note in a #comment where AI helped and what you changed. HW3 and HW4 hand you prefab tools (VADER, Gensim) that you&#x27;ll have to read the same way. - The question to keep asking. The code ran. Does it do what I need, and what did it decide without telling me?</p>
+<h3 id="getting-help-use-the-code-guide">Getting help: use the Code Guide</h3>
+<p data-pagefind-weight="0.5">Colab&#x27;s built-in AI features are turned off in this notebook. Today the AI-written code comes to you already written; the work is the reading, and that&#x27;s the part you can&#x27;t hand off. If you want AI help, use the Code Guide (it opens on HW2, which covers this lab&#x27;s code). It will ask you questions and point you back to the code-alongs rather than give you the answer. Your partner and Dr. Rode are right here too.</p>
+<h3 id="the-checklist-from-ai-agency">The checklist from AI Agency</h3>
+<p data-pagefind-weight="0.5">You understand a piece of code when you can: 1. say what each line takes in and hands back 2. name the type of each important variable 3. predict what an unusual input will do 4. name one thing it gets wrong 5. change one thing, and test that the change worked Each Part below practises one or two of these.</p>
+<h2 id="setup">Setup</h2>
+<pre data-pagefind-weight="0.5"># SETUP — run this cell first. It&#x27;s plumbing: the same tools as the Term Frequency code-along.
+import re, os, urllib.request
+from collections import Counter
+
+def split_into_words(any_chunk_of_text):
+    lowercase_text = any_chunk_of_text.lower()
+    # Split on any run of non-letter/number characters (spaces, punctuation, newlines).
+    return re.split(r&quot;\W+&quot;, lowercase_text)
+
+stopwords = [&quot;i&quot;, &quot;me&quot;, &quot;my&quot;, &quot;myself&quot;, &quot;we&quot;, &quot;our&quot;, &quot;ours&quot;, &quot;ourselves&quot;, &quot;you&quot;, &quot;your&quot;, &quot;yours&quot;, &quot;yourself&quot;, &quot;yourselves&quot;, &quot;he&quot;, &quot;him&quot;, &quot;his&quot;, &quot;himself&quot;, &quot;she&quot;, &quot;her&quot;, &quot;hers&quot;, &quot;herself&quot;, &quot;it&quot;, &quot;its&quot;, &quot;itself&quot;, &quot;they&quot;, &quot;them&quot;, &quot;their&quot;, &quot;theirs&quot;, &quot;themselves&quot;, &quot;what&quot;, &quot;which&quot;, &quot;who&quot;, &quot;whom&quot;, &quot;this&quot;, &quot;that&quot;, &quot;these&quot;, &quot;those&quot;, &quot;am&quot;, &quot;is&quot;, &quot;are&quot;, &quot;was&quot;, &quot;were&quot;, &quot;be&quot;, &quot;been&quot;, &quot;being&quot;, &quot;have&quot;, &quot;has&quot;, &quot;had&quot;, &quot;having&quot;, &quot;do&quot;, &quot;does&quot;, &quot;did&quot;, &quot;doing&quot;, &quot;a&quot;, &quot;an&quot;, &quot;the&quot;, &quot;and&quot;, &quot;but&quot;, &quot;if&quot;, &quot;or&quot;, &quot;because&quot;, &quot;as&quot;, &quot;until&quot;, &quot;while&quot;, &quot;of&quot;, &quot;at&quot;, &quot;by&quot;, &quot;for&quot;, &quot;with&quot;, &quot;about&quot;, &quot;against&quot;, &quot;between&quot;, &quot;into&quot;, &quot;through&quot;, &quot;during&quot;, &quot;before&quot;, &quot;after&quot;, &quot;above&quot;, &quot;below&quot;, &quot;to&quot;, &quot;from&quot;, &quot;up&quot;, &quot;down&quot;, &quot;in&quot;, &quot;out&quot;, &quot;on&quot;, &quot;off&quot;, &quot;over&quot;, &quot;under&quot;, &quot;again&quot;, &quot;further&quot;, &quot;then&quot;, &quot;once&quot;, &quot;here&quot;, &quot;there&quot;, &quot;when&quot;, &quot;where&quot;, &quot;why&quot;, &quot;how&quot;, &quot;all&quot;, &quot;any&quot;, &quot;both&quot;, &quot;each&quot;, &quot;few&quot;, &quot;more&quot;, &quot;most&quot;, &quot;other&quot;, &quot;some&quot;, &quot;such&quot;, &quot;no&quot;, &quot;nor&quot;, &quot;not&quot;, &quot;only&quot;, &quot;own&quot;, &quot;same&quot;, &quot;so&quot;, &quot;than&quot;, &quot;too&quot;, &quot;very&quot;, &quot;s&quot;, &quot;t&quot;, &quot;can&quot;, &quot;will&quot;, &quot;just&quot;, &quot;don&quot;, &quot;should&quot;, &quot;now&quot;, &quot;ve&quot;, &quot;ll&quot;, &quot;amp&quot;]
+
+def top_meaningful_words(text, n):
+    meaningful_words = []
+    for word in split_into_words(text):
+        if word != &quot;&quot; and word not in stopwords:
+            meaningful_words.append(word)
+    return Counter(meaningful_words).most_common(n)
+
+def load_text(filename):
+    for path in (filename, os.path.join(&quot;notebooks&quot;, &quot;data&quot;, filename),
+                 os.path.join(&quot;data&quot;, filename), os.path.join(&quot;..&quot;, &quot;data&quot;, filename)):
+        if os.path.exists(path):
+            return open(path, encoding=&quot;utf-8&quot;).read()
+    url = &quot;https://raw.githubusercontent.com/TCU-DCDA/WRIT20833_2026/main/notebooks/data/&quot; + filename
+    return urllib.request.urlopen(url).read().decode(&quot;utf-8&quot;)
+
+# The 93 YouTube comments on the 2025 Texas Ten Commandments law, from HW1 and HW2:
+comments_text = load_text(&quot;ten_commandments/tc_youtube_comments.txt&quot;)
+print(&quot;Setup complete.&quot;)</pre>
+<h2 id="part-1-read-before-you-run-checklist-1-and-2">Part 1 — Read before you run (checklist 1 and 2)</h2>
+<p data-pagefind-weight="0.5">Someone asked an AI: &quot;Write a Python function that counts how often each word appears in a text.&quot; This is what came back. It&#x27;s the function from the lecture. Run the cell: it only defines the function, so nothing prints yet.</p>
+<pre data-pagefind-weight="0.5">def count_words(text):
+    counts = {}
+    for word in text.split():
+        counts[word] = counts.get(word, 0) + 1
+    return counts</pre>
+<p data-pagefind-weight="0.5">You&#x27;ve written this function before. Here&#x27;s the version you built by hand in the Dictionaries &amp; Functions code-along: python def countwords(wordlist): counts = {} for word in wordlist: if word in counts: counts[word] = counts[word] + 1 else: counts[word] = 1 return counts With your partner, answer in a #comment in the cell below: - What does the AI&#x27;s countwords take in, and what type is it? What does it hand back? - Yours took a list of words. The AI&#x27;s takes something else. Which line turns it into words? - On each pass through the loop, what is word? - Your version needed an if/else. Where did the AI&#x27;s if/else go?</p>
+<pre data-pagefind-weight="0.5"># Part 1 answers:
+#</pre>
+<h4 id="the-one-new-piece-get">The one new piece: .get</h4>
+<p data-pagefind-weight="0.5">You glimpsed .get once, in the Strings code-along&#x27;s Sneak Preview, but nobody explained it. That&#x27;s exactly the situation borrowed code puts you in. Find out before you trust it.</p>
+<pre data-pagefind-weight="0.5">tally = {&quot;god&quot;: 2}
+
+# predict first: what will each line print?
+# my guess:
+print(tally.get(&quot;god&quot;, 0))
+print(tally.get(&quot;texas&quot;, 0))
+print(tally)       # did .get add &quot;texas&quot; to the dictionary?</pre>
+<p data-pagefind-weight="0.5">The structure: python dictionary.get(key, default) # the key&#x27;s value if the key is there; otherwise the default .get only looks. It never changes the dictionary. So counts.get(word, 0) + 1 means &quot;the count so far, or 0 if this is the first time, plus one,&quot; and the = stores the new count. That&#x27;s your if/else, in one line.</p>
+<pre data-pagefind-weight="0.5"># predict first: what will this print? Write the whole dictionary as your guess.
+# my guess:
+print(count_words(&quot;God bless Texas. god bless&quot;))</pre>
+<h2 id="part-2-unusual-inputs-real-data-checklist-3-and-4">Part 2 — Unusual inputs, real data (checklist 3 and 4)</h2>
+<p data-pagefind-weight="0.5">A test sentence you wrote yourself is the easy case. Real comments are the hard one.</p>
+<pre data-pagefind-weight="0.5"># predict first: what does count_words hand back for an empty string?
+# my guess:
+print(count_words(&quot;&quot;))</pre>
+<pre data-pagefind-weight="0.5">comment_counts = count_words(comments_text)
+print(len(comment_counts), &quot;different &#x27;words&#x27;&quot;)
+
+# every key that contains &quot;ommandment&quot;, and its count
+for word in comment_counts:
+    if &quot;ommandment&quot; in word:
+        print(repr(word), comment_counts[word])</pre>
+<p data-pagefind-weight="0.5">repr() prints a string with its quote marks, so you can see exactly where each word starts and ends. Answer in a #comment: - How many different keys does &quot;commandments&quot; end up spread across? Which two habits of .split() cause it? - The opening lecture found 13 &quot;commandments&quot; with plain .count() and 25 after .lower(). Which of those numbers does countwords agree with, and why is it still not the true count? - Name one thing this function gets wrong. Would the AI that wrote it have told you?</p>
+<pre data-pagefind-weight="0.5"># Part 2 answers:
+#</pre>
+<h2 id="part-3-change-one-thing-test-it-checklist-5">Part 3 — Change one thing, test it (checklist 5)</h2>
+<p data-pagefind-weight="0.5">Fix countwords so that every &quot;commandments&quot; lands in one key. Two ways to try, one at a time: - (a) lowercase the text before splitting (.lower()) - (b) use splitintowords from the setup cell instead of .split() Predict first: which one gets you all the way? The Term Frequency code-along counted 25 &quot;commandments&quot; with splitintowords, so 25 is your target. Then write the #comment the syllabus asks for, at the top of the function: where AI helped and what you changed. For example: # AI-assisted: asked for a function that counts words; I changed .split() to ...</p>
+<pre data-pagefind-weight="0.5"># predict first: will (a) or (b) reach 25?
+# my guess:
+
+def count_words_v2(text):
+    # AI-assisted: (write your note here)
+    counts = {}
+    for word in text.split():          # change this line, and anything else you need
+        counts[word] = counts.get(word, 0) + 1
+    return counts</pre>
+<pre data-pagefind-weight="0.5"># test your change
+better_counts = count_words_v2(comments_text)
+print(&quot;commandments:&quot;, better_counts.get(&quot;commandments&quot;, 0))    # target: 25
+print(&quot;empty strings:&quot;, better_counts.get(&quot;&quot;, 0))              # anything sneaking in?
+print(len(better_counts), &quot;different words (count_words found&quot;, len(comment_counts), &quot;)&quot;)</pre>
+<p data-pagefind-weight="0.5">Answer in a #comment: - What did (a) get you? What did (b) get you? - Did your change sneak in anything new? (Look at the &quot;empty strings&quot; line. Where do they come from?) - splitintowords also splits don&#x27;t into don and t. Is that a fix or a new problem?</p>
+<pre data-pagefind-weight="0.5"># Part 3 answers:
+#</pre>
+<h2 id="part-4-the-helpful-extra-all-five">Part 4 — The helpful extra (all five)</h2>
+<p data-pagefind-weight="0.5">Next request: &quot;Write a function that returns the 10 most meaningful words in a text, skipping stopwords.&quot; The AI wrote this. It is written the way AI (and many coders) write: on one line, with one-letter names. Short names are a habit, not a rule. Run it to define it.</p>
+<pre data-pagefind-weight="0.5">def top_words(text, n=10):
+    words = [w for w in text.lower().split() if w not in stopwords and len(w) &gt; 3]
+    return Counter(words).most_common(n)</pre>
+<p data-pagefind-weight="0.5">Two new pieces of syntax. n=10 gives n a default: call topwords(commentstext) and n is 10; call topwords(commentstext, 5) and it&#x27;s 5. The square-bracket line is a list comprehension: a whole loop that builds a list, on one line. The structure: python [item for item in somelist if test]</p>
+<h2 id="keep-this-loop-over-this-only-when-this-is-true">^ keep this ^ loop over this ^ only when this is True</h2>
+<p data-pagefind-weight="0.5">Here is that same line written the long way, the way you&#x27;ve been writing loops, with descriptive names: python words = [] for word in text.lower().split(): if word not in stopwords and len(word) &gt; 3: words.append(word) (Want more on comprehensions? The optional List Comprehensions (Stretch) notebook has it.)</p>
+<pre data-pagefind-weight="0.5"># predict first: will these two top-10 lists be the same?
+# my guess:
+print(&quot;AI&#x27;s top_words:      &quot;, top_words(comments_text))
+print()
+print(&quot;top_meaningful_words:&quot;, top_meaningful_words(comments_text, 10))</pre>
+<p data-pagefind-weight="0.5">Answer in a #comment: - Which words are in topmeaningfulwords&#x27; list but missing from the AI&#x27;s? Find the exact piece of the line that removed them. (Try print(len(&quot;god&quot;)).) - Nobody asked for len(w) &gt; 3. The AI added it, probably because skipping short words is a common trick. Who chose it, and what did it flatten in these comments? - One word on the AI&#x27;s list is a stopword in disguise. Which one, and why did the filter miss it? (Look closely at its apostrophe.) - Fix topwords in the empty cell below, then test that your fix worked.</p>
+<pre data-pagefind-weight="0.5"># Part 4 answers:
+#</pre>
+<pre data-pagefind-weight="0.5"># your fixed top_words, and a test</pre>
+<h2 id="wrap-up-eloquence-is-not-evidence">Wrap-up — Eloquence is not evidence</h2>
+<p data-pagefind-weight="0.5">With your partner, then on your own, write two or three sentences for each: 1. Both snippets ran with no errors. What made them wrong anyway, and how did you find out? 2. Which of the five checklist moves was hardest today? Which will you actually do the next time code comes from an AI, a classmate, or Stack Overflow? 3. len(w) &gt; 3 is the same kind of decision as the stopword list: a rule about which words count. What does it mean that an AI can make that decision for you, silently, in one short test?</p>
+<pre data-pagefind-weight="0.5"># Wrap-up:
+# 1.
+# 2.
+# 3.</pre>
+<h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
+<p data-pagefind-weight="0.5">HW2 asks you to build the counting routine by hand once more; the note after A5 explains why. This lab is the other half of that reason: you can only judge a prefab counter if you know what counting involves. HW3 and HW4 hand you tools you didn&#x27;t write, VADER and Gensim, and the same checklist applies: what does it take in, what does it hand back, and what did it decide without telling you? The Checking the Machine worksheet (Day 19) turns that into a routine for your capstone. And on Monday, Data Archaeology asks the same question about data instead of code: who collected it, and what did they leave out?</p>
+<h2 id="playground">Playground</h2>
+<p data-pagefind-weight="0.5">Try one of these, or anything else you&#x27;re curious about: - Ask the Code Guide to explain one line. Pick a line you still can&#x27;t read out loud (.get, the comprehension, re.split). What does it ask you back? - Find another hidden choice. Run splitintowords(&quot;U.S. law isn&#x27;t 10 Commandments&quot;). What did it decide about U.S. and isn&#x27;t? Would you decide the same? - Write the request yourself. Write, in a #comment, the exact sentence you&#x27;d type to an AI to get a good word counter for these comments. Then list three things you&#x27;d check in whatever it hands back.</p>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div><footer class="site-footer"><div class="bar"><span>WRIT 20833 · notebook text</span><span class="spacer"></span><a target="_blank" rel="noopener noreferrer" href="https://github.com/TCU-DCDA/WRIT20833_2026">GitHub ↗</a><a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/">Colab ↗</a></div></footer><script>(function(){var t=document.querySelector(".nav-toggle"),n=document.getElementById("site-nav");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();</script><script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;var d=new Date(),p=function(n){return(n<10?"0":"")+n},t=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());document.querySelectorAll("a[data-opens],div.card[data-opens]").forEach(function(a){var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;if(a.tagName==="DIV"){a.querySelectorAll("a.alt").forEach(function(x){x.remove();});a.querySelectorAll("a").forEach(function(x){var y=document.createElement("span");y.innerHTML=x.innerHTML;x.replaceWith(y);});a.classList.remove("linked");a.classList.add("locked");a.title="Opens "+l;var v=a.querySelector(".when");if(v)v.insertAdjacentHTML("beforeend",' <span class="opens">· opens '+l+"</span>");return;}var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");s.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;var w=c?s.querySelector(".when"):null,tag='<span class="opens">'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}a.replaceWith(s);});})();</script></body></html>

@@ -62,7 +62,7 @@ Two kinds of data — and this course runs almost entirely on the second.
 - **Created data** — surveys you design, experiments you run.
   *You* control the questions.
 - **Found data** — traces that already exist because culture left them:
-  comments, reviews, lyrics, posts. ***Culture* chose the questions, not you.**
+  comments, reviews, lyrics, posts. *Culture* chose the questions, **not you.**
 -->
 
 <!-- slide:
@@ -116,8 +116,8 @@ leave no row at all.
 
 We say "raw data" as if it arrived straight from nature, untouched. It never did. By the time a comment
 reaches your notebook, someone chose **which** platform to pull from, **when**, **which** field counted,
-and **what** got dropped — remember the fragments in our own corpus: the scraper broke at least one comment
-in two, so "Of Texas" arrived on its own, and our cleaning cut long comments apart at their line breaks.
+and **what** got dropped — remember the fragments in our own corpus: our cleaning cut long comments apart at their line breaks, and a
+lone "The" may be a whole comment or a broken piece of one; the file can't tell us which.
 Every dataset is the *survivors* of a collection process, and the ones who didn't survive — the
 people who never posted, the comment that was deleted, the language the scraper couldn't parse — leave no
 row at all. **The empty seats aren't in the file.** Treat "raw" as a warning label, not a fact.

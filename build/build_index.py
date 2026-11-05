@@ -34,6 +34,7 @@ CODEALONGS_BY_WEEK = [
     ]),
     ("Weeks 3–4", "From text to data", [
         ("Term Frequency", "Counting words to hear what a text is about.", "Day 8", "notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb"),
+        ("Reading AI Code (Lab)", "Read, test, and fix machine-written code.", "Day 9", "notebooks/codeAlongs/WRIT20833_Reading_AI_Code_2026.ipynb"),
         ("List Comprehensions (Stretch)", "Optional: read and write one-line loops.", "Optional", "notebooks/codeAlongs/WRIT20833_List_Comprehensions_2026.ipynb"),
         ("Found Data & Pandas", "Collection ethics, then DataFrames.", "Day 10", "notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb"),
         ("Data Cleaning", "Turning messy scraped data tidy.", "Day 11", "notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb"),
@@ -170,7 +171,7 @@ def render():
             card("Worksheet", "Checking the Machine", "A one-page routine for testing a result by hand: HW3, HW4, and the capstone.",
                  "Day 19 · Week 7", GH_BLOB + "materials/Checking_the_Machine.md"),
             card("Exercise", "Reading for the Seams", "Stylometry close-reading: hearing a human (or AI) voice.",
-                 "Day 9 · Week 3", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
+                 "Track B · first step", GH_BLOB + "materials/stylometry/Reading_for_the_Seams.md"),
             card("Notebook", "Stylometry (computational)", "The computational half of the stylometry exercise.",
                  "Day 18 · Week 6", COLAB + "materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb",
                  opens=gate_attrs("materials/stylometry/WRIT20833_Stylometry_Reading_Seams_2026.ipynb")),

@@ -82,6 +82,6 @@ trust it here?* This is your "one honest limit." The work above is the evidence 
 
 ---
 
-*Track B (stylometry):* the same steps work. Your "judgment" is your Day 9 attribution map; the
+*Track B (stylometry):* the same steps work. Your "judgment" is your attribution map (the handout's Part B); the
 "tool" is the measures. Compare passages of similar length and genre, or say clearly that you
 couldn't.

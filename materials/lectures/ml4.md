@@ -144,7 +144,7 @@ this course exists to grow.
 
 ### Borrow the tool; never outsource the voice — and know which is which.
 
-*Ted Chiang calls a language model "a blurry JPEG of the web."
+*Ted Chiang calls ChatGPT "a blurry JPEG of the web."
 A voice worth having is the opposite of an average.*
 -->
 
@@ -274,16 +274,14 @@ friction**: run the code, check the citation, find the source, read the seams. W
 we're headed. The refrain to keep, right next to *the score is never the meaning*: **eloquence is not
 evidence.**
 
-## Today: read the seams
+## Today: read the code
 
 <!-- slide:
-That's exactly today's lab. You'll take a chunk of **AI-written code,
-read it line by line, and improve it** — practicing the judgment
-that turns borrowing into understanding.
+That's exactly today's lab. You'll take two pieces of **AI-written code,
+read them line by line, test them on our comments, and improve them** —
+practicing the judgment that turns borrowing into understanding.
 
-Then we plant the **stylometry seed**: reading for the *seams* between
-human and machine writing — the tells of a voice that was averaged
-into being versus one that was lived into being.
+*Both run without a single error. Both are wrong.*
 -->
 
 <!-- slide:
@@ -298,8 +296,8 @@ def count_words(text):
 ```
 
 It runs. It looks finished. Now read it.
-What is `word` on each pass? What does `.get(word, 0)` do? *(You
-haven't seen it yet. Find out.)* Are "Commandments" and "commandments,"
+What is `word` on each pass? What does `.get(word, 0)` do? *(You've
+glimpsed it once, never explained. Find out.)* Are "Commandments" and "commandments,"
 one word or two?
 -->
 
@@ -327,10 +325,10 @@ are finally yours.
 *As always: make the choice visible. Cite the AI, and say what you changed.*
 -->
 
-That's exactly today's lab. You'll take a chunk of **AI-written code, read it line by line, and improve
-it** — practicing the judgment that turns borrowing into understanding. Then we plant the **stylometry
-seed**: learning to read for the *seams* between human and machine writing — the tells of a voice that was
-averaged into being versus one that was lived into being.
+That's exactly today's lab, [Reading AI Code](https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Reading_AI_Code_2026.ipynb).
+You'll take two pieces of **AI-written code, read them line by line, test them on our comments, and improve
+them** — practicing the judgment that turns borrowing into understanding. Both run without a single error.
+Both are wrong.
 
 Here is the kind of word counter an AI assistant will happily write for you:
 
@@ -343,8 +341,10 @@ def count_words(text):
 ```
 
 It runs, and it looks finished. Reading it is another matter. What is `word` on each pass through the loop?
-What does `.get(word, 0)` do? You haven't seen it yet, which is exactly the situation borrowed code puts you
-in: find out before you trust it. And are "Commandments" and "commandments," one word or two? (Two.
+What does `.get(word, 0)` do? You glimpsed it once, in the Strings code-along's Sneak Preview, but nobody
+explained it, which is exactly the situation borrowed code puts you in: find out before you trust it. (You
+hand-built this same function in the Dictionaries & Functions code-along, with an `if`/`else` where the
+`.get` is.) And are "Commandments" and "commandments," one word or two? (Two.
 `.split()` keeps capital letters and punctuation, so the counter splits one word into several. Remember the
 13 and the 25 from the opening lecture.)
 
