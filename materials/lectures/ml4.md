@@ -214,7 +214,7 @@ What does `.get(word, 0)` do?
 *Today's lab: two pieces of AI-written code. Both run without an error. Both are wrong.*
 -->
 
-That's today's lab: two pieces of **AI-written code** to read line by line, test on our comments, and
+That's [today's lab](https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Reading_AI_Code_2026.ipynb): two pieces of **AI-written code** to read line by line, test on our comments, and
 improve. Both run without an error. Both are wrong. Here's the kind of word counter an AI will write for
 you:
 

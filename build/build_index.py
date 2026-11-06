@@ -34,6 +34,7 @@ CODEALONGS_BY_WEEK = [
     ]),
     ("Weeks 3–4", "From text to data", [
         ("Term Frequency", "Counting words to hear what a text is about.", "Day 8", "notebooks/codeAlongs/WRIT20833_Term_Frequency_2026.ipynb"),
+        ("Reading AI Code (Lab)", "Read, test, and improve AI-written code.", "Day 9", "notebooks/codeAlongs/WRIT20833_Reading_AI_Code_2026.ipynb"),
         ("List Comprehensions (Stretch)", "Optional: read and write one-line loops.", "Optional", "notebooks/codeAlongs/WRIT20833_List_Comprehensions_2026.ipynb"),
         ("Found Data & Pandas", "Collection ethics, then DataFrames.", "Day 10", "notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb"),
         ("Data Cleaning", "Turning messy scraped data tidy.", "Day 11", "notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb"),
