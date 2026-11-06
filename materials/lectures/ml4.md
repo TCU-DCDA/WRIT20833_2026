@@ -25,7 +25,7 @@ hands you: **do you understand it well enough to judge it?**
 ## Borrow freely; read what you borrow
 
 <!-- layout: split -->
-![Diagram: our comments go into a black box marked with a question mark, and a number that looks right comes out. Below it, three questions: will it hold on real data, can you fix it when it breaks, can you say what it leaves out](materials/lectures/images/ml4_blackbox.png)
+![Diagram: our comments go into a black box marked with a question mark, and a number that looks right comes out. Below it, three questions: will it hold on real data, would you notice if it's wrong, can you say what it leaves out](materials/lectures/images/ml4_blackbox.png)
 
 <!-- slide:
 AI-assisted coding genuinely **lowers the barrier.** And borrowing
@@ -33,8 +33,8 @@ isn't new: programmers have always borrowed from manuals, colleagues,
 and Stack Overflow. You'll lean on VADER, pandas, and Gensim all term.
 
 The danger is borrowing **what you can't read.** Code you can't
-explain is a **black box**: when it breaks, you can't fix it, and you
-can't vouch for the thing with your name on it.
+explain is a **black box**: when it's quietly wrong, you won't notice,
+and "fix it" is the only thing you'll know to ask.
 
 *Feeling powerful while growing more dependent: that's pseudo-agency.*
 -->
@@ -42,7 +42,10 @@ can't vouch for the thing with your name on it.
 AI-assisted coding genuinely **lowers the barrier**, and borrowing isn't new: programmers have always
 borrowed from manuals, colleagues, and Stack Overflow, and you'll lean on VADER, pandas, and Gensim all
 term. The danger is borrowing what you can't read. Code you can't explain is a **black box**: you can't
-say whether it will hold on real data, or fix it when it breaks. The quieter failure is **pseudo-agency**:
+say whether it will hold on real data. You might object that if it breaks, you'll just ask the AI to fix
+it, and for code that crashes with an error message, that often works. But the worst bugs don't crash.
+They hand back a number that looks right, and you can only ask for a fix you know you need: reprompting
+works for the person who can say *what's* wrong and *what* they expected. The quieter failure is **pseudo-agency**:
 feeling powerful ("I built this!") while growing more dependent, unable to vouch for the thing with your
 name on it.
 
