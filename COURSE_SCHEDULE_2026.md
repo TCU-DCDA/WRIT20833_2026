@@ -45,9 +45,9 @@ final exam.*
 ### Week 4 (Nov 9–13) — Found data, ethics & pandas
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 11/9** (10) | Data Archaeology | **Code-along** → [Found data + collection ethics (pandas 01 + scraping)](notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb) · then get a YouTube API key → [YouTube Comment Collector](notebooks/codeAlongs/WRIT20833_YouTube_Comment_Collector_2026.ipynb), Step 1 (finish before Friday) | — |
+| **Mon 11/9** (10) | Data Archaeology | **Code-along** → [Found data + collection ethics (pandas 01)](notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb) · then get a YouTube API key → [YouTube Comment Collector](notebooks/codeAlongs/WRIT20833_YouTube_Comment_Collector_2026.ipynb), Step 1 (finish before Friday) | — |
 | **Wed 11/11** (11) | — | **Code-along** → [Data cleaning (pandas 02)](notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb) | **HW2 due** |
-| **Fri 11/13** (12) | — | **Workshop** → collect & clean **your** cultural dataset with the [YouTube Comment Collector](notebooks/codeAlongs/WRIT20833_YouTube_Comment_Collector_2026.ipynb) or Instant Data Scraper (apply Pandas 01–02) → sets up HW3 | — |
+| **Fri 11/13** (12) | — | **Workshop** → collect & clean **your** cultural dataset with the [YouTube Comment Collector](notebooks/codeAlongs/WRIT20833_YouTube_Comment_Collector_2026.ipynb) or a no-code scraper (short demo first: Instant Data Scraper, Easy Scraper; apply Pandas 01–02) → sets up HW3 | — |
 
 ### Week 5 (Nov 16–20) — Computational text analysis: sentiment
 | Date | Lecture | Coding | Due |

@@ -45,13 +45,13 @@ for code in (200, 403, 404):
 #
 # site:
 # what it says:</pre>
-<h3 id="instant-data-scraper-collecting-without-code">Instant Data Scraper: collecting without code</h3>
-<p data-pagefind-weight="0.5">You don&#x27;t need to write a scraper to gather cultural data. Instant Data Scraper is a free browser extension (Chrome/Firefox) that turns a web page&#x27;s table or list into a downloadable CSV — point, preview, download. We use it because it&#x27;s: - Visible — you see exactly what you&#x27;re collecting, - Human-paced — it won&#x27;t flood a server, and - Honest about scale — good for the hundreds-of-rows datasets this course needs, not millions. Before you scrape anything, ask: Does robots.txt allow it? Do I need this much? Will I credit the source? If you can&#x27;t answer all three, don&#x27;t collect it.</p>
+<h3 id="collecting-without-code-a-preview">Collecting without code (a preview)</h3>
+<p data-pagefind-weight="0.5">Not every collection needs code. The course&#x27;s own comment corpus was gathered with Instant Data Scraper, a free browser extension that turns a page&#x27;s list or table into a CSV. Friday&#x27;s workshop opens with a short demo of it and a similar tool, Easy Scraper, beside the YouTube Comment Collector, so you can choose how to gather your own dataset. Whichever route you take, ask first: Does the site allow it? Do I need this much? Will I credit the source? If you can&#x27;t answer all three, don&#x27;t collect it. Tools that go through an API, like the YouTube Comment Collector, answer the first question differently: the rules live in the platform&#x27;s terms of service and usage limits, not in robots.txt.</p>
 <h2 id="part-2-opening-found-data-with-pandas">Part 2 — Opening Found Data with Pandas</h2>
 <p data-pagefind-weight="0.5">Once collected, found data arrives as a table — rows and columns, like a spreadsheet (a .csv file). pandas is Python&#x27;s tool for tables. The name is from &quot;panel data,&quot; but picture a friendly data-handling panda. By convention we import it as pd.</p>
 <pre data-pagefind-weight="0.5">import pandas as pd
 import matplotlib.pyplot as plt</pre>
-<p data-pagefind-weight="0.5">A real CSV you&#x27;d load with pd.readcsv(&quot;yourfile.csv&quot;). To keep this notebook self-contained, here&#x27;s a small constructed sample in the shape Instant Data Scraper produces: YouTube-style comments on the Texas Ten Commandments law, the conversation this course keeps returning to. The wording, likes, replies, and stance labels were written for this lesson, so any pattern you find here is practice, not evidence about the real debate.</p>
+<p data-pagefind-weight="0.5">A real CSV you&#x27;d load with pd.readcsv(&quot;yourfile.csv&quot;). To keep this notebook self-contained, here&#x27;s a small constructed sample shaped like a comment export: YouTube-style comments on the Texas Ten Commandments law, the conversation this course keeps returning to. The wording, likes, replies, and stance labels were written for this lesson, so any pattern you find here is practice, not evidence about the real debate. It&#x27;s also far tidier than a real export, which is where Pandas 02 comes in.</p>
 <pre data-pagefind-weight="0.5">data = {
     &quot;comment&quot;: [
         &quot;The Ten Commandments belong in every classroom, period.&quot;,
