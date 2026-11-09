@@ -17,8 +17,8 @@
 <p data-pagefind-weight="0.5">In HW2 you found which words dominate a debate — but a raw count can&#x27;t tell a cheer from a complaint. The word commandments &quot;won,&quot; yet some of those mentions were people for the Texas law and some against it, and they looked identical. This week you add sentiment analysis: a tool (VADER) that scores each comment from very negative to very positive. You&#x27;ll work in pandas now — a table where each row is one line of comment text — and use sentiment to hear the tone that counting alone missed. Then comes the harder question, from Part 4 of the VADER code-along: tone is not stance. A comment can oppose the law in warm language, or support it in a fury. Your data has no stance column, so in B3 you&#x27;ll supply one by hand for a few comments and see whether VADER&#x27;s tone could have told you who was for and against.</p>
 <h3 id="prepare">Prepare</h3>
 <p data-pagefind-weight="0.5">Review our own materials first: - HW2 — term frequency (splitintowords, stopwords, Counter); we reuse all of it. - Pandas 01 / Pandas 02 code-alongs — DataFrames, df[...], .apply(), df.plot(). - The VADER Sentiment code-along (this week) — analyzer.polarityscores() and the chart.</p>
-<h3 id="expected-frequent-meaningful-comments">Expected: frequent, meaningful #comments</h3>
-<p data-pagefind-weight="0.5">Comment as you work — not every line, but often, and wherever you make a choice or hit a question: say what you tried and what you learned (or what surprised you). Frequent, relevant #comments are expected. Under this course&#x27;s ungrading approach, your thinking in these comments and reflections matters more than getting a &quot;right&quot; number.</p>
+<h3 id="expected-frequent-meaningful-comments-plus-reflections">Expected: frequent, meaningful #comments, plus ✍️ reflections</h3>
+<p data-pagefind-weight="0.5">Comment as you work — not every line, but often, and wherever you make a choice or hit a question: say what you tried and what you learned (or what surprised you). A #comment belongs next to the code it explains: a prediction, a choice, a quick answer. Longer thinking goes in the ✍️ cells: text cells with the question at the top. Double-click one, write your answer under the line in plain sentences (no # needed), then press Shift+Enter to see it formatted. Under this course&#x27;s ungrading approach, your thinking in these comments and reflections matters more than getting a &quot;right&quot; number.</p>
 <h3 id="about-the-setup-cell-read-this-then-just-run-it">About the setup cell (read this, then just run it)</h3>
 <p data-pagefind-weight="0.5">The next cell is plumbing: it imports pandas, installs the VADER sentiment tool, and loads your data into a table. Run it, but don&#x27;t worry about reading every line — installing a library and downloading a file are things you&#x27;ll meet later. You use a tool through its interface long before you build its insides. After it runs, you have: a DataFrame df (one line of comment text per row), the name of its text column textcolumn, the analyzer (VADER), and your HW2 splitintowords + stopwords. Bringing your own data? Upload your cleaned CSV from the Day 12 workshop, then set the two lines near the bottom of the cell: MYCSV (the file name) and MYTEXTCOLUMN (the column holding the text). Leave MYCSV = &quot;&quot; and it loads the course corpus, so everything runs out of the box. Check the DATA SOURCE: line it prints before you go on. If it doesn&#x27;t name the data you meant to use, nothing after it is about your data.</p>
 <pre data-pagefind-weight="0.5"># SETUP — run this cell first. (You&#x27;re not expected to read every line yet — that&#x27;s fine.)
@@ -115,9 +115,8 @@ sarcasm = &quot;Oh great, another set of commandments to follow.&quot;
 print(analyzer.polarity_scores(sarcasm)[&quot;compound&quot;])
 
 # #comments:
-# My prediction was:
-# VADER sees &quot;great&quot; and scores this POSITIVE -- but a human hears sarcasm.
-# What does that warn you about trusting an automated score on its own?</pre>
+# My prediction was:</pre>
+<p data-pagefind-weight="0.5">✍️ A4 reflection (double-click to edit; write your answer below the line) VADER sees &quot;great&quot; and scores this line positive, but a human hears sarcasm. What does that warn you about trusting an automated score on its own? --- Your answer:</p>
 <p data-pagefind-weight="0.5">A5 — Score every comment at once. (This is what pandas is for.)</p>
 <pre data-pagefind-weight="0.5"># A5
 def get_sentiment(text):
@@ -169,14 +168,10 @@ my_stance = {
 }
 
 extremes[&quot;stance&quot;] = extremes.index.map(my_stance)
-extremes[[&quot;sentiment&quot;, &quot;label&quot;, &quot;stance&quot;]]
-
-# #comments:
-# Among the 5 WARMEST comments, how many did you label &quot;support&quot;? Among the 5 COLDEST?
-# If positive tone meant support, what would you expect -- and what did you find?
-# Which labels were hard to decide, and why? (That difficulty is data too.)</pre>
+extremes[[&quot;sentiment&quot;, &quot;label&quot;, &quot;stance&quot;]]</pre>
+<p data-pagefind-weight="0.5">✍️ B3 reflection (double-click to edit; write your answer below the line) - Among the 5 warmest comments, how many did you label &quot;support&quot;? Among the 5 coldest? - If positive tone meant support, what would you expect, and what did you find? - Which labels were hard to decide, and why? (That difficulty is data too.) --- Your answer:</p>
 <p data-pagefind-weight="0.5">B4 — Interpretation (write 4–6 sentences below). Using B1–B2: what is this crowd&#x27;s tone — mostly warm, mostly hostile, or split? Then use your B3 labels to answer the harder question: could you have read stance off tone? How many of the warmest comments supported the law? Finally: what did sentiment let you see that HW2&#x27;s word-counting could not — and what can&#x27;t it see? Cite at least two numbers from this notebook (a label count, a sentiment score, a count from your B3 labels). (Recall HW2 B4: a tally can&#x27;t tell a cheer from a complaint. Can a tone score?) One drafting rule before you write. Politicians of every party love the sentence &quot;The American people feel…&quot; — one average pretending a split crowd agreed. Your B1 counts and your B2 chart are sitting right there. If your write-up starts &quot;the commenters feel…&quot;, stop and check whether your own numbers contradict you — and if the crowd is split, say split.</p>
-<p data-pagefind-weight="0.5">Replace this cell with your interpretation.</p>
+<p data-pagefind-weight="0.5">✍️ Double-click this cell and replace this line with your interpretation.</p>
 <h3 id="part-c-going-deeper-2-exercises">Part C — Going deeper (2 exercises)</h3>
 <p data-pagefind-weight="0.5">C1 — Whose words are whose? Frequency inside each camp. (HW2&#x27;s tool, now split by tone.)</p>
 <pre data-pagefind-weight="0.5"># C1
@@ -189,34 +184,22 @@ def top_words(text_series, n=8):
 positive_comments = df[df[&quot;label&quot;] == &quot;positive&quot;][text_column]
 negative_comments = df[df[&quot;label&quot;] == &quot;negative&quot;][text_column]
 
-# TODO: print top_words(positive_comments) and top_words(negative_comments)
-
-# #comments:
-# Which words appear in BOTH lists? In HW2 those words &quot;won&quot; overall -- here they show up in
-# warm AND hostile comments. Does a warm comment that says &quot;commandments&quot; mean the writer
-# SUPPORTS the law? (Check your B3 labels before you answer.)</pre>
+# TODO: print top_words(positive_comments) and top_words(negative_comments)</pre>
+<p data-pagefind-weight="0.5">✍️ C1 reflection (double-click to edit; write your answer below the line) Which words appear in both lists? In HW2 those words &quot;won&quot; overall; here they show up in warm and hostile comments. Does a warm comment that says &quot;commandments&quot; mean the writer supports the law? (Check your B3 labels before you answer.) --- Your answer:</p>
 <p data-pagefind-weight="0.5">C2 — On your own data, or push this one further. - If you loaded your own dataset in setup: this whole notebook already ran on it. Write 3–4 sentences on what the sentiment split showed about your corpus, and one place you doubt VADER. - If you used the course corpus: try ONE of — change the 0.05 cutoff in B1 and see what moves; or compare the sentiment of comments that mention &quot;constitution&quot; vs. those that don&#x27;t.</p>
 <pre data-pagefind-weight="0.5"># C2
-# TODO: do ONE of the options above. Show your code and the result.
-
-# #comments:
-# What did you expect, and did the data agree?</pre>
+# TODO: do ONE of the options above. Show your code and the result.</pre>
+<p data-pagefind-weight="0.5">✍️ C2 reflection (double-click to edit; write your answer below the line) Your own data: your 3–4 sentences, including one place you doubt VADER. Course corpus: what did you expect, and did the data agree? --- Your answer:</p>
 <h3 id="weekly-experiments-your-own-work">Weekly Experiments (your own work!)</h3>
 <p data-pagefind-weight="0.5">After the required exercises, create 2–3 small experiments of your own with this week&#x27;s skills. Make them original. Ideas: - Write five comments yourself and see if VADER scores them the way you meant. - Find a comment where VADER is most wrong and explain why. - Filter df to a subset (e.g. comments mentioning &quot;school&quot;) and compare its average sentiment. It&#x27;s fine if an experiment doesn&#x27;t work at first — documenting what went wrong and what you learned is worth just as much as working code.</p>
 <pre data-pagefind-weight="0.5"># Experiment 1
-
-
-# #comments:
-# What were you trying? What happened? What did you learn?</pre>
+# (#comments in your code as you go)</pre>
+<p data-pagefind-weight="0.5">✍️ Experiment 1 reflection (double-click to edit; write your answer below the line) What were you trying? What happened? What did you learn? --- Your answer:</p>
 <pre data-pagefind-weight="0.5"># Experiment 2
-
-
-# #comments:
-# What were you trying? What happened? What did you learn?</pre>
+# (#comments in your code as you go)</pre>
+<p data-pagefind-weight="0.5">✍️ Experiment 2 reflection (double-click to edit; write your answer below the line) What were you trying? What happened? What did you learn? --- Your answer:</p>
 <pre data-pagefind-weight="0.5"># Experiment 3
-
-
-# #comments:
-# What were you trying? What happened? What did you learn?</pre>
+# (#comments in your code as you go)</pre>
+<p data-pagefind-weight="0.5">✍️ Experiment 3 reflection (double-click to edit; write your answer below the line) What were you trying? What happened? What did you learn? --- Your answer:</p>
 <h3 id="submit">Submit</h3>
-<p data-pagefind-weight="0.5">- [ ] My name is at the top. - [ ] I loaded a dataset (my own from the workshop, or the course corpus) and its DATA SOURCE: line names the data I meant to use. I ran every cell. Where something still breaks, I left a #comment about what I tried and what I learned — errors are part of the work here, not something to hide or delete. - [ ] I completed Part A (5), Part B (4, incl. the B4 write-up), Part C (2), and 2–3 experiments. - [ ] I used #comments frequently and meaningfully — showing my thinking wherever I made a choice or hit a question (not every line, but throughout). - [ ] I wrote honestly about where I agree and disagree with VADER (engagement matters more than &quot;right&quot; labels). - [ ] Saved as LASTNAMEHW3.ipynb and uploaded to its folder in TCU Online → Assignments. Time estimate: ~2 hrs for the exercises, ~1 hr for your experiments.</p></div></div><footer class="site-footer"><div class="bar"><span>WRIT 20833 · notebook text</span><span class="spacer"></span><a target="_blank" rel="noopener noreferrer" href="https://github.com/TCU-DCDA/WRIT20833_2026">GitHub ↗</a><a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/">Colab ↗</a></div></footer><script>(function(){var t=document.querySelector(".nav-toggle"),n=document.getElementById("site-nav");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();</script><script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;var d=new Date(),p=function(n){return(n<10?"0":"")+n},t=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());document.querySelectorAll("a[data-opens],div.card[data-opens]").forEach(function(a){var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;if(a.tagName==="DIV"){a.querySelectorAll("a.alt").forEach(function(x){x.remove();});a.querySelectorAll("a").forEach(function(x){var y=document.createElement("span");y.innerHTML=x.innerHTML;x.replaceWith(y);});a.classList.remove("linked");a.classList.add("locked");a.title="Opens "+l;var v=a.querySelector(".when");if(v)v.insertAdjacentHTML("beforeend",' <span class="opens">· opens '+l+"</span>");return;}var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");s.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;var w=c?s.querySelector(".when"):null,tag='<span class="opens">'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}a.replaceWith(s);});})();</script></body></html>
+<p data-pagefind-weight="0.5">- [ ] My name is at the top. - [ ] I loaded a dataset (my own from the workshop, or the course corpus) and its DATA SOURCE: line names the data I meant to use. I ran every cell. Where something still breaks, I left a #comment about what I tried and what I learned — errors are part of the work here, not something to hide or delete. - [ ] I completed Part A (5), Part B (4, incl. the B4 write-up), Part C (2), and 2–3 experiments. - [ ] I used #comments frequently and meaningfully — showing my thinking wherever I made a choice or hit a question (not every line, but throughout). - [ ] I answered every ✍️ reflection in its text cell, under the line. - [ ] I wrote honestly about where I agree and disagree with VADER (engagement matters more than &quot;right&quot; labels). - [ ] Saved as LASTNAMEHW3.ipynb and uploaded to its folder in TCU Online → Assignments. Time estimate: ~2 hrs for the exercises, ~1 hr for your experiments.</p></div></div><footer class="site-footer"><div class="bar"><span>WRIT 20833 · notebook text</span><span class="spacer"></span><a target="_blank" rel="noopener noreferrer" href="https://github.com/TCU-DCDA/WRIT20833_2026">GitHub ↗</a><a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/">Colab ↗</a></div></footer><script>(function(){var t=document.querySelector(".nav-toggle"),n=document.getElementById("site-nav");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();</script><script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;var d=new Date(),p=function(n){return(n<10?"0":"")+n},t=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());document.querySelectorAll("a[data-opens],div.card[data-opens]").forEach(function(a){var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;if(a.tagName==="DIV"){a.querySelectorAll("a.alt").forEach(function(x){x.remove();});a.querySelectorAll("a").forEach(function(x){var y=document.createElement("span");y.innerHTML=x.innerHTML;x.replaceWith(y);});a.classList.remove("linked");a.classList.add("locked");a.title="Opens "+l;var v=a.querySelector(".when");if(v)v.insertAdjacentHTML("beforeend",' <span class="opens">· opens '+l+"</span>");return;}var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");s.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;var w=c?s.querySelector(".when"):null,tag='<span class="opens">'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}a.replaceWith(s);});})();</script></body></html>
