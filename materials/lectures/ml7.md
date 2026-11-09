@@ -205,7 +205,11 @@ a display model keeps the paint and skips the aerodynamics.
 `num_topics` is you choosing the scale.
 
 ### Every model leaves things out. The question is what it's for.
+
+![Two model airplanes of the same aircraft on a workbench: a bare wind-tunnel model with yarn tufts on its wing, and a glossy display model with a red stripe; a full-size plane stands small in the window behind](materials/lectures/images/ml7_airplane_sq.jpg)
 -->
+
+<!-- layout: split -->
 
 Before LDA runs, you tell it how many topics to look for — `num_topics`. People assume the algorithm will
 *reveal* the right number. It won't. Ask the same comments for two topics and unrelated themes get mashed
@@ -215,6 +219,9 @@ Neither answer is "wrong." **Choosing the number of topics is a research decisio
 interpretable and useful the result is, not by a truth the model uncovered. It's the course's recurring
 lesson wearing new clothes: a knob you turned is doing work that's easy to mistake for a fact the data
 handed you. Make the choice visible, and say why you made it.
+
+<!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a lamp-lit wooden workbench holding two small model airplanes of the same aircraft, side by side. On the left, a wind-tunnel model: bare, unpainted pale wood and brushed metal, wings precisely shaped, mounted on a thin steel rod, a few short yarn tufts taped along one wing. On the right, a display model: glossy paint and a clay-red stripe along the fuselage (the one accent), resting on a small polished stand, its wing edges plainly simplified. Through a tall window behind them, a full-size aircraft stands far off on an airfield, small with distance, while the models loom large in the foreground. Calipers and a sketch on drafting paper lie on the bench. Square composition. No text, no logos, no airline markings, no recognizable real aircraft. -->
+![Two model airplanes of the same aircraft on a workbench: a bare wind-tunnel model with yarn tufts on its wing, and a glossy display model with a red stripe; a full-size plane stands small in the window behind](materials/lectures/images/ml7_airplane_sq.jpg)
 
 It helps to think of a **model airplane.** It's shrunk on purpose, so you can hold the whole thing in your hand
 and in your mind, and the rivets, the wiring, and the seats are gone. Which details survive depends on what the
