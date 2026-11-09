@@ -193,6 +193,20 @@ is doing work that's easy to mistake for a fact the data handed you.
 Make the choice visible, and say why you made it.*
 -->
 
+<!-- slide:
+Think of a **model airplane.** It's shrunk on purpose, so you can hold
+the whole thing in your hand and in your mind — and the rivets,
+the wiring, and the seats are gone.
+
+Which details survive depends on what the model is **for**:
+a wind-tunnel model keeps the exact curve of the wing and skips the paint;
+a display model keeps the paint and skips the aerodynamics.
+
+`num_topics` is you choosing the scale.
+
+### Every model leaves things out. The question is what it's for.
+-->
+
 Before LDA runs, you tell it how many topics to look for — `num_topics`. People assume the algorithm will
 *reveal* the right number. It won't. Ask the same comments for two topics and unrelated themes get mashed
 together; ask for ten and one real theme splinters into fragments.
@@ -201,6 +215,15 @@ Neither answer is "wrong." **Choosing the number of topics is a research decisio
 interpretable and useful the result is, not by a truth the model uncovered. It's the course's recurring
 lesson wearing new clothes: a knob you turned is doing work that's easy to mistake for a fact the data
 handed you. Make the choice visible, and say why you made it.
+
+It helps to think of a **model airplane.** It's shrunk on purpose, so you can hold the whole thing in your hand
+and in your mind, and the rivets, the wiring, and the seats are gone. Which details survive depends on what the
+model is *for*: a wind-tunnel model keeps the exact curve of the wing and skips the paint; a display model keeps
+the paint and skips the aerodynamics. Both are faithful, to different questions. In *Data Archaeology* the
+museum dinosaur showed a model **filling in** what's missing; the airplane shows a model **leaving out** what's
+there. VADER already did this to you, shrinking a whole comment to one compound score. `num_topics` is you
+choosing the scale: two topics is a model you can hold in one glance, ten keeps more detail and asks more of
+you. Every model leaves things out; the question is what it's for — and you're the one who answers it.
 
 ## When one debate fights back
 
@@ -276,6 +299,9 @@ LDA assumes topics are stable categories. **Culture is fluid and contextual.**
 So use the model for what it's genuinely good at — a map of a pile
 too big to read — and never confuse the map for the territory.
 
+*Borges imagined an empire whose mapmakers drew a map the size of the
+empire: perfectly accurate, and useless. A map earns its keep by being smaller.*
+
 ### The machine finds the pattern. You decide whether the pattern is a finding, or just order imposed on noise.
 -->
 
@@ -291,10 +317,14 @@ reaches. But hold it to the same questions you've asked all term:
   random.
 
 LDA assumes topics are stable categories. Culture is fluid and contextual. So use the model for what it's
-genuinely good at — a map of a pile too big to read — and never confuse the map for the territory. The
-machine finds the pattern; **you** decide whether the pattern is a finding or just order imposed on noise.
+genuinely good at — a map of a pile too big to read — and never confuse the map for the territory. Jorge Luis
+Borges wrote a one-paragraph story, "On Exactitude in Science," about an empire whose mapmakers drew a map the
+size of the empire, point for point. It was perfectly accurate and completely useless, and later generations
+left it to rot in the desert. A map earns its keep by being *smaller* than what it maps; so does a topic model.
+Just remember what got left out to make it fit. The machine finds the pattern; **you** decide whether the pattern is a finding or just order imposed on noise.
 
 Going deeper (optional): David M. Blei, ["Topic Modeling and Digital Humanities"](https://journalofdigitalhumanities.org/2-1/topic-modeling-and-digital-humanities-by-david-m-blei/) (*Journal of Digital
 Humanities* 2.1, 2012); Ted Underwood, "Topic Modeling Made Just Simple Enough"; Benjamin M. Schmidt, ["Words Alone:
 Dismantling Topic Models in the Humanities"](https://journalofdigitalhumanities.org/2-1/words-alone-by-benjamin-m-schmidt/) (*Journal of Digital Humanities* 2.1, 2012; the skeptic's case); Catherine D'Ignazio & Lauren Klein,
-*Data Feminism* (whose data, whose categories).
+*Data Feminism* (whose data, whose categories); Jorge Luis Borges, "On Exactitude in Science" (one paragraph, in
+*Collected Fictions*).

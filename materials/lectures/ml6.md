@@ -44,6 +44,22 @@ you have to remember you're holding **shards, not the meal**:
 a partial record of something larger you'll never fully recover.
 -->
 
+<!-- slide:
+Think of the dinosaur in the museum lobby. Some of it is fossil bone.
+Much of it is **cast, sculpted, and posed** — and the skin and colors
+on the painting beside it are almost pure inference.
+
+That whole-looking animal is a **model**: bones plus assumptions.
+(Iguanodon wore its thumb spike on its *nose* for decades.
+Same bones, different assumptions, different animal.)
+
+### Always ask: which part is bone, and which part is plaster?
+
+![A mounted dinosaur skeleton whose dark fossil bones are joined by pale plaster casts, studied by a small figure with a notebook](materials/lectures/images/ml6_bones_sq.jpg)
+-->
+
+<!-- layout: split -->
+
 An archaeologist never has the thing itself — the meal, the ritual, the household. They have what survived:
 a pottery shard, a posthole, a midden of bones. From those *traces* they reconstruct how people lived.
 
@@ -53,6 +69,17 @@ You're making the same move. Our 93 comments are a dig site — traces a communi
 a law. You'll excavate patterns from them, but like any archaeologist you have to remember
 you're holding **shards, not the meal**: a partial record of something larger you'll never fully recover.
 (That's the noumena pipeline again — what reaches you is already several steps downstream of the lived thing.)
+
+<!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a mounted dinosaur skeleton in a quiet, lamp-lit old museum hall. The surviving fossil bones are dark, mineral brown and visibly cracked; the missing pieces between them are smooth, pale plaster casts that clearly read as a different material, so the eye can sort bone from fill. At its feet a small figure with an open notebook (clay-colored scarf, the one accent) looks up, comparing the two. No text, no recognizable real specimen. -->
+![A mounted dinosaur skeleton whose dark fossil bones are joined by pale plaster casts, studied by a small figure with a notebook](materials/lectures/images/ml6_bones_sq.jpg)
+
+Archaeology's older cousin, paleontology, shows what happens next. Think of the dinosaur in the museum
+lobby: some of it is fossil bone, but much of it is cast, sculpted, and posed, and the skin and colors on
+the painting beside it are almost pure inference. That whole-looking animal is a **model** — bones plus
+assumptions — and models get revised: Iguanodon wore its thumb spike on its nose for decades, until more
+complete skeletons moved it to the hand. Same bones, different assumptions, different animal. Later in the
+course, sentiment scores and topic models will hand you whole-looking animals too. Always ask: **which part
+is bone, and which part is plaster?**
 
 ## You found it; you didn't make it
 
@@ -74,13 +101,20 @@ for your question, its gaps aren't random, and **you weren't there
 when it was made.**
 
 ### "Found" never means "neutral."
+
+![Hands holding a faded family birthday photograph with one figure neatly cut out, beside a shoebox of snapshots, ribbon-tied letters, and a pair of scissors](materials/lectures/images/ml6_estate_sq.jpg)
 -->
+
+<!-- layout: split -->
 
 There are two kinds of data, and this course runs almost entirely on the second.
 
 - **Created data** — surveys you design, experiments you run. *You* control the questions.
 - **Found data** — traces that already exist because culture left them: comments, reviews, lyrics, posts.
   *Culture* chose the questions, not you.
+
+<!-- IMG PROMPT (warm "Reading Room" oil painting — aged parchment, muted greens, one clay accent; match the ml0 images): a weathered wooden table at an estate sale, an open shoebox spilling old snapshots and bundled letters. A pair of hands holds up one faded photograph of a family gathering in which one figure has been neatly cut out with scissors, leaving a clean-edged hole. A clay-red ribbon on the letter bundle is the one accent. No legible text, no faces in sharp detail. -->
+![Hands holding a faded family birthday photograph with one figure neatly cut out, beside a shoebox of snapshots, ribbon-tied letters, and a pair of scissors](materials/lectures/images/ml6_estate_sq.jpg)
 
 Found data is thrilling because it's **real** — nobody was performing for a researcher. It's treacherous
 for the same reason: it wasn't built for your question, its gaps aren't random, and *you weren't there when
