@@ -78,8 +78,7 @@ comments_df</pre>
 <p data-pagefind-weight="0.5">With a score per comment, you can ask quantitative questions of the whole crowd.</p>
 <pre data-pagefind-weight="0.5"># type along — print the average sentiment (round to 3); then use .idxmax() / .idxmin() with .loc to pull the most positive and most negative rows and print each score with its comment</pre>
 <h4 id="your-turn">Your turn</h4>
-<pre data-pagefind-weight="0.5"># your turn — sort the DataFrame by sentiment and look at the order
-# comments_df.sort_values(&quot;sentiment&quot;)</pre>
+<pre data-pagefind-weight="0.5"># your turn — sort the DataFrame by its sentiment column with .sort_values() (as in Pandas 01) and look at the order</pre>
 <h2 id="part-4-tone-is-not-the-same-as-stance">Part 4 — Tone Is Not the Same as Stance</h2>
 <p data-pagefind-weight="0.5">Here&#x27;s the critical move. We have two judgments of each comment: the stance you labeled (a position — for or against the law) and the tone VADER scored (an emotion). It&#x27;s tempting to expect them to line up. Let&#x27;s turn VADER&#x27;s score into a label and put them side by side.</p>
 <pre data-pagefind-weight="0.5">def tone_label(score):
