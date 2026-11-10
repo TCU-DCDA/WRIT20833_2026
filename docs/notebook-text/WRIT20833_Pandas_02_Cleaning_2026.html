@@ -69,8 +69,7 @@ clean_df[&quot;comment&quot;].tolist()</pre>
 clean_df[&quot;stance&quot;] = clean_df[&quot;stance&quot;].replace({&quot;for&quot;: &quot;support&quot;, &quot;against&quot;: &quot;oppose&quot;})
 print(&quot;Canonical labels:&quot;, clean_df[&quot;stance&quot;].unique())</pre>
 <h4 id="your-turn">Your turn</h4>
-<pre data-pagefind-weight="0.5"># your turn — run .value_counts() on the cleaned stance column to see the three-way split
-# clean_df[&quot;stance&quot;].value_counts()</pre>
+<pre data-pagefind-weight="0.5"># your turn — run .value_counts() on the cleaned stance column to see the three-way split</pre>
 <h2 id="step-4-drop-the-duplicate">Step 4: Drop the Duplicate</h2>
 <p data-pagefind-weight="0.5">The repeated comment you counted in Step 1 is an exact duplicate: every column matches, stray spaces and all. .dropduplicates() keeps the first copy and removes the rest. The structure: python mydf = mydf.dropduplicates().resetindex(drop=True) - .dropduplicates() removes every row that .duplicated() marked True. - Dropping rows leaves a gap in the row numbers on the left (the index). .resetindex(drop=True) renumbers them 0, 1, 2… and throws the old numbers away. - We do this before Step 5 on purpose: a comment counted twice would also count twice in any average or median you take.</p>
 <pre data-pagefind-weight="0.5">before = len(clean_df)
