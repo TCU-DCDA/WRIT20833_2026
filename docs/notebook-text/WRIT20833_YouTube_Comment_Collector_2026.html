@@ -256,7 +256,7 @@ def get_all_replies(parent_id, still_needed):
         if not page_token:
             break
     return replies</pre>
-<p data-pagefind-weight="0.5">The main loop. Read it slowly: it&#x27;s a while loop around a for loop, plus a few ifs. 1. Ask for a page of comment threads. 2. For each thread, add the top-level comment. If you asked for replies, add those too. 3. Stop when you have enough comments, or when YouTube has no more pages.</p>
+<p data-pagefind-weight="0.5">The main loop uses a kind of loop we haven&#x27;t seen yet. A for loop runs once per item in a list. A while loop keeps repeating as long as a condition is True. That fits here: we don&#x27;t know in advance how many pages YouTube will send, only when to stop. The structure: python while condition: do this (then check the condition again) - Like if, the line ends with a colon :, and the code underneath is indented - Python checks the condition, runs the block, then checks again. When the condition is False, the loop ends - If nothing inside the loop ever makes the condition False, it never stops. That&#x27;s why this loop also has a way out - break ends the loop immediately, even if the condition is still True - continue skips the rest of this pass and jumps to the next item (in a for) or the next check (in a while) Read it slowly: it&#x27;s a while loop around a for loop, plus a few ifs. 1. Ask for a page of comment threads. 2. For each thread, add the top-level comment. If you asked for replies, add those too. 3. Stop when you have enough comments, or when YouTube has no more pages.</p>
 <pre data-pagefind-weight="0.5"># 📖 READ THIS ONE: the collection loop
 collected.clear()          # start fresh if you run this cell twice
 duplicates_skipped = 0
