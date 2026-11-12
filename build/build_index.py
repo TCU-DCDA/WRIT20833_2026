@@ -39,6 +39,7 @@ CODEALONGS_BY_WEEK = [
         ("Found Data & Pandas", "Collection ethics, then DataFrames.", "Day 10", "notebooks/codeAlongs/WRIT20833_Pandas_01_Found_Data_2026.ipynb"),
         ("Data Cleaning", "Turning messy scraped data tidy.", "Day 11", "notebooks/codeAlongs/WRIT20833_Pandas_02_Cleaning_2026.ipynb"),
         ("YouTube Comment Collector", "Collect comments from a video you choose.", "Days 10–12", "notebooks/codeAlongs/WRIT20833_YouTube_Comment_Collector_2026.ipynb"),
+        ("Clean Your Scraped Data", "Turn a no-code scraper's download into a clean dataset.", "Day 12", "notebooks/codeAlongs/WRIT20833_Scraped_Data_Cleaner_2026.ipynb"),
     ]),
     ("Weeks 5–6", "Computational text analysis", [
         ("Sentiment with VADER", "Scoring emotional tone — and judging it.", "Days 13–14", "notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb"),
