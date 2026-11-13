@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Count Your Data — notebook text — WRIT 20833</title>
+<link rel="stylesheet" href="../styles.css"><style>
+.reading [id]{scroll-margin-top:84px;}
+.reading pre{overflow-x:auto;}
+.reading h2:target,.reading h3:target,.reading h4:target{background:var(--clay-bg);color:var(--clay-ink);
+  padding:2px 6px;margin-left:-6px;border-radius:3px;}
+.nb-note{font-size:14px;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:9px 12px;
+  margin:6px 0 18px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+</style><meta name="robots" content="noindex"></head>
+<body><header class="site-header" data-pagefind-ignore="all"><div class="bar"><a href="../index.html" class="brand"><span class="k">WRIT 20833 · Fall 2026</span><span class="name">When Coding Meets Culture</span></a><button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">☰</button><nav class="site-nav" id="site-nav" aria-label="Primary"><a href="../schedule.html" class="nav-pill">Schedule</a><a href="../index.html#lectures" class="nav-pill">Lectures</a><a href="../index.html#codealongs" class="nav-pill">Code-alongs</a><a href="../index.html#assignments" class="nav-pill">Assignments</a><a href="../index.html#resources" class="nav-pill">Resources</a></nav><div class="site-search"><form class="site-search-form" role="search" action="../search.html" method="get"><label class="visually-hidden" for="site-search-q">Search the course site</label><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" name="q" id="site-search-q" placeholder="Search" autocomplete="off"></form><a class="site-search-link" href="../search.html" aria-label="Search the course site"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a></div></div></header><div class="wrap"><div class="reading"><span hidden data-pagefind-meta="kind:Code-along · Day 12"></span><span hidden data-pagefind-meta="colab:https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Count_Your_Data_2026.ipynb"></span><span hidden data-pagefind-meta="opens:2026-11-13"></span><p class="nb-note" data-pagefind-ignore="all">Code-along · Day 12 · the notebook's text, to read and review. To run the code, <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/github/TCU-DCDA/WRIT20833_2026/blob/main/notebooks/codeAlongs/WRIT20833_Count_Your_Data_2026.ipynb">open it in Colab ↗</a></p><h1>Count Your Data</h1>
+<p data-pagefind-weight="0.5">When Coding Meets Culture: Developing Data-Driven Opinions Make an editable copy of this notebook by going to File &gt; Save a copy in Drive New to Colab, or submitting? See Working in Colab.</p>
+<p data-pagefind-weight="0.5">This notebook is for you if you have a clean CSV of your own data: the file the YouTube Comment Collector saved (its text is in commentclean) or the one Clean Your Scraped Data saved (textclean). On Monday, VADER will score every comment in that file as positive, negative, or neutral. Before a tool tells you what your comments feel like, find out what they say. You&#x27;ll count the words with the same tools you built in HW2, read the top words where people actually used them, and then write down what you expect VADER to find. Next week you&#x27;ll check those predictions against the scores. How this notebook works. The code cells come in three kinds: - Edit this one. Your choices go here. There are three of these cells. - Read this one. It uses things you already know: functions, loops, Counter, pandas. Read it and make sure you could explain it. - Plumbing. It loads your file or checks for mistakes. Run it; you don&#x27;t need to read every line.</p>
+<h3 id="why-we-re-doing-this">Why we&#x27;re doing this</h3>
+<p data-pagefind-weight="0.5">- From the &quot;Analysis is recursive&quot; map: you just finished the Clean loop. This is Count, on your own data instead of the course corpus. Each loop starts the same way: predict, run, read closely, revise. - Where you&#x27;ll use it: HW3 asks where VADER&#x27;s score disagrees with your reading. You can only notice that if you wrote your reading down first. Your predictions also come back in &quot;Predictions on the record&quot; (Fri 11/20) and in Reflection 2. - The question to keep asking: what does counting flatten? A word list can&#x27;t tell you who said it, how many times one person said it, or whether they meant it.</p>
+<h2 id="step-1-guess-before-you-look">Step 1: Guess Before You Look</h2>
+<p data-pagefind-weight="0.5">Same habit as Term Frequency Part 1: guess first, then run. You know your data better than anyone in the room, because you picked it. Without opening the file, what do you think the most common meaningful word will be? (Meaningful means not a stopword like &quot;the&quot; or &quot;and.&quot;)</p>
+<pre data-pagefind-weight="0.5"># EDIT THIS ONE: your guesses, before you count anything
+MY_GUESS_TOP_WORD = &quot;&quot;        # e.g. &quot;love&quot;
+MY_GUESS_WHY = &quot;&quot;             # one short reason, e.g. &quot;the video is a love song&quot;</pre>
+<h2 id="step-2-upload-and-load-your-clean-file">Step 2: Upload and Load Your Clean File</h2>
+<p data-pagefind-weight="0.5">Run the first cell below. A Choose Files button appears under it: click it and pick your clean CSV (the one that ends in .csv, not the info.json record). Colab forgets uploaded files when your session ends. If you come back later, run the upload cell again. No button? Some browsers block it. Upload with the Files icon (a folder) in the left sidebar instead, then in the first cell replace everything below the comment with one line naming your file, like MYFILE = &quot;youtubecommentsabc123.csv&quot;.</p>
+<pre data-pagefind-weight="0.5"># PLUMBING: click &quot;Choose Files&quot; and pick your clean CSV
+from google.colab import files
+
+uploaded = files.upload()          # waits for you to choose a file; returns {file name: contents}
+if len(uploaded) == 0:
+    raise ValueError(&quot;No file was chosen. Run this cell again and pick your clean CSV.&quot;)
+
+MY_FILE = list(uploaded.keys())[0]
+if len(uploaded) &gt; 1:
+    print(f&quot;Warning: You chose {len(uploaded)} files; this notebook uses only the first one.&quot;)
+print(&quot;Uploaded:&quot;, MY_FILE)</pre>
+<pre data-pagefind-weight="0.5"># PLUMBING: read your file into a table called my_df and find its text column
+import os
+import re
+from collections import Counter
+
+import pandas as pd
+
+MY_FILE = MY_FILE.strip()
+if not os.path.exists(MY_FILE):
+    files_here = []
+    for name in sorted(os.listdir(&quot;.&quot;)):
+        if name.lower().endswith(&quot;.csv&quot;):
+            files_here.append(name)
+    raise FileNotFoundError(f&quot;Can&#x27;t find a file named {MY_FILE!r}. CSV files uploaded so far: &quot;
+                            f&quot;{files_here or &#x27;none&#x27;}. Check the spelling, or upload the file again.&quot;)
+
+# the same call HW3&#x27;s setup cell uses: a comment that says &quot;NA&quot; stays text
+my_df = pd.read_csv(MY_FILE, keep_default_na=False)
+
+MY_TEXT_COLUMN = &quot;&quot;   # leave blank to find it automatically
+if MY_TEXT_COLUMN == &quot;&quot;:
+    for candidate in [&quot;comment_clean&quot;, &quot;text_clean&quot;]:
+        if candidate in my_df.columns:
+            MY_TEXT_COLUMN = candidate
+            break
+if MY_TEXT_COLUMN not in my_df.columns:
+    raise ValueError(f&quot;Can&#x27;t tell which column holds your text. Your columns are {list(my_df.columns)}. &quot;
+                     &quot;Type the right one between the quotes in MY_TEXT_COLUMN above and run this cell again.&quot;)
+
+my_df[MY_TEXT_COLUMN] = my_df[MY_TEXT_COLUMN].astype(str)
+print(&quot;DATA SOURCE:&quot;, MY_FILE)
+print(&quot;Text column:&quot;, MY_TEXT_COLUMN)
+print(&quot;Comments:&quot;, len(my_df))
+print()
+print(&quot;First one:&quot;, my_df[MY_TEXT_COLUMN].iloc[0][:200])</pre>
+<h2 id="step-3-your-tools-from-hw2">Step 3: Your Tools from HW2</h2>
+<p data-pagefind-weight="0.5">These are the tools you built in Term Frequency and finished in HW2 Part A: the word splitter, the stopword list, and topmeaningfulwords. Same code, nothing new. That&#x27;s the point: you wrote them for the course corpus, and now they work on data nobody in the class has seen.</p>
+<pre data-pagefind-weight="0.5"># READ THIS ONE: the same tools as HW2
+def split_into_words(any_chunk_of_text):
+    lowercase_text = any_chunk_of_text.lower()
+    # split on any run of non-letter/number characters (spaces, punctuation, newlines)
+    return re.split(r&quot;\W+&quot;, lowercase_text)
+
+stopwords = [&quot;i&quot;, &quot;me&quot;, &quot;my&quot;, &quot;myself&quot;, &quot;we&quot;, &quot;our&quot;, &quot;ours&quot;, &quot;ourselves&quot;, &quot;you&quot;, &quot;your&quot;, &quot;yours&quot;,
+             &quot;yourself&quot;, &quot;yourselves&quot;, &quot;he&quot;, &quot;him&quot;, &quot;his&quot;, &quot;himself&quot;, &quot;she&quot;, &quot;her&quot;, &quot;hers&quot;, &quot;herself&quot;,
+             &quot;it&quot;, &quot;its&quot;, &quot;itself&quot;, &quot;they&quot;, &quot;them&quot;, &quot;their&quot;, &quot;theirs&quot;, &quot;themselves&quot;, &quot;what&quot;, &quot;which&quot;,
+             &quot;who&quot;, &quot;whom&quot;, &quot;this&quot;, &quot;that&quot;, &quot;these&quot;, &quot;those&quot;, &quot;am&quot;, &quot;is&quot;, &quot;are&quot;, &quot;was&quot;, &quot;were&quot;, &quot;be&quot;,
+             &quot;been&quot;, &quot;being&quot;, &quot;have&quot;, &quot;has&quot;, &quot;had&quot;, &quot;having&quot;, &quot;do&quot;, &quot;does&quot;, &quot;did&quot;, &quot;doing&quot;, &quot;a&quot;, &quot;an&quot;,
+             &quot;the&quot;, &quot;and&quot;, &quot;but&quot;, &quot;if&quot;, &quot;or&quot;, &quot;because&quot;, &quot;as&quot;, &quot;until&quot;, &quot;while&quot;, &quot;of&quot;, &quot;at&quot;, &quot;by&quot;,
+             &quot;for&quot;, &quot;with&quot;, &quot;about&quot;, &quot;against&quot;, &quot;between&quot;, &quot;into&quot;, &quot;through&quot;, &quot;during&quot;, &quot;before&quot;,
+             &quot;after&quot;, &quot;above&quot;, &quot;below&quot;, &quot;to&quot;, &quot;from&quot;, &quot;up&quot;, &quot;down&quot;, &quot;in&quot;, &quot;out&quot;, &quot;on&quot;, &quot;off&quot;, &quot;over&quot;,
+             &quot;under&quot;, &quot;again&quot;, &quot;further&quot;, &quot;then&quot;, &quot;once&quot;, &quot;here&quot;, &quot;there&quot;, &quot;when&quot;, &quot;where&quot;, &quot;why&quot;,
+             &quot;how&quot;, &quot;all&quot;, &quot;any&quot;, &quot;both&quot;, &quot;each&quot;, &quot;few&quot;, &quot;more&quot;, &quot;most&quot;, &quot;other&quot;, &quot;some&quot;, &quot;such&quot;, &quot;no&quot;,
+             &quot;nor&quot;, &quot;not&quot;, &quot;only&quot;, &quot;own&quot;, &quot;same&quot;, &quot;so&quot;, &quot;than&quot;, &quot;too&quot;, &quot;very&quot;, &quot;s&quot;, &quot;t&quot;, &quot;can&quot;, &quot;will&quot;,
+             &quot;just&quot;, &quot;don&quot;, &quot;should&quot;, &quot;now&quot;, &quot;ve&quot;, &quot;ll&quot;, &quot;amp&quot;]
+
+def top_meaningful_words(text, n):
+    meaningful_words = []
+    for word in split_into_words(text):
+        if word != &quot;&quot; and word not in stopwords:
+            meaningful_words.append(word)
+    return Counter(meaningful_words).most_common(n)
+
+print(&quot;Tools ready.&quot;)</pre>
+<h2 id="step-4-count-every-comment-at-once">Step 4: Count Every Comment at Once</h2>
+<p data-pagefind-weight="0.5">topmeaningfulwords takes one string. Your comments are a whole column of strings. So first, glue the column into one long text, the same way String Methods glued a list of words back together. The structure: python alltext = &quot; &quot;.join(mydf[&quot;columnname&quot;].tolist()) - mydf[&quot;columnname&quot;].tolist() turns the column into a plain Python list of strings (Pandas 02). - &quot; &quot;.join(...) glues that list into one string with a space between comments (String Methods). - After that, alltext is just a long string, so topmeaningfulwords works on it unchanged.</p>
+<pre data-pagefind-weight="0.5"># READ THIS ONE: glue the comments together, count, and compare with your guess
+all_text = &quot; &quot;.join(my_df[MY_TEXT_COLUMN].tolist())
+
+top_words = top_meaningful_words(all_text, 20)
+for word, count in top_words:
+    print(f&quot;{count:6}  {word}&quot;)
+
+print()
+print(&quot;Your guess:&quot;, MY_GUESS_TOP_WORD or &quot;(none written in Step 1)&quot;)
+print(&quot;Actual top word:&quot;, top_words[0][0])</pre>
+<p data-pagefind-weight="0.5">Look down the list before you go on. Which words did you expect? Which surprise you? Are some of them clutter rather than meaning: the name of the video or channel, &quot;video,&quot; &quot;lol,&quot; a number, a word split oddly like &quot;don&quot; from &quot;don&#x27;t&quot;?</p>
+<h2 id="step-5-your-own-stopwords">Step 5: Your Own Stopwords</h2>
+<p data-pagefind-weight="0.5">Same move as HW2 Part C: add a few stopwords of your own and count again. This is a choice, so make it on purpose. Removing the channel&#x27;s name is housekeeping; removing &quot;hate&quot; because it&#x27;s uncomfortable would change what your data says. The structure (from HW2 C1): python customstopwords = stopwords + [&quot;word one&quot;, &quot;word two&quot;] - + joins two lists into one longer list. - Then count with the same loop as topmeaningfulwords, checking customstopwords instead.</p>
+<pre data-pagefind-weight="0.5"># EDIT THIS ONE: words to skip for YOUR data (lowercase), then run
+MY_EXTRA_STOPWORDS = []       # e.g. [&quot;video&quot;, &quot;song&quot;, &quot;lol&quot;]</pre>
+<pre data-pagefind-weight="0.5"># READ THIS ONE: count again, skipping your extra words too
+custom_stopwords = stopwords + MY_EXTRA_STOPWORDS
+
+meaningful_words = []
+for word in split_into_words(all_text):
+    if word != &quot;&quot; and word not in custom_stopwords:
+        meaningful_words.append(word)
+
+top_words = Counter(meaningful_words).most_common(20)
+for word, count in top_words:
+    print(f&quot;{count:6}  {word}&quot;)
+print()
+print(&quot;Skipped as your own stopwords:&quot;, MY_EXTRA_STOPWORDS or &quot;(none)&quot;)</pre>
+<h2 id="step-6-words-or-people">Step 6: Words or People?</h2>
+<p data-pagefind-weight="0.5">A count says how many times a word appears, not how many people used it. One commenter who writes &quot;love love LOVE&quot; adds three. So for each top word, check how many comments contain it at all. This uses the filter from Pandas 02: mydf[mydf[&quot;columnname&quot;].str.lower().str.contains(&quot;word&quot;, regex=False)] keeps only the rows whose text includes that word, and len(...) counts those rows. One honest limit: .str.contains(&quot;love&quot;) also matches &quot;glove&quot; and &quot;lovely.&quot; It&#x27;s a quick check, not an exact one.</p>
+<pre data-pagefind-weight="0.5"># READ THIS ONE: for each top word, times used vs. comments that use it
+lowercase_text = my_df[MY_TEXT_COLUMN].str.lower()
+
+print(f&quot;{&#x27;word&#x27;:&gt;14}  {&#x27;times&#x27;:&gt;6}  {&#x27;comments&#x27;:&gt;8}&quot;)
+for word, count in top_words[:10]:
+    comments_with_word = my_df[lowercase_text.str.contains(word, regex=False)]
+    print(f&quot;{word:&gt;14}  {count:6}  {len(comments_with_word):8}&quot;)
+
+print()
+print(&quot;Total comments:&quot;, len(my_df))</pre>
+<p data-pagefind-weight="0.5">Where the two numbers are far apart, a few people are repeating themselves (or one comment is very long). Where they&#x27;re close, the word is spread across many voices. Which kind are your top words?</p>
+<h2 id="step-7-read-closely">Step 7: Read Closely</h2>
+<p data-pagefind-weight="0.5">Counting tells you what shows up, not how it was meant. Pick one of your top words and read the comments that use it. Look for the things a word count can&#x27;t see: sarcasm, quoting the other side, a joke, a question, a word used two ways.</p>
+<pre data-pagefind-weight="0.5"># EDIT THIS ONE: one word from your top 20 to read in context
+WORD_TO_READ = &quot;&quot;             # e.g. &quot;love&quot;</pre>
+<pre data-pagefind-weight="0.5"># READ THIS ONE: up to eight comments that use your word, printed in full
+WORD_TO_READ = WORD_TO_READ.strip().lower()
+if WORD_TO_READ == &quot;&quot;:
+    WORD_TO_READ = top_words[0][0]
+    print(f&quot;(No word chosen, so using your top word, {WORD_TO_READ!r}.)&quot;)
+    print()
+
+matches = my_df[lowercase_text.str.contains(WORD_TO_READ, regex=False)]
+print(f&quot;{len(matches)} comments use {WORD_TO_READ!r}. Showing up to eight at random:&quot;)
+print()
+for comment in matches[MY_TEXT_COLUMN].sample(n=min(8, len(matches)), random_state=1):
+    print(&quot;-&quot;, comment)
+    print()</pre>
+<p data-pagefind-weight="0.5">Change randomstate=1 to another number and run the cell again to see a different eight. Try a second word too.</p>
+<h2 id="step-8-predictions-on-the-record">Step 8: Predictions on the Record</h2>
+<p data-pagefind-weight="0.5"></p>
+<h3 id="what-vader-is-the-short-version">What VADER is (the short version)</h3>
+<p data-pagefind-weight="0.5">On Monday you&#x27;ll use VADER, a sentiment analysis tool. Its job is to read a piece of text and say how positive or negative it sounds. Researchers built it for short social media posts like yours. Here&#x27;s all you need to know for now: - It starts from a word list. People rated thousands of words for feeling, from very negative to very positive. &quot;Love&quot; and &quot;great&quot; score positive, &quot;hate&quot; and &quot;awful&quot; negative, and most words, like &quot;school&quot; or &quot;law,&quot; score zero. - It adds a few rules. ALL CAPS and &quot;!!!&quot; make a feeling stronger. &quot;Not&quot; flips it (&quot;not good&quot; reads as negative). &quot;But&quot; gives more weight to what comes after it. - Emoji are hit or miss. VADER swaps each emoji for its name and scores those words. So 😂 (&quot;face with tears of joy&quot;) counts as positive and 😢 (&quot;crying face&quot;) as negative, but 😡 (&quot;pouting face&quot;) and 👍 (&quot;thumbs up&quot;) score zero, and 🔥 (&quot;fire&quot;) counts as negative. - It gives each comment one score, from -1 (most negative) to +1 (most positive), and labels the comment positive, negative, or neutral. - It reads words, not meaning. It doesn&#x27;t know who is speaking, what the video was about, or whether someone is joking.</p>
+<h3 id="your-predictions">Your predictions</h3>
+<p data-pagefind-weight="0.5">Now write down what you expect VADER to find on Monday. You don&#x27;t need to know more about how it works than what&#x27;s above. This is your reading, on the record before any score exists. Wrong predictions are useful. They show you where a tool and a careful reader part ways. Double-click each cell below and write under the line. Your answers save with your Drive copy.</p>
+<p data-pagefind-weight="0.5">Prediction 1: the words (double-click to edit; write your answer below the line) Look at your top 20 words. Which ones do you think a sentiment tool will count as positive? Which as negative? Which will it treat as neutral even though, in your comments, they carry feeling? ---</p>
+<p data-pagefind-weight="0.5">Prediction 2: the overall lean (double-click to edit; write your answer below the line) Will your comments come out mostly positive, mostly negative, or split? Give a rough guess for the share that will score positive, and say what in Steps 4–7 makes you think so. ---</p>
+<p data-pagefind-weight="0.5">Prediction 3: a comment VADER will get wrong (double-click to edit; write your answer below the line) Copy one comment from Step 7 (or anywhere in your data) that you think a sentiment tool will misread. What will it miss: sarcasm, a quote of the other side, a joke, an emoji, slang, something else? ---</p>
+<p data-pagefind-weight="0.5">Prediction 4: what counting missed (double-click to edit; write your answer below the line) Name one thing you noticed while reading in Step 7 that the word counts in Steps 4–6 couldn&#x27;t show you. ---</p>
+<h2 id="where-this-goes-next">Where This Goes Next</h2>
+<p data-pagefind-weight="0.5">Monday (Day 13): the VADER code-along shows how a sentiment score is made. Then HW3 opens. In its setup cell, upload the same CSV and fill in the two &quot;Choose your data&quot; lines: python MYCSV = &quot;yourfile.csv&quot; MYTEXTCOLUMN = &quot;commentclean&quot; # or &quot;textclean&quot; if you used Clean Your Scraped Data Keep this notebook. When HW3 gives you VADER&#x27;s scores, come back to Step 8 and check each prediction. You&#x27;ll bring what you find to &quot;Predictions on the record&quot; on Friday 11/20, and it&#x27;s good evidence for Reflection 2, due the same day.</p>
+<h2 id="playground">Playground</h2>
+<p data-pagefind-weight="0.5">Some things to try: - Go further down. Change 20 to 50 in Step 5. What shows up in the long tail that the top 20 hid? - Look for an absence. Pick a word you expected to see and didn&#x27;t. Use Step 7&#x27;s cell to check whether anyone used it at all. - Compare with the course corpus. In HW2, the Ten Commandments comments&#x27; top meaningful words were &quot;commandments,&quot; &quot;religion,&quot; &quot;god,&quot; &quot;children,&quot; and &quot;schools.&quot; How different is the vocabulary of your conversation?</p>
+<pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div><footer class="site-footer"><div class="bar"><span>WRIT 20833 · notebook text</span><span class="spacer"></span><a target="_blank" rel="noopener noreferrer" href="https://github.com/TCU-DCDA/WRIT20833_2026">GitHub ↗</a><a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/">Colab ↗</a></div></footer><script>(function(){var t=document.querySelector(".nav-toggle"),n=document.getElementById("site-nav");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();</script><script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;var d=new Date(),p=function(n){return(n<10?"0":"")+n},t=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());document.querySelectorAll("a[data-opens],div.card[data-opens]").forEach(function(a){var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;if(a.tagName==="DIV"){a.querySelectorAll("a.alt").forEach(function(x){x.remove();});a.querySelectorAll("a").forEach(function(x){var y=document.createElement("span");y.innerHTML=x.innerHTML;x.replaceWith(y);});a.classList.remove("linked");a.classList.add("locked");a.title="Opens "+l;var v=a.querySelector(".when");if(v)v.insertAdjacentHTML("beforeend",' <span class="opens">· opens '+l+"</span>");return;}var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");s.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;var w=c?s.querySelector(".when"):null,tag='<span class="opens">'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}a.replaceWith(s);});})();</script></body></html>
