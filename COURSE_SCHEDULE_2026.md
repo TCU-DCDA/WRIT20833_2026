@@ -52,9 +52,9 @@ final exam.*
 ### Week 5 (Nov 16–20) — Computational text analysis: sentiment
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 11/16** (13) | Quantifying connotation (callback to Connotations & Code) | **Code-along** → [Sentiment with VADER](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) | **R2 due (midterm)** · D3 opens · **HW3 assigned** |
+| **Mon 11/16** (13) | Quantifying connotation (callback to Connotations & Code) | **Code-along** → [Sentiment with VADER](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) | D3 opens · **HW3 assigned** |
 | **Wed 11/18** (14) | Close vs. distant reading | **Code-along** → [VADER deep dive](notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb) (same notebook, Part 4–5) | D3 post |
-| **Fri 11/20** (15) | Predictions on the record | **Work session** → HW3 (frequency + sentiment on your data) | D3 replies · *Thanksgiving break begins (no class Nov 23–27)* |
+| **Fri 11/20** (15) | Predictions on the record | **Work session** → HW3 (frequency + sentiment on your data) | **R2 due (midterm)** · D3 replies · *Thanksgiving break begins (no class Nov 23–27)* |
 
 ### Week 6 (Nov 30 – Dec 4) — Topic modeling & integration *(classes resume after Thanksgiving break)*
 | Date | Lecture | Coding | Due |

@@ -13,7 +13,7 @@ Write about each of these:
 - **What draws you in, and what worries you.** What are you looking forward to in this course, and what makes you uneasy? Both are useful to know.
 - **A prediction you can check later.** Name one thing you think computers *can* tell us about culture, and one thing they *can't*. Please be specific enough that in December you could say whether you were right.
 
-## Reflection 2 — "Halfway" (due Mon 11/16) {#r2}
+## Reflection 2 — "Halfway" (due Fri 11/20) {#r2}
 
 *Posted when it opens.*
 

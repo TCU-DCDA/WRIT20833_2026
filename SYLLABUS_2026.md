@@ -157,7 +157,7 @@ Each full prompt is posted on the
 [Self-Reflections page](https://tcu-dcda.github.io/WRIT20833_2026/guides/reflections.html) when it opens:
 1. **Reflection 1 — "Where I'm starting" (due Fri 10/23).** Where you're coming from, what draws you in
    and worries you, and a prediction you can check later.
-2. **Reflection 2 — "Halfway" (due Mon 11/16).** A look back at your starting point and your prediction.
+2. **Reflection 2 — "Halfway" (due Fri 11/20).** A look back at your starting point and your prediction.
 3. **Reflection 3 — "Final self-evaluation" (due Fri 12/18).** Review your own body of work and make an
    evidence-based case for the final grade you've earned (see *Grading Scale*).
 
@@ -397,9 +397,9 @@ and reading.*
 ### Week 5 (Nov 16–20) — Computational text analysis: sentiment
 | Date | Lecture | Coding | Due |
 |---|---|---|---|
-| **Mon 11/16** (13) | Quantifying connotation | Sentiment with VADER | **R2 due (midterm)** · **HW3 assigned** · D3 opens |
+| **Mon 11/16** (13) | Quantifying connotation | Sentiment with VADER | **HW3 assigned** · D3 opens |
 | **Wed 11/18** (14) | Close vs. distant reading | VADER deep dive | D3 post |
-| **Fri 11/20** (15) | Predictions on the record | HW3 work session (freq + sentiment on your data) | D3 replies |
+| **Fri 11/20** (15) | Predictions on the record | HW3 work session (freq + sentiment on your data) | **R2 due (midterm)** · D3 replies |
 
 *— Thanksgiving break: no class Nov 23–27 (resume Mon Nov 30) —*
 
