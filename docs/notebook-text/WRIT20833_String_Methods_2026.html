@@ -53,7 +53,7 @@ print(&quot;God&quot;.lower() == &quot;god&quot;.lower())</pre>
 <h2 id="replace-swap-one-substring-for-another">Replace: Swap One Substring for Another</h2>
 <p data-pagefind-weight="0.5">.replace(old, new) hands back a copy with every match swapped. The original string is unchanged — string methods never edit in place; they return a new string. Have a little fun with it first:</p>
 <pre data-pagefind-weight="0.5">print(comment.replace(&quot;schools&quot;, &quot;group chats&quot;))
-print(comment.replace(&quot; &quot;, &quot; 🐸 &quot;))</pre>
+print(comment.replace(&quot; &quot;, &quot; | &quot;))</pre>
 <p data-pagefind-weight="0.5">The serious use is cleaning. Real text is full of stray newline characters (\n) and junk you want gone before analysis. Replace turns messy text into tidy text.</p>
 <pre data-pagefind-weight="0.5">messy = &quot;God\nand\ncountry&quot;
 print(messy)                       # the \n&#x27;s break it across lines

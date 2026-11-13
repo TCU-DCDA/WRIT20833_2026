@@ -25,7 +25,7 @@ You don't need a credit card or billing.
 
 ## 4. Save the key in Colab Secrets
 
-Open **your copy** of the YouTube Comment Collector notebook. Click the **🔑 key icon** in the left sidebar → **Add new secret**. Set **Name** to exactly `YOUTUBE_API_KEY`, paste your key as the **Value**, and switch **Notebook access** on.
+Open **your copy** of the YouTube Comment Collector notebook. Click the **key icon** (Secrets) in the left sidebar → **Add new secret**. Set **Name** to exactly `YOUTUBE_API_KEY`, paste your key as the **Value**, and switch **Notebook access** on.
 
 ## Keep your key private
 
@@ -37,6 +37,6 @@ Each project gets 10,000 free "units" a day, and each request costs 1 unit. One 
 
 ## If something goes wrong
 
-- **"No secret named YOUTUBE_API_KEY":** check the name's spelling and capitals in the 🔑 panel.
+- **"No secret named YOUTUBE_API_KEY":** check the name's spelling and capitals in the Secrets panel.
 - **"Notebook isn't allowed to read it":** switch on **Notebook access** next to the secret.
 - **Still stuck?** Bring it to class on Day 12, or ask the [Code Guide](../chatbot.html).
