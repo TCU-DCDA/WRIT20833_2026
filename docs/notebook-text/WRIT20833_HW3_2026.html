@@ -16,7 +16,7 @@
 <h3 id="what-you-re-doing">What you&#x27;re doing</h3>
 <p data-pagefind-weight="0.5">In HW2 you found which words dominate a debate — but a raw count can&#x27;t tell a cheer from a complaint. The word commandments &quot;won,&quot; yet some of those mentions were people for the Texas law and some against it, and they looked identical. This week you add sentiment analysis: a tool (VADER) that scores each comment from very negative to very positive. You&#x27;ll work in pandas now — a table where each row is one line of comment text — and use sentiment to hear the tone that counting alone missed. Then comes the harder question, from Part 4 of the VADER code-along: tone is not stance. A comment can oppose the law in warm language, or support it in a fury. Your data has no stance column, so in B3 you&#x27;ll supply one by hand for a few comments and see whether VADER&#x27;s tone could have told you who was for and against.</p>
 <h3 id="prepare">Prepare</h3>
-<p data-pagefind-weight="0.5">Review our own materials first: - HW2 — term frequency (splitintowords, stopwords, Counter); we reuse all of it. - Pandas 01 / Pandas 02 code-alongs — DataFrames, df[...], .apply(), df.plot(). - The VADER Sentiment code-along (this week) — analyzer.polarityscores() and the chart.</p>
+<p data-pagefind-weight="0.5">Review our own materials first: - HW2 — term frequency (splitintowords, stopwords, Counter); we reuse all of it. - Pandas 01 / Pandas 02 code-alongs — DataFrames, df[...], .valuecounts(), df.plot(). - The VADER Sentiment code-along (this week) — analyzer.polarityscores(), .apply() (its structure block is in Part 2), why a score of 0 usually means &quot;no evidence,&quot; and the chart.</p>
 <h3 id="expected-frequent-meaningful-comments-plus-written-reflections">Expected: frequent, meaningful #comments, plus written reflections</h3>
 <p data-pagefind-weight="0.5">Comment as you work — not every line, but often, and wherever you make a choice or hit a question: say what you tried and what you learned (or what surprised you). A #comment belongs next to the code it explains: a prediction, a choice, a quick answer. Longer thinking goes in the reflection cells: text cells with the question at the top. Double-click one, write your answer under the line in plain sentences (no # needed), then press Shift+Enter to see it formatted. Under this course&#x27;s ungrading approach, your thinking in these comments and reflections matters more than getting a &quot;right&quot; number.</p>
 <h3 id="about-the-setup-cell-read-this-then-just-run-it">About the setup cell (read this, then just run it)</h3>
@@ -142,9 +142,14 @@ def label_sentiment(score):
 
 # TODO: make df[&quot;label&quot;] by applying label_sentiment to df[&quot;sentiment&quot;]
 # TODO: print df[&quot;label&quot;].value_counts()
+# TODO: print how many rows score EXACTLY 0:  (df[&quot;sentiment&quot;] == 0).sum()
+#       (== 0 marks each row True or False; .sum() counts the Trues, the same trick as
+#       .isnull().sum() in Pandas 02)
 
 # #comments:
-# WHO chose the 0.05 cutoff? How would moving it change how many comments count as &quot;positive&quot;?</pre>
+# WHO chose the 0.05 cutoff? How would moving it change how many comments count as &quot;positive&quot;?
+# How many of your &quot;neutral&quot; rows are exactly 0? In the VADER code-along, a 0 usually meant VADER
+# found none of the comment&#x27;s words on its list (&quot;no evidence&quot;), not that the comment was calm.</pre>
 <p data-pagefind-weight="0.5">B2 — Picture the split. One line of pandas makes a chart. (You saw df.plot() in the code-alongs.)</p>
 <pre data-pagefind-weight="0.5"># B2
 # TODO: make a bar chart of the label counts:
@@ -154,11 +159,17 @@ def label_sentiment(score):
 # Does the chart show a clear majority, or a divided crowd?</pre>
 <p data-pagefind-weight="0.5">B3 — Read the extremes, and label their stance yourself. (The human-vs-machine check.) In the code-along, every comment came with a stance someone labeled by hand. Your data doesn&#x27;t have one, so you are the labeler. Read the 5 warmest and 5 coldest comments, and for each one decide: does the writer support the law, oppose it, or is it unclear? Using your own data? Stance means the writer&#x27;s position on whatever your texts are arguing about. Name the two sides in a #comment first, and use &quot;unclear&quot; when a text isn&#x27;t taking a side. Want a fuller check? Checking the Machine is a one-page routine for this kind of human-vs-tool comparison. You&#x27;ll reuse it in HW4 and the capstone.</p>
 <pre data-pagefind-weight="0.5"># B3 — part 1: read the extremes
+# Run this cell, then read the comments it prints. New pieces, line by line:
+# .nlargest(5, &quot;sentiment&quot;) keeps the 5 rows with the highest scores; .nsmallest(5, ...) the 5 lowest.
+# pd.concat([...]) stacks those two small tables into one table of 10 rows.
 extremes = pd.concat([df.nlargest(5, &quot;sentiment&quot;), df.nsmallest(5, &quot;sentiment&quot;)])
+
+# .iterrows() hands you the table one row at a time, as a pair: the row&#x27;s number and the row itself.
 for row_number, row in extremes.iterrows():
-    print(f&quot;[{row_number}]  tone {row[&#x27;sentiment&#x27;]:+.3f}  ({row[&#x27;label&#x27;]})&quot;)
+    print(f&quot;[{row_number}]  tone {row[&#x27;sentiment&#x27;]:+.3f}  ({row[&#x27;label&#x27;]})&quot;)   # :+.3f = sign + 3 decimals
     print(&quot;    &quot;, row[text_column])
     print()</pre>
+<p data-pagefind-weight="0.5">How part 2 works. You type your labels into a dictionary, and pandas attaches them to the table. The structure: python mystance = { rownumber: &quot;support&quot;, anotherrownumber: &quot;oppose&quot;, } extremes[&quot;stance&quot;] = extremes.index.map(mystance) - Each key is a row number from part 1&#x27;s printout (the number in square brackets), typed without quotes. Each value is your label, in quotes. - extremes.index is the table&#x27;s row numbers. .map(mystance) looks each one up in your dictionary and gives back your label, like mystance[rownumber] done for every row at once. - A row you haven&#x27;t labeled yet shows NaN (pandas&#x27; mark for an empty cell), so you can see which ones are left. - The two filled-in entries (0 and 1) only show the pattern. Replace them with your own row numbers.</p>
 <pre data-pagefind-weight="0.5"># B3 — part 2: your stance labels
 # TODO: for each [row number] above, write &quot;support&quot;, &quot;oppose&quot;, or &quot;unclear&quot;.
 #       The row numbers on your screen are the keys. (Two are filled in as a pattern -- replace them.)
@@ -170,16 +181,18 @@ my_stance = {
 extremes[&quot;stance&quot;] = extremes.index.map(my_stance)
 extremes[[&quot;sentiment&quot;, &quot;label&quot;, &quot;stance&quot;]]</pre>
 <p data-pagefind-weight="0.5">B3 reflection (double-click to edit; write your answer below the line) - Among the 5 warmest comments, how many did you label &quot;support&quot;? Among the 5 coldest? - If positive tone meant support, what would you expect, and what did you find? - Which labels were hard to decide, and why? (That difficulty is data too.) --- Your answer:</p>
-<p data-pagefind-weight="0.5">B4 — Interpretation (write 4–6 sentences below). Using B1–B2: what is this crowd&#x27;s tone — mostly warm, mostly hostile, or split? Then use your B3 labels to answer the harder question: could you have read stance off tone? How many of the warmest comments supported the law? Finally: what did sentiment let you see that HW2&#x27;s word-counting could not — and what can&#x27;t it see? Cite at least two numbers from this notebook (a label count, a sentiment score, a count from your B3 labels). (Recall HW2 B4: a tally can&#x27;t tell a cheer from a complaint. Can a tone score?) One drafting rule before you write. Politicians of every party love the sentence &quot;The American people feel…&quot; — one average pretending a split crowd agreed. Your B1 counts and your B2 chart are sitting right there. If your write-up starts &quot;the commenters feel…&quot;, stop and check whether your own numbers contradict you — and if the crowd is split, say split.</p>
+<p data-pagefind-weight="0.5">B4 — Interpretation (write 4–6 sentences below). Using B1–B2: what is this crowd&#x27;s tone — mostly warm, mostly hostile, or split? Then use your B3 labels to answer the harder question: could you have read stance off tone? How many of the warmest comments supported the law? Finally: what did sentiment let you see that HW2&#x27;s word-counting could not — and what can&#x27;t it see? Cite at least two numbers from this notebook (a label count, a sentiment score, a count from your B3 labels). (Recall HW2 B4: a tally can&#x27;t tell a cheer from a complaint. Can a tone score?) Careful with &quot;neutral.&quot; Check your B1 count of exact zeros first: a row where VADER found no words it knew isn&#x27;t a calm comment, so say what your neutral rows really are. One drafting rule before you write. Politicians of every party love the sentence &quot;The American people feel…&quot; — one average pretending a split crowd agreed. Your B1 counts and your B2 chart are sitting right there. If your write-up starts &quot;the commenters feel…&quot;, stop and check whether your own numbers contradict you — and if the crowd is split, say split.</p>
 <p data-pagefind-weight="0.5">Reflection. Double-click this cell and replace this line with your interpretation.</p>
 <h3 id="part-c-going-deeper-2-exercises">Part C — Going deeper (2 exercises)</h3>
 <p data-pagefind-weight="0.5">C1 — Whose words are whose? Frequency inside each camp. (HW2&#x27;s tool, now split by tone.)</p>
 <pre data-pagefind-weight="0.5"># C1
-def top_words(text_series, n=8):
+def top_words(comments, how_many=8):   # how_many=8: if you don&#x27;t say how many, you get 8
     words = []
-    for t in text_series:
-        words.extend(w for w in split_into_words(t) if w and w not in stopwords)
-    return Counter(words).most_common(n)
+    for comment in comments:
+        for word in split_into_words(comment):
+            if word and word not in stopwords:   # skip empty strings and stopwords, as in HW2
+                words.append(word)
+    return Counter(words).most_common(how_many)
 
 positive_comments = df[df[&quot;label&quot;] == &quot;positive&quot;][text_column]
 negative_comments = df[df[&quot;label&quot;] == &quot;negative&quot;][text_column]
