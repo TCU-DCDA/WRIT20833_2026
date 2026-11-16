@@ -212,6 +212,8 @@ def render():
              "start here · Day 1", "guides/working-in-colab.html"),
         card("Guide", "YouTube API Key", "One-time setup for the YouTube Comment Collector.",
              "Day 10 · by Fri 11/13", "guides/youtube-api-key.html"),
+        card("Reference", "VADER Lexicon Explorer", "Every word, emoticon, and emoji VADER scores, and the numbers behind them.",
+             "Days 13–14", "guides/vader-lexicon.html"),
     ]
     if CHAT_API_URL:
         res_cards.append(card("Tutor", "Code Guide", "An after-hours tutor for your homework and capstone.",
