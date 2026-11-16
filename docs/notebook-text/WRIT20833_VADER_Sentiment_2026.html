@@ -16,7 +16,7 @@
 <p data-pagefind-weight="0.5">In Week 3 you counted words — what a text is about. Now we ask a different question: how does it feel? Sentiment analysis scores the emotional tone of a text, from negative to positive. We&#x27;ll use VADER, a tool built for exactly the kind of informal, punctuation-and-caps-heavy language people use online. And true to this course, we won&#x27;t just trust its number — we&#x27;ll check it against our own reading.</p>
 <h2 id="setup">Setup</h2>
 <p data-pagefind-weight="0.5">VADER lives in a small library we install once. (The !pip install line is a one-time setup command, not Python — run it and move on.)</p>
-<pre data-pagefind-weight="0.5">!pip install -q vaderSentiment</pre>
+<pre data-pagefind-weight="0.5">!pip install -q vaderSentiment==3.3.2</pre>
 <pre data-pagefind-weight="0.5">from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 analyzer = SentimentIntensityAnalyzer()

@@ -157,7 +157,8 @@ Each full prompt is posted on the
 [Self-Reflections page](https://tcu-dcda.github.io/WRIT20833_2026/guides/reflections.html) when it opens:
 1. **Reflection 1 — "Where I'm starting" (due Fri 10/23).** Where you're coming from, what draws you in
    and worries you, and a prediction you can check later.
-2. **Reflection 2 — "Halfway" (due Fri 11/20).** A look back at your starting point and your prediction.
+2. **Reflection 2 — "Halfway" (due Fri 11/20).** A look back at your starting point and your prediction,
+   and a first, shorter evidence-based case for the grade your work so far supports (a midterm check-in).
 3. **Reflection 3 — "Final self-evaluation" (due Fri 12/18).** Review your own body of work and make an
    evidence-based case for the final grade you've earned (see *Grading Scale*).
 
@@ -240,7 +241,7 @@ work as a whole rather than a points total.
 | **Homework notebooks (HW1–HW4)** | 4 | Exceeds / Meets / Not yet — engagement + reflection | Evidence of your practice and growth |
 | **Weekly Experiments** (within each HW) | 2–3 per HW | Part of each homework's mark | Evidence of your curiosity and risk-taking |
 | **Threaded discussions (D1–D4)** | 4 | Exceeds / Meets / Not yet — initial post + two replies | Evidence of your thinking with others |
-| **Self-reflections (R1–R3)** | 3 | Exceeds / Meets / Not yet; **R3** is the final self-evaluation | R3 is your case for your grade |
+| **Self-reflections (R1–R3)** | 3 | Exceeds / Meets / Not yet; **R3** is the final self-evaluation | R2 is a midterm check-in on your case; R3 is your case for your final grade |
 | **Capstone** (final evaluative exercise) | 1 | Exceeds / Meets / Not yet; presented Wed 12/16 or Fri 12/18 | The fullest evidence of what you can do |
 
 *(The capstone is the course's Final Evaluative Exercise — there is no separate final exam.)*
@@ -253,7 +254,8 @@ capstone.
 
 **Your self-evaluation.** In Reflection 3 you review that body of work and make an evidence-based case
 for the grade you believe you've earned, pointing to specific pieces. I weigh your case alongside the
-work itself when I assign the final grade.
+work itself when I assign the final grade. Reflection 2 is a practice run at midterm: a shorter case
+based on your work so far, which does not set your final grade.
 
 "Engaged" means real effort and honest documentation of your process — *not* polish. Something that
 doesn't fully work, paired with a clear account of what you tried and learned, **meets expectations.**

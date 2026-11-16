@@ -29,7 +29,7 @@ import matplotlib.pyplot as plt
 
 # VADER is a ready-made sentiment tool. It is not built into Python, so we install it,
 # then make one analyzer we reuse. (More on &quot;borrowing&quot; tools in the note after A5.)
-!pip install -q vaderSentiment
+!pip install -q vaderSentiment==3.3.2
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 analyzer = SentimentIntensityAnalyzer()
 

@@ -15,7 +15,16 @@ Write about each of these:
 
 ## Reflection 2 — "Halfway" (due Fri 11/20) {#r2}
 
-*Posted when it opens.*
+You're halfway through the course. This reflection looks back at Reflection 1 and at the work you've done since, and it's a first, shorter try at the case you'll make in Reflection 3. Reread your Reflection 1 before you start.
+
+Write about each of these:
+
+- **Your prediction, checked so far.** In Reflection 1 you named one thing computers *can* tell us about culture and one thing they *can't*. Now that you've counted words and scored sentiment, which part is holding up, and which isn't? Point to a specific result: a word count, a sentiment score, or a comment VADER misread.
+- **Where you started, and where you are now.** Look back at what drew you in and what worried you. What has changed? Name one thing you can do now that you couldn't do in October.
+- **Your work so far, as evidence.** Choose two or three pieces of your work (a homework, a Weekly Experiment, a discussion post) that best show your engagement and growth. For each, say specifically what it shows.
+- **Your midterm case.** Based on that evidence, what grade does your work so far support, and why? Then name one thing you'll do differently in the second half. This is practice for Reflection 3. It does not set your final grade.
+
+You may cite or attach a **Code Guide** chat export as evidence of your process. It's optional.
 
 ## Reflection 3 — "Final self-evaluation" (due Fri 12/18) {#r3}
 
