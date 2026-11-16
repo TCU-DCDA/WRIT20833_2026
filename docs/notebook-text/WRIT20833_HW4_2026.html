@@ -19,9 +19,25 @@
 <p data-pagefind-weight="0.5">Review our own materials first: - HW2 (splitintowords, stopwords, Counter) and HW3 (pandas, df.apply, sentiment). - Pandas 01 / 02 — DataFrames, groupby, df.plot(). - The Topic Modeling (Gensim) code-along (this week) — dictionary, corpus, LdaModel.</p>
 <h3 id="expected-frequent-meaningful-comments-plus-written-reflections">Expected: frequent, meaningful #comments, plus written reflections</h3>
 <p data-pagefind-weight="0.5">Comment as you work — not every line, but often, and wherever you make a choice or hit a question: say what you tried and what you learned. A #comment belongs next to the code it explains: a prediction, a choice, a quick answer. Longer thinking goes in the reflection cells: text cells with the question at the top. Double-click one, write your answer under the line in plain sentences (no # needed), then press Shift+Enter to see it formatted. Under this course&#x27;s ungrading approach, your interpretation — especially naming and doubting the topics — matters more than any single number.</p>
-<h3 id="about-the-setup-cell-read-this-then-just-run-it">About the setup cell (read this, then just run it)</h3>
-<p data-pagefind-weight="0.5">The next cell is plumbing: it imports pandas, installs two tools (VADER for sentiment, Gensim for topic modeling), loads your data, and re-scores sentiment from HW3. Run it, but don&#x27;t read every line. Installing gensim can take a minute and may print a lot — that&#x27;s normal. After it runs you have: df (one line of comment text per row, with a sentiment column), textcolumn, the analyzer, corpora/LdaModel from gensim, and your splitintowords + stopwords. Bringing your own data? Upload your CSV and set MYCSV and MYTEXTCOLUMN near the bottom of the cell, ideally to the same dataset you used in HW3, so all three lenses describe one corpus. Check the DATA SOURCE: line it prints before you go on.</p>
-<pre data-pagefind-weight="0.5"># SETUP — run this cell first. (You&#x27;re not expected to read every line yet — that&#x27;s fine.)
+<h3 id="load-your-data-two-plumbing-cells">Load your data (two plumbing cells)</h3>
+<p data-pagefind-weight="0.5">Before you go on, check the DATA SOURCE: line the second cell prints. It should name your CSV, the same file you used in HW3, so all three lenses describe one dataset. If it says &quot;THIS IS NOT YOUR DATA,&quot; go back and upload your file. 1. Run the first cell. A Choose Files button appears under it. Click it and pick your clean CSV. 2. Run the second cell. It installs two tools (VADER for sentiment, Gensim for topic modeling), loads your file, and re-scores sentiment as in HW3. You don&#x27;t need to read every line. Installing gensim can take a minute and may print a lot. That&#x27;s normal. After both run, you have: df (one comment per row, with a sentiment column), textcolumn, the analyzer, corpora/LdaModel from gensim, and your splitintowords + stopwords. Colab forgets uploaded files when your session ends. When you come back, run both cells again. No button? Some browsers block it. Upload with the Files icon (a folder) in the left sidebar instead. Then, in the first cell, put your file&#x27;s name between the quotes in MYFILE = &quot;&quot;, like MYFILE = &quot;youtubecommentsabc123.csv&quot;.</p>
+<pre data-pagefind-weight="0.5"># PLUMBING: click &quot;Choose Files&quot; and pick your clean CSV (the same one you used in HW3)
+MY_FILE = &quot;&quot;   # No button? Upload with the Files icon instead, then type the file name between these quotes.
+
+if MY_FILE == &quot;&quot;:
+    try:
+        from google.colab import files
+        uploaded = files.upload()      # waits for you to choose a file; returns {file name: contents}
+    except ImportError:                # not in Colab: no upload button
+        uploaded = {}
+    if len(uploaded) &gt; 0:
+        MY_FILE = list(uploaded.keys())[0]
+        if len(uploaded) &gt; 1:
+            print(f&quot;Warning: You chose {len(uploaded)} files; this notebook uses only the first one.&quot;)
+        print(&quot;Uploaded:&quot;, MY_FILE)
+    else:
+        print(&quot;No file was chosen. Run this cell again and pick your clean CSV.&quot;)</pre>
+<pre data-pagefind-weight="0.5"># PLUMBING: SETUP — run this cell next. (You&#x27;re not expected to read every line yet — that&#x27;s fine.)
 import re, os, urllib.request
 from collections import Counter
 import pandas as pd
@@ -53,41 +69,59 @@ def load_course_comments():
     rows = [line.strip() for line in text.split(&quot;\n&quot;) if line.strip()]
     return pd.DataFrame({&quot;comment&quot;: rows})
 
-# ----- Choose your data -----------------------------------------------------------
-# Using your own CSV? Upload it (Files panel -&gt; upload), then fill in BOTH lines below.
-# Leave MY_CSV = &quot;&quot; to use the course corpus instead.
-MY_CSV = &quot;&quot;              # e.g. &quot;youtube_comments_YOURVIDEOID.csv&quot;
-MY_TEXT_COLUMN = &quot;&quot;      # e.g. &quot;comment_clean&quot; (from the collector)
-# ---------------------------------------------------------------------------------
 
-if MY_CSV:
-    # keep_default_na=False keeps blank cells as &quot;&quot; instead of turning them into NaN / &quot;nan&quot;
-    df = pd.read_csv(MY_CSV, keep_default_na=False)
+# ----- Load YOUR data -----------------------------------------------------------
+MY_TEXT_COLUMN = &quot;&quot;   # leave blank to find it automatically (&quot;comment_clean&quot; or &quot;text_clean&quot;)
+
+if MY_FILE:
+    MY_FILE = MY_FILE.strip()
+    # keep_default_na=False keeps a comment that says &quot;NA&quot; as text instead of an empty cell
+    df = pd.read_csv(MY_FILE, keep_default_na=False)
     text_column = MY_TEXT_COLUMN
+    if text_column == &quot;&quot;:
+        for candidate in [&quot;comment_clean&quot;, &quot;text_clean&quot;]:
+            if candidate in df.columns:
+                text_column = candidate
+                break
     if text_column not in df.columns:
-        raise KeyError(f&quot;No column named &#x27;{text_column}&#x27;. Your columns are: {list(df.columns)}&quot;)
+        raise ValueError(f&quot;Can&#x27;t tell which column holds your text. Your columns are {list(df.columns)}. &quot;
+                         &quot;Type the right one between the quotes in MY_TEXT_COLUMN above and run this cell again.&quot;)
     df[text_column] = df[text_column].astype(str)
     blank = df[text_column].str.strip() == &quot;&quot;
     df = df[~blank].reset_index(drop=True)
-    source = f&quot;{MY_CSV} ({blank.sum()} blank rows dropped)&quot;
+    print(&quot;DATA SOURCE:&quot;, MY_FILE, f&quot;({blank.sum()} blank rows dropped)&quot;)
 else:
     df = load_course_comments()
     text_column = &quot;comment&quot;
-    source = &quot;course corpus, tc_youtube_comments.txt (93 comments stored as 123 rows)&quot;
+    print(&quot;DATA SOURCE: course corpus (Ten Commandments comments)&quot;)
+    print()
+    print(&quot;*&quot; * 70)
+    print(&quot;WARNING: THIS IS NOT YOUR DATA.&quot;)
+    print(&quot;No file was uploaded, so you are looking at the course&#x27;s backup comments.&quot;)
+    print(&quot;HW4 asks you to work on YOUR OWN dataset. Run the upload cell above,&quot;)
+    print(&quot;pick your clean CSV, then run this cell again.&quot;)
+    print(&quot;*&quot; * 70)
+    print()
 
 # Sentiment carried over from HW3 (you already know this step):
-df[&quot;sentiment&quot;] = df[text_column].apply(lambda t: analyzer.polarity_scores(t)[&quot;compound&quot;])
+def get_sentiment(text):
+    return analyzer.polarity_scores(text)[&quot;compound&quot;]
+df[&quot;sentiment&quot;] = df[text_column].apply(get_sentiment)
 
-print(&quot;DATA SOURCE:&quot;, source)
 print(f&quot;{len(df)} rows, sentiment-scored. Text column: &#x27;{text_column}&#x27;.&quot;)
-print(&quot;First text:&quot;, df[text_column].iloc[0][:120])
+print(&quot;First one:&quot;, df[text_column].iloc[0][:120])
 df.head()</pre>
 <h3 id="part-a-from-comments-to-topics-5-exercises">Part A — From comments to topics (5 exercises)</h3>
-<p data-pagefind-weight="0.5">A1 — Turn each comment into a list of meaningful words. (LDA reads a doc as a bag of words.)</p>
+<p data-pagefind-weight="0.5">A1 — Turn each comment into a list of meaningful words. (LDA reads a doc as a bag of words.) This is the code-along&#x27;s preprocessfortopics under a new name, and this time you write it: the same loop you wrote in HW2, inside a function that handles one comment at a time. .apply() (from HW3) then runs it on every comment.</p>
 <pre data-pagefind-weight="0.5"># A1
-# TODO: make a column df[&quot;tokens&quot;]: for each comment, the list of words from
-#       split_into_words(...) that are non-empty AND not in stopwords.
-#       (hint: df[text_column].apply(lambda t: [w for w in split_into_words(t) if w and w not in stopwords]))
+def meaningful_words(comment):
+    kept_words = []
+    # TODO: loop over the words in split_into_words(comment). Append each word that is
+    #       non-empty AND not in stopwords to kept_words. (HW2&#x27;s filter, one comment at a time.)
+    return kept_words
+
+# TODO: make the column (A2 and every part after it use it):
+#       df[&quot;tokens&quot;] = df[text_column].apply(meaningful_words)
 # TODO: print df[&quot;tokens&quot;].iloc[0]   (the first comment as a word list)
 
 # #comments:
@@ -96,26 +130,30 @@ df.head()</pre>
 <p data-pagefind-weight="0.5">A2 — Build the dictionary and corpus. (Gensim&#x27;s &quot;bag of words&quot; format.)</p>
 <pre data-pagefind-weight="0.5"># A2
 dictionary = corpora.Dictionary(df[&quot;tokens&quot;])   # every unique word gets an id number
-corpus = [dictionary.doc2bow(toks) for toks in df[&quot;tokens&quot;]]  # each doc -&gt; [(word_id, count), ...]
+
+# Read this line as a loop: for each comment&#x27;s word list, make its bag of words.
+corpus = [dictionary.doc2bow(comment_words) for comment_words in df[&quot;tokens&quot;]]   # each -&gt; [(word_id, count), ...]
 
 print(&quot;vocabulary size:&quot;, len(dictionary))
 # TODO: print corpus[0]  -- the first comment as (word_id, count) pairs
-# TODO: to read it, print [(dictionary[i], c) for i, c in corpus[0]]
+
+# Then this line translates the id numbers back into words (another list comprehension: read it as a loop).
+print(&quot;readable:&quot;, [(dictionary[word_id], count) for word_id, count in corpus[0]])
 
 # #comments:
 # A &quot;bag of words&quot; throws away word ORDER. What meaning is lost when &quot;dog bites man&quot; and
 # &quot;man bites dog&quot; become the same bag?</pre>
 <p data-pagefind-weight="0.5">A3 — An edge case: predict, then run.</p>
 <pre data-pagefind-weight="0.5"># A3 — predict, then run
-# Some lines in real data are fragments (e.g. &quot;The&quot;). FIRST predict: after we drop stopwords,
-# what bag of words does a fragment produce? THEN run.
-fragment_tokens = [w for w in split_into_words(&quot;The&quot;) if w and w not in stopwords]
+# Some lines in real data are fragments (e.g. &quot;The&quot;). FIRST predict: after your A1 function drops
+# stopwords, what bag of words does a fragment produce? THEN run.
+fragment_tokens = meaningful_words(&quot;The&quot;)
 print(&quot;tokens:&quot;, fragment_tokens)
 print(&quot;bag of words:&quot;, dictionary.doc2bow(fragment_tokens))
 
 # #comments:
 # My prediction was:</pre>
-<p data-pagefind-weight="0.5">A3 reflection (double-click to edit; write your answer below the line) An empty bag means the model has nothing to go on for that comment. What should happen to empty or fragment documents, and how does messy data (recall HW3&#x27;s 123 lines) cause this? --- Your answer:</p>
+<p data-pagefind-weight="0.5">A3 reflection (double-click to edit; write your answer below the line) An empty bag means the model has nothing to go on for that comment. What should happen to empty or fragment documents? Which comments in YOUR data might end up empty (emoji-only, a single &quot;lol&quot;, a reply that just tags someone)? --- Your answer:</p>
 <p data-pagefind-weight="0.5">A4 — Train the topic model. (Gensim does the math; you choose the settings.)</p>
 <pre data-pagefind-weight="0.5"># A4
 NUM_TOPICS = 4   # a number YOU choose -- we revisit this in C1
@@ -128,21 +166,26 @@ lda = LdaModel(corpus=corpus, id2word=dictionary, num_topics=NUM_TOPICS,
 # #comments:
 # Run this cell again -- do the topics look exactly the same? Why might a model&#x27;s output shift?</pre>
 <p data-pagefind-weight="0.5">A5 — Read and name the topics. (The model gives numbers; a human gives meaning.)</p>
-<p data-pagefind-weight="0.5">Look at your A4 output. In the markdown cell below, give each topic a short human label (e.g. &quot;Topic 0 = church-and-state argument&quot;) and note any topic that seems vague or mixed. There is no single right answer — that&#x27;s the point.</p>
+<p data-pagefind-weight="0.5">Look at your A4 output. In the markdown cell below, give each topic a short human label (e.g. &quot;Topic 0 = complaints about the ending&quot;) and note any topic that seems vague or mixed. There is no single right answer — that&#x27;s the point.</p>
 <p data-pagefind-weight="0.5">Reflection. Double-click this cell and replace this line: list Topic 0…N and your label + one sentence of reasoning for each.</p>
 <h4 id="a-note-a-topic-is-a-pattern-not-a-fact-and-you-didn-t-build-the-math">A note: a topic is a pattern, not a fact — and you didn&#x27;t build the math</h4>
 <p data-pagefind-weight="0.5">Like VADER in HW3, LDA is a borrowed tool — you pip install gensim; nobody in this course writes the statistics from scratch. But LDA differs from almost everything else you&#x27;ve run: it is stochastic. Run it twice and the topics can come out in a different order, or shift, because it starts from randomness (we set randomstate to pin it down, but a different computer or gensim version can still differ). So a &quot;topic&quot; is not a fact the data contains — it&#x27;s a pattern the model proposes, and a human decides whether it means anything and what to call it (that&#x27;s A5). Two analysts can label the same topics differently. Hold your topics loosely. (Day 9 again: judging a tool&#x27;s output, not just running it.)</p>
 <h3 id="part-b-integration-topics-meet-sentiment-4-exercises">Part B — Integration: topics meet sentiment (4 exercises)</h3>
 <p data-pagefind-weight="0.5">B1 — Assign each comment its dominant topic.</p>
 <pre data-pagefind-weight="0.5"># B1
-def dominant_topic(bow):
-    if not bow:                             # empty/fragment doc -&gt; no real topic
+def dominant_topic(bag_of_words):
+    if not bag_of_words:                    # empty/fragment doc -&gt; no real topic
         return -1
-    topic_probs = lda.get_document_topics(bow)
+    topic_probs = lda.get_document_topics(bag_of_words)   # [(topic_number, probability), ...]
+    # max(..., key=...) finds the pair with the highest probability; [0] keeps its topic number.
     return max(topic_probs, key=lambda pair: pair[1])[0]
 
-# TODO: make df[&quot;topic&quot;] by applying dominant_topic to each bag of words in `corpus`
-#       (hint: df[&quot;topic&quot;] = [dominant_topic(b) for b in corpus])
+topics = []
+# TODO: write a for loop over corpus. For each bag_of_words, append dominant_topic(bag_of_words) to topics.
+
+# One topic per comment (B2 and B3 use this column). If this line says &quot;Length of values (0) does
+# not match&quot;, your loop above hasn&#x27;t appended anything to topics yet.
+df[&quot;topic&quot;] = topics
 # TODO: print df[[text_column, &quot;topic&quot;]].head()
 
 # #comments:
@@ -161,7 +204,7 @@ def dominant_topic(bow):
 # TODO: print the AVERAGE sentiment for each topic:
 #       df.groupby(&quot;topic&quot;)[&quot;sentiment&quot;].mean().round(3)</pre>
 <p data-pagefind-weight="0.5">B3 reflection (double-click to edit; write your answer below the line) This is the whole course in one line: frequency found the words, sentiment found the feeling, topics found the sub-conversations, and now you can say which sub-conversation has the lowest or highest average VADER score. An average can hide a split, so also count each topic (B2) and read a few of its comments. Is the lowest-scoring topic angry, or just full of negative words? --- Your answer:</p>
-<p data-pagefind-weight="0.5">B4 — Interpretation (write 5–7 sentences below). Bring all three lenses together for one claim about this conversation. Use specifics: name a topic and its label (A5), its average sentiment (B3), and a word that &quot;won&quot; by frequency (HW2/recall C1 of HW3). What is this conversation actually about, and how does each part of it feel? Then the honest part: name one place the tools mislead — a vague topic, a sentiment score you distrust, or an empty/fragment document — and say how you&#x27;d check it by hand. (This is exactly your capstone in miniature.) For the check, Checking the Machine gives you a routine: sample a few documents per topic, label them yourself first, compare, then keep, narrow, or decline your claim.</p>
+<p data-pagefind-weight="0.5">B4 — Interpretation (write 5–7 sentences below). Bring all three lenses together for one claim about this conversation. Use specifics: name a topic and its label (A5), its average sentiment (B3), and a word that &quot;won&quot; by frequency (your top word from Count Your Data, or HW3&#x27;s C1). What is this conversation actually about, and how does each part of it feel? Then the honest part: name one place the tools mislead — a vague topic, a sentiment score you distrust, or an empty/fragment document — and say how you&#x27;d check it by hand. (This is exactly your capstone in miniature.) For the check, Checking the Machine gives you a routine: sample a few documents per topic, label them yourself first, compare, then keep, narrow, or decline your claim.</p>
 <p data-pagefind-weight="0.5">Reflection. Double-click this cell and replace this line with your integrated interpretation.</p>
 <h3 id="part-c-going-deeper-capstone-bridge-2-exercises">Part C — Going deeper / capstone bridge (2 exercises)</h3>
 <p data-pagefind-weight="0.5">C1 — Change the number of topics. (The output depends on a number you picked.)</p>
@@ -170,7 +213,7 @@ def dominant_topic(bow):
 # TODO: train another with NUM_TOPICS = 6, print its topics.
 # (Copy the A4 pattern; just change num_topics. Keep random_state=42.)</pre>
 <p data-pagefind-weight="0.5">C1 reflection (double-click to edit; write your answer below the line) With 2 topics the story is coarse; with 6 it fragments. There is no &quot;true&quot; number: you author it. How would you defend the number you&#x27;d choose for your capstone? --- Your answer:</p>
-<p data-pagefind-weight="0.5">C2 — Capstone bridge: revisit your proposal. You turned in your capstone proposal on Day 18 — before you&#x27;d run all three lenses on data yourself. Now you have. In the markdown cell below, write 4–5 sentences looking back at that proposal: which of the three lenses (frequency / sentiment / topics) best fits your question now, what you&#x27;d change (dataset, question, or method), and one limitation you&#x27;ll be honest about. The proposal isn&#x27;t a contract; changing it because of what you learned here is the point. If you used your own data this week, say what surprised you.</p>
+<p data-pagefind-weight="0.5">C2 — Capstone bridge: revisit your proposal. You turned in your capstone proposal on Day 18 — before you&#x27;d run all three lenses on data yourself. Now you have. In the markdown cell below, write 4–5 sentences looking back at that proposal: which of the three lenses (frequency / sentiment / topics) best fits your question now, what you&#x27;d change (dataset, question, or method), and one limitation you&#x27;ll be honest about. The proposal isn&#x27;t a contract; changing it because of what you learned here is the point. Say what surprised you about your own data.</p>
 <p data-pagefind-weight="0.5">Reflection. Double-click this cell and replace this line with your look back at your proposal.</p>
 <h3 id="weekly-experiments-your-own-work">Weekly Experiments (your own work!)</h3>
 <p data-pagefind-weight="0.5">After the required exercises, create 2–3 small experiments of your own. Make them original. Ideas: - Re-run A4 a few times with randomstate removed — watch the topics move. - Print the 3 most positive and 3 most negative comments within one topic. - Add a few custom stopwords and see whether the topics get cleaner. It&#x27;s fine if an experiment doesn&#x27;t work at first — documenting what went wrong and what you learned is worth just as much as working code.</p>
@@ -184,4 +227,4 @@ def dominant_topic(bow):
 # (#comments in your code as you go)</pre>
 <p data-pagefind-weight="0.5">Experiment 3 reflection (double-click to edit; write your answer below the line) What were you trying? What happened? What did you learn? --- Your answer:</p>
 <h3 id="submit">Submit</h3>
-<p data-pagefind-weight="0.5">- [ ] My name is at the top. - [ ] I loaded a dataset (my own, or the course corpus) and its DATA SOURCE: line names the data I meant to use. I ran every cell. Where something still breaks, I left a #comment about what I tried and what I learned — errors are part of the work here, not something to hide or delete. - [ ] I completed Part A (5, incl. naming the topics), Part B (4, incl. the B4 write-up), Part C (2), and 2–3 experiments. - [ ] I used #comments frequently and meaningfully — showing my thinking wherever I made a choice or hit a question (not every line, but throughout). - [ ] I answered every reflection in its text cell, under the line. - [ ] I named and doubted my topics honestly (engagement matters more than &quot;right&quot; topics). - [ ] Saved as LASTNAMEHW4.ipynb and uploaded to its folder in TCU Online → Assignments. Time estimate: ~2 hrs for the exercises, ~1 hr for your experiments.</p></div></div><footer class="site-footer"><div class="bar"><span>WRIT 20833 · notebook text</span><span class="spacer"></span><a target="_blank" rel="noopener noreferrer" href="https://github.com/TCU-DCDA/WRIT20833_2026">GitHub ↗</a><a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/">Colab ↗</a></div></footer><script>(function(){var t=document.querySelector(".nav-toggle"),n=document.getElementById("site-nav");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();</script><script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;var d=new Date(),p=function(n){return(n<10?"0":"")+n},t=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());document.querySelectorAll("a[data-opens],div.card[data-opens]").forEach(function(a){var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;if(a.tagName==="DIV"){a.querySelectorAll("a.alt").forEach(function(x){x.remove();});a.querySelectorAll("a").forEach(function(x){var y=document.createElement("span");y.innerHTML=x.innerHTML;x.replaceWith(y);});a.classList.remove("linked");a.classList.add("locked");a.title="Opens "+l;var v=a.querySelector(".when");if(v)v.insertAdjacentHTML("beforeend",' <span class="opens">· opens '+l+"</span>");return;}var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");s.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;var w=c?s.querySelector(".when"):null,tag='<span class="opens">'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}a.replaceWith(s);});})();</script></body></html>
+<p data-pagefind-weight="0.5">- [ ] My name is at the top. - [ ] I uploaded my own clean CSV (the same one as HW3), and the DATA SOURCE: line names my file (not &quot;THIS IS NOT YOUR DATA&quot;). If I couldn&#x27;t get my file to load, I wrote a #comment in the setup cell saying what went wrong. I ran every cell. Where something still breaks, I left a #comment about what I tried and what I learned — errors are part of the work here, not something to hide or delete. - [ ] I completed Part A (5, incl. naming the topics), Part B (4, incl. the B4 write-up), Part C (2), and 2–3 experiments. - [ ] I used #comments frequently and meaningfully — showing my thinking wherever I made a choice or hit a question (not every line, but throughout). - [ ] I answered every reflection in its text cell, under the line. - [ ] I named and doubted my topics honestly (engagement matters more than &quot;right&quot; topics). - [ ] Saved as LASTNAMEHW4.ipynb and uploaded to its folder in TCU Online → Assignments.</p></div></div><footer class="site-footer"><div class="bar"><span>WRIT 20833 · notebook text</span><span class="spacer"></span><a target="_blank" rel="noopener noreferrer" href="https://github.com/TCU-DCDA/WRIT20833_2026">GitHub ↗</a><a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/">Colab ↗</a></div></footer><script>(function(){var t=document.querySelector(".nav-toggle"),n=document.getElementById("site-nav");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();</script><script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;var d=new Date(),p=function(n){return(n<10?"0":"")+n},t=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());document.querySelectorAll("a[data-opens],div.card[data-opens]").forEach(function(a){var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;if(a.tagName==="DIV"){a.querySelectorAll("a.alt").forEach(function(x){x.remove();});a.querySelectorAll("a").forEach(function(x){var y=document.createElement("span");y.innerHTML=x.innerHTML;x.replaceWith(y);});a.classList.remove("linked");a.classList.add("locked");a.title="Opens "+l;var v=a.querySelector(".when");if(v)v.insertAdjacentHTML("beforeend",' <span class="opens">· opens '+l+"</span>");return;}var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");s.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;var w=c?s.querySelector(".when"):null,tag='<span class="opens">'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}a.replaceWith(s);});})();</script></body></html>

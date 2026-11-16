@@ -83,8 +83,8 @@ print(f&quot;Loaded {MY_FILE}: {len(raw_df)} rows, {len(raw_df.columns)} columns
 if &quot;comment_clean&quot; in raw_df.columns and &quot;comment_id&quot; in raw_df.columns:
     print()
     print(&quot;Note: This looks like a file from the YouTube Comment Collector, which already cleaned it.&quot;)
-    print(&quot;   You don&#x27;t need this notebook. Take the file to Count Your Data next, and to HW3 on Monday with&quot;)
-    print(f&#x27;   MY_CSV = &quot;{MY_FILE}&quot;  and  MY_TEXT_COLUMN = &quot;comment_clean&quot;&#x27;)</pre>
+    print(&quot;   You don&#x27;t need this notebook. Take this same file to Count Your Data next, and upload it&quot;)
+    print(&quot;   in HW3 and HW4 with their Choose Files button.&quot;)</pre>
 <h2 id="step-3-diagnose-what-did-the-scraper-give-you">Step 3: Diagnose: What Did the Scraper Give You?</h2>
 <p data-pagefind-weight="0.5">Same rule as Pandas 02: look before you touch anything. Start with the first few rows.</p>
 <pre data-pagefind-weight="0.5"># READ THIS ONE: the first five rows, every column
@@ -297,9 +297,8 @@ same_text = list(check[&quot;text_clean&quot;].astype(str)) == list(clean_df[&qu
 print(&quot;Saved&quot;, csv_filename)
 print(&quot;Reloads with the same rows:&quot;, same_rows, &quot;| same text, emoji included:&quot;, same_text)
 print()
-print(&quot;For HW3 and HW4, copy these two lines into the setup cell:&quot;)
-print(f&#x27;    MY_CSV = &quot;{csv_filename}&quot;&#x27;)
-print(&#x27;    MY_TEXT_COLUMN = &quot;text_clean&quot;&#x27;)</pre>
+print(&quot;For Count Your Data, HW3, and HW4, upload this file with their Choose Files button:&quot;)
+print(&quot;   &quot;, csv_filename)</pre>
 <pre data-pagefind-weight="0.5"># PLUMBING: download the CSV to your computer
 from google.colab import files
 files.download(csv_filename)</pre>
@@ -310,7 +309,7 @@ with open(info_filename, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
     json.dump(collection_info, f, indent=2, ensure_ascii=False)
 files.download(info_filename)</pre>
 <h2 id="where-this-goes-next">Where This Goes Next</h2>
-<p data-pagefind-weight="0.5">Next, before HW3: open Count Your Data, upload the same file, and count its words with your HW2 tools. It ends with predictions about what VADER will find, written down before you see a score. In HW3 (sentiment) and HW4 (topics), upload your clean.csv to Colab (Files panel → upload) and paste the two lines Step 8 printed into the &quot;Choose your data&quot; part of the setup cell: python MYCSV = &quot;yourfileclean.csv&quot; MYTEXTCOLUMN = &quot;textclean&quot; The setup cell prints a DATA SOURCE: line. Check that it names your file before you go on. For your writeup, record: the site and page, the date you collected, how you scrolled or paged, which columns you kept and why, and what you removed. All of it is in collectioninfo. And keep asking the question from the top of this notebook: what did the scraper decide for you, and whose words did it miss?</p>
+<p data-pagefind-weight="0.5">Next, before HW3: open Count Your Data, upload the same file, and count its words with your HW2 tools. It ends with predictions about what VADER will find, written down before you see a score. HW3 (sentiment) and HW4 (topics) run on your clean.csv; your own data is required. Each one starts with a Choose Files button: pick that file. The setup cell finds the textclean column on its own and prints a DATA SOURCE: line. Check that it names your file before you go on. For your writeup, record: the site and page, the date you collected, how you scrolled or paged, which columns you kept and why, and what you removed. All of it is in collectioninfo. And keep asking the question from the top of this notebook: what did the scraper decide for you, and whose words did it miss?</p>
 <h2 id="playground">Playground</h2>
 <p data-pagefind-weight="0.5">Some things to try: - Try another choice. Put a different column in TEXTCOLUMNS, re-run from Step 4, and compare Step 7&#x27;s numbers. What changes about what your dataset can say? - Find your topic. Show only the rows that mention a word you care about: cleandf[cleandf[&quot;textclean&quot;].str.lower().str.contains(&quot;your word&quot;)] - Count a context column. If you kept a date or rating column, try .valuecounts() on it. Is your sample spread out, or bunched together?</p>
 <pre data-pagefind-weight="0.5"># use this space to experiment!</pre></div></div><footer class="site-footer"><div class="bar"><span>WRIT 20833 · notebook text</span><span class="spacer"></span><a target="_blank" rel="noopener noreferrer" href="https://github.com/TCU-DCDA/WRIT20833_2026">GitHub ↗</a><a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/">Colab ↗</a></div></footer><script>(function(){var t=document.querySelector(".nav-toggle"),n=document.getElementById("site-nav");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();</script><script>(function(){if(/[?&]all(=|&|$)/.test(location.search))return;var d=new Date(),p=function(n){return(n<10?"0":"")+n},t=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());document.querySelectorAll("a[data-opens],div.card[data-opens]").forEach(function(a){var o=a.getAttribute("data-opens"),l=a.getAttribute("data-opens-label")||o;if(o<=t)return;if(a.tagName==="DIV"){a.querySelectorAll("a.alt").forEach(function(x){x.remove();});a.querySelectorAll("a").forEach(function(x){var y=document.createElement("span");y.innerHTML=x.innerHTML;x.replaceWith(y);});a.classList.remove("linked");a.classList.add("locked");a.title="Opens "+l;var v=a.querySelector(".when");if(v)v.insertAdjacentHTML("beforeend",' <span class="opens">· opens '+l+"</span>");return;}var c=a.classList.contains("card"),s=document.createElement(c?"div":"span");s.className=a.className+(c?" locked":" nb-locked");s.innerHTML=a.innerHTML;s.title="Opens "+l;var w=c?s.querySelector(".when"):null,tag='<span class="opens">'+(c?"· opens ":"(opens ")+l+(c?"":")")+"</span>";if(w){w.insertAdjacentHTML("beforeend"," "+tag);}else{s.insertAdjacentHTML("beforeend"," "+tag);}a.replaceWith(s);});})();</script></body></html>

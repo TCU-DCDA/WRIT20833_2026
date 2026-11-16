@@ -32,9 +32,13 @@ stopwords = [&quot;i&quot;, &quot;me&quot;, &quot;my&quot;, &quot;myself&quot;, 
 print(&quot;Gensim ready. Stopwords loaded:&quot;, len(stopwords))</pre>
 <h4 id="preprocessing-for-topics-is-more-aggressive-than-for-sentiment">Preprocessing for topics is more aggressive than for sentiment</h4>
 <p data-pagefind-weight="0.5">Remember VADER wanted punctuation and CAPS left in — emotional intensity mattered. Topic modeling is the opposite: it cares about which content words co-occur, so we strip everything down to lowercase meaning-words and drop the stopwords (the, and, is...) that appear everywhere and signal nothing.</p>
-<p data-pagefind-weight="0.5">&gt; Reading note: a one-line shortcut. The function below, and several cells after it, use a &gt; compact Python pattern called a list comprehension. It is a loop that builds a list, squeezed onto &gt; one line. You won&#x27;t have to write one in this class; you just need to be able to read it. Here is the &gt; function&#x27;s body both ways. They do exactly the same thing: &gt; &gt; python &gt; # the long way (the Day 4 pattern) &gt; kept = [] &gt; for w in splitintowords(text): &gt; if w and w not in stopwords: &gt; kept.append(w) &gt; return kept &gt; &gt; # the one-line way &gt; return [w for w in splitintowords(text) if w and w not in stopwords] &gt; &gt; &gt; Read it left to right: &quot;make a list of w, for each w in the words, if w passes the test.&quot; &gt; When you see [ ... for ... in ... ] later in this notebook or in the homework, read it as a loop.</p>
+<p data-pagefind-weight="0.5">The function below is HW2&#x27;s filter (keep a word if it isn&#x27;t empty and isn&#x27;t a stopword), wrapped so it handles one document at a time.</p>
 <pre data-pagefind-weight="0.5">def preprocess_for_topics(text):
-    return [w for w in split_into_words(text) if w and w not in stopwords]
+    kept_words = []
+    for word in split_into_words(text):
+        if word and word not in stopwords:
+            kept_words.append(word)
+    return kept_words
 
 print(preprocess_for_topics(&quot;The PAINTINGS were absolutely amazing!!! I loved the colors.&quot;))</pre>
 <h2 id="part-1-a-clear-example-first">Part 1 — A Clear Example First</h2>
@@ -61,23 +65,36 @@ docs = [
     &quot;Dinner was pasta with garlic sauce, cheese, and warm bread from the kitchen.&quot;,
 ]
 
-tokens = [preprocess_for_topics(d) for d in docs]
+# one list of meaningful words per comment
+tokens = []
+for doc in docs:
+    tokens.append(preprocess_for_topics(doc))
 print(&quot;Example tokenized doc:&quot;, tokens[0])</pre>
 <h4 id="build-the-dictionary-and-corpus">Build the dictionary and corpus</h4>
 <p data-pagefind-weight="0.5">Gensim needs the text in its own format. The dictionary gives every unique word an id number; the corpus rewrites each document as a bag of (wordid, count) pairs — a &quot;bag of words.&quot;</p>
 <pre data-pagefind-weight="0.5">dictionary = corpora.Dictionary(tokens)
-corpus = [dictionary.doc2bow(doc) for doc in tokens]
+
+corpus = []
+for doc_words in tokens:
+    corpus.append(dictionary.doc2bow(doc_words))   # each doc -&gt; [(word_id, count), ...]
 
 print(&quot;Unique words:&quot;, len(dictionary))
 print(&quot;First doc as bag-of-words:&quot;, corpus[0])
-print(&quot;Readable:&quot;, [(dictionary[i], c) for i, c in corpus[0]])</pre>
+print(&quot;Readable:&quot;)
+for word_id, count in corpus[0]:
+    print(&quot;  &quot;, dictionary[word_id], count)</pre>
 <h4 id="train-the-model">Train the model</h4>
-<p data-pagefind-weight="0.5">We ask for 3 topics (we suspect three). randomstate=42 pins the randomness so the result is repeatable on this machine; passes is how many times LDA reads the corpus while it learns.</p>
+<p data-pagefind-weight="0.5">We ask for 3 topics (we suspect three). randomstate=42 pins the randomness so the result is repeatable on this machine; passes is how many times LDA reads the corpus while it learns. showtopwords is a small helper we&#x27;ll reuse: for each topic, model.showtopic(topicnumber, 6) gives its 6 strongest (word, weight) pairs, and the helper keeps just the words.</p>
 <pre data-pagefind-weight="0.5">lda = LdaModel(corpus=corpus, id2word=dictionary, num_topics=3, random_state=42, passes=10)
 
-for i in range(3):
-    words = [w for w, prob in lda.show_topic(i, 6)]
-    print(f&quot;Topic {i}: {&#x27;, &#x27;.join(words)}&quot;)</pre>
+def show_top_words(model, topic_count):
+    for topic_number in range(topic_count):
+        top_words = []
+        for word, weight in model.show_topic(topic_number, 6):
+            top_words.append(word)
+        print(f&quot;  Topic {topic_number}: {&#x27;, &#x27;.join(top_words)}&quot;)
+
+show_top_words(lda, 3)</pre>
 <h4 id="your-turn-name-the-topics">Your turn: name the topics</h4>
 <p data-pagefind-weight="0.5">Read each word list above. What theme does each one point to? (You&#x27;ll almost certainly recognize the three corners these comments imitate.)</p>
 <pre data-pagefind-weight="0.5"># your turn — write your label for each topic as a comment
@@ -86,20 +103,26 @@ for i in range(3):
 # Topic 2 =&gt;</pre>
 <h4 id="which-topic-does-each-comment-belong-to">Which topic does each comment belong to?</h4>
 <p data-pagefind-weight="0.5">LDA never files a document under one topic — it gives every document a mixture (e.g. &quot;70% topic 1, 30% topic 2&quot;). We can still ask for its dominant topic, the biggest slice of the mix.</p>
-<pre data-pagefind-weight="0.5">for i, doc_bow in enumerate(corpus):
-    dist = lda.get_document_topics(doc_bow)
-    dominant = max(dist, key=lambda pair: pair[1])[0]
-    print(f&quot;Topic {dominant}  |  {docs[i][:55]}...&quot;)</pre>
+<pre data-pagefind-weight="0.5">for doc_number in range(len(docs)):
+    bag_of_words = corpus[doc_number]
+    topic_mix = lda.get_document_topics(bag_of_words)      # [(topic_number, share), ...]
+    # read-only: max(..., key=...) picks the pair with the biggest share; [0] keeps its topic number
+    dominant = max(topic_mix, key=lambda pair: pair[1])[0]
+    print(f&quot;Topic {dominant}  |  {docs[doc_number][:55]}...&quot;)</pre>
 <p data-pagefind-weight="0.5">Each comment should land with its own corner of the internet. But that result is less sturdy than it looks. Change randomstate=42 to another number and rerun: sometimes a comment or two gets filed under a neighbor, even though no word here is shared between corners. LDA starts from a random guess and improves it, and fifteen comments of a few words each give it very little evidence to improve on. The fix is more, longer text per document, which is exactly the difference you&#x27;re about to see between this tidy example and real data.</p>
 <h2 id="part-2-how-many-topics-an-authored-choice">Part 2 — How Many Topics? (an authored choice)</h2>
 <p data-pagefind-weight="0.5">There is no correct number of topics. numtopics is a dial you set, and it changes what the model finds. Too few and unrelated themes get mashed together; too many and one real theme splinters. Watch what happens when we ask the same fifteen comments for 2 topics, then 4.</p>
-<pre data-pagefind-weight="0.5"># type along — for k in (2, 4): train an LdaModel on the same corpus with num_topics=k (random_state=42, passes=10),
-#              then print each topic&#x27;s top 6 words, the way the training cell above did</pre>
+<pre data-pagefind-weight="0.5"># type along — loop: for topic_count in (2, 4):
+#              print a heading, train an LdaModel on the same corpus with num_topics=topic_count
+#              (random_state=42, passes=10), then show_top_words(model, topic_count)</pre>
 <p data-pagefind-weight="0.5">Neither is &quot;wrong.&quot; Choosing the number of topics is a research decision you justify by how interpretable the result is — not a truth the algorithm reveals.</p>
 <h2 id="part-3-the-limits-one-debate-not-three-subjects">Part 3 — The Limits: One Debate, Not Three Subjects</h2>
 <p data-pagefind-weight="0.5">That toy corpus was easy on purpose — three obviously different subjects. Now point the same machine at something shaped like our course debate: eleven short comments we wrote to sound like the Texas Ten Commandments discussion (they are constructed examples, not the real scraped corpus; you saw several of them in the pandas and VADER code-alongs). They&#x27;re all arguing about one issue, in overlapping vocabulary. Watch the topics get muddy.</p>
-<pre data-pagefind-weight="0.5"># type along — run the whole Part 1 pipeline on `comments`: tokenize each one (c_tokens), build a Dictionary (c_dict) and
-#              bag-of-words corpus (c_corpus), train a 3-topic LdaModel (c_lda, random_state=42, passes=10), print each topic&#x27;s top 6 words
+<pre data-pagefind-weight="0.5"># type along — run the Part 1 pipeline on `comments`, the same long way as Part 1:
+#   1. comment_tokens: an empty list, then a for loop that appends preprocess_for_topics(comment) for each comment
+#   2. comment_dictionary = corpora.Dictionary(comment_tokens)
+#   3. comment_corpus: an empty list, then a for loop that appends comment_dictionary.doc2bow(...) for each word list
+#   4. comment_lda: a 3-topic LdaModel (random_state=42, passes=10), then show_top_words(comment_lda, 3)
 comments = [
     &quot;The Ten Commandments belong in every classroom, period.&quot;,
     &quot;This is a clear violation of church and state. Keep it out.&quot;,
@@ -113,18 +136,18 @@ comments = [
     &quot;Freedom of religion means freedom from it too.&quot;,
     &quot;My kids should learn this at home, not at school.&quot;,
 ]</pre>
-<p data-pagefind-weight="0.5">Compare these to the toy corpus. There, each topic was a different subject you could name in a word — sports, music, food. Here, every &quot;topic&quot; is just more of the same argument: LDA still hands back three tidy word-lists, but they&#x27;re slices of one debate about one law, not three distinct themes. The model grouped words by raw co-occurrence — that&#x27;s all it ever does — and with eleven short documents on a single issue there simply aren&#x27;t separate subjects to find. Two things are working against it at once: the feed is tiny, and it&#x27;s one argument. Which one matters more? You can&#x27;t tell from this demo alone. HW4 runs the same pipeline on the real 123-row corpus (or your own data), and that is where you get to make claims about real comments. (Rerun it, or run it on a different machine, and the groupings shift — LDA is stochastic and version-sensitive, which is why randomstate only pins it here.) This isn&#x27;t a bug. Topic modeling shines on a large, thematically diverse collection; knowing when a method has little to say is as important as knowing how to run it — and it&#x27;s why HW4 wants a richer dataset of your own.</p>
+<p data-pagefind-weight="0.5">Compare these to the toy corpus. There, each topic was a different subject you could name in a word — sports, music, food. Here, every &quot;topic&quot; is just more of the same argument: LDA still hands back three tidy word-lists, but they&#x27;re slices of one debate about one law, not three distinct themes. The model grouped words by raw co-occurrence — that&#x27;s all it ever does — and with eleven short documents on a single issue there simply aren&#x27;t separate subjects to find. Two things are working against it at once: the feed is tiny, and it&#x27;s one argument. Which one matters more? You can&#x27;t tell from this demo alone. HW4 runs the same pipeline on your own data, and that is where you get to make claims about real comments. (Rerun it, or run it on a different machine, and the groupings shift — LDA is stochastic and version-sensitive, which is why randomstate only pins it here.) This isn&#x27;t a bug. Topic modeling shines on a large, thematically diverse collection; knowing when a method has little to say is as important as knowing how to run it — and it&#x27;s why HW4 wants a richer dataset of your own.</p>
 <h2 id="putting-it-all-together">Putting It All Together</h2>
-<p data-pagefind-weight="0.5">The whole pipeline, start to finish — the moves you&#x27;ll run in HW4:</p>
+<p data-pagefind-weight="0.5">The whole pipeline, start to finish: the moves you&#x27;ll run in HW4. This time it&#x27;s written the way you&#x27;ll often see it in other people&#x27;s code and in AI-written code: compressed.</p>
+<p data-pagefind-weight="0.5">&gt; Reading note: a one-line shortcut. The cell below uses a compact Python pattern called a list &gt; comprehension: a loop that builds a list, squeezed onto one line. You won&#x27;t have to write one in this &gt; class; you just need to be able to read it. Here is Part 1&#x27;s tokens loop both ways. They do exactly the &gt; same thing: &gt; &gt; python &gt; # the long way (Part 1) &gt; tokens = [] &gt; for doc in docs: &gt; tokens.append(preprocessfortopics(doc)) &gt; &gt; # the one-line way &gt; tokens = [preprocessfortopics(doc) for doc in docs] &gt; &gt; &gt; Read it left to right: &quot;make a list of preprocessfortopics(doc), for each doc in docs.&quot; When &gt; you see [ ... for ... in ... ] in this cell or in HW4, translate it back into the long loop.</p>
 <pre data-pagefind-weight="0.5"># 1. preprocess  -&gt;  2. dictionary + corpus  -&gt;  3. train  -&gt;  4. read topics  -&gt;  5. YOU interpret
-tokens = [preprocess_for_topics(d) for d in docs]
+tokens = [preprocess_for_topics(doc) for doc in docs]
 dictionary = corpora.Dictionary(tokens)
-corpus = [dictionary.doc2bow(t) for t in tokens]
+corpus = [dictionary.doc2bow(doc_words) for doc_words in tokens]
 lda = LdaModel(corpus=corpus, id2word=dictionary, num_topics=3, random_state=42, passes=10)
 
 print(&quot;Discovered topics (your job: name them):&quot;)
-for i in range(3):
-    print(f&quot;  Topic {i}: {&#x27;, &#x27;.join(w for w, p in lda.show_topic(i, 6))}&quot;)</pre>
+show_top_words(lda, 3)</pre>
 <pre data-pagefind-weight="0.5"># your turn — change num_topics above to 2 or 5, rerun, and see how the story changes</pre>
 <h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
 <p data-pagefind-weight="0.5">HW4 is the capstone of the techniques. You&#x27;ll run topic modeling on a dataset you collected — and then integrate all three analyses: term frequency (what words), sentiment (what feeling), and topics (what themes), on the same texts. One line ties them together — average sentiment per topic — and suddenly you can say not just &quot;the crowd is split,&quot; but &quot;this theme has the lowest average VADER score and that one the highest.&quot; (Then the honest part: check how many comments sit behind each average, and read some of them. Negative words are not the same as anger, and an average can hide a split.) That integrated, evidence-backed reading of a real cultural conversation is exactly what your final capstone asks for. You now have every tool it needs.</p>
