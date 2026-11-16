@@ -28,19 +28,19 @@ print(scores)
 print(&quot;compound:&quot;, scores[&quot;compound&quot;])</pre>
 <p data-pagefind-weight="0.5">Predict first. Before running the next cell, guess: which line is most positive? Most negative? Which is mixed? Then check yourself.</p>
 <pre data-pagefind-weight="0.5"># my guess — most positive:    most negative:    mixed:
-samples = [
+sample_comments = [
     &quot;worst law ever, complete waste of everyone&#x27;s time&quot;,
     &quot;The idea is okay, nothing special but not terrible either&quot;,
-    &quot;I love love LOVE this, so good for our kids ❤️&quot;,
+    &quot;I love love LOVE this, so good for our kids!&quot;,
     &quot;It was good but honestly kind of pointless&quot;,
 ]
 
-for text in samples:
-    c = analyzer.polarity_scores(text)[&quot;compound&quot;]
-    print(f&quot;{c:+.3f}   {text}&quot;)</pre>
+for comment in sample_comments:
+    compound = analyzer.polarity_scores(comment)[&quot;compound&quot;]
+    print(f&quot;{compound:+.3f}   {comment}&quot;)   # :+.3f shows the + or - sign and 3 decimal places</pre>
 <p data-pagefind-weight="0.5">Check your predictions. Did the mixed line come out mixed? &quot;It was good but honestly kind of pointless&quot; scores well above zero, higher even than the lukewarm &quot;okay, nothing special&quot; line. Two reasons, and both are about the word list VADER relies on: pointless isn&#x27;t in its list at all, so it counts for nothing, and honestly is in the list, rated as a positive word. A lexicon can only hear the words it was given.</p>
 <h4 id="sentiment-quantifying-connotation">Sentiment = quantifying connotation</h4>
-<p data-pagefind-weight="0.5">Notice what just happened: VADER turned feeling into a number. That&#x27;s quantifying connotation — the emotional coloring of words, beyond their dictionary meaning. &quot;Determined&quot; and &quot;stubborn&quot; can describe the same behavior but feel different, and VADER scores that difference. It can because it leans on a lexicon — a fixed list of ~7,500 words each pre-rated for sentiment. Caps, !!!, and emoji nudge the score too. The lexicon is just a dictionary, so you can look words up yourself. Not every pair you&#x27;d expect made the list.</p>
+<p data-pagefind-weight="0.5">Notice what just happened: VADER turned feeling into a number. That&#x27;s quantifying connotation — the emotional coloring of words, beyond their dictionary meaning. &quot;Determined&quot; and &quot;stubborn&quot; can describe the same behavior but feel different, and VADER scores that difference. It can because it leans on a lexicon — a fixed list of ~7,500 words each pre-rated for sentiment. Caps and !!! nudge the score too. Emoji count only when a word in the emoji&#x27;s written-out name is on the list, and for most emoji none is. The lexicon is just a dictionary, so you can look words up yourself. Not every pair you&#x27;d expect made the list.</p>
 <pre data-pagefind-weight="0.5"># VADER&#x27;s lexicon is a dictionary: word -&gt; rating. None means &quot;not in the list&quot; (it counts for nothing)
 for word in [&quot;determined&quot;, &quot;stubborn&quot;, &quot;cheap&quot;, &quot;inexpensive&quot;]:
     print(word, analyzer.lexicon.get(word))</pre>
@@ -49,7 +49,7 @@ for word in [&quot;determined&quot;, &quot;stubborn&quot;, &quot;cheap&quot;, &q
 <p data-pagefind-weight="0.5">Here&#x27;s the cleaned comments table from last week — the constructed Texas Ten Commandments examples (written for the lesson, not collected), with the stance you&#x27;d label by hand (support / oppose / neutral). Let&#x27;s have VADER score the tone of every comment at once.</p>
 <pre data-pagefind-weight="0.5">import pandas as pd
 
-comments = [
+comments_and_stances = [
     (&quot;The Ten Commandments belong in every classroom, period.&quot;, &quot;support&quot;),
     (&quot;This is a clear violation of church and state. Keep it out.&quot;, &quot;oppose&quot;),
     (&quot;Morals matter and kids today need them more than ever.&quot;, &quot;support&quot;),
@@ -63,73 +63,76 @@ comments = [
     (&quot;My kids should learn this at home, not at school.&quot;, &quot;neutral&quot;),
 ]
 
-comments_df = pd.DataFrame(comments, columns=[&quot;comment&quot;, &quot;stance&quot;])
+comments_df = pd.DataFrame(comments_and_stances, columns=[&quot;comment&quot;, &quot;stance&quot;])
 comments_df</pre>
-<p data-pagefind-weight="0.5">Score one first, to see the move on a single row:</p>
-<pre data-pagefind-weight="0.5"># type along — grab the first comment with .iloc[0], print it, then print its compound score</pre>
-<p data-pagefind-weight="0.5">Now scale up. .apply() runs a function on every row of a column — the same one-line-to-whole- column move you used with pandas. We add the result as a new sentiment column.</p>
-<pre data-pagefind-weight="0.5">def tone(text):
+<p data-pagefind-weight="0.5">Score one first, to see the move on a single row. To pull one value out of a column by its position, use .iloc[]. The structure: python mydf[&quot;columnname&quot;].iloc[0] - mydf[&quot;columnname&quot;] picks out one column, as in Pandas 01. - .iloc[0] takes the value in position 0, the first row. As with a list, counting starts at 0, so .iloc[1] is the second row. - The i in iloc stands for integer: you give it a position number.</p>
+<pre data-pagefind-weight="0.5"># type along — save the first comment as first_comment with .iloc[0], print it, then print its compound score</pre>
+<p data-pagefind-weight="0.5">Now scale up. .apply() runs a function on every value in a column and collects the results, so you don&#x27;t have to write the loop yourself. We save the results as a new sentiment column. The structure: python mydf[&quot;newcolumn&quot;] = mydf[&quot;columnname&quot;].apply(functionname) - functionname is a function that takes one value and returns one value. Here it&#x27;s getsentiment, which takes a comment and returns its compound score. - Write the function&#x27;s name without parentheses: .apply(getsentiment), not .apply(getsentiment()). You&#x27;re handing the function to pandas, and pandas calls it once per row. - The results line up with the original rows, so they go straight into a new column. HW3 uses this same function, with the same name.</p>
+<pre data-pagefind-weight="0.5">def get_sentiment(text):
     return analyzer.polarity_scores(text)[&quot;compound&quot;]
 
-comments_df[&quot;sentiment&quot;] = comments_df[&quot;comment&quot;].apply(tone)
+comments_df[&quot;sentiment&quot;] = comments_df[&quot;comment&quot;].apply(get_sentiment)
 comments_df</pre>
 <p data-pagefind-weight="0.5">Notice the 0.000s. Several comments score exactly zero, including &quot;The Ten Commandments belong in every classroom, period.&quot;, a firm position if there ever was one. VADER isn&#x27;t calling them neutral. It found none of their words in its lexicon, so it has nothing to add up. Here, zero means &quot;no evidence,&quot; not &quot;no opinion.&quot; (Zero can also happen another way: positive and negative words that cancel out. You&#x27;ll meet one in Part 5. So when you see a zero, check which kind it is.)</p>
 <h2 id="part-3-reading-the-results">Part 3 — Reading the Results</h2>
-<p data-pagefind-weight="0.5">With a score per comment, you can ask quantitative questions of the whole crowd.</p>
-<pre data-pagefind-weight="0.5"># type along — print the average sentiment (round to 3); then use .idxmax() / .idxmin() with .loc to pull the most positive and most negative rows and print each score with its comment</pre>
+<p data-pagefind-weight="0.5">With a score per comment, you can ask quantitative questions of the whole crowd. To find the single most positive comment takes two steps: find which row has the highest score, then pull that row out. The structure: python rowlabel = mydf[&quot;columnname&quot;].idxmax() mydf.loc[rowlabel] - .idxmax() doesn&#x27;t give you the highest value. It gives you the label of the row where the highest value sits. .idxmin() does the same for the lowest. - .loc[...] pulls out the whole row with that label, so you get the comment, its stance, and its score together. Pick one value from that row by its column name: row[&quot;comment&quot;]. - .loc finds a row by its label; .iloc finds it by its position. In this table they match (0, 1, 2…), but after you sort or filter a table they don&#x27;t, so pair .idxmax() with .loc.</p>
+<pre data-pagefind-weight="0.5"># type along — print the average sentiment (round to 3); then use .idxmax() / .idxmin() with .loc to save the most positive and most negative rows as most_positive and most_negative, and print each score with its comment</pre>
 <h4 id="your-turn">Your turn</h4>
+<p data-pagefind-weight="0.5">.sortvalues(&quot;columnname&quot;) puts a table&#x27;s rows in order by one column, lowest first. Add ascending=False inside the parentheses for highest first.</p>
 <pre data-pagefind-weight="0.5"># your turn — sort the DataFrame by its sentiment column with .sort_values() (as in Pandas 01) and look at the order</pre>
 <h2 id="part-4-tone-is-not-the-same-as-stance">Part 4 — Tone Is Not the Same as Stance</h2>
 <p data-pagefind-weight="0.5">Here&#x27;s the critical move. We have two judgments of each comment: the stance you labeled (a position — for or against the law) and the tone VADER scored (an emotion). It&#x27;s tempting to expect them to line up. Let&#x27;s turn VADER&#x27;s score into a label and put them side by side.</p>
-<pre data-pagefind-weight="0.5">def tone_label(score):
+<pre data-pagefind-weight="0.5">def label_sentiment(score):
     if score &gt;= 0.05:
         return &quot;positive&quot;
     elif score &lt;= -0.05:
         return &quot;negative&quot;
     return &quot;neutral&quot;
 
-comments_df[&quot;vader_tone&quot;] = comments_df[&quot;sentiment&quot;].apply(tone_label)
-comments_df[[&quot;comment&quot;, &quot;stance&quot;, &quot;vader_tone&quot;]]</pre>
-<p data-pagefind-weight="0.5">Look for the mismatches — and notice they&#x27;re not VADER &quot;getting it wrong.&quot; Stance and tone are different axes. Someone can oppose the law in warm, calm language, or support it while sounding furious. A word like &quot;God&quot; or &quot;freedom&quot; reads positive to the lexicon no matter which side is saying it. Distant reading (VADER&#x27;s number) and close reading (your judgment) measure different things — which is exactly why you need both.</p>
+comments_df[&quot;vader_tone&quot;] = comments_df[&quot;sentiment&quot;].apply(label_sentiment)
+comments_df[[&quot;comment&quot;, &quot;stance&quot;, &quot;vader_tone&quot;]]   # double brackets: a list of the columns to show</pre>
+<p data-pagefind-weight="0.5">Look for the mismatches — and notice they&#x27;re not VADER &quot;getting it wrong.&quot; Stance and tone are different axes. Someone can oppose the law in warm, calm language, or support it while sounding furious. A word like &quot;God&quot; or &quot;freedom&quot; reads positive to the lexicon no matter which side is saying it. Distant reading (VADER&#x27;s number) and close reading (your judgment) measure different things — which is exactly why you need both. Now compare the two judgments across the whole table: what&#x27;s the average tone in each stance camp? The structure: python mydf.groupby(&quot;groupcolumn&quot;)[&quot;numbercolumn&quot;].mean() - .groupby(&quot;groupcolumn&quot;) sorts the rows into groups, one for each different value in that column (here, one group per stance). - [&quot;numbercolumn&quot;] picks the column to measure in each group. - .mean() averages it within each group, so you get one number per group. Add .round(3) at the end to keep 3 decimal places.</p>
 <pre data-pagefind-weight="0.5"># type along — the average TONE within each STANCE camp: group by stance, take the mean of sentiment, round to 3</pre>
-<pre data-pagefind-weight="0.5">import matplotlib.pyplot as plt
+<pre data-pagefind-weight="0.5">import matplotlib.pyplot as plt   # plt is the usual short name for matplotlib&#x27;s plotting tools
 
-comments_df.groupby(&quot;stance&quot;)[&quot;sentiment&quot;].mean().plot(kind=&quot;bar&quot;, title=&quot;Average tone by stance&quot;)
+average_tone_by_stance = comments_df.groupby(&quot;stance&quot;)[&quot;sentiment&quot;].mean()
+average_tone_by_stance.plot(kind=&quot;bar&quot;, title=&quot;Average tone by stance&quot;)
 plt.ylabel(&quot;mean compound sentiment&quot;)
-plt.axhline(0, color=&quot;gray&quot;, linewidth=0.8)
-plt.tight_layout()
+plt.axhline(0, color=&quot;gray&quot;, linewidth=0.8)   # a gray line at 0, so above and below zero stand out
+plt.tight_layout()                            # keep the labels from being cut off
 plt.show()</pre>
 <h2 id="part-5-where-vader-breaks">Part 5 — Where VADER Breaks</h2>
 <p data-pagefind-weight="0.5">VADER reads a lexicon, not a mind. It has no idea about sarcasm, irony, or context. Predict the tone of each line below, then run it — and watch it miss.</p>
 <pre data-pagefind-weight="0.5"># my guess (positive / negative / neutral, one per line):
-tricky = [
+tricky_comments = [
     &quot;Oh GREAT, more religion forced on our kids.&quot;,   # sarcasm: sounds positive, isn&#x27;t
     &quot;Sure, because schools have NO other problems.&quot;,  # sarcasm
     &quot;Honestly? Not a bad idea at all.&quot;,               # double negative = positive
     &quot;This is beautifully, tragically un-American.&quot;,   # mixed signals
 ]
 
-for text in tricky:
-    c = analyzer.polarity_scores(text)[&quot;compound&quot;]
-    print(f&quot;{c:+.3f}   {text}&quot;)</pre>
+for comment in tricky_comments:
+    compound = analyzer.polarity_scores(comment)[&quot;compound&quot;]
+    print(f&quot;{compound:+.3f}   {comment}&quot;)</pre>
 <pre data-pagefind-weight="0.5"># the &quot;un-American&quot; line scored 0.000 -- but not because VADER found nothing. Look at the parts:
 print(analyzer.polarity_scores(&quot;This is beautifully, tragically un-American.&quot;))</pre>
 <p data-pagefind-weight="0.5">That zero is a cancellation: pos and neg are equal, so they sum to nothing. Compare the &quot;no evidence&quot; zeros back in Part 2, where neu was 1.0. Same number, different meaning. Where did VADER&#x27;s number disagree with your reading? Those gaps are the most interesting findings you&#x27;ll report — not failures of the tool, but the boundary where counting stops and interpretation has to take over.</p>
 <h2 id="putting-it-all-together-score-compare-question">Putting It All Together: Score, Compare, Question</h2>
-<p data-pagefind-weight="0.5">The full workflow in one place — exactly what you&#x27;ll run on your own data in HW3: score every comment, find the extremes, and check the machine&#x27;s tone against a human&#x27;s stance.</p>
-<pre data-pagefind-weight="0.5">comments_df[&quot;sentiment&quot;] = comments_df[&quot;comment&quot;].apply(tone)          # score
-comments_df[&quot;vader_tone&quot;] = comments_df[&quot;sentiment&quot;].apply(tone_label)  # label
+<p data-pagefind-weight="0.5">The full workflow in one place — exactly what you&#x27;ll run on your own data in HW3: score every comment, find the extremes, and check the machine&#x27;s tone against a human&#x27;s stance. One new piece here: a filter with more than one condition. The structure: python mydf[(mydf[&quot;columna&quot;] == &quot;x&quot;) &amp; (mydf[&quot;columnb&quot;] == &quot;y&quot;)] - &amp; means and: keep a row only if both conditions are true. | means or: keep it if either one is. - Put each condition in its own parentheses. Without them, Python reads the line in the wrong order and gives an error. - The cell below combines both: (oppose and positive tone) or (support and negative tone).</p>
+<pre data-pagefind-weight="0.5">comments_df[&quot;sentiment&quot;] = comments_df[&quot;comment&quot;].apply(get_sentiment)       # score
+comments_df[&quot;vader_tone&quot;] = comments_df[&quot;sentiment&quot;].apply(label_sentiment)  # label
 
 print(&quot;Overall average tone:&quot;, round(comments_df[&quot;sentiment&quot;].mean(), 3))
 print(&quot;\nWhere tone and stance disagree:&quot;)
-mismatch = comments_df[
+mismatches = comments_df[
     ((comments_df[&quot;stance&quot;] == &quot;oppose&quot;) &amp; (comments_df[&quot;vader_tone&quot;] == &quot;positive&quot;)) |
     ((comments_df[&quot;stance&quot;] == &quot;support&quot;) &amp; (comments_df[&quot;vader_tone&quot;] == &quot;negative&quot;))
 ]
-print(mismatch[[&quot;comment&quot;, &quot;stance&quot;, &quot;vader_tone&quot;]].to_string(index=False))</pre>
+# .to_string(index=False) prints the whole table without its row numbers
+print(mismatches[[&quot;comment&quot;, &quot;stance&quot;, &quot;vader_tone&quot;]].to_string(index=False))</pre>
 <pre data-pagefind-weight="0.5"># your turn — paste a comment of your own below and score it; does VADER agree with your read?
-my_text = &quot;Type any comment here&quot;
-print(analyzer.polarity_scores(my_text)[&quot;compound&quot;])</pre>
+my_comment = &quot;Type any comment here&quot;
+print(analyzer.polarity_scores(my_comment)[&quot;compound&quot;])</pre>
 <h2 id="sneak-preview-where-this-is-going">Sneak Preview: Where This Is Going</h2>
 <p data-pagefind-weight="0.5">In HW3 you&#x27;ll do all of this on a dataset you collected: score it, visualize the spread, and write up where VADER tracked your reading and where it broke. The mismatches are the point. After Thanksgiving break (Days 16–17) comes the last technique: topic modeling. Sentiment asked what feeling?; topic modeling asks what is this whole pile of text even about? — letting the computer surface the recurring themes across hundreds of comments at once. Counting, feeling, themes: three different ways to hear a crowd.</p>
 <h2 id="playground">Playground</h2>
