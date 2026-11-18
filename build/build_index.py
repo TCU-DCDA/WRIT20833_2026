@@ -44,6 +44,7 @@ CODEALONGS_BY_WEEK = [
     ]),
     ("Weeks 5–6", "Computational text analysis", [
         ("Sentiment with VADER", "Scoring emotional tone — and judging it.", "Days 13–14", "notebooks/codeAlongs/WRIT20833_VADER_Sentiment_2026.ipynb"),
+        ("Read First, Then Reveal", "Label real comments yourself, then see VADER's scores: HW3 B3, rehearsed.", "Day 14", "notebooks/codeAlongs/WRIT20833_Read_First_Then_Reveal_2026.ipynb"),
         ("Topic Modeling (Gensim)", "Discovering themes across a corpus.", "Days 16–17", "notebooks/codeAlongs/WRIT20833_Topic_Modeling_Gensim_2026.ipynb"),
     ]),
 ]

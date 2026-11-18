@@ -192,27 +192,21 @@ def label_sentiment(score):
 # #comments:
 # Does the chart show a clear majority, or a divided crowd?</pre>
 <p data-pagefind-weight="0.5">B3 — Read the extremes, and label their stance yourself. (The human-vs-machine check.) In the code-along, every comment came with a stance someone labeled by hand. Your data doesn&#x27;t have one, so you are the labeler. Part 1 picks the 5 comments VADER scored highest and the 5 it scored lowest, and prints them without their scores and in mixed order. Read each one and decide: is the writer on one side (support), the other (oppose), or is it unclear? Write your labels down before you run part 2. Part 2 reveals VADER&#x27;s scores, so you can&#x27;t be swayed by them. First, name your two sides. What are your comments arguing about, and what would &quot;support&quot; and &quot;oppose&quot; mean? You&#x27;ll write this at the top of part 2. If your comments aren&#x27;t really arguing about anything, you can use whether the writer approves or disapproves of the video (or its creator). If even that doesn&#x27;t fit a comment (a question, a joke, advice), label it &quot;n/a&quot; and say why in your reflection. Small or one-sided data? If your file has fewer than 10 comments, the groups will be smaller. If your data has only a few strongly positive or negative comments, a group may include comments that score 0. Neither is a bug: both are findings about your data. Want a fuller check? Checking the Machine is a one-page routine for this kind of human-vs-tool comparison. You&#x27;ll reuse it in HW4 and the capstone.</p>
-<pre data-pagefind-weight="0.5"># B3 — part 1: read the extremes (scores hidden)
-# Run this cell, then read the comments it prints. New pieces, line by line:
-# min(5, len(df) // 2) is 5, or half your rows if you have fewer than 10. (// divides and drops
-#    the remainder: 7 // 2 is 3.) That way both groups get the same number of comments.
-# .nlargest(how_many, &quot;sentiment&quot;) keeps the rows with the highest scores.
-# .drop(highest.index) sets those rows aside, so .nsmallest(...) can&#x27;t pick any of them again.
-#    (Without it, a small or one-sided dataset could put the same comment in both groups.)
-# .assign(group=&quot;highest&quot;) adds a column that says which group each row came from.
-# pd.concat([...]) stacks the two small tables into one.
-how_many = min(5, len(df) // 2)
-highest = df.nlargest(how_many, &quot;sentiment&quot;)
-lowest = df.drop(highest.index).nsmallest(how_many, &quot;sentiment&quot;)
-extremes = pd.concat([highest.assign(group=&quot;highest&quot;), lowest.assign(group=&quot;lowest&quot;)])
+<p data-pagefind-weight="0.5">What B3 part 1 does, step by step. The numbers match the # 1 to # 6 tags in the code cell. 1. min(5, len(df) // 2): 5 comments from each end, or half your rows if you have fewer than 10, so both groups are the same size. (// divides and drops the remainder: 7 // 2 is 3.) 2. .nlargest(howmany, &quot;sentiment&quot;): keeps the rows with the highest scores. 3. .drop(highest.index): sets those rows aside first, so .nsmallest can&#x27;t pick any of them again. Without it, a small or one-sided dataset could put the same comment in both groups. 4. .assign(group=...) adds a column saying which group each row came from; pd.concat([...]) stacks the two small tables into one. 5. .sortindex() puts the rows in row-number order, which mixes the two groups together; .iterrows() hands you the table one row at a time, as a pair: the row&#x27;s number and the row itself. 6. textwrap.fill(...) breaks a long comment into lines of at most 90 characters, indented 4 spaces, so you can read it without scrolling sideways. (import textwrap at the top loads that tool; it comes with Python.)</p>
+<pre data-pagefind-weight="0.5"># B3 — part 1: read the extremes (scores hidden). Steps 1-6 are explained in the text above.
+# Run this cell, then read the comments it prints.
+import textwrap
+how_many = min(5, len(df) // 2)                                     # 1
+highest = df.nlargest(how_many, &quot;sentiment&quot;)                        # 2
+lowest = df.drop(highest.index).nsmallest(how_many, &quot;sentiment&quot;)    # 3
+extremes = pd.concat([highest.assign(group=&quot;highest&quot;),
+                      lowest.assign(group=&quot;lowest&quot;)])               # 4
 print(len(highest), &quot;highest-scoring and&quot;, len(lowest), &quot;lowest-scoring comments, in row order:&quot;)
 print()
-
-# .sort_index() puts the rows in row-number order, which mixes the two groups together.
-# .iterrows() hands you the table one row at a time, as a pair: the row&#x27;s number and the row itself.
-for row_number, row in extremes.sort_index().iterrows():
+for row_number, row in extremes.sort_index().iterrows():            # 5
     print(f&quot;[{row_number}]&quot;)
-    print(&quot;    &quot;, row[text_column])
+    print(textwrap.fill(row[text_column], width=90,
+                        initial_indent=&quot;    &quot;, subsequent_indent=&quot;    &quot;))   # 6
     print()</pre>
 <p data-pagefind-weight="0.5">How part 2 works. You type your labels into a dictionary, and pandas attaches them to the table. The structure: python mystance = { rownumber: &quot;support&quot;, anotherrownumber: &quot;oppose&quot;, } extremes[&quot;stance&quot;] = extremes.index.map(mystance) - Each key is a row number from part 1&#x27;s printout (the number in square brackets), typed without quotes. Each value is your label, in quotes. - extremes.index is the table&#x27;s row numbers. .map(mystance) looks each one up in your dictionary and gives back your label, like mystance[rownumber] done for every row at once. - A row you haven&#x27;t labeled yet shows NaN (pandas&#x27; mark for an empty cell), so you can see which ones are left. - The two filled-in entries (0 and 1) only show the pattern. Replace them with your own row numbers.</p>
 <pre data-pagefind-weight="0.5"># B3 — part 2: your stance labels
